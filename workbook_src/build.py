@@ -134,10 +134,10 @@ h2.pt .n { background: #1e3a8a; color: white; border-radius: 8px; font-size: 11p
 .tiles small { font-size: 7.4pt; color: #94a3b8; }
 .front { font-size: 9.6pt; line-height: 1.6; }
 .front figure.fig svg { --fz: .2mm; }
-table.toc { width: 100%; border-collapse: collapse; font-size: 9.6pt; }
-table.toc td { padding: 1.1mm 2mm; border-bottom: 1px dashed #e2e8f0; vertical-align: middle; }
+table.toc { width: 100%; border-collapse: collapse; font-size: 10.8pt; }
+table.toc td { padding: 1.35mm 2mm; white-space: nowrap; border-bottom: 1px dashed #e2e8f0; vertical-align: middle; }
 table.toc td.no { width: 21mm; font-weight: 900; color: #1e3a8a; white-space: nowrap; }
-table.toc td.pgn { width: 10mm; text-align: right; color: #ea580c; font-weight: 700; font-family: 'JetBrains Mono'; }
+table.toc td.pgn { width: 14mm; text-align: right; color: #ea580c; font-weight: 700; font-family: 'JetBrains Mono'; }
 a { color: inherit; text-decoration: none; }
 .pg .foot a.back { color: #2563eb; font-weight: 700; }
 table.toc td a { display: block; }
@@ -367,6 +367,7 @@ FIT_JS = r'''
 <script>
 for (const pg of document.querySelectorAll('.pg.front')) {
   const fw = pg.querySelector('.fw');
+  if (pg.querySelector('#toc')) continue;
   const avail = pg.clientHeight - 20 * 3.78;
   let z = 1.0;
   while (z < 1.6) { fw.style.zoom = (z + 0.04).toFixed(2); if (fw.getBoundingClientRect().height > avail) { fw.style.zoom = z.toFixed(2); break; } z += 0.04; }
