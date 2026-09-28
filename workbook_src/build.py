@@ -138,6 +138,9 @@ table.toc { width: 100%; border-collapse: collapse; font-size: 9.6pt; }
 table.toc td { padding: 1.1mm 2mm; border-bottom: 1px dashed #e2e8f0; vertical-align: middle; }
 table.toc td.no { width: 21mm; font-weight: 900; color: #1e3a8a; white-space: nowrap; }
 table.toc td.pgn { width: 10mm; text-align: right; color: #ea580c; font-weight: 700; font-family: 'JetBrains Mono'; }
+a { color: inherit; text-decoration: none; }
+.pg .foot a.back { color: #2563eb; font-weight: 700; }
+table.toc td a { display: block; }
 table.toc td .en { font-size: 8pt; color: #94a3b8; font-family: 'Noto Serif'; font-style: italic; margin-left: 2mm; }
 
 /* cover */
@@ -176,6 +179,8 @@ class Pager:
         for i, (inner, cls, label) in enumerate(self.pages):
             foot = (f'<div class="foot"><span>Lehninger 8e · Ch.{CHAPTER} {CH_TITLE} — 예제 &amp; 연습문제 풀이 노트</span>'
                     f'<span>{i + 1} / {n}</span></div>')
+            if cls == 'item':
+                foot = foot.replace('<span>' + str(i + 1), '<span><a class="back" href="#toc">↩ 차례로</a> &nbsp; ' + str(i + 1))
             if cls == 'front':
                 inner = f'<div class="fw">{inner}</div>'
             out.append(f'<div class="pg {cls}">{inner}{foot}</div>')
@@ -330,10 +335,11 @@ def toc_page(first):
     rows = []
     for k, it in enumerate(ITEMS):
         lab = f"예제 {it['num']}" if it['kind'] != 'PROBLEM' else f"문제 {it['num']}"
-        rows.append(f'<tr><td class="no">{lab}</td><td>{it["ko_title"]}</td><td>{stars(it["level"])}</td>'
-                    f'<td class="pgn">{first + k}</td></tr>')
+        a = f'<a href="#{it["id"]}">'
+        rows.append(f'<tr><td class="no">{a}{lab}</a></td><td>{a}{it["ko_title"]}</a></td><td>{a}{stars(it["level"])}</a></td>'
+                    f'<td class="pgn">{a}{first + k} ›</a></td></tr>')
     half = (len(rows) + 1) // 2
-    return f'''<h2 class="pt"><span class="n">INDEX</span> 차례</h2>
+    return f'''<h2 class="pt" id="toc"><span class="n">INDEX</span> 차례 <span style="font-size:9pt;color:#94a3b8;font-weight:500">— 항목을 누르면 해당 문제로 이동</span></h2>
 <div class="grid2"><table class="toc">{''.join(rows[:half])}</table><table class="toc">{''.join(rows[half:])}</table></div>'''
 
 
@@ -393,7 +399,7 @@ def build():
     html = P.html()
     # tag item pages with ids (for fit report / bookmarks)
     ids = iter([it['id'] for it in ITEMS])
-    html = re.sub(r'<div class="pg item">', lambda m: f'<div class="pg item" data-id="{next(ids)}">', html)
+    html = re.sub(r'<div class="pg item">', lambda m: (lambda i: f'<div class="pg item" id="{i}" data-id="{i}">')(next(ids)), html)
     doc = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Lehninger {CHAPTER}장 예제·문제 풀이노트</title>
 <style>{CSS}</style></head><body>{html}{FIT_JS}</body></html>'''
     open(os.path.join(HERE, 'ch13.html'), 'w').write(doc)
