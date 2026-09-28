@@ -24,7 +24,6 @@ def main():
     for k, it in enumerate(B.ITEMS):
         lab = ('예제 ' if it['kind'] != 'PROBLEM' else '문제 ') + it['num'] + ' · ' + re.sub('<[^>]+>', '', it['ko_title'])
         toc.append([1, lab, first + k])
-    d.set_toc(toc)
     d.set_metadata({'title': f'Lehninger 8e Ch.{B.CHAPTER} {B.CH_TITLE} — 예제 & 연습문제 풀이 노트', 'author': 'Claude'})
     d.save(os.path.join(HERE, 'final.pdf'), garbage=3, deflate=True)
     print('pages', len(d), 'expected', first + len(B.ITEMS) - 1)

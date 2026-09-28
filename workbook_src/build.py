@@ -179,8 +179,6 @@ class Pager:
         for i, (inner, cls, label) in enumerate(self.pages):
             foot = (f'<div class="foot"><span>Lehninger 8e · Ch.{CHAPTER} {CH_TITLE} — 예제 &amp; 연습문제 풀이 노트</span>'
                     f'<span>{i + 1} / {n}</span></div>')
-            if cls == 'item':
-                foot = foot.replace('<span>' + str(i + 1), '<span><a class="back" href="#toc">↩ 차례로</a> &nbsp; ' + str(i + 1))
             if cls == 'front':
                 inner = f'<div class="fw">{inner}</div>'
             out.append(f'<div class="pg {cls}">{inner}{foot}</div>')
@@ -335,11 +333,10 @@ def toc_page(first):
     rows = []
     for k, it in enumerate(ITEMS):
         lab = f"예제 {it['num']}" if it['kind'] != 'PROBLEM' else f"문제 {it['num']}"
-        a = f'<a href="#{it["id"]}">'
-        rows.append(f'<tr><td class="no">{a}{lab}</a></td><td>{a}{it["ko_title"]}</a></td><td>{a}{stars(it["level"])}</a></td>'
-                    f'<td class="pgn">{a}{first + k} ›</a></td></tr>')
+        rows.append(f'<tr><td class="no">{lab}</td><td>{it["ko_title"]}</td><td>{stars(it["level"])}</td>'
+                    f'<td class="pgn">{first + k}</td></tr>')
     half = (len(rows) + 1) // 2
-    return f'''<h2 class="pt" id="toc"><span class="n">INDEX</span> 차례 <span style="font-size:9pt;color:#94a3b8;font-weight:500">— 항목을 누르면 해당 문제로 이동</span></h2>
+    return f'''<h2 class="pt" id="toc"><span class="n">INDEX</span> 차례</h2>
 <div class="grid2"><table class="toc">{''.join(rows[:half])}</table><table class="toc">{''.join(rows[half:])}</table></div>'''
 
 
