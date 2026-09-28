@@ -277,7 +277,7 @@ add(id='P28', kind='PROBLEM', num='28',
 add(id='P29', kind='PROBLEM', num='29',
     en_title='Simple Biobattery', ko_title='간단한 바이오 배터리', slides='강의 슬라이드 42–43', level=2,
     en=f'''<p>Suppose you set up a simple battery using half-reactions as pictured in Figure 13-23. One electrode contains pyruvate and lactate at 1 m<span class="sc">M</span>, and the other electrode contains fumarate and succinate at 1 m<span class="sc">M</span> (see Table 13-7).</p>
-{img('fig13_23.png', '46%', 'FIGURE 13-23 Measurement of the standard reduction potential (E′°) of a redox pair.')}
+{img('fig13_23.png', '30%', 'FIGURE 13-23 Measurement of the standard reduction potential (E′°) of a redox pair.')}
 <p><b>a.</b> In which direction will electrons initially flow?<br>
 <b>b.</b> Calculate the standard reduction potential and standard free-energy change for your biological battery.<br>
 <b>c.</b> When a flashlight battery “runs out,” net electron movement has essentially ended. What is the equivalent situation for your biobattery?</p>''',

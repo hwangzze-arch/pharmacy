@@ -107,8 +107,7 @@ C = dict(navy='#1e3a8a', blue='#2563eb', sky='#dbeafe', orange='#ea580c', amber=
 
 
 def svg(w, h, body, maxw=None):
-    mw = f'max-width:{maxw}px;' if maxw else f'max-width:{w}px;'
-    return (f'<svg viewBox="0 0 {w} {h}" style="width:100%;{mw}" xmlns="http://www.w3.org/2000/svg" '
+    return (f'<svg viewBox="0 0 {w} {h}" style="height:calc(var(--s,1) * var(--fz,0.24mm) * {h});width:auto;max-width:100%" xmlns="http://www.w3.org/2000/svg" '
             f'font-family="Noto Sans KR" font-size="12">{body}</svg>')
 
 
