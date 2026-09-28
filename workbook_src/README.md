@@ -1,6 +1,6 @@
 # 레닌저 장별 예제·문제 풀이노트 생성 소스
 
-`python3 render.py` → `final.pdf` (HTML → Chromium PDF)
+`CH=14 python3 render.py` → `final_ch14.pdf` (HTML → Chromium PDF). 장마다 `chNN.py` 하나를 추가하면 된다.
 
 ## 고정 규칙 (생화학 전 장 공통, 사용자 요청)
 - **가로 16:10 (320×200 mm), 한 문제 = 한 페이지** — 삼성노트(갤럭시 탭)에서 보기 좋게
@@ -12,7 +12,9 @@
 - 해설은 고1도 이해할 수 있게: 핵심 한 줄 → 단계별 풀이 → 비유/함정 박스, 그림 적극 사용
 
 ## 파일
-- `content_a.py`, `content_b.py`: 문제별 원문/번역/정답/해설 데이터 (`level` = 난이도 1–3)
+- `chNN.py`: 장별 설정(제목·범위·포함/제외 목록), 앞부분 요약 페이지(`front_pages()`), 문제 데이터 `ALL_ITEMS` (`level` = 난이도 1–3, 3은 자동 제외)
+- `content_a.py`, `content_b.py`: 13장 문제 데이터 (`ch13.py`가 불러옴)
+- `img/`: 원서에서 잘라 낸 문제 그림
 - `helpers.py`: 수식·반응식·SVG 그림(환원전위 사다리, 로그축, 에너지 계단) 헬퍼
-- `build.py`: 표지·가이드·공식 키트·표·차례 + CSS + 자동 맞춤 JS
+- `build.py`: 공통 표지·가이드·차례 + CSS + 자동 맞춤 JS
 - 필요: `pip install playwright pymupdf`, Noto Sans KR / Noto Serif / JetBrains Mono 폰트

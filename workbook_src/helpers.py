@@ -244,3 +244,49 @@ def bars(items, width=520, height=180, vmax=None, unit='', title='', neg=False):
 def bubble(text, x, y, w, h, fill='#fff7ed', stroke='#fdba74'):
     return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" fill="{fill}" stroke="{stroke}"/>'
             f'{T(x + w / 2, y + h / 2 + 4, text, 11)}')
+
+
+def stars(n):
+    return '<span class="stars">' + '★' * n + '<i>' + '★' * (3 - n) + '</i></span>'
+
+
+def flow(items, width=520, box_h=40, gap=34, colors=None, arrow_labels=None, font=11):
+    """horizontal chain of boxes. items: list of text (use '|' for 2 lines).
+    arrow_labels: list (len n-1) of text above arrows."""
+    n = len(items)
+    bw = (width - 10 - gap * (n - 1)) / n
+    H = box_h + 34
+    b = arrowdef('fl', C['gray'])
+    for i, t in enumerate(items):
+        x = 5 + i * (bw + gap)
+        col = (colors or [C['navy']] * n)[i]
+        b += f'<rect x="{x}" y="22" width="{bw}" height="{box_h}" rx="8" fill="white" stroke="{col}" stroke-width="2"/>'
+        lines = t.split('|')
+        for k, ln in enumerate(lines):
+            yy = 22 + box_h / 2 + 4 + (k - (len(lines) - 1) / 2) * 13
+            b += T(x + bw / 2, yy, ln, font, col, weight=700)
+        if i < n - 1:
+            x2 = x + bw
+            b += f'<line x1="{x2+3}" y1="{22+box_h/2}" x2="{x2+gap-4}" y2="{22+box_h/2}" stroke="{C["gray"]}" stroke-width="1.8" marker-end="url(#fl)"/>'
+            if arrow_labels and arrow_labels[i]:
+                b += T(x2 + gap / 2, 16, arrow_labels[i], 9.5, C['orange'], weight=700)
+    return svg(width, H, b)
+
+
+def vflow(items, width=520, box_h=30, gap=22, notes=None, colors=None, font=11.5):
+    """vertical chain; items text; notes: right-side notes on arrows"""
+    n = len(items)
+    H = n * box_h + (n - 1) * gap + 10
+    bw = 250
+    x = 20
+    b = arrowdef('vf', C['gray'])
+    for i, t in enumerate(items):
+        y = 5 + i * (box_h + gap)
+        col = (colors or [C['navy']] * n)[i]
+        b += f'<rect x="{x}" y="{y}" width="{bw}" height="{box_h}" rx="7" fill="white" stroke="{col}" stroke-width="2"/>'
+        b += T(x + bw / 2, y + box_h / 2 + 4, t, font, col, weight=700)
+        if i < n - 1:
+            b += f'<line x1="{x+bw/2}" y1="{y+box_h+2}" x2="{x+bw/2}" y2="{y+box_h+gap-3}" stroke="{C["gray"]}" stroke-width="1.8" marker-end="url(#vf)"/>'
+            if notes and notes[i]:
+                b += T(x + bw / 2 + 14, y + box_h + gap / 2 + 4, notes[i], 10.5, C['orange'], 'start', 700)
+    return svg(width, H, b)
