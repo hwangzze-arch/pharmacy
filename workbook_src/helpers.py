@@ -273,11 +273,10 @@ def flow(items, width=520, box_h=40, gap=34, colors=None, arrow_labels=None, fon
     return svg(width, H, b)
 
 
-def vflow(items, width=520, box_h=30, gap=22, notes=None, colors=None, font=11.5):
+def vflow(items, width=520, box_h=30, gap=22, notes=None, colors=None, font=11.5, bw=250):
     """vertical chain; items text; notes: right-side notes on arrows"""
     n = len(items)
     H = n * box_h + (n - 1) * gap + 10
-    bw = 250
     x = 20
     b = arrowdef('vf', C['gray'])
     for i, t in enumerate(items):

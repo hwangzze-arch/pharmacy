@@ -112,7 +112,7 @@ def build(M):
     P.add(cover(M), 'cover')
     P.add(toc(M), 'front')
     for k, pg in enumerate(M.SUMMARY):
-        strip = abbr_strip(M, pg)
+        strip = '' if f'S{k+1}' in getattr(M, 'NO_STRIP', ()) else abbr_strip(M, pg)
         pg = pg.replace('<div class="wlink">', strip + '<div class="wlink">', 1) if '<div class="wlink">' in pg else pg + strip
         P.add(pg, 'front')
         if k in M.CHECK_AFTER:
