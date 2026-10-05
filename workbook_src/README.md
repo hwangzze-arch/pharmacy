@@ -18,3 +18,9 @@
 - `helpers.py`: 수식·반응식·SVG 그림(환원전위 사다리, 로그축, 에너지 계단) 헬퍼
 - `build.py`: 공통 표지·가이드·차례 + CSS + 자동 맞춤 JS
 - 필요: `pip install playwright pymupdf`, Noto Sans KR / Noto Serif / JetBrains Mono 폰트
+
+## 요약+문제 통합 에디션 (물리약학 최종요약 스타일)
+`CH=13 python3 sbuild.py` → `summary_ch13.pdf`
+- 구성: 표지 → 기초 → PART 표지 → 개념 요약 페이지 → 그 PART의 문제 → 한 장 정리 → 교과서 표
+- 문제 페이지: 위(원문 | 쉬운 말 번역) → 가운데 풀이 빈칸(점 격자) → 아래(정답·풀이 | 그림·비유·함정)
+- 장별 데이터 `sNN.py`: PARTS(개념 페이지 html + 문제 배치), BASICS, ENDING. 문제 내용은 `chNN.py`/`content_*.py` 재사용
