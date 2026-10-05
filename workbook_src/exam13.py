@@ -392,7 +392,7 @@ def abbr_strip(html, compact=False):
     found = [g for g in GLOSS if g[0] in ABBR_KEYS and _re.search(ABBR_KEYS[g[0]], t)]
     if not found:
         return ''
-    chips = ''.join(f'<span class="ab"><b>{a}</b> <i>{e}</i> <em>{h}</em></span>' for a, e, h, m in found)
+    chips = ''.join(f'<span class="ab"><b>{a}</b> <i>{e}</i> <em>{h}</em> <u>— {m}</u></span>' for a, e, h, m in found)
     return f'<div class="abbr{" cmp" if compact else ""}"><b class="h">🔤 이 페이지의 약어</b>{chips}</div>'
 
 # ------------------------------------------------------------------ concept checks
@@ -543,6 +543,8 @@ EXTRA_CSS = r'''
 .abbr .ab b { color: #5b21b6; }
 .abbr .ab i { font-family: 'Noto Serif'; color: #475569; }
 .abbr .ab em { font-style: normal; color: #1f2937; }
+.abbr .ab u { text-decoration: none; color: #7c3aed; }
+.abbr.cmp .ab { white-space: normal; }
 .abbr.cmp { font-size: calc(7.6pt * var(--s)); margin-top: 0; }
 
 .wlink { margin-top: 2.5mm; background: #fff7ed; border: 1px dashed #fb923c; border-radius: 8px; padding: 1.4mm 4mm; font-size: 9pt; display: flex; flex-wrap: wrap; gap: 2mm; align-items: center; }
