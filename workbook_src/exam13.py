@@ -364,6 +364,37 @@ def glossary_pages():
     return out
 
 
+
+# ------------------------------------------------------------------ per-page abbreviation strip
+import re as _re
+ABBR_KEYS = {
+ 'ATP': r'\bATP\b', 'ADP': r'\bADP\b', 'AMP': r'\bAMP\b', 'Pᵢ': r'(?<!P)P[iᵢ](?![a-zA-Z])', 'PPᵢ': r'PP[iᵢ]',
+ 'GTP · CTP · UTP': r'\b(GTP|CTP|UTP)\b', 'NAD⁺ / NADH': r'NAD(?!P)', 'NADP⁺ / NADPH': r'NADP', 'FAD / FADH₂': r'FAD',
+ 'FMN': r'FMN', 'CoA (CoA-SH)': r'CoA', 'Acetyl-CoA': r'아세틸-CoA|[Aa]cetyl-CoA', 'PEP': r'\bPEP\b', '1,3-BPG': r'BPG',
+ '3PG · 2PG': r'\b[23]PG\b', 'PCr · Cr': r'PCr', 'CK': r'\bCK\b', 'G1P · G6P': r'\bG[16]P\b', 'F6P · F1,6BP': r'F6P|F1,6BP',
+ 'DHAP · G3P(GAP)': r'DHAP|\bG3P\b', 'OAA': r'\bOAA\b', 'α-KG': r'α-KG', 'β-HB': r'β-HB', 'TPP': r'\bTPP\b',
+ 'UDP-glucose': r'UDP', 'ΔG′°': r'ΔG′\s*°', 'ΔG°': r'ΔG°', 'ΔG': r'ΔG(?![′°p\s]*[′°p])', 'ΔG<sub>p</sub>': r'ΔG\s*p',
+ 'ΔH · ΔS': r'ΔH|ΔS', 'K′<sub>eq</sub>': r'K′\s*eq', 'Q': r'\bQ\b', 'R · T': r'\bRT\b|\bR\s*=', 'F': r'nF|\bF\s*=',
+ 'n': r'\bn\s*=', 'E · E° · E′°': r'\bE′\s*°|\bE\s*=', 'ΔE′°': r'ΔE', 'emf': r'emf|기전력', 'Eₐ': r'Eₐ',
+ 'LDH · ADH': r'\b(LDH|ADH)\b', 'Na⁺/K⁺ ATPase': r'ATPase', 'KEGG': r'KEGG', 'mM · μM': r'\b(mM|μM)\b',
+}
+
+
+def _plain(html):
+    t = _re.sub(r'<(sub|sup)>', '', html)
+    t = _re.sub(r'</(sub|sup)>', '', t)
+    t = _re.sub(r'<[^>]+>', ' ', t)
+    return t.replace('&nbsp;', ' ')
+
+
+def abbr_strip(html, compact=False):
+    t = _plain(html)
+    found = [g for g in GLOSS if g[0] in ABBR_KEYS and _re.search(ABBR_KEYS[g[0]], t)]
+    if not found:
+        return ''
+    chips = ''.join(f'<span class="ab"><b>{a}</b> <i>{e}</i> <em>{h}</em></span>' for a, e, h, m in found)
+    return f'<div class="abbr{" cmp" if compact else ""}"><b class="h">🔤 이 페이지의 약어</b>{chips}</div>'
+
 # ------------------------------------------------------------------ concept checks
 CHECKS = [
  dict(id='C1', num='1', title='대사·ATP 기초', sec='S1–S3', level=1,
@@ -461,6 +492,7 @@ def render_check(it):
  <div class="col">
   <div class="blk trans"><span class="lab" style="background:#7c3aed">문제</span>{it['q']}</div>
   <div class="blk blank"><span class="lab">풀이 · 직접 풀어 보기</span><span class="hint">오른쪽을 가리고 풀어 보세요</span></div>
+  {abbr_strip(it['q'] + it['answer'] + it['explain'], True)}
  </div>
  <div class="col">
   <div class="blk ans"><span class="lab">정답</span>{it['answer']}</div>
@@ -505,6 +537,14 @@ def toc():
 
 
 EXTRA_CSS = r'''
+.abbr { margin-top: 2.5mm; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 8px; padding: 1.4mm 3mm; font-size: 8.4pt; line-height: 1.5; display: flex; flex-wrap: wrap; gap: 1.2mm 2mm; align-items: center; flex: none; }
+.abbr .h { color: #6d28d9; margin-right: 1mm; }
+.abbr .ab { background: white; border: 1px solid #e9d5ff; border-radius: 6px; padding: 0 2mm; white-space: nowrap; }
+.abbr .ab b { color: #5b21b6; }
+.abbr .ab i { font-family: 'Noto Serif'; color: #475569; }
+.abbr .ab em { font-style: normal; color: #1f2937; }
+.abbr.cmp { font-size: calc(7.6pt * var(--s)); margin-top: 0; }
+
 .wlink { margin-top: 2.5mm; background: #fff7ed; border: 1px dashed #fb923c; border-radius: 8px; padding: 1.4mm 4mm; font-size: 9pt; display: flex; flex-wrap: wrap; gap: 2mm; align-items: center; }
 .wlink b { color: #c2410c; margin-right: 2mm; }
 .wl { background: white; border: 1px solid #fdba74; border-radius: 999px; padding: 0 3mm; }
@@ -548,6 +588,11 @@ def build():
     P.add(cover(), 'cover')
     P.add(toc(), 'front')
     for k, pg in enumerate(SUMMARY):
+        strip = abbr_strip(pg)
+        if '<div class="wlink">' in pg:
+            pg = pg.replace('<div class="wlink">', strip + '<div class="wlink">', 1)
+        else:
+            pg = pg + strip
         P.add(pg, 'front')
         if k in CHECK_AFTER:
             c = [x for x in CHECKS if x['id'] == CHECK_AFTER[k]][0]
