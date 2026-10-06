@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from helpers import *
 import build as B
 import ch13
+import tblib
 from content_a import phos_ladder, egg_svg
 from content_b import R, e_line, atp_cycle, pump_svg
 
@@ -505,18 +506,20 @@ def cover():
     return f'''
 <div class="eyebrow">LEHNINGER PRINCIPLES OF BIOCHEMISTRY · 8TH EDITION</div>
 <h1>Chapter 13<br><span>생체에너지론</span><br>시험대비 요약노트</h1>
-<div class="sub">개념 요약 14쪽 + 개념확인 문제 7세트 + 영어 약어 총정리</div>
+<div class="sub">개념 요약 14쪽 + 교수님 기출(테스트뱅크) {len(_tb())}문제 + 개념확인 7세트 + 약어 총정리</div>
 <div class="en">“풀이노트의 문제를 풀기 전에 이 노트로 개념부터”</div>
 <div class="stats">
  <div class="stat"><b>14</b><span>개념 요약 페이지<br>(강의 슬라이드 순서)</span></div>
+ <div class="stat"><b>{len(_tb())}</b><span>교수님 기출 문제<br>(영어 원문 + 번역)</span></div>
  <div class="stat"><b>{len(CHECKS)}</b><span>개념확인 문제 세트<br>(OX·빈칸·계산)</span></div>
  <div class="stat"><b>{len(GLOSS)}</b><span>영어 약어·기호<br>총정리</span></div>
 </div>
 <div class="how"><h3>HOW TO USE · 이렇게 보세요</h3>
  <div style="background:#1e3a8a"><b>① 요약 읽기</b>그림과 한 줄 요약으로 개념 잡기</div>
- <div style="background:#7c3aed"><b>② 개념확인</b>OX·빈칸·짧은 계산으로 점검</div>
- <div style="background:#ea580c"><b>③ 풀이노트로</b>각 페이지 아래 “📒”에 적힌 문제·쪽수로 이동</div>
- <div style="background:#0f766e"><b>④ 약어 찾기</b>모르는 약어는 맨 뒤 약어 총정리</div>
+ <div style="background:#0f766e"><b>② 교수님 기출</b>요약 바로 뒤 영어 원문 문제 → 번역 → 직접 풀기 → 정답·풀이</div>
+ <div style="background:#7c3aed"><b>③ 개념확인</b>OX·빈칸·짧은 계산으로 점검</div>
+ <div style="background:#ea580c"><b>④ 풀이노트로</b>각 페이지 아래 “📒”에 적힌 문제·쪽수로 이동</div>
+ <div style="background:#0f766e"><b>⑤ 약어 찾기</b>모르는 약어는 맨 뒤 약어 총정리</div>
  <p style="font-size:8.5pt;color:#cbd5e1;margin-top:3mm">함께 볼 파일: <b>레닌저 13장 예제·문제 풀이노트.pdf</b><br>📒 옆의 p.번호 = 풀이노트의 쪽번호</p>
 </div>'''
 
@@ -525,8 +528,11 @@ def toc():
     rows = []
     for k, pg in enumerate(SUMMARY):
         t = pg.split('</span> ', 1)[1].split(' <span class="en2">')[0]
-        rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}</td></tr>')
+        nt = len([x for x in _tb() if x['sec'] == k])
+        tag = f' <span class="en">+ 기출 {nt}</span>' if nt else ''
+        rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}{tag}</td></tr>')
     rows2 = [f'<tr><td class="no">개념확인 {c["num"]}</td><td>{c["title"]} <span class="en">({c["sec"]})</span></td></tr>' for c in CHECKS]
+    rows2.insert(0, f'<tr><td class="no">기출</td><td>교수님 테스트뱅크 {len(_tb())}문제 <span class="en">(각 요약 바로 뒤)</span></td></tr>')
     rows2.append('<tr><td class="no">ABC</td><td>영어 약어·기호 총정리</td></tr>')
     return f'''<h2 class="pt"><span class="n">INDEX</span> 차례와 풀이노트 연결표</h2>
 <div class="grid2"><div class="card"><h4>📘 개념 요약</h4><table class="toc">{''.join(rows)}</table></div>
@@ -585,6 +591,11 @@ window.ZOOM = [...document.querySelectorAll('.pg.front')].map(p => p.dataset.z);
 </script>'''
 
 
+def _tb():
+    import tb13
+    return tb13.TB
+
+
 def build():
     P = B.Pager()
     P.add(cover(), 'cover')
@@ -596,6 +607,8 @@ def build():
         else:
             pg = pg + strip
         P.add(pg, 'front')
+        for it in [t for t in _tb() if t['sec'] == k]:
+            P.add(tblib.render_tb(it, 13, abbr_strip(it['en'] + it['answer'], True), f'S{k+1}'), 'item')
         if k in CHECK_AFTER:
             c = [x for x in CHECKS if x['id'] == CHECK_AFTER[k]][0]
             P.add(render_check(c), 'item')
@@ -603,7 +616,7 @@ def build():
         P.add(g, 'front')
     html = P.html().replace('Lehninger 8e · Ch.13 생체에너지론 — 예제 &amp; 연습문제 풀이 노트', FOOT)
     doc = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{FOOT}</title>
-<style>{B.CSS}{EXTRA_CSS}</style></head><body>{html}{FIT}</body></html>'''
+<style>{B.CSS}{EXTRA_CSS}{tblib.TB_CSS}</style></head><body>{html}{FIT}</body></html>'''
     open(os.path.join(HERE, 'exam_ch13.html'), 'w').write(doc)
     return len(P.pages)
 
