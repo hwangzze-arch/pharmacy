@@ -516,8 +516,8 @@ def cover():
 </div>
 <div class="how"><h3>HOW TO USE · 이렇게 보세요</h3>
  <div style="background:#1e3a8a"><b>① 요약 읽기</b>그림과 한 줄 요약으로 개념 잡기</div>
- <div style="background:#0f766e"><b>② 교수님 기출</b>요약 바로 뒤 영어 원문 문제 → 번역 → 직접 풀기 → 정답·풀이</div>
- <div style="background:#7c3aed"><b>③ 개념확인</b>OX·빈칸·짧은 계산으로 점검</div>
+ <div style="background:#7c3aed"><b>② 개념확인</b>요약 바로 뒤 OX·빈칸·짧은 계산으로 워밍업</div>
+ <div style="background:#0f766e"><b>③ 교수님 기출</b>개념확인 뒤 영어 원문 문제 → 번역 → 직접 풀기 → 정답·풀이</div>
  <div style="background:#ea580c"><b>④ 풀이노트로</b>각 페이지 아래 “📒”에 적힌 문제·쪽수로 이동</div>
  <div style="background:#0f766e"><b>⑤ 약어 찾기</b>모르는 약어는 맨 뒤 약어 총정리</div>
  <p style="font-size:8.5pt;color:#cbd5e1;margin-top:3mm">함께 볼 파일: <b>레닌저 13장 예제·문제 풀이노트.pdf</b><br>📒 옆의 p.번호 = 풀이노트의 쪽번호</p>
@@ -532,7 +532,7 @@ def toc():
         tag = f' <span class="en">+ 기출 {nt}</span>' if nt else ''
         rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}{tag}</td></tr>')
     rows2 = [f'<tr><td class="no">개념확인 {c["num"]}</td><td>{c["title"]} <span class="en">({c["sec"]})</span></td></tr>' for c in CHECKS]
-    rows2.insert(0, f'<tr><td class="no">기출</td><td>교수님 테스트뱅크 {len(_tb())}문제 <span class="en">(각 요약 바로 뒤)</span></td></tr>')
+    rows2.insert(0, f'<tr><td class="no">기출</td><td>교수님 테스트뱅크 {len(_tb())}문제 <span class="en">(각 개념확인 뒤)</span></td></tr>')
     rows2.append('<tr><td class="no">ABC</td><td>영어 약어·기호 총정리</td></tr>')
     return f'''<h2 class="pt"><span class="n">INDEX</span> 차례와 풀이노트 연결표</h2>
 <div class="grid2"><div class="card"><h4>📘 개념 요약</h4><table class="toc">{''.join(rows)}</table></div>
@@ -600,6 +600,7 @@ def build():
     P = B.Pager()
     P.add(cover(), 'cover')
     P.add(toc(), 'front')
+    pending = []
     for k, pg in enumerate(SUMMARY):
         strip = abbr_strip(pg)
         if '<div class="wlink">' in pg:
@@ -607,11 +608,15 @@ def build():
         else:
             pg = pg + strip
         P.add(pg, 'front')
-        for it in [t for t in _tb() if t['sec'] == k]:
-            P.add(tblib.render_tb(it, 13, abbr_strip(it['en'] + it['answer'], True), f'S{k+1}'), 'item')
+        pending += [t for t in _tb() if t['sec'] == k]
         if k in CHECK_AFTER:
             c = [x for x in CHECKS if x['id'] == CHECK_AFTER[k]][0]
             P.add(render_check(c), 'item')
+        if k in CHECK_AFTER or k == len(SUMMARY) - 1:
+            # 개념확인(쉬움) 다음에 그 묶음의 교수님 기출(시험 수준)
+            for it in pending:
+                P.add(tblib.render_tb(it, 13, abbr_strip(it['en'] + it['answer'], True), f'S{it["sec"]+1}'), 'item')
+            pending = []
     for g in glossary_pages():
         P.add(g, 'front')
     html = P.html().replace('Lehninger 8e · Ch.13 생체에너지론 — 예제 &amp; 연습문제 풀이 노트', FOOT)
