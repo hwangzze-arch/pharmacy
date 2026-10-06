@@ -400,6 +400,13 @@ CHECKS = [
 NO_STRIP = ('S16',)  # 총정리 페이지: 약어는 맨 뒤 총정리로
 CHECK_AFTER = {1: 'C1', 3: 'C2', 5: 'C3', 7: 'C4', 11: 'C5', 13: 'C6', 14: 'C7'}
 
+def __getattr__(name):  # 교수님 테스트뱅크 (지연 로드)
+    if name == 'TB':
+        from tb15 import TB
+        return TB
+    raise AttributeError(name)
+
+
 if __name__ == '__main__':
     import exam15 as M
     examlib.render(M)
