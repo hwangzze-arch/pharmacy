@@ -61,21 +61,26 @@ def render_check(M, it):
 
 
 def cover(M):
+    tb = getattr(M, 'TB', [])
+    tbstat = f'<div class="stat"><b>{len(tb)}</b><span>교수님 기출 문제<br>(영어 원문 + 번역)</span></div>' if tb else ''
+    tbhow = '<div style="background:#0f766e"><b>③ 교수님 기출</b>개념확인 뒤 영어 원문 → 번역 → 직접 풀기 → 정답·풀이</div>' if tb else ''
     return f'''
 <div class="eyebrow">LEHNINGER PRINCIPLES OF BIOCHEMISTRY · 8TH EDITION</div>
 <h1>Chapter {M.CH}<br><span style="font-size:{'36pt' if len(M.CH_TITLE) <= 10 else '27pt'}">{M.CH_TITLE}</span><br>시험대비 요약노트</h1>
-<div class="sub">개념 요약 {len(M.SUMMARY)}쪽 + 개념확인 문제 {len(M.CHECKS)}세트 + 영어 약어 총정리</div>
+<div class="sub">개념 요약 {len(M.SUMMARY)}쪽 + {f'교수님 기출(테스트뱅크) {len(tb)}문제 + ' if tb else ''}개념확인 {len(M.CHECKS)}세트 + 약어 총정리</div>
 <div class="en">“풀이노트의 문제를 풀기 전에 이 노트로 개념부터”</div>
 <div class="stats">
  <div class="stat"><b>{len(M.SUMMARY)}</b><span>개념 요약 페이지<br>(강의 슬라이드 순서)</span></div>
+ {tbstat}
  <div class="stat"><b>{len(M.CHECKS)}</b><span>개념확인 문제 세트<br>(OX·빈칸·계산)</span></div>
  <div class="stat"><b>{len(M.GLOSS)}</b><span>영어 약어·기호<br>총정리</span></div>
 </div>
 <div class="how"><h3>HOW TO USE · 이렇게 보세요</h3>
  <div style="background:#1e3a8a"><b>① 요약 읽기</b>그림과 한 줄 요약으로 개념 잡기</div>
- <div style="background:#7c3aed"><b>② 개념확인</b>OX·빈칸·짧은 계산으로 점검</div>
- <div style="background:#ea580c"><b>③ 풀이노트로</b>각 페이지 아래 “📒”에 적힌 문제·쪽수로 이동</div>
- <div style="background:#0f766e"><b>④ 약어 찾기</b>페이지마다 “🔤 이 페이지의 약어” + 맨 뒤 총정리</div>
+ <div style="background:#7c3aed"><b>② 개념확인</b>요약 뒤 OX·빈칸·짧은 계산으로 워밍업</div>
+ {tbhow}
+ <div style="background:#ea580c"><b>{'④' if tb else '③'} 풀이노트로</b>각 페이지 아래 “📒”에 적힌 문제·쪽수로 이동</div>
+ <div style="background:#0f766e"><b>{'⑤' if tb else '④'} 약어 찾기</b>페이지마다 “🔤 이 페이지의 약어” + 맨 뒤 총정리</div>
  <p style="font-size:8.5pt;color:#cbd5e1;margin-top:3mm">함께 볼 파일: <b>레닌저 {M.CH}장 예제·문제 풀이노트.pdf</b><br>📒 옆의 p.번호 = 풀이노트의 쪽번호</p>
 </div>'''
 
@@ -84,8 +89,12 @@ def toc(M):
     rows = []
     for k, pg in enumerate(M.SUMMARY):
         t = pg.split('</span> ', 1)[1].split(' <span class="en2">')[0]
-        rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}</td></tr>')
+        nt = len([x for x in getattr(M, 'TB', []) if x['sec'] == k])
+        tag = f' <span class="en">+ 기출 {nt}</span>' if nt else ''
+        rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}{tag}</td></tr>')
     rows2 = [f'<tr><td class="no">개념확인 {c["num"]}</td><td>{c["title"]} <span class="en">({c["sec"]})</span></td></tr>' for c in M.CHECKS]
+    if getattr(M, 'TB', []):
+        rows2.insert(0, f'<tr><td class="no">기출</td><td>교수님 테스트뱅크 {len(M.TB)}문제 <span class="en">(각 개념확인 뒤)</span></td></tr>')
     rows2.append('<tr><td class="no">ABC</td><td>영어 약어·기호 총정리</td></tr>')
     return f'''<h2 class="pt"><span class="n">INDEX</span> 차례와 풀이노트 연결표</h2>
 <div class="grid2"><div class="card"><h4>📘 개념 요약</h4><table class="toc">{''.join(rows)}</table></div>
@@ -111,18 +120,27 @@ def build(M):
     P = B.Pager()
     P.add(cover(M), 'cover')
     P.add(toc(M), 'front')
+    import tblib
+    tb = getattr(M, 'TB', [])
+    pending = []
     for k, pg in enumerate(M.SUMMARY):
         strip = '' if f'S{k+1}' in getattr(M, 'NO_STRIP', ()) else abbr_strip(M, pg)
         pg = pg.replace('<div class="wlink">', strip + '<div class="wlink">', 1) if '<div class="wlink">' in pg else pg + strip
         P.add(pg, 'front')
+        pending += [t for t in tb if t['sec'] == k]
         if k in M.CHECK_AFTER:
             c = [x for x in M.CHECKS if x['id'] == M.CHECK_AFTER[k]][0]
             P.add(render_check(M, c), 'item')
+        if k in M.CHECK_AFTER or k == len(M.SUMMARY) - 1:
+            # 요약 → 개념확인(워밍업) → 그 묶음의 교수님 기출(시험 수준)
+            for it in pending:
+                P.add(tblib.render_tb(it, M.CH, abbr_strip(M, it['en'] + it['answer'], True), f'S{it["sec"]+1}'), 'item')
+            pending = []
     for g in glossary_pages(M):
         P.add(g, 'front')
     html = re.sub(r'<span>Lehninger 8e · Ch\.\d+ [^<]*</span>', f'<span>{M.FOOT}</span>', P.html())
     doc = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{M.FOOT}</title>
-<style>{B.CSS}{EXTRA_CSS}</style></head><body>{html}{FIT}</body></html>'''
+<style>{B.CSS}{EXTRA_CSS}{tblib.TB_CSS}</style></head><body>{html}{FIT}</body></html>'''
     open(os.path.join(HERE, f'exam_ch{M.CH}.html'), 'w').write(doc)
     return len(P.pages)
 

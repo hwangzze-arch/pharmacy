@@ -396,6 +396,12 @@ CHECKS = [
 ]
 CHECK_AFTER = {1: 'C1', 3: 'C2', 5: 'C3', 6: 'C4', 8: 'C5', 10: 'C6', 11: 'C7'}
 
+def __getattr__(name):  # 교수님 테스트뱅크 (순환 import 방지: 지연 로드)
+    if name == 'TB':
+        from tb14 import TB
+        return TB
+    raise AttributeError(name)
+
 if __name__ == '__main__':
     import exam14 as M
     examlib.render(M)
