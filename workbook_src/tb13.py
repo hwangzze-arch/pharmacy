@@ -356,7 +356,7 @@ add(n=26, sec=9, diff=1, title='생물학적 산화-환원에 항상 있는 것'
     ko=mcq('생물학적 산화-환원 반응에 <b>항상</b> 포함되는 것은?', ['산소의 직접 참여', '물 생성', '미토콘드리아', '<b>전자 이동</b>', '수소 이동']),
     answer=ans('D', 'transfer of electron(s)', '전자의 이동'),
     explain=key('산화 = 전자를 잃음, 환원 = 전자를 얻음. 정의 자체가 전자 이동.') +
-    table(['전자가 이동하는 4가지 방식 (슬라이드 37)', '예'], [['전자만 (e⁻)', 'Fe³⁺ → Fe²⁺ (시토크롬)'], ['수소 원자 (H⁺ + e⁻)', '탈수소효소'], ['하이드라이드 (H⁻ = H⁺ + 2e⁻)', 'NAD⁺ → NADH'], ['산소와 직접 결합', '산소화효소']], cls='left') +
+    table(['전자가 이동하는 4가지 방식 (슬라이드 41)', '예'], [['전자만 (e⁻)', 'Fe³⁺ → Fe²⁺ (시토크롬)'], ['수소 원자 (H⁺ + e⁻)', '탈수소효소'], ['하이드라이드 (H⁻ = H⁺ + 2e⁻)', 'NAD⁺ → NADH'], ['산소와 직접 결합', '산소화효소']], cls='left') +
     warn('E(수소 이동)는 “항상”이 아님 — 시토크롬은 전자만 옮긴다.', '함정'))
 
 add(n=27, sec=9, diff=2, title='생물학적 산화-환원에 절대 없는 것',
@@ -468,3 +468,49 @@ add(n=31, sec=12, diff=2, title='니코틴아마이드 조효소에 대해 틀�
     explain=fig(nad_svg(), '') +
     steps('NAD⁺ = 빈 트럭 → 전자를 <b>받는</b> 쪽. NADH = 짐 실은 트럭 → 전자를 <b>주는</b> 쪽.', 'B: NADH만 340 nm 빛을 흡수 → 효소 활성 측정에 쓴다 (18장 ALT 측정).', 'A: NAD<b>⁺</b> — 이름에 양전하 표시.') +
     key('환원력(reducing equivalents)을 주는 건 늘 <b>환원형</b>.'))
+
+# ================================================================ 보충: 13.2 화학 반응의 논리 (유기화학) — S8 묶음 뒤, 보충 페이지 다음
+def nu_el():
+    W, H = 540, 120
+    b = arrowdef('ne', C['red'])
+    b += f'<rect x="20" y="40" width="130" height="44" rx="12" fill="#eff6ff" stroke="{C["blue"]}" stroke-width="2"/>' + T(85, 60, '친핵체 Nu:⁻', 13, C['blue'], weight=900) + T(85, 77, '전자쌍이 남는다', 10, C['gray'])
+    b += f'<rect x="390" y="40" width="130" height="44" rx="12" fill="#fef2f2" stroke="{C["red"]}" stroke-width="2"/>' + T(455, 60, '친전자체 E⁺ (δ+)', 13, C['red'], weight=900) + T(455, 77, '전자가 모자란다', 10, C['gray'])
+    b += f'<path d="M150 50 Q 270 0 386 50" fill="none" stroke="{C["red"]}" stroke-width="2.6" marker-end="url(#ne)"/>' + T(270, 22, '굽은 화살표 = 전자쌍 2개의 이동', 11, C['red'], weight=900)
+    b += T(270, 110, '화살표는 항상 “전자가 많은 곳 → 적은 곳” (Nu → E)', 11, C['navy'], weight=900)
+    return svg(W, H, b)
+
+
+add(n=15, sec=7, diff=1, supp=True, title='친핵체가 아닌 것',
+    en=mcq('Which of the following is <b>not</b> nucleophilic?', ['A proton', 'A carbanion', 'An imidazole', 'A hydroxide', 'A carboxylic acid']),
+    ko=mcq('다음 중 친핵성이 <b>없는</b> 것은?', ['<b>양성자 (H⁺)</b>', '카바니온 (탄소 음이온)', '이미다졸', '수산화 이온 (OH⁻)', '카복실산']),
+    answer=ans('A', 'A proton', '양성자 (H⁺) — 전자가 하나도 없어 줄 전자쌍이 없다'),
+    explain=fig(nu_el(), '') +
+    table(['보기', '전자쌍?', '판정'], [['H⁺', '없음 (전자 0개)', '<b>친전자체</b>'], ['카바니온 C⁻', '음전하 전자쌍', '친핵체'], ['이미다졸 (His)', 'N의 비공유 전자쌍', '친핵체'], ['OH⁻', '음전하 산소', '친핵체'], ['카복실산 (–COO⁻)', '산소의 비공유 전자쌍', '친핵체 (약함)']], cls='left') +
+    key('<b>친핵체</b>(nucleophile) = “핵(+)을 좋아한다” = 전자쌍을 <b>주는</b> 쪽. 음전하나 비공유 전자쌍이 있다.') +
+    tip('H⁺는 전자를 받는 대표 친전자체 — 다음 문제(TB 13-16)에서 짝으로 나온다.', '연결'))
+
+add(n=16, sec=7, diff=1, supp=True, title='친전자체가 아닌 것',
+    en=mcq('Which of the following is <b>not</b> electrophilic?', ['A proton', 'A sulfhydryl', 'A protonated imine', 'A carbonyl group', 'A phosphoryl group']),
+    ko=mcq('다음 중 친전자성이 <b>없는</b> 것은?', ['양성자 (H⁺)', '<b>설프하이드릴 (–SH)</b>', '양성자화된 이민 (C=N⁺H)', '카보닐기 (C=O)', '포스포릴기 (인산기)']),
+    answer=ans('B', 'A sulfhydryl', '설프하이드릴(–SH) — 황의 비공유 전자쌍을 주는 친핵체'),
+    explain=table(['보기', '전자가 모자란 곳', '판정'], [['H⁺', '전자 0개', '친전자체'], ['<b>–SH</b>', '황에 비공유 전자쌍 2쌍 (전자 풍부)', '<b>친핵체</b>'], ['C=N⁺H', '이민 탄소 (δ+, N⁺가 전자를 당김)', '친전자체'], ['C=O', '카보닐 탄소 (δ+)', '친전자체'], ['–PO₃²⁻', '인 원자 (산소 4개가 전자를 당김)', '친전자체']], cls='left') +
+    key('<b>친전자체</b>(electrophile) = “전자를 좋아한다” = 전자쌍을 <b>받는</b> 쪽. 양전하 또는 δ+ 원자.') +
+    steps('산소·질소처럼 전기음성도가 큰 원자와 이중결합한 탄소(C=O, C=N)는 전자를 빼앗겨 δ+ → 친전자체.', '–SH(시스테인)·–OH(세린)·이미다졸(히스티딘)은 효소 활성 부위의 대표 친핵체.') +
+    tip('ATP의 인(P)도 친전자체 → 친핵체가 α·β·γ 인 원자를 공격 (슬라이드 34).', '연결'))
+
+add(n=17, sec=7, diff=2, supp=True, title='카바니온·카보닐에 대해 틀린 것',
+    en=mcq('Which of the following is <b>not</b> true?', ['The carbon adjacent to a carbonyl can be resonance stabilized to form a carbanion.', 'A carbonyl carbon can be made more electrophilic by a nearby metal ion.', 'The carbon adjacent to an imine can be resonance stabilized to form a carbanion.', 'Decarboxylation of a β-keto acid goes through a carbocation intermediate.', 'A Claisen ester condensation reaction goes through a carbanion intermediate.']),
+    ko=mcq('다음 중 <b>틀린</b> 것은?', ['카보닐 옆 탄소는 공명으로 안정화되어 카바니온이 될 수 있다', '가까운 금속 이온이 카보닐 탄소를 더 친전자적으로 만들 수 있다', '이민 옆 탄소도 공명으로 안정화되어 카바니온이 될 수 있다', '<b>β-케토산의 탈카복실화는 탄소 양이온(카보양이온) 중간체를 거친다</b>', 'Claisen 에스터 축합은 카바니온 중간체를 거친다']),
+    answer=ans('D', 'Decarboxylation of a β-keto acid goes through a carbocation intermediate.', '틀림 — 실제로는 카바니온(엔올레이트) 중간체를 거친다'),
+    explain=key('CO₂가 떨어질 때 <b>전자쌍은 남은 탄소에 남는다</b> → 탄소 <b>음</b>이온(카바니온). 양이온이 아니다.') +
+    fig(flow(['β-케토산 (–CO–CH₂–COO⁻)', '카바니온 = 엔올레이트', '케톤 + CO₂'], arrow_labels=['CO₂ 떨어짐 (전자쌍 남음)', '+ H⁺'], colors=[C['navy'], C['orange'], C['green']], box_h=38, width=540, font=10.5), '') +
+    steps('A·C: 옆의 C=O(또는 C=N)가 음전하를 산소(질소)로 나눠 가져(공명) 카바니온을 안정화.', 'B: 금속 이온(Mg²⁺, Zn²⁺)이 카보닐 산소를 잡아당기면 탄소가 더 δ+ → 더 친전자적.', 'E: Claisen 축합(예: 시트르산 생성효소, 16장)은 아세틸-CoA의 카바니온이 카보닐을 공격.') +
+    warn('탈카복실화 = CO₂(전자 부족한 쪽)가 떠나고 전자는 남는다 → 카바<b>니온</b>. 이름 함정: carbo<b>cation</b>(양이온) vs carb<b>anion</b>(음이온).', '함정'))
+
+add(n=43, sec=7, diff=2, kind='SA', supp=True, title='별표(*) 원자: 친전자체? 친핵체?',
+    en=f'<p>Classify each of the *ed atoms as an electrophile or a nucleophile:</p>{img("tb13_q43.png", "96%")}',
+    ko='<p>별표(*)가 붙은 원자를 친전자체와 친핵체로 분류하라.<br>(a) 수산화 이온의 O⁻ (b) 케톤(아세톤)의 카보닐 탄소 (c) 양성자화된 이민(C=N⁺)의 탄소 (d) 카바니온의 탄소 (e) 트라이메틸아민의 N</p>',
+    answer=sa('(a) nucleophile (b) electrophile (c) electrophile (d) nucleophile (e) nucleophile', '(a) 친핵체 (b) 친전자체 (c) 친전자체 (d) 친핵체 (e) 친핵체'),
+    explain=table(['', '별표 원자', '전자 상태', '답'], [['(a)', 'HO⁻의 O', '음전하 + 비공유 전자쌍', '<b>친핵체</b>'], ['(b)', 'C=O의 C', 'O가 전자를 당겨 δ+', '<b>친전자체</b>'], ['(c)', 'C=N⁺의 C', 'N⁺가 전자를 강하게 당겨 δ+', '<b>친전자체</b>'], ['(d)', 'C⁻ (카바니온)', '음전하 전자쌍', '<b>친핵체</b>'], ['(e)', '(CH₃)₃N의 N', '비공유 전자쌍 1쌍', '<b>친핵체</b>']], cls='left') +
+    key('판별 요령: <b>음전하·비공유 전자쌍 → 친핵체</b> / <b>양전하·δ+ (전기음성 원자와 이중결합한 탄소) → 친전자체</b>.') +
+    tip('(b)·(c)의 탄소는 둘 다 “이중결합 상대가 전자를 빼앗는” 같은 원리. 이민 탄소는 PLP 반응(18장)의 핵심.', '연결'))

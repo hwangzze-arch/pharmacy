@@ -533,6 +533,7 @@ def toc():
         rows.append(f'<tr><td class="no">S{k+1}</td><td>{t}{tag}</td></tr>')
     rows2 = [f'<tr><td class="no">개념확인 {c["num"]}</td><td>{c["title"]} <span class="en">({c["sec"]})</span></td></tr>' for c in CHECKS]
     rows2.insert(0, f'<tr><td class="no">기출</td><td>교수님 테스트뱅크 {len(_tb())}문제 <span class="en">(각 개념확인 뒤)</span></td></tr>')
+    rows2.insert(1, '<tr><td class="no">보충</td><td>13.2 화학 반응의 논리 — 유기화학 기초 <span class="en">(S8 기출 뒤)</span></td></tr>')
     rows2.append('<tr><td class="no">ABC</td><td>영어 약어·기호 총정리</td></tr>')
     return f'''<h2 class="pt"><span class="n">INDEX</span> 차례와 풀이노트 연결표</h2>
 <div class="grid2"><div class="card"><h4>📘 개념 요약</h4><table class="toc">{''.join(rows)}</table></div>
@@ -591,6 +592,19 @@ window.ZOOM = [...document.querySelectorAll('.pg.front')].map(p => p.dataset.z);
 </script>'''
 
 
+def chem_logic_page():
+    from tb13 import nu_el
+    return f'''<h2 class="pt"><span class="n">보충</span> 13.2 화학 반응의 논리 — 유기화학 기초 <span class="en2">Chemical logic · 교과서 13.2 (교수님 기출 대비)</span></h2>
+<p class="lead">생체 반응은 거의 다 <b>전자가 많은 곳(친핵체) → 전자가 모자란 곳(친전자체)</b>으로 <b>전자쌍</b>이 옮겨 가는 것. 이 한 가지 원리로 효소 반응을 읽을 수 있다.</p>
+<div class="grid2"><div><div class="card"><h4>📌 친핵체 vs 친전자체</h4><figure class="fig">{nu_el()}</figure>
+ {table(['', '친핵체 (Nucleophile)', '친전자체 (Electrophile)'], [['뜻', '“핵(+)을 좋아함” — 전자쌍을 <b>준다</b>', '“전자를 좋아함” — 전자쌍을 <b>받는다</b>'], ['표시', '음전하(−), 비공유 전자쌍', '양전하(+), δ+'], ['예', 'OH⁻, –O⁻, –S⁻·–SH(Cys), 아민 N, 이미다졸(His), 카바니온 C⁻', 'H⁺, 금속 이온, 카보닐 C(C=O), 양성자화 이민 C(C=N⁺), 인산의 P']], cls='left')}</div></div>
+<div><div class="card"><h4>📌 카바니온(탄소 음이온) 안정화</h4><p>탄소는 음전하를 싫어한다. 그래서 바로 옆에 <b>C=O</b>(또는 <b>C=N⁺</b>)가 있어야 음전하를 산소·질소로 <b>공명</b>으로 나눠 가진다 → 안정한 카바니온(엔올레이트).</p>
+ <p class="small">이 카바니온이 친핵체가 되어 C–C 결합을 만든다: 알돌 축합(알돌레이스), Claisen 축합(시트르산 생성효소). 탈카복실화에서도 CO₂가 떠나고 전자쌍이 남아 카바니온.</p>
+ <p class="small">금속 이온(Mg²⁺·Zn²⁺)이 카보닐 산소를 잡으면 탄소가 더 δ+ → 친전자성 ↑.</p></div>
+ <div class="card" style="margin-top:3mm"><h4>📌 생화학 반응 5가지 유형</h4>{table(['유형', '예'], [['① C–C 결합 형성·절단', '알돌 · Claisen 축합, 탈카복실화'], ['② 내부 재배열 · 이성질화 · 제거', '포스포헥소스 이성질화효소, 엔올레이스'], ['③ 자유 라디칼', 'B₁₂ 반응 (18장)'], ['④ 작용기 전달', '아실 · 글리코실 · <b>인산기</b> (ATP)'], ['⑤ 산화-환원', '탈수소효소 (NAD⁺)']], cls='left')}
+ <p class="small">결합 끊기: <b>불균일</b>(전자쌍이 한쪽으로 → 이온, 대부분의 효소 반응) vs <b>균일</b>(하나씩 나눔 → 라디칼).</p></div></div></div>'''
+
+
 def _tb():
     import tb13
     return tb13.TB
@@ -614,8 +628,13 @@ def build():
             P.add(render_check(c), 'item')
         if k in CHECK_AFTER or k == len(SUMMARY) - 1:
             # 개념확인(쉬움) 다음에 그 묶음의 교수님 기출(시험 수준)
-            for it in pending:
+            for it in [x for x in pending if not x.get('supp')]:
                 P.add(tblib.render_tb(it, 13, abbr_strip(it['en'] + it['answer'], True), f'S{it["sec"]+1}'), 'item')
+            supp = [x for x in pending if x.get('supp')]
+            if supp:
+                P.add(chem_logic_page() + abbr_strip(chem_logic_page()), 'front')
+                for it in supp:
+                    P.add(tblib.render_tb(it, 13, abbr_strip(it['en'] + it['answer'], True), '보충 13.2'), 'item')
             pending = []
     for g in glossary_pages():
         P.add(g, 'front')
