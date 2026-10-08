@@ -379,6 +379,13 @@ CHECKS = [
 NO_STRIP = ('S15',)
 CHECK_AFTER = {2: 'C1', 3: 'C2', 5: 'C3', 6: 'C4', 8: 'C5', 10: 'C6', 13: 'C7'}
 
+def __getattr__(name):  # 교수님 테스트뱅크 (지연 로드)
+    if name == 'TB':
+        from tb17 import TB
+        return TB
+    raise AttributeError(name)
+
+
 if __name__ == '__main__':
     import exam17 as M
     examlib.render(M)
