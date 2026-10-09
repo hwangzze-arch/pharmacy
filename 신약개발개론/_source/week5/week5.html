@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>신약개발개론 5주차 노벨생리의학상2</title>
+<link rel="stylesheet" href="style.css"></head><body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover"><div class="in">
+  <div class="sub">PHAR278 · 신약개발개론 · 시험대비 노트</div>
+  <h1>5주차<br>노벨생리의학상과<br>신약 개발 2<small>카리코 이야기 · mRNA 치료제 · 2024·2025 노벨상</small></h1>
+  <div class="pills"><span>상세요약</span><span>개념문제 12</span><span>중간고사 대비 실전 31</span><span>암기카드</span></div>
+  <div style="margin-top:7mm;max-width:132mm;font-size:10.5pt;line-height:1.75;opacity:.92">
+    슬라이드 6~31은 <b>4주차 mRNA 내용 그대로</b>라 4주차 노트로 복습하면 돼. 여기선 새로 나온 것 —
+    <b style="color:#ffd76a">Q&amp;A 4개, 카리코 이야기, mRNA 치료제·AI 설계, 2024(microRNA·AlphaFold), 2025(면역관용)</b>. 2024엔 <b>AlphaFold·화학상 vs 물리학상</b>, <b>microRNA</b>가 나왔어.
+  </div>
+  <div class="toc"><h4>CONTENTS</h4><ol>
+    <li><span>00</span>한 장 지도 · 2024 기출 분석<em>2</em></li>
+    <li><span>01</span>Q&amp;A 4개<em>3</em></li>
+    <li><span>02</span>카리코 이야기<em>5</em></li>
+    <li><span>03</span>mRNA 치료제 · AI 설계<em>6</em></li>
+    <li><span>04</span>2024 노벨상: microRNA · AlphaFold<em>8</em></li>
+    <li><span>05</span>2025 노벨상: 면역관용 · 2026 후보<em>11</em></li>
+    <li><span>★</span>중간고사 대비 실전문제<em>14</em></li>
+    <li><span>✓</span>암기카드<em>22</em></li>
+  </ol></div>
+  <div class="foot">김한준 교수님 5주차 강의 슬라이드(2026.09.30) + 2024 중간고사 리뷰 녹취를 바탕으로 정리</div>
+</div></section>
+
+<!-- ============ 00 ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">5주차</span><span class="part">00</span><span class="ttl">한 장 지도 — 노벨상으로 보는 신약의 씨앗</span><span class="sp"></span><span class="src">슬라이드 44, 51, 56 + 2024 리뷰</span></div>
+  <div class="body col">
+    <div class="card" style="padding:2mm 3mm"><div data-d="nobels"></div></div>
+    <div class="row">
+      <div class="col">
+        <div class="lead"><span class="k">한 줄 요약</span>2023 mRNA(단백질 <b>ON</b>) → 2024 microRNA(단백질 <b>OFF</b>) + AlphaFold(구조) → 2025 면역관용(면역 <b>끄기</b>). 모두 <span class="y">기초 발견 → 신약</span>으로 이어진 사례.</div>
+        <div class="callout tip"><div class="t">💡 앞부분(슬라이드 6~31)은?</div><div class="small">mRNA 백신 역사·Ψ·LNP·특허 = <b>4주차 노트 PART 02~06</b>과 같아. 여기선 <b>새 Q&amp;A 4개</b>부터 시작!</div></div>
+      </div>
+      <div class="card" style="flex:1.15;border-color:#f6c7bb"><h3 style="color:var(--coral)">🎯 2024 중간고사 — 이 범위에서 나온 것</h3>
+        <table class="t" style="--pcs:var(--coral-s);font-size:9pt">
+          <tr><th>문항</th><th>정답 포인트 (교수님 해설)</th></tr>
+          <tr><td><b>2024 노벨상</b><br>(변별력 문항)</td><td>베이커·하사비스 = <span class="p">화학상</span> (AI 단백질 구조 예측)<br>홉필드·힌턴 = <span class="p">물리학상</span> (인공신경망 딥러닝) — 둘을 바꿔치기!</td></tr>
+          <tr><td><b>AlphaFold</b></td><td>“AlphaFold로 합성신약과 단백질 <b>부착 사이트</b>를 예측” ✗<br>→ AlphaFold는 <b>단백질 자체의 구조</b> 예측이 주. 부착 사이트는 <b>다른 AI</b></td></tr>
+          <tr><td><b>microRNA</b></td><td><b>헤어핀 구조</b> → mRNA에 달라붙어 <b>기능 억제</b> = 맞는 설명</td></tr>
+        </table></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>2</span></div>
+</section>
+
+<!-- ============ 01 Q&A ============ -->
+<section class="page big" style="--pc:var(--amber);--pcs:var(--amber-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 01</span><span class="ttl">지난 시간 Q&amp;A 4개</span><span class="sp"></span><span class="src">슬라이드 2~5</span></div>
+  <div class="body grid2">
+    <div class="card"><h3><span class="n">1</span>오래 써온 한약, 왜 처음부터 다시 검증?</h3>
+      <div class="small">전통 사용 경험 = <span class="y">가설의 출발점</span>일 뿐, 허가 근거(정량적 유효성·안전성·품질)를 대체 못함<br>
+      ① 용량·대조군·이상반응이 기록 안 됨 → 인과 추론 불가 ② 추출·농축하면 <b>조성·노출량이 달라짐</b> ③ FDA Botanical Drug 경로도 비임상 독성·CMC·임상 요구<br>
+      그림: 합성(NCE)은 Discovery부터, 천연물은 <b>초기 임상 쪽으로 진입</b> 가능 → 기간은 줄어도 <b>검증은 면제 ✗</b></div></div>
+    <div class="card"><h3><span class="n">2</span>바이오시밀러는 왜 고부가가치?</h3>
+      <div class="small">가치 = “새로움”이 아니라 원본과 <b>“매우 유사함”</b>을 입증하는 고난도 역량<br>
+      목표 = <b>de novo 유효성이 아니라 유사성 입증</b> · 구조 → 기능 → 약동학 → 면역원성 <b>단계적 비교</b><br>
+      세포주·배양·정제 공정의 재현성 = 기술 장벽이자 수익원 (‘복제 = 저기술’ ✗)<br>신약 = 새로운 근거 / 시밀러 = 동등성 근거 — 둘 다 자본·기술 집약</div></div>
+    <div class="card"><h3><span class="n">3</span>복합제, 편의성만으로 개량신약?</h3>
+      <div class="small"><b>우월성 증명이 필수는 아님</b> → <span class="y">주장한 개선점에 맞는 근거</span>가 핵심<br>
+      편의성을 주장하면 편의성 근거, 우월성을 주장하면 우월성 근거 · 식약처는 <b>대조약 대비 무엇이 개선됐는지</b> 확인<br>
+      메타분석: FDC vs 따로 복용 혈압 정상화 OR 1.30 (95% CI 0.98~1.71 → 1 포함 = <b>유의하진 않음</b>)</div></div>
+    <div class="card"><h3><span class="n">4</span>Ψ를 넣으면 백신 효과도 줄어들까?</h3>
+      <div class="small"><b>아니.</b> Ψ가 줄이는 건 <b>mRNA 자체에 대한 과도한 초기 경보(선천면역)</b><br>
+      백신이 원하는 건 <b>항원 특이적 적응면역</b> → 경보가 조용해야 번역이 안 멈춰 <b>항원↑</b> → 효과 오히려 ↑<br>
+      데이터: 비변형 IFN-β <b>~120배↑</b> vs Ψ 거의 없음 · GFP 단백질은 Ψ가 훨씬 많음<br>비유: 화재경보기 볼륨만 낮춤 · LNP가 적당한 <b>보조제(adjuvant)</b> 역할</div></div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>3</span></div>
+</section>
+
+<section class="page" style="--pc:var(--amber)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 01</span><span class="ttl">개념문제 — Q&amp;A</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q1</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>오래 써온 한약은 비임상 독성시험이 면제된다.<span class="bx">O / X</span></li>
+        <li>추출·농축하면 원래 한약과 조성·노출량이 달라진다.<span class="bx">O / X</span></li>
+        <li>바이오시밀러 개발의 초점은 새로운 유효성 입증이다.<span class="bx">O / X</span></li>
+        <li>복합제 개량신약은 반드시 우월성을 입증해야 한다.<span class="bx">O / X</span></li>
+        <li>식약처는 대조약 대비 개선점을 확인한다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O X X O</span></div>
+        <div class="why small">(1) 기간은 줄어도 검증 면제 ✗ (3) <b>유사성</b> 입증 (4) 주장에 맞는 근거면 됨</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q2</span><span class="tag es">서술</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">슈도우리딘으로 선천면역을 줄이면 백신 효과도 줄어드는가? <b>선천면역과 적응면역</b>을 구분해 서술하시오.</div></div>
+      <div class="blank" style="height:20mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">줄어들지 않는다. Ψ가 억제하는 것은 <b>mRNA 자체를 외부 RNA로 인식해 생기는 과도한 선천면역 경보</b>이다. 경보가 줄면 번역이 멈추지 않아 <b>항원 단백질이 더 많이 생산</b>되고, 면역계는 이 항원을 보고 <b>항원 특이적 적응면역</b>(항체·기억세포)을 잘 형성한다. 오히려 백신 효과는 높아진다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q3</span><span class="tag mc">객관식</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">FDC vs 유리 용량 병용 메타분석 OR = 1.30 (95% CI 0.98~1.71)의 해석으로 옳은 것은?</div>
+        <ol class="opt"><li>FDC가 통계적으로 유의하게 우월하다.</li><li>FDC가 유의하게 열등하다.</li><li>FDC 쪽 경향은 있으나 CI가 1을 포함해 유의하지 않다.</li><li>연구 간 이질성이 매우 크다.</li><li>복합제는 개량신약이 될 수 없다.</li></ol></div>
+      <div class="blank" style="height:8mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">I² = 0% → 이질성 없음. 우월성은 약하지만 편의성 근거로 개량 가능.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>4</span></div>
+</section>
+
+<!-- ============ 02 카리코 ============ -->
+<section class="page big" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 02</span><span class="ttl">Dr. Katalin Karikó — 40년 버틴 이야기</span><span class="sp"></span><span class="src">슬라이드 32~38</span></div>
+  <div class="body col">
+    <div class="card" style="padding:2mm 3mm"><div data-d="life"></div></div>
+    <div class="row">
+      <div class="fig" style="flex:.45"><img src="i_kariko.jpg"></div>
+      <div class="col" style="flex:1">
+        <div class="card"><h3>📖 NYT “Long Overlooked” 4장면</h3>
+          <div class="small"><b>① 테디베어</b>: 헝가리 반출 한도 100$ → 딸 수잔(후에 올림픽 조정 금메달 2회)의 곰인형에 900파운드 · UPenn에서 <b>종신직 없는 연구 조교수</b>, 연구비·실험실 없음<br>
+          <b>② 아픈 쥐</b>: 랭거(신경외과)와 뇌혈관 실험 실패 → 와이스먼과 <b>우연한 대화</b> → mRNA를 주사한 쥐가 아팠다 = 면역계가 mRNA를 침입자로 인식<br>
+          <b>③ tRNA 단서</b>: <span class="y">대조군 tRNA는 염증을 안 일으켰다</span> → 이유 = <b>슈도우리딘</b> → mRNA에 넣자 염증↓ + 단백질 <b>10배</b> → 주요 저널 거절, 제약사·VC 무관심<br>
+          <b>④ 코로나</b>: 2020.1 서열 공개 → <b>BioNTech 몇 시간</b>, <b>Moderna 이틀</b> 만에 설계 (항원 = <b>스파이크</b>) → <b>2020.11.8</b> 화이자-바이오엔텍 첫 결과</div></div>
+      </div>
+      <div class="col" style="flex:.75">
+        <div class="callout trap"><div class="t">⚠ 시험 포인트</div><div class="small">2023 노벨상 = <b>변형 뉴클레오사이드(Ψ) 발견</b> — mRNA 자체나 LNP 발명 ✗<br>핵심 논문은 Nature·Science <b>거절</b> → <b>Immunity(2005)</b><br>특허는 발명자가 아니라 <b>Cellscript</b>가 보유</div></div>
+        <div class="callout memo"><div class="t">💬 국내 과학자 반응</div><div class="small">구본경: 핵심은 <b>가짜유리딘(Ψ)</b> — 비특이적 면역↓, 항원 특이적 면역 유지 · CNS 아닌 논문<br>도준상: 응용(전달 공학)이 완성, 팬데믹이 <b>10년 앞당김</b><br>김건: <b>장기 기초연구 지원</b> · 원병묵: 20년 <b>협업</b></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>5</span></div>
+</section>
+
+<!-- ============ 03 mRNA 치료제 ============ -->
+<section class="page big" style="--pc:var(--blue);--pcs:var(--blue-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 03</span><span class="ttl">mRNA 치료제 — 약의 세 번째 종류 · AI 설계</span><span class="sp"></span><span class="src">슬라이드 39~42</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1.15">
+      <table class="t">
+        <tr><th></th><th>저분자</th><th>항체</th><th>핵산 (mRNA 등)</th></tr>
+        <tr><td><b>작용</b></td><td>단백질 (효소·채널)</td><td>단백질 (<b>세포 밖</b>·표면)</td><td><b>유전 정보</b> (전사·번역)</td></tr>
+        <tr><td><b>장점</b></td><td>생산 쉬움, <b>경구</b></td><td>친화도·특이성 ↑</td><td><b>undruggable</b> 표적 가능, 설계 빠름</td></tr>
+        <tr><td><b>단점</b></td><td>특이성↓, 표적 제한</td><td>고비용, 주사, 표적 제한</td><td><span class="p">전달 시스템 필수</span></td></tr>
+      </table>
+      <div class="small" style="margin:.4mm 0">mRNA drug = <b>단백질 보충·대체</b> / mRNA vaccine = <b>항원</b> 생산 → 면역</div>
+      <div class="card"><h3>🧭 mRNA 치료제 개발 4단계</h3>
+        <div class="small">① <b>설계·합성</b> (서열 → IVT → 정제) → ② <b>봉입</b> (LNP 등 전달체) → ③ <b>약력학·안전성</b> 평가 (세포 → 마우스 → 영장류) → ④ <b>제조·임상</b><br>= 저분자의 “합성 → 비임상 → 임상”에 <b>봉입</b> 단계가 추가 · ALC-0315 = 코미나티의 이온화 지질</div></div>
+      <div class="card"><h3>🤖 AI로 mRNA 서열 설계 (LinearDesign)</h3>
+        <div class="small">스파이크 1,273 aa → 코돈 조합 ≈ <b>2.4 × 10<sup>632</sup></b>가지 (전수 탐색 ~10<sup>616</sup>억 년)<br>
+        목표 2개: <b>안정성</b>(MFE ↓, 이중가닥↑) + <b>번역 효율</b>(CAI ↑) · 언어 문장 분석(격자 파싱) 기법 → <b>11분</b><br>
+        결과: 자유에너지 2.6배↓, 마우스 항체 최대 <b>128배</b> · “서열 설계는 아직 과제”(4주차 기출)와 연결</div></div>
+    </div>
+    <div class="col" style="flex:.85">
+      <div class="fig"><img src="i_future.jpg"><div class="figcap">원본 슬라이드 40 — mRNA 치료제의 미래</div></div>
+      <div class="callout memo"><div class="t">🔭 확장 방향</div><div class="small"><b>감염병</b>(코로나·RSV·에볼라·말라리아) → <b>암</b>(맞춤 암백신) → <b>유전·대사</b>(단백질 대체)·노화 → <b>심혈관·뇌혈관</b>·알츠하이머<br>관건 = <b>반복 투여 안전성</b> + 표적 전달</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>6</span></div>
+</section>
+
+<section class="page" style="--pc:var(--blue)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 02·03</span><span class="ttl">개념문제 — 카리코 · mRNA 치료제</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q4</span><span class="tag mc">객관식</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">카리코에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>1995년 연구비 탈락이 이어져 강등됐다.</li><li>1997년 면역학자 와이스먼을 만났다.</li><li>대조군 tRNA에서 슈도우리딘 단서를 얻었다.</li><li>핵심 논문은 Nature에 바로 게재됐다.</li><li>2013년부터 BioNTech에서 일했다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">Nature·Science <b>거절</b> → Immunity(2005).</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q5</span><span class="tag fill">빈칸</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem" style="line-height:2">핵산 약물은 <span class="blankword">( ㄱ )</span> 단계에서 작용해 저분자·항체가 닿지 못하던 <span class="blankword">( ㄴ )</span> 표적도 다룰 수 있지만, <span class="blankword">( ㄷ )</span> 시스템이 필수다. AI(LinearDesign)는 mRNA의 안정성 지표 <span class="blankword">( ㄹ )</span>와 번역 효율 지표 <span class="blankword">( ㅁ )</span>를 동시에 최적화한다.</div></div>
+      <div class="blank" style="height:8mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄱ 전사(유전 정보) · ㄴ undruggable · ㄷ 약물전달 · ㄹ MFE · ㅁ CAI</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q6</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>항체 약물은 세포 안 단백질에 주로 작용한다.<span class="bx">O / X</span></li>
+        <li>mRNA 치료제 개발엔 “봉입” 단계가 있다.<span class="bx">O / X</span></li>
+        <li>BioNTech는 서열 공개 후 몇 시간 만에 백신을 설계했다.<span class="bx">O / X</span></li>
+        <li>코로나 mRNA 백신의 항원은 스파이크 단백질이다.<span class="bx">O / X</span></li>
+        <li>2023 노벨상은 LNP 발명에 수여됐다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O O O X</span></div>
+        <div class="why small">(1) 세포 <b>밖·표면</b> (5) <b>변형 뉴클레오사이드</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>7</span></div>
+</section>
+
+<!-- ============ 04 2024 ============ -->
+<section class="page big" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 04-A</span><span class="ttl">2024 노벨상 — 생명 정보와 AI</span><span class="sp"></span><span class="src">슬라이드 44</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <table class="t" style="--pcs:var(--teal-s)">
+        <tr><th>분야</th><th>수상자</th><th>업적</th></tr>
+        <tr><td><b>생리의학</b></td><td><b>Victor Ambros · Gary Ruvkun</b></td><td><b>microRNA</b> 발견과 <b>전사 후</b> 유전자 조절</td></tr>
+        <tr><td><b>화학</b></td><td><b>David Baker</b></td><td>컴퓨터 <b>단백질 설계</b> (computational protein design)</td></tr>
+        <tr><td></td><td><b>Demis Hassabis · John Jumper</b></td><td><b>단백질 구조 예측</b> (AlphaFold, DeepMind)</td></tr>
+        <tr><td><b>물리</b></td><td><b>John Hopfield · Geoffrey Hinton</b></td><td><b>인공신경망</b> 머신러닝의 기초</td></tr>
+      </table>
+      <div class="callout trap"><div class="t">⚠ 2024 기출 — 변별력 문항</div><div class="small">“베이커·하사비스 = <b>물리학상</b>” ✗ → <b>화학상</b> / “홉필드·힌턴 = <b>화학상</b>” ✗ → <b>물리학상</b><br>🧠 <b>단백질 = 화학</b>, <b>신경망 = 물리</b></div></div>
+      <div class="callout memo"><div class="t">🔗 2023 → 2024</div><div class="small">2023 mRNA = 정보를 넣어 단백질 <b>ON</b> → 2024 microRNA = 정보 흐름을 끄는 <b>OFF</b> 스위치 · AlphaFold = 서열이 구조를 결정하는 원리를 계산</div></div>
+    </div>
+    <div class="fig" style="flex:.95"><img src="i_nobel24.jpg"><div class="figcap">원본 슬라이드 44 — 화학 · 물리 · 생리의학 2024</div></div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>8</span></div>
+</section>
+
+<section class="page big" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 04-B</span><span class="ttl">microRNA · AlphaFold와 신약개발</span><span class="sp"></span><span class="src">슬라이드 45~50</span></div>
+  <div class="body col">
+    <div class="card" style="padding:2mm 3mm"><div data-d="mirna"></div></div>
+    <div class="row">
+      <div class="col" style="flex:1">
+        <div class="card"><h3>🧬 microRNA 핵심</h3>
+          <div class="small">길이 <b>~22 nt</b> · <b>헤어핀(머리핀)</b> 구조에서 시작 · <b>seed 영역(2~8번)</b>이 표적 인식 → miRNA 1개가 <b>수백 개</b> mRNA 조절<br>
+          암에서 두 얼굴: <b>OncomiR</b>(종양억제유전자 OFF → 억제 전략 anti-miR) / <b>종양억제 miRNA</b>(발암유전자 OFF → 보충 전략 mimic) · 고분자 나노입자로 전달<br>
+          <b>siRNA</b> = 완전 상보로 mRNA 절단하는 합성 RNA (온파트로)</div></div>
+      </div>
+      <div class="col" style="flex:1.1">
+        <div class="card"><h3>🧠 AlphaFold → AI 신약 (CDK20, Insilico)</h3><div data-d="ai"></div>
+          <div class="small">AlphaFold = 아미노산 서열 → <b>3차원 단백질 구조</b> 예측 (실험은 수개월~수년) → 구조 모르던 <b>dark target</b>도 구조기반 약물설계(SBDD) 가능</div></div>
+        <div class="callout trap"><div class="t">⚠ 2024 기출</div><div class="small">“AlphaFold로 합성신약과 단백질 <b>부착 사이트</b>를 예측한다” ✗ — 교수님: AlphaFold는 <b>단백질 자체의 구조</b>를 예측하는 게 주, 부착 사이트 예측은 <b>또 다른 AI 기술</b>. (위 CDK20 사례도 결합 자세는 별도 생성 AI가 예측)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>9</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 04</span><span class="ttl">개념문제 — 2024 노벨상</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q7</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">2024 노벨상에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>베이커·하사비스는 노벨 물리학상을 받았다.</li><li>홉필드·힌턴은 노벨 화학상을 받았다.</li><li>AI 단백질 구조 예측은 노벨 화학상을 받았다.</li><li>AlphaFold는 합성신약의 단백질 부착 사이트 예측이 주목적이다.</li><li>생리의학상은 siRNA 약물 개발에 수여됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">①② 서로 바뀜 ④ <b>구조</b> 예측이 주 ⑤ <b>microRNA</b> 발견</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q8</span><span class="tag sa">순서</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">microRNA 생성·작용 순서를 배열하시오.</div>
+        <div class="small">ㄱ. Dicer 절단 → 이중가닥 &nbsp;ㄴ. Exportin-5로 핵 밖 수송 &nbsp;ㄷ. Drosha 절단(핵) &nbsp;ㄹ. RISC 탑재 → 표적 mRNA 억제 &nbsp;ㅁ. pri-miRNA 전사</div></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㅁ → ㄷ → ㄴ → ㄱ → ㄹ</span></div>
+        <div class="one">드(핵) → 엑스포 → 다이서(세포질) → 리스크</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q9</span><span class="tag ox">O/X</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>microRNA는 헤어핀 구조를 가지며 mRNA에 붙어 기능을 억제한다.<span class="bx">O / X</span></li>
+        <li>동물 miRNA는 seed 영역(2~8번)으로 결합한다.<span class="bx">O / X</span></li>
+        <li>OncomiR은 발암유전자를 억제한다.<span class="bx">O / X</span></li>
+        <li>miRNA 하나는 하나의 mRNA만 조절한다.<span class="bx">O / X</span></li>
+        <li>CDK20 사례에서 KD가 7300 → 180 nM으로 개선됐다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O O X X O</span></div>
+        <div class="why small">(3) OncomiR은 <b>종양억제유전자</b>를 끔 (4) 수백 개</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>10</span></div>
+</section>
+
+<!-- ============ 05 2025 ============ -->
+<section class="page big" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 05-A</span><span class="ttl">2025 노벨생리의학상 — 말초 면역관용</span><span class="sp"></span><span class="src">슬라이드 51~53</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">수상 (각 1/3)</span>Mary E. <b>Brunkow</b> · Frederick J. <b>Ramsdell</b> · Shimon <b>Sakaguchi</b> — “<span class="g">말초 면역관용(peripheral immune tolerance)</span>에 관한 발견” → 핵심 = <b>조절 T세포(Treg)</b>와 <b>FOXP3</b></div>
+      <table class="t" style="--pcs:var(--violet-s);font-size:9.3pt">
+        <tr><th></th><th>중추 관용</th><th>말초 관용 ★</th></tr>
+        <tr><td><b>장소</b></td><td>흉선(T) · 골수(B)</td><td>림프절·조직 등 몸 전체</td></tr>
+        <tr><td><b>기전</b></td><td>제거 · 수용체 편집 · Treg 생성</td><td><b>Treg 억제 · Anergy · 제거</b></td></tr>
+        <tr><td><b>비유</b></td><td>입학 시험</td><td>졸업 후 현장 감독</td></tr>
+      </table>
+      <div class="card"><h3>🧪 Th 분화 — 사이토카인이 운명을 결정</h3>
+        <table class="t" style="font-size:9pt">
+          <tr><th>사이토카인</th><th>전사인자</th><th>세포</th></tr>
+          <tr><td>IL-12</td><td>T-bet</td><td>Th1</td></tr>
+          <tr><td>IL-4</td><td>Gata3</td><td>Th2</td></tr>
+          <tr><td>TGF-β + IL-6</td><td>RORγt</td><td>Th17 (염증)</td></tr>
+          <tr><td><b>IL-2 + TGF-β</b></td><td><b>FOXP3</b></td><td><b>Treg</b> (억제)</td></tr>
+        </table></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card"><h3>🔑 T세포 활성화 = 신호 2개</h3><div data-d="twosig"></div></div>
+      <div class="fig" style="max-width:88%;align-self:center"><img src="i_tol.jpg"><div class="figcap">원본 슬라이드 52 — 빨간 점선 = 말초 관용 (2025 노벨상 영역)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>11</span></div>
+</section>
+
+<section class="page big" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 05-B</span><span class="ttl">자가면역 · 면역관용 신약 · 2026 후보</span><span class="sp"></span><span class="src">슬라이드 54~56</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="card"><h3>🔥 자가면역 = 유전 × 환경</h3>
+        <div class="small">3요인: ① <b>관용·조절 결함</b> (예: FOXP3 결함 → IPEX) ② 자기 항원의 <b>비정상 제시</b> ③ <b>염증·선천면역</b><br>환경: 감염·조직 손상 → APC 활성 → 자기반응 림프구 유입</div>
+        <table class="t" style="font-size:9pt;margin-top:1.4mm">
+          <tr><th>질환</th><th>HLA</th><th class="c">교차비</th></tr>
+          <tr><td><b>강직성 척추염</b></td><td><b>B*27</b></td><td class="c"><b>100~200</b></td></tr>
+          <tr><td>제1형 당뇨 (이형접합)</td><td>DRB1*0301/0401</td><td class="c">35</td></tr>
+          <tr><td>류마티스 관절염</td><td>DRB1 SE 2개</td><td class="c">12</td></tr>
+          <tr><td>셀리악병</td><td>DQA1*0501-DQB1*0201</td><td class="c">7</td></tr>
+        </table></div>
+      <div class="card"><h3>🏅 2026 생리의학상 후보 (강의 9/30 기준)</h3>
+        <div class="small"><b>Drucker · Holst · Mojsov</b> — <b>GLP-1</b> 발견 → 오젬픽·위고비<br><b>Springer</b> — 면역 <b>부착 수용체</b>(인테그린) → 나탈리주맙·베돌리주맙<br>발표 10.5~12 (실제 수상자는 발표 결과로 확인!)</div></div>
+    </div>
+    <div class="col" style="flex:1.05">
+      <table class="t" style="--pcs:var(--violet-s)">
+        <tr><th>방향</th><th>전략</th><th>응용</th><th>예</th></tr>
+        <tr><td rowspan="3"><b>관용 ↑</b><br>(면역 억제)</td><td><b>Treg 증강</b></td><td>자가면역(1형 당뇨·루푸스), 이식</td><td>Treg 세포치료, <b>저용량 IL-2</b></td></tr>
+        <tr><td><b>Anergy 유도</b></td><td>자가면역, 이식 거부</td><td><b>CTLA-4-Ig</b> (아바타셉트·벨라타셉트) — CD28-B7 차단</td></tr>
+        <tr><td><b>항원 특이적 관용</b></td><td>특정 자가면역, 알레르기</td><td>톨레로젠 · <b>역 백신</b></td></tr>
+        <tr><td><b>관용 ↓</b><br>(면역 활성)</td><td><b>면역관문 억제</b></td><td>암 (면역항암)</td><td>PD-1/PD-L1 · CTLA-4 저해제 (브레이크 해제)</td></tr>
+      </table>
+      <div class="callout trap"><div class="t">⚠ 같은 원리, 반대 방향</div><div class="small">관용 <b>↑</b> → 자가면역·이식 치료 / 관용 <b>↓</b> → 면역항암 (부작용: 자가면역 유사 <b>irAE</b>)<br>2023 = 면역 <b>켜기</b>(백신) vs 2025 = 면역 <b>끄기</b>(관용)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>12</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet)">
+  <div class="ph"><span class="wk">5주차</span><span class="part">PART 05</span><span class="ttl">개념문제 — 면역관용</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q10</span><span class="tag fill">빈칸</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem" style="line-height:2">2025 노벨생리의학상은 <span class="blankword">( ㄱ )</span> 면역관용에 관한 발견으로 수여됐다. 핵심 세포는 <span class="blankword">( ㄴ )</span>이고 주 조절 유전자는 <span class="blankword">( ㄷ )</span>이다. 이 세포는 IL-2와 <span class="blankword">( ㄹ )</span>에 의해 분화한다.</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄱ 말초 · ㄴ 조절 T세포(Treg) · ㄷ FOXP3 · ㄹ TGF-β</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q11</span><span class="tag mc">객관식</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">면역관용 원리를 이용한 신약 연결로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>Treg 증강 — 저용량 IL-2</li><li>Anergy 유도 — CTLA-4-Ig</li><li>항원 특이적 관용 — 역 백신</li><li>면역관문 억제 — PD-1 저해제</li><li>면역관문 억제 — 자가면역 질환 치료</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">관문 억제 = 관용 ↓ → <b>암</b> 치료 (자가면역은 오히려 부작용).</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q12</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>신호①(항원)만 있고 공동자극이 없으면 Anergy가 된다.<span class="bx">O / X</span></li>
+        <li>TGF-β + IL-6은 Treg 분화를 유도한다.<span class="bx">O / X</span></li>
+        <li>강직성 척추염은 HLA-B27과 강하게 연관된다.<span class="bx">O / X</span></li>
+        <li>중추 관용은 흉선·골수에서 일어난다.<span class="bx">O / X</span></li>
+        <li>2026 후보 GLP-1은 당뇨·비만 치료제와 연결된다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O X O O O</span></div>
+        <div class="why small">(2) 그건 <b>Th17</b>. Treg = IL-2 + TGF-β</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>13</span></div>
+</section>
+
+<!-- ============ 실전 ============ -->
+<section class="page" style="background:linear-gradient(135deg,#fff6f2,#fff)">
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;padding:0 8mm">
+    <div style="font-size:10pt;font-weight:900;letter-spacing:.2em;color:var(--coral)">MIDTERM PRACTICE</div>
+    <div style="font-size:30pt;font-weight:900;letter-spacing:-.03em;line-height:1.2;margin:2mm 0 4mm">중간고사 대비 실전문제<br><span style="font-size:15pt;font-weight:500;color:var(--sub)">5주차 범위 · 객관식 9 · O/X 12 · 단답 6 · 서술 4</span></div>
+    <div class="row" style="max-width:250mm">
+      <div class="callout trap" style="flex:1"><div class="t">이렇게 풀자</div><div class="small">정답 가리고 풀기 → 틀린 번호 표시 → 해당 PART로 돌아가기</div></div>
+      <div class="callout tip" style="flex:1"><div class="t">교수님 출제 의도 (2024)</div><div class="small">노벨상 문항은 “<b>변별력</b>”용 — 상 이름(화학/물리)과 <b>무엇을 예측하나</b>(구조 vs 부착 사이트)를 정확히!</div></div>
+      <div class="callout memo" style="flex:1"><div class="t">서술형 채점 기준</div><div class="small">“구분해 서술” → <b>두 개념을 각각 정의</b> 후 연결 · “5개” → 1개 부족 시 <b>−1점</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>14</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 1~3</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 1</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">2024 노벨상과 AlphaFold에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>베이커는 컴퓨터 단백질 설계로 노벨 화학상을 받았다.</li><li>하사비스·점퍼는 단백질 구조 예측으로 화학상을 받았다.</li><li>홉필드·힌턴은 인공신경망으로 물리학상을 받았다.</li><li>AlphaFold로 합성신약과 단백질의 부착 사이트를 예측하는 것이 주목적이다.</li><li>생리의학상은 microRNA 발견에 수여됐다.</li></ol></div>
+      <div class="blank" style="height:8mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">AlphaFold = <b>단백질 자체의 구조</b> 예측이 주. 2024 “확실한 정답” 보기!</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 2</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">microRNA에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>헤어핀 구조의 전구체에서 만들어진다.</li><li>mRNA에 달라붙어 기능을 억제한다.</li><li>Dicer에 의해 이중가닥으로 잘린다.</li><li>약 22 뉴클레오타이드 길이이다.</li><li>표적 mRNA의 번역을 촉진한다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">번역 <b>억제</b>·분해 = 단백질 OFF.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 3</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">전통적으로 써온 한약도 천연물신약이 되려면 다시 검증해야 하는 이유가 <u>아닌</u> 것은?</div>
+        <ol class="opt"><li>용량·대조군·이상반응 기록이 없다.</li><li>추출·농축으로 조성이 달라진다.</li><li>노출량이 원래 한약과 다르다.</li><li>FDA Botanical 경로도 CMC를 요구한다.</li><li>천연물은 본질적으로 합성약보다 위험하다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">“더 위험”이 이유가 아니라 <b>정량적 근거가 없어서</b>.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>15</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 4~6</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 4</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">저분자·항체·핵산 약물 비교로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>저분자는 경구 투여가 가능하다.</li><li>항체는 친화도가 높지만 생산 비용이 높다.</li><li>항체는 세포 밖·표면 표적에 주로 작용한다.</li><li>핵산 약물은 전달 시스템이 필요 없다.</li><li>핵산 약물은 undruggable 표적을 다룰 수 있다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">핵산의 최대 과제 = <b>전달</b> (LNP).</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 5</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">카리코·와이스먼의 발견 과정으로 옳은 것은?</div>
+        <ol class="opt"><li>합성 mRNA를 주사한 쥐는 건강했다.</li><li>대조군 tRNA도 강한 염증을 일으켰다.</li><li>tRNA의 슈도우리딘에서 단서를 얻었다.</li><li>Ψ-mRNA는 단백질을 절반만 만들었다.</li><li>발표 직후 제약사들이 큰 관심을 보였다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">① 쥐가 아팠음 ② tRNA는 염증 ✗ ④ 10배↑ ⑤ “아무도 신경 쓰지 않았다”</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 6</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">바이오시밀러의 부가가치에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>새로운 유효성을 처음부터 입증한다.</li><li>복제품이라 기술 장벽이 낮다.</li><li>원본과의 유사성을 구조·기능·PK·면역원성으로 단계적 비교한다.</li><li>생동성시험만으로 허가된다.</li><li>공정이 달라도 제품은 같다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">⑤ 바이오는 <b>공정 = 제품</b>.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>16</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 7~9</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 7</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">2025 노벨생리의학상에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>수상자는 Brunkow·Ramsdell·Sakaguchi이다.</li><li>주제는 말초 면역관용이다.</li><li>조절 T세포와 FOXP3가 핵심이다.</li><li>상은 3명이 1/3씩 나눴다.</li><li>면역을 강하게 켜는 백신 원리에 수여됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">면역을 <b>끄는(관용)</b> 원리. 켜는 건 2023.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 8</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">mRNA 서열 AI 설계(LinearDesign)에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>코돈 중복성 때문에 후보 서열이 천문학적으로 많다.</li><li>MFE를 낮춰 안정성을 높인다.</li><li>CAI를 높여 번역 효율을 높인다.</li><li>단백질 아미노산 서열을 바꿔 최적화한다.</li><li>언어 분석의 격자 파싱 기법을 빌렸다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">단백질은 <b>그대로</b>, 코돈만 바꿈.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 9</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">AI 신약개발 사례(CDK20)의 단계와 도구 연결로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>표적 발굴 — PandaOmics</li><li>구조 예측 — AlphaFold</li><li>분자 생성 — Chemistry42</li><li>검증 — 세포 증식 억제 실험</li><li>표적 발굴 — X선 결정학</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">구조 모르는 dark target → 실험 대신 <b>AlphaFold 예측</b>.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>17</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">실전</span><span class="part">O/X</span><span class="ttl">실전 10 — O/X 12문항</span><span class="sp"></span></div>
+  <div class="body row">
+    <div class="q" style="flex:1.2"><div class="q-h"><span class="q-no">실전 10</span><span class="tag ox">O/X</span><span class="src2024">기출 포인트 포함</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>Ψ는 항원 특이적 적응면역까지 없앤다.<span class="bx">O / X</span></li>
+        <li>비변형 mRNA는 IFN-β를 크게 유도한다.<span class="bx">O / X</span></li>
+        <li>카리코는 1985년 헝가리에서 미국으로 이주했다.<span class="bx">O / X</span></li>
+        <li>카리코의 특허는 Cellscript로 넘어갔다.<span class="bx">O / X</span></li>
+        <li>Moderna는 서열 공개 이틀 만에 백신을 설계했다.<span class="bx">O / X</span></li>
+        <li>홉필드·힌턴은 2024 노벨 화학상 수상자다.<span class="bx">O / X</span></li>
+        <li>microRNA는 전사 후 유전자 조절에 관여한다.<span class="bx">O / X</span></li>
+        <li>식물 miRNA는 주로 완전 결합으로 mRNA를 자른다.<span class="bx">O / X</span></li>
+        <li>siRNA는 miRNA 경로(RISC)를 이용한다.<span class="bx">O / X</span></li>
+        <li>CTLA-4-Ig는 공동자극(CD28-B7)을 차단한다.<span class="bx">O / X</span></li>
+        <li>면역관문억제제는 관용을 강화한다.<span class="bx">O / X</span></li>
+        <li>FOXP3 결함은 자가면역(IPEX)을 일으킨다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+    </div>
+    <div class="ans" style="flex:1;border:1.5px solid #bfe6cf;border-radius:11px">
+      <div class="a"><span class="pill">정답</span><span class="v">X O O O O X O O O O X O</span></div>
+      <table class="t" style="--pcs:#dff3e7;font-size:8.8pt;background:#fff">
+        <tr><th class="c">#</th><th class="c">답</th><th>한 줄 해설</th></tr>
+        <tr><td class="c">1</td><td class="c"><b>X</b></td><td>선천 경보만↓, 적응면역은 잘 일어남</td></tr>
+        <tr><td class="c">2</td><td class="c"><b>O</b></td><td>~120배</td></tr>
+        <tr><td class="c">3</td><td class="c"><b>O</b></td><td>테디베어 900파운드</td></tr>
+        <tr><td class="c">4</td><td class="c"><b>O</b></td><td>발명자 ≠ 권리자</td></tr>
+        <tr><td class="c">5</td><td class="c"><b>O</b></td><td>BioNTech는 몇 시간</td></tr>
+        <tr><td class="c">6</td><td class="c"><b>X</b></td><td><span class="src2024">2024</span> <b>물리학상</b></td></tr>
+        <tr><td class="c">7</td><td class="c"><b>O</b></td><td>Ambros·Ruvkun</td></tr>
+        <tr><td class="c">8</td><td class="c"><b>O</b></td><td>동물 = seed → 번역 억제</td></tr>
+        <tr><td class="c">9</td><td class="c"><b>O</b></td><td>온파트로</td></tr>
+        <tr><td class="c">10</td><td class="c"><b>O</b></td><td>아바타셉트 → anergy</td></tr>
+        <tr><td class="c">11</td><td class="c"><b>X</b></td><td>관용 <b>↓</b> → 항암</td></tr>
+        <tr><td class="c">12</td><td class="c"><b>O</b></td><td>“결함 있는 조절”의 대표</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>18</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet)">
+  <div class="ph"><span class="wk">실전</span><span class="part">단답</span><span class="ttl">실전 11~16 — 단답형</span><span class="sp"></span></div>
+  <div class="body grid3" style="grid-template-rows:1fr 1fr">
+    <div class="q"><div class="q-h"><span class="q-no">실전 11</span><span class="tag sa">단답</span><span class="src2024">2024 기출</span></div>
+      <div class="q-b"><div class="stem">AI 단백질 구조 예측과 인공신경망은 각각 2024 노벨 무슨 상?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small">구조 예측(베이커·하사비스·점퍼) = <b class="c-teal">화학상</b> · 신경망(홉필드·힌턴) = <b class="c-teal">물리학상</b></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 12</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">2024 노벨생리의학상 수상 업적은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">microRNA</b> 발견과 <b class="c-teal">전사 후</b> 유전자 조절 (Ambros · Ruvkun)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 13</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">동물 miRNA가 표적을 인식하는 핵심 영역은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">seed 영역</b> (5′ 끝 2~8번 뉴클레오타이드)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 14</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">카리코에게 슈도우리딘 단서를 준 RNA는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small">대조군으로 쓴 <b class="c-teal">tRNA</b> (전달 RNA) — 염증을 일으키지 않았음</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 15</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">조절 T세포 분화를 이끄는 사이토카인 2개와 전사인자는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">IL-2 + TGF-β</b> → <b class="c-teal">FOXP3</b></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 16</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">2026 노벨생리의학상 후보로 거론된 GLP-1 발견자 3명은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">Drucker · Holst · Mojsov</b> (오젬픽·위고비로 연결)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>19</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 17~18 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 17</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신과 microRNA·siRNA 치료제의 작용을 <b>단백질 생산</b> 관점에서 비교하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small"><b>mRNA 백신</b>은 항원 단백질의 설계도(mRNA)를 세포에 넣어 리보솜이 단백질을 <b>만들게(ON)</b> 하고, 그 항원으로 면역을 유도한다. <b>microRNA·siRNA</b>는 RISC 복합체에 실려 표적 mRNA에 결합해 <b>번역을 억제하거나 mRNA를 분해(OFF)</b>함으로써 질병 관련 단백질이 만들어지지 않게 한다. 둘 다 음전하·불안정한 핵산이라 <b>LNP 같은 전달체</b>가 필요하다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 18</span><span class="tag es">서술</span><span class="src2024">2024 스타일(“5개”)</span></div>
+      <div class="q-b"><div class="stem">기초 발견(노벨상)이 신약으로 이어진 사례를 <b>5가지</b> 쓰시오. (1개 부족 시 −1점)</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span><span class="small c-sub">아래 중 5개</span></div>
+        <ol class="small" style="padding-left:16px">
+          <li>페니실린(1945) → 항생제</li>
+          <li>아스피린 기전 COX(1982) → NSAIDs 이해</li>
+          <li>하이브리도마(1984) → 단일클론항체 의약품</li>
+          <li>PD-1·CTLA-4(2018) → 면역항암제</li>
+          <li>뉴클레오사이드 변형(2023) → mRNA 백신</li>
+          <li>microRNA(2024) → RNA 치료제(siRNA 등)</li>
+          <li>AlphaFold(2024 화학) → AI 구조기반 신약 설계</li>
+          <li>말초 면역관용(2025) → Treg 치료·CTLA-4-Ig</li></ol></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>20</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 19~20 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 19</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">중추 관용과 말초 관용을 <b>장소·기전</b>으로 비교하고, 말초 관용을 이용한 신약 전략 1가지를 쓰시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small"><b>중추 관용</b>은 <b>흉선(T)·골수(B)</b>에서 자기반응 림프구를 <b>제거·수용체 편집</b>하고 Treg를 만드는 과정이다. <b>말초 관용</b>은 이를 빠져나온 자기반응 세포를 <b>몸 전체(림프절·조직)</b>에서 <b>Treg 억제, anergy(공동자극 없는 무반응), 제거</b>로 통제한다. 신약 전략: <b>CTLA-4-Ig</b>(아바타셉트)로 CD28-B7 공동자극을 차단해 anergy 유도 → 류마티스 관절염·이식 거부 치료 (또는 저용량 IL-2로 Treg 증강).</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 20</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">AlphaFold가 신약개발에 주는 의미와 <b>한계(무엇을 하지 않는가)</b>를 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">AlphaFold는 아미노산 서열만으로 <b>단백질의 3차원 구조</b>를 실험 수준으로 예측해, 구조를 몰라 약물 설계가 어려웠던 <b>dark target</b>에도 <b>구조기반 약물설계(SBDD)</b>를 가능하게 했다(예: CDK20 저해제). 그러나 AlphaFold의 주목적은 <b>단백질 자체의 구조 예측</b>이며, 합성신약이 단백질에 붙는 <b>부착 사이트·결합 자세 예측</b>은 별도의 AI 기술(생성형 분자 설계 등)과 실험 검증이 필요하다.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>21</span></div>
+</section>
+
+<!-- ============ 암기카드 ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">5주차</span><span class="part">FINAL</span><span class="ttl">암기카드 — 시험 직전 5분</span><span class="sp"></span></div>
+  <div class="body grid3 cram" style="font-size:10pt;line-height:1.65">
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--amber)"><h3>❓ Q&amp;A</h3>
+        전통 사용 = 가설, 검증 면제 ✗<br>시밀러 = <b>유사성</b> 단계적 입증<br>복합제 = 주장한 개선점의 근거 (우월성 필수 ✗)<br>Ψ = 선천 경보↓ → 항원↑ → 적응면역 OK</div>
+      <div class="card" style="border-top:4px solid var(--coral)"><h3>👩‍🔬 카리코</h3>
+        1985 미국(테디베어) · 1995 강등 · 1997 와이스먼<br>쥐가 아팠다 → <b>tRNA</b> 단서 → Ψ → 단백질 10배<br>Nature·Science 거절 → <b>Immunity 2005</b><br>RNARx → Cellscript · BioNTech 부사장<br>BioNTech 몇 시간 / Moderna 이틀 · 2020.11.8</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--blue)"><h3>💊 mRNA 치료제</h3>
+        저분자(경구) · 항체(세포 밖) · 핵산(<b>undruggable</b>, 전달 필수)<br>개발: 설계·합성 → <b>봉입</b> → 평가 → 제조·임상<br>LinearDesign: 10<sup>632</sup> · MFE↓ CAI↑ · 11분 · 128배</div>
+      <div class="card" style="border-top:4px solid var(--teal)"><h3>🏅 2024</h3>
+        생리의학 = <b>microRNA</b> (Ambros·Ruvkun)<br><span class="p">화학</span> = Baker(설계) + Hassabis·Jumper(구조)<br><span class="p">물리</span> = Hopfield·Hinton(신경망)<br>AlphaFold = <b>구조</b> 예측 (부착 사이트 ✗)<br>miRNA: Drosha → Exportin-5 → Dicer → RISC · ~22nt · seed 2~8</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--violet)"><h3>🛡 2025</h3>
+        Brunkow·Ramsdell·Sakaguchi · <b>말초 면역관용</b><br>Treg · <b>FOXP3</b> · IL-2 + TGF-β<br>신호①만 → anergy · CTLA-4-Ig<br>관용↑ = 자가면역·이식 / 관용↓ = 면역항암<br>HLA-B27 ↔ 강직성 척추염 (100~200)</div>
+      <div class="callout trap"><div class="t">⚠ 함정 TOP 3</div><div class="small">화학 ↔ 물리 바꿔치기<br>AlphaFold = 부착 사이트 ✗<br>2023 노벨상 = LNP·mRNA 발명 ✗ → <b>염기 변형</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 5주차 노벨생리의학상2</span><span>22</span></div>
+</section>
+
+<script src="diagrams5.js"></script>
+</body></html>
