@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>신약개발개론 4주차 신약의 분류2 · 노벨생리의학상1</title>
+<link rel="stylesheet" href="style.css"></head><body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover"><div class="in">
+  <div class="sub">PHAR278 · 신약개발개론 · 시험대비 노트</div>
+  <h1>4주차<br>신약의 분류 2 ·<br>노벨생리의학상 1<small>천연물·개량·제네릭 마무리 + 2023 노벨상 mRNA 백신</small></h1>
+  <div class="pills"><span>상세요약</span><span>개념문제 15</span><span>중간고사 대비 실전 31</span><span>암기카드</span></div>
+  <div style="margin-top:7mm;max-width:132mm;font-size:10.5pt;line-height:1.75;opacity:.92">
+    앞 절반(천연물·개량·제네릭)은 <b>3주차와 같은 슬라이드</b>라 새로 추가된 Q&amp;A만 정리했어. 핵심은 뒷 절반 —
+    <b style="color:#ffd76a">카리코·와이스먼, 슈도우리딘(Ψ), LNP</b>. 2024엔 “mRNA 역사”, “Ψ mRNA 단백질 생성량”, “서열 설계” 문항이 나왔어.
+  </div>
+  <div class="toc"><h4>CONTENTS</h4><ol>
+    <li><span>00</span>한 장 지도 · 2024 기출 분석<em>2</em></li>
+    <li><span>01</span>Q&amp;A 4개 + 분류 복습(추가분)<em>3</em></li>
+    <li><span>02</span>노벨생리의학상 2023<em>6</em></li>
+    <li><span>03</span>생물학 기초: DNA → mRNA → 단백질<em>7</em></li>
+    <li><span>04</span>mRNA 백신의 역사 · 특허<em>9</em></li>
+    <li><span>05</span>핵심 발견: 염증 → 슈도우리딘<em>12</em></li>
+    <li><span>06</span>전달 기술: LNP<em>15</em></li>
+    <li><span>★</span>중간고사 대비 실전문제<em>17</em></li>
+    <li><span>✓</span>암기카드<em>25</em></li>
+  </ol></div>
+  <div class="foot">김한준 교수님 4주차 강의 슬라이드(2026.09.23) + 2024 중간고사 리뷰 녹취를 바탕으로 정리</div>
+</div></section>
+
+<!-- ============ 00 ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">4주차</span><span class="part">00</span><span class="ttl">한 장 지도 — mRNA 백신 = 기술 4개의 결합</span><span class="sp"></span><span class="src">슬라이드 74 + 2024 리뷰</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">한 줄 요약</span>mRNA 백신 = <span class="y">mRNA 합성(1984) + 염기 변형(2005, 노벨상) + LNP 전달(Cullis) + 산업화(BioNTech·Moderna)</span> → 2020 팬데믹에서 1년 만에.</div>
+      <table class="t">
+        <tr><th>막혔던 벽</th><th>누가 뚫었나</th><th>어떻게</th></tr>
+        <tr><td>① 실험실에서 못 만든다</td><td>Krieg·Melton (1984)</td><td>T7 중합효소 <b>IVT</b> 합성</td></tr>
+        <tr><td>② 넣으면 <b>염증</b> + 단백질 안 만들어짐</td><td><b>카리코·와이스먼 (2005)</b></td><td>U → <b>슈도우리딘(Ψ)</b></td></tr>
+        <tr><td>③ 세포 안까지 못 간다</td><td>Cullis (LNP)</td><td><b>이온화 지질</b> 나노입자</td></tr>
+        <tr><td>④ 돈·생산</td><td>BioNTech · Moderna · DARPA</td><td>투자·공장·임상</td></tr>
+      </table>
+      <div class="callout tip"><div class="t">💡 앞 절반(분류)은?</div><div class="small">천연물·개량신약·제네릭 슬라이드는 <b>3주차 노트 PART 05~06</b>과 같아. 여기선 <b>새로 추가된 Q&amp;A 4개 + 글로벌 요건 국가별 기준 + 용출시험 + 생동성 vs 임상</b>만 정리했어.</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card" style="border-color:#f6c7bb"><h3 style="color:var(--coral)">🎯 2024 중간고사 — 이 범위에서 나온 것</h3>
+        <table class="t" style="--pcs:var(--coral-s);font-size:9pt">
+          <tr><th>문항</th><th>정답 포인트 (교수님 해설)</th></tr>
+          <tr><td><b>mRNA 역사</b><br>(옳지 않은 것)</td><td>“종양학계보다 <span class="p">백신</span> 개발에서 더 호의적” ✗<br>→ 원래 <b>백신</b> 목적이었는데 잘 안 되자 <b>종양학계</b> 쪽으로 시도 (방향 반대!)</td></tr>
+          <tr><td><b>슈도우리딘 mRNA</b></td><td>“단백질 생성량 차이는 <span class="p">없었다</span>” ✗<br>→ 보통 <b>10~11배 더 많았다</b></td></tr>
+          <tr><td><b>mRNA 서열 설계</b></td><td>“<b>아직 해결해야 할 문제</b>로 남아 있다” ○<br>서열을 알아도 아미노산 하나에 <b>코돈 조합이 여러 개</b></td></tr>
+          <tr><td>천연물·개량·제네릭</td><td>조인스 vs 프로스판 · IMD/API · 생동성 · 서방정/장용정 → <b>3주차 노트</b></td></tr>
+        </table></div>
+      <div class="callout trap"><div class="t">⚠ 5주차와 헷갈리지 말 것</div><div class="small">2024 기출의 <b>AlphaFold·노벨화학상</b>, <b>microRNA</b>는 노벨상 <b>2부(5주차)</b> 내용이야.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>2</span></div>
+</section>
+
+<!-- ============ 01 Q&A ============ -->
+<section class="page big" style="--pc:var(--amber);--pcs:var(--amber-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 01-A</span><span class="ttl">지난 시간 Q&amp;A 4개</span><span class="sp"></span><span class="src">슬라이드 2~5</span></div>
+  <div class="body grid2">
+    <div class="card"><h3><span class="n">1</span>싸면 신약 성공 가능성이 높아질까?</h3>
+      <div class="small"><b>아니.</b> 낮은 가격은 <b>가치·접근성의 강점</b>일 뿐, 허가·개발 성공의 대체 근거가 아님.<br>
+      성공 = <span class="g">임상 근거 × 품질 × 개발성 × 시장성</span> — <b>곱셈</b>이라 하나라도 0이면 0<br>
+      ‘저가 = 허가 용이’ ✗ — 가격은 규제 기준을 낮추지 않음 (가격이 힘쓰는 곳 = 시장성: 급여·채택)</div></div>
+    <div class="card"><h3><span class="n">2</span>천연물의 ‘소량 성분’은 무시해도 될까?</h3>
+      <div class="small"><b>아니.</b> 소량도 관리 대상 → <b>전체 제품</b> 안전성 평가<br>
+      ① <b>성분 규명</b>: LC–MS · <b>지문분석</b>(fingerprint) ② <b>규격 설정</b>: 표지성분 · 불순물 한도 ③ <b>안전성 검증</b><br>
+      ‘저함량 = 무위험’ ✗ (독성 세기·노출·축적·상호작용) · 핵심 = 완전한 분자 목록이 아니라 <b>재현 가능한 통제</b></div></div>
+    <div class="card"><h3><span class="n">3</span>천연물이라 더 안전할까?</h3>
+      <div class="small"><b>아니.</b> 기본 안전성 기준은 <b>합성신약과 동일</b> + 원료·조성·오염·상호작용·배치 변동 관리가 <b>추가</b><br>
+      ‘천연 = 안전’ ✗ — 천연 독성(아리스톨로크산), 중금속·농약 오염, 성분 변동, 약물상호작용(세인트존스워트 → CYP3A4 유도)</div></div>
+    <div class="card"><h3><span class="n">4</span>한국 신약개발의 장벽 & 바이오시밀러의 가치</h3>
+      <div class="small"><b>장벽</b>: 자본 + 장기 실패위험 + <b>글로벌 임상·허가·판매 역량</b><br>
+      <b>바이오시밀러</b> = 단순 복제품 ✗ → <b>복잡한 생물학적 제품의 일관된 재현</b> (세포 생산 + 정밀 분석으로 “고도 유사” 입증 → NMR 등) → 진입장벽 = 고부가가치<br>
+      경쟁력 = 장기 개발체계 + 고난도 생산·분석 + 세계 사업화 역량</div></div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>3</span></div>
+</section>
+
+<section class="page big" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 01-B</span><span class="ttl">분류 복습 — 이번에 새로 추가된 것만</span><span class="sp"></span><span class="src">슬라이드 6~41</span></div>
+  <div class="body row">
+    <div class="col">
+      <div class="card"><h3>🌍 천연물 글로벌 진출 — 국가별 성분 규명 기준</h3>
+        <table class="t" style="--pcs:var(--teal-s)">
+          <tr><th>지역</th><th>요구</th></tr>
+          <tr><td><b>미국</b></td><td>구성성분 <b>90% 이상</b> 규명</td></tr>
+          <tr><td><b>중국</b> (중약 5류)</td><td>유효부위 함량 <b>50% 이상</b></td></tr>
+          <tr><td><b>유럽</b></td><td><b>마커(marker)</b> 성분으로 규명</td></tr>
+        </table>
+        <div class="small" style="margin-top:1.4mm">가장 큰 장벽 = <b>원료 동등성(표준화)</b> + <b>CMC</b>(지문분석 필수) · 안전성 자료 최우선(DDI · MOA · PK)<br>나고야의정서: 남의 나라 생물자원 쓰면 이익 공유</div></div>
+      <div class="card"><h3>📚 나머지는 3주차와 동일</h3>
+        <div class="small">베러겐(허가·의학심사·4상) · 천연물 개발 과정 · 국내 천연물신약 표 · 건기식 ≠ 천연물신약 · 신약/개량/제네릭 비교 · Biologic/Biosimilar/Biobetter · 개량신약 규정 가~마 · 5방향 · 아모잘탄 · 제네릭 · 생동성<br>→ <b>3주차 노트 13~20쪽</b>으로 복습!</div></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>🧪 용출시험 (dissolution test)</h3>
+        <div class="small">정해진 온도(37°C)·용매·교반에서 시간별로 약이 <b>얼마나 녹아 나오는지</b> 측정<br>
+        예: 타다라필 20mg <b>구강용해필름</b>(센트립, 물 없이 입에서 녹음 = 제형변경 개량신약) vs 일반 정제<br>
+        쓰임: 품질관리 · 제네릭 허가 전 <b>비교 용출</b>(거름망) · 서방·장용 설계 확인</div></div>
+      <table class="t" style="--pcs:var(--teal-s)">
+        <tr><th></th><th>임상시험 (신약)</th><th>생동성시험 (제네릭)</th></tr>
+        <tr><td><b>목적</b></td><td>새 약의 <b>효능·안전성</b> 입증</td><td>허가된 성분의 <b>흡수 동등성</b></td></tr>
+        <tr><td><b>대상</b></td><td>환자 (1상은 건강인)</td><td><b>건강한 지원자</b></td></tr>
+        <tr><td><b>측정</b></td><td>치료 효과, 이상반응</td><td><b>혈중농도</b> (AUC, Cmax)</td></tr>
+        <tr><td><b>위험</b></td><td>미지의 부작용 가능</td><td>상대적으로 낮음</td></tr>
+      </table>
+      <div class="lead" style="font-size:10.6pt"><span class="k">한 줄로</span>임상 = “이 약이 <b>효과</b> 있나?” / 생동성 = “오리지널과 <b>똑같이 흡수</b>되나?”</div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>4</span></div>
+</section>
+
+<section class="page" style="--pc:var(--amber)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 01</span><span class="ttl">개념문제 — Q&amp;A · 분류 복습</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q1</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>기존 약보다 훨씬 싸면 허가가 쉬워진다.<span class="bx">O / X</span></li>
+        <li>신약 성공은 임상근거·품질·개발성·시장성의 곱이다.<span class="bx">O / X</span></li>
+        <li>천연물의 소량 성분은 함량이 낮아 관리하지 않는다.<span class="bx">O / X</span></li>
+        <li>천연물신약의 기본 안전성 기준은 합성신약과 같다.<span class="bx">O / X</span></li>
+        <li>바이오시밀러는 단순 복제품이라 부가가치가 낮다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O X O X</span></div>
+        <div class="why small">“저가 = 허가 용이”, “저함량 = 무위험”, “천연 = 안전”, “시밀러 = 단순 복제” 모두 오해</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q2</span><span class="tag fill">빈칸</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem" style="line-height:2">천연물 글로벌 진출 시 구성성분 규명 기준: 미국 <span class="blankword">( ㄱ )</span>% 이상, 중국(중약 5류) 유효부위 <span class="blankword">( ㄴ )</span>% 이상, 유럽은 <span class="blankword">( ㄷ )</span> 성분으로 규명. 가장 큰 쟁점은 <span class="blankword">( ㄹ )</span>(제조·품질관리)이며, 크로마토그램 패턴 전체를 비교하는 <span class="blankword">( ㅁ )</span>이 필수다.</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄱ 90 · ㄴ 50 · ㄷ 마커 · ㄹ CMC · ㅁ 지문분석</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q3</span><span class="tag mc">객관식</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">생동성시험과 신약 임상시험의 비교로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>생동성은 건강한 지원자를 대상으로 한다.</li><li>생동성은 AUC·Cmax 등 혈중농도를 측정한다.</li><li>임상시험은 새 약의 효능·안전성을 입증한다.</li><li>생동성은 환자의 치료 효과를 직접 비교한다.</li><li>생동성 전에 비교 용출시험을 한다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">생동성 = <b>흡수(혈중농도)</b> 동등성. 치료 효과 = 임상.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>5</span></div>
+</section>
+
+<!-- ============ 02 노벨상 ============ -->
+<section class="page big" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 02</span><span class="ttl">2023 노벨생리의학상 — 카리코 · 와이스먼</span><span class="sp"></span><span class="src">슬라이드 44~47</span></div>
+  <div class="body row">
+    <div class="col" style="flex:.8">
+      <div class="fig"><img src="i_nobel.jpg"><div class="figcap">Katalin Karikó · Drew Weissman — Prize share 각 1/2</div></div>
+      <div class="lead"><span class="k">수상 업적 (2023.10.02 발표)</span>“코로나19에 대한 효과적인 mRNA 백신 개발을 <b>가능하게 한</b> <span class="g">뉴클레오사이드 염기 변형</span>에 관한 발견”</div>
+    </div>
+    <div class="col" style="flex:1.1">
+      <div class="card"><h3>🏅 노벨생리의학상이란?</h3>
+        <table class="t" style="font-size:9.6pt">
+          <tr><td><b>선정·주최</b></td><td>스웨덴 <b>카롤린스카</b> 연구소 노벨 총회</td></tr>
+          <tr><td><b>첫 시상</b></td><td><b>1901년</b></td></tr>
+          <tr><td><b>발표 / 시상</b></td><td>매년 10월 초 / 12월 10일 (노벨 기일)</td></tr>
+          <tr><td><b>상금 (2023)</b></td><td>1100만 SEK ≈ 100만 달러 ≈ 13억</td></tr>
+          <tr><td><b>인원</b></td><td>한 분야 최대 <b>3명</b></td></tr>
+        </table>
+        <div class="small" style="margin-top:1.4mm">노벨 유언: “<b>생리학 또는 의학</b> 분야의 가장 중요한 발견” → 당시 생리학 = 생물학 전반 → <b>넓게 해석</b><br>예: <b>1973 동물행동학</b>(폰 프리슈 꿀벌 춤·로렌츠 각인·틴베르헌) · <b>1983 식물유전학</b>(매클린톡, 옥수수 점핑 유전자)</div></div>
+      <div class="callout memo"><div class="t">💊 신약으로 이어진 노벨생리의학상</div><div class="small">1945 페니실린 · 1982 아스피린 기전(존 베인) · 1984 단일클론항체(하이브리도마) · 2018 면역항암제(PD-1·CTLA-4) · <b>2023 mRNA 백신</b></div></div>
+      <div class="callout trap"><div class="t">⚠ 단어 정확히</div><div class="small">백신을 <b>직접 만든</b> 게 아니라 <b>가능하게 한 원리</b>(염기 변형으로 면역 회피)를 발견 · 제품화는 BioNTech(튀르지·샤힌)·Moderna</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>6</span></div>
+</section>
+
+<!-- ============ 03 생물학 기초 ============ -->
+<section class="page big" style="--pc:var(--blue);--pcs:var(--blue-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 03</span><span class="ttl">기초 — DNA → mRNA → 단백질, 그리고 면역</span><span class="sp"></span><span class="src">슬라이드 48~50, 63, 66</span></div>
+  <div class="body col">
+    <div class="card" style="padding:2mm 3mm"><div data-d="dogma"></div></div>
+    <div class="row">
+      <div class="col">
+        <table class="t">
+          <tr><th></th><th>DNA</th><th>RNA</th></tr>
+          <tr><td><b>당</b></td><td>디옥시리보스 (2′-H)</td><td>리보스 (<b>2′-OH</b>)</td></tr>
+          <tr><td><b>염기</b></td><td>A <b>T</b> G C</td><td>A <b>U</b> G C</td></tr>
+          <tr><td><b>구조</b></td><td>이중나선</td><td>주로 단일가닥</td></tr>
+          <tr><td><b>안정성</b></td><td>높음</td><td><span class="p">낮음</span> (2′-OH 자가분해 + RNase)</td></tr>
+        </table>
+        <div class="card"><h3>🧬 백신 mRNA 구조</h3><div data-d="struct"></div>
+          <div class="small">코돈 = <b>3염기 = 아미노산 1개</b> · 개시 AUG(Met) · 종결 UAA·UAG·UGA<br><b>코돈 중복성</b>: ACG·ACA 둘 다 Thr → 단백질은 그대로 두고 코돈만 바꾸는 <b>코돈 최적화</b> 가능</div></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3>🛡 mRNA 백신의 면역 작용</h3>
+          <table class="t" style="font-size:9.4pt">
+            <tr><th>경로</th><th>깨우는 세포</th><th>역할</th></tr>
+            <tr><td>세포 안 항원 → <b>MHC I</b></td><td><b>CD8⁺</b> 세포독성 T</td><td>감염세포 제거 (퍼포린·그랜자임)</td></tr>
+            <tr><td>항원 조각 → <b>MHC II</b></td><td><b>CD4⁺</b> 보조 T</td><td>사이토카인으로 B·T 도움</td></tr>
+            <tr><td>분비 항원</td><td><b>B세포</b></td><td>항체 → 바이러스 중화</td></tr>
+          </table>
+          <div class="small" style="margin-top:1.4mm">장점: 몸속 세포가 직접 항원 생산 → <b>항체 + T세포</b> 면역 모두 유도<br>외우기: MHC <b>I × 8</b> = 8, MHC <b>II × 4</b> = 8</div></div>
+        <div class="callout memo"><div class="t">❓ mRNA가 내 DNA를 바꾸나?</div><div class="small"><b>아니.</b> 세포질에서만 작동, 핵에 안 들어감, 며칠 내 분해 · 만드는 건 바이러스 전체가 아니라 <b>스파이크 단백질 일부</b> → 감염 불가</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>7</span></div>
+</section>
+
+<section class="page" style="--pc:var(--blue)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 02·03</span><span class="ttl">개념문제 — 노벨상 · 생물학 기초</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q4</span><span class="tag fill">빈칸</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem" style="line-height:2">2023 노벨생리의학상은 <span class="blankword">( ㄱ )</span>와 <span class="blankword">( ㄴ )</span>에게 수여됐으며, 업적은 효과적인 COVID-19 mRNA 백신을 가능하게 한 <span class="blankword">( ㄷ )</span> 변형에 관한 발견이다. 이 상은 스웨덴 <span class="blankword">( ㄹ )</span> 연구소가 선정하며 첫 시상은 <span class="blankword">( ㅁ )</span>년이다.</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄱ 카탈린 카리코 · ㄴ 드루 와이스먼 · ㄷ 뉴클레오사이드 염기 · ㄹ 카롤린스카 · ㅁ 1901</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q5</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>RNA의 당은 리보스이고 2′-OH가 있다.<span class="bx">O / X</span></li>
+        <li>RNA에는 티민(T)이 있다.<span class="bx">O / X</span></li>
+        <li>MHC I은 CD8⁺ T세포에 항원을 제시한다.<span class="bx">O / X</span></li>
+        <li>mRNA 백신은 핵으로 들어가 DNA에 삽입된다.<span class="bx">O / X</span></li>
+        <li>코돈 3개가 아미노산 1개를 지정한다.<span class="bx">O / X</span></li>
+        <li>1973년엔 동물행동학 연구가 생리의학상을 받았다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:8mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O X O X X O</span></div>
+        <div class="why small">(2) RNA = <b>U</b> (4) 세포질에서만 (5) <b>염기 3개</b>(=코돈 1개)가 aa 1개</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q6</span><span class="tag sa">단답</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">“단백질 서열을 알면 mRNA 서열 설계는 이미 해결된 문제다.” 옳은지 판단하고 그 이유를 쓰시오.</div></div>
+      <div class="blank" style="height:18mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">틀림 — 아직 해결해야 할 문제</span></div>
+        <div class="why small">하나의 아미노산에 해당하는 <b>코돈 조합이 여러 개</b>(코돈 중복성)라 가능한 mRNA 서열이 매우 다양 → 어떤 서열이 번역·안정성에 최적인지는 여전히 과제 (예: CureVac 서열 공학)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>8</span></div>
+</section>
+
+<!-- ============ 04 역사 ============ -->
+<section class="page" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 04-A</span><span class="ttl">mRNA 백신의 역사 — 60년의 릴레이</span><span class="sp"></span><span class="src">슬라이드 51~55</span></div>
+  <div class="body col">
+    <div class="card" style="padding:2mm 3mm"><div data-d="history"></div></div>
+    <table class="t" style="--pcs:var(--coral-s);font-size:9.3pt">
+      <tr><th>연도</th><th>인물 / 회사</th><th>한 일</th><th>벽</th></tr>
+      <tr><td>1984</td><td><b>Krieg · Melton</b> (하버드)</td><td>실험실 <b>mRNA 합성</b> → Melton은 Oligogen(→ Gilead) 설립</td><td>mRNA <b>너무 불안정</b> → 실패</td></tr>
+      <tr><td>1989</td><td><b>Felgner · Malone</b> (UC 어바인)</td><td><b>리포솜</b>으로 사람 세포·개구리 배아에 mRNA 전달</td><td>특허 분쟁 → Malone은 <b>DNA 백신</b>으로</td></tr>
+      <tr><td>1993</td><td>Meulien (Transgene)</td><td>리포솜 + mRNA → 쥐 항바이러스 면역</td><td><b>100억 유로</b> 필요 추정 → DNA 백신으로</td></tr>
+      <tr><td>1997</td><td><b>Hoerr</b>(CureVac) · <b>Gilboa</b></td><td>최초 mRNA 회사 · 면역세포에 종양 mRNA 넣는 <b>암 치료</b></td><td>“너무 분해되고 비싸다” → <b>백신보다 종양학계</b>에서 호의적 → 대규모 임상 실패</td></tr>
+            <tr><td>2005 · 2007</td><td><b>Karikó · Weissman</b> (UPenn)</td><td><b>mRNA 코드 일부 변경 → 선천면역 통과</b> · RNARx 보조금 <b>$97,396</b></td><td>작은 연구비로 큰 발견</td></tr>
+      <tr><td>2008 · 2012</td><td><b>Türeci·Şahin</b> · DARPA · <b>Rossi·Bancel</b></td><td><b>BioNTech</b>(마인츠, → 화이자 코미나티) · DARPA RNA 지원 · <b>Moderna</b> 1억$+ (치료제 → <b>백신 우선</b>)</td><td>반복 투여 독성</td></tr>
+      <tr><td>1990s~2012</td><td><b>Pieter Cullis</b> (UBC)</td><td><b>LNP</b> · <b>이온화 지질</b> (혈중 중성 → 독성↓)</td><td>—</td></tr>
+    </table>
+    <div class="callout trap"><div class="t">⚠ 2024 기출 — “옳지 않은 것”이 3번이었던 문항</div><div class="small">“mRNA 기술은 <b>종양학계보다 백신 개발에서</b> 더 호의적인 반응을 보였다” ✗ → 원래 <b>백신</b>으로 개발하려 했지만 잘 안 되자 <b>종양학계</b> 쪽으로 시도 (슬라이드: “백신보다 종양학계에서 더 호의적”). <b>방향을 뒤집는</b> 함정!</div></div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>9</span></div>
+</section>
+
+<section class="page big" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 04-B</span><span class="ttl">특허 · 네트워크 · 1년 만의 백신</span><span class="sp"></span><span class="src">슬라이드 56~59</span></div>
+  <div class="body row">
+    <div class="col">
+      <div class="card"><h3>📜 mRNA 백신 특허</h3>
+        <table class="t" style="font-size:9.2pt">
+          <tr><th>특허</th><th>상태</th></tr>
+          <tr><td>리포솜 mRNA 전달 (Felgner·Malone, 1989)</td><td>17년 지나 <b>만료 → Public domain</b></td></tr>
+          <tr><td><b>RNA modification</b> (카리코·와이스먼, UPenn)</td><td>RNARx와 라이선스 실패 → <b>Cellscript</b>에 <b>30만 달러</b>에 매각 → BioNTech·Moderna가 <b>수억 달러 서브라이선스</b> 지급 · 5년 내 만료 예정</td></tr>
+        </table></div>
+      <div class="fig"><img src="i_network.jpg"><div class="figcap">원본 슬라이드 57 — 하나의 백신 = 수십 개 기관의 특허·라이선스·소송 네트워크</div></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>⚡ From lab to jab — 병원체 발견 → 백신 허가</h3><div data-d="labjab"></div>
+        <div class="small">어떻게? <b>Skip research</b>(SARS·MERS 연구 축적) · <b>Combine phases</b>(임상 단계 겹치기) · <b>Build factories now</b>(허가 전 공장) · <b>Produce quickly</b>(서열만 바꾸는 플랫폼)</div></div>
+      <div class="callout memo"><div class="t">🏆 왜 카리코·와이스먼만? (Nature 2021)</div><div class="small">수백 명이 기여했지만 노벨상은 최대 3명 → 막혀 있던 벽을 뚫은 <b>결정적 발견(2005 변형 뉴클레오사이드)</b> 선택 · Cullis: “수백, 수천 명이 함께” · 카리코: “모두가 조금씩 더했을 뿐 — 나를 포함해서”</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>10</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 04</span><span class="ttl">개념문제 — mRNA 백신의 역사</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q7</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">mRNA 기반 치료·예방 기술의 역사로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>1984년 하버드에서 실험실 mRNA 합성법을 연구했다.</li><li>1989년 리포솜으로 mRNA를 세포에 전달했다.</li><li>mRNA 기술은 종양학계보다 백신 개발에서 더 호의적인 반응을 보였다.</li><li>초기엔 mRNA가 너무 불안정하고 비싸다는 통념이 있었다.</li><li>카리코·와이스먼은 mRNA 코드 일부를 바꿔 선천면역을 통과시켰다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">반대! 백신이 잘 안 되자 <b>종양학계</b> 쪽이 더 호의적.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q8</span><span class="tag sa">연결</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">인물과 업적을 연결하시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm">
+          <b>① Krieg · Melton</b><span>· ⓐ LNP · 이온화 지질</span>
+          <b>② Felgner · Malone</b><span>· ⓑ BioNTech 설립</span>
+          <b>③ Türeci · Şahin</b><span>· ⓒ 실험실 mRNA 합성</span>
+          <b>④ Cullis</b><span>· ⓓ Moderna 설립</span>
+          <b>⑤ Rossi · Bancel</b><span>· ⓔ 리포솜 mRNA 전달</span></div></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓒ ②ⓔ ③ⓑ ④ⓐ ⑤ⓓ</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q9</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>리포솜 mRNA 전달 특허는 현재 공개 상태다.<span class="bx">O / X</span></li>
+        <li>RNA 변형 특허는 Cellscript에 매각됐다.<span class="bx">O / X</span></li>
+        <li>BioNTech·Moderna는 서브라이선스료를 낸다.<span class="bx">O / X</span></li>
+        <li>코로나 백신은 임상 단계를 생략해 허가됐다.<span class="bx">O / X</span></li>
+        <li>Moderna는 치료제보다 백신을 우선하기로 했다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O O O X O</span></div>
+        <div class="why small">(4) 생략 ✗ → 단계를 <b>겹쳐서(Combine)</b> 동시에 진행</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>11</span></div>
+</section>
+
+<!-- ============ 05 핵심 발견 ============ -->
+<section class="page big" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 05-A</span><span class="ttl">문제: 합성 mRNA는 왜 염증을 일으켰나?</span><span class="sp"></span><span class="src">슬라이드 64~66</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">한 줄 요약</span>세포는 외부 RNA를 감지하면 <span class="y">① 경보(염증) ② 공장 정지(번역 중단) ③ 설계도 파기(분해)</span> — 백신 입장에선 최악.</div>
+      <table class="t" style="--pcs:var(--violet-s)">
+        <tr><th>방어</th><th>센서</th><th>결과</th></tr>
+        <tr><td><b>① 경보</b></td><td>엔도솜: <b>TLR3</b>(dsRNA) · <b>TLR7/8</b>(ssRNA)<br>세포질: RIG-I · MDA-5 · NOD2</td><td>IFN-I · 염증 사이토카인</td></tr>
+        <tr><td><b>② 공장 정지</b></td><td><b>PKR</b> → eIF-2 인산화</td><td><b>번역 중단</b></td></tr>
+        <tr><td><b>③ 설계도 파기</b></td><td><b>OAS</b> → RNase L</td><td><b>RNA 분해</b></td></tr>
+      </table>
+      <div class="card"><h3>🧫 염증의 원인 2가지</h3>
+        <div class="small">① <b>변형 안 된 염기</b> (특히 U) → 카리코가 <b>Ψ</b>로 해결<br>② <b>dsRNA 불순물</b>: T7 IVT 중 짧은 RNA(유산 전사체)·되접힌(loopback) dsRNA → 이후 <b>정제(HPLC)</b>로 해결</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="fig"><img src="i_inflam.jpg"><div class="figcap">원본 슬라이드 65 — 빨간 점선 = 카리코·와이스먼이 회피한 경로</div></div>
+      <div class="callout tip"><div class="t">🔑 시험 포인트</div><div class="small">ssRNA → <b>TLR7/8</b> · dsRNA → <b>TLR3</b> · <b>PKR</b> = 번역 억제 · <b>OAS/RNase L</b> = RNA 분해<br>T7 RNA 중합효소 = 박테리오파지 유래, DNA 주형에서 mRNA를 <b>시험관 내 전사(IVT)</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>12</span></div>
+</section>
+
+<section class="page big" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 05-B</span><span class="ttl">해결: U → 슈도우리딘(Ψ) — 노벨상 논문 3편</span><span class="sp"></span><span class="src">슬라이드 60, 67~70</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="card"><h3>💡 착안</h3>
+        <div class="small">사람 RNA(tRNA·rRNA)엔 <b>변형 염기</b>(m6A, Ψ, m5C…)가 많고, 세균·합성 RNA엔 적다 → 면역계는 “<b>변형 없음 = 외부 RNA</b>”로 판단 → 합성 mRNA에 Ψ를 넣으면 <b>“자기 RNA”처럼 위장</b>!<br>
+        Ψ = 우리딘의 <b>이성질체</b> (N1 → C5 결합) → A와 짝은 그대로 → <b>코돈 정보 불변</b></div></div>
+      <div class="card"><h3>📊 2005 핵심 데이터 — 수지상세포 TNF-α</h3><div data-d="psi"></div>
+        <div class="small">효과가 큰 건 모두 <b>U를 바꾼 변형</b>(Ψ·m5U·s2U) — TLR7/8은 U가 풍부한 RNA를 인식하니까</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <table class="t" style="--pcs:var(--violet-s);font-size:9.3pt">
+        <tr><th>논문</th><th>발견</th></tr>
+        <tr><td><b>2005 Immunity</b> ★</td><td>뉴클레오사이드 변형 → <b>TLR 인식 억제</b> (염증↓)</td></tr>
+        <tr><td><b>2008 Mol Ther</b></td><td>Ψ-mRNA = <b>면역원성↓ + 번역↑ + 안정성↑</b></td></tr>
+        <tr><td><b>2010 NAR</b></td><td>Ψ가 <b>PKR 활성을 줄여</b> 번역 증가</td></tr>
+      </table>
+      <div class="callout trap"><div class="t">⚠ 2024 기출 — 슈도우리딘 mRNA</div><div class="small">“단백질 생성량의 차이는 <b>없었다</b>” ✗ → 차이가 없지 않고 <b>더 많았다</b>. 보통 <span class="p">10~11배</span> 더 많다 (교수님 해설)</div></div>
+      <div class="card"><h3>🏭 생산은 간단: UTP → m1ΨTP</h3>
+        <div class="small">T7 IVT 재료 중 <b>UTP를 m1Ψ-삼인산으로 100% 교체</b> → 중합효소가 A 맞은편에 그대로 끼워 넣음<br><b>m1Ψ(N1-메틸슈도우리딘)</b> = Ψ 개량판 → 코미나티(화이자)·스파이크박스(모더나)</div></div>
+      <table class="t" style="font-size:9pt">
+        <tr><th></th><th>화이자·모더나</th><th>CureVac (CVnCoV)</th></tr>
+        <tr><td>전략</td><td><b>염기 변형</b>(m1Ψ)</td><td>변형 없이 <b>서열 최적화</b>(GC·UTR)</td></tr>
+        <tr><td>용량</td><td>30 / 100 μg</td><td>12 μg (염증 때문에 못 올림)</td></tr>
+        <tr><td>3상 효능</td><td>약 95%</td><td><b>약 48%</b> → 실패</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>13</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 05</span><span class="ttl">개념문제 — 염증과 슈도우리딘</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q10</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">슈도우리딘(Ψ) 변형 mRNA에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>TLR에 의한 RNA 인식을 억제한다.</li><li>PKR 활성을 줄인다.</li><li>면역원성이 낮아진다.</li><li>변형 없는 mRNA와 단백질 생성량 차이가 없었다.</li><li>Ψ는 우리딘의 이성질체이다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">번역 ↑ → 단백질 <b>10~11배</b> 더 많음.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q11</span><span class="tag sa">연결</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">센서와 결과를 연결하시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm">
+          <b>① TLR3</b><span>· ⓐ RNA 분해 (RNase L)</span>
+          <b>② TLR7/8</b><span>· ⓑ dsRNA 인식</span>
+          <b>③ PKR</b><span>· ⓒ ssRNA 인식</span>
+          <b>④ OAS</b><span>· ⓓ eIF-2 인산화 → 번역 중단</span></div></div>
+      <div class="blank" style="height:14mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓑ ②ⓒ ③ⓓ ④ⓐ</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q12</span><span class="tag es">서술</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">CureVac 1세대 백신(CVnCoV)이 화이자·모더나보다 효능이 낮았던 이유를 mRNA 설계 관점에서 쓰시오.</div></div>
+      <div class="blank" style="height:16mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span></div>
+        <div class="small">CureVac은 염기 변형 없이 <b>서열 최적화</b>만 했다. 변형 안 된 mRNA는 <b>염증</b>을 일으켜 용량을 <b>12 μg 이상 올릴 수 없었고</b>, 항원이 충분히 만들어지지 않아 3상 효능이 약 48%에 그쳤다. → 카리코·와이스먼의 <b>염기 변형</b>의 가치를 역설적으로 보여준 사례.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>14</span></div>
+</section>
+
+<!-- ============ 06 LNP ============ -->
+<section class="page big" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 06</span><span class="ttl">전달 기술 — 맨몸 mRNA에서 LNP까지</span><span class="sp"></span><span class="src">슬라이드 71~74</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="card"><h3>🚧 맨몸(naked) mRNA의 장애물</h3>
+        <div class="small">체액 <b>RNase</b> 즉시 분해 → <b>신장 배설</b> → 크고 음전하라 <b>세포막 통과 불가</b> → <b>엔도솜</b>에 갇힘·TLR 감지 → 세포질 RIG-I·MDA5<br>⇒ 해결: ① 염기 변형으로 센서 회피 + ② <b>전달체</b>로 포장<br>관문 = <span class="p">엔도솜 탈출</span></div></div>
+      <div class="card"><h3>🧴 전달 전략의 진화</h3>
+        <div class="small">맨몸 → 전기천공 → <b>프로타민</b>(CureVac 초기) → 나노에멀젼·덴드리머·양이온 고분자 → 리포솜 → 양이온 지질 NP → + 콜레스테롤 → + <b>PEG</b> = <b>LNP</b> (80~200 nm, 백신은 ~100 nm)<br>공통 원리: <b>음전하 mRNA를 양전하 물질로 감싸기</b></div></div>
+      <table class="t" style="--pcs:var(--teal-s);font-size:9.3pt">
+        <tr><th>환경</th><th>pH</th><th>이온화 지질</th><th>효과</th></tr>
+        <tr><td>제조 시</td><td>산성</td><td>양전하</td><td>mRNA 포장</td></tr>
+        <tr><td>혈액</td><td>7.4</td><td><b>중성</b></td><td>독성↓</td></tr>
+        <tr><td>엔도솜</td><td>산성</td><td>다시 양전하</td><td>막 흔들어 <b>탈출</b></td></tr>
+      </table>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="fig"><img src="i_lnp.jpg"><div class="figcap">원본 슬라이드 73 — SARS-CoV-2 허가 · 인플루엔자 1상 · HIV 전임상</div></div>
+      <table class="t" style="font-size:9.3pt">
+        <tr><th>LNP 4성분</th><th>비유</th><th>기능</th></tr>
+        <tr><td><b>이온화 지질</b></td><td>자석 + 열쇠</td><td>정전기로 mRNA 캡슐화, 엔도솜 탈출</td></tr>
+        <tr><td><b>헬퍼 지질</b></td><td>벽돌</td><td>안정성 · <b>막 융합성</b></td></tr>
+        <tr><td><b>콜레스테롤</b></td><td>시멘트</td><td><b>투과성↓</b> · 안정성↑</td></tr>
+        <tr><td><b>PEG-지질</b></td><td>코팅</td><td>단백질 흡착·<b>응집 방지</b>, <b>크기 조절</b></td></tr>
+      </table>
+      <div class="callout memo"><div class="t">🔗 기술의 성장과 결합</div><div class="small">mRNA 줄기(1961 → 2005 변형) + LNP 줄기(1965 리포솜 → <b>2018 온파트로</b>: 최초 siRNA-LNP 약) → <b>2020 결합</b> → “1년” 뒤엔 <b>60년</b>의 축적</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>15</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">4주차</span><span class="part">PART 06</span><span class="ttl">개념문제 — 전달 기술</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q13</span><span class="tag sa">연결</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">LNP 구성성분과 기능을 연결하시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.8mm 3mm">
+          <b>① 이온화 지질</b><span>· ⓐ 투과성↓, 안정성↑</span>
+          <b>② 헬퍼 지질</b><span>· ⓑ 응집 방지, 크기 조절</span>
+          <b>③ 콜레스테롤</b><span>· ⓒ 정전기로 핵산 캡슐화</span>
+          <b>④ PEG-지질</b><span>· ⓓ 안정성·막 융합성 향상</span></div></div>
+      <div class="blank" style="height:14mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓒ ②ⓓ ③ⓐ ④ⓑ</span></div>
+        <div class="one">자석 · 벽돌 · 시멘트 · 코팅</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q14</span><span class="tag es">서술</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">이온화 지질이 기존 “항상 양전하” 지질보다 유리한 이유를 pH와 관련지어 쓰시오.</div></div>
+      <div class="blank" style="height:18mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span></div>
+        <div class="small">항상 양전하인 지질은 혈액에서 <b>독성</b>이 컸다. 이온화 지질은 <b>혈액(pH 7.4)에선 중성</b>이라 독성·단백질 흡착이 적고, 세포에 들어가 <b>산성 엔도솜</b>에서 다시 양전하가 되어 엔도솜 막을 흔들어 mRNA를 세포질로 <b>탈출</b>시킨다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q15</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>맨몸 mRNA는 음전하라 세포막을 쉽게 통과한다.<span class="bx">O / X</span></li>
+        <li>엔도솜 탈출은 백신 효과의 관문이다.<span class="bx">O / X</span></li>
+        <li>최초 siRNA-LNP 약은 2018 온파트로다.<span class="bx">O / X</span></li>
+        <li>LNP 개발자로 Pieter Cullis가 꼽힌다.<span class="bx">O / X</span></li>
+        <li>Cullis도 2023 노벨상을 공동 수상했다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O O O X</span></div>
+        <div class="why small">(1) 크고 음전하 → <b>통과 불가</b> (5) 수상은 카리코·와이스먼 2명</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>16</span></div>
+</section>
+
+<!-- ============ 실전 ============ -->
+<section class="page" style="background:linear-gradient(135deg,#fff6f2,#fff)">
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;padding:0 8mm">
+    <div style="font-size:10pt;font-weight:900;letter-spacing:.2em;color:var(--coral)">MIDTERM PRACTICE</div>
+    <div style="font-size:30pt;font-weight:900;letter-spacing:-.03em;line-height:1.2;margin:2mm 0 4mm">중간고사 대비 실전문제<br><span style="font-size:15pt;font-weight:500;color:var(--sub)">4주차 범위 · 객관식 9 · O/X 12 · 단답 6 · 서술 4</span></div>
+    <div class="row" style="max-width:250mm">
+      <div class="callout trap" style="flex:1"><div class="t">이렇게 풀자</div><div class="small">정답 가리고 풀기 → 틀린 번호 표시 → 해당 PART로 돌아가기</div></div>
+      <div class="callout tip" style="flex:1"><div class="t">교수님 코멘트 (2024)</div><div class="small">“최신 기술이라 학부 수준에선 어려웠을 텐데 맞추신 분이 많았다” → <b>방향 뒤집기</b>(백신↔종양학)와 <b>숫자</b>(10~11배)만 조심!</div></div>
+      <div class="callout memo" style="flex:1"><div class="t">서술형 채점 기준</div><div class="small">“이유”를 물으면 <b>원리 → 결과</b> 순서로 · “5개” → 1개 부족 시 <b>−1점</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>17</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 1~3</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 1</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신 기술의 역사에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>Felgner·Malone은 리포솜으로 mRNA를 전달했다.</li><li>Malone은 이후 DNA 백신 기술에 중점을 뒀다.</li><li>Gilboa는 면역세포에 종양 mRNA를 넣는 방법을 제안했다.</li><li>mRNA 기술은 종양학계보다 백신 개발에서 더 호의적이었다.</li><li>CureVac은 1997년 설립된 초기 mRNA 회사다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">반대 — “<b>백신보다 종양학계</b>에서 더 호의적”.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 2</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">카리코·와이스먼의 연구에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>2005년 변형 뉴클레오사이드가 TLR 인식을 억제함을 보였다.</li><li>Ψ-mRNA는 번역 능력과 안정성이 높았다.</li><li>Ψ-mRNA는 단백질 생성량이 변형 없는 mRNA와 차이가 없었다.</li><li>Ψ는 PKR 활성을 줄여 번역을 늘린다.</li><li>RNARx라는 스타트업을 세웠다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">보통 <b>10~11배</b> 더 많음.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 3</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">노벨생리의학상에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>카롤린스카 연구소 노벨 총회가 선정한다.</li><li>첫 시상은 1901년이다.</li><li>1973년 동물행동학 연구가 수상했다.</li><li>엄격히 의학 분야에만 수여한다.</li><li>한 분야 최대 3명까지 수상한다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">“생리학 또는 의학” → 생물학 전반으로 <b>넓게</b> 해석.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>18</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 4~6</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 4</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신의 구조(5′→3′) 순서로 옳은 것은?</div>
+        <ol class="opt"><li>poly(A) – 5′ UTR – ORF – 3′ UTR – 5′ cap</li><li>5′ cap – 5′ UTR – ORF – 3′ UTR – poly(A)</li><li>5′ cap – ORF – 5′ UTR – 3′ UTR – poly(A)</li><li>5′ UTR – 5′ cap – ORF – poly(A) – 3′ UTR</li><li>ORF – 5′ cap – 5′ UTR – 3′ UTR – poly(A)</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">②</span></div>
+        <div class="why small">모자(cap) → 앞 UTR → 단백질 정보(ORF) → 뒤 UTR → 꼬리(poly-A)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 5</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">코로나19 백신이 1년 만에 나올 수 있었던 이유가 <u>아닌</u> 것은?</div>
+        <ol class="opt"><li>SARS·MERS 연구로 스파이크 표적을 이미 알았다.</li><li>임상 단계를 겹쳐 진행했다.</li><li>허가 전 공장을 미리 지었다.</li><li>mRNA는 서열만 바꾸면 되는 플랫폼이다.</li><li>안전성 임상시험을 생략했다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">생략 ✗ — 순서대로 하던 걸 <b>동시에</b>.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 6</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신 특허에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>리포솜 전달 특허는 아직 유효하다.</li><li>RNA 변형 특허는 RNARx가 독점 라이선스를 받았다.</li><li>RNA 변형 특허는 Cellscript에 30만 달러에 매각됐다.</li><li>Moderna는 RNA 변형 기술을 쓰지 않는다.</li><li>특허는 백신 사업 성패와 무관하다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">① 만료(공개) ② 라이선스 실패 ④ 둘 다 서브라이선스</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>19</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 7~9</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 7</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">합성 mRNA에 대한 선천면역 반응으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>TLR3은 dsRNA를 인식한다.</li><li>TLR7/8은 ssRNA를 인식한다.</li><li>PKR은 eIF-2를 인산화해 번역을 멈춘다.</li><li>OAS는 RNase L을 활성화해 RNA를 분해한다.</li><li>RIG-I는 단백질 번역을 촉진한다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">RIG-I = 세포질 RNA <b>센서</b> → 인터페론·염증.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 8</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">Q&amp;A 내용으로 옳은 것은?</div>
+        <ol class="opt"><li>값싼 신약은 허가 기준이 완화된다.</li><li>천연물은 천연이라 독성 평가가 간소하다.</li><li>천연물 소량 성분도 지문분석·규격으로 관리한다.</li><li>바이오시밀러는 오리지널과 완전히 동일하다.</li><li>신약 성공은 가격 하나로 결정된다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">④ “고도 유사(highly similar)” — 동일 ✗</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 9</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신 면역에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>MHC I은 CD8⁺ T세포를 활성화한다.</li><li>MHC II는 CD4⁺ T세포를 활성화한다.</li><li>분비 항원은 B세포가 항체를 만들게 한다.</li><li>항체와 T세포 면역을 모두 유도한다.</li><li>바이러스 전체를 만들어 면역을 유도한다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small"><b>스파이크 단백질 일부</b>만 → 감염 불가.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>20</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">실전</span><span class="part">O/X</span><span class="ttl">실전 10 — O/X 12문항</span><span class="sp"></span></div>
+  <div class="body row">
+    <div class="q" style="flex:1.2"><div class="q-h"><span class="q-no">실전 10</span><span class="tag ox">O/X</span><span class="src2024">기출 포인트 포함</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>2023 노벨생리의학상은 카리코·와이스먼이 받았다.<span class="bx">O / X</span></li>
+        <li>수상 업적은 mRNA 백신 제품 자체의 개발이다.<span class="bx">O / X</span></li>
+        <li>RNA는 2′-OH 때문에 DNA보다 불안정하다.<span class="bx">O / X</span></li>
+        <li>1984년 Krieg·Melton의 mRNA 합성은 불안정성으로 실패했다.<span class="bx">O / X</span></li>
+        <li>mRNA 서열 설계는 이미 해결된 문제다.<span class="bx">O / X</span></li>
+        <li>Ψ-mRNA는 단백질을 약 10~11배 더 많이 만든다.<span class="bx">O / X</span></li>
+        <li>m1Ψ는 화이자·모더나 백신에 쓰였다.<span class="bx">O / X</span></li>
+        <li>dsRNA 불순물은 IVT 과정에서 생길 수 있다.<span class="bx">O / X</span></li>
+        <li>CureVac 1세대는 m1Ψ를 사용했다.<span class="bx">O / X</span></li>
+        <li>LNP의 PEG-지질은 입자 응집을 막는다.<span class="bx">O / X</span></li>
+        <li>이온화 지질은 혈액에서 양전하를 띤다.<span class="bx">O / X</span></li>
+        <li>천연물신약도 기본 안전성 기준은 합성신약과 같다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+    </div>
+    <div class="ans" style="flex:1;border:1.5px solid #bfe6cf;border-radius:11px">
+      <div class="a"><span class="pill">정답</span><span class="v">O X O O X O O O X O X O</span></div>
+      <table class="t" style="--pcs:#dff3e7;font-size:8.8pt;background:#fff">
+        <tr><th class="c">#</th><th class="c">답</th><th>한 줄 해설</th></tr>
+        <tr><td class="c">1</td><td class="c"><b>O</b></td><td>각 1/2</td></tr>
+        <tr><td class="c">2</td><td class="c"><b>X</b></td><td>가능하게 한 <b>염기 변형 발견</b></td></tr>
+        <tr><td class="c">3</td><td class="c"><b>O</b></td><td>자가 가수분해 + RNase</td></tr>
+        <tr><td class="c">4</td><td class="c"><b>O</b></td><td>“mRNA가 너무 불안정”</td></tr>
+        <tr><td class="c">5</td><td class="c"><b>X</b></td><td><span class="src2024">2024</span> 코돈 조합 다양 → 미해결</td></tr>
+        <tr><td class="c">6</td><td class="c"><b>O</b></td><td><span class="src2024">2024</span></td></tr>
+        <tr><td class="c">7</td><td class="c"><b>O</b></td><td>N1-메틸슈도우리딘</td></tr>
+        <tr><td class="c">8</td><td class="c"><b>O</b></td><td>짧은·되접힌 dsRNA</td></tr>
+        <tr><td class="c">9</td><td class="c"><b>X</b></td><td>변형 없이 <b>서열 최적화</b></td></tr>
+        <tr><td class="c">10</td><td class="c"><b>O</b></td><td>+ 크기 조절</td></tr>
+        <tr><td class="c">11</td><td class="c"><b>X</b></td><td>혈액(7.4) = <b>중성</b></td></tr>
+        <tr><td class="c">12</td><td class="c"><b>O</b></td><td>+ 원료·조성 관리 추가</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>21</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet)">
+  <div class="ph"><span class="wk">실전</span><span class="part">단답</span><span class="ttl">실전 11~16 — 단답형</span><span class="sp"></span></div>
+  <div class="body grid3" style="grid-template-rows:1fr 1fr">
+    <div class="q"><div class="q-h"><span class="q-no">실전 11</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">2023 노벨생리의학상 수상자 2명은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">카탈린 카리코</b> (Katalin Karikó) · <b class="c-teal">드루 와이스먼</b> (Drew Weissman)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 12</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">합성 mRNA의 우리딘(U)을 대체해 면역 회피를 가능하게 한 변형 염기는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">슈도우리딘(Ψ)</b> · 백신엔 <b class="c-teal">N1-메틸슈도우리딘(m1Ψ)</b></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 13</span><span class="tag sa">단답</span><span class="src2024">2024 기출</span></div>
+      <div class="q-b"><div class="stem">Ψ-mRNA는 변형 없는 mRNA보다 단백질을 대략 몇 배 더 만드나?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">약 10~11배</b> (“차이 없음” ✗)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 14</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">LNP의 4가지 구성성분은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">이온화 지질 · 헬퍼 지질 · 콜레스테롤 · PEG-지질</b> (+ mRNA)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 15</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">백신 mRNA를 DNA 주형으로부터 시험관에서 대량 합성할 때 쓰는 효소는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">T7 RNA 중합효소</b> (in vitro transcription, IVT)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 16</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신이 세포 안에서 단백질을 만들기 위해 꼭 넘어야 하는 관문은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">엔도솜 탈출</b> (endosomal escape) — 이온화 지질이 해결</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>22</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 17~18 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 17</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">합성 mRNA가 백신으로 쓰이기 어려웠던 이유와, 카리코·와이스먼이 이를 해결한 원리를 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">합성 mRNA를 넣으면 세포가 <b>TLR3·7·8, RIG-I</b> 등으로 외부 RNA를 감지해 <b>염증</b>을 일으키고, <b>PKR</b>로 번역을 멈추고 <b>OAS/RNase L</b>로 분해해 단백질이 만들어지지 않았다. 카리코·와이스먼은 사람 RNA에는 변형 염기가 많다는 점에 착안해 <b>우리딘을 슈도우리딘(Ψ)으로 바꾸면</b> TLR 인식이 억제되고 PKR 활성이 줄어 <b>염증은 감소하고 번역(단백질 생성)은 약 10배 증가</b>함을 밝혔다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 18</span><span class="tag es">서술</span><span class="src2024">2024 스타일(“5개”)</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신 개발에 기여한 기술·사건을 <b>5가지</b> 쓰시오. (1개 부족 시 −1점)</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span><span class="small c-sub">아래 중 5개</span></div>
+        <ol class="small" style="padding-left:16px">
+          <li>1961 <b>mRNA 발견</b></li>
+          <li>1984 실험실 <b>mRNA 합성(IVT)</b> — Krieg·Melton</li>
+          <li>1989 <b>리포솜 전달</b> — Felgner·Malone</li>
+          <li>2005 <b>뉴클레오사이드 변형(Ψ)</b> — 카리코·와이스먼</li>
+          <li><b>LNP · 이온화 지질</b> — Cullis (2018 온파트로 승인)</li>
+          <li><b>BioNTech·Moderna</b> 설립과 투자, DARPA 지원</li>
+          <li>2020 <b>단계 병합·선제 생산</b>으로 긴급사용승인</li></ol></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>23</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 19~20 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 19</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">“천연물신약은 천연이라 더 안전하다”는 주장을 반박하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">천연물에도 <b>천연 독성</b>(예: 아리스톨로크산 신독성)이 있고, 재배·채취 중 <b>중금속·농약·곰팡이독소 오염</b>, 산지·계절에 따른 <b>성분 변동</b>, <b>약물상호작용</b>(세인트존스워트의 CYP3A4 유도) 위험이 있다. 따라서 천연물신약의 기본 안전성 기준은 <b>합성신약과 동일</b>하며, 복합물이라 원료·조성·배치 일관성 관리가 <b>추가</b>된다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 20</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">mRNA 백신의 작동 과정을 <b>주사 → 기억</b>까지 순서대로 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">① LNP에 싸인 mRNA를 근육에 <b>주사</b> → ② 세포가 LNP를 삼키고(엔도사이토시스) <b>엔도솜 탈출</b>로 mRNA가 세포질로 → ③ <b>리보솜</b>이 읽어 스파이크 단백질 <b>번역</b> → ④ MHC I로 CD8⁺ T, MHC II로 CD4⁺ T, 분비 항원으로 <b>B세포(항체)</b> 활성화 → ⑤ <b>기억 B·T세포</b> 형성 → ⑥ mRNA는 며칠 내 <b>분해</b>되고 핵·DNA엔 들어가지 않음.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>24</span></div>
+</section>
+
+<!-- ============ 암기카드 ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">4주차</span><span class="part">FINAL</span><span class="ttl">암기카드 — 시험 직전 5분</span><span class="sp"></span></div>
+  <div class="body grid3 cram" style="font-size:10pt;line-height:1.65">
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--amber)"><h3>❓ Q&amp;A 4개</h3>
+        저가 ≠ 허가 용이 (근거×품질×개발성×시장성)<br>저함량 ≠ 무위험 (지문분석·규격·안전성)<br>천연 ≠ 안전 (기준 동일 + 관리 추가)<br>시밀러 = 복잡한 제품의 <b>일관된 재현</b></div>
+      <div class="card" style="border-top:4px solid var(--teal)"><h3>🌍 추가된 분류 내용</h3>
+        미국 <b>90%</b> · 중국 <b>50%</b> · 유럽 <b>마커</b><br>최대 장벽 = 원료 동등성 · <b>CMC</b><br>용출시험 = 37°C 녹는 양상 (필름 vs 정제)<br>임상 = 효과? / 생동성 = 흡수 같나?</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--violet)"><h3>🏅 노벨상 · 기초</h3>
+        2023 <b>카리코·와이스먼</b> · 뉴클레오사이드 염기 변형<br>카롤린스카 · <b>1901</b> · 최대 3명 · 넓은 해석(1973·1983)<br>RNA = 리보스 2′-OH · U · 불안정<br>cap–5′UTR–<b>ORF</b>–3′UTR–polyA<br>MHC I→CD8 · MHC II→CD4 · B→항체</div>
+      <div class="card" style="border-top:4px solid var(--coral)"><h3>📜 역사</h3>
+        1984 Krieg·Melton 합성 · 1989 Felgner·Malone 리포솜<br>1997 CureVac · Gilboa(암)<br><span class="p">백신보다 종양학계에서 호의적</span><br>BioNTech(튀르지·샤힌) · Moderna(Rossi·Bancel) · Cullis(LNP)<br>특허: Cellscript <b>30만$</b> → 서브라이선스</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--violet)"><h3>🔬 핵심 발견</h3>
+        TLR3 dsRNA · TLR7/8 ssRNA · PKR 번역↓ · OAS 분해<br>U → <b>Ψ</b> (m1Ψ) = 면역↓ 번역↑ 안정↑<br>단백질 <span class="p">10~11배</span><br>2005 Immunity · 2008 Mol Ther · 2010 NAR(PKR)<br>CureVac: 변형 ✗ → 12μg · <b>48%</b></div>
+      <div class="card" style="border-top:4px solid var(--teal)"><h3>🧴 LNP</h3>
+        이온화(자석) · 헬퍼(벽돌) · 콜레스테롤(시멘트) · PEG(코팅)<br>혈액 중성 / 엔도솜 양전하 → <b>탈출</b><br>2018 온파트로 · 서열 설계는 <span class="p">아직 미해결</span></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 4주차 신약의 분류2 · 노벨생리의학상1</span><span>25</span></div>
+</section>
+
+<script src="diagrams4.js"></script>
+</body></html>
