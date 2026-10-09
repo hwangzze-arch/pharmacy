@@ -88,15 +88,19 @@ function donut(){
 }
 
 function semester(){
-  const W=600, wx=i=>12+(i-1)*36.5;
-  const grp=[[2,3,'역사·분류·발굴','#3b6fd8'],[4,5,'선정·최적화','#5a7fd0'],[6,7,'전임상','#7f9be0'],[9,12,'임상시험 (준비 → 1·2·3상)','#0e8a83'],[13,13,'이전','#e39a12'],[14,15,'최신 동향','#7457d6']];
+  const wx=i=>12+(i-1)*36.5, cx=i=>wx(i)+15;
+  // 실제 진행된 강의 (1~6주) + 강의계획서상 이후 일정
+  const wk=[[1,'OT'],[2,'역사'],[3,'분류'],[4,'분류2','노벨1'],[5,'노벨2'],[6,'후보','발굴']];
+  const grp=[[9,12,'임상시험 (준비 → 1·2·3상)','#0e8a83'],[13,13,'이전','#e39a12'],[14,15,'최신 동향','#7457d6']];
   let o='';
-  for(let i=1;i<=16;i++){const ex=i==8||i==16;o+=`<circle cx="${wx(i)+15}" cy="64" r="${ex?13:10}" fill="${ex?'#e2553a':i==1?'#22305a':'#fff'}" stroke="${ex?'#e2553a':'#22305a'}" stroke-width="1.6"/><text x="${wx(i)+15}" y="68" ${F} font-size="9.5" font-weight="900" fill="${ex||i==1?'#fff':'#22305a'}" text-anchor="middle">${i}</text>`;}
+  for(let i=1;i<=16;i++){const ex=i==8||i==16, mid=i<=6;o+=`<circle cx="${cx(i)}" cy="64" r="${ex?13:10}" fill="${ex?'#e2553a':mid?'#3b6fd8':'#fff'}" stroke="${ex?'#e2553a':mid?'#3b6fd8':'#22305a'}" stroke-width="1.6"/><text x="${cx(i)}" y="68" ${F} font-size="9.5" font-weight="900" fill="${ex||mid?'#fff':'#22305a'}" text-anchor="middle">${i}</text>`;}
+  wk.forEach(([i,l1,l2])=>{o+=`<text x="${cx(i)}" y="${l2?90:95}" ${F} font-size="8.6" font-weight="700" fill="#3b6fd8" text-anchor="middle">${l1}</text>`+(l2?`<text x="${cx(i)}" y="101" ${F} font-size="8.6" font-weight="700" fill="#3b6fd8" text-anchor="middle">${l2}</text>`:'');});
+  o+=`<text x="${cx(6)}" y="40" ${F} font-size="8.4" font-weight="900" fill="#e2553a" text-anchor="middle">p.33까지</text><line x1="${cx(6)+14}" y1="30" x2="${cx(6)+14}" y2="104" stroke="#e2553a" stroke-width="1.6" stroke-dasharray="4 3"/>`;
   grp.forEach(([a,b,n,c])=>{const x=wx(a)+2,w=wx(b)-wx(a)+28;o+=`<rect x="${x}" y="84" width="${w}" height="20" rx="5" fill="${c}"/><text x="${x+w/2}" y="98" ${F} font-size="${w<60?8:9}" font-weight="700" fill="#fff" text-anchor="middle">${n}</text>`;});
-  o+=`<text x="${wx(8)+15}" y="44" ${F} font-size="10" font-weight="900" fill="#e2553a" text-anchor="middle">중간고사</text><text x="${wx(16)+15}" y="44" ${F} font-size="10" font-weight="900" fill="#e2553a" text-anchor="middle">기말고사</text><text x="${wx(1)+15}" y="44" ${F} font-size="10" font-weight="900" fill="#22305a" text-anchor="middle">오늘</text>`;
-  o+=`<rect x="${wx(1)}" y="6" width="${wx(8)-wx(1)-4}" height="20" rx="10" fill="#e8f0ff"/><text x="${(wx(1)+wx(8))/2}" y="20" ${F} font-size="9.5" font-weight="900" fill="#3b6fd8" text-anchor="middle">중간 범위 = 발견 → 전임상</text>`;
-  o+=`<rect x="${wx(9)}" y="6" width="${wx(16)-wx(9)-4}" height="20" rx="10" fill="#e2f5f2"/><text x="${(wx(9)+wx(16))/2}" y="20" ${F} font-size="9.5" font-weight="900" fill="#0e8a83" text-anchor="middle">기말 범위 = 임상 → 기술이전 → 동향</text>`;
-  const axis=`<line x1="${wx(1)+15}" y1="64" x2="${wx(16)+15}" y2="64" stroke="#22305a" stroke-width="1.2" opacity=".3"/>`;
+  o+=`<text x="${cx(8)}" y="44" ${F} font-size="10" font-weight="900" fill="#e2553a" text-anchor="middle">중간고사</text><text x="${cx(16)}" y="44" ${F} font-size="10" font-weight="900" fill="#e2553a" text-anchor="middle">기말고사</text>`;
+  o+=`<rect x="${wx(1)}" y="6" width="${cx(6)+12-wx(1)}" height="20" rx="10" fill="#e8f0ff"/><text x="${(wx(1)+cx(6)+12)/2}" y="20" ${F} font-size="9.5" font-weight="900" fill="#3b6fd8" text-anchor="middle">중간 범위 = 1~6주차 (6주차 p.33 HTS까지)</text>`;
+  o+=`<rect x="${cx(7)-14}" y="6" width="${wx(16)+28-cx(7)+14}" height="20" rx="10" fill="#e2f5f2"/><text x="${(cx(7)-14+wx(16)+28)/2}" y="20" ${F} font-size="9.5" font-weight="900" fill="#0e8a83" text-anchor="middle">기말 범위 = 6주차 p.34~ → 임상 → 기술이전 → 동향</text>`;
+  const axis=`<line x1="${cx(1)}" y1="64" x2="${cx(16)}" y2="64" stroke="#22305a" stroke-width="1.2" opacity=".3"/>`;
   return `<svg viewBox="0 0 600 108" width="100%">${axis}${o}</svg>`;
 }
 
