@@ -74,7 +74,7 @@ def exp_html(lines):
 
 
 def Q(part, topic, src, orig, trans, ans, exp, opts=None, topts=None, mk="circle",
-      cols=None, tcols=None, fig=None, figw=34, extra_orig="", extra_trans=""):
+      cols=None, tcols=None, fig=None, figw=34, extra_orig="", extra_trans="", qlabel=None, olabel="원문"):
     """문제 1페이지"""
     COUNTER["q"] += 1
     n = COUNTER["q"]
@@ -90,12 +90,12 @@ def Q(part, topic, src, orig, trans, ans, exp, opts=None, topts=None, mk="circle
     page = f'''
 <section class="page qpage {part}">
   <header class="qhead">
-    <div class="qno">Q{n:03d}</div>
+    <div class="qno">{qlabel or f"Q{n:03d}"}</div>
     <div class="qtopic">{topic}</div>
     <div class="qsrc{added}">{src}</div>
   </header>
   <div class="qrow">
-    <div class="card orig"><div class="lbl">원문</div>{o_html}</div>
+    <div class="card orig"><div class="lbl">{olabel}</div>{o_html}</div>
     <div class="card trans"><div class="lbl">번역 · 쉬운 말</div>{t_html}</div>
   </div>
   <div class="blank"><div class="lbl">✏ 내 풀이</div></div>

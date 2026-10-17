@@ -122,3 +122,20 @@ svg text{font-family:"Pretendard",sans-serif}
 .card2 svg{display:block;width:100%;height:auto;max-height:60mm;margin:0 auto}
 .card2.short svg{max-height:36mm}
 .card2.mid svg{max-height:72mm}
+
+/* ---------- 모의고사: 실전 시험지 ---------- */
+.uline{display:inline-block;min-width:24mm;border-bottom:1.2px solid #333;height:1em;vertical-align:-.15em}
+.kw2{color:var(--c);font-weight:700}
+.sheet{font-family:"Pretendard",sans-serif}
+.sheet-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #222;padding-bottom:1.2mm;margin-bottom:2mm;font-size:1em}
+.sheet-top span{font-size:.85em;color:#333}
+.sheet-ins{font-size:.82em;border:1px solid #bbb;background:#fafafa;padding:1.2mm 2.4mm;margin-bottom:2mm;line-height:1.5}
+.sheet-cols{column-count:3;column-gap:6mm;column-rule:1px solid #ddd;flex:1;font-size:.84em}
+.sq{break-inside:avoid;margin-bottom:3mm}
+.sqh{font-weight:700;margin-bottom:.6mm}
+.sq ol{list-style:none;padding-left:2mm}
+.sq ol li{margin:.2mm 0;line-height:1.35}
+.sheet-cols.ess{column-count:2;font-size:.95em}
+.sq.essay .eline{height:30mm;border:1px dashed #c3cad6;border-radius:1.5mm;margin-top:1mm;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent 6.4mm,#eef1f5 6.4mm,#eef1f5 6.7mm)}
+.sheet .uline{min-width:14mm}
