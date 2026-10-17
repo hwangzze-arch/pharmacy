@@ -268,6 +268,92 @@ ESSAY = [
            "유전체는 (+)ssRNA <b>2개(dimer)</b>, 유전자 gag·pol·env."], fig=svgs.RETRO, figw=46),
 ]
 
+# ---------------------------------------------------------------- 녹취록 반영 (중간고사 전 마지막 강의)
+# 교체: 객관식 5문항 + 연결 1문항 수정 + 서술형 2문항 → 총점 45점 유지
+REC = "녹취록 반영 · "
+_DROP = {"Ureaplasma urealyticum", "opportunistic infections in Actinomycetota", "Picornaviridae", "Adenoviridae"}
+MC = [d for d in MC if d["kw"] not in _DROP and d.get("kw2") != "인물 - 업적"]
+
+_NEW = {
+ "HAV": dict(part="vr", ref=REC + "통합본 2-5", kw="hepatitis A virus (HAV)", kwk="A형 간염 바이러스",
+      opts=["non-enveloped; highly resistant in the environment", "chronic infection → cirrhosis → liver cancer", "more severe when first infected as an adult",
+            "fecal-oral transmission via contaminated water and food", "vaccine available, but no specific antiviral drug"],
+      topts=["외피 없음 → 환경 내성이 강함", "만성 감염 → 간경화 → 간암", "성인이 되어 처음 걸리면 더 심함", "오염된 물·음식을 통한 분변-구강 전파", "백신은 있지만 특이 치료제는 없음"],
+      ans="①, ③, ④, ⑤",
+      exp=["O|①::피막(외피)이 없어 오염된 환경에서 오래 살아남음.", "X|②::A형은 <b>급성으로만 끝남</b> → 만성화·간경화·간암 X (교수님 강조).",
+           "O|③::어릴 땐 90% 이상 무증상(평생 면역), 성인 첫 감염은 황달·구토 등으로 수 주간 고생.", "O|④::B·C형(혈액)과 대비되는 포인트.",
+           "O|⑤::백신으로 관리, 특이 치료제 없음.", "TIP|구제역 바이러스도 같은 피코르나과 (교수님 '상식으로')",
+           "KEY|녹취록: '급성에서 끝나므로 간암을 일으키지 않는다'"]),
+ "NORO": dict(part="vr", ref=REC + "통합본 2-5", kw="norovirus", kwk="노로바이러스",
+      opts=["family Caliciviridae (L. calyx, \"wine cup\")", "zoonotic; replicates inside shellfish", "cannot be propagated in cell culture",
+            "antidiarrheal drugs are routinely given", "\"winter vomiting bug\""],
+      topts=["칼리시바이러스과 (라틴어 calyx = 포도주잔)", "인수공통이며 조개 안에서 복제", "세포 배양이 되지 않음", "지사제를 일상적으로 투여", "'겨울 구토 벌레'"],
+      ans="①, ③, ⑤",
+      exp=["O|①::위에서 본 모양이 잔(calyx) 같아서.", "X|②::조개는 물을 <b>걸러 먹으며 바이러스가 흡착</b>될 뿐, 그 안에서 <b>복제 X</b> → <b>인수공통 아님</b>(우세한 견해).",
+           "O|③::배양 불가 → 연구·전통적 백신·치료제 개발 어려움.", "X|④::설사로 바이러스를 빨리 배출하는 게 회복에 좋아서 <b>지사제를 주지 않음</b>.",
+           "O|⑤::영국 별명. 겨울 식중독은 거의 노로. ('stomach flu'는 로타를 더 많이 가리킴)",
+           "KEY|노로 vs 아르보: 노로는 조개 안 복제 X / 아르보는 모기 안에서도 복제 O"]),
+ "DENGUE": dict(part="vr", ref=REC + "통합본 2-6", kw="dengue virus", kwk="뎅기 바이러스",
+      opts=["four serotypes (DENV-1 to -4)", "vector: <i>Aedes aegypti</i>", "Dengvaxia: chimeric live vaccine using the yellow fever vaccine backbone",
+            "antibody-dependent enhancement (ADE)", "aspirin is preferred for pain relief"],
+      topts=["혈청형 4종", "매개: 이집트숲모기", "뎅그박시아: 황열 백신 백본을 쓴 키메라 생백신", "항체 의존성 감염 증강(ADE)", "통증 완화엔 아스피린이 우선"],
+      ans="①, ②, ③, ④",
+      exp=["O|①::1~4형.", "O|②::황열·지카와 같은 매개 모기.", "O|③::황열 백신 백본에 뎅기 표면단백 유전자를 심은 <b>4가 약독화 생백신</b>.",
+           "O|④::백신 항체가 다른 혈청형 감염 때 오히려 바이러스를 세포로 끌어들임 → '백신이 있지만 쓰기 어렵다'.",
+           "X|⑤::아스피린은 출혈 경향 ↑ → <b>아세트아미노펜(타이레놀)</b>이 나음.", "KEY|중증 = 뎅기 출혈열(혈소판↓) · 뎅기 쇼크 증후군"]),
+ "ZIKA": dict(part="vr", ref=REC + "통합본 2-6", kw="Zika virus", kwk="지카 바이러스",
+      opts=["first isolated in 1947 from a monkey in the Zika Forest, Uganda", "Guillain-Barré syndrome: antibodies attack the myelin sheath",
+            "microcephaly by vertical transmission", "transmission through semen", "vaccine and specific antiviral drug available"],
+      topts=["1947년 우간다 지카 숲의 원숭이에서 처음 분리", "길랭-바레 증후군: 항체가 신경 수초를 공격", "수직 감염에 의한 소두증", "정액을 통한 전파", "백신과 특이 치료제가 있음"],
+      ans="①, ②, ③, ④",
+      exp=["O|①::뎅기·황열을 의심했는데 전혀 다른 바이러스였음.", "O|②::급성 염증성 탈수초성 다발성 신경병증(자가면역) → 마비.",
+           "O|③::소두증 원인 감염병 = HCMV, 풍진, 지카.", "O|④::정액 등 체액에 더 오래 남음 → 귀국 후 약 한 달 성접촉 피하기.", "X|⑤::백신·치료제 <b>없음</b>.",
+           "TIP|2013 카누 대회 → 2015~16 브라질 대유행 (월드컵 아님)"]),
+ "HCV": dict(part="vr", ref=REC + "통합본 2-6", kw=LINK, kwk="연결이 옳은 것을 모두 고르시오", link=True, kw2="HCV 치료제 - 기전",
+      opts=["sofosbuvir - nucleotide analogue inhibiting the viral polymerase", "velpatasvir - NS3/NS4A protease inhibitor", "glecaprevir - NS3/NS4A protease inhibitor",
+            "ribavirin - clinical indications: HCV and RSV", "DAA combination - cure after 8~12 weeks of treatment"],
+      topts=["소포스부비르 - 중합효소를 막는 뉴클레오타이드 유사체", "벨파타스비르 - NS3/NS4A 단백분해효소 억제", "글레카프레비르 - NS3/NS4A 단백분해효소 억제",
+             "리바비린 - 임상 적응증 HCV와 RSV", "DAA 병용 - 8~12주 치료로 완치"],
+      ans="①, ③, ④, ⑤",
+      exp=["O|①::핵산 합성 차단.", "X|②::velpatasvir는 <b>NS5A</b> 억제 (NS5A = 중합효소를 돕고 조립에도 관여).", "O|③::폴리프로테인 절단 차단 ('-previr' = 프로테이스).",
+           "O|④::과거 리바비린 + 인터페론 α 병용, 지금은 잘 안 씀.", "O|⑤::C형 간염 = 완치 가능한 감염병 (백신은 없음).",
+           "TIP|-<b>buvir</b> = 중합효소 / -<b>asvir</b> = NS5A / -<b>previr</b> = 프로테이스"]),
+}
+_VEC = dict(part="vr", ref=REC + "통합본 2-6", kw=LINK, kwk="연결이 옳은 것을 모두 고르시오", link=True, kw2="virus - vector",
+      opts=["Japanese encephalitis virus - <i>Culex tritaeniorhynchus</i>", "yellow fever virus - <i>Aedes aegypti</i>", "dengue virus - <i>Anopheles</i>",
+            "West Nile virus - <i>Aedes albopictus</i> and <i>Culex</i>", "<i>Aedes aegypti</i> - adults already established in Korea"],
+      topts=["일본뇌염 - 작은빨간집모기", "황열 - 이집트숲모기", "뎅기 - 학질모기(Anopheles)", "웨스트나일 - 흰줄숲모기와 집모기", "이집트숲모기 - 이미 국내에 성충이 정착"],
+      ans="①, ②, ④",
+      exp=["O|①::국내에 있음, 초여름 경보.", "O|②::'yellow fever mosquito'.", "X|③::뎅기도 <b>이집트숲모기</b>. Anopheles는 말라리아.",
+           "O|④::자연숙주는 조류(로빈·까마귀).", "X|⑤::제주·남해안에서 <b>유충만</b> 관찰, 성충은 아직 X (5~10년 내 상륙 예측).",
+           "KEY|교수님 '시험 후보': 이집트숲모기(황열·뎅기·지카) / 흰줄숲모기(국내 O) / 작은빨간집모기(일본뇌염, 국내 O)"])
+
+def _after(key, items):
+    for idx, d in enumerate(MC):
+        if d["kw"] == key or d.get("kw2") == key:
+            MC[idx + 1:idx + 1] = items
+            return
+    raise KeyError(key)
+
+MC = [(_VEC if d.get("kw2") == "virus - vector" else d) for d in MC]
+_after("rotavirus", [_NEW["HAV"], _NEW["NORO"]])
+_after("virus - vector", [_NEW["DENGUE"], _NEW["ZIKA"], _NEW["HCV"]])
+
+ESSAY[0] = dict(part="vr", ref=REC + "통합본 2-6", pts=1, term="arbovirus",
+      tr="아르보바이러스(arbovirus)의 뜻을 쓰시오.",
+      ans="절지동물(모기·진드기 등)이 매개하여 전파되는 바이러스의 통칭 (ARthropod-BOrne)",
+      exp=["<b>모범답안</b>: 모기·진드기 같은 <b>절지동물이 매개</b>해 전파되는 바이러스를 통칭 (진드기 매개 = tick-borne).",
+           "예: HCV를 제외한 플라비바이러스과(황열·웨스트나일·뎅기·지카·일본뇌염) — 모두 모기 매개 인수공통 감염병, 토가바이러스과 알파바이러스.",
+           "보너스: 아르보바이러스는 <b>절지동물 안에서도 복제</b> (노로는 조개 안에서 복제 X).",
+           "TIP|ARthropod + BOrne = ARBO"])
+ESSAY = [e if not e["term"].startswith("Baltimore") else dict(part="vr", ref=REC + "통합본 2-10", pts=2,
+      term="hepatitis A, C, E virus (전파 경로, 만성화, 백신·치료제 비교)",
+      tr="A형·C형·E형 간염 바이러스를 전파 경로, 만성화 여부, 백신·치료제 측면에서 비교하시오.",
+      ans="A = 분변-구강, 만성화 X, 백신 O·치료제 X / C = 혈액, 만성화 50~80%(간암), 백신 X·치료제 O(DAA 완치) / E = 분변-구강·돼지고기(인수공통), 임신부 치명률↑, 백신 중국만·치료제 X",
+      exp=["<b>채점 포인트 ① 전파·만성화 (1점)</b>: A형 = 오염된 물·음식(분변-구강), 급성으로만 끝남 / C형 = 혈액 접촉(정맥주사 약물·수혈), <b>50~80% 만성</b> → 간경화 → 간암(가장 대표 원인) / E형 = 분변-구강·덜 익힌 돼지고기, 인수공통(3·4형), 임신부 치명률 약 10배.",
+           "<b>채점 포인트 ② 백신·치료제 (1점)</b>: A형 백신 O, 치료제 X / C형 백신 X, <b>DAA</b>(sofosbuvir 등)로 8~12주 완치 / E형 백신은 <b>중국에서만</b> 허가, 치료제 X.",
+           "TIP|모음(A·E) = 입 / 자음(B·C·D) = 피"], fig=svgs.HEP, figw=36) for e in ESSAY]
+
 # ---------------------------------------------------------------- 렌더링
 TOTAL_MC = len(MC)
 TOTAL = TOTAL_MC + sum(e["pts"] for e in ESSAY)
@@ -289,14 +375,14 @@ RAW(f'''<section class="page cover vr">
  <div class="l" style="background:linear-gradient(135deg,#5847d6 0%,#2a6fb5 55%,#0e8a6a 100%)">
   <div class="chip">약품미생물학 · 2026 가을학기 · 중간고사 대비</div>
   <h1>통합모의고사<br><span style="font-size:20pt;font-weight:700">그람양성균 + 바이러스</span></h1>
-  <p>2-1학기 미생물학 중간고사 기출 스타일<br>"(키워드) 정답: ___" 모두 고르기 + 용어 서술형</p>
+  <p>2-1학기 미생물학 중간고사 기출 스타일<br>"(키워드) 정답: ___" 모두 고르기 + 용어 서술형<br><b>+ 중간고사 전 마지막 강의 녹취록 반영</b></p>
   <p style="margin-top:8mm;font-size:11pt;opacity:.9">총 {TOTAL}점 만점 · 객관식 {TOTAL_MC}문항(각 1점) · 서술형 {len(ESSAY)}문항</p>
  </div>
  <div class="r">
   <div style="font-weight:800;font-size:13pt">구성</div>
   <div class="toc"><!--TOC--></div>
   <div class="card2 warm" style="margin-top:3mm"><h4>추천 사용법</h4>
-   <ul class="b"><li>① <b>실전 시험지</b>(4쪽)를 60분 타이머 켜고 풀기</li><li>② 문항별 페이지에서 정답·해설 확인</li><li>③ 맨 뒤 <b>빠른 정답표</b>로 채점 → 점수 기록</li><li>④ 틀린 문항의 '통합본 단원'을 다시 보기</li></ul></div>
+   <ul class="b"><li>① <b>실전 시험지</b>(4쪽)를 60분 타이머 켜고 풀기</li><li>② 문항별 페이지에서 정답·해설 확인</li><li>③ 맨 뒤 <b>빠른 정답표</b>로 채점 → 점수 기록</li><li>④ 틀린 문항의 '통합본 단원'을 다시 보기</li><li><span class="tag y">녹취록 반영</span> 표시 = 마지막 강의 교수님 설명에서 출제</li></ul></div>
  </div>
 </section>''')
 

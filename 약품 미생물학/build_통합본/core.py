@@ -86,7 +86,7 @@ def Q(part, topic, src, orig, trans, ans, exp, opts=None, topts=None, mk="circle
             figpart = f'<div class="afig" style="width:{figw}%">{fig}</div>'
         else:
             figpart = f'<div class="afig" style="width:{figw}%"><img src="img/{fig}"></div>'
-    added = ' added' if src.startswith("추가") else ''
+    added = ' added' if (src.startswith("추가") or "녹취록" in src) else ''
     page = f'''
 <section class="page qpage {part}">
   <header class="qhead">
