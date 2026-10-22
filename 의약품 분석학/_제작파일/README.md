@@ -24,3 +24,8 @@ python3 build.py          # index.html 생성
 NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 ```
 필요: Python 3, Node + playwright(Chromium), poppler-utils(pdftoppm), ImageMagick, 한글 폰트 Noto Sans KR.
+
+## 모의고사/
+- `mock.py` — 문제·정답·해설(객관식 `MC`, 주관식 `SA`)과 시험지 디자인. 정답 위치는 `TARGET`으로 고르게 분산.
+- `ids.json` — 마스터 요약의 개념 번호·쪽수(해설의 📍 표시). 마스터 요약을 다시 만들면 `build.py`의 `ids`로 갱신.
+- 실행: `python3 mock.py && NODE_PATH=$(npm root -g) node r.js` → `mock.pdf`
