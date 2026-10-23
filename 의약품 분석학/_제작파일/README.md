@@ -24,3 +24,10 @@ python3 build.py          # index.html 생성
 NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 ```
 필요: Python 3, Node + playwright(Chromium), poppler-utils(pdftoppm), ImageMagick, 한글 폰트 Noto Sans KR.
+
+## 모의고사_문제풀이/
+물리약학 「중간고사 모의고사 객관식35OX15」·「문제 풀이」와 같은 디자인(A4 가로, 문제지 2단 → 빠른 정답표 → 3문제씩 사고의 흐름 해설).
+- `xd.py` — 공용 디자인(CSS)·문제 카드·사고의 흐름(👀단서 🤔질문 💡연결 🧮계산 🔍함정 체크 ✅결론)·자동 페이지 나눔
+- `exam.py` — 모의고사(객관식 `MC` 35 · `OX` 15 · 주관식 `SA` 9). 정답 위치 `POS`(①–⑤ 각 7개)
+- `book.py` — 문제 풀이: 1쪽 한 장 정리 + 마스터 요약의 모든 문제 40개와 개념 예제(`EX`)를 사고의 흐름으로 변환
+- 실행: `python3 exam.py && python3 book.py`, 그다음 `NODE_PATH=$(npm root -g) node render.js "$PWD/exam.html" "$PWD/exam.pdf" "$PWD/paginate.js"` (book도 같은 방식)
