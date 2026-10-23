@@ -37,3 +37,16 @@
 - `인체생리학_1-7장_마스터요약_개념문제.pdf` (중간 범위 1–7장, 90쪽)
 - `인체생리학_1-7장_통합모의고사.pdf` (50문항, 24쪽)
 - 교수님 예시문제 이미지는 Sherwood 9판 테스트뱅크(`문제뱅크_...` 폴더)에 그대로 있지 않음.
+
+## PDF 생성 코드 (`_build/`) — 같은 디자인으로 이어서 만들 때
+- `_build/src/` : 빌드 코드 / `_build/fig/` : 강의 슬라이드에서 잘라낸 그림 / `_build/crop.py` : 그림 자르기 스크립트
+- 준비: Pretendard 폰트 설치 (`~/.fonts`에 Pretendard ttf), Node의 playwright 사용 (`/opt/node22/lib/node_modules/playwright`)
+- 마스터 노트: `cd _build/src && bash lv.sh && node pdf.js $PWD/out.html 출력.pdf`
+  (lv.sh가 페이지별 글자 크기를 자동으로 맞추고 넘침을 검사 → "NO OVERFLOW"면 정상)
+- 모의고사: `python3 mbuild.py && node pdf.js $PWD/mout.html 출력.pdf`
+- 파일 역할
+  - `lib.py` 카드·표·문제 카드 함수 / `style.css` 디자인 / `front.py` 표지 / `back.py` 총정리
+  - `c1.py`~`c7.py` 장별 요약 페이지 / `q1.py`~`q7.py` 장별 개념문제(한글 답·핵심어·오답 이유)
+  - `annotate.py` 약어·용어 [즉, ~] 풀이 / `allen.py`+`endict.py` 영어 용어 한글 병기 사전
+  - `mdata.py` 모의고사 50문항 / `mbuild.py` 모의고사 조립 / `mstyle.css` 모의고사 디자인
+- 기말 범위는 `c8.py…`, `q8.py…`를 같은 형식으로 추가하고 `build.py`의 mods 목록·`lib.COLORS`를 늘리면 됨.
