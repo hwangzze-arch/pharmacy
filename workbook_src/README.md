@@ -19,3 +19,23 @@
 - `build.py`: 공통 표지·가이드·차례 + CSS + 자동 맞춤 JS
 - 필요: `pip install playwright pymupdf`, Noto Sans KR / Noto Serif / JetBrains Mono 폰트
 
+
+## 시험대비 요약노트 (examNN.py) — 13~18장 완료
+`python3 exam18.py` → `exam_ch18.pdf` (공통 엔진 `examlib.py`, 13장만 `exam13.py` 자체 빌드)
+- 구성: 표지 → 차례 → [개념 요약 → 개념확인(워밍업) → 그 묶음의 교수님 기출] 반복 → 약어 총정리
+- 요약 페이지마다 "🔤 이 페이지의 약어"(영어 / 한글 / 한 줄 뜻), 풀이노트 문제는 쪽수만 표시
+- `CHECK_AFTER = {요약 인덱스: 'C1', ...}` 로 개념확인 위치 지정
+
+### 교수님 테스트뱅크 (tbNN.py, 원본 `lehninger6e_tb_chNN.pdf`)
+- 문제 1개 = 1페이지: 영어 원문 → 번역 → 풀이 빈칸 → 정답(영어 + 한글) → 고1 수준 쉬운 풀이(그림·표)
+- 항목: `n, sec(0부터 시작하는 요약 인덱스), diff, title, kind('MC'|'SA'), en, ko, answer, explain`
+- 강의자료에 없는 문제·지나치게 어려운 문제는 제외 (13장만 예외로 13.2 유기화학 15·16·17·43 포함)
+- 테스트뱅크 정답 오류는 ⚠️ 노트로 표시
+- `examNN.py`에 `__getattr__`로 `from tbNN import TB` 지연 로드 (순환 import 방지)
+
+### 검수
+- 렌더 출력의 `fit`에 True가 없어야 함 (넘침 0), 3×3 페이지 이미지로 겹침 확인
+
+## 기타
+- `review25.py`: 2025 중간고사 복기 기반 실전 서술형 연습 12문제
+- 시험 형식 기록: 저장소 루트 `생화학 시험 기록.md` (2026 중간: 객관식 50(단일·다답형) + 빈칸 3)
