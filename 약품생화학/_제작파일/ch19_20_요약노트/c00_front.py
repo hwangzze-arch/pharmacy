@@ -31,11 +31,11 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="cv-left"><div class="cv-k">LEHNINGER · PHARMACEUTICAL BIOCHEMISTRY · 기말 대비 노트</div>
 <div class="cv-h">약품생화학<br>Chap 19–20 시험대비<br>요약노트 (TB추가)</div>
 <div class="cv-flow">전자전달 → ATP 합성 → 조절·ROS → 미토콘드리아의 다른 얼굴 → 광합성 명반응 → 캘빈 회로</div>
-<div class="cv-chips"><span class="cv-chip">개념 요약 {{NC}}</span><span class="cv-chip">교수님 테스트뱅크 {{NTB}}문제</span><span class="cv-chip">개념확인 · 원서 문제 {{NMY}}</span><span class="cv-chip">다답형 · 빈칸 · O/X 연습</span><span class="cv-chip">약어 총정리</span></div>
+<div class="cv-chips"><span class="cv-chip">개념 요약 {{NC}}</span><span class="cv-chip">교수님 테스트뱅크 {{NTB}}문제</span><span class="cv-chip">개념확인 {{NMY}}</span><span class="cv-chip">다답형 · 빈칸 · O/X 연습</span><span class="cv-chip">📍 몸속 위치 표시</span><span class="cv-chip">약어 총정리</span></div>
 <div class="cv-txt"><span class="r">범위 = 강의자료 Chap19_20_note (134쪽)</span> · Lehninger 19장(산화적 인산화·광인산화) + 20.1(광합성 탄수화물 합성).<br>
 2026 중간고사 형식: <b>객관식 50</b>(하나 고르기 + <b>맞는 것 모두 고르기</b>) + <b>빈칸 3</b> → 보기 하나하나 O/X로 따지는 연습이 핵심.<br>
 각 개념은 <b>💡 핵심 → 📖 설명 → 📐 공식 → ✍️ 예제 → 🧠 한 줄</b>, 바로 뒤에 그 개념의 문제(왼쪽 문제·풀이칸, 오른쪽 정답·해설).<br>
-PART마다 <b>개념 요약 → 개념확인·원서 문제 → 교수님 기출(테스트뱅크)</b> 순서. 테스트뱅크 정답이 의심스러운 곳은 ⚠️로 표시했어.</div>
+개념마다 <b>📍 몸속 어디?</b>(13–18장 스토리 마인드맵에 이어서)를 달았어. PART마다 <b>개념 요약 → 개념확인 → 교수님 기출(테스트뱅크)</b> 순서. 테스트뱅크 정답이 의심스러운 곳은 ⚠️로 표시했어.</div>
 <div class="cv-stats">
 <div class="cv-st"><b>134</b><span>강의 슬라이드<br>Chap 19–20</span></div>
 <div class="cv-st"><b>{{NTB}}</b><span>테스트뱅크<br>ch19 76 · ch20 21</span></div>
@@ -43,6 +43,7 @@ PART마다 <b>개념 요약 → 개념확인·원서 문제 → 교수님 기출
 <div class="cv-st"><b>30/32</b><span>포도당 1개의<br>ATP (꼭 기억!)</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>
 <div class="row"><span class="n">00</span><span class="nm">시험 형식 · 이 노트 쓰는 법<span>Guide</span></span><span class="pg">{{PAGE:f-guide}}</span></div>
+<div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">한 장으로 보는 큰 그림<span>Big map</span></span><span class="pg">{{PAGE:f-map}}</span></div>
 <div class="row"><span class="n">01</span><span class="nm">19.1 전자전달 사슬<span>Respiratory chain</span></span><span class="pg">{{S:{P1}}}</span></div>
 <div class="row"><span class="n">02</span><span class="nm">19.2 ATP 합성<span>ATP synthase</span></span><span class="pg">{{S:{P2}}}</span></div>
@@ -56,7 +57,7 @@ PART마다 <b>개념 요약 → 개념확인·원서 문제 → 교수님 기출
 <div class="cv-p" style="border-top-color:#12937a"><div class="a">PART 3–4 조절 · 미토콘드리아</div><div class="b">수용체 조절 · IF₁ · ROS · 갈색지방 · P-450 · 세포자멸사 · mtDNA</div></div>
 <div class="cv-p" style="border-top-color:#c2410c"><div class="a">PART 5–6 광합성</div><div class="b">엽록소 · PSII/PSI · Z 도식 · 광인산화 · 캘빈 회로 · 루비스코</div></div>
 <div class="cv-p" style="border-top-color:#f0a020"><div class="a">FINAL</div><div class="b">혼동 쌍 · 숫자 카드 · 약어 총정리</div></div></div>
-<div class="cv-src">Chap19_20_note 강의자료 · 쉬운 설명 · 교수님 테스트뱅크(lehninger6e_tb_ch19·20) · 원서 연습문제 솔루션(solutionsch19·20) · 레닌저 원서 · 생화학 시험 기록(2026 중간 형식)을 바탕으로 정리</div>
+<div class="cv-src">Chap19_20_note 강의자료 · 쉬운 설명 · 교수님 테스트뱅크(lehninger6e_tb_ch19·20) · 생화학_13-18장_스토리_마인드맵 · 레닌저 원서 · 생화학 시험 기록(2026 중간 형식)을 바탕으로 정리</div>
 """)
 
 guide = dict(t="r", id="f-guide", html=f"""
@@ -74,10 +75,28 @@ guide = dict(t="r", id="f-guide", html=f"""
 </div><div class="side">
 <div class="card tip"><div class="ct">📌 이 노트 사용법</div><ol style="margin:0"><li>개념 페이지 정독 (💡→📖→📐→✍️→🧠)</li><li>바로 뒤 문제에서 <b>오른쪽을 가리고</b> 왼쪽 풀이칸에 직접 풀기</li><li>틀린 문제는 “👉 왜?” 줄과 🧠 한 줄만 다시</li><li>시험 직전: 맨 끝 「혼동 쌍」 「숫자 카드」 「약어 총정리」</li></ol></div>
 <div class="card"><div class="ct">🖍 표시 약속</div><y>노랑 = 핵심 개념</y> · <g>초록 = 공식·결론</g> · <pk>분홍 = 시험 포인트·함정</pk><br>
-<span class="qk tb">교수님 기출 · TB</span> 교수님 테스트뱅크 · <span class="qk txt">원서 연습문제</span> 솔루션 확인 · <span class="qk chk">개념확인</span> 직접 만든 연습<br>
+<span class="qk tb">교수님 기출 · TB</span> 교수님 테스트뱅크 · <span class="qk chk">개념확인</span> 직접 만든 연습<br>
 <span class="term" style="display:inline-block;margin-top:4px">＊[용어: …] = 어려운 말이 나오면 바로 아래에서 쉬운 말로 풀어 줌</span></div>
-<div class="card trap"><div class="ct">⚠️ 테스트뱅크 정답 주의 (⚠️ 상자로 표시)</div>19-29(명반응 결과) · 19-30(틀린 것: 실제는 C) · 19-62(인산 운반 = 공동수송) · 19-64(38 ATP → 강의는 30/32). 원서 문제는 <b>5판 솔루션</b>으로 답을 확인했어.</div>
+<div class="card trap"><div class="ct">⚠️ 테스트뱅크 정답 주의 (⚠️ 상자로 표시)</div>19-29(명반응 결과) · 19-30(틀린 것: 실제는 C) · 19-62(인산 운반 = 공동수송) · 19-64(38 ATP → 강의는 30/32).</div>
 </div></div>""")
+
+story = dict(t="r", id="f-story", html=f"""
+<style>
+.st-grid{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:9px;flex:1;}}
+.sc-b{{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:11px;padding:10px 14px;font-size:1.13em;line-height:1.75;}}
+.sc-b .t{{font-weight:800;color:var(--c);font-size:1.05em;}} .sc-b .w{{display:inline-block;background:var(--c);color:#fff;border-radius:6px;font-size:.78em;font-weight:700;padding:0 7px;margin:2px 0 3px 0;}}
+.sc-b .p{{font-size:.85em;color:#6c7280;}}
+</style>
+<div class="hd"><span class="bd">읽기 전에 ②</span><div class="tt"><h1>19–20장 스토리 — 숨 쉬는 순간부터 샐러드 한 입까지</h1><div class="sb">13–18장 마인드맵의 “5단계 전자전달계(내막)”를 확대한 이야기 · 개념마다 📍 몸속 어디?로 다시 나와</div></div><span class="pt">{P0}</span></div>
+<div class="core"><span class="lb">🧭 줄거리</span>밥 → 포도당 → 세포질(해당) → 미토 기질(TCA) → <b>미토 내막(전자전달·ATP 합성) ← 19장</b> → 숨 쉰 O₂가 물로 … 그 밥의 탄소는 원래 <b>식물 잎의 엽록체(광합성) ← 19장 후반·20장</b>에서 왔다!</div>
+<div class="st-grid">
+<div class="sc-b" style="--c:#4651c8"><div class="t">① 트럭 하역 — 호흡사슬</div><span class="w">미토콘드리아 내막</span><br>TCA 맷돌이 채운 NADH·FADH₂ 트럭이 내막 레일(I → Q → III → cyt c → IV)에 전자를 쏟는다. 레일 끝 청소부 O₂(코 → 폐 → 혈액 → 세포)가 받아 물. 지나가며 H⁺를 막사이공간으로 퍼 올림.<div class="p">PART 1 · 개념 01–11</div></div>
+<div class="sc-b" style="--c:#127a64"><div class="t">② 물레방아 — ATP 합성</div><span class="w">내막 → 기질</span><br>막사이공간 댐에 고인 H⁺가 ATP 합성효소(F₀ 터빈 → γ축 → F₁)를 돌리며 기질로 → ATP 목돈. ANT가 ATP를 세포질로 출하(근육 수축에 사용).<div class="p">PART 2 · 개념 12–17</div></div>
+<div class="sc-b" style="--c:#9a4a12"><div class="t">③ 공장장 — 조절·불똥</div><span class="w">세포질 ↔ 기질</span><br>운동해서 ADP가 쌓여야 보일러가 빨리 돈다. 숨이 차면(저산소) IF₁이 역주행 방지, 새는 전자는 ROS 불똥 → SOD·GPx가 청소, HIF-1(핵)이 보일러 감속.<div class="p">PART 3 · 개념 18–20</div></div>
+<div class="sc-b" style="--c:#c2410c"><div class="t">④ 보일러실의 부업</div><span class="w">갈색지방 · 간 · 부신 · 췌장</span><br>아기 등 갈색지방의 난로(UCP1), 간 소포체·부신 미토의 P-450(해독·스테로이드), cyt c 자폭 버튼(세포자멸사), 엄마에게서 온 mtDNA(LHON 눈, MERRF 근육), 췌장 β세포 혈당 센서.<div class="p">PART 4 · 개념 21–25</div></div>
+<div class="sc-b" style="--c:#2f7d32"><div class="t">⑤ 밥의 고향 — 식물 잎의 태양광 발전</div><span class="w">엽록체 틸라코이드 막</span><br>햇빛 → 엽록소 안테나 → PSII가 물을 쪼개 O₂(우리가 마실 산소!) → PQ → b₆f → PC → PSI → NADPH. 내강에 쌓인 H⁺로 ATP. 미토와 똑같은 엔진, 연료만 빛.<div class="p">PART 5 · 개념 26–33</div></div>
+<div class="sc-b" style="--c:#7c2d92"><div class="t">⑥ 설탕 공장 — 캘빈 회로</div><span class="w">엽록체 스트로마 → 세포질 → 체관</span><br>기공으로 들어온 CO₂ + ATP·NADPH → 루비스코 → G3P → 수크로스로 포장해 체관 배송 → 감자 녹말·쌀·채소 → 우리가 먹으면 다시 13장 1단계로. 이야기가 원을 그린다.<div class="p">PART 6 · 개념 34–38</div></div>
+</div>""")
 
 bigmap = dict(t="r", id="f-map", html=f"""
 <style>
@@ -90,7 +109,7 @@ bigmap = dict(t="r", id="f-map", html=f"""
 .ar{{color:#9aa0ac;font-weight:700;}}
 .pump{{color:#c2410c;font-weight:800;font-size:.85em;}}
 </style>
-<div class="hd"><span class="bd">읽기 전에 ②</span><div class="tt"><h1>한 장으로 보는 큰 그림 — 미토콘드리아와 엽록체는 같은 엔진</h1><div class="sb">Big map: respiratory chain · ATP synthase · Z scheme · Calvin cycle</div></div><span class="pt">{P0}</span></div>
+<div class="hd"><span class="bd">읽기 전에 ③</span><div class="tt"><h1>한 장으로 보는 큰 그림 — 미토콘드리아와 엽록체는 같은 엔진</h1><div class="sb">Big map: respiratory chain · ATP synthase · Z scheme · Calvin cycle</div></div><span class="pt">{P0}</span></div>
 <div class="mp">
 <div class="lane"><div class="lt" style="color:#4651c8">⚡ 미토콘드리아 호흡사슬 (전자: NADH → O<sub>2</sub>, 내리막)</div>
 <div class="chain"><span class="nd" style="border-color:#4651c8">NADH<small>−0.32 V</small></span><span class="ar">→</span>
@@ -116,4 +135,4 @@ H<sup>+</sup>(P쪽) → <b>F<sub>o</sub></b>(a · b₂ · c 고리, 올리고마
 3 RuBP + 3 CO₂ <b>(루비스코)</b> → 6 3-PG → (6 ATP · 6 NADPH) → 6 G3P → <b>1 G3P 출하</b>(DHAP ⇄ Pᵢ 역수송체 → 수크로스) + 5 G3P → (트랜스케톨레이스·TPP, 3 ATP) → 3 RuBP · G3P 1개 = ATP 9 + NADPH 6 · 포도당 = ATP 18 + NADPH 12</div>
 </div>""")
 
-E = [cover, guide, bigmap]
+E = [cover, guide, story, bigmap]

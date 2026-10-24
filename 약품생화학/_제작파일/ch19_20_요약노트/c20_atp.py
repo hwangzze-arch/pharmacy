@@ -89,37 +89,6 @@ side=[("img", 60, "원본 슬라이드 60 — ANT(ATP⁴⁻/ADP³⁻ 역수송) 
 one="P/O = 10/4 = 2.5 (NADH), 6/4 = 1.5 (숙신산). ATP 1개 = H⁺ 3(합성) + 1(ANT·인산 수송)."),
 
 # ───────────────────────────── 문제
-dict(t="q", id="q-uncoupler", part=P, kind=["txt", "sa"], title="짝풀림제를 먹으면 왜 열이 나고 살이 빠질까?", src="원서(5판) 19장 연습문제 6 · 솔루션 수록",
-en="""In normal mitochondria, electron transfer is tightly coupled to ATP demand; P/O ≈ 2.5 with NADH.<br>
-a. Predict the effect of a low and a high concentration of uncoupler on the rate of electron transfer and the P/O ratio.<br>
-b. Ingestion of uncouplers causes profuse sweating and an increase in body temperature. Explain. What happens to P/O?<br>
-c. How could DNP serve as a weight-reducing aid? Why might uncouplers cause death?""",
-q="(a) 짝풀림제 농도가 낮을 때/높을 때 전자전달 속도와 P/O 비 변화 (b) 땀·체온 상승의 분자적 이유 (c) DNP가 체중 감량제가 될 수 있는 원리와 사망 원인",
-a="(a) 전자전달 속도 ↑, P/O ↓ (고농도일수록 P/O → 0) (b) H⁺ 기울기 에너지가 ATP 대신 열로 (c) 같은 ATP를 얻으려 연료(지방)를 더 태움 / 고열·ATP 고갈로 사망",
-steps=[("(a) 짝풀림제 = H<sup>+</sup> 새는 구멍 → 기울기 ↓ → 호흡사슬이 더 빨리 돈다(<b>O<sub>2</sub> 소비 ↑</b>). 같은 O<sub>2</sub>당 만드는 ATP는 ↓ → <b>P/O ↓</b>. 농도가 높으면 거의 모든 H<sup>+</sup>가 새서 <b>P/O ≈ 0</b>", "구멍이 크면 물레방아는 거의 안 돈다."),
-       ("(b) 기울기에 저장된 에너지가 ATP로 안 가고 <b>열</b>로 흩어짐 → 체온 ↑ → 식히려고 땀", ""),
-       ("(c) ATP 효율이 떨어지니 필요한 ATP를 채우려 <b>지방·당을 더 많이 태움</b> → 체중 ↓. 그러나 조절이 안 돼 <b>치명적 고열</b> + 뇌·심장 ATP 부족 → 사망", "1930년대 실제 다이어트약 → 금지.")],
-one="짝풀림 = 연비 나쁜 엔진: 연료(O₂·지방)는 펑펑, ATP는 찔끔, 나머지는 열."),
-
-dict(t="q", id="q-valino", part=P, kind=["txt", "sa"], title="발리노마이신: 짝풀림제일까, 억제제일까?", src="원서(5판) 19장 연습문제 7 · 솔루션 수록",
-en="When valinomycin is added to actively respiring mitochondria, the yield of ATP decreases, the rate of O<sub>2</sub> consumption increases, heat is released, and the pH gradient across the inner membrane increases. Does valinomycin act as an uncoupler or as an inhibitor? Explain in terms of its ability to transfer K<sup>+</sup>.",
-q="호흡 중인 미토콘드리아에 발리노마이신을 넣으면 ATP 수율 ↓, O<sub>2</sub> 소비 ↑, 열 발생, <b>pH 기울기는 오히려 ↑</b>. 짝풀림제인가 억제제인가? K<sup>+</sup> 운반 능력으로 설명하시오.",
-a="짝풀림제 — K⁺를 기질로 실어 날라 Δψ(전기 기울기)를 없애므로, 호흡사슬이 H⁺를 더 퍼내 ΔpH는 커지지만 전체 구동력이 부족해 ATP는 줄고 에너지는 열로 사라진다.",
-steps=[("O<sub>2</sub> 소비 ↑ + ATP ↓ + 열 → <b>짝풀림제</b>의 전형적 징후", "억제제라면 O₂ 소비가 ↓여야 함."),
-       ("발리노마이신 = K<sup>+</sup> 이온운반체. 양성자 펌프로 기질이 (−)가 되면 K<sup>+</sup>(+)가 <b>기질 안으로</b> 쏟아져 들어감 → <b>Δψ 소멸</b>", ""),
-       ("Δψ가 사라지면 H<sup>+</sup>를 밖으로 퍼내기 쉬워져 호흡사슬이 더 빨리 돌고 → H<sup>+</sup>가 더 많이 쌓여 <b>ΔpH는 ↑</b>", "전하 반발이 없어져 펌프가 가벼워짐."),
-       ("하지만 구동력(ΔpH + Δψ)의 큰 몫인 Δψ를 잃어 ATP 합성은 ↓", "")],
-one="발리노마이신 = K⁺ 운반 → Δψ 제거 → 짝풀림(O₂ ↑, ATP ↓, 열). 대신 ΔpH는 커진다."),
-
-dict(t="q", id="q-adp", part=P, kind=["txt", "sa"], title="ATP 합성 속도는 왜 Pᵢ가 아니라 ADP가 정할까?", src="원서(5판) 19장 연습문제 11 · 솔루션 수록",
-en="Although ATP synthesis requires both ADP and P<sub>i</sub>, the rate of synthesis depends mainly on the concentration of ADP, not P<sub>i</sub>. Why?",
-q="ATP 합성에는 ADP와 P<sub>i</sub>가 모두 필요한데, 속도는 주로 ADP 농도에 따라 정해진다. 왜일까?",
-a="세포 속 Pᵢ는 늘 충분히(수 mM) 있어 포화 상태지만 ADP는 농도가 낮고, ATP를 쓸 때만 늘어나므로 ADP가 속도를 결정하는 ‘제한 기질’이 된다.",
-steps=[("P<sub>i</sub>: 세포 내 농도가 높고 거의 일정 → 효소가 이미 포화 → 조금 변해도 속도 그대로", ""),
-       ("ADP: 평소 매우 낮음, ATP를 쓰면(근육 수축 등) 바로 ↑ → 합성 속도가 ADP 농도를 따라감", "Michaelis-Menten에서 K_m 근처 농도 = 속도가 민감하게 변함."),
-       ("이것이 <b>acceptor control(수용체 조절)</b> — ADP(인산기를 받는 ‘수용체’)가 호흡 속도를 조절 ({REF:c-regul})", "")],
-one="Pᵢ는 늘 넘치고 ADP는 쓸 때만 생긴다 → ADP가 브레이크/액셀 (수용체 조절)."),
-
 dict(t="q", id="q-po", part=P, kind=["calc", "bl"], title="H⁺ 동전으로 ATP 개수 세기", src="개념확인 · 슬라이드 58",
 q="""(1) NADH의 전자 2개가 O<sub>2</sub>까지 가면 H<sup>+</sup> <span class="blank">(가)</span>개가 펌프된다 (I 4 + III 4 + IV 2).<br>
 (2) 숙신산에서 출발하면 <span class="blank">(나)</span>개.<br>

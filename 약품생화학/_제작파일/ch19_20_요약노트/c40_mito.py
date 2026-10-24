@@ -65,7 +65,7 @@ detail="""<ol><li>혈당 ↑ → GLUT2(포도당 수송체)로 포도당 유입 
 <li>ATP가 <b>ATP 개폐 K<sup>+</sup> 통로</b>를 <b>닫음</b> → K<sup>+</sup>가 못 나가 → 막 <b>탈분극</b></li>
 <li>탈분극 → <b>전압 개폐 Ca<sup>2+</sup> 통로</b> 열림 → Ca<sup>2+</sup> 유입</li>
 <li>Ca<sup>2+</sup> ↑ → <b>인슐린 과립 세포외배출</b> → 혈중 인슐린 ↑</li></ol>
-<p>산화적 인산화 결함(mtDNA 돌연변이 등) → ATP 충분히 못 올라감 → K<sup>+</sup> 통로가 안 닫힘 → <b>인슐린 분비 ↓</b> → 당뇨. 예: glucokinase 한쪽 결함 = <b>MODY2</b>(Maturity-Onset Diabetes of the Young, 젊은이의 성인형 당뇨, 경증), 양쪽 결함 = 심한 신생아 당뇨 (원서 문제 23).</p>
+<p>산화적 인산화 결함(mtDNA 돌연변이 등) → ATP 충분히 못 올라감 → K<sup>+</sup> 통로가 안 닫힘 → <b>인슐린 분비 ↓</b> → 당뇨. 예: glucokinase 한쪽 결함 = <b>MODY2</b>(Maturity-Onset Diabetes of the Young, 젊은이의 성인형 당뇨, 경증), 양쪽 결함 = 심한 신생아 당뇨. </p>
 <div class="term">＊[용어: 탈분극 = 세포막 안쪽의 (−) 전하가 줄어드는 것. ‘문 열어라’ 신호]</div>""",
 side=[("img", 87, "원본 슬라이드 87 — β세포: 포도당 → ATP → K⁺ 통로 닫힘 → Ca²⁺ → 인슐린", 230),
       ("ana", "β세포 = <b>ATP 저울 달린 자동문</b>. 포도당이 많이 들어오면 미토가 ATP를 잔뜩 쌓아 저울이 기울고, 그게 K<sup>+</sup> 문을 닫아 → 인슐린 문이 열린다. 미토(저울)가 고장 나면 문이 안 열려.")],
@@ -101,25 +101,7 @@ q="미토콘드리아 유전과 질환에 대한 설명으로 <b>옳은 것을 �
 "이형세포질성 때문에 같은 mtDNA 돌연변이를 가진 사람들의 증상 정도가 다를 수 있다."),
 a="①, ②, ③, ⑤",
 opx=ox(("①", True, "정자의 미토는 수정 후 난자가 파괴."), ("②", True, "슬라이드 84."), ("③", True, "ragged-red fiber = 누더기 적색 섬유."),
-       ("④", False, "반대: ROS <b>많고</b> 수선 <b>약해</b> 평생 쌓인다."), ("⑤", True, "원서 문제 22의 답.")),
+       ("④", False, "반대: ROS <b>많고</b> 수선 <b>약해</b> 평생 쌓인다."), ("⑤", True, "같은 돌연변이라도 증상이 제각각인 이유.")),
 one="모계 · LHON(ND4/cyt b, 실명) · MERRF(tRNA^Lys, 근육) · ROS↑ 수선↓ · 이형세포질성."),
 
-dict(t="q", id="q-hetero", part=P, kind=["txt", "sa"], title="같은 돌연변이인데 왜 누구는 가볍고 누구는 심할까?", src="원서(5판) 19장 연습문제 20 · 솔루션 수록",
-en="Different individuals with a disease caused by the same specific defect in the mitochondrial genome may have symptoms ranging from mild to severe. Explain why.",
-q="미토콘드리아 유전체의 똑같은 결함으로 생긴 질환인데도 사람마다 증상이 가벼운 것부터 심한 것까지 다양하다. 이유를 설명하시오.",
-a="이형세포질성(heteroplasmy) 때문 — 한 세포 안에 정상과 돌연변이 mtDNA가 섞여 있고, 세포 분열 때 무작위로 나뉘어 조직·사람마다 돌연변이 비율이 달라진다. 비율이 높은 조직(특히 에너지를 많이 쓰는 뇌·근육)일수록 증상이 심하다.",
-steps=[("세포 하나에 미토 수백~수천 개, 각자 mtDNA 여러 벌", ""),
-       ("난자 → 배아 → 조직으로 나뉠 때 미토가 <b>무작위 분배</b> → 돌연변이 비율 제각각", "구슬 주머니 비유."),
-       ("<b>문턱(threshold)</b> 이상의 비율이 된 조직에서만 ATP 부족 → 증상. 에너지 수요가 큰 뇌·근육·심장이 먼저", "")],
-one="이형세포질성 + 무작위 분배 + 조직별 문턱 → 증상 스펙트럼."),
-
-dict(t="q", id="q-mody", part=P, kind=["txt", "sa"], title="글루코키나아제 결함 한쪽 vs 양쪽", src="원서(5판) 19장 연습문제 24 · 솔루션 수록",
-en="Glucokinase is essential in the metabolism of glucose in pancreatic β cells. Humans with two defective copies of the glucokinase gene exhibit a severe, neonatal diabetes, whereas those with only one defective copy have a much milder form (MODY2). Explain in terms of the biology of the β cell.",
-q="췌장 β세포에서 글루코키나아제 유전자가 양쪽 모두 결함이면 심한 신생아 당뇨, 한쪽만 결함이면 가벼운 MODY2가 된다. β세포 생물학으로 설명하시오.",
-a="β세포는 글루코키나아제가 만드는 포도당 대사 → 미토 ATP 증가로 혈당을 감지한다. 양쪽 결함이면 포도당 → ATP 신호가 거의 없어 인슐린이 나오지 않고, 한쪽 결함이면 효소량이 절반이라 더 높은 혈당에서야 충분한 ATP가 만들어져 인슐린 분비 문턱만 올라간다.",
-steps=[("글루코키나아제 = β세포의 <b>포도당 센서</b>(K<sub>m</sub>이 높아 혈당에 비례해 작동)", ""),
-       ("포도당 → 해당 → 미토 산화적 인산화 → ATP ↑ → K<sub>ATP</sub> 통로 닫힘 → 인슐린 분비", ""),
-       ("양쪽 결함: ATP ↑ 신호 없음 → 인슐린 거의 0 → 심한 당뇨", ""),
-       ("한쪽 결함: 효소 50% → 같은 ATP를 만들려면 <b>혈당이 더 높아야</b> → 분비 문턱 ↑ → 경미한 고혈당(MODY2)", "")],
-one="β세포 혈당 센서 = 글루코키나아제 → 미토 ATP. 효소 0% = 신생아 당뇨, 50% = 문턱만 올라간 MODY2."),
 ]

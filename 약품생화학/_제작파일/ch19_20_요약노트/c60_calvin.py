@@ -31,7 +31,6 @@ detail="""<ul><li><b>Rubisco (루비스코)</b> = Ribulose 1,5-bisphosphate carb
 <p><b>반응 메커니즘</b> (슬라이드 125): ① RuBP → <b>엔다이올레이트</b>(enediolate) ② Mg<sup>2+</sup> 옆에서 분극된 CO<sub>2</sub>를 엔다이올레이트가 공격 → 가지 달린 <b>6탄소 β-케토산 중간체</b> ③ C-3 카보닐에 물 첨가(수화) ④ 절단 → 3-PG 1개 ⑤ 카바니온에 양성자 → 두 번째 3-PG.</p>
 <div class="term">＊[용어: 카바모일화(carbamoylation) = 아미노기(–NH<sub>2</sub>)에 CO<sub>2</sub>가 붙어 –NH–COO<sup>−</sup>가 되는 것. 음전하가 생겨 Mg<sup>2+</sup>를 붙잡는 ‘손’이 됨]</div>""",
 side=[("img", 123, "원본 슬라이드 123 — activase(ATP)가 RuBP 제거 → Lys²⁰¹ 카바모일화 → Mg²⁺ 결합 → 활성", 175),
-      ("img", 124, "원본 슬라이드 124 — 활성 부위: Mg²⁺, 카바모일-Lys²⁰¹, CO₂, RuBP", 150),
       ("ana", "루비스코 = <b>자물쇠 3개 달린 공장 문</b>: ① 문 앞을 막은 짐(RuBP)을 지게차(activase, ATP)로 치우고 ② 손잡이(Lys)에 고리(CO<sub>2</sub>)를 달고 ③ 열쇠(Mg<sup>2+</sup>)를 꽂아야 열린다."),
       ("trap", "카바모일화에 쓰이는 CO<sub>2</sub>는 <b>기질 CO<sub>2</sub>가 아니다</b>. activase는 <b>ATP</b>를 쓴다(GTP 아님).")],
 one="Rubisco 켜기 = activase(ATP)로 RuBP 치우기 → Lys²⁰¹ + CO₂(카바모일) → Mg²⁺. 반응 = 엔다이올레이트 + CO₂ → 6C → 3PG 2개."),
@@ -97,35 +96,6 @@ steps=[("고정: RuBP(5C) 1개 + CO<sub>2</sub> 1개 → 6C → 3-PG(3C) <b>2개
        ("재생: 15 C → 15 C, G3P <b>5</b>개 → Ru5P 3개 → ATP 3개로 RuBP 3개", ""),
        ("포도당 = G3P 2개 = 2 × (ATP 9, NADPH 6) = ATP <b>18</b>, NADPH 12", "CO₂ 6개 고정.")],
 one="3 · 6 · 6 · 1 · 5 · 3, G3P 하나 = ATP 9 + NADPH 6, 포도당 = 18 + 12."),
-
-dict(t="q", id="q-phases", part=P, kind=["txt", "sa"], title="빛을 끈 뒤에도 잠깐 ¹⁴CO₂가 포도당이 되는 이유", src="원서(5판) 20장 연습문제 2 · 솔루션 수록",
-en="A researcher illuminates a suspension of green algae in the absence of CO<sub>2</sub>, then incubates the algae with <sup>14</sup>CO<sub>2</sub> in the dark and observes the conversion of <sup>14</sup>CO<sub>2</sub> to [<sup>14</sup>C]glucose for a brief time. What is the significance with regard to CO<sub>2</sub> assimilation and the light-dependent reactions? Why does the conversion stop after a brief time?",
-q="CO<sub>2</sub> 없이 녹조류에 빛을 쬔 뒤, 어둠 속에서 <sup>14</sup>CO<sub>2</sub>를 주었더니 잠깐 동안 [<sup>14</sup>C]포도당이 생겼다. 의미는? 왜 곧 멈추는가?",
-a="CO₂ 고정(캘빈 회로) 자체는 빛이 필요 없고 명반응이 만든 ATP·NADPH만 있으면 된다는 뜻. 빛 아래 쌓아 둔 ATP·NADPH를 어둠 속에서 다 쓰면 회로가 멈춘다.",
-steps=[("빛(CO<sub>2</sub> 없음) → 명반응만 → ATP·NADPH 축적 (쓸 곳이 없어 저장)", ""),
-       ("어둠 + <sup>14</sup>CO<sub>2</sub> → 저장된 ATP·NADPH로 캘빈 회로 → 포도당", "두 단계가 분리 가능하다는 증거."),
-       ("ATP·NADPH 고갈 → 3-PG를 G3P로 못 바꾸고, RuBP도 재생 못 함 → 정지", "")],
-one="캘빈 회로는 빛이 아니라 ATP·NADPH로 돈다. 재고 소진 = 끝."),
-
-dict(t="q", id="q-xy", part=P, kind=["txt", "sa"], title="캘빈의 실험 — 표지되는 화합물 X와 Y의 정체", src="원서(5판) 20장 연습문제 3 · 솔루션 수록",
-en="""Calvin incubated <sup>14</sup>CO<sub>2</sub> with illuminated Chlorella and followed <sup>14</sup>C in compounds X and Y.<br>
-a. Cells grown in light with unlabeled CO<sub>2</sub>; light turned off and <sup>14</sup>CO<sub>2</sub> added → X labeled first; Y unlabeled.<br>
-b. Cells illuminated with <sup>14</sup>CO<sub>2</sub> until all of it had been taken up → X labeled quickly but lost radioactivity with time; Y became more radioactive. Suggest the identities of X and Y.""",
-q="(a) 빛에서 키운 클로렐라에 불을 끄고 <sup>14</sup>CO<sub>2</sub>를 주자 X가 먼저 표지되고 Y는 표지 안 됨. (b) 빛 아래 <sup>14</sup>CO<sub>2</sub>를 주다가 CO<sub>2</sub>가 다 떨어지자 X는 방사능을 잃고 Y는 점점 증가. X와 Y는?",
-a="X = 3-인산글리세르산(3-PG), Y = 리불로스 1,5-이인산(RuBP)",
-steps=[("(a) 어둠: 남아 있던 RuBP + <sup>14</sup>CO<sub>2</sub> → <b>3-PG</b>는 루비스코로 생김(ATP 불필요) → X 표지. 그러나 ATP·NADPH가 없어 G3P → RuBP 재생 불가 → <b>RuBP(Y)</b>는 표지 안 됨", "어둠에선 3-PG가 쌓이고 RuBP가 줄어든다."),
-       ("(b) CO<sub>2</sub> 고갈: 고정이 멈춰 3-PG(X)는 새로 안 생기고 기존 것은 G3P → RuBP로 넘어감 → X 방사능 ↓, 표지 탄소가 RuBP(Y)에 쌓임 → Y ↑", "CO₂가 없으니 RuBP를 쓰지 못하고 쌓인다."),
-       ("결론: X = 고정의 첫 산물 <b>3-PG</b>, Y = CO<sub>2</sub> 수용체 <b>RuBP</b>", "")],
-one="어둠 → 3PG ↑ RuBP ↓ / CO₂ 없음 → 3PG ↓ RuBP ↑. X = 3-PG, Y = RuBP."),
-
-dict(t="q", id="q-iodo", part=P, kind=["txt", "sa"], title="아이오도아세트산이 억제할 캘빈 회로 효소", src="원서(5판) 20장 연습문제 4 · 솔루션 수록",
-en="Iodoacetate reacts irreversibly with the free —SH groups of Cys residues in proteins. Predict which Calvin cycle enzyme(s) would be inhibited by iodoacetate, and explain why.",
-q="아이오도아세트산은 단백질의 Cys –SH와 비가역적으로 반응한다. 어떤 캘빈 회로 효소가 억제될까?",
-a="활성 부위에 Cys가 있는 글리세르알데하이드 3-인산 탈수소효소, 그리고 빛에 의해 티오레독신이 이황화결합을 –SH로 환원시켜 활성화하는 효소들(FBPase-1, SBPase, ribulose 5-인산 키나아제)",
-steps=[("G3P 탈수소효소: 활성 부위 <b>Cys</b>가 기질과 티오에스터 중간체를 만듦 → –SH 알킬화되면 불활성", "해당과정 GAPDH도 아이오도아세트산의 고전적 표적."),
-       ("빛 조절 효소: 빛 → 페레독신 → <b>티오레독신</b>이 효소의 S–S를 2 –SH로 환원 → 활성. 그 Cys가 아이오도아세트산에 막히면 조절 불능", "FBPase-1, SBPase, Ru5P 키나아제(+ 루비스코 activase)."),
-       ("결과: 환원 단계와 재생 단계가 막혀 회로 정지", "")],
-one="Cys가 핵심인 효소 = G3P 탈수소효소(활성 부위) + 티오레독신 조절 효소(FBPase·SBPase·Ru5P 키나아제)."),
 
 dict(t="q", id="q-transk", part=P, kind=["chk", "bl"], title="트랜스케톨레이스 블록 맞추기", src="개념확인 · 빈칸 · 슬라이드 130–131",
 q="""트랜스케톨레이스는 케톤당 주개의 <span class="blank">(가)</span>탄소 조각을 알도스 받개에 옮긴다. 보조인자는 <span class="blank">(나)</span>(비타민 B<sub>1</sub> 유래)이다.<br>

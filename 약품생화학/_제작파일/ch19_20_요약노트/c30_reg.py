@@ -48,15 +48,6 @@ side=[("img", 66, "원본 슬라이드 66 — ROS 생성(I·III)과 SOD·GPx·�
 one="O₂의 0.1–4% → ·O₂⁻ → (SOD) → H₂O₂ → (GPx, Se, GSH) → H₂O. 저산소엔 HIF-1: 해당 ↑, PDH ↓, ROS ↓."),
 
 # ───────────────────────────── 문제
-dict(t="q", id="q-ros-sod", part=P, kind=["txt", "sa"], title="초과산화물 불균등화효소(SOD)의 역할", src="원서(8판) 19장 연습문제 9",
-en="Describe the role played by superoxide dismutase in ameliorating the effects of reactive oxygen species.",
-q="활성산소의 해를 줄이는 데 초과산화물 불균등화효소(SOD)가 하는 역할을 설명하시오.",
-a="SOD는 반응성이 매우 큰 초과산화물 라디칼(·O₂⁻)을 H₂O₂와 O₂로 바꾸고, H₂O₂는 글루타티온 과산화효소(GSH 이용)가 물로 바꾼다. 이 사슬이 ·OH 같은 더 위험한 라디칼 생성을 막는다.",
-steps=[("SOD 반응: 2·O<sub>2</sub><sup>−</sup> + 2H<sup>+</sup> → <b>H<sub>2</sub>O<sub>2</sub> + O<sub>2</sub></b>", "불균등화(dismutation) = 같은 분자 두 개 중 하나는 산화, 하나는 환원."),
-       ("H<sub>2</sub>O<sub>2</sub> + 2GSH → 2H<sub>2</sub>O + GSSG (GPx, 셀레노시스테인)", "H₂O₂를 놔두면 철과 만나 ·OH가 됨(펜톤 반응)."),
-       ("GSSG + NADPH + H<sup>+</sup> → 2GSH + NADP<sup>+</sup> (글루타티온 환원효소)", "")],
-one="SOD = ·O₂⁻를 H₂O₂로 ‘한 단계 순하게’, GPx = H₂O₂를 물로. 연료는 GSH와 NADPH."),
-
 dict(t="q", id="q-if1", part=P, kind=["chk", "bl"], title="IF₁ 작동 시나리오 빈칸", src="개념확인 · 슬라이드 65",
 q="""저산소 상태가 되면 전자전달이 느려져 ATP 합성효소가 거꾸로 ATP를 <span class="blank">(가)</span>할 위험이 생긴다.
 산소 부족 → 피루브산과 <span class="blank">(나)</span>이 쌓여 pH가 <span class="blank">(다)</span> 미만으로 떨어지면,
@@ -80,14 +71,5 @@ a="①, ②, ④",
 opx=ox(("①", True, "ATP를 해당으로 보충."), ("②", True, "PDH ↓ → 아세틸-CoA·NADH 공급 ↓."), ("③", False, "반대: 호흡사슬로 가는 전자가 <b>줄어</b> ROS ↓."),
        ("④", True, "프로테이스가 COX4-1을 분해, COX4-2로 대체."), ("⑤", False, "LDH <b>증가</b> → 피루브산을 젖산으로 돌려 NAD<sup>+</sup> 재생.")),
 one="HIF-1 = 해당 ↑ · LDH ↑ · PDH ↓ · ROS ↓ · COX4-2."),
-
-dict(t="q", id="q-alanine", part=P, kind=["txt", "sa"], title="산화적 인산화 결함 환자의 혈중 알라닌이 높은 이유", src="원서(5판) 19장 연습문제 22 · 솔루션 수록",
-en="Most individuals with genetic defects in oxidative phosphorylation have relatively high concentrations of alanine in their blood. Explain this in biochemical terms.",
-q="산화적 인산화에 유전적 결함이 있는 사람은 대부분 혈중 알라닌 농도가 높다. 생화학적으로 설명하시오.",
-a="호흡사슬이 막히면 NADH가 재산화되지 못해 [NADH]/[NAD⁺]가 높아지고 PDH·시트르산 회로가 억제된다. 쌓인 피루브산은 젖산과 함께 아미노기 전이로 알라닌이 되어 혈액으로 나간다.",
-steps=[("결함 → NADH → NAD<sup>+</sup> 재산화 ↓ → [NADH]/[NAD<sup>+</sup>] ↑, ATP ↓", ""),
-       ("ATP 부족 → 해당과정 ↑ (피루브산 대량 생산) / NADH ↑ → <b>PDH 억제</b> → 피루브산이 미토로 못 가고 <b>쌓임</b>", ""),
-       ("피루브산 + 글루탐산 → <b>알라닌</b> + α-KG (알라닌 아미노기전이효소, ALT(Alanine Aminotransferase)) → 혈중 알라닌 ↑ (젖산도 ↑)", "피루브산이 갈 곳이 없으니 젖산과 알라닌으로 빠져나감.")],
-one="호흡 막힘 → 피루브산 정체 → 젖산·알라닌으로 넘쳐 흐른다."),
 
 ]

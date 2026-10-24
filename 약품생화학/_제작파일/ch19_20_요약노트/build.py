@@ -12,6 +12,7 @@ for pk in dict.fromkeys(e.get("part") for e in TB):
     add = [e for e in TB if e["part"] == pk]
     last = max(i for i, e in enumerate(ENTRIES) if e.get("part") == pk and e["t"] in "cq")
     ENTRIES[last + 1:last + 1] = add
+from loc import LOC
 for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
@@ -134,6 +135,10 @@ tr.hl td{background:#ffe3e3;}
 .ol2{margin-top:3px;background:#e9f3ec;color:#2f6b45;}
 .orig ol,.orig ul{margin:2px 0 0 0;}
 .aen{font-family:'Noto Serif',serif;font-size:.9em;color:#3d4a5c;background:#fff;border:1px dashed #b9d3c4;border-radius:7px;padding:3px 9px;margin:-2px 0 6px 0;}
+.loc{margin-top:7px;display:flex;align-items:baseline;gap:8px;background:#eef7f2;border:1px solid #b9dcc8;border-radius:9px;padding:4px 12px;font-size:.93em;flex:none;}
+.loc .lb{flex:none;font-weight:800;color:#127a64;font-size:.9em;}
+.loc .sc{flex:none;background:#127a64;color:#fff;border-radius:6px;font-weight:700;font-size:.82em;padding:0 8px;}
+.loc .pa{color:#2f4a3e;}
 .qk.multi{background:#c2410c;} .qk.tb{background:#7c2d92;} .qk.txt{background:#1d5a95;} .qk.chk{background:#127a64;}
 .opts li{margin:2px 0;}
 """
@@ -159,6 +164,12 @@ def side_html(items, flags=()):
             out.append(it[1])
     return "".join(out)
 
+def loc(e):
+    v = LOC.get(e.get("id"))
+    if not v:
+        print("NO LOC", e.get("id")); return ""
+    return f'<div class="loc"><span class="lb">📍 몸속 어디?</span><span class="sc">{v[0]}</span><span class="pa">{v[1]}</span></div>'
+
 def concept(i, n, e):
     main = []
     if e.get("detail"):
@@ -177,7 +188,7 @@ def concept(i, n, e):
     body = f'<div class="main{" full" if not side else ""}">{"".join(main)}</div>' + (f'<div class="side">{side}</div>' if side else "")
     return f'''<section class="page">
 <div class="hd"><span class="bd">개념 {n:02d}</span><div class="tt"><h1>{e["title"]}</h1><div class="sb">{e.get("sub","")}</div></div><span class="pt">{e["part"]}</span></div>
-<div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
+{loc(e)}<div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
 <div class="body">{body}</div>
 <div class="one{oneimp}"><span class="lb">🧠 뇌리에 박히는 한 줄</span><span>{e["one"]}</span></div>
 {foot(i)}</section>'''
