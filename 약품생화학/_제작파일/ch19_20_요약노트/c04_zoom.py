@@ -56,7 +56,7 @@ def mito_svg():
         o += mito_small(cx, cy, r)
     o += mito_small(330, 430, 15, 1.25)
     o += lead(225, 345 - 230, 300, 92) + T(304, 96, "세포막", 12.5, anchor="start")
-    o += lead(190, 300, 60, 92) + T(20, 96, "핵 (DNA 대부분)", 12.5, anchor="start")
+    o += T(190, 402, "핵 (DNA 대부분)", 12.5, "#5b4b9a", "middle", 700)
     o += lead(110, 190, 40, 150) + T(22, 146, "미토콘드리아", 12.5, "#b5562a", "start", 700)
     o += T(225, 598, "세포질 (해당과정이 일어나는 ‘거실’) · 미토콘드리아 수백~수천 개", 12, "#6c7280")
     o += zoom((295, 405, 72, 52), [(470, 120), (470, 590)])
@@ -108,26 +108,42 @@ def mito_svg():
             for side in (-1, 1):
                 x1 = f + side * W2
                 o += f'<line x1="{x1}" y1="{yy:.0f}" x2="{x1 + side * 6}" y2="{yy:.0f}" stroke="#127a64" stroke-width="2"/><circle cx="{x1 + side * 10}" cy="{yy:.0f}" r="4" fill="#127a64"/>'
-    for x, y in [(612, 335), (760, 330), (700, 360), (640, 385)]:
-        o += f'<circle cx="{x}" cy="{y}" r="2.5" fill="#7c6bb3"/><circle cx="{x + 7}" cy="{y + 3}" r="2.5" fill="#7c6bb3"/>'
-    o += '<ellipse cx="735" cy="350" rx="15" ry="9" fill="none" stroke="#9a4a12" stroke-width="1.6"/><ellipse cx="738" cy="352" rx="10" ry="5" fill="none" stroke="#9a4a12" stroke-width="1.2"/>'
-    o += lead(cx, cy - ry, 610, 100) + T(560, 104, "외막 (포린 구멍 · 작은 분자 자유 통과)", 12.5, anchor="start")
-    o += lead(cx + irx - 2, cy + 6, 905, 186) + T(905, 178, "내막 (H⁺ 못 지나감)", 12.5, anchor="end")
-    tip = ey(655, -1) + depth(655) + 2 * W2
-    o += lead(655, tip - 4, 512, 170) + T(486, 166, "크리스타 = 내막이 안으로 접힌 주름", 12.5, "#c2410c", "start", 700)
-    o += lead(cx - rx + 9, cy, 490, 520) + T(486, 538, "막사이공간 (외막–내막 사이, 크리스타 속까지) = P쪽", 12, "#b5562a", "start", 700)
-    o += lead(668, 330, 668, 515) + T(672, 556, "기질 (matrix) = N쪽 · TCA·β-산화", 12.5, "#9a4a12", "start", 700)
-    o += lead(825, ey(815, -1) + depth(815) * 0.8, 905, 470) + T(905, 488, "ATP 합성효소 (머리 F₁ → 기질 쪽)", 12, "#127a64", "end", 700)
-    o += lead(738, 352, 860, 512) + T(905, 524, "mtDNA · 리보솜", 12.5, "#7c6bb3", "end", 700)
+    for x, y in [(760, 345), (768, 351), (560, 350), (567, 355), (840, 350), (847, 345)]:
+        o += f'<circle cx="{x}" cy="{y}" r="2.6" fill="#7c6bb3"/>'
+    o += '<ellipse cx="620" cy="347" rx="15" ry="9" fill="none" stroke="#9a4a12" stroke-width="1.8"/><ellipse cx="622" cy="348" rx="10" ry="5" fill="none" stroke="#9a4a12" stroke-width="1.3"/>'
+
+    def badge(x, y, n, col):
+        return f'<circle cx="{x}" cy="{y}" r="9" fill="#fff" stroke="{col}" stroke-width="2"/>' + T(x, y + 4.5, n, 12, col, "middle", 800)
+    tip655 = ey(655, -1) + depth(655) + 2 * W2
+    yatp = ey(815, -1) + depth(815) * 0.8
+    a1 = math.radians(150)
+    o += badge(cx + rx * math.cos(a1), cy - ry * math.sin(a1), "1", "#b5562a")  # 외막 (선 위)
+    o += badge(cx, cy + ry - 9, "2", "#b5562a")                     # 막사이공간 (외막–내막 틈)
+    o += badge(575, ey(575, -1) + depth(575) * 0.55, "2", "#b5562a")  # 크리스타 속도 막사이공간
+    o += badge(cx + irx, cy, "3", "#c2410c")                        # 내막 (선 위)
+    o += badge(655, tip655 - 4, "4", "#c2410c")                     # 크리스타 (주름 끝 위)
+    o += badge(700, 345, "5", "#9a4a12")                            # 기질
+    o += badge(853, yatp, "6", "#127a64")                           # ATP 합성효소 머리 옆
+    o += badge(645, 347, "7", "#9a4a12")                            # mtDNA
+    o += badge(786, 343, "8", "#7c6bb3")                            # 리보솜
+    leg = [("1", "외막 — 포린 구멍, 작은 분자 자유 통과", "#b5562a"), ("2", "막사이공간 (+ 크리스타 속) = P쪽", "#b5562a"),
+           ("3", "내막 — H⁺ 못 지나감", "#c2410c"), ("4", "크리스타 — 내막이 안으로 접힌 주름", "#c2410c"),
+           ("5", "기질 = N쪽 · TCA 회로 · β-산화", "#9a4a12"), ("6", "ATP 합성효소 — ● 머리 F₁은 기질에", "#127a64"),
+           ("7", "mtDNA — 고리 모양 DNA", "#9a4a12"), ("8", "리보솜 — 보라색 작은 점", "#7c6bb3")]
+    for k, (n, t, col) in enumerate(leg):
+        lx, ly = (486, 500 + (k // 2) * 25) if k % 2 == 0 else (700, 500 + (k // 2) * 25)
+        o += badge(lx + 9, ly - 4, n, col) + T(lx + 24, ly + 1, t, 11.5, col, "start", 700)
     zt = ey(735, -1)
-    o += zoom((718, zt - 6, 34, depth(735) + 26), [(950, 120), (950, 590)])
+    o += zoom((723, zt + 8, 24, depth(735) - 4), [(950, 120), (950, 590)])
     # ── 패널 3: 내막 한 조각
-    o += panel(950, 440, "③ 내막(크리스타 벽) 한 조각", "주름 벽 한 부분을 옆으로 눕혀 확대 · 복합체 ≈ 10–20 nm")
+    o += panel(950, 440, "③ 내막 한 조각 (빨간 네모의 크리스타 벽)", "벽을 옆으로 눕혀 확대: 위 = 크리스타 속(P), 아래 = 기질(N)")
     X0, X1, y1, y2 = 962, 1378, 300, 362
-    o += T(1170, 92, "막사이공간 (P쪽) — H⁺ 많음, 산성, ＋", 13, "#b5562a", "middle", 700)
+    o += T(1170, 92, "크리스타 속 = 막사이공간 (P쪽) — H⁺ 많음, ＋", 13, "#b5562a", "middle", 700)
     o += T(1170, 596, "기질 (N쪽) — H⁺ 적음, 알칼리, −", 13, "#9a4a12", "middle", 700)
     o += f'<rect x="{X0}" y="{y1}" width="{X1 - X0}" height="{y2 - y1}" fill="#fbf1d8"/>'
     o += "".join(f'<circle cx="{x}" cy="{y1}" r="4.5" fill="#e9d9b6"/><circle cx="{x}" cy="{y2}" r="4.5" fill="#e9d9b6"/>' for x in range(X0 + 4, X1, 11))
+
+    o += hup(1003, 470, 150, 4) + hup(1162, 450, 150, 4) + hup(1267, 450, 150, 2)
 
     def cx_(x, y, w, h, fill, label, sub=""):
         r = f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" fill="{fill}" stroke="#3a3f4b" stroke-width="1.6"/>' + T(x + w / 2, y + h / 2 + 5, label, 15, "#23263a", "middle", 800)
@@ -140,7 +156,6 @@ def mito_svg():
     o += cx_(1236, 262, 62, 140, "#c5e8d4", "IV", "Cuₐ·a·a₃")
     o += '<rect x="1318" y="290" width="44" height="82" rx="8" fill="#d9d2f2" stroke="#3a3f4b" stroke-width="1.6"/><rect x="1334" y="372" width="12" height="32" fill="#d9d2f2" stroke="#3a3f4b" stroke-width="1.4"/><circle cx="1340" cy="436" r="32" fill="#d9d2f2" stroke="#3a3f4b" stroke-width="1.6"/>'
     o += T(1340, 330, "F₀", 13, "#23263a", "middle", 800) + T(1340, 441, "F₁", 13, "#23263a", "middle", 800)
-    o += hup(1003, 255, 150, 4) + hup(1162, 255, 150, 4) + hup(1267, 255, 150, 2)
     o += f'<line x1="1350" y1="150" x2="1350" y2="250" stroke="#c2410c" stroke-width="2.6" marker-end="url(#ar)"/><line x1="1350" y1="250" x2="1342" y2="290" stroke="#c2410c" stroke-width="2.6"/>'
     o += T(1385, 142, "H⁺ 돌아옴", 11.5, "#c2410c", "end", 800)
     o += ('<path d="M995,505 L1003,410 L1003,345 L1086,335 L1140,330 L1180,270 L1210,240 L1245,270 L1262,400 L1262,500" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-dasharray="7 4" marker-end="url(#ab)"/>')
