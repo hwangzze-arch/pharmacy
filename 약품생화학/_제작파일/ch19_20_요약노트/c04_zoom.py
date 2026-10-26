@@ -64,36 +64,65 @@ def mito_svg():
     o += panel(470, 450, "② 미토콘드리아 한 개", "콩 모양, 길이 약 1–2 μm · 막이 두 겹")
     cx, cy, rx, ry = 695, 345, 205, 125
     o += f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="#fde3cf" stroke="#b5562a" stroke-width="4"/>'
-    irx, iry = rx - 16, ry - 16
-    o += f'<ellipse cx="{cx}" cy="{cy}" rx="{irx}" ry="{iry}" fill="#fff4d6" stroke="#c2410c" stroke-width="3"/>'
-    for k, x in enumerate(range(545, 860, 40)):
-        dy = iry * math.sqrt(max(0, 1 - ((x - cx) / irx) ** 2))
-        top = cy - dy
-        if k % 2 == 0:
-            y0, L = top - 2, 0.62 * dy * 2 * 0.62
-            o += f'<rect x="{x - 7}" y="{y0}" width="14" height="{L:.0f}" rx="7" fill="#fde3cf" stroke="#c2410c" stroke-width="2.4"/>'
-            tip = y0 + L
+    irx, iry = rx - 18, ry - 18
+    # 내막 = 끊기지 않은 한 줄. 안쪽으로 접혀 들어간 주름(크리스타)의 속은 막사이공간과 이어진다
+    W2 = 8                                  # 주름 폭의 절반
+    top_f = [575, 655, 735, 815]            # 위쪽에서 아래로 들어가는 주름
+    bot_f = [615, 695, 775]                 # 아래쪽에서 위로 올라가는 주름
+
+    def ey(x, sgn):
+        return cy + sgn * iry * math.sqrt(max(0.0, 1 - ((x - cx) / irx) ** 2))
+
+    def depth(x):
+        return 0.62 * iry * math.sqrt(max(0.0, 1 - ((x - cx) / irx) ** 2))
+    pts = []
+    xs = [cx - irx + i * 2 for i in range(int(irx))]
+    d = f"M{cx - irx},{cy} "
+    x = cx - irx
+    while x <= cx + irx:                    # 위쪽 테두리 (왼 → 오)
+        f = next((fx for fx in top_f if fx - W2 <= x < fx - W2 + 2), None)
+        if f:
+            y0 = ey(f - W2, -1); y1 = ey(f + W2, -1); dp = depth(f)
+            d += f"L{f - W2:.1f},{y0:.1f} L{f - W2:.1f},{y0 + dp:.1f} Q{f},{y0 + dp + 2 * W2:.1f} {f + W2:.1f},{y0 + dp:.1f} L{f + W2:.1f},{y1:.1f} "
+            x = f + W2
         else:
-            L = 0.62 * dy * 2 * 0.62
-            y0 = cy + dy + 2 - L
-            o += f'<rect x="{x - 7}" y="{y0:.0f}" width="14" height="{L:.0f}" rx="7" fill="#fde3cf" stroke="#c2410c" stroke-width="2.4"/>'
-            tip = y0
-        for t in (0.35, 0.7):
-            yy = (y0 + (tip - y0) * t) if k % 2 == 0 else (y0 + L * t)
-            o += f'<line x1="{x + 7}" y1="{yy:.0f}" x2="{x + 13}" y2="{yy:.0f}" stroke="#127a64" stroke-width="2"/><circle cx="{x + 17}" cy="{yy:.0f}" r="4.5" fill="#127a64"/>'
-    for x, y in [(600, 360), (790, 330), (700, 300), (650, 420)]:
-        o += f'<circle cx="{x}" cy="{y}" r="2.5" fill="#7c6bb3"/><circle cx="{x + 8}" cy="{y + 4}" r="2.5" fill="#7c6bb3"/>'
-    o += '<ellipse cx="740" cy="400" rx="16" ry="10" fill="none" stroke="#9a4a12" stroke-width="1.6"/><ellipse cx="744" cy="402" rx="11" ry="6" fill="none" stroke="#9a4a12" stroke-width="1.2"/>'
+            d += f"L{x:.1f},{ey(x, -1):.1f} "
+        x += 2
+    x = cx + irx
+    while x >= cx - irx:                    # 아래쪽 테두리 (오 → 왼)
+        f = next((fx for fx in bot_f if fx + W2 - 2 < x <= fx + W2), None)
+        if f:
+            y0 = ey(f + W2, 1); y1 = ey(f - W2, 1); dp = depth(f)
+            d += f"L{f + W2:.1f},{y0:.1f} L{f + W2:.1f},{y0 - dp:.1f} Q{f},{y0 - dp - 2 * W2:.1f} {f - W2:.1f},{y0 - dp:.1f} L{f - W2:.1f},{y1:.1f} "
+            x = f - W2
+        else:
+            d += f"L{x:.1f},{ey(x, 1):.1f} "
+        x -= 2
+    o += f'<path d="{d}Z" fill="#fff4d6" stroke="#c2410c" stroke-width="3" stroke-linejoin="round"/>'
+    # ATP 합성효소: 주름 벽에서 기질 쪽으로 튀어나온 막대사탕 (F₁ 머리는 기질 쪽)
+    for f in top_f + bot_f:
+        sgn = -1 if f in top_f else 1
+        base = ey(f, sgn)
+        for t in (0.4, 0.8):
+            yy = base - sgn * depth(f) * t
+            for side in (-1, 1):
+                x1 = f + side * W2
+                o += f'<line x1="{x1}" y1="{yy:.0f}" x2="{x1 + side * 6}" y2="{yy:.0f}" stroke="#127a64" stroke-width="2"/><circle cx="{x1 + side * 10}" cy="{yy:.0f}" r="4" fill="#127a64"/>'
+    for x, y in [(612, 335), (760, 330), (700, 360), (640, 385)]:
+        o += f'<circle cx="{x}" cy="{y}" r="2.5" fill="#7c6bb3"/><circle cx="{x + 7}" cy="{y + 3}" r="2.5" fill="#7c6bb3"/>'
+    o += '<ellipse cx="735" cy="350" rx="15" ry="9" fill="none" stroke="#9a4a12" stroke-width="1.6"/><ellipse cx="738" cy="352" rx="10" ry="5" fill="none" stroke="#9a4a12" stroke-width="1.2"/>'
     o += lead(cx, cy - ry, 610, 100) + T(560, 104, "외막 (포린 구멍 · 작은 분자 자유 통과)", 12.5, anchor="start")
-    o += lead(840, cy - iry + 30, 880, 140) + T(915, 136, "내막 (H⁺ 못 지나감)", 12.5, anchor="end")
-    o += lead(605, 262, 512, 170) + T(486, 166, "크리스타 = 내막 주름", 12.5, "#c2410c", "start", 700)
-    o += lead(cx - rx + 8, cy, 490, 520) + T(486, 538, "막사이공간 (외막–내막 사이) = P쪽", 12.5, "#b5562a", "start", 700)
-    o += lead(690, 360, 690, 520) + T(694, 556, "기질 (matrix) = N쪽 · TCA·β-산화", 12.5, "#9a4a12", "start", 700)
-    o += lead(778, 286, 905, 470) + T(905, 488, "ATP 합성효소", 12.5, "#127a64", "end", 700)
-    o += lead(744, 402, 860, 520) + T(905, 538, "mtDNA · 리보솜", 12.5, "#7c6bb3", "end", 700)
-    o += zoom((634, 250, 52, 72), [(950, 120), (950, 590)])
+    o += lead(cx + irx - 2, cy + 6, 905, 186) + T(905, 178, "내막 (H⁺ 못 지나감)", 12.5, anchor="end")
+    tip = ey(655, -1) + depth(655) + 2 * W2
+    o += lead(655, tip - 4, 512, 170) + T(486, 166, "크리스타 = 내막이 안으로 접힌 주름", 12.5, "#c2410c", "start", 700)
+    o += lead(cx - rx + 9, cy, 490, 520) + T(486, 538, "막사이공간 (외막–내막 사이, 크리스타 속까지) = P쪽", 12, "#b5562a", "start", 700)
+    o += lead(668, 330, 668, 515) + T(672, 556, "기질 (matrix) = N쪽 · TCA·β-산화", 12.5, "#9a4a12", "start", 700)
+    o += lead(825, ey(815, -1) + depth(815) * 0.8, 905, 470) + T(905, 488, "ATP 합성효소 (머리 F₁ → 기질 쪽)", 12, "#127a64", "end", 700)
+    o += lead(738, 352, 860, 512) + T(905, 524, "mtDNA · 리보솜", 12.5, "#7c6bb3", "end", 700)
+    zt = ey(735, -1)
+    o += zoom((718, zt - 6, 34, depth(735) + 26), [(950, 120), (950, 590)])
     # ── 패널 3: 내막 한 조각
-    o += panel(950, 440, "③ 내막(크리스타) 한 조각", "복합체 하나 ≈ 10–20 nm · 19장의 무대")
+    o += panel(950, 440, "③ 내막(크리스타 벽) 한 조각", "주름 벽 한 부분을 옆으로 눕혀 확대 · 복합체 ≈ 10–20 nm")
     X0, X1, y1, y2 = 962, 1378, 300, 362
     o += T(1170, 92, "막사이공간 (P쪽) — H⁺ 많음, 산성, ＋", 13, "#b5562a", "middle", 700)
     o += T(1170, 596, "기질 (N쪽) — H⁺ 적음, 알칼리, −", 13, "#9a4a12", "middle", 700)
@@ -155,15 +184,16 @@ def chl_svg():
     stacks = [(560, 330), (635, 290), (640, 395), (720, 330), (800, 290), (805, 395)]
     for i, (sx, sy) in enumerate(stacks[:-1]):
         nx, ny = stacks[i + 1]
-        o += f'<line x1="{sx + 25}" y1="{sy}" x2="{nx - 25}" y2="{ny}" stroke="#4f9a3a" stroke-width="3"/>'
+        o += f'<line x1="{sx + 25}" y1="{sy}" x2="{nx - 25}" y2="{ny}" stroke="#2f6b1f" stroke-width="7" stroke-linecap="round"/><line x1="{sx + 25}" y1="{sy}" x2="{nx - 25}" y2="{ny}" stroke="#fde7d4" stroke-width="3" stroke-linecap="round"/>'
     for sx, sy in stacks:
         for k in range(5):
-            o += f'<rect x="{sx - 28}" y="{sy - 26 + k * 11}" width="56" height="9" rx="4.5" fill="#5fae47" stroke="#2f6b1f" stroke-width="1.4"/>'
+            o += f'<rect x="{sx - 28}" y="{sy - 27 + k * 11.5}" width="56" height="10" rx="5" fill="#fde7d4" stroke="#3f8f2c" stroke-width="2.4"/>'
     o += lead(cx, cy - ry, 610, 100) + T(560, 104, "외막 · 내막 (내막에 Pᵢ–삼탄당 인산 역수송체)", 12.5, anchor="start")
     o += lead(640, 395 - 4, 520, 520) + T(486, 538, "그라나 = 틸라코이드 동전 탑 (PSII 많음)", 12.5, "#2f6b1f", "start", 700)
     o += lead(762, 312, 900, 170) + T(905, 160, "스트로마 라멜라 (PSI·ATP 합성효소)", 12, "#4f9a3a", "end", 700)
     o += lead(760, 450, 760, 556) + T(764, 556, "스트로마 = N쪽 · 캘빈 회로", 12.5, "#9a4a12", "start", 700)
-    o += lead(800, 290, 905, 470) + T(905, 488, "틸라코이드 내강 = P쪽", 12.5, "#b5562a", "end", 700)
+    o += lead(810, 299, 905, 470) + T(905, 488, "틸라코이드 내강(주머니 속) = P쪽", 12.5, "#b5562a", "end", 700)
+    o += T(486, 586, "초록 테두리 = 틸라코이드 막 · 살구색 = 내강 · 연두 = 스트로마", 11.5, "#6c7280", "start")
     o += zoom((692, 296, 56, 26), [(950, 120), (950, 590)])
     # ── 패널 3: 틸라코이드 막 한 조각 (위 = 내강 P, 아래 = 스트로마 N)
     o += panel(950, 440, "③ 틸라코이드 막 한 조각", "명반응의 무대 (위 = 내강, 아래 = 스트로마)")
