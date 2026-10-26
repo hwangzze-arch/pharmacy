@@ -45,6 +45,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="row"><span class="n">00</span><span class="nm">시험 형식 · 이 노트 쓰는 법<span>Guide</span></span><span class="pg">{{PAGE:f-guide}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">한 장으로 보는 큰 그림<span>Big map</span></span><span class="pg">{{PAGE:f-map}}</span></div>
+<div class="row"><span class="n">00</span><span class="nm">백지 복습 — 빈칸 그림 2장<span>Draw it yourself</span></span><span class="pg">{{PAGE:f-blank1}}</span></div>
 <div class="row"><span class="n">01</span><span class="nm">19.1 전자전달 사슬<span>Respiratory chain</span></span><span class="pg">{{S:{P1}}}</span></div>
 <div class="row"><span class="n">02</span><span class="nm">19.2 ATP 합성<span>ATP synthase</span></span><span class="pg">{{S:{P2}}}</span></div>
 <div class="row"><span class="n">03</span><span class="nm">19.3 조절 · 활성산소<span>Regulation · ROS</span></span><span class="pg">{{S:{P3}}}</span></div>
