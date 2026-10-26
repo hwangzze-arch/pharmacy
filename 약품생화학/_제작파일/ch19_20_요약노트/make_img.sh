@@ -7,4 +7,4 @@ mogrify -fuzz 4% -trim +repage img/S-*.jpg
 mogrify -resize "760x760>" -quality 76 img/S-*.jpg
 # 백지 복습용 실제 세포소기관 그림 (확대 부위에 빨간 원)
 convert img/S-028.jpg -crop 370x641+0+0 +repage -fill none -stroke "#e03131" -strokewidth 5 -draw "ellipse 88,310 58,22 0,360" img/real_mito.jpg
-convert img/S-097.jpg -crop 300x290+460+135 +repage -fill none -stroke "#e03131" -strokewidth 5 -draw "circle 180,185 215,185" img/real_chl.jpg
+convert img/S-097.jpg -crop 300x290+460+135 +repage -fill none -stroke "#e03131" -strokewidth 5 -draw "ellipse 168,166 32,15 0,360" img/real_chl.jpg

@@ -158,10 +158,10 @@ def mito_svg():
     o += T(1340, 330, "F₀", 13, "#23263a", "middle", 800) + T(1340, 441, "F₁", 13, "#23263a", "middle", 800)
     o += f'<line x1="1350" y1="150" x2="1350" y2="250" stroke="#c2410c" stroke-width="2.6" marker-end="url(#ar)"/><line x1="1350" y1="250" x2="1342" y2="290" stroke="#c2410c" stroke-width="2.6"/>'
     o += T(1385, 142, "H⁺ 돌아옴", 11.5, "#c2410c", "end", 800)
-    o += ('<path d="M995,505 L1003,410 L1003,345 L1086,335 L1140,330 L1180,270 L1210,240 L1245,270 L1262,400 L1262,500" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-dasharray="7 4" marker-end="url(#ab)"/>')
-    o += '<path d="M1064,470 L1064,425 L1092,345" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-dasharray="5 4"/>'
+    o += ('<path d="M995,505 L1030,410 L1030,318 L1106,316 L1150,285 L1205,238 L1240,268 L1240,492" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-dasharray="7 4" marker-end="url(#ab)"/>')
+    o += '<path d="M1064,470 L1082,440 L1082,350 L1098,335" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-dasharray="5 4"/>'
     o += T(990, 525, "NADH → NAD⁺", 12.5, "#1d4ed8", "middle", 700) + T(1064, 488, "숙신산 → 푸마르산", 11.5, "#1d4ed8", "middle", 700)
-    o += T(1262, 520, "½O₂ + 2H⁺ → H₂O", 12.5, "#1d4ed8", "middle", 700) + T(1340, 490, "ADP + Pᵢ → ATP", 12, "#127a64", "middle", 800)
+    o += T(1240, 520, "½O₂ + 2H⁺ → H₂O", 12.5, "#1d4ed8", "middle", 700) + T(1340, 490, "ADP + Pᵢ → ATP", 12, "#127a64", "middle", 800)
     o += T(1170, 560, "파랑 점선 = 전자(e⁻) · 빨강 = H⁺ (4 + 4 + 2 = 10)", 12, "#6c7280")
     return f'<svg viewBox="0 0 1400 620" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">{o}</svg>'
 
@@ -209,9 +209,9 @@ def chl_svg():
     o += lead(760, 450, 760, 556) + T(764, 556, "스트로마 = N쪽 · 캘빈 회로", 12.5, "#9a4a12", "start", 700)
     o += lead(810, 299, 905, 470) + T(905, 488, "틸라코이드 내강(주머니 속) = P쪽", 12.5, "#b5562a", "end", 700)
     o += T(486, 586, "초록 테두리 = 틸라코이드 막 · 살구색 = 내강 · 연두 = 스트로마", 11.5, "#6c7280", "start")
-    o += zoom((692, 296, 56, 26), [(950, 120), (950, 590)])
+    o += zoom((688, 300, 64, 16), [(950, 120), (950, 590)])
     # ── 패널 3: 틸라코이드 막 한 조각 (위 = 내강 P, 아래 = 스트로마 N)
-    o += panel(950, 440, "③ 틸라코이드 막 한 조각", "명반응의 무대 (위 = 내강, 아래 = 스트로마)")
+    o += panel(950, 440, "③ 틸라코이드 막 한 조각 (빨간 네모의 틸라코이드 한 장)", "그 주머니의 막을 확대: 위 = 내강(P), 아래 = 스트로마(N)")
     X0, X1, y1, y2 = 962, 1378, 300, 362
     o += T(1170, 92, "틸라코이드 내강 (P쪽) — H⁺ 많음, pH ≈ 5", 13, "#b5562a", "middle", 700)
     o += T(1170, 596, "스트로마 (N쪽) — pH ≈ 8, 캘빈 회로", 13, "#9a4a12", "middle", 700)
@@ -235,10 +235,10 @@ def chl_svg():
     o += T(1322, 490, "ADP + Pᵢ → ATP", 12, "#127a64", "middle", 800)
     sun = lambda x, y, tx, ty: f'<circle cx="{x}" cy="{y}" r="12" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/><line x1="{x}" y1="{y}" x2="{tx}" y2="{ty}" stroke="#f59e0b" stroke-width="2.4" stroke-dasharray="4 3"/>' + T(x, y - 17, "빛", 11.5, "#b45309", "middle", 800)
     o += sun(1072, 246, 1042, 272) + sun(1290, 232, 1272, 270)
-    o += hup(1124, 410, 150, 0) + T(1130, 150, "H⁺ (b₆f)", 12, "#c2410c", "start", 800)
+    o += hup(1149, 410, 150, 0) + T(1155, 150, "H⁺ (b₆f)", 12, "#c2410c", "start", 800)
     o += f'<line x1="1352" y1="150" x2="1352" y2="250" stroke="#c2410c" stroke-width="2.6" marker-end="url(#ar)"/><line x1="1352" y1="250" x2="1340" y2="290" stroke="#c2410c" stroke-width="2.6"/>'
     o += T(1360, 142, "H⁺ 나옴", 11.5, "#c2410c", "end", 800)
-    o += '<path d="M1005,262 L1030,340 L1066,331 L1100,310 L1150,250 L1180,240 L1215,280 L1240,400" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-dasharray="7 4" marker-end="url(#ab)"/>'
+    o += '<path d="M1005,262 L1030,322 L1066,316 L1100,300 L1150,250 L1180,242 L1266,300 L1266,405" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-dasharray="7 4" marker-end="url(#ab)"/>'
     return f'<svg viewBox="0 0 1400 620" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">{o}</svg>'
 
 
