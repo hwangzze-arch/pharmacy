@@ -2,7 +2,7 @@ import os, sys, glob, importlib
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 
-MODS = ["c00_front", "c05_blank", "c10_etc", "c20_atp", "c30_reg", "c40_mito", "c50_light", "c60_calvin", "c90_final"]
+MODS = ["c00_front", "c04_zoom", "c05_blank", "c10_etc", "c20_atp", "c30_reg", "c40_mito", "c50_light", "c60_calvin", "c90_final"]
 ENTRIES = []
 for m in MODS:
     ENTRIES += importlib.import_module(m).E
