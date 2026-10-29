@@ -1,0 +1,76 @@
+from lib import *
+
+PAGES = [
+ # PART 01 구성 단계 · 조직
+ [(3, [
+  MC('Which of the following is <u>NOT</u> a type of connective tissue?', '다음 중 결합조직이 <u>아닌</u> 것은?',
+     [('bone', '뼈'), ('blood', '혈액'), ('the spinal cord', '척수'), ('tendons', '힘줄'), ('cartilage', '연골')], '③',
+     W('① ✗ 뼈 = 단단한 세포외기질(칼슘)을 가진 결합조직', '② ✗ 혈액 = 혈장이 세포외기질 역할을 하는 액체 결합조직', '③ ✔ 척수 = 뇌와 함께 중추신경계를 이루는 <b>신경조직</b>',
+       '④ ✗ 힘줄 = 근육을 뼈에 붙이는 질긴 결합조직', '⑤ ✗ 연골 = 탄력 있는 기질을 가진 결합조직'), stars=1),
+  MC('Which of the following activities is <u>NOT</u> carried out by every cell in the body?', '다음 중 몸의 <u>모든</u> 세포가 하는 활동이 <u>아닌</u> 것은?',
+     [('obtaining O<sub>2</sub> and nutrients', 'O<sub>2</sub>·영양분 획득'), ('performing energy-generating chemical reactions', '에너지 생성 화학반응'),
+      ('eliminating wastes', '노폐물 제거'), ('synthesizing proteins', '단백질 합성'), ('reproducing (cell division)', '생식(세포 분열)')], '⑤',
+     W('①~④ ✗ 모두 세포가 살기 위해 반드시 하는 <b>기본 기능</b> — 하나라도 멈추면 세포가 죽는다',
+       '⑤ ✔ 다 자란 <b>신경세포·근육세포는 분열하지 않으므로</b> "모든 세포"의 공통 기능이 아니다')),
+  TF([('Organs are composed of two or more types of primary tissue organized to perform particular functions.', '장기는 특정 기능을 하도록 조직된 2종 이상의 기본 조직으로 구성된다.'),
+      ('The proper order of organization is chemicals → cells → organs → tissues → body systems → organism.', '올바른 구성 순서는 화학물질 → 세포 → 장기 → 조직 → 계통 → 개체이다.'),
+      ('Cell specializations are usually a modification or elaboration of one of the basic cell functions.', '세포의 특수화는 보통 기본 세포 기능 하나의 변형·정교화이다.'),
+      ('Cells in a multicellular organism have little in common with single-celled organisms.', '다세포 생물의 세포는 단세포 생물과 공통점이 거의 없다.'),
+      ('Exocrine glands secrete hormones into the blood.', '외분비샘은 호르몬을 혈액으로 분비한다.')],
+     'T F T F F', W('(2) ✗ 조직과 장기 순서가 뒤바뀜 → 세포가 모여 <b>조직</b>, 조직이 모여 <b>장기</b>',
+                    '(4) ✗ 아무리 특수화돼도 영양 획득·에너지 생성 같은 <b>기본 기능은 단세포 생물과 똑같다</b>',
+                    '(5) ✗ 호르몬을 혈액으로 내보내는 건 <b>내분비샘</b>. 외분비샘은 관을 통해 몸 밖(땀·침)으로')),
+ ])],
+ # PART 02 항상성 · 체액 · 계통
+ [(3, [
+  SA('Name the two components of the extracellular fluid, and state which one directly surrounds the cells.', '세포외액의 두 구성 성분을 쓰고, 그중 세포를 직접 둘러싸는 것은 무엇인지 쓰시오.',
+     '혈장과 간질액 — 세포를 직접 둘러싸는 것은 간질액', K('세포외액', '간질액 약 80%', '혈장 약 20%') + '혈장은 혈관 안, 간질액은 세포와 혈관 사이에 있다.'),
+  MC('Which body system is matched <u>INCORRECTLY</u> with its homeostatic function?', '항상성 기능과 <u>잘못</u> 짝지어진 계통은?',
+     [('Skeletal — storage reservoir for calcium', '골격계 — 칼슘 저장고'), ('Muscular — generates heat to maintain body temperature', '근육계 — 열 생성으로 체온 유지'),
+      ('Endocrine — controls activities that require swift responses', '내분비계 — 빠른 반응이 필요한 활동 조절'), ('Respiratory — eliminates CO<sub>2</sub>', '호흡계 — CO<sub>2</sub> 배출'),
+      ('Circulatory — transports materials', '순환계 — 물질 운반')], '③',
+     W('①②④⑤ ✗ 모두 교재 표현 그대로 맞는 짝', '③ ✔ 틀린 짝: 빠른(swift) 반응은 <b>신경계</b>. 내분비계는 성장처럼 <b>오래 지속</b>되는 활동을 조절')),
+  TF([('The internal environment that the body homeostatically maintains is the intracellular fluid.', '몸이 항상성으로 유지하는 내부 환경은 세포내액이다.'),
+      ('The reproductive system is not essential for homeostasis.', '생식계는 항상성에 필수적이지 않다.'),
+      ('Interstitial fluid is the fluid portion of the blood.', '간질액은 혈액의 액체 부분이다.'),
+      ('Bone marrow is the source of all blood cells.', '골수는 모든 혈구의 근원이다.'),
+      ('Homeostasis means that the internal environment is held absolutely constant.', '항상성은 내부 환경이 절대적으로 일정하게 유지됨을 뜻한다.')],
+     'F T F T F', W('(1) ✗ 내부 환경 = <b>세포외액</b>. 세포가 담그고 사는 바깥 액체를 지킨다',
+                    '(3) ✗ 혈액의 액체 부분은 <b>혈장</b>. 간질액은 세포 사이를 적시는 액체',
+                    '(5) ✗ 절대 고정이 아니라 좁은 범위 안에서 흔들리는 <b>동적 평형</b>')),
+ ])],
+ # PART 03 조절계 · 되먹임
+ [(3, [
+  MC('Which TWO of the following do <u>not</u> work by negative feedback? <b>(Choose two.)</b>', '다음 중 음성 되먹임으로 작동하지 <u>않는</u> 것 두 가지는?',
+     [('Uterine contractions intensifying during childbirth', '출산 중 점점 강해지는 자궁 수축'), ('Sweating when body temperature rises', '체온 상승 시 땀'),
+      ('Salivation at the sight of food before eating', '먹기 전 음식을 보고 침 분비'), ('Shivering when body temperature falls', '체온 하강 시 떨림'),
+      ('A thermostat turning off a furnace as room temperature rises', '실온이 오르면 보일러를 끄는 온도조절기')], '①, ③',
+     W('① ✔ 수축 → 옥시토신 ↑ → 더 센 수축: 같은 방향으로 커지는 <b>양성 되먹임</b>', '② ✗ 체온↑ → 땀 → 체온↓: 반대 방향 = 음성',
+       '③ ✔ 아직 변화가 없는데 미리 반응 = <b>전향 조절</b>', '④ ✗ 체온↓ → 떨림(열 생산) → 체온↑: 음성', '⑤ ✗ 온도↑ → 난방 끔 → 온도↓: 음성의 대표 예'), pick=2, stars=3),
+  SA('____ controls are inherent to an organ, whereas ____ controls are initiated outside an organ. These outside controls are accomplished by the ____ and ____ systems.',
+     '____ 조절은 장기에 내재되어 있고, ____ 조절은 장기 밖에서 시작된다. 이 외부 조절은 ____계와 ____계가 수행한다.',
+     '내인성(국소) · 외인성(전신) · 신경 · 내분비', K('내인성 = 장기 안', '외인성 = 장기 밖', '신경계', '내분비계') + '외인성 조절은 여러 장기를 한꺼번에 맞춰 조정할 수 있다.', stars=2),
+  TF([('Positive feedback is the most common homeostatic mechanism.', '양성 되먹임이 가장 흔한 항상성 기전이다.'),
+      ('In negative feedback, the response drives the controlled variable in the opposite direction of the initial change.', '음성 되먹임에서 반응은 조절 변수를 처음 변화의 반대 방향으로 움직인다.'),
+      ('Childbirth is an example of positive feedback.', '출산은 양성 되먹임의 예이다.'),
+      ('Feedforward mechanisms respond only after a change has occurred.', '전향 조절은 변화가 일어난 뒤에만 반응한다.'),
+      ('A homeostatic control system must detect, integrate, and adjust.', '항상성 조절계는 감지·통합·조정을 해야 한다.')],
+     'F T T F T', W('(1) ✗ 가장 흔한 건 <b>음성</b> 되먹임. 양성은 출산·혈액응고처럼 드문 경우',
+                    '(4) ✗ 전향 조절은 변화가 <b>일어나기 전에 예측</b>해서 반응 (먹기 전 침)')),
+ ])],
+ # 서술형
+ [(2, [
+  ES('Compare negative feedback and positive feedback, giving one physiological example of each. Then explain how feedforward differs from both.',
+     '음성·양성 되먹임을 각각 예와 함께 비교하고, 전향 조절이 둘과 어떻게 다른지 설명하시오.',
+     '음성 되먹임은 조절 변수가 변하면 그 변화와 <b>반대 방향</b>으로 반응해 설정값으로 되돌린다. 예를 들어 체온이 오르면 땀이 나고 피부 혈관이 넓어져 체온이 내려간다. 항상성을 지키는 <b>가장 흔한</b> 기전이다. 양성 되먹임은 처음 변화를 <b>같은 방향으로 증폭</b>한다. 출산 때 자궁 수축이 옥시토신 분비를 늘리고, 옥시토신이 수축을 더 세게 만들며, 아기가 나와야 고리가 끝난다. 드물게 쓰인다. 전향 조절은 변화가 일어나기 <b>전에 미리 예측</b>해 반응한다는 점에서 둘과 다르다. 예를 들어 음식을 먹기 전에 침과 위액이 먼저 분비된다.',
+     K('반대 방향', '설정값 복귀', '가장 흔함', '같은 방향 증폭', '출산·옥시토신', '예측(전향 조절)') + '채점: 방향 비교 + 예 각 1개 + 전향 조절의 "예측".'),
+  ES('Define homeostasis and explain why the extracellular fluid must be kept stable for cells to survive. List at least four homeostatically regulated factors.',
+     '항상성을 정의하고, 세포 생존을 위해 왜 세포외액이 안정되어야 하는지 설명하시오. 조절되는 요소를 4가지 이상 쓰시오.',
+     '항상성은 외부 환경이 변해도 <b>내부 환경을 비교적 일정하게 유지</b>하는 것이다. 내부 환경은 세포를 둘러싼 <b>세포외액</b>(혈장 + 간질액)이다. 세포는 세포외액과 영양소·산소·이산화탄소·노폐물을 주고받으므로, 세포외액의 조성이 좁은 범위 안에 있어야 세포가 생명 활동을 할 수 있다. 세포가 살아야 몸 전체가 산다. 조절되는 요소는 영양소 농도, 산소와 이산화탄소 농도, 노폐물 농도, pH, 물·염분·전해질 농도, 부피와 압력, 체온이다.',
+     K('내부 환경 = 세포외액', '물질 교환', '좁은 범위', '영양소', 'O₂·CO₂', 'pH', '전해질', '부피·압력', '체온') + '채점: 정의 + "세포 ↔ 세포외액 교환" 고리 + 요소 4개 이상.'),
+ ])],
+]
+
+MEMO = ['항상성은 외부 환경이 변해도 내부 환경(세포외액)을 비교적 일정하게 유지하는 것이다.',
+        '음성 되먹임은 변화와 반대 방향으로, 양성 되먹임은 같은 방향으로 반응하며, 전향 조절은 변화 전에 미리 반응한다.',
+        '내인성 조절은 장기 안에서, 외인성 조절은 장기 밖의 신경계·내분비계가 수행한다.']
