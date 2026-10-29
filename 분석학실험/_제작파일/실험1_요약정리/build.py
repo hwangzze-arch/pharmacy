@@ -2,7 +2,7 @@ import os, sys, glob, importlib
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 
-MODS = ["c00_front", "c10_part1", "c20_part2", "c30_part3", "c40_part4", "c90_final"]
+MODS = ["c_summary"]
 ENTRIES = []
 for m in MODS:
     ENTRIES += importlib.import_module(m).E
@@ -11,7 +11,7 @@ for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
-FOOT = "의약품분석학 실험 · 실험 1 뷰렛의 검정 마스터 노트"
+FOOT = "의약품분석학 실험 · 실험 1 뷰렛의 검정 · 첫 수업 정리"
 
 CSS = r"""
 @page { size: 297mm 210mm; margin: 0; }
@@ -119,6 +119,9 @@ tr.hl td{background:#ffe3e3;}
 .mynote .rd{color:#d6336c;font-weight:700;}
 .work.hasnote{background-image:none;padding:30px 10px 8px 10px;overflow:hidden;}
 .work.hasnote .mynote{margin:0;font-size:.9em;}
+.card.prof{background:#fef9e7;border-color:#efd27a;} .card.prof .ct{color:#b9770e;}
+.qa{background:#fff;border:1px solid var(--line);border-radius:9px;padding:5px 11px;margin:0 0 6px 0;break-inside:avoid;}
+.qa .q{font-weight:700;} .qa .a{color:#0f6b52;} .qa .a::before{content:'→ ';font-weight:700;}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 """
@@ -228,6 +231,6 @@ html = re.sub(r"\{REF:([^}]+)\}", ref, html)
 html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(ids[m.group(1)][0]), html)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
 FONTS = "".join(f'<link rel="stylesheet" href="file://{p}">' for p in (os.path.expanduser(f'~/.fonts/nskr/package/{w}.css') for w in (400, 500, 700, 800)) if os.path.exists(p))
-html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8">{FONTS}<title>분석학실험 실험1 뷰렛의 검정 마스터 노트</title><style>{CSS}</style></head><body>{html}</body></html>'
+html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8">{FONTS}<title>실험1 뷰렛의 검정 요약정리</title><style>{CSS}</style></head><body>{html}</body></html>'
 open(os.path.join(D, "index.html"), "w", encoding="utf-8").write(html)
 print("pages", len(pages), "concepts", cn, "questions", qn)
