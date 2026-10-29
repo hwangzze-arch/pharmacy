@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 제22장 슬라이드 25–36 + 연습문제 22-37, 22-38, 22-42, 22-54
-from fig import row, cap, svg
+from fig import row
 
 PHB1 = row(('m', 'N#CCc1ccccc1', 88, 60), ('a', 'EtOH', 'H⁺'),
            ('m', 'CCOC(=O)Cc1ccccc1', 120, 62), ('a', '(EtO₂C)₂', 'NaOEt'),
@@ -8,46 +8,6 @@ PHB1 = row(('m', 'N#CCc1ccccc1', 88, 60), ('a', 'EtOH', 'H⁺'),
 PHB2 = row(('a', '가열', '−CO'), ('m', 'CCOC(=O)C(c1ccccc1)C(=O)OCC', 100, 72),
            ('a', '1. NaOEt', '2. EtBr'), ('m', 'CCOC(=O)C(CC)(c1ccccc1)C(=O)OCC', 100, 78),
            ('a', '요소', 'NaOEt'), ('m', 'CCC1(c2ccccc2)C(=O)NC(=O)NC1=O', 95, 78))
-
-# 22-37 정답: 산성 수소(분홍)
-F37 = ('<div style="display:flex;flex-wrap:wrap;gap:4px 10px;align-items:flex-end">'
-       + cap('CC[C]([H:1])(C)C(=O)C([H:1])([H:1])[H:1]', '(a) α-H 4개', 165, 125)
-       + cap('O=C1C([H:1])([H:1])C(=O)C([H:1])([H:1])C1([H:1])[H:1]', '(b) α-H 6개 (C2가 가장 산성)', 165, 125)
-       + cap('[H:1]OCC([H:1])([H:1])C(=O)C#CC', '(c) α-CH₂ + O–H', 185, 115)
-       + cap('COC(=O)c1ccccc1C([H:1])([H:1])C#N', '(d) CH₂CN의 H 2개', 165, 125)
-       + cap('ClC(=O)C1([H:1])CCCC1', '(e) α-H 1개', 140, 110)
-       + cap('CC([H:1])([H:1])C(=O)C(C)=C', '(f) α-CH₂ 2개', 150, 110)
-       + '</div>')
-
-F38 = ('<div style="font-size:11px;margin-bottom:2px"><b>산성도 증가 순서</b> (약한 산 → 강한 산)</div>'
-       '<div style="display:flex;align-items:center;flex-wrap:wrap;gap:0 2px">'
-       + cap('CCN([H:1])CC', '(c) pKa ≈ 36', 95, 80) + '<b>&lt;</b>'
-       + cap('CC(=O)C', '(d) 19', 80, 80) + '<b>&lt;</b>'
-       + cap('CC[O][H:1]', '(b) 16', 80, 80) + '<b>&lt;</b>'
-       + cap('CC(=O)CC(C)=O', '(e) 9', 110, 80)
-       + '</div><div style="display:flex;align-items:center;gap:0 2px;margin-left:60px">'
-       + '<b>&lt;</b>' + cap('CCC(=O)O[H:1]', '(a) 4.8', 100, 85) + '<b>&lt;</b>'
-       + cap('ClC(Cl)(Cl)C(=O)O[H:1]', '(f) 0.7', 110, 90)
-       + '</div><div class="note" style="margin-top:4px">분홍 = 실제로 떨어지는 H (표시 없는 (d)(e)는 α-H)</div>')
-
-F42 = (row(('m', 'OC(=O)C1(C(=O)O)CCCCC1', 100, 62), ('a', '가열', ''),
-           ('m', 'OC(=O)C1CCCCC1', 90, 62), ('t', '+ CO₂'), label='(a)')
-       + row(('m', 'O=C1CCC(=O)C1', 80, 58), ('a', '1. NaOEt', '2. CH₃I'),
-             ('m', 'CC1C(=O)CCC1=O', 85, 62), label='(b)')
-       + row(('m', 'CCCC(=O)O', 80, 50), ('a', 'Br₂, PBr₃', ''),
-             ('m', 'CCC(Br)C(=O)Br', 85, 58), ('a', 'H₂O', ''),
-             ('m', 'CCC(Br)C(=O)O', 85, 58), label='(c)')
-       + row(('m', 'CC(=O)c1ccccc1', 90, 58), ('a', 'NaOH, H₂O', 'I₂ (과량)'),
-             ('m', '[O-]C(=O)c1ccccc1', 95, 58), ('t', 'Na⁺ + CHI₃↓'), label='(d)'))
-
-F54 = (row(('m', 'COC(=O)C1CCCCC1=O', 105, 90), ('a', 'a', ''),
-           ('m', 'COC(=O)C1(C)CCCCC1=O', 105, 90), ('a', 'b', ''),
-           ('m', 'CC1CCCCC1=O', 85, 85), ('a', 'c', ''),
-           ('m', 'CC1CCCC(C)C1=O', 105, 85))
-       + '<table class="t" style="margin-top:8px;font-size:11.5px"><tr><th>칸</th><th>시약</th><th>반응</th></tr>'
-       '<tr><td><b>a</b></td><td>1. NaOCH₃, CH₃OH &nbsp;2. CH₃I</td><td>β-케토 에스터 알킬화</td></tr>'
-       '<tr><td><b>b</b></td><td>H₃O⁺, 가열</td><td>가수분해 + 탈카르복실화</td></tr>'
-       '<tr><td><b>c</b></td><td>1. LDA, THF &nbsp;2. CH₃I</td><td>케톤 직접 알킬화</td></tr></table>')
 
 PAGES = [
 # 25
@@ -259,26 +219,24 @@ ex="""<ol><li>카르보닐(C=O)과 C≡N을 모두 동그라미 쳐.</li>
 <tr><td>케톤 α-H</td><td>19</td></tr>
 <tr><td>CH₂–C≡N (벤질이면 더 산성)</td><td>≤ 25</td></tr>
 <tr><td>알코올 O–H</td><td>16</td></tr></table>
-<div class="box"><span class="tag">힌트</span>(c)는 알킨 쪽에 α-H가 없어(C≡C–C=O). (f)도 C=C 쪽 탄소에는 α-H가 없어. 각 분자에서 α 탄소가 몇 개인지부터 세어봐.</div>"""),
+<div class="box"><span class="tag">힌트</span>(c)는 C=O 옆 CH₂만 보면 안 돼. 알킨 건너편 CH₃의 H가 빠지면 음전하가 C≡C를 거쳐 산소까지 퍼질 수 있는지 공명 구조로 확인해봐.</div>"""),
 
 # 38 풀이 22-37
-dict(fig=F37, figw=610, src="연습문제 22-37 · 풀이", title="풀이 22-37 — 산성 수소(pKa &lt; 25)", sub="Solution 22-37 — 분홍 = 산성 수소",
-kw=["α-H", "O–H", "1,3-다이온", "γ-H는 제외"],
-sum="(a) α-H 4개 (b) 고리의 α-H 6개 (c) α-CH₂ + O–H (d) CH₂CN의 H 2개 (e) α-H 1개 (f) α-CH₂ 2개.",
-tr_label="정답", ex_label="상세 풀이",
-tr="""<ul><li>(a) C=O 양옆 α 탄소: <b>CH₃(3개)</b> + <b>CH(1개)</b> → 4개</li>
-<li>(b) C2(두 C=O 사이) H 2개 <b>(pKa ≈ 9, 가장 산성)</b> + C4·C5 H 4개 → 6개</li>
-<li>(c) C=O 옆 <b>CH₂</b> 2개 + 알코올 <b>O–H</b> 1개</li>
-<li>(d) <b>CH₂CN</b>의 H 2개</li>
-<li>(e) 고리의 <b>α-CH</b> 1개 (산염화물 α-H, pKa ≈ 16)</li>
-<li>(f) 에틸의 <b>CH₂</b> 2개</li></ul>""",
-ex="""<p><b>헷갈리는 것만 정리</b></p>
-<ul><li>(b) C4–C5 H는 C=O 하나에만 α라 pKa ≈ 19–20. 그래도 25보다 작아서 <b>포함</b>. 가장 산성인 건 C2.</li>
-<li>(c) <y>O–H(16)</y>를 빼먹기 쉬워. HO–CH₂의 C–H는 α가 아니야(C=O에서 두 칸 떨어짐). 알킨 탄소엔 H가 없어.</li>
-<li>(d) 벤젠 고리 H(43), OCH₃ H는 ×. CH₂는 <b>니트릴 α + 벤질 위치</b>라 pKa 25 미만.</li>
-<li>(e) 고리의 다른 CH₂는 α가 아니야.</li>
-<li>(f) C(CH₃)=CH₂ 쪽은 sp² 탄소라 α-H 없음. CH₃는 <pk>γ 위치</pk>(C=O–C=C–CH₃)라 보통 답에서 빼.</li></ul>
-<div class="boxg"><b>원칙</b> “카르보닐/니트릴 바로 옆 sp³ C–H” + “O–H”. 고리 H·바이닐 H·OCH₃는 항상 ×.</div>"""),
+dict(img="a37", src="연습문제 22-37 · 해설집 풀이", title="문제 22-37 — 산성 수소(pKa &lt; 25)", sub="Solution 22.37 — Acidic hydrogens are bold (OpenStax Organic Chemistry Solutions Manual)",
+kw=["α-H", "O–H", "1,3-다이온", "알킨 너머 CH₃ (콘쥬게이션)"],
+tr_label="해설집 풀이 번역", ex_label="상세 풀이 · 메커니즘",
+sum="(a) α-H 4개 (b) 고리의 α-H 6개 (c) O–H + α-CH₂ + 알킨 끝 CH₃ (d) CH₂CN의 H 2개 (e) α-H 1개 (f) α-CH₂ 2개. 가장 산성: (b) 두 C=O 사이 H, (c) O–H.",
+tr="""<p>산성 수소는 굵게 표시했다. 가장 산성인 수소는 (b)에서 두 카르보닐 사이의 수소 2개와 (c)의 하이드록실 수소다. (c)에서 메틸기에 붙은 수소들도 산성이다 (공명 구조를 그려 확인해 보라).</p>
+<ul><li>(a) C=O 양옆: <b>CH</b>(1개) + <b>CH₃</b>(3개)</li>
+<li>(b) C2(두 C=O 사이) H 2개 + C4·C5 H 4개</li>
+<li>(c) <b>O–H</b> + C=O 옆 <b>CH₂</b> + 알킨 끝 <b>CH₃</b></li>
+<li>(d) <b>CH₂CN</b>의 H 2개 · (e) 고리의 <b>α-H</b> 1개 · (f) 에틸의 <b>CH₂</b> 2개</li></ul>""",
+ex="""<ul><li>(b) C4–C5 H는 C=O 하나에만 α라 pKa ≈ 19–20이지만 25보다 작아서 <b>포함</b>. 가장 산성인 건 C2(pKa ≈ 9).</li>
+<li>(c) <y>O–H(16)</y>를 빼먹기 쉬워. HO–CH₂의 C–H는 α가 아니야.</li>
+<li>(c) <pk>알킨 끝 CH₃도 산성!</pk> H가 빠지면 음전하가 C≡C를 거쳐 C=O 산소까지 퍼져: <span class="eq">⁻CH₂–C≡C–C=O ↔ CH₂=C=C=C–O⁻</span>. C=O와 직접 붙어 있지 않아도 <b>π 결합으로 이어져 있으면</b>(콘쥬게이션) 산성이 돼.</li>
+<li>(d) 벤젠 고리 H, OCH₃ H는 ×. CH₂는 <b>니트릴 α + 벤질 위치</b>.</li>
+<li>(f) C(CH₃)=CH₂의 바이닐 H는 ×. 해설집은 C=C 위 CH₃를 표시하지 않았어(CH₂만 정답).</li></ul>
+<div class="boxg"><b>원칙</b> “카르보닐/니트릴 옆 sp³ C–H” + “O–H” + “C=O와 π로 이어진 끝의 C–H”. 고리 H·바이닐 H·OCH₃는 ×.</div>"""),
 
 # 39 문제 22-38
 dict(img="p38", src="연습문제 22-38 · 문제", title="문제 22-38 — 산성도 증가 순서", sub="Problem 22-38 — Rank the compounds in order of increasing acidity",
@@ -304,11 +262,11 @@ ex="""<ol><li>각 화합물에서 <y>가장 산성인 H 하나</y>를 정해 (O�
 <div class="box"><span class="tag">힌트</span>(a)와 (f)는 둘 다 카르복실산이지만, Cl 3개의 <b>유발 효과(전자 끌기)</b>가 카르복실레이트 음이온을 크게 안정화해. 순서 문제에서 이런 “같은 작용기끼리 비교”가 함정이야.</div>"""),
 
 # 40 풀이 22-38
-dict(fig=F38, figw=600, src="연습문제 22-38 · 풀이", title="풀이 22-38 — 산성도 증가 순서", sub="Solution 22-38",
+dict(img="a38", toph=150, src="연습문제 22-38 · 해설집 풀이", title="문제 22-38 — 산성도 증가 순서", sub="Solution 22.38 — Check your answer by using the pKas in Table 22.1 (OpenStax Organic Chemistry Solutions Manual)",
 kw=["c &lt; d &lt; b &lt; e &lt; a &lt; f", "pKa 36 → 0.7"],
 sum="(c) 다이에틸아민 36 &lt; (d) 아세톤 19 &lt; (b) 에탄올 16 &lt; (e) 2,4-펜탄다이온 9 &lt; (a) 프로판산 4.8 &lt; (f) 트라이클로로아세트산 0.7",
-tr_label="정답", ex_label="상세 풀이",
-tr="""<p class="eq"><b>(c) &lt; (d) &lt; (b) &lt; (e) &lt; (a) &lt; (f)</b></p>
+tr_label="해설집 풀이 번역", ex_label="상세 풀이 · 메커니즘",
+tr="""<p>표 22.1의 pKa로 답을 확인하라. 가장 약한 산 → 가장 강한 산:</p><p class="eq"><b>(c) &lt; (d) &lt; (b) &lt; (e) &lt; (a) &lt; (f)</b></p>
 <table class="t"><tr><th>순위</th><th>화합물</th><th>떨어지는 H</th><th>pKa</th></tr>
 <tr><td>가장 약함</td><td>(c) (CH₃CH₂)₂NH</td><td>N–H</td><td>~36</td></tr>
 <tr><td></td><td>(d) CH₃COCH₃</td><td>α C–H</td><td>19</td></tr>
@@ -342,13 +300,13 @@ ex="""<table class="t"><tr><th></th><th>조건이 말해주는 것</th><th>슬�
 <div class="box"><span class="tag">힌트</span>(c)는 물음표가 2개야. H₂O 넣기 <b>전</b> 중간 생성물은 –COOH가 아니라 <b>–COBr</b>. (d)는 생성물이 2개 (탄소 하나 줄어든 것 + 노란 침전).</div>"""),
 
 # 42 풀이 22-42
-dict(fig=F42, figw=560, src="연습문제 22-42 · 풀이", title="풀이 22-42 — 생성물 예측", sub="Solution 22-42",
+dict(img="a42", src="연습문제 22-42 · 해설집 풀이", title="문제 22-42 — 생성물 예측", sub="Solution 22.42 — α-Substitution Reactions (OpenStax Organic Chemistry Solutions Manual)",
 kw=["사이클로헥세인카르복실산", "2-메틸-1,3-다이온", "2-브로모뷰탄산", "벤조산염 + CHI₃"],
 sum="(a) 사이클로헥세인카르복실산 + CO₂ (b) 2-메틸사이클로펜테인-1,3-다이온 (c) 2-브로모뷰타노일 브로마이드 → 2-브로모뷰탄산 (d) 벤조산 소듐 + 아이오도폼(CHI₃).",
-tr_label="정답", ex_label="상세 풀이 · 메커니즘",
-tr="""<ul><li>(a) <b>사이클로헥세인카르복실산</b> + CO₂</li>
+tr_label="해설집 풀이 번역", ex_label="상세 풀이 · 메커니즘",
+tr="""<p class="note">해설집은 그림만 있어 생성물을 그대로 옮겼어.</p><ul><li>(a) <b>사이클로헥세인카르복실산</b> + CO₂</li>
 <li>(b) <b>2-메틸사이클로펜테인-1,3-다이온</b> (CH₃가 두 C=O 사이 C2에)</li>
-<li>(c) 1단계: <b>2-브로모뷰타노일 브로마이드</b> CH₃CH₂CHBrCOBr → 2단계: <b>2-브로모뷰탄산</b> CH₃CH₂CHBrCOOH</li>
+<li>(c) <b>A</b> = 2-브로모뷰타노일 브로마이드 CH₃CH₂CHBrCOBr → <b>B</b> = 2-브로모뷰탄산 CH₃CH₂CHBrCOOH</li>
 <li>(d) <b>벤조산 소듐</b> PhCOO⁻ Na⁺ + <b>CHI₃</b>(아이오도폼, 노란 침전). 산 처리하면 벤조산.</li></ul>""",
 ex="""<p><b>(a)</b> 한 COOH의 H가 다른 C=O 산소로 가는 6원 고리 전이상태 → CO₂ 이탈 → 산 엔올 → 토토머화.</p>
 <p><b>(b)</b> EtO⁻가 <y>C2-H(pKa 9)</y>를 뗌 → 공명 안정화된 엔올레이트 → C2가 CH₃–I를 S<sub>N</sub>2 공격 → I⁻ 이탈. C4/C5보다 C2가 훨씬 산성이라 C2에만.</p>
@@ -369,13 +327,14 @@ ex="""<ol><li><b>a</b>: 무엇이 바뀌었나? C=O와 CO₂CH₃ 사이 탄소�
 <div class="box"><span class="tag">힌트</span>a의 염기는 에스터가 <b>메틸</b> 에스터라는 걸 보고 골라(슬 25: 에스터와 같은 알콕사이드). c에서 왜 C2가 아니라 C6에 들어가는지도 설명할 수 있어야 해.</div>"""),
 
 # 44 풀이 22-54
-dict(fig=F54, figw=630, src="연습문제 22-54 · 풀이", title="풀이 22-54 — 시약 a–c", sub="Solution 22-54",
+dict(img="a54", toph=170, src="연습문제 22-54 · 해설집 풀이", title="문제 22-54 — 시약 a–c", sub="Solution 22.54 (OpenStax Organic Chemistry Solutions Manual)",
 kw=["a: NaOCH₃ / CH₃I", "b: H₃O⁺, 가열", "c: LDA / CH₃I", "속도론적 엔올레이트"],
 sum="a = 1. NaOCH₃ 2. CH₃I · b = H₃O⁺, 가열 · c = 1. LDA, THF 2. CH₃I. 22장 알킬화 세 종류를 한 문제에 모았어.",
-tr_label="정답", ex_label="상세 풀이 · 메커니즘",
+tr_label="해설집 풀이 번역", ex_label="상세 풀이 · 메커니즘",
 tr="""<ul><li><b>a</b> = 1. Na⁺ ⁻OCH₃, CH₃OH &nbsp;2. CH₃I</li>
 <li><b>b</b> = H₃O⁺, 가열</li>
 <li><b>c</b> = 1. LDA, THF &nbsp;2. CH₃I</li></ul>
+<p>(a) Na⁺ ⁻OCH₃, 그다음 CH₃I; (b) H₃O⁺, 가열; (c) LDA, 그다음 CH₃I (<b>2,2-다이메틸사이클로헥사논도 일부 생길 수 있다</b>).</p>
 <p class="note">a는 NaOEt를 써도 생성물 뼈대는 같지만, 메틸 에스터와 에스터 교환이 섞일 수 있어 NaOCH₃가 깔끔해.</p>""",
 ex="""<p><b>a</b>: CH₃O⁻가 두 C=O 사이 C–H(pKa ~11)를 뗌 → 엔올레이트 → CH₃I에 S<sub>N</sub>2 → 4차 탄소(CH₃ + CO₂CH₃).</p>
 <p><b>b</b>: 에스터 산 가수분해 → β-케토산 → <g>6원 고리 전이상태로 CO₂ 이탈</g> → 엔올 → 토토머화 → 2-메틸사이클로헥사논.</p>
