@@ -18,7 +18,7 @@ const path = require('path');
     };
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
-      let fs = 12.8, imgh = 240, guard = 0;
+      let fs = 18, imgh = 240, guard = 0;
       pg.style.setProperty('--fs', fs + 'px');
       while (over(pg) && guard++ < 80) {
         if (fs > 11.6) fs -= 0.2;
@@ -32,7 +32,7 @@ const path = require('path');
     });
     return res;
   });
-  report.filter(r => r.fs < 11 || r.overflow).forEach(r => console.log(JSON.stringify(r)));
+  report.filter(r => process.env.FITLOG || r.fs < 11 || r.overflow).forEach(r => console.log(JSON.stringify(r)));
   await page.pdf({ path: process.argv[2], width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
   if (process.argv[3]) {
     const els = await page.$$('.page');
