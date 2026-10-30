@@ -11,6 +11,15 @@ const path = require('path');
   const report = await page.evaluate(() => {
     const res = [];
     const over = (pg) => [...pg.querySelectorAll('.col')].some(c => c.scrollHeight > c.clientHeight + 1);
+    // 메커니즘 쪽: 그림이 가로·세로로 넘치지 않는 한 가장 크게 (zoom)
+    const wide = (f) => [...f.querySelectorAll('.mrow')].some(r => r.scrollWidth > r.clientWidth + 1);
+    document.querySelectorAll('.page.mech').forEach(pg => {
+      const f = pg.querySelector('.mfig');
+      let z = 1.8;
+      f.style.zoom = z;
+      while ((over(pg) || wide(f)) && z > 0.7) { z -= 0.05; f.style.zoom = z; }
+      pg.dataset.zoom = z.toFixed(2);
+    });
     document.querySelectorAll('.page').forEach((pg, i) => {
       let fs = 12.5;
       let toph = parseFloat(getComputedStyle(pg).getPropertyValue('--toph')) || 292;

@@ -13,6 +13,20 @@ from ch22_2 import PAGES as P2
 from ch22_3 import PAGES as P3
 
 PAGES = P1 + P2 + P3
+
+# 메커니즘 쪽: 해당 슬라이드 바로 뒤에 끼워 넣기
+from mechs22 import M, T
+from mech import MECH_CSS
+_out = []
+for _p in PAGES:
+    _out.append(_p)
+    _k = _p.get("slide")
+    if _k in M:
+        _figs = M[_k] if isinstance(M[_k], list) else [M[_k]]
+        _ts = T[_k] if isinstance(T[_k], list) else [T[_k]]
+        for _f, _t in zip(_figs, _ts):
+            _out.append(dict(mech=True, slide=_k, src=f"슬라이드 {_k} · 메커니즘", title=_t[0], sub=_t[1], fig=_f, tr=_t[2], ex=_t[3]))
+PAGES = _out
 TOTAL = len(PAGES)
 FOOT = "약품유기화학 2 · 제22장 카르보닐 알파 치환 반응 · 슬라이드별 번역·설명"
 
@@ -20,7 +34,7 @@ FONT = "".join(
     f"@font-face{{font-family:'NotoKR';font-weight:{w};src:url(fonts/noto-sans-kr-{s}-{w}-normal.woff2) format('woff2');}}"
     for s in ("korean", "latin", "latin-ext") for w in (400, 500, 700))
 
-CSS = FONT + """
+CSS = FONT + MECH_CSS + """
 @page { size: 297mm 210mm; margin: 0; }
 :root{--blue:#2c6aa0;--navy:#1f3f66;--orange:#d97a26;--line:#2c6aa0;--muted:#5f6b78;}
 *{box-sizing:border-box;}
@@ -81,10 +95,25 @@ footer{position:absolute;left:11mm;right:11mm;bottom:5mm;border-top:1px solid #d
 footer .l{flex:1;} footer .m{flex:1;display:flex;gap:9px;align-items:center;justify-content:center;}
 footer .r{flex:none;width:80px;text-align:right;}
 .sw{display:inline-block;width:13px;height:8px;border-radius:2px;margin-right:3px;vertical-align:middle;}
+.mfig{flex:none;margin-top:8px;border:1px solid #c9cfd6;border-radius:6px;padding:4px 8px;background:#fcfdfe;}
+.num.mnum{background:#2a9d8f;}
+.mech .bottom{margin-top:8px;}
 """
 
 
+def mech_html(i, p):
+    return f'''<section class="page mech">
+<header><div class="num mnum">{i:02d}</div><div class="ttl"><h1>{p["title"]}</h1><div class="sub">{p["sub"]}</div></div><div class="src">{p["src"]}</div></header>
+<div class="mfig">{p["fig"]}</div>
+<div class="bottom"><div class="col tr"><span class="badge b">단계별 설명</span><div class="body">{p["tr"]}</div></div>
+<div class="col ex"><span class="badge o">포인트</span><div class="body">{p["ex"]}</div></div></div>
+<footer><div class="l">{FOOT}</div><div class="m">곡선 화살표 = 전자쌍의 이동 (출발: 비공유전자쌍 ·· 또는 결합 → 도착: 원자 또는 새 결합)</div><div class="r">{i} / {TOTAL}</div></footer>
+</section>'''
+
+
 def page_html(i, p):
+    if p.get("mech"):
+        return mech_html(i, p)
     chips = "".join(f'<span class="chip">{k}</span>' for k in p["kw"])
     src = p.get("src") or f'원본 슬라이드 {p["slide"]}'
     lab1 = p.get("tr_label", "한글 번역")
