@@ -1,0 +1,6 @@
+src/out.html
+src/mout.html
+src/ov.txt
+src/*.pdf
+src/__pycache__/
+*.png
