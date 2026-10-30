@@ -19,3 +19,9 @@ node render.js "../../CH22_약품유기화학2_번역본.pdf"   # 넘치는 쪽�
 - `fig.py`: SMILES → 구조식 SVG, 반응식 줄(`row`). `[H:1]`로 쓴 원자는 분홍 강조.
 - `fonts/`: Noto Sans KR (woff2, OFL)
 - 다음 장은 `ch23_*.py`를 만들고 `build.py`의 import와 `FOOT`만 바꾸면 된다.
+
+## 메커니즘 쪽 (곡선 화살표)
+- `mech.py`: RDKit 구조식 위에 곡선 화살표(전자 이동)를 그린다. SMILES의 원자 번호(:n)로 화살표 출발·도착을 정한다.
+  `ori`(결합 방향), `pos`(다른 분자를 어느 원자 옆에 둘지), `labels`/`[n*]`(EtO⁻, Ph 같은 약어), `tmpl`(6원 고리 배치), `hb`(수소결합 점선).
+- `mechs22.py`: 22장 메커니즘 `M[슬라이드]`와 글 `T[슬라이드]`. 값이 리스트면 여러 쪽.
+- `build.py`가 해당 슬라이드 쪽 바로 뒤에 끼워 넣고, `render.js`가 그림을 쪽에 맞게 자동 확대한다.
