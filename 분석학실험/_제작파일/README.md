@@ -13,3 +13,8 @@ python3 build.py
 NODE_PATH=$(npm root -g) node render.js "$PWD/../../실험1_뷰렛의 검정_요약정리.pdf"
 ```
 필요: Python 3, Node + playwright(Chromium), 한글 폰트 Noto Sans KR(또는 Pretendard).
+
+## 실험1_실험노트/
+`실험1_실험노트_부착용표그래프_초안.pdf`(오려 붙일 Table I·II·Figure 1 + 노트 초안)와 `실험1_뷰렛의 검정_결과.xlsx`의 원본.
+- `make_pdf.py` → `note.html`, `render.js`로 PDF 출력 (그래프는 `../실험1_요약정리/svgs.py` 사용)
+- `make_xlsx.py 출력.xlsx` → 측정값(파란 글자)과 수식, 검정곡선 차트
