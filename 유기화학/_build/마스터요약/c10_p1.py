@@ -22,6 +22,23 @@ GEN = mrow(panel('C[C:1]([O:2][H:9])=[CH2:3].[*:5]', [(2,(1,2),0.9),((1,3),5,-0.
            step(),
            panel('C[C:1](=[O:2])[CH2:3][*:5]', w=120, h=110, ori={0:(1,2,90)}, labels={5:'E'}, note='α-치환 생성물'), label='일반')
 
+# 부프로피온 전체 메커니즘 (니트릴부터): Grignard → 이민 가수분해 → 산 촉매 엔올화 → Br₂ → S_N2 → HCl
+_PK = 'Clc1cccc([C:1](=[O:2])[CH:3]([H:4])C)c1'
+BUP_ENOL = mrow(panel(_PK + '.[H:5][Br:6]', [(2,5,-0.5),((5,6),6,-1.0)], w=230, h=140, ori={0:(1,2,90),1:(5,6,0)}, pos=[(2,5,1.7,0.3)], note='④ C=O 산소 양성자화'),
+                step(),
+                panel(_PK.replace('[O:2]','[OH+:2]') + '.[Br-:6]', [(6,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=230, h=140, ori={0:(1,2,90)}, pos=[(4,6,1.5,0)], note='⑤ Br⁻가 α-H 제거 → 엔올'),
+                step('', '⑥으로'), label='엔올화')
+BUP_FULL = (MSR(14, 0, 1) + BUP_ENOL + MSR(14, 2, 3)).replace('④ (엔올화 후) 엔올이 Br₂ 공격', '⑥ 엔올이 Br₂ 공격').replace('⑤ S<sub>N</sub>2', '⑦ S<sub>N</sub>2')
+
+
+def mpage(badge, title, sub, part, q=False):
+    """전체 메커니즘 한 쪽 (개념·문제 다음 쪽)."""
+    return dict(t="r", cls="mfull", html=f'''<div class="hd{' q' if q else ''}"><span class="bd">{badge}</span><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><span class="pt">{part}</span></div>
+<div class="mband big"><span class="mbl">⚗️ 메커니즘 — 처음부터 끝까지</span><div class="mz">{BUP_FULL}</div></div>
+<div class="one"><span class="lb">🧠 순서</span><span>① Et⁻ 첨가 → ②③ 이민 가수분해(NH₃ 이탈) = 케톤 → ④⑤ 산 촉매 엔올화 → ⑥ Br₂ → ⑦ S<sub>N</sub>2(t-BuNH₂) → HCl 염</span></div>''')
+
+
+
 E = [
 # ── 개념 01
 dict(t="c", id="c-taut", part=P, title="케토–엔올 토토머화 — 산 촉매 vs 염기 촉매", sub="Keto–enol tautomerism · 슬라이드 2–5",
@@ -126,7 +143,7 @@ detail="""<ol><li><b>Grignard + 니트릴</b>: Et⁻가 C≡N 탄소 공격 → 
 side=[("img", "s-14", "슬라이드 14 — 빈칸 채우기 (웰부트린, 1985 FDA)"),
       ("rec", "“중간고사 보니 <b>문제를 많이 풀어봐야</b> 한다는 느낌이 들어 준비했다.” “요령: 순서대로 말고 <b>거꾸로(역반응)</b> 가 보라.” HCl 빼면 아민 → 아민이 친핵체였으니 그 자리에 할로젠 → Br₂ → 엔올 → 케톤."),
       ("tip", "빈칸형 합성 = 기말 출제 1순위 형식. “α-할로 케톤 + 아민 = α-아미노 케톤” 연결.")],
-mech=MSR(14, 2, 3),
+
 one="막히면 거꾸로! 염 → 아민 → (S_N2) α-Br → (Br₂) 케톤 → (RMgX) 니트릴."),
 
 # ── 문제 06 — 부프로피온 빈칸 (수업 문제)
@@ -138,7 +155,13 @@ steps=[("거꾸로: 염산염 → (HCl 제거) 아민 ③. 아민 N이 친핵체
        ("② 의 Br은 Br₂ 산성 α-브로민화에서 → 그 전은 케톤 ①.", ""),
        ("① 은 니트릴 + EtMgBr → 이민 → H₃O⁺ 가수분해로 케톤.", "니트릴에 탄소 2개를 붙이며 동시에 케톤."),
        ("(3) sp² 탄소 뒤쪽은 고리가 막고 있어 뒤에서 공격(S<sub>N</sub>2) 불가.", "")],
-afig=RX(('m', 'CCC(=O)c1cccc(Cl)c1', 100, 70), ('t', '①'), ('m', 'CC(Br)C(=O)c1cccc(Cl)c1', 105, 75), ('t', '②'), ('m', 'CC(NC(C)(C)C)C(=O)c1cccc(Cl)c1', 130, 80), ('t', '③')) + MSR(14, 3),
+afig=RX(('m', 'CCC(=O)c1cccc(Cl)c1', 100, 70), ('t', '①'), ('m', 'CC(Br)C(=O)c1cccc(Cl)c1', 105, 75), ('t', '②'), ('m', 'CC(NC(C)(C)C)C(=O)c1cccc(Cl)c1', 130, 80), ('t', '③')),
 one="부프로피온 = Grignard(케톤) → Br₂(α-Br) → 아민 S_N2 → HCl. 거꾸로 풀면 쉽다!"),
 ]
-E[7:7] = T1
+
+# 부프로피온: 개념 07 다음, 문제(수업 풀이) 다음에 전체 메커니즘 쪽
+_i = next(k for k, e in enumerate(E) if e.get("id") == "c-bup")
+E.insert(_i + 1, mpage("개념 07 · 계속", "부프로피온 염산염 — 전체 메커니즘 (니트릴부터)", "Grignard → imine hydrolysis → enolization → α-bromination → S<sub>N</sub>2 → HCl", P))
+E[8:8] = T1
+_j = next(k for k, e in enumerate(E) if e.get("src", "").startswith("강의 슬라이드 14"))
+E.insert(_j + 1, mpage("문제 정답 · 계속", "부프로피온 — 정답 메커니즘 (처음부터 끝까지)", "빈칸 ①→②→③의 모든 화살표", P, q=True))
