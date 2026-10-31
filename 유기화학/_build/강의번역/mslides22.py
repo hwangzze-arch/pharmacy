@@ -336,8 +336,7 @@ MS['a54'] = [
 FIRST_ROWS = {10: 1, 12: 1, 13: 1, 14: 1, 29: 2, 33: 1, 'a54': 1}
 
 # 연습문제: 각 부분의 해설집 정답 그림을 그 메커니즘 줄 바로 위에
-ANS = {'a42': {'(a)': 'a42a', '(b)': 'a42b', '(c)': 'a42c', '(d)': 'a42d'},
-       'a54': {'a': 'a54a', 'b': 'a54b', 'c': 'a54c'}}
+ANS = {'a42': {'(a)': 'a42a', '(b)': 'a42b', '(c)': 'a42c', '(d)': 'a42d'}}
 
 
 def _with_answers(html, table):
@@ -353,4 +352,8 @@ def _with_answers(html, table):
 
 for _k, _t in ANS.items():
     MS[_k] = [_with_answers(f, _t) for f in MS[_k]]
-FIRST_ROWS['a54'] = 2
+
+# 22-54는 단계 그림이 붙어 있어 나누지 않고, 시약까지 나온 전체 정답 그림을 쪽마다 맨 위에
+_FULL54 = ('<div class="mrow ansrow"><span class="ml ansl">해설집</span>'
+           '<img class="ans full" src="img/a54.jpg"></div>')
+ANS_FULL = {'a54': _FULL54}  # build.py가 '(계속)' 쪽 포함 모든 쪽 맨 위에 붙임
