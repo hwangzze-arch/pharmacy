@@ -3,28 +3,28 @@ from parts import *
 
 cover = dict(t="r", cls="cover2", html=f"""
 <style>
-.cover2{{background:radial-gradient(ellipse at 0% 0%,#d3f9d8 0%,rgba(211,249,216,0) 45%),radial-gradient(ellipse at 100% 0%,#d0ebff 0%,rgba(208,235,255,0) 50%),radial-gradient(ellipse at 100% 100%,#fff3bf 0%,rgba(255,243,191,0) 50%),#f3faf4 !important;}}
-.cv-k{{letter-spacing:.32em;font-size:11px;font-weight:700;color:{COLOR};margin-top:6mm;}}
-.cv-h{{font-size:38px;line-height:1.2;font-weight:800;margin:10px 0 12px 0;color:#1b4d2a;}}
+.cover2{{background:radial-gradient(ellipse at 0% 0%,#ffd8d8 0%,rgba(255,216,216,0) 45%),radial-gradient(ellipse at 100% 0%,#ffe0ec 0%,rgba(255,224,236,0) 50%),radial-gradient(ellipse at 100% 100%,#ffe8cc 0%,rgba(255,232,204,0) 50%),#fff5f5 !important;}}
+.cv-k{{letter-spacing:.32em;font-size:11px;font-weight:700;color:#c92a2a;margin-top:6mm;}}
+.cv-h{{font-size:38px;line-height:1.2;font-weight:800;margin:10px 0 12px 0;color:#8a1c1c;}}
 .cv-flow{{font-size:15px;color:#2c3038;margin-bottom:12px;}}
 .cv-chips{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}}
-.cv-chip{{background:#fff;border:1px solid #cfe8d5;border-radius:16px;padding:4px 13px;font-size:11.5px;font-weight:700;color:#2c3038;}}
+.cv-chip{{background:#fff;border:1px solid #f5c2c2;border-radius:16px;padding:4px 13px;font-size:11.5px;font-weight:700;color:#2c3038;}}
 .cv-txt{{font-size:12.2px;line-height:1.75;color:#3a3f4b;}}
 .cv-txt .r{{color:#d6336c;font-weight:700;}}
-.cv-toc{{position:absolute;right:13mm;top:12mm;width:108mm;background:rgba(255,255,255,.88);border:1px solid #d3eadb;border-radius:14px;padding:12px 18px 8px 18px;box-shadow:0 4px 18px rgba(40,120,60,.12);}}
-.cv-toc .t{{letter-spacing:.25em;font-size:10px;font-weight:700;color:{COLOR};margin-bottom:4px;}}
-.cv-toc .row{{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #e6f2e9;padding:5px 0;font-size:11.8px;}}
+.cv-toc{{position:absolute;right:13mm;top:12mm;width:108mm;background:rgba(255,255,255,.88);border:1px solid #f3c7c7;border-radius:14px;padding:12px 18px 8px 18px;box-shadow:0 4px 18px rgba(160,30,30,.12);}}
+.cv-toc .t{{letter-spacing:.25em;font-size:10px;font-weight:700;color:#c92a2a;margin-bottom:4px;}}
+.cv-toc .row{{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #fbe3e3;padding:5px 0;font-size:11.8px;}}
 .cv-toc .row:last-child{{border-bottom:none;}}
-.cv-toc .n{{width:20px;color:{COLOR};font-weight:700;}}
+.cv-toc .n{{width:20px;color:#c92a2a;font-weight:700;}}
 .cv-toc .nm{{flex:1;font-weight:700;color:#2c3038;}} .cv-toc .nm span{{font-weight:400;color:#8b8fa0;font-size:.9em;margin-left:4px;}}
 .cv-toc .pg{{color:#8b8fa0;}}
 .cv-left{{width:160mm;}}
 .cv-stats{{display:flex;gap:9px;margin-top:20px;}}
-.cv-st{{background:rgba(255,255,255,.8);border:1px solid #d3eadb;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex:1;}}
-.cv-st b{{font-size:24px;font-weight:800;color:{COLOR};border-top:1px solid #9fd5b1;padding-top:2px;line-height:1.2;}}
+.cv-st{{background:rgba(255,255,255,.8);border:1px solid #f3c7c7;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex:1;}}
+.cv-st b{{font-size:24px;font-weight:800;color:#c92a2a;border-top:1px solid #f0a0a0;padding-top:2px;line-height:1.2;}}
 .cv-st span{{font-size:10.5px;color:#5c6170;line-height:1.45;}}
 .cv-parts{{position:absolute;left:13mm;right:13mm;bottom:14mm;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}}
-.cv-p{{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid {COLOR};padding:8px 12px;}}
+.cv-p{{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid #c92a2a;padding:8px 12px;}}
 .cv-p .a{{font-weight:800;font-size:13px;color:#23263a;}} .cv-p .b{{font-size:10.5px;color:#5c6170;margin-top:2px;line-height:1.5;}}
 .cv-src{{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#9a9486;}}
 .cover2 .ft{{display:none;}}
