@@ -32,13 +32,13 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="cv-left"><div class="cv-k">PHARMACEUTICAL ORGANIC CHEMISTRY II · 기말 대비 노트 · CH 22</div>
 <div class="cv-h">제22장<br>카르보닐 알파 치환 반응<br>마스터 노트</div>
 <div class="cv-flow">엔올 → 산성 α-할로젠화 · HVZ → α-H 산성도 · 엔올레이트 → 알킬화 (말론산 · 아세토아세트산 · LDA)</div>
-<div class="cv-chips"><span class="cv-chip">개념 {{NC}}</span><span class="cv-chip">문제 {{NQ}} (그리기·시약·순서·메커니즘·생성물·중간체)</span><span class="cv-chip">과제 22-37·38·42·54</span><span class="cv-chip">원서 예제 4 · 문제 22-1~22-19 (그대로)</span><span class="cv-chip">🎯 녹취 · ✍️ 단권화 노트 반영</span></div>
+<div class="cv-chips"><span class="cv-chip">개념 {{NC}}</span><span class="cv-chip">문제 {{NQ}} (그리기·시약·순서·메커니즘·생성물·중간체)</span><span class="cv-chip">과제 22-37·38·42·54</span><span class="cv-chip">원서 예제 4 · 문제 22-1~22-16 (그대로)</span><span class="cv-chip">🎯 녹취 · ✍️ 단권화 노트 반영</span></div>
 <div class="cv-txt">각 개념은 <b>💡 핵심 → 📖 설명 → 🖼 슬라이드 → ⚗️ 메커니즘 → 🧠 한 줄</b>, 파트 끝에 문제(왼쪽 문제·풀이 칸, 오른쪽 정답·해설).<br>
 수업 녹음에서 교수님이 강조한 것은 「🎯 녹취」, 내가 번역본을 공부하며 정리한 Q&amp;A는 「✍️ 내 정리」로 표시했어.<br>
 <span class="r">중간고사처럼 전부 주관식</span>: 구조식 그리기 · 시약 쓰기 · 산 세기 순서 · 반응 사다리 · <b>시약+출발물질만 주는 메커니즘</b> · 생성물/중간체 예측 — 이 노트의 문제도 그 형식이야.</div>
 <div class="cv-stats">
 <div class="cv-st"><b>36</b><span>강의 슬라이드<br>+ 연습문제 4</span></div>
-<div class="cv-st"><b>23</b><span>원서 예제 4<br>+ 문제 19 (그대로)</span></div>
+<div class="cv-st"><b>20</b><span>원서 예제 4<br>+ 문제 16 (그대로)</span></div>
 <div class="cv-st"><b>2</b><span>의약품 합성<br>부프로피온·페노바르비탈</span></div>
 <div class="cv-st"><b>9→36</b><span>꼭 외울 pKa<br>다이케톤 → LDA</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>
@@ -95,7 +95,7 @@ check = dict(t="r", id="f-check", html=f"""
 <table class="t"><tr><th>PART</th><th>원서 예제 · 문제</th></tr>
 <tr><td>1 엔올 · 산성 α-치환</td><td>Problem 22-1 · 22-2 · 22-3 · 22-4 · 22-5 · 22-6</td></tr>
 <tr><td>2 산성도 · 엔올레이트</td><td>Worked Example 22.1 · Problem 22-7 · 22-8 · 22-9</td></tr>
-<tr><td>3 알킬화</td><td>Worked Example 22.2 · Problem 22-10 · 22-11 · 22-12 · Worked Example 22.3 · Problem 22-13 · 22-14 · 22-15 · Worked Example 22.4 · Problem 22-16 · 22-17 · 22-18 · 22-19</td></tr></table>
+<tr><td>3 알킬화</td><td>Worked Example 22.2 · Problem 22-10 · 22-11 · 22-12 · Worked Example 22.3 · Problem 22-13 · 22-14 · 22-15 · Worked Example 22.4 · Problem 22-16</td></tr></table>
 <div class="sec">🔮 예상 변형 (중간고사보다 한 단계 어렵게)</div>
 <p>부프로피온 빈칸 · 염기 고르기 · S<sub>N</sub>2 되는 할라이드 · 페노바르비탈 · 시약+출발물질만 메커니즘 · β vs γ 탈카르복실화 · 합성 설계</p>
 </div><div class="side">
