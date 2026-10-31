@@ -12,6 +12,10 @@ CH = 22
 TITLE = "약품유기화학2 제22장 마스터 요약본"
 FOOT = "약품유기화학 2 · 기말 대비 마스터 요약본 · 제22장 카르보닐 알파 치환 반응"
 MODS = ["c00_front", "c10_p1", "c20_p2", "c30_p3", "c90_final"]
+if os.environ.get("ED") == "core":  # 핵심판: 시험에 나올 근거가 있는 것만 (k_core.py)
+    MODS = ["k_core"]
+    TITLE = "약품유기화학2 제22장 핵심판"
+    FOOT = "약품유기화학 2 · 기말 대비 핵심판 · 제22장 카르보닐 알파 치환 반응"
 IMG = "../강의번역/img/"
 COLOR = "#2b8a3e"      # 22장 색 (17 #2a6f97 · 18 #2a9d8f · 19 #7b5cd6 · 20 #e76f51 · 21 #d1495b)
 COLOR_SOFT = "#e9f6ec"
@@ -83,8 +87,8 @@ def MSR(key, *idx):
     return "".join(rows[i] for i in idx)
 
 
-def MPAGE(badge, title, sub, part, body, order, q=False):
+def MPAGE(badge, title, sub, part, body, order, q=False, id=None):
     """메커니즘만 한 쪽 (개념·문제 다음 쪽)."""
-    return dict(t="r", cls="mfull", html=f'''<div class="hd{' q' if q else ''}"><span class="bd">{badge}</span><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><span class="pt">{part}</span></div>
+    return dict(t="r", cls="mfull", id=id, html=f'''<div class="hd{' q' if q else ''}"><span class="bd">{badge}</span><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><span class="pt">{part}</span></div>
 <div class="mband big"><span class="mbl">⚗️ 메커니즘 — 처음부터 끝까지</span><div class="mz">{body}</div></div>
 <div class="one"><span class="lb">🧠 순서</span><span>{order}</span></div>''')
