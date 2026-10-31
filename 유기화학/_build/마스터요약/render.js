@@ -19,6 +19,9 @@ const path = require('path');
     // 메커니즘·구조식 그림(.mz): 들어갈 칸 너비에 맞춰 축소 (최대 1배)
     const fitw = (z) => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 4; const r = w / z.scrollWidth; z.style.zoom = Math.min(1, r); return Math.min(1, r); };
     document.querySelectorAll('.mz').forEach(fitw);
+    // 전체 메커니즘 쪽: 칸 높이·너비에 맞게 최대한 크게
+    document.querySelectorAll('.mfull .mband.big .mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1;
+      const r = Math.min((p.clientWidth - 20) / z.scrollWidth, (p.clientHeight - 24) / z.scrollHeight); z.style.zoom = Math.min(1.6, r); });
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
       let fs = 12.8, imgh = 240, guard = 0;

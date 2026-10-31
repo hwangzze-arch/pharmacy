@@ -33,6 +33,7 @@ table.t th{{background:{COLOR_SOFT};color:{COLOR};}}
 .card.my{{background:#fff5f5;border:1.5px dashed #f08c8c;}} .card.my .ct{{color:#c92a2a;}}
 .mband{{flex:none;margin-top:7px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:3px 8px 2px 8px;overflow:hidden;position:relative;}}
 .mband .mbl{{position:absolute;top:4px;right:8px;font-size:10px;font-weight:700;color:{COLOR};background:{COLOR_SOFT};border-radius:6px;padding:0 7px;}}
+.mfull .mband.big{{flex:1;min-height:0;margin-top:9px;padding:14px 12px 6px 12px;}}
 .mz{{display:inline-block;transform-origin:0 0;}}
 .fig.mfig{{text-align:left;overflow:hidden;}}
 .afig{{background:#fff;border:1px solid #cfe5d8;border-radius:9px;padding:3px 6px;margin-top:6px;overflow:hidden;}}
