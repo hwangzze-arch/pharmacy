@@ -37,7 +37,7 @@ table.t th{{background:{COLOR_SOFT};color:{COLOR};}}
 .fig.mfig{{text-align:left;overflow:hidden;}}
 .afig{{background:#fff;border:1px solid #cfe5d8;border-radius:9px;padding:3px 6px;margin-top:6px;overflow:hidden;}}
 .qk.draw{{background:#2b8a3e;}} .qk.reag{{background:#1971c2;}} .qk.ord{{background:#9a4a12;}} .qk.mech{{background:#a61e4d;}}
-.qk.prod{{background:#5f3dc4;}} .qk.int{{background:#0b7285;}} .qk.sa{{background:#495057;}} .qk.bl{{background:#6a3d9a;}}
+.qk.ex{{background:#c2255c;}} .qk.prod{{background:#5f3dc4;}} .qk.int{{background:#0b7285;}} .qk.sa{{background:#495057;}} .qk.bl{{background:#6a3d9a;}}
 .mol{{display:inline-block;vertical-align:middle;}} .mol svg{{display:block;}}
 .molrow{{display:flex;align-items:center;flex-wrap:wrap;gap:4px 14px;margin:3px 0;}}
 .molrow .c{{display:inline-flex;flex-direction:column;align-items:center;font-size:.85em;}}
