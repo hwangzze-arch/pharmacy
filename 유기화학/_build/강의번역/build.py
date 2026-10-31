@@ -15,7 +15,7 @@ from ch22_3 import PAGES as P3
 PAGES = P1 + P2 + P3
 
 # 메커니즘: 슬라이드 그림 바로 옆에 (그림이 많으면 '(계속)' 쪽에 슬라이드와 함께)
-from mslides22 import MS, FIRST_ROWS
+from mslides22 import MS, FIRST_ROWS, ANS_FULL
 from mech import MECH_CSS
 
 
@@ -33,6 +33,8 @@ for _p in PAGES:
             _n = FIRST_ROWS[_k]
             if len(_r) > _n:
                 _figs[0:1] = ["".join(_r[:_n]), "".join(_r[_n:])]
+        if _k in ANS_FULL:
+            _figs = [ANS_FULL[_k] + _f for _f in _figs]
         _left = {"a42": "p42", "a54": "p54"}.get(_k)  # 풀이 쪽 왼쪽엔 문제, 정답은 메커니즘 줄 위에
         _out.append(dict(_p, ms=_figs[0], **({"msimg": _left} if _left else {})))
         for _j, _f in enumerate(_figs[1:], 2):
@@ -120,6 +122,7 @@ footer .r{flex:none;width:80px;text-align:right;}
 .ansrow{margin:2px 0 0 0;}
 .ansrow img.ans{height:78px;border:1px solid #e3e6ea;border-radius:4px;background:#fff;}
 .mrow .ml.ansl{background:#7b5cd6;}
+.ansrow img.ans.full{height:120px;}
 .cont{color:#2a9d8f;font-size:.8em;}
 """
 
