@@ -20,8 +20,8 @@ from mech import MECH_CSS
 
 
 def _rows(html):
-    parts = html.split('<div class="mrow">')
-    return ['<div class="mrow">' + x for x in parts[1:]]
+    parts = html.split('<div class="mrow')
+    return ['<div class="mrow' + x for x in parts[1:]]
 
 _out = []
 for _p in PAGES:
@@ -33,9 +33,10 @@ for _p in PAGES:
             _n = FIRST_ROWS[_k]
             if len(_r) > _n:
                 _figs[0:1] = ["".join(_r[:_n]), "".join(_r[_n:])]
-        _out.append(dict(_p, ms=_figs[0]))
+        _left = {"a42": "p42", "a54": "p54"}.get(_k)  # 풀이 쪽 왼쪽엔 문제, 정답은 메커니즘 줄 위에
+        _out.append(dict(_p, ms=_figs[0], **({"msimg": _left} if _left else {})))
         for _j, _f in enumerate(_figs[1:], 2):
-            _out.append(dict(cont=True, img=_p["img"], ms=_f, title=f'{_p["title"]} <span class="cont">(메커니즘 {_j})</span>',
+            _out.append(dict(cont=True, img=_p["img"], ms=_f, **({"msimg": _left} if _left else {}), title=f'{_p["title"]} <span class="cont">(메커니즘 {_j})</span>',
                              sub=_p["sub"], src=(_p.get("src") or f'원본 슬라이드 {_p["slide"]}') + " · 계속"))
     else:
         _out.append(_p)
@@ -116,6 +117,9 @@ footer .r{flex:none;width:80px;text-align:right;}
 .sumbar b{color:#7a5a00;margin-right:6px;}
 .ms .bottom{margin-top:7px;}
 .ms.cont .msimg{width:210px;}
+.ansrow{margin:2px 0 0 0;}
+.ansrow img.ans{height:78px;border:1px solid #e3e6ea;border-radius:4px;background:#fff;}
+.mrow .ml.ansl{background:#7b5cd6;}
 .cont{color:#2a9d8f;font-size:.8em;}
 """
 
@@ -126,7 +130,7 @@ def ms_html(i, p):
     im = f"s-{im:02d}" if isinstance(im, int) else im
     src = p.get("src") or f'원본 슬라이드 {p["slide"]}'
     head = f'''<header><div class="num">{i:02d}</div><div class="ttl"><h1>{p["title"]}</h1><div class="sub">{p["sub"]}</div></div><div class="src">{src}</div></header>
-<div class="msrow"><div class="msimg"><img src="img/{im}.jpg"></div><div class="mfig">{p["ms"]}</div></div>'''
+<div class="msrow"><div class="msimg"><img src="img/{p.get("msimg", im)}.jpg"></div><div class="mfig">{p["ms"]}</div></div>'''
     if p.get("cont"):
         body = ""
     else:

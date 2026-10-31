@@ -334,3 +334,23 @@ MS['a54'] = [
 
 # 글이 긴 슬라이드: 슬라이드 쪽에는 첫 n줄만, 나머지 줄은 '(계속)' 쪽으로
 FIRST_ROWS = {10: 1, 12: 1, 13: 1, 14: 1, 29: 2, 33: 1, 'a54': 1}
+
+# 연습문제: 각 부분의 해설집 정답 그림을 그 메커니즘 줄 바로 위에
+ANS = {'a42': {'(a)': 'a42a', '(b)': 'a42b', '(c)': 'a42c', '(d)': 'a42d'},
+       'a54': {'a': 'a54a', 'b': 'a54b', 'c': 'a54c'}}
+
+
+def _with_answers(html, table):
+    out = ''
+    for part in html.split('<div class="mrow">')[1:]:
+        for lab, im in table.items():
+            if part.startswith(f'<span class="ml">{lab}</span>'):
+                out += (f'<div class="mrow ansrow"><span class="ml ansl">해설집 {lab}</span>'
+                        f'<img class="ans" src="img/{im}.jpg"></div>')
+        out += '<div class="mrow">' + part
+    return out
+
+
+for _k, _t in ANS.items():
+    MS[_k] = [_with_answers(f, _t) for f in MS[_k]]
+FIRST_ROWS['a54'] = 2
