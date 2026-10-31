@@ -81,3 +81,10 @@ def MSR(key, *idx):
     for f in mslides22.MS[key]:
         rows += ['<div class="mrow' + x for x in f.split('<div class="mrow')[1:]]
     return "".join(rows[i] for i in idx)
+
+
+def MPAGE(badge, title, sub, part, body, order, q=False):
+    """메커니즘만 한 쪽 (개념·문제 다음 쪽)."""
+    return dict(t="r", cls="mfull", html=f'''<div class="hd{' q' if q else ''}"><span class="bd">{badge}</span><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><span class="pt">{part}</span></div>
+<div class="mband big"><span class="mbl">⚗️ 메커니즘 — 처음부터 끝까지</span><div class="mz">{body}</div></div>
+<div class="one"><span class="lb">🧠 순서</span><span>{order}</span></div>''')
