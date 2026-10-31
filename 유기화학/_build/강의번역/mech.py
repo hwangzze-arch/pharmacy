@@ -14,7 +14,7 @@ from rdkit.Chem.Draw import rdMolDraw2D
 
 ARC = "#d6247a"
 # [n*] 원자의 표시 글자
-DUMMY = {0: "R", 1: "R'", 2: "Ar", 3: "Bu", 4: "Ph", 5: "Et", 6: "t-Bu"}
+DUMMY = {0: "R", 1: "R'", 2: "Ar", 3: "Bu", 4: "Ph", 5: "Et", 6: "t-Bu", 7: "X"}
 
 
 def _mol(smiles):

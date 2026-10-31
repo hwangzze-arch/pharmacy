@@ -14,18 +14,31 @@ from ch22_3 import PAGES as P3
 
 PAGES = P1 + P2 + P3
 
-# 메커니즘 쪽: 해당 슬라이드 바로 뒤에 끼워 넣기
-from mechs22 import M, T
+# 메커니즘: 슬라이드 그림 바로 옆에 (그림이 많으면 '(계속)' 쪽에 슬라이드와 함께)
+from mslides22 import MS, FIRST_ROWS
 from mech import MECH_CSS
+
+
+def _rows(html):
+    parts = html.split('<div class="mrow">')
+    return ['<div class="mrow">' + x for x in parts[1:]]
+
 _out = []
 for _p in PAGES:
-    _out.append(_p)
-    _k = _p.get("slide")
-    if _k in M:
-        _figs = M[_k] if isinstance(M[_k], list) else [M[_k]]
-        _ts = T[_k] if isinstance(T[_k], list) else [T[_k]]
-        for _f, _t in zip(_figs, _ts):
-            _out.append(dict(mech=True, slide=_k, src=f"슬라이드 {_k} · 메커니즘", title=_t[0], sub=_t[1], fig=_f, tr=_t[2], ex=_t[3]))
+    _k = _p.get("slide") if _p.get("slide") in MS else _p.get("img")
+    if _k in MS:
+        _figs = list(MS[_k])
+        if _k in FIRST_ROWS:
+            _r = _rows(_figs[0])
+            _n = FIRST_ROWS[_k]
+            if len(_r) > _n:
+                _figs[0:1] = ["".join(_r[:_n]), "".join(_r[_n:])]
+        _out.append(dict(_p, ms=_figs[0]))
+        for _j, _f in enumerate(_figs[1:], 2):
+            _out.append(dict(cont=True, img=_p["img"], ms=_f, title=f'{_p["title"]} <span class="cont">(메커니즘 {_j})</span>',
+                             sub=_p["sub"], src=(_p.get("src") or f'원본 슬라이드 {_p["slide"]}') + " · 계속"))
+    else:
+        _out.append(_p)
 PAGES = _out
 TOTAL = len(PAGES)
 FOOT = "약품유기화학 2 · 제22장 카르보닐 알파 치환 반응 · 슬라이드별 번역·설명"
@@ -95,25 +108,44 @@ footer{position:absolute;left:11mm;right:11mm;bottom:5mm;border-top:1px solid #d
 footer .l{flex:1;} footer .m{flex:1;display:flex;gap:9px;align-items:center;justify-content:center;}
 footer .r{flex:none;width:80px;text-align:right;}
 .sw{display:inline-block;width:13px;height:8px;border-radius:2px;margin-right:3px;vertical-align:middle;}
-.mfig{flex:none;margin-top:8px;border:1px solid #c9cfd6;border-radius:6px;padding:4px 8px;background:#fcfdfe;}
-.num.mnum{background:#2a9d8f;}
-.mech .bottom{margin-top:8px;}
+.msrow{display:flex;gap:10px;margin-top:8px;flex:none;align-items:flex-start;}
+.msimg{flex:none;width:300px;}
+.msimg img{width:100%;border:1px solid #c9cfd6;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.18);}
+.mfig{flex:1;min-width:0;border:1px solid #c9cfd6;border-radius:6px;padding:3px 6px;background:#fcfdfe;overflow:hidden;}
+.sumbar{flex:none;margin-top:7px;background:#fff8dc;border:1px solid #f0d77a;border-left:5px solid #f2c200;border-radius:6px;padding:4px 10px;font-size:11.5px;line-height:1.5;}
+.sumbar b{color:#7a5a00;margin-right:6px;}
+.ms .bottom{margin-top:7px;}
+.ms.cont .msimg{width:210px;}
+.cont{color:#2a9d8f;font-size:.8em;}
 """
 
 
-def mech_html(i, p):
-    return f'''<section class="page mech">
-<header><div class="num mnum">{i:02d}</div><div class="ttl"><h1>{p["title"]}</h1><div class="sub">{p["sub"]}</div></div><div class="src">{p["src"]}</div></header>
-<div class="mfig">{p["fig"]}</div>
-<div class="bottom"><div class="col tr"><span class="badge b">단계별 설명</span><div class="body">{p["tr"]}</div></div>
-<div class="col ex"><span class="badge o">포인트</span><div class="body">{p["ex"]}</div></div></div>
-<footer><div class="l">{FOOT}</div><div class="m">곡선 화살표 = 전자쌍의 이동 (출발: 비공유전자쌍 ·· 또는 결합 → 도착: 원자 또는 새 결합)</div><div class="r">{i} / {TOTAL}</div></footer>
+def ms_html(i, p):
+    """슬라이드 그림(왼쪽) + 같은 그림의 메커니즘(오른쪽)."""
+    im = p["img"]
+    im = f"s-{im:02d}" if isinstance(im, int) else im
+    src = p.get("src") or f'원본 슬라이드 {p["slide"]}'
+    head = f'''<header><div class="num">{i:02d}</div><div class="ttl"><h1>{p["title"]}</h1><div class="sub">{p["sub"]}</div></div><div class="src">{src}</div></header>
+<div class="msrow"><div class="msimg"><img src="img/{im}.jpg"></div><div class="mfig">{p["ms"]}</div></div>'''
+    if p.get("cont"):
+        body = ""
+    else:
+        lab1 = p.get("tr_label", "한글 번역")
+        lab2 = p.get("ex_label", "상세 설명 · 풀이")
+        body = f'''<div class="sumbar"><b>한 줄 요약</b> {p["sum"]}</div>
+<div class="bottom"><div class="col tr"><span class="badge b">{lab1}</span><div class="body">{p["tr"]}</div></div>
+<div class="col ex"><span class="badge o">{lab2}</span><div class="body">{p["ex"]}</div></div></div>'''
+    cls = "page ms cont" if p.get("cont") else "page ms"
+    return f'''<section class="{cls}">
+{head}
+{body}
+<footer><div class="l">{FOOT}</div><div class="m">곡선 화살표 = 전자쌍 이동 (출발: 비공유전자쌍 ·· 또는 결합 → 도착: 원자 또는 새 결합)</div><div class="r">{i} / {TOTAL}</div></footer>
 </section>'''
 
 
 def page_html(i, p):
-    if p.get("mech"):
-        return mech_html(i, p)
+    if p.get("ms"):
+        return ms_html(i, p)
     chips = "".join(f'<span class="chip">{k}</span>' for k in p["kw"])
     src = p.get("src") or f'원본 슬라이드 {p["slide"]}'
     lab1 = p.get("tr_label", "한글 번역")
