@@ -21,7 +21,7 @@ const path = require('path');
     document.querySelectorAll('.mz').forEach(fitw);
     // 전체 메커니즘 쪽: 칸 높이·너비에 맞게 최대한 크게
     document.querySelectorAll('.mfull .mband.big .mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1;
-      const r = Math.min((p.clientWidth - 20) / z.scrollWidth, (p.clientHeight - 24) / z.scrollHeight); z.style.zoom = Math.min(1.6, r); });
+      const r = Math.min((p.clientWidth - 20) / z.scrollWidth, (p.clientHeight - 44) / z.scrollHeight); z.style.zoom = Math.min(1.6, r); });
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
       let fs = 12.8, imgh = 240, guard = 0;

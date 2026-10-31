@@ -14,6 +14,42 @@ RING = (mrow(panel('CCOC(=O)[CH-:3][C:1](=[O:2])OCC.Br[CH2:12]CC[CH2:6][Br:7]', 
              step('H₃O⁺, Δ'),
              panel('OC(=O)C1CCCC1', w=120, h=100, note='사이클로펜테인카복실산'), label='고리'))
 
+# 페노바르비탈 전체 메커니즘 (벤질 사이아나이드부터)
+_EtO = {5: 'EtO<sup>-</sup>'}
+PHB_A = (mrow(panel('c1ccccc1C[C:1]#[N:2].[H:5][*:6]', [(2,5,-0.5),((5,6),6,-1.0)], w=210, h=120, ori={0:(1,2,0),1:(5,6,0)}, pos=[(2,5,1.3,0)], labels={6:'A'}, note='① N 양성자화 (산)'),
+               step(),
+               panel('c1ccccc1C[C:1]#[NH+:2].[OH:7]CC', [(7,1,0.5),((1,2),2,-0.9)], w=210, h=130, ori={0:(1,2,0)}, pos=[(1,7,0,1.4)], note='② EtOH가 C≡N⁺ 탄소 공격'),
+               step('양성자 이동'),
+               panel('c1ccccc1CC(OCC)=N', w=140, h=100, note='이미데이트'),
+               step('H₂O, H⁺', '−NH₄⁺'),
+               panel('c1ccccc1CC(=O)OCC', w=140, h=90, note='빈칸 ① 페닐아세트산 에틸'), label='에스터화')
+         + mrow(panel('c1ccccc1[CH:3]([H:4])[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=220, h=140, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='③ EtO⁻가 α-H 제거'),
+               step('−EtOH'),
+               panel('c1ccccc1[CH-:3]C(=O)OCC', w=150, h=110, note='에스터 엔올레이트'), label='엔올레이트'))
+PHB_B = mrow(panel('c1ccccc1[C:3]([H:4])(C(=O)OCC)[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=230, h=150, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='⑥ (가열 −CO 후) 남은 α-H 제거'),
+             step('−EtOH'), label='엔올레이트')
+_RN = [('① 엔올레이트가 옥살산 에스터 공격', '④ 엔올레이트가 옥살산 에스터 C=O 공격'), ('② EtO⁻ 이탈', '⑤ C=O 재생, EtO⁻ 이탈'),
+       ('③ NaOEt로 C⁻ → EtBr에 S<sub>N</sub>2', '⑦ C⁻가 EtBr에 S<sub>N</sub>2'), ('④ 요소 NH₂가 에스터 C=O 공격', '⑧ 요소 NH₂가 에스터 C=O 공격'),
+       ('⑤ EtO⁻ 이탈', '⑨ EtO⁻ 이탈'), ('⑥ 남은 NH₂가 다른 에스터 공격', '⑩ 남은 NH₂가 다른 에스터 공격')]
+
+
+def _rn(h):
+    for a, b in _RN:
+        h = h.replace(a, b)
+    return h
+
+
+PHB_1 = PHB_A + _rn(MSR(33, 0))
+def _join(r1, r2):
+    """r1 줄 뒤에 r2 줄을 이어 붙임 (r2의 라벨과 첫 반응 화살표는 버림)."""
+    r2 = r2.split('</span>', 1)[1] if r2.startswith('<div class="mrow"><span class="ml">') else r2
+    i = r2.index('<span class="stp">'); j = r2.index('<span class="pnl">', i)
+    return r1[:-len('</div>')] + r2[j:]
+
+
+PHB_2 = _join(PHB_B, _rn(MSR(33, 1))) + _rn(MSR(33, 2, 3))
+PHB_ORDER = "① ② 니트릴 + EtOH/H⁺ → 에스터 → ③ 엔올레이트 → ④⑤ Claisen(옥살산 에스터) → 가열 −CO → ⑥ 엔올레이트 → ⑦ EtBr S<sub>N</sub>2 → ⑧⑨ 요소 아실 치환 → ⑩ 고리"
+
 E = [
 # ── 개념 11
 dict(t="c", id="c-alk", part=P, title="엔올레이트 알킬화와 S<sub>N</sub>2 제약 조건", sub="Alkylation of enolate ions · 슬라이드 22–23",
@@ -46,7 +82,7 @@ detail="""<ul><li>말론산 다이에틸 pKa 13 &lt; EtOH 16 → <b>NaOEt</b>로
 side=[("img", "s-25", "슬라이드 25 — 엔올레이트 형성과 알킬화"),
       ("rec", "“말로닉 에스터: 양쪽 전자 끄는 기 사이 수소가 잘 떨어짐. 말로노나이트릴도 마찬가지. <b>의약품 합성</b>에 많이 쓰임.” “<b>왜 NaOH가 아니라 NaOEt?</b> OH⁻가 카르보닐을 직접 공격해 가수분해돼 버리니까 같은 –OEt를 쓴다.”"),
       ("my", "말론산 = HOOC–CH₂–COOH. 가운데 CH₂ 0개 옥살산 · 1개 말론산 · 2개 숙신산 → <b>“옥-말-숙”</b>.")],
-mech=MSR(25, 1) + RING,
+mech=MSR(25, 0, 1),
 one="말론산 에스터 = NaOEt → R–X (→ 반복) → H₃O⁺/Δ = R–CH₂COOH. NaOH는 금지!"),
 
 # ── 개념 13
@@ -89,7 +125,7 @@ detail="""<ol><li><b>EtOH/AcOH</b>: 니트릴 → 페닐아세트산 에틸 (빈
 side=[("img", "s-33", "슬라이드 33 — 페노바르비탈 합성 빈칸"),
       ("rec", "“요소의 양쪽 –NH₂가 뉴클레오파일 → 카보닐을 각각 공격(친핵성 아실 치환) → –OEt가 리빙 그룹으로 떨어짐 → 바르비투르산 링.” 우리나라에서 항경련제로 처방, 부작용 주의."),
       ("trap", "녹취의 “1972년” → 슬라이드는 <b>1912년</b>. 녹취의 “두 번째 알킬기 = 페닐” → ✗ (S<sub>N</sub>2 불가).")],
-mech=MSR(33, 0, 2),
+
 one="페닐은 처음부터, 에틸은 S_N2로, 고리는 요소로!"),
 
 # ── 개념 16
@@ -162,7 +198,7 @@ steps=[("EtOH/AcOH: 니트릴의 산 촉매 알코올분해 → 에스터.", "")
        ("옥살산 다이에틸: 에스터 엔올레이트의 Claisen 축합 → 가열로 CO 이탈 → 페닐말론산 다이에틸.", ""),
        ("NaOEt/EtBr: 남은 α-H 1개 → 에틸.", ""),
        ("요소: N이 C=O 공격 → 사면체 → EtO⁻ 이탈 → (반대쪽도) 고리.", "21장 아민분해 × 2.")],
-afig=MSR(33, 0, 2),
+
 one="페노바르비탈 = 페닐 우회 → 에틸 S_N2 → 요소 아실 치환 × 2."),
 
 # ── 문제 20 — 변형: 시약+출발물질만 메커니즘
@@ -204,3 +240,18 @@ _q = [e for e in E if e["t"] == "q"]
 _c = [e for e in E if e["t"] != "q"]
 # 순서: S_N2 변형 → 말론산(예제·본문) → 과제 22-42 → 아세토아세트산(예제·본문) → LDA(예제·본문·추가) → 과제 22-54 → 예상 변형
 E = _c + [_q[0]] + T3a + [_q[1]] + T3b + T3c + _q[2:]
+# 페노바르비탈: 개념 다음, 문제 다음에 전체 메커니즘 2쪽씩
+for _key, _q in (("c-phb", False), (None, True)):
+    if _key:
+        _i = next(k for k, e in enumerate(E) if e.get("id") == _key)
+        _b, _t = "개념 15 · 계속", "페노바르비탈 — 전체 메커니즘"
+    else:
+        _i = next(k for k, e in enumerate(E) if e.get("src", "").startswith("강의 슬라이드 33"))
+        _b, _t = "문제 정답 · 계속", "페노바르비탈 — 정답 메커니즘"
+    E[_i + 1:_i + 1] = [MPAGE(_b, _t + " ① 벤질 사이아나이드 → α-케토 에스터", "acid alcoholysis of nitrile · enolate · Claisen with diethyl oxalate", P, PHB_1, PHB_ORDER, _q),
+                        MPAGE(_b, _t + " ② 에틸화 → 요소 고리", "−CO · enolate · S<sub>N</sub>2 with EtBr · urea cyclization", P, PHB_2, PHB_ORDER, _q)]
+# 말론산 에스터: 개념 다음에 전체 흐름 (엔올레이트 → 알킬화 → 고리 → 가수분해·탈카르복실화)
+_i = next(k for k, e in enumerate(E) if e.get("id") == "c-mal")
+E.insert(_i + 1, MPAGE("개념 12 · 계속", "말론산 에스터 합성 — 처음부터 끝까지", "enolate → S<sub>N</sub>2 → H₃O⁺ (hydrolysis) → heat (−CO₂)",
+                       P, MSR(25, 0, 1) + MSR(27, 0, 1).replace('① C=O 양성자화', '③ C=O 양성자화').replace('② 물이 C=O 공격', '④ 물이 C=O 공격').replace('③ EtOH 이탈', '⑤ EtOH 이탈').replace('④ 가열: 6원', '⑥ 가열: 6원'),
+                       "EtO⁻가 α-H 제거 → C⁻가 R–X에 S<sub>N</sub>2 → H₃O⁺: 에스터 2개 가수분해 → 가열: 6원 고리로 CO₂ 이탈 → 토토머화 = R–CH₂COOH (고리 만들기는 문제 참고)"))

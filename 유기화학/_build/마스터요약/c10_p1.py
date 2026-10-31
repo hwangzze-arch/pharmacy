@@ -32,11 +32,7 @@ BUP_FULL = (MSR(14, 0, 1) + BUP_ENOL + MSR(14, 2, 3)).replace('④ (엔올화 �
 
 
 def mpage(badge, title, sub, part, q=False):
-    """전체 메커니즘 한 쪽 (개념·문제 다음 쪽)."""
-    return dict(t="r", cls="mfull", html=f'''<div class="hd{' q' if q else ''}"><span class="bd">{badge}</span><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><span class="pt">{part}</span></div>
-<div class="mband big"><span class="mbl">⚗️ 메커니즘 — 처음부터 끝까지</span><div class="mz">{BUP_FULL}</div></div>
-<div class="one"><span class="lb">🧠 순서</span><span>① Et⁻ 첨가 → ②③ 이민 가수분해(NH₃ 이탈) = 케톤 → ④⑤ 산 촉매 엔올화 → ⑥ Br₂ → ⑦ S<sub>N</sub>2(t-BuNH₂) → HCl 염</span></div>''')
-
+    return MPAGE(badge, title, sub, part, BUP_FULL, "① Et⁻ 첨가 → ②③ 이민 가수분해(NH₃ 이탈) = 케톤 → ④⑤ 산 촉매 엔올화 → ⑥ Br₂ → ⑦ S<sub>N</sub>2(t-BuNH₂) → HCl 염", q)
 
 
 E = [
