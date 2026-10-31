@@ -170,7 +170,7 @@ def concept(i, n, e):
 <div class="one{oneimp}"><span class="lb">🧠 뇌리에 박히는 한 줄</span><span>{e["one"]}</span></div>
 {foot(i)}</section>'''
 
-KIND = {"draw": "구조식 그리기", "reag": "시약 쓰기", "ord": "순서 배열", "mech": "메커니즘", "prod": "생성물 예측", "int": "중간체 예측", "sa": "서술형", "bl": "빈칸 채우기"}
+KIND = {"ex": "원서 예제", "draw": "구조식 그리기", "reag": "시약 쓰기", "ord": "순서 배열", "mech": "메커니즘", "prod": "생성물 예측", "int": "중간체 예측", "sa": "서술형", "bl": "빈칸 채우기"}
 
 def question(i, n, e):
     kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
@@ -187,7 +187,7 @@ def question(i, n, e):
 <div class="qbody"><div class="qcol"><div class="qcard">{kinds}{src}<div class="qtext">{e["q"]}</div></div>
 <div class="work{' hasnote' if wnote else ''}"><span class="wl">✏️ 내 풀이 — 먼저 풀고 오른쪽을 보세요</span>{wnote}</div></div>
 <div class="acol"><span class="al">정답 및 해설</span><div class="ans">정답 : {e["a"]}</div>{stitle}{steps}{opx}{extra}{f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else ""}
-<div class="qone{qimp}"><span class="lb">🧠 한 줄</span>{e["one"]}</div></div></div>
+{f'<div class="qone{qimp}"><span class="lb">🧠 한 줄</span>{e["one"]}</div>' if e.get("one") else ""}</div></div>
 {foot(i)}</section>'''
 
 def raw(i, e):

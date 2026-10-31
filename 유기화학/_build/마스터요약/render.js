@@ -27,6 +27,7 @@ const path = require('path');
       while (over(pg) && guard++ < 120) {
         if (fs > 11.6) fs -= 0.2;
         else if (imgh > 150) imgh -= 15;
+        else if (pg.querySelector('.acol .tbimg') && (parseFloat(pg.style.getPropertyValue('--aimg')) || 1) > 0.5) pg.style.setProperty('--aimg', ((parseFloat(pg.style.getPropertyValue('--aimg')) || 1) - 0.05).toFixed(2));
         else if (bands.length && bands.some(z => parseFloat(z.style.zoom) > 0.55)) bands.forEach(z => z.style.zoom = Math.max(0.55, parseFloat(z.style.zoom) - 0.05));
         else if (fs > 9.4) fs -= 0.2;
         else break;
