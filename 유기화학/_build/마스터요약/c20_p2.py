@@ -67,8 +67,7 @@ one="산성은 한 번, 염기성은 끝까지. CX₃가 되면 OH⁻가 C=O 치
 
 # ── 문제 08 — 과제 22-37
 dict(t="q", part=P, kind=["sa"], src="과제 22-37 (강의자료 마지막 슬라이드)", title="산성 수소(pKa < 25) 모두 찾기",
-q="""다음 분자에서 pKa &lt; 25인 산성 수소를 <b>모두</b> 표시하시오.
-<div class="molrow">""" + C('CCC(C)C(C)=O', '(a)', 110, 70) + C('O=C1CCC(=O)C1', '(b)', 90, 70) + C('OCCC(=O)C#CC', '(c)', 130, 70) + "</div><div class='molrow'>" + C('COC(=O)c1ccccc1CC#N', '(d)', 120, 90) + C('ClC(=O)C1CCCC1', '(e)', 100, 70) + C('CCC(=O)C(C)=C', '(f)', 110, 70) + "</div>",
+q='<img src="../강의번역/img/p37.jpg" style="width:100%">'+'<div class="term" style="margin-top:6px">번역: 다음 분자에서 산성 수소(pKa &lt; 25)를 모두 찾으시오.</div>',
 a="(a) CH 1 + CH₃ 3 · (b) 고리 H 6개 (C2 가장) · (c) O–H + α-CH₂ + <b>알킨 끝 CH₃</b> · (d) CH₂CN 2 · (e) α-H 1 · (f) 에틸 CH₂ 2",
 steps=[("카르보닐·니트릴 바로 옆 sp³ C–H + O–H를 체크.", "고리 H·바이닐 H·OCH₃는 항상 ✗."),
        ("(b) C2(두 C=O 사이, pKa ≈ 9) + C4·C5(각 C=O의 α, ≈ 19) → 6개.", ""),
@@ -79,7 +78,7 @@ one="α-H + O–H + ‘C=O와 π로 이어진 끝의 C–H’. 바이닐·고리
 
 # ── 문제 09 — 과제 22-38 + 22.8
 dict(t="q", part=P, kind=["ord", "draw"], src="과제 22-38 (강의자료 마지막 슬라이드)", title="산성도 증가 순서 — 알코올 vs 케톤 함정",
-q="""(1) 산성도가 <b>증가하는</b> 순서로 배열하시오: (a) CH₃CH₂CO₂H (b) CH₃CH₂OH (c) (CH₃CH₂)₂NH (d) CH₃COCH₃ (e) CH₃COCH₂COCH₃ (f) CCl₃CO₂H<br>(2) 에탄올과 아세톤 중 더 강한 산은? 이유는?""",
+q='<img src="../강의번역/img/p38.jpg" style="width:100%">'+'<div class="term" style="margin-top:6px">번역: (1) 산성도가 증가하는 순서로 배열하시오. (2) 에탄올과 아세톤 중 더 강한 산은? 이유는?</div>',
 a="(1) c &lt; d &lt; b &lt; e &lt; a &lt; f · (2) 에탄올(16) — 알콕사이드는 음전하가 전부 O에",
 steps=[("pKa: 아민 36 · 케톤 19 · 알코올 16 · 다이케톤 9 · 프로판산 4.8 · 트라이클로로아세트산 0.7.", "큰 pKa → 작은 pKa 순서가 ‘증가’."),
        ("<b>함정 1</b>: 에탄올(16) &gt; 아세톤(19) 산성 — 알콕사이드는 음전하가 100 % O.", ""),
