@@ -36,6 +36,8 @@ if os.environ.get("ED") != "core":
         if e["t"] == "c" and e.get("id") in _x.NOTE:
             e["my"] = _x.NOTE[e["id"]]; e["rec"] = _x.REC.get(e["id"], "")
             e["side"] = [x for x in e.get("side", []) if x[0] in ("img", "trap")]
+            if e["id"] == "c-acidbr":
+                e["side"] = [(x[0], x[1], x[2], 105) if x[0] == "img" else x for x in e["side"]]
     _n = 0
     for e in ENTRIES:
         if e["t"] != "q":
@@ -47,7 +49,8 @@ if os.environ.get("ED") != "core":
             e["steps"] = []; e["one"] = None
         keep = _ans.KEEP.get(_n, "")
         key, sol = _split(e.get("extra", ""))
-        e["extra"] = (key if "key" in keep else "") + (sol if "ss" in keep else "")
+        we = e.get("extra", "") if "we" in keep else ""
+        e["extra"] = (key if "key" in keep else "") + (sol if "ss" in keep else "") + we
         if "img" in keep:
             e["extra"] += (e.get("afig", "") if e.get("afig", "").startswith("<img") else e.get("afig", "").split("<div class=\"mrow")[0])
         if "afig" not in keep or _n in (12, 20):
