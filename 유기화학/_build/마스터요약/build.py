@@ -10,6 +10,11 @@ for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
     if e.get("note"): e["_note"] = e["note"]
 import answers as _ans
+import json as _json
+from html import escape as _hq
+# render.js 측정 결과: 그림이 너무 작아지는 쪽은 다음 쪽으로 나눔 (fit.py가 갱신)
+_AF = os.path.join(D, "_autosplit.json")
+AUTO = _json.load(open(_AF)) if os.path.exists(_AF) and os.environ.get("NOAUTO") != "1" else {}
 from parts import RX as _RX, MSR as _MSR
 
 
@@ -36,8 +41,6 @@ if os.environ.get("ED") != "core":
         if e["t"] == "c" and e.get("id") in _x.NOTE:
             e["my"] = _x.NOTE[e["id"]]; e["rec"] = _x.REC.get(e["id"], "")
             e["side"] = [x for x in e.get("side", []) if x[0] in ("img", "trap")]
-            if e["id"] == "c-acidbr":
-                e["side"] = [(x[0], x[1], x[2], 105) if x[0] == "img" else x for x in e["side"]]
     _n = 0
     for e in ENTRIES:
         if e["t"] != "q":
@@ -61,8 +64,8 @@ if os.environ.get("ED") != "core":
         if _n == 28:
             e["afig"] = (_RX(('m', 'CCOC(=O)Cc1ccccc1', 110, 60), ('t', '①'), ('m', 'CCOC(=O)C(=O)C(c1ccccc1)C(=O)OCC', 140, 85), ('t', '②'),
                              ('m', 'CCOC(=O)C(CC)(c1ccccc1)C(=O)OCC', 130, 85), ('t', '③')) + _MSR(33, 2))
-        e["pair"] = _n in _ans.PAIR
-        e["split"] = _n in _ans.SPLIT
+        e["pair"] = _n in _ans.PAIR and e["title"] not in AUTO.get("unpair", [])
+        e["split"] = _n in _ans.SPLIT or e["title"] in AUTO.get("qsplit", [])
 
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
@@ -238,7 +241,34 @@ def concept(i, n, e):
     core = f'<mk>{e["core"]}</mk>' if "core" in e["_flags"] else e["core"]
     oneimp = " imp" if "one" in e["_flags"] else ""
     body = f'<div class="main{" full" if not side else ""}">{"".join(main)}</div>' + (f'<div class="side">{side}</div>' if side else "")
-    return f'''<section class="page">
+    lv = AUTO.get("csplit", {}).get(e["title"], 0)
+    if lv and (nr or (lv >= 2 and e.get("mech"))):
+        mband = f'<div class="mband"><span class="mbl">⚗️ 메커니즘 (곡선 화살표)</span><div class="mz">{e["mech"]}</div></div>' if e.get("mech") else ""
+        a = f'''<section class="page" data-k="{_hq(e["title"])}">
+{_hd21(f"{n:02d}", e["title"], e.get("sub",""), [e["part"]], "개념")}
+<div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
+<div class="body">{body}</div>
+{mband if lv < 2 else ""}
+<div class="one{oneimp}"><span class="lb">🧠 뇌리에 박히는 한 줄</span><span>{e["one"]}</span></div>
+{foot(i)}</section>'''
+        b = f'''<section class="page cnext" data-k="{_hq(e["title"])}">
+{_hd21(f"{n:02d}", e["title"] + (" — 메커니즘 · 녹취 · 내 정리" if lv >= 2 and e.get("mech") else " — 녹취 · 내 정리"), "앞 쪽에서 이어짐", [e["part"]], "개념")}
+{mband if lv >= 2 else ""}
+{nr}
+{foot(i + 1)}</section>'''
+        if lv >= 3 and e.get("rec") and e.get("my"):
+            b = f'''<section class="page cnext" data-k="{_hq(e["title"])}">
+{_hd21(f"{n:02d}", e["title"] + " — 메커니즘 · 녹취", "앞 쪽에서 이어짐", [e["part"]], "개념")}
+{mband}
+<div class="nr one1"><div class="card rec"><div class="ct">🎯 녹취 — 교수님 설명</div>{e["rec"]}</div></div>
+{foot(i + 1)}</section>'''
+            c = f'''<section class="page cnext" data-k="{_hq(e["title"])}">
+{_hd21(f"{n:02d}", e["title"] + " — 내 정리", "앞 쪽에서 이어짐", [e["part"]], "개념")}
+<div class="nr one1"><div class="card my"><div class="ct">✍️ 내 정리 (단권화 노트)</div>{e["my"]}</div></div>
+{foot(i + 2)}</section>'''
+            return [a, b, c]
+        return [a, b]
+    return f'''<section class="page" data-k="{_hq(e["title"])}">
 {_hd21(f"{n:02d}", e["title"], e.get("sub",""), [e["part"]], "개념")}
 <div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
 <div class="body">{body}</div>
@@ -318,15 +348,15 @@ def _hd21(n, title, sub, tags, kind="문제"):
 def question1(i, n, e):
     if e.get("split"):
         prob, memo, ans = _qv(e, n, mini=True)
-        return [f'''<section class="page v21">
+        return [f'''<section class="page v21" data-k="{_hq(e["title"])}">
 {_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
 {prob}{memo}<div class="nextp">정답과 해설은 다음 쪽 →</div>
-{foot(i)}</section>''', f'''<section class="page v21 aonly">
+{foot(i)}</section>''', f'''<section class="page v21 aonly" data-k="{_hq(e["title"])}">
 {_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]])}
 {ans}
 {foot(i + 1)}</section>''']
     prob, memo, ans = _qv(e, n)
-    return f'''<section class="page v21">
+    return f'''<section class="page v21" data-k="{_hq(e["title"])}">
 {_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
 {prob}{memo}{ans}
 {foot(i)}</section>'''
@@ -336,7 +366,7 @@ def question2(i, n, e1, e2):
     for k, e in ((n, e1), (n + 1, e2)):
         prob, memo, ans = _qv(e, k, mini=True)
         cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div>{prob}{memo}{ans}</div>'
-    return f'''<section class="page v21 pair2">
+    return f'''<section class="page v21 pair2" data-k="{_hq(e1["title"])}" data-k2="{_hq(e2["title"])}">
 {_hd21(f"{n:02d}–{n+1:02d}", e1["part"], "짧은 문제 2개", [])}
 <div class="pcols">{cols}</div>
 {foot(i)}</section>'''
@@ -353,7 +383,7 @@ for e in ENTRIES:
     i = len(pages) + 1
     nxt_used = None
     if e["t"] == "c":
-        cn += 1; pages.append(concept(i, cn, e))
+        cn += 1; _r = concept(i, cn, e); pages.extend(_r if isinstance(_r, list) else [_r])
     elif e["t"] == "q":
         if e.get("_skip"):
             continue
