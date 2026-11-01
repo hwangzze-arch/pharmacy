@@ -111,6 +111,9 @@ table.t th{background:#eef3fa !important;color:var(--nblue) !important;}
 .v21.side .agrid{grid-template-columns:1fr;}
 .v21.side .pbx .tbimg{width:100% !important;}
 .agrid{grid-template-columns:1fr 1.25fr;}
+.nextp{flex:none;text-align:right;color:#b85c00;font-weight:700;font-size:.9em;margin-top:5px;}
+.v21.aonly .abx{flex:1;min-height:0;}
+.v21.aonly .agrid.one1 .xc{border:none;background:transparent;padding:2px 4px;}
 .pc{display:flex;flex-direction:column;min-height:0;min-width:0;}
 .pc .qh{font-weight:700;color:var(--navy);margin-top:6px;}
 .pc .bd2{background:var(--navy);color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}

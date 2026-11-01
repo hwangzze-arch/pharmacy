@@ -14,15 +14,15 @@ _FULL = {"tp": 1497, "we": 1497, "ta": 1497, "ss": 1500}  # 원서 한 줄 폭(p
 def _qimg(name):
     """왼쪽 문제 그림: 칸이 원서보다 좁아서 1.3배, 답안 쪽 축소와 무관."""
     px = _Im.open(os.path.join(os.path.dirname(__file__), "img", name + ".jpg")).width
-    w = min(100, round(130 * px / _FULL[name[:2]], 1))
-    return f'<img src="{I}{name}.jpg" style="width:{w}%;display:block;margin:2px 0">'
+    # 원서 글자 ≈ 본문 글자 크기가 되도록 실제 픽셀 × 0.5 (칸보다 넓으면 칸에 맞춤)
+    return f'<img src="{I}{name}.jpg" style="width:{round(px * 0.5)}px;max-width:100%;display:block;margin:2px 0">'
 
 
 def _img(name, w=None):
     """원서 글자 크기가 일정하도록 실제 폭 비율로 (답안 칸에서는 render.js가 --aimg로 더 줄임)."""
     if w is None:
         px = _Im.open(os.path.join(os.path.dirname(__file__), "img", name + ".jpg")).width
-        w = min(100, round(100 * px / _FULL[name[:2]], 1))
+        return f'<img class="tbimg" src="{I}{name}.jpg" style="width:calc({round(px * 0.46)}px * var(--aimg, 1));max-width:100%;display:block;margin:2px 0">'
     return f'<img class="tbimg" src="{I}{name}.jpg" style="width:calc({w}% * var(--aimg, 1));display:block;margin:2px 0">'
 
 
@@ -52,7 +52,7 @@ tb(1, P1, "엔올 토토머 그리기", ["draw"],
    "다음 화합물의 엔올 토토머 구조를 그리시오: (a) 사이클로펜탄온 (b) 메틸 싸이오아세테이트 (c) 에틸 아세테이트 (d) 프로판알 (e) 아세트산 (f) 페닐아세톤",
    "α 탄소와 C=O 탄소 사이 C=C, 산소는 –OH (원서 정답 그림)",
    [("C=O 바로 옆 sp³ 탄소(α)를 찾는다.", "그 α와 C=O 탄소 사이를 C=C로, C=O의 산소를 –OH로."),
-    ("(f) 페닐아세톤은 α가 양쪽(CH₃, CH₂Ph) → 엔올 두 가지.", "(d)(f)는 cis/trans 엔올도 가능.")], ss=["ss01"]),
+    ("(f) 페닐아세톤은 α가 양쪽(CH₃, CH₂Ph) → 엔올 두 가지.", "(d)(f)는 cis/trans 엔올도 가능.")], ss=["ss01w"]),
 tb(2, P1, "산성 수소 개수", ["sa"],
    "문제 22-1의 각 분자는 산성 수소를 몇 개 가지는가? 표시하시오.",
    "(a) 4 (b) 3 (c) 3 (d) 2 (e) 4 (f) 5",
@@ -119,7 +119,7 @@ tb(10, P3, "말론산 에스터 합성 설계", ["reag"],
    "말론산 에스터 합성으로 다음 화합물을 어떻게 만들겠는가? 모든 단계를 보이시오. (a) 3-페닐프로판산 (b) 2-메틸펜탄산 (c) 4-메틸펜탄산",
    "(a) 1. Na⁺ ⁻OEt 2. PhCH₂Br 3. H₃O⁺ · (b) 1. Na⁺ ⁻OEt 2. CH₃CH₂CH₂Br 3. Na⁺ ⁻OEt 4. CH₃Br 5. H₃O⁺ · (c) 1. Na⁺ ⁻OEt 2. (CH₃)₂CHCH₂Br 3. H₃O⁺",
    [("α 탄소 + COOH = 말론산 에스터에서, α에 붙은 가지 = R–X에서.", "해설집: “Identify the component that originates from malonic ester.”"),
-    ("가지가 2개(b)면 알킬화 2번.", "")], ss=["ss10"]),
+    ("가지가 2개(b)면 알킬화 2번.", "")], ss=["ss10w"]),
 tb(11, P3, "트라이알킬 아세트산은 왜 안 되나", ["sa"],
    "모노알킬·다이알킬 아세트산은 말론산 에스터 합성으로 만들 수 있지만, 트라이알킬 아세트산(R₃C–CO₂H)은 만들 수 없다. 설명하시오.",
    "말론산 에스터에는 치환될 수 있는 산성 수소가 2개뿐",
