@@ -157,7 +157,6 @@ one="부프로피온 = Grignard(케톤) → Br₂(α-Br) → 아민 S_N2 → HCl
 
 # 부프로피온: 개념 07 다음, 문제(수업 풀이) 다음에 전체 메커니즘 쪽
 _i = next(k for k, e in enumerate(E) if e.get("id") == "c-bup")
-E.insert(_i + 1, mpage("개념 07 · 계속", "부프로피온 염산염 — 전체 메커니즘 (니트릴부터)", "Grignard → imine hydrolysis → enolization → α-bromination → S<sub>N</sub>2 → HCl", P))
+E.insert(_i + 1, dict(mpage("개념 07 · 계속", "부프로피온 염산염 — 전체 메커니즘 (니트릴부터)", "Grignard → imine hydrolysis → enolization → α-bromination → S<sub>N</sub>2 → HCl", P), id="m-bup"))
 E[8:8] = T1
-_j = next(k for k, e in enumerate(E) if e.get("src", "").startswith("강의 슬라이드 14"))
-E.insert(_j + 1, mpage("문제 정답 · 계속", "부프로피온 — 정답 메커니즘 (처음부터 끝까지)", "빈칸 ①→②→③의 모든 화살표", P, q=True))
+

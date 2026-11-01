@@ -241,14 +241,14 @@ _c = [e for e in E if e["t"] != "q"]
 # 순서: S_N2 변형 → 말론산(예제·본문) → 과제 22-42 → 아세토아세트산(예제·본문) → LDA(예제·본문·추가) → 과제 22-54 → 예상 변형
 E = _c + [_q[0]] + T3a + [_q[1]] + T3b + T3c + _q[2:]
 # 페노바르비탈: 개념 다음, 문제 다음에 전체 메커니즘 2쪽씩
-for _key, _q in (("c-phb", False), (None, True)):
+for _key, _q in (("c-phb", False),):
     if _key:
         _i = next(k for k, e in enumerate(E) if e.get("id") == _key)
         _b, _t = "개념 15 · 계속", "페노바르비탈 — 전체 메커니즘"
     else:
         _i = next(k for k, e in enumerate(E) if e.get("src", "").startswith("강의 슬라이드 33"))
         _b, _t = "문제 정답 · 계속", "페노바르비탈 — 정답 메커니즘"
-    E[_i + 1:_i + 1] = [MPAGE(_b, _t + " ① 벤질 사이아나이드 → α-케토 에스터", "acid alcoholysis of nitrile · enolate · Claisen with diethyl oxalate", P, PHB_1, PHB_ORDER, _q),
+    E[_i + 1:_i + 1] = [MPAGE(_b, _t + " ① 벤질 사이아나이드 → α-케토 에스터", "acid alcoholysis of nitrile · enolate · Claisen with diethyl oxalate", P, PHB_1, PHB_ORDER, _q, id="m-phb"),
                         MPAGE(_b, _t + " ② 에틸화 → 요소 고리", "−CO · enolate · S<sub>N</sub>2 with EtBr · urea cyclization", P, PHB_2, PHB_ORDER, _q)]
 # 말론산 에스터: 개념 다음에 전체 흐름 (엔올레이트 → 알킬화 → 고리 → 가수분해·탈카르복실화)
 _i = next(k for k, e in enumerate(E) if e.get("id") == "c-mal")

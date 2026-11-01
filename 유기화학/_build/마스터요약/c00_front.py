@@ -111,7 +111,7 @@ MAP = (RX(('m', 'CC(=O)C', 70, 55), ('a', 'H⁺', '엔올화'), ('m', 'CC(O)=C',
        + RX(('m', 'CC1CCCCC1=O', 80, 65), ('a', '1. LDA, THF', '2. CH₃I'), ('m', 'CC1CCCC(C)C1=O', 85, 65), ('t', '덜 붐비는 쪽'), ('a', 'X₂, NaOH 과량', '메틸 케톤'), ('t', 'RCOO⁻ + CHX₃ (할로폼)')))
 
 mp = dict(t="r", id="f-map", html=f"""
-<div class="hd"><span class="bd">읽기 전에 ③</span><div class="tt"><h1>22장 한 장 지도 · 4대 직관 공식</h1><div class="sb">Reaction map · the four rules (단권화 노트)</div></div><span class="pt">{P0}</span></div>
+<div class="hd"><span class="bd">22장</span><div class="tt"><h1>22장 한 장 지도 · 4대 직관 공식</h1><div class="sb">Reaction map · the four rules (단권화 노트)</div></div><span class="pt">{P0}</span></div>
 <div class="body"><div class="main">
 <div class="sec">🗺 반응 지도 — α 탄소를 친핵체로 만들어 E를 붙인다</div>
 <div class="mz">{MAP}</div>
@@ -125,7 +125,7 @@ mp = dict(t="r", id="f-map", html=f"""
 <li><b>산성도</b>: 전자 밀어주는 방해꾼(N ＞ O ＞ CH₃)이 없을수록 → 카르보닐 전자 끌기↑ → α-H 쉽게 떨어짐 → 작은 pKa.</li>
 <li><b>가열(Δ)</b>: 결합을 끊어 기체(CO₂, CO)로 날리거나(탈카르복실화) 작은 분자(HBr)를 뜯어낼 때(E2, 엔트로피↑) 쓰는 필살기.</li>
 <li><b>위치 선택성</b>: 산성(Br₂+AcOH) = 튼튼한 이중결합(자이체프) → 더 치환된 쪽 / LDA = 뚱보라 한산한 쪽.</li></ol></div>
-<div class="card tip"><div class="ct">📌 문제 읽는 법</div>조건을 보고 경로를 먼저 정한다: <b>H⁺·AcOH</b> → 엔올 / <b>NaOH·NaOEt·LDA</b> → 엔올레이트 / <b>R–X</b> → S<sub>N</sub>2 / <b>H₃O⁺, Δ</b> → 가수분해 + 탈카르복실화.</div>
+<div class="card rec"><div class="ct">🎯 녹취 — 마지막 말씀</div>“요거는 이제 <b>풀어서 다음 시간에 제출</b>하면 되고요.” → 강의자료 마지막 슬라이드 과제 22-37 · 38 · 42 · 54 (이 노트 문제 12 · 13 · 20 · 27). “오늘 수업 여기까지 하고 중간고사 채점한 거 나눠드리고 끝내겠습니다.”</div><div class="card tip"><div class="ct">📌 문제 읽는 법</div>조건을 보고 경로를 먼저 정한다: <b>H⁺·AcOH</b> → 엔올 / <b>NaOH·NaOEt·LDA</b> → 엔올레이트 / <b>R–X</b> → S<sub>N</sub>2 / <b>H₃O⁺, Δ</b> → 가수분해 + 탈카르복실화.</div>
 </div></div>""")
 
-E = [cover, guide, check, mp]
+E = [mp]

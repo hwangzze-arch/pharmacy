@@ -9,6 +9,57 @@ for m in MODS:
 for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
     if e.get("note"): e["_note"] = e["note"]
+import answers as _ans
+from parts import RX as _RX, MSR as _MSR
+
+
+def _split(extra):
+    """원서 정답 / 해설집 부분 나누기."""
+    k = extra.find('📗 원서 정답'); ss = extra.find('📘 해설집')
+    cut = lambda i: extra.rfind('<div class="sec"', 0, i)
+    key = extra[cut(k):cut(ss) if ss > 0 else len(extra)] if k > 0 else ""
+    sol = extra[cut(ss):] if ss > 0 else ""
+    return key, sol
+
+
+if os.environ.get("ED") != "core":
+    import extra22 as _x
+    _by = {e.get("id"): e for e in ENTRIES if e.get("id")}
+    # 얇은 쪽 합치기: 속도론 → 산성 할로젠화, 생합성 → LDA
+    _by["c-acidbr"]["detail"] = '<ul><li>아세토페논 + Br₂(아세트산) → α-브로모아세토페논(72 %). 4단계: 양성자화 → α-H 제거(엔올) → Br₂ 공격 → O–H 탈양성자 (자세한 설명은 아래 노트).</li><li><b>1번만</b>, <y>더 치환된 쪽</y> (산성 = 더 안정한 엔올). HBr이 생겨 <b>자기 촉매</b>.</li></ul>'
+    _by["c-acidbr"]["detail"] += '<p><b>속도론</b>(슬 10): 속도 = k[케톤][H⁺], <y>[X₂] 없음</y> · D₃O⁺ 교환 속도 = 할로젠화 속도 → 느린 단계 = <g>엔올 형성</g>(공통 중간체). 엔올화는 가역이라 D₂O/D⁺에 오래 두면 모든 α-H → D.</p>'
+    _by["c-acidbr"]["title"] = "산성 α-할로젠화 + 속도론 — 엔올 중간체의 증거"; _by["c-acidbr"]["sub"] = "Acid-catalyzed α-halogenation · rate law · 슬라이드 8–10"
+    _by["c-lda"]["detail"] += '<p><b>생체 내 α-알킬화</b>(슬 36, 인돌마이신): 효소의 염기·산이 엔올을 만들고 엔올이 <b>SAM</b>(S⁺–CH₃)의 메틸을 S<sub>N</sub>2로 받음 = 생체판 “LDA + CH₃I”.</p>'
+    _by["c-lda"]["title"] = "LDA 직접 알킬화 · 위치 선택성 · 생체 내 알킬화"
+    ENTRIES = [e for e in ENTRIES if e.get("id") not in ("c-rate", "c-bio")]
+    for e in ENTRIES:
+        if e["t"] == "c" and e.get("id") in _x.NOTE:
+            e["my"] = _x.NOTE[e["id"]]; e["rec"] = _x.REC.get(e["id"], "")
+            e["side"] = [x for x in e.get("side", []) if x[0] in ("img", "trap")]
+    _n = 0
+    for e in ENTRIES:
+        if e["t"] != "q":
+            continue
+        _n += 1
+        e["n"] = _n
+        if _n in _ans.A:
+            e["a"], e["exp"] = _ans.A[_n]
+            e["steps"] = []; e["one"] = None
+        keep = _ans.KEEP.get(_n, "")
+        key, sol = _split(e.get("extra", ""))
+        e["extra"] = (key if "key" in keep else "") + (sol if "ss" in keep else "")
+        if "img" in keep:
+            e["extra"] += (e.get("afig", "") if e.get("afig", "").startswith("<img") else e.get("afig", "").split("<div class=\"mrow")[0])
+        if "afig" not in keep or _n in (12, 20):
+            e["afig"] = "" if "afig" not in keep else e.get("afig", "")
+        if _n == 27:
+            e["afig"] = _MSR('a54', 0, 1, 2)
+            e["extra"] = '<img src="../강의번역/img/a54.jpg" style="width:100%">'
+        if _n == 28:
+            e["afig"] = (_RX(('m', 'CCOC(=O)Cc1ccccc1', 110, 60), ('t', '①'), ('m', 'CCOC(=O)C(=O)C(c1ccccc1)C(=O)OCC', 140, 85), ('t', '②'),
+                             ('m', 'CCOC(=O)C(CC)(c1ccccc1)C(=O)OCC', 130, 85), ('t', '③')) + _MSR(33, 2))
+        e["pair"] = _n in _ans.PAIR
+
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
 
@@ -120,6 +171,23 @@ tr.hl td{background:#ffe3e3;}
 .work.hasnote .mynote{margin:0;font-size:.9em;}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.nr{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;flex:none;}
+.nr.one1{grid-template-columns:1fr;}
+.nr .card{font-size:.92em;line-height:1.55;padding:6px 9px;}
+.nr .card p{margin:0 0 3px 0;}
+.nq{font-weight:700;color:#a4185f;margin:4px 0 1px 0 !important;} .na{margin:0 0 3px 0;}
+.key2{background:#fff3bf;border-left:4px solid #f2c200;padding:3px 7px;border-radius:4px;font-weight:500;}
+.work.sm{flex:none;height:var(--wh,120px);min-height:0;}
+.qcol{flex:.9;}
+.exp p{margin:0 0 4px 0;} .acol ul,.acol ol{margin:0 0 4px 0;}
+.ans{font-size:1em;color:#0f4f3d;font-weight:500;background:#fff;border:1px solid #cfe5d8;border-radius:8px;padding:5px 9px;}
+.ans p{margin:0 0 3px 0;}
+.page.pair .qhalf{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:6px;}
+.page.pair .qhalf + .qhalf{border-top:2px dashed #cfe5d8;padding-top:6px;}
+.page.pair .qh{font-weight:700;color:#23263a;font-size:1.02em;}
+.page.pair .bd2{background:#127a64;color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
+.page.pair .qbody{margin-top:4px;}
+.page.pair .work.sm{height:var(--wh,60px);}
 """ + CSS_EXTRA
 
 def foot(i):
@@ -155,6 +223,10 @@ def concept(i, n, e):
     if e.get("example"):
         imp = " imp" if "ex" in e["_flags"] else ""
         main.append(f'<div class="ebox{imp}"><div class="sec e">✍️ 예제 및 풀이</div>{e["example"]}</div>')
+    nr = ""
+    if e.get("rec") or e.get("my"):
+        nr = ('<div class="nr' + ('' if (e.get("rec") and e.get("my")) else ' one1') + '">' + (f'<div class="card rec"><div class="ct">🎯 녹취 — 교수님 설명</div>{e["rec"]}</div>' if e.get("rec") else "")
+                    + (f'<div class="card my"><div class="ct">✍️ 내 정리 (단권화 노트)</div>{e["my"]}</div>' if e.get("my") else "") + '</div>')
     side = side_html(e.get("side", []), e["_flags"])
     nt = e.get("_note")
     if nt and nt[0] == "main": main.append(NOTE_HD + nt[1] + '</div>')
@@ -166,6 +238,7 @@ def concept(i, n, e):
 <div class="hd"><span class="bd">개념 {n:02d}</span><div class="tt"><h1>{e["title"]}</h1><div class="sb">{e.get("sub","")}</div></div><span class="pt">{e["part"]}</span></div>
 <div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
 <div class="body">{body}</div>
+{nr}
 {f'<div class="mband"><span class="mbl">⚗️ 메커니즘 (곡선 화살표)</span><div class="mz">{e["mech"]}</div></div>' if e.get("mech") else ""}
 <div class="one{oneimp}"><span class="lb">🧠 뇌리에 박히는 한 줄</span><span>{e["one"]}</span></div>
 {foot(i)}</section>'''
@@ -190,6 +263,35 @@ def question(i, n, e):
 {f'<div class="qone{qimp}"><span class="lb">🧠 한 줄</span>{e["one"]}</div>' if e.get("one") else ""}</div></div>
 {foot(i)}</section>'''
 
+def _qparts(e):
+    kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
+    src = f'<span class="qsrc">{e["src"]}</span>' if e.get("src") else ""
+    exp = f'<div class="sec" style="color:#0f6b52;margin-top:4px">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
+    fig = f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else ""
+    left = f'<div class="qcol"><div class="qcard">{kinds}{src}<div class="qtext">{e["q"]}</div></div><div class="work sm"><span class="wl">✏️ 내 풀이</span></div></div>'
+    right = f'<div class="acol"><span class="al">정답 및 해설</span><div class="ans">{e["a"]}</div>{exp}{fig}{e.get("extra","")}</div>'
+    return left, right
+
+
+def question1(i, n, e):
+    left, right = _qparts(e)
+    return f'''<section class="page">
+<div class="hd q"><span class="bd">문제 {n:02d}</span><div class="tt"><h1>{e["title"]}</h1></div><span class="pt">{e["part"]}</span></div>
+<div class="qbody">{left}{right}</div>
+{foot(i)}</section>'''
+
+
+def question2(i, n, e1, e2):
+    rows = ""
+    for k, e in ((n, e1), (n + 1, e2)):
+        left, right = _qparts(e)
+        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div><div class="qbody">{left}{right}</div></div>'
+    return f'''<section class="page pair">
+<div class="hd q"><span class="bd">문제 {n:02d}–{n+1:02d}</span><div class="tt"><h1>{e1["part"]}</h1></div><span class="pt">짧은 문제 2개</span></div>
+{rows}
+{foot(i)}</section>'''
+
+
 def raw(i, e):
     return f'<section class="page {e.get("cls","")}">{e["html"]}{foot(i)}</section>'
 
@@ -201,7 +303,16 @@ for e in ENTRIES:
     if e["t"] == "c":
         cn += 1; pages.append(concept(i, cn, e))
     elif e["t"] == "q":
-        qn += 1; pages.append(question(i, qn, e))
+        if e.get("_skip"):
+            continue
+        if "exp" in e or e.get("n"):
+            nxt = ENTRIES[ENTRIES.index(e) + 1] if e.get("pair") else None
+            if nxt is not None and nxt["t"] == "q":
+                qn += 1; pages.append(question2(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True
+            else:
+                qn += 1; pages.append(question1(i, qn, e))
+        else:
+            qn += 1; pages.append(question(i, qn, e))
     else:
         pages.append(raw(i, e))
     pk = e.get("part")
