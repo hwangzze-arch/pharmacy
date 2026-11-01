@@ -17,8 +17,8 @@ if os.environ.get("ED") == "core":  # 핵심판: 시험에 나올 근거가 있�
     TITLE = "약품유기화학2 제22장 핵심판"
     FOOT = "약품유기화학 2 · 기말 대비 핵심판 · 제22장 카르보닐 알파 치환 반응"
 IMG = "../강의번역/img/"
-COLOR = "#2f9e44"      # 22장 색 (17 #2a6f97 · 18 #2a9d8f · 19 #7b5cd6 · 20 #e76f51 · 21 #d1495b)
-COLOR_SOFT = "#ebfbee"
+COLOR = "#2b8a3e"      # 22장 색 (17 #2a6f97 · 18 #2a9d8f · 19 #7b5cd6 · 20 #e76f51 · 21 #d1495b)
+COLOR_SOFT = "#e9f6ec"
 
 P1 = "PART 1 · 엔올과 산성 α-치환"
 P2 = "PART 2 · α-H 산성도와 엔올레이트"
