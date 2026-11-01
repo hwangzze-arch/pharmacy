@@ -194,7 +194,7 @@ tr.hl td{background:#ffe3e3;}
 """ + CSS_EXTRA
 
 def foot(i):
-    return f'<div class="ft"><span>{FOOT}</span><span>{i} / {{TOTAL}}</span></div>'
+    return f'<div class="ft"><span>{FOOT}</span><span class="lg">형광펜 <i class="y"></i>핵심 개념 <i class="g"></i>규칙·결론 <i class="p"></i>주의·시험 포인트 <i class="b"></i>정답</span><span>{i} / {{TOTAL}}</span></div>'
 
 def side_html(items, flags=()):
     out = []
@@ -238,7 +238,7 @@ def concept(i, n, e):
     oneimp = " imp" if "one" in e["_flags"] else ""
     body = f'<div class="main{" full" if not side else ""}">{"".join(main)}</div>' + (f'<div class="side">{side}</div>' if side else "")
     return f'''<section class="page">
-<div class="hd"><span class="bd">개념 {n:02d}</span><div class="tt"><h1>{e["title"]}</h1><div class="sb">{e.get("sub","")}</div></div><span class="pt">{e["part"]}</span></div>
+{_hd21(f"{n:02d}", e["title"], e.get("sub",""), [e["part"]], "개념")}
 <div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
 <div class="body">{body}</div>
 {nr}
@@ -295,6 +295,43 @@ def question2(i, n, e1, e2):
 {foot(i)}</section>'''
 
 
+# ── 21장 정리본 스타일: 위 문제 → 메모(줄 없음) → 아래 정답과 해설 ──
+def _qv(e, n, mini=False):
+    kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
+    src = f'<span class="qsrc">{e["src"]}</span>' if e.get("src") else ""
+    exp = f'<div class="xsec">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
+    fig = (f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else "") + e.get("extra", "")
+    prob = f'<div class="pbx"><span class="plb">PROBLEM {n:02d}</span>{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
+    memo = '<div class="memo"><span class="ml2">✍ 메모</span></div>'
+    if mini or not fig:
+        grid = f'<div class="agrid one1"><div class="xc">{exp}{fig}</div></div>'
+    else:
+        grid = f'<div class="agrid"><div class="xc">{exp}</div><div class="xc fc">{fig}</div></div>'
+    ans = f'<div class="abx"><div class="ah"><span class="alb">정답과 해설</span><div class="abar">{e["a"]}</div></div>{grid}</div>'
+    return prob, memo, ans
+
+def _hd21(n, title, sub, tags, kind="문제"):
+    pills = "".join(f'<span class="pill">{t}</span>' for t in tags if t)
+    return f'<div class="h21"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><div class="pills">{pills}</div></div>'
+
+def question1(i, n, e):
+    prob, memo, ans = _qv(e, n)
+    return f'''<section class="page v21">
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{prob}{memo}{ans}
+{foot(i)}</section>'''
+
+def question2(i, n, e1, e2):
+    cols = ""
+    for k, e in ((n, e1), (n + 1, e2)):
+        prob, memo, ans = _qv(e, k, mini=True)
+        cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div>{prob}{memo}{ans}</div>'
+    return f'''<section class="page v21 pair2">
+{_hd21(f"{n:02d}–{n+1:02d}", e1["part"], "짧은 문제 2개", [])}
+<div class="pcols">{cols}</div>
+{foot(i)}</section>'''
+
+
 def raw(i, e):
     return f'<section class="page {e.get("cls","")}">{e["html"]}{foot(i)}</section>'
 
@@ -345,7 +382,7 @@ html = re.sub(r"\{REF:([^}]+)\}", ref, html)
 html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(ids[m.group(1)][0]), html)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
 from themes import THEMES as _TH
-CSS = CSS + _TH[os.environ.get('THEME', 'pastel')]
+CSS = CSS + _TH[os.environ.get('THEME', 'mid21')]
 html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title><style>{CSS}</style></head><body>{html}</body></html>'
 open(os.path.join(D, "index.html"), "w").write(html)
 print("pages", len(pages), "concepts", cn, "questions", qn)

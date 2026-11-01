@@ -14,7 +14,10 @@ const path = require('path');
       const bad = [...pg.querySelectorAll('.main,.side,.acol')].some(c => c.scrollHeight > c.clientHeight + 1) || (pg.querySelector('.ft') && [...pg.querySelectorAll('.one,.mband,.nr')].some(x => x.getBoundingClientRect().bottom > pg.querySelector('.ft').getBoundingClientRect().top + 1));
       const work = pg.querySelector('.work');
       const wsmall = work && !work.classList.contains('sm') ? (work.classList.contains('hasnote') ? work.scrollHeight > work.clientHeight + 1 : work.clientHeight < 90) : false;
-      return bad || wsmall;
+      const ft = pg.querySelector('.ft');
+      const vbad = [...pg.querySelectorAll('.abx')].some(x => x.scrollHeight > x.clientHeight + 1) || ft && [...pg.querySelectorAll('.abx,.pbx')].some(x => x.getBoundingClientRect().bottom > ft.getBoundingClientRect().top - 2);
+      const msmall = [...pg.querySelectorAll('.memo')].some(m => m.clientHeight < 55);
+      return bad || wsmall || vbad || msmall;
     };
     // 메커니즘·구조식 그림(.mz): 들어갈 칸 너비에 맞춰 축소 (최대 1배)
     const fitw = (z) => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 4; const r = w / z.scrollWidth; z.style.zoom = Math.min(1, r); return Math.min(1, r); };
@@ -31,14 +34,29 @@ const path = require('path');
         if (fs > 11.6) fs -= 0.2;
         else if (imgh > 150) imgh -= 15;
         else if ([...pg.querySelectorAll('.fcol .fz')].some(z => (parseFloat(z.style.zoom) || 1) > 0.45)) pg.querySelectorAll('.fcol .fz').forEach(z => z.style.zoom = Math.max(0.45, (parseFloat(z.style.zoom) || 1) - 0.05));
-        else if (pg.querySelector('.acol .tbimg') && (parseFloat(pg.style.getPropertyValue('--aimg')) || 1) > 0.5) pg.style.setProperty('--aimg', ((parseFloat(pg.style.getPropertyValue('--aimg')) || 1) - 0.05).toFixed(2));
+        else if (pg.querySelector('.pbx img') && (parseFloat(pg.style.getPropertyValue('--pimgh')) || 230) > 90) pg.style.setProperty('--pimgh', ((parseFloat(pg.style.getPropertyValue('--pimgh')) || 230) - 10) + 'px');
+        else if (pg.querySelector('.acol .tbimg, .abx .tbimg') && (parseFloat(pg.style.getPropertyValue('--aimg')) || 1) > 0.5) pg.style.setProperty('--aimg', ((parseFloat(pg.style.getPropertyValue('--aimg')) || 1) - 0.05).toFixed(2));
         else if (bands.length && bands.some(z => parseFloat(z.style.zoom) > 0.55)) bands.forEach(z => z.style.zoom = Math.max(0.55, parseFloat(z.style.zoom) - 0.05));
         else if (fs > 9.4) fs -= 0.2;
         else break;
         pg.style.setProperty('--fs', fs + 'px');
         pg.style.setProperty('--imgh', imgh + 'px');
       }
-      res.push({ i: i + 1, fs: Math.round(fs * 10) / 10, imgh, overflow: over(pg) });
+      if (over(pg) && pg.classList.contains('v21') && !pg.classList.contains('pair2') && !pg.classList.contains('side')) {
+        pg.classList.add('side'); fs = 12.8; imgh = 240; guard = 0;
+        pg.style.removeProperty('--aimg'); pg.style.removeProperty('--pimgh');
+        pg.querySelectorAll('.mz').forEach(fitw); bands.forEach(z => fitw(z));
+        pg.style.setProperty('--fs', fs + 'px'); pg.style.setProperty('--imgh', imgh + 'px');
+        while (over(pg) && guard++ < 120) {
+          if (fs > 11.6) fs -= 0.2;
+          else if (pg.querySelector('.abx .tbimg') && (parseFloat(pg.style.getPropertyValue('--aimg')) || 1) > 0.5) pg.style.setProperty('--aimg', ((parseFloat(pg.style.getPropertyValue('--aimg')) || 1) - 0.05).toFixed(2));
+          else if (bands.length && bands.some(z => parseFloat(z.style.zoom) > 0.55)) bands.forEach(z => z.style.zoom = Math.max(0.55, parseFloat(z.style.zoom) - 0.05));
+          else if (fs > 9.4) fs -= 0.2;
+          else break;
+          pg.style.setProperty('--fs', fs + 'px');
+        }
+      }
+      res.push({ side: pg.classList.contains('side'), i: i + 1, fs: Math.round(fs * 10) / 10, imgh, overflow: over(pg) });
     });
     return res;
   });
