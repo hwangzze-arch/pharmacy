@@ -62,6 +62,7 @@ if os.environ.get("ED") != "core":
             e["afig"] = (_RX(('m', 'CCOC(=O)Cc1ccccc1', 110, 60), ('t', '①'), ('m', 'CCOC(=O)C(=O)C(c1ccccc1)C(=O)OCC', 140, 85), ('t', '②'),
                              ('m', 'CCOC(=O)C(CC)(c1ccccc1)C(=O)OCC', 130, 85), ('t', '③')) + _MSR(33, 2))
         e["pair"] = _n in _ans.PAIR
+        e["split"] = _n in _ans.SPLIT
 
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
@@ -315,6 +316,15 @@ def _hd21(n, title, sub, tags, kind="문제"):
     return f'<div class="h21"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><div class="pills">{pills}</div></div>'
 
 def question1(i, n, e):
+    if e.get("split"):
+        prob, memo, ans = _qv(e, n, mini=True)
+        return [f'''<section class="page v21">
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{prob}{memo}<div class="nextp">정답과 해설은 다음 쪽 →</div>
+{foot(i)}</section>''', f'''<section class="page v21 aonly">
+{_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]])}
+{ans}
+{foot(i + 1)}</section>''']
     prob, memo, ans = _qv(e, n)
     return f'''<section class="page v21">
 {_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
@@ -352,7 +362,7 @@ for e in ENTRIES:
             if nxt is not None and nxt["t"] == "q":
                 qn += 1; pages.append(question2(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True; nxt_used = nxt
             else:
-                qn += 1; pages.append(question1(i, qn, e))
+                qn += 1; _r = question1(i, qn, e); pages.extend(_r if isinstance(_r, list) else [_r])
         else:
             qn += 1; pages.append(question(i, qn, e))
     else:
