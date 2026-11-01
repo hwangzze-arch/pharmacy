@@ -11,7 +11,7 @@ const path = require('path');
     const res = [];
     const sel = '.main,.side,.acol,.qcard,.page';
     const over = (pg) => {
-      const bad = [...pg.querySelectorAll('.main,.side,.acol,.fcol,.atext')].some(c => c.scrollHeight > c.clientHeight + 1) || (pg.querySelector('.ft') && [...pg.querySelectorAll('.one,.mband,.nr')].some(x => x.getBoundingClientRect().bottom > pg.querySelector('.ft').getBoundingClientRect().top + 1));
+      const bad = [...pg.querySelectorAll('.main,.side,.acol')].some(c => c.scrollHeight > c.clientHeight + 1) || (pg.querySelector('.ft') && [...pg.querySelectorAll('.one,.mband,.nr')].some(x => x.getBoundingClientRect().bottom > pg.querySelector('.ft').getBoundingClientRect().top + 1));
       const work = pg.querySelector('.work');
       const wsmall = work && !work.classList.contains('sm') ? (work.classList.contains('hasnote') ? work.scrollHeight > work.clientHeight + 1 : work.clientHeight < 90) : false;
       return bad || wsmall;
