@@ -53,4 +53,66 @@ table.t th{background:#f3f0ff !important;color:#5f3dc4 !important;}
 .page.pair .qhalf + .qhalf{border-top:2px dashed #ced4da !important;}
 .page.pair .bd2{background:#b2f2bb !important;color:#1b5e20 !important;border-radius:3px !important;}
 """,
+
+# D. 21장 내필기 정리본 스타일 (남색 배지 · 문제 상자 · 줄 없는 메모 · 크림색 정답과 해설)
+"mid21": """
+:root{--paper:#ffffff;--navy:#1d3557;--nblue:#0f3f8c;--line:#dfe5ee;--indigo:#1d3557;--indigo-soft:#eef3fa;}
+html,body,.page{background:#fff !important;}
+.h21{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--navy);padding-bottom:7px;flex:none;}
+.b21{background:var(--navy);color:#fff;border-radius:9px;padding:3px 14px 4px;display:flex;flex-direction:column;align-items:center;line-height:1.15;flex:none;min-width:64px;}
+.b21 span{font-size:10.5px;opacity:.9;} .b21 b{font-size:21px;}
+.h21 .tt{flex:1;min-width:0;}
+.h21 h1{margin:0;font-size:21px;line-height:1.3;font-weight:700;color:var(--navy);}
+.h21 .sb{font-size:11px;color:#6b7686;}
+.h21 .pills{display:flex;gap:6px;flex:none;}
+.pill{border:1px solid #c3cad6;background:#f6f8fc;color:var(--nblue);border-radius:13px;font-size:10.5px;font-weight:500;padding:2px 11px;white-space:nowrap;}
+.sec{color:var(--nblue) !important;}
+.core{background:#fffbe6 !important;border:1px solid #f1e1b6 !important;border-left:5px solid #e89b1c !important;border-radius:9px !important;}
+.core .lb{background:#e89b1c !important;color:#fff !important;border:none !important;}
+.one{background:var(--navy) !important;}
+.card.rec{background:#fff0f3 !important;border:1px solid #f3a6b8 !important;} .card.rec .ct{color:#d1335b !important;}
+.card.my{background:#fffcf3 !important;border:1px solid #f1e1b6 !important;} .card.my .ct{color:#b06a00 !important;}
+.card.trap{background:#fff0f3 !important;border-color:#f3a6b8 !important;}
+.card.tip,.card.ana{background:#eef3fa !important;border-color:#d3deee !important;}
+.mband,.fig{border-color:#dfe5ee !important;}
+.mband .mbl{color:var(--nblue) !important;background:#eef3fa !important;}
+table.t th{background:#eef3fa !important;color:var(--nblue) !important;}
+.ft{border-top:1px solid #e5e9f0 !important;color:#8b95a5 !important;align-items:center;}
+.ft .lg{display:flex;align-items:center;gap:4px;}
+.ft .lg i{display:inline-block;width:16px;height:8px;border-radius:2px;margin-left:8px;}
+.ft .lg i.y{background:#fff1a8;} .ft .lg i.g{background:#c9f0c4;} .ft .lg i.p{background:#ffd3e1;} .ft .lg i.b{background:#d8e8ff;}
+/* 문제 쪽 (세로) */
+.v21{gap:0;}
+.pbx{flex:none;margin-top:9px;background:#eef3fa;border-radius:10px;border-left:5px solid var(--navy);padding:8px 14px;overflow:hidden;}
+.plb{display:inline-block;background:var(--navy);color:#fff;font-weight:700;letter-spacing:.04em;font-size:.82em;border-radius:5px;padding:1px 9px;margin-right:7px;}
+.pbx .qtext{margin-top:5px;}
+.memo{flex:1;min-height:60px;margin-top:8px;border:1.5px dashed #c3cad6;border-radius:10px;background:#fff;position:relative;}
+.memo .ml2{position:absolute;top:6px;left:12px;font-size:.8em;color:#8b95a5;}
+.abx{flex:none;margin-top:8px;background:#fffcf3;border:1px solid #f1e1b6;border-radius:12px;padding:8px 12px;overflow:hidden;}
+.ah{display:flex;align-items:flex-start;gap:10px;}
+.alb{flex:none;background:#e89b1c;color:#fff;font-weight:700;font-size:.9em;border-radius:7px;padding:3px 11px;margin-top:2px;}
+.abar{flex:1;min-width:0;background:#d8e8ff;border-left:4px solid #1d5fc4;border-radius:6px;padding:3px 11px;color:#0f3f8c;font-weight:700;}
+.abar p{margin:0 0 2px 0;}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:7px;}
+.agrid.one1{grid-template-columns:1fr;}
+.xc{background:#fff;border:1px solid #f1e1b6;border-radius:9px;padding:6px 11px;min-width:0;overflow:hidden;}
+.xc:empty{display:none;}
+.xsec{font-weight:700;color:#b85c00;margin-bottom:2px;}
+.xc .afig{border-color:#f1e1b6;margin-top:3px;}
+.pcols{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+.pbx{--aimg:1;}
+.pbx img{max-width:100%;max-height:var(--pimgh,230px);object-fit:contain;object-position:left center;}
+/* 세로로 안 들어가는 문제: 문제·메모 왼쪽, 정답과 해설 오른쪽 */
+.v21.side{display:grid;grid-template-columns:.92fr 1.08fr;grid-template-rows:auto auto 1fr;column-gap:14px;}
+.v21.side .h21{grid-column:1/3;}
+.v21.side .pbx{grid-column:1;grid-row:2;}
+.v21.side .memo{grid-column:1;grid-row:3;min-height:0;}
+.v21.side .abx{grid-column:2;grid-row:2/4;margin-top:9px;}
+.v21.side .agrid{grid-template-columns:1fr;}
+.v21.side .pbx .tbimg{width:100% !important;}
+.agrid{grid-template-columns:1fr 1.25fr;}
+.pc{display:flex;flex-direction:column;min-height:0;min-width:0;}
+.pc .qh{font-weight:700;color:var(--navy);margin-top:6px;}
+.pc .bd2{background:var(--navy);color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
+""",
 }
