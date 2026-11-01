@@ -7,22 +7,22 @@ reag = dict(t="r", id="f-reag", html=f"""
 <div class="hd"><span class="bd">최종 정리 ①</span><div class="tt"><h1>시약 치트시트 — 시약을 보면 반응이 떠오르게</h1><div class="sb">Reagent → reaction</div></div><span class="pt">{F}</span></div>
 <div class="body"><div class="main"><table class="t">
 <tr><th>시약 / 조건</th><th>하는 일</th><th>결과</th><th>개념</th></tr>
-<tr><td>Br₂ (Cl₂, I₂), CH₃COOH</td><td>산 촉매 엔올 → α-할로젠화</td><td>α-X 1개, 더 치환된 쪽</td><td>03</td></tr>
-<tr><td>D₃O⁺ (D₂O, H⁺)</td><td>엔올 → α-D 교환</td><td>모든 α-H → D</td><td>04</td></tr>
-<tr><td>피리딘, 가열</td><td>α-브로모 케톤의 E2</td><td>α,β-불포화 케톤</td><td>05</td></tr>
-<tr><td>1. Br₂, PBr₃ 2. H₂O</td><td>HVZ</td><td>α-브로모 카복실산 (물 전: –COBr)</td><td>06</td></tr>
-<tr><td>1. RMgX 2. H₃O⁺ (니트릴)</td><td>Grignard 첨가 + 이민 가수분해</td><td>케톤</td><td>07</td></tr>
-<tr><td>아민 (t-BuNH₂ 등)</td><td>α-할로 케톤에 S<sub>N</sub>2</td><td>α-아미노 케톤</td><td>07</td></tr>
-<tr><td>NaH / LDA, THF, −78 °C</td><td>완전한 엔올레이트</td><td>LDA: 덜 치환된 쪽</td><td>08·16</td></tr>
-<tr><td>X₂, NaOH (과량)</td><td>염기 할로젠화 폭주 → 할로폼</td><td>RCOO⁻ + CHX₃ (I₂: 노란 침전)</td><td>10</td></tr>
-<tr><td>1. NaOEt 2. R–X</td><td>1,3-다이카르보닐 알킬화 (S<sub>N</sub>2)</td><td>α-R (최대 2번)</td><td>11·12</td></tr>
-<tr><td>2 NaOEt + Br(CH₂)ₙBr</td><td>분자 간 + 분자 내 알킬화</td><td>(n+1)원 고리</td><td>12</td></tr>
-<tr><td>H₃O⁺, 가열</td><td>에스터 가수분해 + 탈카르복실화</td><td>말론산 → 산 / 아세토아세트산 → 메틸 케톤</td><td>13·14</td></tr>
-<tr><td>NaOCH₃ (메틸 에스터)</td><td>에스터 교환 없이 엔올레이트</td><td>같은 알콕사이드 원칙</td><td>12 · 문제 18</td></tr>
-<tr><td>옥살산 다이에틸, NaOEt → Δ</td><td>Claisen → −CO</td><td>페닐말론산 다이에틸</td><td>15</td></tr>
-<tr><td>요소 H₂NCONH₂</td><td>다이에스터와 아실 치환 ×2</td><td>바르비튜르산 고리</td><td>15</td></tr>
-<tr><td>1. LDA 2. CH₃I</td><td>단일 카르보닐 직접 알킬화</td><td>α-CH₃ (케톤·에스터·락톤·니트릴)</td><td>16</td></tr>
-<tr><td>SAM (생체)</td><td>엔올이 S⁺–CH₃에 S<sub>N</sub>2</td><td>생체 α-메틸화</td><td>17</td></tr>
+<tr><td>Br₂ (Cl₂, I₂), CH₃COOH</td><td>산 촉매 엔올 → α-할로젠화</td><td>α-X 1개, 더 치환된 쪽</td><td>{{CN:c-acidbr}}</td></tr>
+<tr><td>D₃O⁺ (D₂O, H⁺)</td><td>엔올 → α-D 교환</td><td>모든 α-H → D</td><td>{{CN:c-acidbr}}</td></tr>
+<tr><td>피리딘, 가열</td><td>α-브로모 케톤의 E2</td><td>α,β-불포화 케톤</td><td>{{CN:c-e2}}</td></tr>
+<tr><td>1. Br₂, PBr₃ 2. H₂O</td><td>HVZ</td><td>α-브로모 카복실산 (물 전: –COBr)</td><td>{{CN:c-hvz}}</td></tr>
+<tr><td>1. RMgX 2. H₃O⁺ (니트릴)</td><td>Grignard 첨가 + 이민 가수분해</td><td>케톤</td><td>{{CN:c-bup}}</td></tr>
+<tr><td>아민 (t-BuNH₂ 등)</td><td>α-할로 케톤에 S<sub>N</sub>2</td><td>α-아미노 케톤</td><td>{{CN:c-bup}}</td></tr>
+<tr><td>NaH / LDA, THF, −78 °C</td><td>완전한 엔올레이트</td><td>LDA: 덜 치환된 쪽</td><td>{{CN:c-acid}}·{{CN:c-lda}}</td></tr>
+<tr><td>X₂, NaOH (과량)</td><td>염기 할로젠화 폭주 → 할로폼</td><td>RCOO⁻ + CHX₃ (I₂: 노란 침전)</td><td>{{CN:c-haloform}}</td></tr>
+<tr><td>1. NaOEt 2. R–X</td><td>1,3-다이카르보닐 알킬화 (S<sub>N</sub>2)</td><td>α-R (최대 2번)</td><td>{{CN:c-alk}}·{{CN:c-mal}}</td></tr>
+<tr><td>2 NaOEt + Br(CH₂)ₙBr</td><td>분자 간 + 분자 내 알킬화</td><td>(n+1)원 고리</td><td>{{CN:c-mal}}</td></tr>
+<tr><td>H₃O⁺, 가열</td><td>에스터 가수분해 + 탈카르복실화</td><td>말론산 → 산 / 아세토아세트산 → 메틸 케톤</td><td>{{CN:c-decarb}}·{{CN:c-aae}}</td></tr>
+<tr><td>NaOCH₃ (메틸 에스터)</td><td>에스터 교환 없이 엔올레이트</td><td>같은 알콕사이드 원칙</td><td>{{CN:c-mal}} · 문제 {{QN:q-2254}}</td></tr>
+<tr><td>옥살산 다이에틸, NaOEt → Δ</td><td>Claisen → −CO</td><td>페닐말론산 다이에틸</td><td>{{CN:c-phb}}</td></tr>
+<tr><td>요소 H₂NCONH₂</td><td>다이에스터와 아실 치환 ×2</td><td>바르비튜르산 고리</td><td>{{CN:c-phb}}</td></tr>
+<tr><td>1. LDA 2. CH₃I</td><td>단일 카르보닐 직접 알킬화</td><td>α-CH₃ (케톤·에스터·락톤·니트릴)</td><td>{{CN:c-lda}}</td></tr>
+<tr><td>SAM (생체)</td><td>엔올이 S⁺–CH₃에 S<sub>N</sub>2</td><td>생체 α-메틸화</td><td>{{CN:c-lda}}</td></tr>
 </table></div><div class="side">
 <div class="card"><div class="ct">🔢 꼭 외울 pKa 사다리</div><table class="t">
 <tr><td>CCl₃COOH</td><td>0.7</td></tr><tr><td>카복실산</td><td>5</td></tr><tr><td>1,3-다이케톤</td><td>9</td></tr><tr><td>페놀</td><td>10</td></tr><tr><td>β-케토 에스터</td><td>11</td></tr><tr><td>말론산 에스터</td><td>13</td></tr><tr><td>물 / 알코올</td><td>15.7 / 16</td></tr><tr><td>산염화물 α-H</td><td>16</td></tr><tr><td>알데하이드 α-H</td><td>17</td></tr><tr><td>케톤 α-H</td><td>19</td></tr><tr><td>싸이오에스터</td><td>21</td></tr><tr><td>에스터 · 니트릴</td><td>25</td></tr><tr><td>다이알킬아마이드</td><td>30</td></tr><tr><td>H₂ (NaH)</td><td>35</td></tr><tr><td>다이아이소프로필아민 (LDA)</td><td>36</td></tr></table></div>

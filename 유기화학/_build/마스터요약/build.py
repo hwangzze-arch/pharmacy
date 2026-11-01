@@ -336,10 +336,12 @@ def raw(i, e):
     return f'<section class="page {e.get("cls","")}">{e["html"]}{foot(i)}</section>'
 
 pages = []
+PID = {}
 cn = qn = 0
 rng = {}
 for e in ENTRIES:
     i = len(pages) + 1
+    nxt_used = None
     if e["t"] == "c":
         cn += 1; pages.append(concept(i, cn, e))
     elif e["t"] == "q":
@@ -348,13 +350,17 @@ for e in ENTRIES:
         if "exp" in e or e.get("n"):
             nxt = ENTRIES[ENTRIES.index(e) + 1] if e.get("pair") else None
             if nxt is not None and nxt["t"] == "q":
-                qn += 1; pages.append(question2(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True
+                qn += 1; pages.append(question2(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True; nxt_used = nxt
             else:
                 qn += 1; pages.append(question1(i, qn, e))
         else:
             qn += 1; pages.append(question(i, qn, e))
     else:
         pages.append(raw(i, e))
+    if e.get("id"):
+        PID[e["id"]] = (len(pages), cn if e["t"] == "c" else qn, e["t"])
+    if e["t"] == "q" and e.get("pair") and nxt_used is not None and nxt_used.get("id"):
+        PID[nxt_used["id"]] = (len(pages), qn, "q")
     pk = e.get("part")
     if pk and e["t"] in "cq":
         r = rng.setdefault(pk, {"p": [i, i], "c": [], "q": []})
@@ -374,12 +380,15 @@ for k, e in enumerate(ENTRIES):
     if e.get("id"):
         ids[e["id"]] = (k + 1, c2 if e["t"] == "c" else q2, e["t"])
 def ref(m):
-    v = ids.get(m.group(1))
+    v = PID.get(m.group(1)) or ids.get(m.group(1))
     if not v:
         print("MISSING REF", m.group(1)); return "?"
     return f'{"개념" if v[2] == "c" else "문제"} {v[1]:02d}(p.{v[0]})'
 html = re.sub(r"\{REF:([^}]+)\}", ref, html)
-html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(ids[m.group(1)][0]), html)
+html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(PID[m.group(1)][0]) if m.group(1) in PID else str(ids[m.group(1)][0]), html)
+html = re.sub(r"\{QN:([^}]+)\}", lambda m: f"{PID[m.group(1)][1]:02d}", html)
+html = re.sub(r"\{CN:([^}]+)\}", lambda m: f"{PID[m.group(1)][1]:02d}", html)
+html = re.sub(r"\{PR:([^}]+)\}", lambda m: f"{PID[m.group(1)][0]}" + (f"–{PID[m.group(1)+'2'][0]}" if m.group(1)+'2' in PID else ""), html)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
 from themes import THEMES as _TH
 CSS = CSS + _TH[os.environ.get('THEME', 'mid21')]
