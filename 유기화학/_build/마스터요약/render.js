@@ -11,7 +11,7 @@ const path = require('path');
     const res = [];
     const sel = '.main,.side,.acol,.qcard,.page';
     const over = (pg) => {
-      const bad = [...pg.querySelectorAll('.main,.side,.acol')].some(c => c.scrollHeight > c.clientHeight + 1) || (pg.querySelector('.ft') && [...pg.querySelectorAll('.one,.mband,.nr')].some(x => x.getBoundingClientRect().bottom > pg.querySelector('.ft').getBoundingClientRect().top + 1));
+      const bad = [...pg.querySelectorAll('.main,.side,.acol,.fcol,.atext')].some(c => c.scrollHeight > c.clientHeight + 1) || (pg.querySelector('.ft') && [...pg.querySelectorAll('.one,.mband,.nr')].some(x => x.getBoundingClientRect().bottom > pg.querySelector('.ft').getBoundingClientRect().top + 1));
       const work = pg.querySelector('.work');
       const wsmall = work && !work.classList.contains('sm') ? (work.classList.contains('hasnote') ? work.scrollHeight > work.clientHeight + 1 : work.clientHeight < 90) : false;
       return bad || wsmall;
@@ -30,6 +30,7 @@ const path = require('path');
       while (over(pg) && guard++ < 120) {
         if (fs > 11.6) fs -= 0.2;
         else if (imgh > 150) imgh -= 15;
+        else if ([...pg.querySelectorAll('.fcol .fz')].some(z => (parseFloat(z.style.zoom) || 1) > 0.45)) pg.querySelectorAll('.fcol .fz').forEach(z => z.style.zoom = Math.max(0.45, (parseFloat(z.style.zoom) || 1) - 0.05));
         else if (pg.querySelector('.acol .tbimg') && (parseFloat(pg.style.getPropertyValue('--aimg')) || 1) > 0.5) pg.style.setProperty('--aimg', ((parseFloat(pg.style.getPropertyValue('--aimg')) || 1) - 0.05).toFixed(2));
         else if (bands.length && bands.some(z => parseFloat(z.style.zoom) > 0.55)) bands.forEach(z => z.style.zoom = Math.max(0.55, parseFloat(z.style.zoom) - 0.05));
         else if (fs > 9.4) fs -= 0.2;

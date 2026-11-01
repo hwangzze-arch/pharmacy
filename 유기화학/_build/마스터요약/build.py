@@ -69,7 +69,7 @@ NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 CSS = r"""
 @page { size: 297mm 210mm; margin: 0; }
 :root{
- --paper:#fbf9f4; --ink:#2c3038; --muted:#6c7280; --line:#e4dfd3;
+ --paper:#ffffff; --ink:#2c3038; --muted:#6c7280; --line:#e4dfd3;
  --indigo:#4651c8; --indigo-soft:#eef0fd; --teal:#127a64; --teal-soft:#eef7f2;
  --yel:#fff4cc; --yel-b:#efd27a; --pink:#fde9ef; --pink-b:#f2a7bd; --mint:#e7f6ec; --mint-b:#9fd5b1;
  --blue-soft:#eaf2fb; --blue-b:#a9c6e8;
@@ -185,12 +185,44 @@ tr.hl td{background:#ffe3e3;}
 .exp p{margin:0 0 4px 0;} .acol ul,.acol ol{margin:0 0 4px 0;}
 .ans{font-size:1em;color:#0f4f3d;font-weight:500;background:#fff;border:1px solid #cfe5d8;border-radius:8px;padding:5px 9px;}
 .ans p{margin:0 0 3px 0;}
-.page.pair .qhalf{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:6px;}
+
 .page.pair .qhalf + .qhalf{border-top:2px dashed #cfe5d8;padding-top:6px;}
 .page.pair .qh{font-weight:700;color:#23263a;font-size:1.02em;}
 .page.pair .bd2{background:#127a64;color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
 .page.pair .qbody{margin-top:4px;}
 .page.pair .work.sm{height:var(--wh,60px);}
+/* ── 문제 쪽 (밝은 파스텔) */
+.qp .hd.q{border-bottom:3px solid #74c0fc;}
+.qp .hd.q .bd{background:linear-gradient(135deg,#4dabf7,#748ffc);}
+.qp .hd.q .pt{background:#e7f5ff;color:#1c7ed6;}
+.qp .hd h1{color:#1e3a5f;}
+.qtop{display:flex;gap:10px;margin-top:7px;flex:none;align-items:stretch;}
+.qtop .qcard{flex:1.7;background:#f3f9ff;border:1.5px solid #a5d8ff;border-radius:12px;padding:7px 12px;}
+.qmeta{margin-bottom:3px;}
+.qtop .qtext{margin-top:2px;}
+.qtop .work.sm{flex:1;height:auto;min-height:90px;background-color:#fffef6;border:2px dashed #ffd8a8;border-radius:12px;background-image:radial-gradient(#ffe8cc 1.1px,transparent 1.1px);background-size:15px 15px;}
+.qtop .work .wl{background:#fff4e6;border-color:#ffd8a8;color:#d9480f;}
+.arow{flex:1;min-height:0;display:flex;gap:12px;margin-top:8px;background:#f4fdf8;border:1.5px solid #b2f2bb;border-radius:12px;padding:9px 13px;overflow:hidden;}
+.atext{flex:1;min-width:0;}
+.fcol{flex:1;min-width:0;border-left:2px dotted #b2f2bb;padding-left:12px;overflow:hidden;}
+.fcol .fz{transform-origin:0 0;}
+.fcol img{max-width:100%;}
+.fcol .sec{color:#2b8a3e !important;font-size:.92em;}
+.figcap{font-weight:700;color:#2b8a3e;font-size:.9em;margin-bottom:2px;}
+.slab{display:inline-block;font-weight:700;font-size:.85em;color:#fff;background:#51cf66;border-radius:6px;padding:0 8px;margin:2px 0 3px 0;}
+.atext .ans{background:#fff9db;border:1.5px solid #ffe066;border-radius:9px;padding:5px 10px;color:#5c3d00;font-weight:500;margin:0 0 6px 0;}
+.atext .ans ul,.atext .ans ol{margin:0;padding-left:1.2em;}
+.exp{color:#2c3038;}
+.exp p{margin:0 0 4px 0;}
+.qp .qk{border-radius:10px;}
+.page.pair .qhalf{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:4px;}
+.page.pair .qhalf + .qhalf{border-top:2px dashed #a5d8ff;padding-top:5px;margin-top:7px;}
+.page.pair .qh{font-weight:700;color:#1e3a5f;font-size:1em;}
+.page.pair .bd2{background:#4dabf7;color:#fff;border-radius:7px;font-size:.82em;padding:1px 8px;margin-right:6px;}
+.page.pair .qtop .work.sm{min-height:60px;}
+.page.pair .qtext img{max-height:105px;width:auto !important;max-width:100%;}
+.page.pair .term{margin:2px 0 0 0;}
+.page.pair .arow{padding:6px 11px;}
 """ + CSS_EXTRA
 
 def foot(i):
@@ -269,28 +301,30 @@ def question(i, n, e):
 def _qparts(e):
     kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
     src = f'<span class="qsrc">{e["src"]}</span>' if e.get("src") else ""
-    exp = f'<div class="sec" style="color:#0f6b52;margin-top:4px">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
-    fig = f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else ""
-    left = f'<div class="qcol"><div class="qcard">{kinds}{src}<div class="qtext">{e["q"]}</div></div><div class="work sm"><span class="wl">✏️ 내 풀이</span></div></div>'
-    right = f'<div class="acol"><span class="al">정답 및 해설</span><div class="ans">{e["a"]}</div>{exp}{fig}{e.get("extra","")}</div>'
-    return left, right
+    exp = f'<div class="slab">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
+    figs = (f'<div class="mz">{e["afig"]}</div>' if e.get("afig") else "") + e.get("extra", "")
+    top = (f'<div class="qtop"><div class="qcard"><div class="qmeta">{kinds}{src}</div><div class="qtext">{e["q"]}</div></div>'
+           f'<div class="work sm"><span class="wl">✏️ 내 풀이</span></div></div>')
+    text = f'<div class="atext"><div class="slab">✅ 정답</div><div class="ans">{e["a"]}</div>{exp}</div>'
+    ans = f'<div class="acol arow">{text}' + (f'<div class="fcol"><div class="fz">{figs}</div></div>' if figs else "") + '</div>'
+    return top, ans
 
 
 def question1(i, n, e):
-    left, right = _qparts(e)
-    return f'''<section class="page">
+    top, ans = _qparts(e)
+    return f'''<section class="page qp">
 <div class="hd q"><span class="bd">문제 {n:02d}</span><div class="tt"><h1>{e["title"]}</h1></div><span class="pt">{e["part"]}</span></div>
-<div class="qbody">{left}{right}</div>
+{top}{ans}
 {foot(i)}</section>'''
 
 
 def question2(i, n, e1, e2):
     rows = ""
     for k, e in ((n, e1), (n + 1, e2)):
-        left, right = _qparts(e)
-        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div><div class="qbody">{left}{right}</div></div>'
-    return f'''<section class="page pair">
-<div class="hd q"><span class="bd">문제 {n:02d}–{n+1:02d}</span><div class="tt"><h1>{e1["part"]}</h1></div><span class="pt">짧은 문제 2개</span></div>
+        top, ans = _qparts(e)
+        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span>{e["title"]}</div>{top}{ans}</div>'
+    return f'''<section class="page qp pair">
+<div class="hd q"><span class="bd">문제 {n:02d} · {n+1:02d}</span><div class="tt"><h1>{e1["part"]}</h1></div><span class="pt">짧은 문제 2개</span></div>
 {rows}
 {foot(i)}</section>'''
 
