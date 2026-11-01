@@ -179,7 +179,7 @@ afig='<img src="../강의번역/img/a42.jpg" style="width:100%">',
 one="Δ+이산 = −CO₂ · 다이온 + NaOEt/CH₃I · HVZ 중간체 –COBr · I₂/NaOH = 할로폼."),
 
 # ── 문제 18 — 과제 22-54
-dict(t="q", part=P, kind=["reag"], src="과제 22-54 (강의자료 마지막 슬라이드)", title="빠진 시약 a–c 채우기 — 반응 사다리",
+dict(t="q", id="q-2254", part=P, kind=["reag"], src="과제 22-54 (강의자료 마지막 슬라이드)", title="빠진 시약 a–c 채우기 — 반응 사다리",
 q="""<img src="../강의번역/img/p54.jpg" style="width:100%"><br>(1) 시약 a, b, c를 쓰시오. (2) c를 a보다 먼저 하면 어떻게 되나? (3) c에서 C2가 아니라 C6에 메틸이 들어가는 이유는?""",
 a="a: 1. NaOCH₃, CH₃OH 2. CH₃I · b: H₃O⁺, 가열 · c: 1. LDA, THF 2. CH₃I",
 steps=[("a: 두 C=O 사이 H(pKa 11) → 에스터가 <b>메틸</b> 에스터이므로 NaOCH₃(에스터 교환 방지).", ""),
@@ -249,14 +249,14 @@ E = _c + [_q[0]] + T3a + [_q[1]] + T3b + T3c + _q[2:]
 for _key, _q in (("c-phb", False),):
     if _key:
         _i = next(k for k, e in enumerate(E) if e.get("id") == _key)
-        _b, _t = "개념 15 · 계속", "페노바르비탈 — 전체 메커니즘"
+        _b, _t = "개념 {CN:c-phb} · 계속", "페노바르비탈 — 전체 메커니즘"
     else:
         _i = next(k for k, e in enumerate(E) if e.get("src", "").startswith("강의 슬라이드 33"))
         _b, _t = "문제 정답 · 계속", "페노바르비탈 — 정답 메커니즘"
     E[_i + 1:_i + 1] = [MPAGE(_b, _t + " ① 벤질 사이아나이드 → α-케토 에스터", "acid alcoholysis of nitrile · enolate · Claisen with diethyl oxalate", P, PHB_1, PHB_ORDER, _q, id="m-phb"),
-                        MPAGE(_b, _t + " ② 에틸화 → 요소 고리", "−CO · enolate · S<sub>N</sub>2 with EtBr · urea cyclization", P, PHB_2, PHB_ORDER, _q)]
+                        MPAGE(_b, _t + " ② 에틸화 → 요소 고리", "−CO · enolate · S<sub>N</sub>2 with EtBr · urea cyclization", P, PHB_2, PHB_ORDER, _q, id="m-phb2")]
 # 말론산 에스터: 개념 다음에 전체 흐름 (엔올레이트 → 알킬화 → 고리 → 가수분해·탈카르복실화)
 _i = next(k for k, e in enumerate(E) if e.get("id") == "c-mal")
-E.insert(_i + 1, MPAGE("개념 12 · 계속", "말론산 에스터 합성 — 처음부터 끝까지", "enolate → S<sub>N</sub>2 → H₃O⁺ (hydrolysis) → heat (−CO₂)",
+E.insert(_i + 1, MPAGE("개념 {CN:c-mal} · 계속", "말론산 에스터 합성 — 처음부터 끝까지", "enolate → S<sub>N</sub>2 → H₃O⁺ (hydrolysis) → heat (−CO₂)",
                        P, MSR(25, 0, 1) + MSR(27, 0, 1).replace('① C=O 양성자화', '③ C=O 양성자화').replace('② 물이 C=O 공격', '④ 물이 C=O 공격').replace('③ EtOH 이탈', '⑤ EtOH 이탈').replace('④ 가열: 6원', '⑥ 가열: 6원'),
                        "EtO⁻가 α-H 제거 → C⁻가 R–X에 S<sub>N</sub>2 → H₃O⁺: 에스터 2개 가수분해 → 가열: 6원 고리로 CO₂ 이탈 → 토토머화 = R–CH₂COOH (고리 만들기는 문제 참고)"))
