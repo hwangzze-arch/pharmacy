@@ -44,3 +44,4 @@ NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 
 ### 기말 범위 수업 정리
 - `의약품 분석학/기말 첫 수업 음성 정리(질량분석법).md` — Lecture 5 첫 수업 녹취 정리 (EI 설명 구간은 녹음 누락, 슬라이드 기준 보충). 시험 때 **동위원소 기여도 표 제공 → M+1·M+2 계산** 예고됨
+- PDF 만들기: `수업정리/` 폴더 — `python3 build.py 정리.md out.html` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.html" 정리.pdf "꼬리말"` (A4 세로, Noto Sans KR은 Google Fonts에서 불러옴)
