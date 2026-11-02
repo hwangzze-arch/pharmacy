@@ -15,7 +15,7 @@ const path = require('path');
       const work = pg.querySelector('.work');
       const wsmall = work && !work.classList.contains('sm') ? (work.classList.contains('hasnote') ? work.scrollHeight > work.clientHeight + 1 : work.clientHeight < 90) : false;
       const ft = pg.querySelector('.ft');
-      const vbad = [...pg.querySelectorAll('.abx')].some(x => x.scrollHeight > x.clientHeight + 1) || ft && [...pg.querySelectorAll('.abx,.pbx')].some(x => x.getBoundingClientRect().bottom > ft.getBoundingClientRect().top - 2);
+      const vbad = [...pg.querySelectorAll('.abx')].some(x => x.scrollHeight > x.clientHeight + 1) || ft && [...pg.querySelectorAll('.abx,.pbx,.cbx,.nextp')].some(x => x.getBoundingClientRect().bottom > ft.getBoundingClientRect().top - 2) || [...pg.querySelectorAll('.t10b .ccd')].some(x => x.scrollHeight > x.clientHeight + 1);
       const msmall = [...pg.querySelectorAll('.memo')].some(m => m.clientHeight < 55);
       return bad || wsmall || vbad || msmall;
     };
@@ -42,7 +42,7 @@ const path = require('path');
         pg.style.setProperty('--fs', fs + 'px');
         pg.style.setProperty('--imgh', imgh + 'px');
       }
-      if (over(pg) && pg.classList.contains('v21') && !pg.classList.contains('pair2') && !pg.classList.contains('side')) {
+      if (over(pg) && pg.classList.contains('v21') && !pg.classList.contains('pair2') && !pg.classList.contains('t10a') && !pg.classList.contains('t10b') && !pg.classList.contains('npage') && !pg.classList.contains('side')) {
         pg.classList.add('side'); fs = 12.8; imgh = 240; guard = 0;
         pg.style.removeProperty('--aimg'); pg.style.removeProperty('--pimgh');
         pg.querySelectorAll('.mz').forEach(fitw); bands.forEach(z => fitw(z));
