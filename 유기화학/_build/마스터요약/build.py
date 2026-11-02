@@ -430,13 +430,7 @@ for e in ENTRIES:
         r["p"][1] = i
         r["c" if e["t"] == "c" else "q"].append(cn if e["t"] == "c" else qn)
 import re
-T10 = os.environ.get("ED") == "top10"
-if T10:
-    import t10 as _t10
-    TITLE = "약품유기화학 2 · 22장 기말대비 TOP 10판"
-    FOOT = "약품유기화학 2 · 기말 대비 TOP 10판 · 제22장 카르보닐 알파 치환 반응"
-    pages = _t10.build(globals())
-if not T10 and os.environ.get("ED") != "core":
+if os.environ.get("ED") != "core":
     pages.append(f'<section class="page top10">{TOP10}{foot(len(pages) + 1)}</section>')
     # 삼성노트 표시(동그라미·형광·화살표) — 원래 쪽 번호 j 의 표시를 같은 쪽 위에 그대로
     for j, idx in enumerate(ORIG, 1):
