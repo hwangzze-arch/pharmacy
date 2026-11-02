@@ -60,6 +60,11 @@ const path = require('path');
     });
     return res;
   });
+  // 삼성노트 필기 칸: 넘치면 그 칸 글자만 줄이기 (쪽 배치는 그대로)
+  await page.evaluate(() => document.querySelectorAll('.mnote').forEach(m => { let f = m.classList.contains('big') ? 1.45 : 1; m.style.setProperty('--nfs', f + 'em');
+    while (m.scrollHeight > m.clientHeight + 1 && f > 0.55) { f -= 0.03; m.style.setProperty('--nfs', f + 'em'); } }));
+  const nt = await page.evaluate(() => [...document.querySelectorAll('.mnote')].map(m => [m.closest('.page') && [...document.querySelectorAll('.page')].indexOf(m.closest('.page')) + 1, (m.style.getPropertyValue('--nfs') || '1em'), m.scrollHeight > m.clientHeight + 1]));
+  console.log('notes', JSON.stringify(nt));
   report.filter(r => r.fs < 11 || r.overflow).forEach(r => console.log(JSON.stringify(r)));
   await page.pdf({ path: process.argv[2], width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
   if (process.argv[3]) {

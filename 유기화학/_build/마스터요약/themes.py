@@ -114,6 +114,24 @@ table.t th{background:#eef3fa !important;color:var(--nblue) !important;}
 .nextp{flex:none;text-align:right;color:#b85c00;font-weight:700;font-size:.9em;margin-top:5px;}
 .v21.aonly .abx{flex:1;min-height:0;}
 .v21.aonly .agrid.one1 .xc{border:none;background:transparent;padding:2px 4px;}
+.ovl{position:absolute;left:0;top:0;width:297mm;height:210mm;pointer-events:none;z-index:60;}
+.memo.hasn{overflow:hidden;}
+.mnote{position:absolute;inset:6px 12px 6px 12px;overflow:hidden;color:#c92a2a;font-size:var(--nfs,1em);line-height:1.55;}
+.mnote .mnt{display:inline-block;font-size:.8em;font-weight:700;color:#fff;background:#e03131;border-radius:5px;padding:0 8px;margin-bottom:3px;}
+.mnote p{margin:0 0 4px 0;} .mnote ul{margin:0 0 4px 0;padding-left:1.2em;} .mnote li{margin:0 0 2px 0;}
+.mnote b{color:#b02525;} .mnote u2{color:#1c4ed8;text-decoration:none;} .mnote u2 b{color:#1c4ed8;}
+.memo .mgo{position:absolute;right:12px;bottom:8px;font-size:.85em;font-weight:700;color:#e03131;}
+.npage .nbox{flex:1;min-height:0;margin-top:9px;border:1.5px dashed #f08c8c;border-radius:10px;background:#fffafa;position:relative;}
+.mnote.big{inset:10px 16px;}
+.top10 .tgrid{flex:1;min-height:0;display:grid;grid-template-columns:1.05fr 1fr;gap:10px;margin-top:9px;}
+.top10 .tcol{display:flex;flex-direction:column;gap:10px;min-height:0;}
+.top10 .tc{border-radius:11px;padding:8px 12px;overflow:hidden;}
+.top10 .t1{background:#fff8e1;border:1.5px solid #f2c94c;} .top10 .t2{background:#eef3fa;border:1.5px solid #a9c1e8;} .top10 .t3{background:#eef8ec;border:1.5px solid #a9d9a0;}
+.top10 .tct{font-weight:700;color:#1d3557;font-size:1.05em;margin-bottom:4px;}
+.top10 .tsub{color:#6b7686;font-size:.92em;margin:0 0 5px 0;}
+.top10 .tr{display:flex;gap:8px;margin:0 0 6px 0;align-items:flex-start;}
+.top10 .rk{flex:none;background:#1d3557;color:#fff;border-radius:6px;font-weight:700;font-size:.85em;padding:1px 8px;margin-top:2px;}
+.top10 .t1 .rk{background:#e89b1c;}
 .pc{display:flex;flex-direction:column;min-height:0;min-width:0;}
 .pc .qh{font-weight:700;color:var(--navy);margin-top:6px;}
 .pc .bd2{background:var(--navy);color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
