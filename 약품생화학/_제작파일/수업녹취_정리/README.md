@@ -1,6 +1,6 @@
 # 수업 녹취록 정리
 
-`class1.py` → `약품생화학/기말고사 대비 수업1 정리.pdf`, `class2.py` → `기말고사 대비 수업2 정리.pdf` (원본: 각 회차 `… 음성 녹취록.pdf`)
+`class1.py` → `약품생화학/기말고사 대비 수업1 정리.pdf`, `class2.py` → `기말고사 대비 수업2 정리.pdf`, `class3.py` → `기말고사 대비 수업3 정리.pdf`(동영상 강의, 원문은 채팅으로 받은 영문 녹취) (원본: 각 회차 `… 음성 녹취록.pdf`)
 
 ```sh
 python3 class2.py &&   # 회차 번호만 바꿔서 NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"

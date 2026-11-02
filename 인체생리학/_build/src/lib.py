@@ -2,7 +2,7 @@ import base64, os
 FIG = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'fig')
 PAGES = []          # list of (kind, chapter, title, html_fn)
 CH = {'no': 0, 'name': '', 'color': '#1c3d7a'}
-COLORS = {1: '#0b8f84', 2: '#2b8a3e', 3: '#1971c2', 4: '#5f3dc4', 5: '#c2255c', 6: '#e8590c', 7: '#9c36b5'}
+COLORS = {1: '#0b8f84', 2: '#2b8a3e', 3: '#1971c2', 4: '#5f3dc4', 5: '#c2255c', 6: '#e8590c', 7: '#9c36b5', 8: '#c92a2a'}
 _q = [0]
 
 def img(name, cap='', h='60mm'):
@@ -57,7 +57,7 @@ def eng(lines):
 
 # ---- questions ----
 TAGS = {'tf': ('T / F', '#0b8f84'), 'mc': ('객관식', '#1971c2'), 'mc2': ('객관식 · 2개', '#5f3dc4'),
-        'sa': ('단답', '#e8590c'), 'es': ('서술', '#c92a2a')}
+        'sa': ('단답', '#e8590c'), 'es': ('서술', '#c92a2a'), 'fig': ('그림 각주', '#0b7285'), 'box': ('단어 박스 빈칸', '#d9480f')}
 
 def _qcard(kind, body, ans, exp, stars, extra='', prof=False):
     _q[0] += 1
@@ -91,6 +91,21 @@ def ES(en, ko, model, exp, stars=3):
             f'<span class="st">{"★" * stars + "☆" * (3 - stars)}</span></div><div class="qb"><div class="e">{en}</div><div class="k">{ko}</div></div>'
             f'<div class="work"><span>✎ 내 풀이</span></div>'
             f'<div class="ans"><div><span class="ab">모범답안</span></div><div class="model">{model}</div><div class="ex">{exp}</div></div></div>')
+
+def FQ(name, en, ko, ans, exp, stars=2, h='52mm'):
+    """그림 각주: 슬라이드 그림에 붙인 A, B, C… 라벨이 무엇인지 쓰기. ans: list of (라벨, 정답)"""
+    with open(os.path.join(FIG, name + '.jpg'), 'rb') as f:
+        b = base64.b64encode(f.read()).decode()
+    body = f'<div class="e">{en}</div><div class="k">{ko}</div><div class="figq"><img style="max-height:{h}" src="data:image/jpeg;base64,{b}"></div>'
+    a = ' · '.join(f'<b>{l}</b> {t}' for l, t in ans)
+    return _qcard('fig', body, '', f'<div class="fans">{a}</div>{exp}', stars)
+
+def BOX(en, ko, words, text, ans, exp, stars=2):
+    """단어 박스 빈칸: 단어 약 12개 중에서 과정의 빈칸 (1)…(n)에 알맞은 단어 고르기"""
+    w = ''.join(f'<span>{x}</span>' for x in words)
+    body = f'<div class="e">{en}</div><div class="k">{ko}</div><div class="wbox">{w}</div><div class="e btxt">{text}</div>'
+    a = ' · '.join(f'({i + 1}) {t}' for i, t in enumerate(ans))
+    return _qcard('box', body, a, exp, stars)
 
 def load_bank():
     import importlib
