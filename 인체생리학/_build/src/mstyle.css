@@ -1,0 +1,37 @@
+
+.mch{font-size:6.6pt;font-weight:700;border:1px solid;border-radius:1mm;padding:0 1.2mm;background:#fff}
+.mq .qb .e{font-size:9pt}
+.mq ol.chs li{margin:.5mm 0}
+.mq ol.chs li>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 1.6mm}
+.mq ol.chs .e{font-size:8.6pt}
+.mq ol.chs .k{font-size:7.2pt;color:#7d8495;margin:0}
+.ansbox{display:flex;align-items:center;gap:2mm;padding:1.6mm 3mm 2.2mm;font-size:8pt;font-weight:700;color:#8a5a3e;border-top:1px dashed #f1c3a2;background:#fff8f2}
+.ansbox span{flex:1;height:7mm;border:1.3px solid #e9b896;border-radius:1.4mm;background:#fff}
+.tfgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 4mm}
+.tfrow{display:flex;gap:2mm;align-items:flex-start;border:1px solid #e3e6ee;border-radius:2.4mm;padding:2.2mm 2.6mm;background:#fff}
+.tfrow>b{font-size:10.5pt;color:#d9622b;min-width:5.5mm}
+.tfrow .mch{margin-top:.6mm}
+.tfx{flex:1}.tfx .e{font-size:8.6pt;line-height:1.4}.tfx .k{font-size:7.2pt;color:#7d8495}
+.tfbox{white-space:nowrap;border:1.3px solid #e9b896;border-radius:1.4mm;padding:1.2mm 2.4mm;font-size:8pt;font-weight:700;color:#8a5a3e;background:#fff8f2;align-self:center}
+.mg .q{min-height:0}
+.akg{display:grid;grid-template-columns:repeat(10,1fr);gap:1.4mm}
+.ak{border:1px solid #e3e6ee;border-radius:1.6mm;text-align:center;padding:1mm .5mm;background:#fff}
+.akn{display:block;font-size:6.8pt;color:#8a90a0;font-weight:700}
+.aka{display:block;font-size:10pt;font-weight:800;color:#1b5e2b;line-height:1.3}
+.akp{display:block;font-size:6pt;font-weight:700}
+td.blank{border:1px solid #e9b896;background:#fffaf5;min-width:12mm}
+.xg{column-gap:3.2mm}
+.xq{break-inside:avoid;border:1px solid #e3e6ee;border-radius:2.6mm;padding:2.4mm 3mm;margin:0 0 3mm;background:#fff;box-shadow:0 .4mm 1.2mm rgba(25,35,70,.05)}
+.xq .qh{padding:0 0 1mm}
+.xk{font-size:7.4pt;color:#7d8495;margin-bottom:1mm;line-height:1.35}
+.xq .big{font-size:10pt;color:#1b5e2b}
+.xq .why{font-size:7.6pt;margin-top:1mm}
+.xq .model{font-size:7.9pt;color:#183a6b;line-height:1.5}
+.ab2{display:inline-block;background:#2b8a3e;color:#fff;font-size:6.6pt;font-weight:700;border-radius:1mm;padding:.2mm 1.4mm;margin-bottom:.6mm}
+
+.toc2 .r span:first-child{width:21mm;white-space:nowrap}
+.xk{font-size:8.2pt}
+.xq .why{font-size:8.6pt;line-height:1.5}
+.xq .model{font-size:9pt;line-height:1.6}
+.xq .keys{font-size:7.8pt}
+.xq .qh b{font-size:11pt}

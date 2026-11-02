@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>신약개발개론 2주차 약물개발의 역사</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.ev{display:flex;gap:3mm;align-items:flex-start}
+.yr{flex:0 0 auto;font-weight:900;color:#fff;background:var(--pc,var(--blue));border-radius:6px;padding:0 6px;font-size:9pt;margin-top:.5mm}
+.arrow{display:flex;align-items:center;gap:2.4mm;flex-wrap:wrap}
+.arrow .bx{border-radius:8px;padding:1.6mm 3mm;font-size:9.4pt;font-weight:700;background:var(--soft)}
+.arrow .ar{color:var(--coral);font-weight:900}
+.step{display:grid;grid-template-columns:repeat(6,1fr);gap:1.6mm}
+.step div{border-radius:7px;padding:1.6mm 2mm;font-size:8.6pt;background:#fff;border:1.3px solid var(--line);line-height:1.4}
+.step div b{display:block;font-size:9.2pt}
+.step .n{display:inline-block;width:15px;height:15px;border-radius:50%;background:var(--pc);color:#fff;font-size:7.6pt;text-align:center;line-height:15px;margin-right:3px}
+.ck{text-align:center;font-weight:900}
+.ck.o{color:#1f9a5c}.ck.x{color:#d0453a}.ck.t{color:#b97900}
+</style></head><body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover"><div class="in">
+  <div class="sub">PHAR278 · 신약개발개론 · 시험대비 노트</div>
+  <h1>2주차<br>약물개발의 역사<small>누가 만들고, 왜 실패하고, 규칙은 어떻게 생겼나</small></h1>
+  <div class="pills"><span>상세요약</span><span>개념문제 20</span><span>중간고사 대비 실전 31</span><span>암기카드</span></div>
+  <div style="margin-top:9mm;max-width:132mm;font-size:10.5pt;line-height:1.75;opacity:.92">
+    2주차는 <b style="color:#ffd76a">2024 중간고사에서 가장 많이 나온 주차</b>야. 엘릭서(신장독성) · 탈리도마이드(켈시, 지금도 사용) ·
+    헬싱키 vs 벨몬트 · 터스키기/유대인 병원/Acres of Skin · 허들 비율 <b>증가</b> · 설파닐아마이드 — 전부 여기서 나왔어.
+  </div>
+  <div class="toc"><h4>CONTENTS</h4><ol>
+    <li><span>00</span>한 장 지도 · 2024 기출 분석<em>2</em></li>
+    <li><span>01</span>혁신신약 연대기<em>3</em></li>
+    <li><span>02</span>누가 신약을 개발하나<em>6</em></li>
+    <li><span>03</span>실패 · 엘릭서 · 탈리도마이드<em>9</em></li>
+    <li><span>04</span>왜 어려운가 · 4개의 허들<em>13</em></li>
+    <li><span>05</span>FDA 신약 승인 과정<em>15</em></li>
+    <li><span>06</span>규제 · 윤리의 역사<em>17</em></li>
+    <li><span>★</span>중간고사 대비 실전문제<em>23</em></li>
+    <li><span>✓</span>암기카드<em>31</em></li>
+  </ol></div>
+  <div class="foot">김한준 교수님 2주차 강의 슬라이드(2026.09.09) + 2024 중간고사 리뷰 녹취를 바탕으로 정리</div>
+</div></section>
+
+<!-- ============ 00 MAP ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">2주차</span><span class="part">00</span><span class="ttl">한 장 지도 — 8개의 질문 & 2024 기출</span><span class="sp"></span><span class="src">슬라이드 8 + 2024 리뷰</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">한 줄 요약</span>약물개발의 역사 = <span class="y">비극 → 규제 강화, 비효율 → 규제 개선</span>의 반복. 규정은 영원하지 않다.</div>
+      <table class="t">
+        <tr><th>교수님의 8개 질문</th><th>한 줄 답</th><th class="c">PART</th></tr>
+        <tr><td>누가 신약을 개발하나?</td><td>개인 과학자 → 제약회사 → 스타트업</td><td class="c">02</td></tr>
+        <tr><td>모든 신약개발은 성공하나?</td><td>대부분 실패 (“실패하기 위해 존재”)</td><td class="c">03</td></tr>
+        <tr><td>왜 허가를 못 받나?</td><td>효능 부족 · 안전성 · 상업성</td><td class="c">03</td></tr>
+        <tr><td>실패하면 어떻게 되나?</td><td>기업 손실 · 약화 사고</td><td class="c">03</td></tr>
+        <tr><td>왜 어렵나?</td><td>쉬운 표적 소진 · 복잡한 질병 · 높은 기준</td><td class="c">04</td></tr>
+        <tr><td>누가 control 하나?</td><td>FDA (한국 = 식약처)</td><td class="c">05</td></tr>
+        <tr><td>규정은 누가 만들었나?</td><td>비극이 날 때마다 법 개정</td><td class="c">06</td></tr>
+        <tr><td>규정은 영원한가?</td><td>아니! (FDA 현대화법 2.0)</td><td class="c">06</td></tr>
+      </table>
+    </div>
+    <div class="col" style="flex:1.05">
+      <div class="card" style="border-color:#f6c7bb"><h3 style="color:var(--coral)">🎯 2024 중간고사 — 2주차에서 나온 것</h3>
+        <table class="t" style="--pcs:var(--coral-s);font-size:9pt">
+          <tr><th>주제</th><th>정답 포인트 (교수님 해설)</th></tr>
+          <tr><td><b>허들</b></td><td>통과 못하는 비율 <span class="p">증가</span> 추세 · 환자 모집 시간·비용 <span class="p">증가</span></td></tr>
+          <tr><td><b>FDA 승인</b></td><td>전임상 → <b>IND</b> (NDA ✗) · 라벨링 후 시설 실사 · 4상</td></tr>
+          <tr><td><b>헬싱키</b></td><td>치료적·비치료적 연구 원칙. “인간 존중·이익·정의”는 <span class="p">벨몬트</span></td></tr>
+          <tr><td><b>벨몬트</b></td><td>터스키기·Acres of Skin·유대인 병원 → 벨몬트로 이어짐<br>피부 화학물질 = <span class="p">Acres of Skin(감옥)</span>, 노인 암세포 = 유대인 병원</td></tr>
+          <tr><td><b>탈리도마이드</b></td><td>지금도 <span class="p">사용 중</span>(다발성 골수종) · 임부 금기 · COVID 연구 · 켈시 박사</td></tr>
+          <tr><td><b>엘릭서</b></td><td>DEG(부동액) → <span class="p">신장</span>독성 (간독성 ✗)</td></tr>
+          <tr><td><b>A·B 약물</b></td><td>플레밍: 콧물 라이소자임 → 페니실린 / 정답은 <b>설파닐아마이드</b></td></tr>
+        </table>
+      </div>
+      <div class="callout tip"><div class="t">💡 공부 순서</div>연도는 “순서”만 확실히 → <b>사건 → 법</b> 짝꿍(엘릭서→1938, 탈리도마이드→1962, 터스키기→1974·1979) → 윤리 문서 3개의 <b>키워드</b> 구분.</div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>2</span></div>
+</section>
+
+<!-- ============ 01 연대기 ============ -->
+<section class="page" style="--pc:var(--blue);--pcs:var(--blue-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 01</span><span class="ttl">혁신신약 연대기 — 수백 년의 “최초”들</span><span class="sp"></span><span class="src">슬라이드 2~7</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span>약의 역사 = <span class="y">우연한 발견(백신·페니실린) → 과학적 설계(DNA·표적·면역·CAR-T)</span>로의 진화.</div>
+    <div class="card" style="padding:2mm 3mm"><div data-d="chron"></div></div>
+    <div class="row">
+      <div class="col">
+        <div class="card"><h3><span class="n">1</span>최초의 백신 — 천연두 (1796)</h3>
+          <div class="small">영국 시골 의사 <b>에드워드 제너</b>: “목장 일꾼은 천연두에 안 걸린다” → 소의 <b>우두</b>를 접종.<br>5억 명 이상 구함 → <span class="g">1980.5.8 WHO 천연두 박멸 선언</span> (vaccine ← 라틴어 vacca = 소)</div></div>
+        <div class="card"><h3><span class="n">2</span>최초의 항생제 — 페니실린 (1928)</h3>
+          <div class="small"><b>알렉산더 플레밍</b>, 푸른곰팡이. 10세 전 절반 사망하던 영유아 생존율 ↑ → <b>1945 노벨상</b> (플로리·체인과 공동)<br>원리: 세균 <b>세포벽</b> 합성 방해 → 사람엔 세포벽 없음 = 선택적 독성</div></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3><span class="n">3</span>DNA 구조(1953) → 인간 인슐린(1978)</h3>
+          <div class="small"><b>왓슨·크릭</b> 이중나선 (128줄 논문, 1962 노벨상) → <b>DNA 재조합</b> 기술 → 1978년 첫 <b>인간</b> 인슐린 생산<br>동물(소·돼지) 인슐린의 <b>알레르기</b> 걱정 ↓ → 최초의 바이오의약품(재조합 단백질)</div></div>
+        <div class="callout tip"><div class="t">🔑 시험 포인트</div><div class="small">최초 백신 = <b>천연두(제너, 1796)</b> · 최초 항생제 = <b>페니실린(플레밍, 1928)</b> · 최초 바이오의약품 = <b>인간 인슐린(1978)</b></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>3</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 01</span><span class="ttl">항암제의 진화 — 1·2·3세대와 CAR-T</span><span class="sp"></span><span class="src">슬라이드 7</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span>“무엇을 공격하나”로 구분: <span class="y">빨리 자라는 모든 세포 → 암세포의 특정 단백질 → 면역 브레이크 해제 → 환자 T세포 개조</span></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3mm">
+      <div class="card" style="border-top:5px solid #8d96aa"><div class="tiny c-sub">1943</div><h3>1세대 화학 항암제</h3>
+        <div class="small">독가스 <b>머스타드 가스</b>가 백혈구·림프조직 감소 → 굿맨·길맨이 백혈병·림프종 치료제로<br><br><b>공격</b>: 빨리 분열하는 <b>모든</b> 세포<br><b>한계</b>: 머리카락·골수도 손상 → 부작용 큼</div></div>
+      <div class="card" style="border-top:5px solid #3b6fd8"><div class="tiny c-sub">1999</div><h3>2세대 표적 항암제</h3>
+        <div class="small">암세포만 찾아 공격 (글리벡: CML의 BCR-ABL)<br>골수이식 외 완치법 없던 <b>만성골수성백혈병(CML)</b>을 하루 한 알로 관리하는 만성질환으로<br><br><b>장점</b>: 효과↑ 부작용↓ · <b>한계</b>: 내성</div></div>
+      <div class="card" style="border-top:5px solid #0e8a83"><div class="tiny c-sub">PD-1 1992 · CTLA-4 1996</div><h3>3세대 면역 항암제</h3>
+        <div class="small"><b>혼조 다스쿠(PD-1)</b>, <b>제임스 앨리슨(CTLA-4)</b> 발견 — 암이 숨는 데 쓰는 단백질 → 이를 막는 항체<br><br>비유: T세포 = 자동차, PD-1 = <b>브레이크</b> → 브레이크를 떼어줌<br>(2018 노벨상)</div></div>
+      <div class="card" style="border-top:5px solid #7457d6"><div class="tiny c-sub">2017 FDA 승인</div><h3>CAR-T</h3>
+        <div class="small">환자의 T세포를 꺼내 유전자 조작 → <b>“슈퍼 면역 T세포”</b>로 만들어 다시 주입<br><br><b>개인 맞춤형</b> 치료 (킴리아)<br>단점: 매우 고가</div></div>
+    </div>
+    <div class="row">
+      <div class="callout trap" style="flex:1"><div class="t">⚠ 헷갈리기 쉬운 짝</div><div class="small">1세대 = <b>독가스</b>(머스타드) 유래 · 2세대 = <b>표적</b>(CML) · 3세대 = <b>면역관문</b>(PD-1·CTLA-4) · CAR-T = <b>세포치료</b><br>3세대 단백질 발견 연도(1992·1996)는 승인 연도가 아님!</div></div>
+      <div class="callout memo" style="flex:1"><div class="t">🧠 외우기</div><div class="small"><b>“독 → 표적 → 브레이크 → 개조”</b><br>바이오의약품 세대(2024 기출 의도): 1세대 단순 단백질 → 2세대 <b>항체</b> → 3세대 <b>세포·유전자</b> 치료제</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>4</span></div>
+</section>
+
+<section class="page" style="--pc:var(--blue)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 01</span><span class="ttl">개념문제 — 혁신신약 연대기</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q1</span><span class="tag sa">연결</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">“최초”와 인물을 연결하시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm">
+          <b>① 최초의 백신</b><span>· ⓐ 플레밍</span>
+          <b>② 최초의 항생제</b><span>· ⓑ 왓슨·크릭</span>
+          <b>③ DNA 이중나선</b><span>· ⓒ 굿맨·길맨</span>
+          <b>④ 최초 화학 항암제</b><span>· ⓓ 제너</span></div></div>
+      <div class="blank" style="height:14mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓓ ②ⓐ ③ⓑ ④ⓒ</span></div>
+        <div class="why small">제너 1796(우두) · 플레밍 1928(푸른곰팡이) · 왓슨·크릭 1953 · 굿맨·길맨 1943(머스타드 가스)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q2</span><span class="tag mc">객관식</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">항암제 세대에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>1세대 화학 항암제는 머스타드 가스 연구에서 시작됐다.</li><li>2세대 표적 항암제는 CML을 만성질환처럼 관리하게 했다.</li><li>3세대 면역 항암제는 PD-1·CTLA-4를 차단한다.</li><li>CAR-T는 환자 T세포를 이용한 맞춤형 치료다.</li><li>1세대 항암제는 암세포만 골라 공격해 부작용이 적다.</li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">1세대는 빨리 분열하는 <b>모든</b> 세포 공격 → 부작용 큼. “암세포만”은 <b>2세대</b>.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q3</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>WHO는 1980년 천연두 박멸을 선언했다.<span class="bx">O / X</span></li>
+        <li>제너는 돼지의 전염병 균을 접종했다.<span class="bx">O / X</span></li>
+        <li>페니실린 발견으로 영유아 생존율이 크게 늘었다.<span class="bx">O / X</span></li>
+        <li>1978년 DNA 재조합으로 첫 인간 인슐린이 생산됐다.<span class="bx">O / X</span></li>
+        <li>인간 인슐린 덕분에 알레르기 걱정이 줄었다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O X O O O</span></div>
+        <div class="why small">(2) 소의 <b>우두</b>. vaccine의 어원도 소(vacca)!</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>5</span></div>
+</section>
+
+<!-- ============ 02 누가 개발 ============ -->
+<section class="page" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 02-A</span><span class="ttl">누가 개발? ① 개인 과학자의 시대</span><span class="sp"></span><span class="src">슬라이드 10~11</span></div>
+  <div class="body row">
+    <div class="col">
+      <div class="lead"><span class="k">한 줄 요약</span><span class="y">발견 ≠ 신약</span>. 페니실린은 플레밍이 찾고 <b>플로리·체인</b>이 약으로 만들었다.</div>
+      <div class="card"><h3>🦠 페니실린 — 4단계 릴레이</h3>
+        <table class="t" style="--pcs:var(--teal-s);font-size:9pt">
+          <tr><th>연도</th><th>누가</th><th>무엇을</th></tr>
+          <tr><td>1922</td><td>플레밍</td><td>자기 <b>콧물</b>에서 <span class="p">라이소자임</span> 발견 (병원균엔 무력)</td></tr>
+          <tr><td>1928</td><td>플레밍</td><td><b>푸른곰팡이</b>가 항균물질 생산 발견 (1929 논문, 주목 못 받음)</td></tr>
+          <tr><td>1939</td><td><b>플로리·체인</b></td><td>안정적 <b>제조법</b> 고안 → 환자 적용</td></tr>
+          <tr><td>1943 → 1945</td><td>공장</td><td>대량생산 → <b>세 사람 노벨상</b> 공동 수상</td></tr>
+        </table>
+        <div class="small" style="margin-top:1.4mm">플레밍이 못 쓴 이유: ① <b>대량생산 불가</b> ② 몸에서 <b>쉽게 배설</b>(약동학 문제)</div></div>
+      <div class="fig" style="max-width:62%;align-self:center"><img src="i_fleming.jpg"><div class="figcap">원본 슬라이드 10 — 플레밍 · 플로리 · 체인</div></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>🎨 도마크와 설파제 — 염료가 딸을 살리다</h3>
+        <div class="small">1935 독일 <b>게르하르트 도마크</b>: 딸이 자수바늘에 찔려 패혈증 → 팔 절단 대신 자신이 개발한 붉은 염료 <b>‘프론토실 레드’</b>를 먹여 회복.<br>
+        <b>파스퇴르 연구소</b>: 효과는 염료(아조색소)가 아니라 → 몸속에서 변한 <span class="g">설파닐아마이드</span> 때문!</div>
+        <div class="arrow" style="margin-top:2mm"><span class="bx">프론토실 레드 (염료)</span><span class="ar">→ 몸속 대사 →</span><span class="bx" style="background:var(--hg)">설파닐아마이드 (활성)</span></div>
+        <div class="small" style="margin-top:1.4mm">= <b>전구약물(prodrug)</b>: 시험관에선 효과 없고 몸에서 활성형으로 변하는 약 · 도마크 1939 노벨상</div></div>
+      <table class="t" style="--pcs:var(--teal-s)">
+        <tr><th></th><th>페니실린</th><th>설파제</th></tr>
+        <tr><td><b>출처</b></td><td>곰팡이 (천연물)</td><td>합성 염료 연구</td></tr>
+        <tr><td><b>발견</b></td><td>우연한 관찰</td><td>체계적 스크리닝</td></tr>
+        <tr><td><b>의미</b></td><td>최초의 항생제</td><td>최초의 <b>합성</b> 항균제</td></tr>
+      </table>
+      <div class="callout trap"><div class="t">⚠ 2024 기출 (A·B 약물)</div><div class="small">“A는 <b>페니실린</b>이랑 헷갈리게 냈다. 플레밍은 콧물에서 <b>라이소자임</b>을 먼저 발견했고 비슷한 성분을 찾다 페니실린. 정답은 <b>설파닐아마이드</b>.” → 도마크·염료·파스퇴르 키워드면 설파닐아마이드!</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>6</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 02-B</span><span class="ttl">누가 개발? ② 제약회사 → ③ 스타트업</span><span class="sp"></span><span class="src">슬라이드 12~20</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="card"><h3>🏭 제약산업의 태동</h3>
+        <div class="small">17세기 <b>과학혁명</b>(합리·실험) + 18세기 후반 <b>산업혁명</b>(대량생산) → 결합은 비교적 늦게</div>
+        <table class="t" style="--pcs:var(--teal-s);font-size:9pt;margin-top:1.4mm">
+          <tr><th>회사</th><th>핵심 연도</th><th>최초/특징</th></tr>
+          <tr><td><b>Merck</b> (독일)</td><td>1668 약국 · 1827</td><td><span class="g">최초의 제약회사</span> (천사약국) · 알칼로이드(모르핀) 제조·판매</td></tr>
+          <tr><td><b>GSK</b></td><td>1715 · 1842 · 1859</td><td>1842 <b>최초 특허 기반 의약품</b> · 1859 <b>최초 의약품 전용 공장</b></td></tr>
+          <tr><td><b>Pfizer</b></td><td>1849</td><td>독일 이민자 2명, 정밀화학 → <b>남북전쟁</b>(진통제·소독제)으로 급성장</td></tr>
+        </table></div>
+      <div class="card"><h3>📈 성장 &amp; 새 흐름</h3>
+        <div class="small">NIH 연구비 ↑ + R&amp;D 투자 ↑ → 미국 사망률 ↓ (2020 코로나로 일시 ↑)<br>
+        <b>New trends 3</b>: ① <b>Computing</b>(머신러닝·빅데이터·AI) ② <b>mRNA</b> 기반 기술 ③ <b>OMICS</b>(유전체·단백체·전사체·대사체)</div></div>
+      <div class="card"><h3>🚀 Moderna — 스타트업의 힘</h3>
+        <div class="small">매출 <b>1400억(2016) → 25.6조(2022)</b> · 주가 <b>+1,160%</b> (나스닥 +135%)<br>2016 매출 ≈ 국내 약국자동화 JVM의 2022 매출 → high risk, high return<br>스타트업이 발굴 → 대형 제약사가 <b>라이선싱(기술이전)</b>으로 사들임</div></div>
+    </div>
+    <div class="col" style="flex:.95">
+      <div class="card"><h3>💉 mRNA 백신 = “설계도 배달”</h3>
+        <div class="arrow small" style="gap:1.4mm"><span class="bx">① 스파이크 mRNA</span><span class="ar">→</span><span class="bx">② LNP(지질나노입자)로 포장</span><span class="ar">→</span><span class="bx">③ 근육주사</span><span class="ar">→</span><span class="bx">④ 리보솜이 단백질 번역</span><span class="ar">→</span><span class="bx" style="background:var(--hg)">⑤ B세포(항체)·T세포·기억세포</span></div>
+        <div class="small" style="margin-top:1.4mm">장점: <b>유연성·신속성·면역원성</b> · 단점: <b>초저온</b> 저장·유통 · 핵에 안 들어가 DNA를 바꾸지 않음</div></div>
+      <div class="fig"><img src="i_mrna.jpg"><div class="figcap">원본 슬라이드 19 — mRNA 백신 종류와 작용기전</div></div>
+      <div class="callout memo"><div class="t">🧠 “누가?”의 답</div><div class="small"><b>개인 과학자</b>(플레밍·도마크) → <b>제약회사</b>(Merck·GSK·Pfizer) → <b>스타트업</b>(Moderna)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>7</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 02</span><span class="ttl">개념문제 — 누가 개발하나</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q4</span><span class="tag sa">단답</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">다음 (A), (B)에 들어갈 물질은?</div>
+        <div class="small">· 플레밍은 1922년 자신의 콧물에서 항균 작용이 있는 <b>(A)</b>를 발견했다.<br>· 도마크가 딸에게 먹인 붉은 염료는 몸속에서 <b>(B)</b>로 변해 효과를 냈다.</div></div>
+      <div class="blank" style="height:14mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">A 라이소자임 · B 설파닐아마이드</span></div>
+        <div class="why small">A에 “페니실린” 쓰면 오답! 페니실린은 1928 푸른곰팡이.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q5</span><span class="tag mc">객관식</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">제약산업의 역사로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>독일 Merck는 최초의 제약회사로 여겨진다.</li><li>Merck는 1827년 알칼로이드를 제조·판매했다.</li><li>GSK는 1842년 세계 최초로 특허 기반 의약품을 생산했다.</li><li>Pfizer는 1차 세계대전으로 급성장했다.</li><li>GSK는 1859년 의약품 전용 공장을 최초로 세웠다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">Pfizer = 1849 설립, <b>미국 남북전쟁</b>(진통제·소독제 수요)으로 급성장.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q6</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>플레밍은 페니실린 대량생산법을 직접 고안했다.<span class="bx">O / X</span></li>
+        <li>1945 노벨상은 플레밍·플로리·체인 공동 수상이다.<span class="bx">O / X</span></li>
+        <li>프론토실은 시험관에서도 강한 항균 효과를 보였다.<span class="bx">O / X</span></li>
+        <li>mRNA 백신은 지질나노입자에 싸서 전달한다.<span class="bx">O / X</span></li>
+        <li>mRNA 백신의 단점은 초저온 유통이다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O X O O</span></div>
+        <div class="why small">(1) 제조법은 <b>플로리·체인</b>(1939) (3) 몸에서 바뀌어야 효과 = 전구약물</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>8</span></div>
+</section>
+
+<!-- ============ 03 실패 ============ -->
+<section class="page" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 03-A</span><span class="ttl">모든 신약은 성공할까? — 실패가 기본값</span><span class="sp"></span><span class="src">슬라이드 21~24</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1.05">
+      <div class="lead"><span class="k">한 줄 요약</span><span class="p">“We are existing for failure”</span> — 쉐링-플라우 연구소장 <b>세실 피켓</b>. 1상 → 승인 확률은 <b>9.6%</b>.</div>
+      <div class="card"><h3>📊 단계별 통과율 (미국바이오협회, '06~'15)</h3><div data-d="passRate"></div>
+        <div class="small">소요기간: 임상 전 8년 · 1상 1.5년 · 2상 2년 · 3상 3년 · 신청 0.5년</div></div>
+      <div class="callout memo"><div class="t">🧠 왜 2상이 제일 어려워?</div><div class="small">1상은 건강인 <b>안전성</b>만 → 2상에서 처음 “<b>환자에게 진짜 효과</b>?”를 봄. 2·3상 실패 1위 = <span class="y">효능(Efficacy) 부족</span>. 1상 실패는 안전성·상업성.</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card"><h3>💥 실패의 3가지 유형</h3>
+        <table class="t" style="--pcs:var(--coral-s);font-size:9pt">
+          <tr><th>유형</th><th>내용</th></tr>
+          <tr><td><b>개발 단계</b></td><td>안전성 역치 + “<b>표준요법보다</b> 낫다”는 증거 필요 (그냥 효과 있음 ✗)</td></tr>
+          <tr><td><b>승인 취소</b></td><td><span class="p">바이옥스</span>(1999 승인) — 연매출 2.7조 → 심혈관 부작용 88,000명·사망 33,000 → 취소</td></tr>
+          <tr><td><b>상업화 실패</b></td><td>팔리지 않음 (유방암 항암제 1000억 후 매각, 팩티브 해외 부진)</td></tr>
+        </table></div>
+      <div class="card"><h3>🏢 실패하면? — 기업의 막대한 피해</h3>
+        <div class="small"><b>기술수출 반환</b>: 한미약품(사노피·얀센·베링거인겔하임), 종근당(자프겐)<br>
+        <b>SK ‘킬링’ 시스템</b>: 아이디어(50억) → 리서치(50억) → 전임상(50억) → 임상 각 100억+α, 단계마다 평가해 <b>빨리 접기</b> (fail fast)<br>
+        <b>퍼듀 파마</b>: 오피오이드(옥시콘틴) 과장 마케팅 → 2019 파산보호, <b>5조원대 합의금·해산</b></div></div>
+      <div class="callout trap"><div class="t">⚠ 숫자 함정</div><div class="small">“승인까지” 9.6%(1상 기준) ≠ “다음 단계까지” 63.2% · 가장 낮은 통과율 = <b>2상 30.7%</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>9</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 03-B</span><span class="ttl">비극 ① 엘릭서 설파닐아마이드 (1937)</span><span class="sp"></span><span class="src">슬라이드 25~26</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1.1">
+      <div class="lead"><span class="k">한 줄 요약</span>약효 성분은 멀쩡, <span class="p">용매가 독</span>. 부동액 <b>다이에틸렌글리콜(DEG)</b> → <b>신장 독성</b>으로 105명 사망 → <span class="g">1938 FD&amp;C Act</span></div>
+      <div class="card"><h3>📜 무슨 일이?</h3>
+        <ol class="small" style="padding-left:16px;line-height:1.7">
+          <li>설파닐아마이드는 알약 → <b>소아</b>가 먹기 힘들어 물약 연구</li>
+          <li>1937 <b>마센질(Massengill)</b>사: DEG에 녹임 (라즈베리 향) — <b>동물실험 생략</b>(당시 의무 아님)</li>
+          <li>353명의 아이 복용 → <b>105명 콩팥(신장) 독성으로 사망</b></li>
+          <li>FDA는 안전 규정이 없어 → “엘릭서인데 <b>알코올이 없다</b>” = <b>부정표시</b>로만 회수</li>
+        </ol></div>
+      <div class="callout trap"><div class="t">⚠ 2024 기출 함정</div><div class="small">“영유아 <b>간</b>독성” ✗ → <b>신장</b>독성! DEG = 부동액 성분, 단맛, 급성·만성 <b>신부전</b>.</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card"><h3>⚖ 1938 식품의약품화장품법 (FD&amp;C Act)</h3>
+        <table class="t" style="--pcs:var(--coral-s);font-size:9.2pt">
+          <tr><th>생긴 것</th><th>아직 없던 것 (한계 3)</th></tr>
+          <tr><td>최초로 “신약(new drug)” <b>판매 전 안전성</b> 승인 요구 (NDA)</td><td>① <b>안전의 정의</b>가 없음</td></tr>
+          <tr><td>원칙: <b>이득 &gt; 위험</b></td><td>② NDA 제출 후 <b>60일</b> 내 이의 없으면 <b>자동 판매</b></td></tr>
+          <tr><td>화장품·의료기기까지 확대</td><td>③ <b>유효성</b> 입증 불필요</td></tr>
+        </table></div>
+      <div class="card soft"><h3>🔁 지금도 반복돼</h3><div class="small">2022 감비아·인도네시아 어린이 기침 시럽 사망도 DEG 오염 → 부형제 품질관리(<b>GMP</b>)가 중요</div></div>
+      <div class="callout memo"><div class="t">🧠 한 줄로</div><div class="small"><b>엘릭서 → 1938 = 안전성만</b> / 탈리도마이드 → 1962 = 안전성 + <b>유효성</b> + 사전승인</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>10</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 03-C</span><span class="ttl">비극 ② 탈리도마이드 — 그리고 켈시 박사</span><span class="sp"></span><span class="src">슬라이드 27~29</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">한 줄 요약</span>“부작용 없는 수면제” → 임부 입덧약 → <b>1만 명+ 기형아(해표지증)</b>. 미국은 <span class="g">프랜시스 올덤 켈시</span> 덕분에 막음 → <span class="g">1962 케파우버-해리스</span></div>
+      <div class="card"><h3>💊 무슨 일이?</h3>
+        <div class="small">1957 독일 <b>그뤼넨탈</b> 진정·수면제 → 임산부 입덧 완화에 널리 사용 → 46개국 이상, 1만 명 이상 <b>해표지증(phocomelia)</b>: 팔다리가 짧아 지느러미처럼<br>
+        못 거른 이유: 생식독성 시험 의무 없음 + <b>쥐에선 기형이 잘 안 나옴</b>(토끼·원숭이에선 나옴)</div></div>
+      <div class="card"><h3>🦸 켈시 박사 (FDA 심사관)</h3>
+        <div class="small">1960 FDA 첫 과제로 탈리도마이드 <b>NDA</b> 심사 → 이미 수십 개국 판매 중 + 회사의 끊임없는 압력에도 “<b>과학적으로 신뢰할 증거 부족</b>”으로 승인 거부 → 1년 후 독일·호주에서 기형 연관성 발표 → 1962 <b>케네디 대통령 공로훈장</b></div></div>
+      <div class="fig" style="max-width:92%"><img src="i_kelsey.jpg"><div class="figcap">원본 슬라이드 28 — Frances Oldham Kelsey</div></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card"><h3>🔬 탈리도마이드, 현재는?</h3>
+        <div class="row" style="gap:3mm;align-items:center">
+          <div style="flex:1" class="small"><b>기전(2018)</b>: <b>세레블론(CRBN)</b>에 결합 → 팔다리 발생에 필요한 <b>SALL4</b>에 유비퀴틴 딱지 → 분해 → 기형<br><br>
+          <b>지금 사용</b>: <span class="g">다발성 골수종</span>, 나병결절홍반 (임신 금지·피임 관리)<br><b>연구</b>: COVID-19 사이토카인 폭풍 억제</div>
+          <div class="fig" style="flex:.9"><img src="i_thal_a.jpg"></div></div></div>
+      <div class="callout trap"><div class="t">⚠ 2024 기출 함정</div><div class="small">“탈리도마이드는 연구 중이고 <b>사용되지 않는다</b>” ✗ → <b>지금도 암 치료제로 사용 중</b>(백혈병·골수종 등, 아산병원 약 정보). COVID-19 치료제로는 연구 중 맞음. <b>임신부 금기</b>.<br>“탈리도마이드 FDA 심사관” = <b>프랜시스 올덤 켈시</b></div></div>
+      <div class="callout memo"><div class="t">🧠 교훈 2개</div><div class="small">① “다른 나라에서 팔린다” ≠ 안전의 증거 ② 동물 <b>종</b>에 따라 독성이 다르다 → 여러 종에서 시험</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>11</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 03</span><span class="ttl">개념문제 — 실패와 비극</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q7</span><span class="tag fill">빈칸</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem" style="line-height:2">· 임상 1상에서 판매승인까지 성공확률 <span class="blankword">( ㄱ )</span>%<br>· 통과율이 가장 낮은 단계 <span class="blankword">( ㄴ )</span> (약 31%)<br>· 2·3상 실패 원인 1위 <span class="blankword">( ㄷ )</span><br>· “We are existing for failure” <span class="blankword">( ㄹ )</span></div></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄱ 9.6 · ㄴ 임상 2상 · ㄷ 효능(Efficacy) 부족 · ㄹ 세실 피켓</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q8</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">엘릭서 설파닐아마이드 사건으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>용매로 다이에틸렌글리콜을 사용했다.</li><li>당시 동물실험은 강제조항이 아니었다.</li><li>영유아의 간독성으로 사망자가 발생했다.</li><li>FDA는 부정표시를 근거로 회수했다.</li><li>1938년 FD&amp;C Act 제정의 계기가 됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small"><b>신장</b>독성(콩팥) — 105명 사망. 교수님: “간독성이 아니라 신장독성입니다.”</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q9</span><span class="tag ox">O/X</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>탈리도마이드는 현재 사용되지 않고 연구만 진행 중이다.<span class="bx">O / X</span></li>
+        <li>탈리도마이드는 다발성 골수종에 쓰인다.<span class="bx">O / X</span></li>
+        <li>미국에서 탈리도마이드를 막은 FDA 심사관은 켈시 박사다.<span class="bx">O / X</span></li>
+        <li>탈리도마이드는 CRBN에 결합해 SALL4를 분해한다.<span class="bx">O / X</span></li>
+        <li>바이옥스는 승인 후 간독성으로 취소됐다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">X O O O X</span></div>
+        <div class="why small">(1) 지금도 <b>사용 중</b> (5) <b>심혈관</b> 부작용</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>12</span></div>
+</section>
+
+<!-- ============ 04 왜 어려운가 ============ -->
+<section class="page" style="--pc:var(--amber);--pcs:var(--amber-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 04</span><span class="ttl">왜 신약개발은 어려울까? — 4개의 허들</span><span class="sp"></span><span class="src">슬라이드 30~32</span></div>
+  <div class="body row">
+    <div class="col" style="flex:1">
+      <div class="lead"><span class="k">한 줄 요약</span>돈은 더 쓰는데 약은 덜 나온다: FDA 신약 승인 <b>연 36개('96~'04) → 22개('05~'10)</b>. 허들 탈락률은 <span class="p">증가</span>.</div>
+      <table class="t" style="--pcs:var(--amber-s)">
+        <tr><th>구분</th><th>이유</th><th>쉽게</th></tr>
+        <tr><td rowspan="4"><b>기술적</b></td><td>신약이 될 만한 것 이미 많이 나옴</td><td>낮게 달린 열매는 다 땄다</td></tr>
+        <tr><td>메커니즘이 <b>복잡한 질병</b> (예: <span class="y">치매</span>)</td><td>원인이 여러 개</td></tr>
+        <tr><td>Genomics·proteomics → 질병 관련성 <b>검증 안 된 타겟</b></td><td>임상에서 좌초</td></tr>
+        <tr><td>모순: <b>스크리닝 속도 ↑</b>가 전체를 더디게</td><td>후보만 쏟아지고 검증 병목</td></tr>
+        <tr><td rowspan="3"><b>+ α</b></td><td>환자의 신약 <b>기대수준 ↑</b></td><td></td></tr>
+        <tr><td>허가당국 <b>안전성 신중</b> + 확실한 <b>약효</b> 요구</td><td></td></tr>
+        <tr><td>승인돼도 <b>상업적 성공 가능성 ↓</b></td><td>투자 꺼림</td></tr>
+      </table>
+      <div class="callout trap"><div class="t">⚠ 2024 기출</div><div class="small">“환자 이해 수준 ↑ → 협조적 환자 모으는 시간·비용 <b>감소</b>” ✗ → “내가 위약군 아닌가?” 의심 ↑ → <b>증가</b></div></div>
+    </div>
+    <div class="col" style="flex:.95">
+      <div class="card"><h3>🏃 허들을 못 넘는 비율 — 계속 <span class="c-coral">증가</span></h3><div data-d="hurdle"></div></div>
+      <div class="card"><h3>🚧 넘어야 할 허들 4개</h3>
+        <table class="t" style="--pcs:var(--amber-s);font-size:9.2pt">
+          <tr><th>#</th><th>허들</th><th>누가 판단</th></tr>
+          <tr><td>1</td><td>안전성 (Safety)</td><td rowspan="3">허가 당국 (FDA·식약처)</td></tr>
+          <tr><td>2</td><td>유효성 (Efficacy)</td></tr>
+          <tr><td>3</td><td>품질 (Quality)</td></tr>
+          <tr><td><b>4</b></td><td><span class="p">비용효과성 · 보험급여</span><br><span class="tiny">“the fourth hurdle was the one to look out for”</span></td><td>보험자 (한국: 심평원·건보공단)</td></tr>
+        </table></div>
+      <div class="fig" style="max-width:72%;align-self:center"><img src="i_hurdle.jpg"><div class="figcap">원본 슬라이드 32</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>13</span></div>
+</section>
+
+<section class="page" style="--pc:var(--amber)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 04</span><span class="ttl">개념문제 — 왜 어려운가</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q10</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">신약개발의 어려움에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>허들을 통과하지 못하는 비율은 감소 추세이다.</li><li>협조적인 환자를 모으는 시간·비용은 감소했다.</li><li>스크리닝 속도가 빨라져 개발 전체 속도도 빨라졌다.</li><li>FDA 신약 승인 수는 투자 증가와 함께 계속 늘었다.</li><li>제4의 허들은 비용효과성·보험급여이다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">①② <b>증가</b> ③ 오히려 더디게(모순) ④ 36 → 22개로 급감</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q11</span><span class="tag sa">단답</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">① 질병 메커니즘이 복잡해 실패율이 높은 대표 질병 ② 유전체 연구 발달의 부작용 ③ 1997년과 2001년의 허들 탈락 비율</div></div>
+      <div class="blank" style="height:18mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">① 치매 ② 질병 관련성이 검증 안 된 타겟 ③ 5.7% → 26.4%</span></div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q12</span><span class="tag es">서술</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">신약개발이 어려워진 이유를 <b>기술적 요인 2가지</b>, <b>외부(+α) 요인 2가지</b>로 쓰시오.</div></div>
+      <div class="blank" style="height:18mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span></div>
+        <div class="small"><b>기술</b>: 쉬운 약은 이미 개발됨 / 치매처럼 복잡한 질병 / 검증 안 된 타겟 / 스크리닝 속도의 역설<br><b>+α</b>: 환자 기대 ↑ / 허가당국의 안전성·약효 요구 ↑ / 상업적 성공 가능성 ↓</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>14</span></div>
+</section>
+
+<!-- ============ 05 FDA ============ -->
+<section class="page" style="--pc:var(--blue);--pcs:var(--blue-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 05</span><span class="ttl">누가 control? — FDA 신약 승인 12단계</span><span class="sp"></span><span class="src">슬라이드 33~35</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span>FDA = 의약품·생물학적 제제·의료기기·식품·화장품·방사선 제품의 <span class="y">안전성·유효성·보안</span> 보장. 사람 투여 = <b>IND</b>, 판매 = <b>NDA</b>.</div>
+    <div class="step">
+      <div style="background:var(--blue-s)"><span class="n">1</span><b>Drug Developed</b>새 화합물 개발</div>
+      <div style="background:var(--blue-s)"><span class="n">2</span><b>Animals Tested</b>여러 동물 종 독성</div>
+      <div style="background:var(--coral-s);border-color:#f6c7bb"><span class="n">3</span><b>IND 신청</b>FDA <b>30일</b> 내 보류 없으면 임상 시작</div>
+      <div style="background:var(--teal-s)"><span class="n">4</span><b>Phase 1 (20~80)</b>건강인 · 안전성 · 대사</div>
+      <div style="background:var(--teal-s)"><span class="n">4</span><b>Phase 2 (100s)</b>환자 · 효과 예비 · 위약 비교</div>
+      <div style="background:var(--teal-s)"><span class="n">4</span><b>Phase 3 (1000s)</b>다양한 집단 · 확증</div>
+      <div style="background:#fff"><span class="n">6</span><b>Review Meeting</b>NDA 전 사전 미팅</div>
+      <div style="background:var(--coral-s);border-color:#f6c7bb"><span class="n">7</span><b>NDA 제출</b>모든 자료 (바이오 = BLA)</div>
+      <div style="background:#fff"><span class="n">8</span><b>Reviewed</b><b>60일</b> 내 접수 결정 → 심사</div>
+      <div style="background:var(--amber-s)"><span class="n">9</span><b>Labeling</b>라벨(허가사항) 검토</div>
+      <div style="background:var(--amber-s)"><span class="n">10</span><b>Facility Inspection</b>제조시설 실사 (GMP)</div>
+      <div style="background:var(--violet-s)"><span class="n">11</span><b>Approval</b>승인 or 보완요구(CRL) → <b>4상</b>·MedWatch</div>
+    </div>
+    <div class="row">
+      <div class="callout memo" style="flex:1"><div class="t">👩‍🔬 누가 심사?</div><div class="small"><b>CDER</b>의 의사·통계학자·화학자·약리학자 팀 (백신·혈액 등은 CBER)<br>IND에 들어가는 것: 동물 약리·독성 · 제조(CMC) · 임상 계획서</div></div>
+      <div class="callout trap" style="flex:1"><div class="t">⚠ 60일이 두 번!</div><div class="small"><b>1938법</b>: NDA 후 60일 내 이의 없으면 <b>자동 판매</b><br><b>오늘날</b>: 60일 = 심사를 <b>접수할지</b> 결정하는 기간</div></div>
+      <div class="callout tip" style="flex:1"><div class="t">⚡ 빠른 승인 장치</div><div class="small"><b>PDUFA</b>(1992): 수수료로 심사 인력 ↑<br>Accelerated Approval(대리지표) · Fast Track</div></div>
+    </div>
+    <div class="callout trap"><div class="t">⚠ 2024 기출 (IND vs NDA)</div><div class="small">“전임상 수준에서 검증된 신약개발 결과로 <b>NDA</b>” ✗ → <b>IND</b>! / “약물 라벨링 결정 후 FDA는 생산시설 실사” = <b>facility inspection</b> ○ / 임상 4상 = <b>phase 4</b> ○</div></div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>15</span></div>
+</section>
+
+<section class="page" style="--pc:var(--blue)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 05</span><span class="ttl">개념문제 — FDA 승인 과정</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">Q13</span><span class="tag sa">순서</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">FDA 신약 승인 과정을 순서대로 배열하시오.</div>
+        <div class="small">ㄱ. Facility Inspection &nbsp;ㄴ. IND Application &nbsp;ㄷ. Animals Tested &nbsp;ㄹ. NDA Application<br>ㅁ. Drug Labeling &nbsp;ㅂ. Phase 1·2·3 &nbsp;ㅅ. Drug Approval</div></div>
+      <div class="blank" style="height:20mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">ㄷ → ㄴ → ㅂ → ㄹ → ㅁ → ㄱ → ㅅ</span></div>
+        <div class="why small">동물 → IND → 사람 → NDA → <b>라벨링 → 시설 실사</b> → 승인 (라벨링이 실사보다 먼저!)</div>
+        <div class="one">동물 · I · 사람 · N · 라벨 · 실사 · 승인</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q14</span><span class="tag ox">O/X</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>FDA는 IND 제출 후 30일 내 보류하지 않으면 임상을 시작할 수 있다.<span class="bx">O / X</span></li>
+        <li>임상 1상은 수천 명의 환자를 대상으로 한다.<span class="bx">O / X</span></li>
+        <li>오늘날 NDA 제출 후 60일이 지나면 자동으로 판매할 수 있다.<span class="bx">O / X</span></li>
+        <li>약물 라벨링 결정 후 FDA는 생산시설을 실사한다.<span class="bx">O / X</span></li>
+        <li>FDA가 보장하는 것은 안전성·유효성·보안이다.<span class="bx">O / X</span></li>
+        <li>시판 후 부작용은 MedWatch로 보고할 수 있다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O X X O O O</span></div>
+        <div class="why small">(2) 1상 = <b>20~80명 건강인</b> (3) 그건 <b>1938법</b> 시절. 지금 60일 = 접수 결정 기간</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>16</span></div>
+</section>
+
+<!-- ============ 06 규제·윤리 ============ -->
+<section class="page" style="--pc:var(--blue);--pcs:var(--blue-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06-A</span><span class="ttl">규정은 누가 만들었나 ① 1848 → 1962</span><span class="sp"></span><span class="src">슬라이드 36~42</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span>규칙은 처음부터 있던 게 아니라 <span class="y">비극(빨강)이 날 때마다 법(파랑)이 하나씩</span> 생겼다.</div>
+    <div class="card" style="padding:2mm 3mm"><div data-d="lawA"></div></div>
+    <div class="row">
+      <div class="col" style="flex:1.1">
+        <table class="t">
+          <tr><th>법</th><th class="c">라벨 정직</th><th class="c">안전성</th><th class="c">유효성</th><th class="c">사전승인</th></tr>
+          <tr><td><b>1906</b> 순정식품의약법</td><td class="ck o">✔</td><td class="ck x">✘</td><td class="ck x">✘</td><td class="ck x">✘</td></tr>
+          <tr><td><b>1938</b> FD&amp;C Act</td><td class="ck o">✔</td><td class="ck o">✔</td><td class="ck x">✘</td><td class="ck t">△ 60일 자동</td></tr>
+          <tr><td><b>1962</b> 케파우버-해리스</td><td class="ck o">✔</td><td class="ck o">✔</td><td class="ck o">✔</td><td class="ck o">✔</td></tr>
+        </table>
+        <div class="callout memo" style="margin-top:2mm"><div class="t">⭐ 1962 케파우버-해리스 = “처음으로” 4개</div><div class="small">① <b>유효성</b> 입증 ② 실질적 <b>사전 FDA 승인</b> ③ <b>이상반응(AE) 보고</b> 의무 ④ 현재 <b>IND</b> 규정의 기초</div></div>
+      </div>
+      <div class="col" style="flex:1">
+        <div class="card small" style="line-height:1.6">
+          <div class="ev"><span class="yr">1848</span><span><b>의약품 수입법</b> — 첫 규제, 불량 <b>수입</b> 의약품 금지 (다음 법까지 50년)</span></div>
+          <div class="ev"><span class="yr">1862</span><span>링컨이 화학자 <b>웨더릴</b> 임명 → 화학국 → 1927 식품의약품살충제청 → <b>1930 FDA</b></span></div>
+          <div class="ev"><span class="yr">1902</span><span><b>생물제제관리법</b> — 혈청·백신의 순도·안전 · 와일리의 <b>독약 구조대</b>(poison squad)</span></div>
+          <div class="ev"><span class="yr">1906</span><span><b>순정식품의약법</b> — 불량·부정표시 식품·약의 <b>주 경계</b> 이동 금지 · <b>와일리 = 아버지</b></span></div>
+          <div class="ev"><span class="yr">1940s</span><span>1941 인슐린 · 1945 페니실린 수정안(배치 검정, 1983 폐지) · 1943 <b>도터웨이크</b>(경영자 처벌) · 1949 <b>검은 책</b>(첫 업계 지침)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>17</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal);--pcs:var(--teal-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06-B</span><span class="ttl">사람을 지키는 규칙 — 윤리 문서 3개 & IRB</span><span class="sp"></span><span class="src">슬라이드 41, 43~47</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span><span class="y">뉘른베르크(1947, 자발적 동의) → 헬싱키(1964, IRB) → 벨몬트(1979, 존중·선행·정의)</span></div>
+    <div class="grid3">
+      <div class="card" style="border-top:5px solid #5b6478"><div class="tiny c-sub">1947 · 나치 생체실험 재판 후</div><h3>뉘른베르크 강령</h3>
+        <ul class="dot small"><li><b>자발적 동의</b></li><li><b>피험자 보호</b>: 동물실험 먼저, 고통 회피, 해 입으면 즉시 중지</li><li><b>종료의 자유</b>: 언제든 그만둘 수 있음</li></ul>
+        <div class="tiny c-sub" style="margin-top:1mm">비치료적 연구의 동의만 언급</div></div>
+      <div class="card" style="border-top:5px solid #0e8a83"><div class="tiny c-sub">1964 · 세계의사회(슬라이드: WHO)</div><h3>헬싱키 선언</h3>
+        <ul class="dot small"><li><span class="g">“치료적” + “비치료적”</span> 연구 원칙</li><li><b>법적 보호자</b> 승낙 가능, <b>서면 동의</b> 권고</li><li><span class="g">IRB가 계획서 사전 검토·승인</span></li><li>여러 차례 개정</li></ul></div>
+      <div class="card" style="border-top:5px solid #7457d6"><div class="tiny c-sub">1979 · 국가위원회(1974 국가연구법)</div><h3>벨몬트 보고서</h3>
+        <ul class="dot small"><li><b>인간 존중</b> → 동의서, 취약 피험자 보호, 사생활·비밀</li><li><b>이익(선행)</b> → 해 끼치지 않기, 이익↑ 피해↓</li><li><b>정의</b> → 공정한 피험자 선정</li></ul></div>
+    </div>
+    <div class="row">
+      <div class="col" style="flex:1.1">
+        <table class="t" style="--pcs:var(--teal-s);font-size:9pt">
+          <tr><th>IRB 심의 수준</th><th>기준 (예)</th><th>누가</th></tr>
+          <tr><td><b>Full Board</b> 정규</td><td>최소 위험 <b>초과</b> (<b>의약품</b>, 가정폭력 연구)</td><td>소집된 위원회</td></tr>
+          <tr><td><b>Expedited</b> 신속</td><td>최소 위험 (채혈, 음주 연구)</td><td>위원장·지정자</td></tr>
+          <tr><td><b>Exempt</b> 면제</td><td>최소 위험 이하 (혈압, 교육 시험)</td><td>위원장·지정자·직원</td></tr>
+          <tr><td>Not Human Subject</td><td>코드화된 자료 등</td><td>IRB 직원</td></tr>
+        </table>
+        <div class="small c-sub" style="margin-top:1mm">IRB = 기관생명윤리위원회 (고려대 KUIRB도 운영) · 신약 임상 = <b>Full Board</b></div>
+      </div>
+      <div class="callout trap" style="flex:1"><div class="t">⚠ 2024 기출</div><div class="small">“헬싱키 선언은 <b>인간 존중, 이익, 정의</b> 원칙을 정리했다” ✗<br>→ 그건 <b>벨몬트</b>! 헬싱키 = <b>치료적·비치료적 연구</b> 원칙 + <b>IRB</b><br><br>🧠 <b>뉘(동의) → 헬(IRB) → 벨(존·선·정)</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>18</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral);--pcs:var(--coral-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06-C</span><span class="ttl">극단적 남용 사례 3개 → 벨몬트 보고서</span><span class="sp"></span><span class="src">슬라이드 46~51</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span><span class="p">터스키기 · 유대인 만성질환병원 · Acres of Skin</span> 세 사건 모두 → 국가연구법(1974) → <span class="g">벨몬트 보고서(1979)</span> → IND 정정 규정(1987)</div>
+    <div class="grid3">
+      <div class="card" style="border-top:5px solid var(--coral)"><div class="tiny c-sub">1932 ~ 1972/73 · 미국 앨라배마</div><h3>터스키기 매독 연구</h3>
+        <div class="small">가난한 <b>흑인 남성</b> 수백 명 · “나쁜 피(bad blood)” 치료라고 거짓말 · 요추천자 · 가짜 치료제<br>1947 <b>페니실린</b>이 나왔는데도 치료 안 함 → 부검만 관찰<br><b>가장 오래 지속된 비치료적 실험</b></div></div>
+      <div class="card" style="border-top:5px solid var(--violet)"><div class="tiny c-sub">1963</div><h3>유대인 만성질환병원</h3>
+        <div class="small">이식 거부 연구 → 가난한 <b>노인</b> 환자에게 <span class="p">살아있는 암세포</span> 주사<br><b>동의 없음</b> — “놀라게 하고 싶지 않아서” 설명 안 함<br>→ 좋은 의도라도 정보 숨기면 동의 무효</div></div>
+      <div class="card" style="border-top:5px solid var(--amber)"><div class="tiny c-sub">1950 중반 ~ 1970 중반 · Holmesburg 감옥</div><h3>Acres of Skin</h3>
+        <div class="small">필라델피아 <b>감옥</b>의 <b>죄수</b> · 수많은 <span class="p">화학물질 피부 반응</span>의 광범위하고 고통스러운 연구<br>보상 <b>$100</b> vs 일당 <b>10센트</b> → 자발적이라 할 수 없음 (부당한 유인)<br>(Allen M. Hornblum의 책)</div></div>
+    </div>
+    <div class="row">
+      <div class="card" style="flex:1.2"><h3>⏱ 터스키기 → 제도가 바뀐 순서</h3>
+        <div class="arrow small"><span class="bx"><b>1966</b> 피터 벅스턴 문제 제기</span><span class="ar">→</span><span class="bx"><b>1972</b> NYT 보도 · 중단 명령</span><span class="ar">→</span><span class="bx"><b>1974</b> 국가연구법</span><span class="ar">→</span><span class="bx" style="background:var(--hg)"><b>1979</b> 벨몬트 보고서</span><span class="ar">→</span><span class="bx"><b>1997</b> 클린턴 공식 사과</span></div>
+        <div class="small" style="margin-top:1.6mm">결과: 수백 명 사망 · 아내 감염 · 아이 선천성 매독 · 흑인 사회의 <b>의료 불신</b></div></div>
+      <div class="callout trap" style="flex:1"><div class="t">⚠ 2024 기출 — 바꿔치기 주의</div><div class="small">“화학물질 피부 반응 연구” = <b>Acres of Skin(감옥)</b> ← 유대인 병원 ✗<br>“노인에게 암세포 접종” = <b>유대인 만성질환병원</b><br>세 사례 <b>모두</b> 벨몬트 보고서로 “이어졌다/이루어졌다” 둘 다 정답</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>19</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet);--pcs:var(--violet-s)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06-D</span><span class="ttl">규정은 영원할까? ② 1964 → 2022</span><span class="sp"></span><span class="src">슬라이드 52~55</span></div>
+  <div class="body col">
+    <div class="lead"><span class="k">한 줄 요약</span>1990년대부터는 “사고 → 강화”가 아니라 <span class="y">“너무 느리다 → 효율화”</span>. 2022년엔 동물실험 의무까지 폐지.</div>
+    <div class="card" style="padding:2mm 3mm"><div data-d="lawB"></div></div>
+    <div class="grid3">
+      <div class="card" style="border-top:5px solid var(--violet)"><div class="tiny c-sub">1992</div><h3>PDUFA</h3><div class="small">전문의약품허가신청자 비용부담법<br>FDA가 유럽보다 느리다는 비판 → <b>제약사 수수료</b>로 심사 인력 충원 → <b>질은 유지하며 NDA 검토 단축</b><br>5년 한시법 (PDUFA I~VII)</div></div>
+      <div class="card" style="border-top:5px solid var(--violet)"><div class="tiny c-sub">1997</div><h3>FDA 현대화법 (FDAMA)</h3><div class="small">① PDUFA <b>5년 연장</b><br>② 임상시험 정보 <b>공개</b>, 환자 접근성 ↑<br>③ 중증 질환 신약은 중추적 연구 <b>2개 → 1개</b><br>④ <b>소아</b> 임상시험 요구</div></div>
+      <div class="card" style="border-top:5px solid var(--violet)"><div class="tiny c-sub">2022.12 바이든 서명</div><h3>FDA 현대화법 2.0</h3><div class="small">임상 전 <span class="p">동물실험 의무 폐지</span><br>→ 동물 <b>또는 비동물</b>(세포·오가노이드·장기칩·in silico) 시험 후 임상 가능<br><b>허용(allow)</b>이지 요구(require)가 아님</div></div>
+    </div>
+    <table class="t" style="font-size:9pt">
+      <tr><th>평가 기준</th><th>생긴 계기</th><th>법·문서</th><th>평가 기준</th><th>생긴 계기</th><th>법·문서</th></tr>
+      <tr><td>라벨 정직</td><td>엉터리 특허약</td><td>1906 순정식품의약법</td><td>피험자 보호</td><td>나치·터스키기</td><td>뉘른베르크·헬싱키·벨몬트</td></tr>
+      <tr><td>안전성</td><td>엘릭서</td><td>1938 FD&amp;C Act</td><td>속도·효율</td><td>느린 심사</td><td>PDUFA·FDAMA</td></tr>
+      <tr><td>유효성 + 사전승인</td><td>탈리도마이드</td><td>1962 케파우버-해리스</td><td>새 과학 반영</td><td>동물 대체 기술</td><td>현대화법 2.0</td></tr>
+    </table>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>20</span></div>
+</section>
+
+<section class="page" style="--pc:var(--blue)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06</span><span class="ttl">개념문제 — 규제의 역사 ①</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q15</span><span class="tag sa">연결</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">사건과 그 결과 생긴 법·문서를 연결하시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm">
+          <b>① 엘릭서 설파닐아마이드</b><span>· ⓐ 1962 케파우버-해리스</span>
+          <b>② 탈리도마이드</b><span>· ⓑ 1947 뉘른베르크 강령</span>
+          <b>③ 나치 생체실험</b><span>· ⓒ 1938 FD&amp;C Act</span>
+          <b>④ 터스키기 매독 연구</b><span>· ⓓ 1979 벨몬트 보고서</span>
+          <b>⑤ 느린 FDA 심사</b><span>· ⓔ 1992 PDUFA</span></div></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓒ ②ⓐ ③ⓑ ④ⓓ ⑤ⓔ</span></div>
+        <div class="one">엘-38, 탈-62, 나-47, 터-79, 느-92</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q16</span><span class="tag es">서술</span><span class="lvl">★★★</span></div>
+      <div class="q-b"><div class="stem">1938년 FD&amp;C Act와 1962년 케파우버-해리스 수정안의 차이를 <b>안전성·유효성·승인 방식</b>으로 비교하시오.</div></div>
+      <div class="blank" style="height:20mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">1938법은 신약 판매 전 <b>안전성</b>만 요구했고 안전의 정의도 없었으며, NDA 제출 후 <b>60일 내 이의가 없으면 자동 판매</b>, <b>유효성</b> 입증은 불필요했다. 1962법은 <b>안전성과 유효성</b>을 모두 요구하고, <b>실질적 사전 FDA 승인</b>이 있어야 판매할 수 있게 했으며, 이상반응 보고 의무와 IND 규정의 기초를 만들었다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q17</span><span class="tag ox">O/X</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>미국 최초 의약품 규제는 1848 의약품 수입법이다.<span class="bx">O / X</span></li>
+        <li>“FDA”라는 이름은 1930년에 확정됐다.<span class="bx">O / X</span></li>
+        <li>1906법은 약의 유효성 입증을 요구했다.<span class="bx">O / X</span></li>
+        <li>와일리는 순정식품의약법의 아버지다.<span class="bx">O / X</span></li>
+        <li>도터웨이크 판결로 경영자도 처벌될 수 있다.<span class="bx">O / X</span></li>
+        <li>1949 “검은 책”은 FDA의 첫 업계 지침이다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:8mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">O O X O O O</span></div>
+        <div class="why small">(3) 1906 = 불량·<b>부정표시</b> 금지만</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>21</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">2주차</span><span class="part">PART 06</span><span class="ttl">개념문제 — 규제의 역사 ② 윤리</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">Q18</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">윤리 문서에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>뉘른베르크 강령은 자발적 동의를 요구했다.</li><li>헬싱키 선언은 치료적·비치료적 연구 원칙을 정의했다.</li><li>헬싱키 선언은 IRB의 사전 승인을 요구했다.</li><li>헬싱키 선언의 3대 원칙은 인간 존중·이익·정의이다.</li><li>벨몬트 보고서는 1979년에 출판됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">인간 존중·이익·정의 = <b>벨몬트</b>. 교수님: “헬싱키 선언과 관련이 없습니다.”</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q19</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">벨몬트 보고서 발간으로 이어진 사례 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>터스키기 연구는 페니실린 개발 후에도 치료하지 않았다.</li><li>유대인 만성질환병원에서는 화학물질 피부 반응 연구가 진행됐다.</li><li>Acres of Skin은 감옥 죄수 대상 연구였다.</li><li>죄수에게 일당의 1000배인 $100가 지급됐다.</li><li>터스키기 연구는 국가연구법 제정에 영향을 줬다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">②</span></div>
+        <div class="why small">피부 화학물질 = <b>Acres of Skin(감옥)</b>. 유대인 병원 = 노인에게 <b>암세포</b> 주사.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">Q20</span><span class="tag sa">연결</span><span class="lvl">★★☆</span></div>
+      <div class="q-b"><div class="stem">벨몬트 3원칙과 임상시험 적용을 연결하고, 신약 임상의 IRB 심의 수준을 쓰시오.</div>
+        <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm">
+          <b>① 인간 존중</b><span>· ⓐ 위험/이익 평가</span>
+          <b>② 이익(선행)</b><span>· ⓑ 공정한 피험자 선정</span>
+          <b>③ 정의</b><span>· ⓒ 동의서 · 취약자 보호</span></div></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①ⓒ ②ⓐ ③ⓑ · Full Board(정규 심의)</span></div>
+        <div class="why small">의약품 투여 = 최소 위험 <b>초과</b> → 정규 심의</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>22</span></div>
+</section>
+
+<!-- ============ 실전 ============ -->
+<section class="page" style="background:linear-gradient(135deg,#fff6f2,#fff)">
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;padding:0 8mm">
+    <div style="font-size:10pt;font-weight:900;letter-spacing:.2em;color:var(--coral)">MIDTERM PRACTICE</div>
+    <div style="font-size:30pt;font-weight:900;letter-spacing:-.03em;line-height:1.2;margin:2mm 0 4mm">중간고사 대비 실전문제<br><span style="font-size:15pt;font-weight:500;color:var(--sub)">2주차 범위 · 객관식 9 · O/X 12 · 단답 6 · 서술 4</span></div>
+    <div class="row" style="max-width:250mm">
+      <div class="callout trap" style="flex:1"><div class="t">이렇게 풀자</div><div class="small">정답 가리고 풀기 → 틀린 번호 표시 → 해당 PART로 돌아가기</div></div>
+      <div class="callout tip" style="flex:1"><div class="t">2주차 = 기출 최다</div><div class="small"><span class="src2024">2024 기출변형</span> 문제는 <b>무조건</b> 맞혀야 하는 문제. 교수님이 “거의 다 맞췄다”고 한 것도 다시 나올 수 있어.</div></div>
+      <div class="callout memo" style="flex:1"><div class="t">서술형 채점 기준</div><div class="small">비교 문제 → <b>기준 명시</b> · “5개” 문제 → 1개 부족할 때마다 <b>−1점</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>23</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 1~3</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 1</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">신약개발의 어려움에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>신약개발 허들을 통과하지 못하는 비율은 감소 추세이다.</li><li>환자들의 위약군 의심 등으로 환자 모집 시간·비용이 증가했다.</li><li>임상 1상에서 판매승인까지 성공확률은 약 9.6%이다.</li><li>제4의 허들은 비용효과성·보험급여이다.</li><li>치매처럼 복잡한 질병은 실패율이 높다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①</span></div>
+        <div class="why small">5.7%(1997) → 26.4%(2001) <b>증가</b>.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 2</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">FDA 신약 승인 과정에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>전임상 수준에서 검증된 결과로 임상 진입을 위해 NDA를 제출한다.</li><li>임상 1·2·3상 종료 후 신약 허가를 위해 NDA를 제출한다.</li><li>약물 라벨링 결정 후 FDA는 생산시설을 실사한다.</li><li>시판 후 조사는 임상 4상이다.</li><li>IND 제출 후 30일 내 보류가 없으면 임상을 시작할 수 있다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">①</span></div>
+        <div class="why small">전임상 → <b>IND</b>. 2024 다수 오답 문항!</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 3</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">FDA 역사에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>1938년 FD&amp;C Act로 최초로 판매 전 안전성 승인이 요구됐다.</li><li>1962년 법으로 처음 유효성 입증이 요구됐다.</li><li>헬싱키 선언은 인간 존중·이익·정의의 원칙을 정리한 것이다.</li><li>헬싱키 선언은 IRB의 사전 승인을 요구했다.</li><li>1992년 PDUFA로 NDA 검토 시간이 단축됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">헬싱키 = <b>치료적·비치료적 연구</b> 원칙. 3원칙은 벨몬트.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>24</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 4~6</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 4</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">탈리도마이드에 대한 설명으로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>임산부의 입덧 완화에 쓰여 해표지증을 일으켰다.</li><li>미국에서는 켈시 박사가 승인을 거부했다.</li><li>현재는 연구 중이며 치료제로 사용되지 않는다.</li><li>COVID-19 치료제로 연구되었다.</li><li>1962년 케파우버-해리스 수정안의 계기가 됐다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">지금도 <b>다발성 골수종</b> 등 암 치료에 사용 중 (임신부 금기).</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 5</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">엘릭서 설파닐아마이드에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>용매는 에탄올이었다.</li><li>영유아에게 간독성을 일으켰다.</li><li>판매 전 동물실험을 철저히 거쳤다.</li><li>FDA는 ‘부정표시’를 근거로 회수했다.</li><li>이 사건으로 1962년 법이 만들어졌다.</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">④</span></div>
+        <div class="why small">① DEG ② <b>신장</b>독성 ③ 생략 ⑤ <b>1938</b>법. 엘릭서인데 알코올이 없어서 부정표시.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 6</span><span class="tag mc">객관식</span><span class="src2024">2024 기출변형</span></div>
+      <div class="q-b"><div class="stem">벨몬트 보고서와 관련된 연구로 옳지 <u>않은</u> 것은?</div>
+        <ol class="opt"><li>터스키기 – 흑인 남성 매독 환자를 치료하지 않음</li><li>터스키기 – “나쁜 피” 치료라고 속임</li><li>유대인 만성질환병원 – 화학물질 피부 반응 연구</li><li>Acres of Skin – 감옥 죄수 대상</li><li>세 사례 모두 벨몬트 보고서 발간으로 이어짐</li></ol></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">유대인 병원 = 노인 <b>암세포</b> 주사. 피부 = Acres of Skin.</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>25</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">객관식</span><span class="ttl">실전 7~9</span><span class="sp"></span></div>
+  <div class="body grid3">
+    <div class="q"><div class="q-h"><span class="q-no">실전 7</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">1962년 케파우버-해리스 수정안의 내용이 <u>아닌</u> 것은?</div>
+        <ol class="opt"><li>유효성 입증 요구</li><li>실질적 사전 FDA 승인</li><li>이상반응(AE) 보고 의무</li><li>현재 IND 규정의 기초</li><li>NDA 제출 후 60일 자동 판매</li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">60일 자동 판매는 <b>1938법</b>의 한계 → 1962법이 <b>폐지</b>.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 8</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">FDA 현대화법(1997, FDAMA)의 내용이 <u>아닌</u> 것은?</div>
+        <ol class="opt"><li>PDUFA 5년 연장</li><li>임상시험 결과 정보 공개</li><li>중증 질환 신약은 중추적 연구 1개로 신속 검토</li><li>소아 임상시험 요구</li><li>임상 전 동물실험 의무 폐지</li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">⑤</span></div>
+        <div class="why small">동물실험 의무 폐지 = <b>현대화법 2.0 (2022)</b>.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 9</span><span class="tag mc">객관식</span></div>
+      <div class="q-b"><div class="stem">신약개발 단계별 성공확률에 대한 설명으로 옳은 것은?</div>
+        <ol class="opt"><li>임상 1상 → 판매승인 확률은 약 50%이다.</li><li>통과율이 가장 낮은 단계는 임상 3상이다.</li><li>임상 2·3상 실패의 가장 큰 원인은 효능 부족이다.</li><li>후보물질 실패 원인 1위는 임상 안전성이다.</li><li>판매승인 신청 후 승인율은 약 30%이다.</li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+      <div class="ans"><div class="a"><span class="pill">정답</span><span class="v">③</span></div>
+        <div class="why small">① 9.6% ② <b>2상</b>(30.7%) ④ 전임상 실패 40% ⑤ 85.3%</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>26</span></div>
+</section>
+
+<section class="page" style="--pc:var(--teal)">
+  <div class="ph"><span class="wk">실전</span><span class="part">O/X</span><span class="ttl">실전 10 — O/X 12문항</span><span class="sp"></span></div>
+  <div class="body row">
+    <div class="q" style="flex:1.2"><div class="q-h"><span class="q-no">실전 10</span><span class="tag ox">O/X</span><span class="src2024">기출 포인트 포함</span></div>
+      <div class="q-b"><ol class="ox">
+        <li>인류 최초의 백신은 제너의 천연두 백신이다.<span class="bx">O / X</span></li>
+        <li>페니실린의 대량생산법은 플레밍이 고안했다.<span class="bx">O / X</span></li>
+        <li>프론토실 레드의 효과는 아조색소 때문이었다.<span class="bx">O / X</span></li>
+        <li>최초의 제약회사는 독일 Merck로 여겨진다.<span class="bx">O / X</span></li>
+        <li>“We are existing for failure”는 세실 피켓의 말이다.<span class="bx">O / X</span></li>
+        <li>바이옥스는 심혈관 부작용으로 승인이 취소됐다.<span class="bx">O / X</span></li>
+        <li>엘릭서 설파닐아마이드는 신장독성을 일으켰다.<span class="bx">O / X</span></li>
+        <li>1938법은 약의 유효성 입증을 요구했다.<span class="bx">O / X</span></li>
+        <li>뉘른베르크 강령의 원칙에는 종료의 자유가 있다.<span class="bx">O / X</span></li>
+        <li>터스키기 연구 → 국가연구법 → 벨몬트 보고서 순이다.<span class="bx">O / X</span></li>
+        <li>PDUFA는 제약사 수수료로 심사 인력을 늘렸다.<span class="bx">O / X</span></li>
+        <li>현대화법 2.0은 동물실험을 금지했다.<span class="bx">O / X</span></li></ol></div>
+      <div class="blank" style="height:12mm"></div>
+    </div>
+    <div class="ans" style="flex:1;border:1.5px solid #bfe6cf;border-radius:11px">
+      <div class="a"><span class="pill">정답</span><span class="v">O X X O O O O X O O O X</span></div>
+      <table class="t" style="--pcs:#dff3e7;font-size:8.8pt;background:#fff">
+        <tr><th class="c">#</th><th class="c">답</th><th>한 줄 해설</th></tr>
+        <tr><td class="c">1</td><td class="c"><b>O</b></td><td>1796 우두</td></tr>
+        <tr><td class="c">2</td><td class="c"><b>X</b></td><td><b>플로리·체인</b>(1939)</td></tr>
+        <tr><td class="c">3</td><td class="c"><b>X</b></td><td>몸속에서 변한 <b>설파닐아마이드</b></td></tr>
+        <tr><td class="c">4</td><td class="c"><b>O</b></td><td>1668 천사약국</td></tr>
+        <tr><td class="c">5</td><td class="c"><b>O</b></td><td>쉐링-플라우 연구소</td></tr>
+        <tr><td class="c">6</td><td class="c"><b>O</b></td><td>심근경색·뇌졸중</td></tr>
+        <tr><td class="c">7</td><td class="c"><b>O</b></td><td><span class="src2024">2024</span> 간독성 ✗</td></tr>
+        <tr><td class="c">8</td><td class="c"><b>X</b></td><td>유효성 = <b>1962</b></td></tr>
+        <tr><td class="c">9</td><td class="c"><b>O</b></td><td>동의·보호·종료의 자유</td></tr>
+        <tr><td class="c">10</td><td class="c"><b>O</b></td><td>1972 → 1974 → 1979</td></tr>
+        <tr><td class="c">11</td><td class="c"><b>O</b></td><td>질 유지 + 기간 단축</td></tr>
+        <tr><td class="c">12</td><td class="c"><b>X</b></td><td>금지 ✗ 의무 폐지(<b>허용</b>)</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>27</span></div>
+</section>
+
+<section class="page" style="--pc:var(--violet)">
+  <div class="ph"><span class="wk">실전</span><span class="part">단답</span><span class="ttl">실전 11~16 — 단답형</span><span class="sp"></span></div>
+  <div class="body grid3" style="grid-template-rows:1fr 1fr">
+    <div class="q"><div class="q-h"><span class="q-no">실전 11</span><span class="tag sa">단답</span><span class="src2024">2024 기출</span></div>
+      <div class="q-b"><div class="stem">미국에서 탈리도마이드 승인을 거부한 FDA 심사관은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">프랜시스 올덤 켈시</b> (Frances Oldham Kelsey) 박사</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 12</span><span class="tag sa">단답</span><span class="src2024">2024 기출</span></div>
+      <div class="q-b"><div class="stem">엘릭서 설파닐아마이드의 용매와 독성 장기는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">다이에틸렌글리콜(DEG)</b> · <b class="c-teal">신장</b>(콩팥)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 13</span><span class="tag sa">단답</span><span class="src2024">2024 기출</span></div>
+      <div class="q-b"><div class="stem">도마크의 프론토실 레드가 몸속에서 바뀌어 효과를 낸 물질은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">설파닐아마이드</b> (sulfanilamide) — 페니실린 ✗</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 14</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">벨몬트 보고서의 3대 원칙은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">인간 존중 · 이익(선행) · 정의</b><br>Respect for persons · Beneficence · Justice</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 15</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">IRB의 사전 승인을 처음 요구한 윤리 문서와 연도는?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">헬싱키 선언</b> (1964)</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 16</span><span class="tag sa">단답</span></div>
+      <div class="q-b"><div class="stem">신약개발의 “제4의 허들”은?</div></div>
+      <div class="blank" style="height:10mm"></div>
+      <div class="ans"><div class="small"><b class="c-teal">비용효과성 · 보험급여</b> (cost-effectiveness / reimbursement)</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>28</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 17~18 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 17</span><span class="tag es">서술</span><span class="src2024">2024 스타일(“5개”)</span></div>
+      <div class="q-b"><div class="stem">신약개발 과정에서 “규정”이 만들어지게 된 사건과 그 결과 생긴 법·문서를 <b>5쌍</b> 쓰시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">예시답안</span><span class="small c-sub">아래 중 5쌍</span></div>
+        <ol class="small" style="padding-left:16px">
+          <li>엉터리 특허약·불량 식품 → <b>1906 순정식품의약법</b></li>
+          <li>엘릭서 설파닐아마이드 → <b>1938 FD&amp;C Act</b></li>
+          <li>나치 생체실험 → <b>1947 뉘른베르크 강령</b></li>
+          <li>탈리도마이드 → <b>1962 케파우버-해리스 수정안</b></li>
+          <li>터스키기 매독 연구 → <b>1974 국가연구법 / 1979 벨몬트 보고서</b></li>
+          <li>느린 FDA 심사 → <b>1992 PDUFA</b> · 동물 대체 기술 → <b>2022 현대화법 2.0</b></li></ol></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 18</span><span class="tag es">서술</span><span class="src2024">2024 스타일(“차이”)</span></div>
+      <div class="q-b"><div class="stem">헬싱키 선언과 벨몬트 보고서의 차이를 <b>발표 연도·계기·핵심 내용</b>을 기준으로 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small"><b>헬싱키 선언(1964)</b>은 의사 단체가 만든 사람 대상 연구의 윤리 원칙으로, <b>치료적·비치료적 연구 모두</b>에 원칙을 정의하고, 법적 보호자 승낙과 서면 동의를 권고하며 <b>IRB의 사전 검토·승인</b>을 요구했다. <b>벨몬트 보고서(1979)</b>는 <b>터스키기 매독 연구</b> 등을 계기로 1974 국가연구법에 따라 설립된 국가위원회가 발간했으며, <b>인간 존중·이익(선행)·정의</b>의 3대 윤리 원칙을 제시했다.</div>
+        <div class="one">헬싱키 = 치료/비치료 + IRB · 벨몬트 = 존중·선행·정의</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>29</span></div>
+</section>
+
+<section class="page" style="--pc:var(--coral)">
+  <div class="ph"><span class="wk">실전</span><span class="part">서술</span><span class="ttl">실전 19~20 — 서술형</span><span class="sp"></span></div>
+  <div class="body grid2">
+    <div class="q"><div class="q-h"><span class="q-no">실전 19</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">탈리도마이드 사건의 ① 피해 ② 미국이 피해를 막은 이유 ③ 이후 바뀐 법 ④ 현재의 사용을 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">① 1950년대 후반 수면제·입덧약으로 쓰여 임신 초기 복용 시 <b>해표지증(phocomelia)</b> 기형아가 1만 명 이상 태어났다. ② FDA 심사관 <b>켈시 박사</b>가 회사의 압력에도 과학적으로 신뢰할 증거가 부족하다며 NDA 승인을 거부했다. ③ 1962년 <b>케파우버-해리스 수정안</b>으로 유효성 입증·사전 승인·이상반응 보고가 요구됐다. ④ 현재는 임신 금지 관리 하에 <b>다발성 골수종</b> 등에 사용되며, COVID-19 치료제로도 연구됐다.</div></div>
+    </div>
+    <div class="q"><div class="q-h"><span class="q-no">실전 20</span><span class="tag es">서술</span></div>
+      <div class="q-b"><div class="stem">“신약개발의 규정은 영원한가?”에 대해 <b>규정이 강화된 예</b>와 <b>완화(효율화)된 예</b>를 각각 들어 서술하시오.</div></div>
+      <div class="blank" style="height:30mm"></div>
+      <div class="ans"><div class="a"><span class="pill">모범답안</span></div>
+        <div class="small">규정은 영원하지 않고 계속 바뀐다. <b>강화</b>: 엘릭서 비극 후 1938법으로 안전성, 탈리도마이드 후 1962법으로 유효성·사전승인이 추가됐다. <b>완화·효율화</b>: 1992 PDUFA로 심사 기간을 단축했고, 1945 페니실린 배치 검정은 품질이 안정되자 1983년 폐지됐으며, 2022 현대화법 2.0은 임상 전 <b>동물실험 의무를 폐지</b>해 비동물 시험도 허용했다.</div>
+        <div class="one">비극 → 강화, 비효율·새 과학 → 완화</div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>30</span></div>
+</section>
+
+<!-- ============ 암기카드 ============ -->
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">2주차</span><span class="part">FINAL</span><span class="ttl">암기카드 ① — 사람 · 약 · 숫자</span><span class="sp"></span></div>
+  <div class="body grid3 cram" style="font-size:10.4pt;line-height:1.7">
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--blue)"><h3>🏆 최초들</h3>
+        백신 <b>제너</b> 1796 (우두) → 1980 박멸<br>항생제 <b>플레밍</b> 1928 (푸른곰팡이)<br>합성 항균제 <b>도마크</b> 1935 (프론토실)<br>화학 항암제 1943 (머스타드 가스)<br>DNA 1953 · 인간 인슐린 1978<br>표적 항암제 1999 · CAR-T 2017</div>
+      <div class="card" style="border-top:4px solid var(--teal)"><h3>👨‍🔬 사람 ↔ 키워드</h3>
+        플레밍 → <span class="p">라이소자임</span>(콧물) → 페니실린<br>플로리·체인 → 제조법(1939)<br>도마크 → <span class="g">설파닐아마이드</span><br>피켓 → 실패하기 위해 존재<br>와일리 → 1906법 · 독약 구조대<br><span class="g">켈시</span> → 탈리도마이드 거부</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--coral)"><h3>📉 숫자</h3>
+        1상 → 승인 <b>9.6%</b> · 최저 통과 <b>2상 30.7%</b><br>2·3상 실패 1위 = <b>효능 부족</b><br>FDA 승인 연 <b>36 → 22</b>개<br>허들 탈락 <b>5.7 → 26.4%</b> (<span class="p">증가</span>)<br>엘릭서 105명 사망 · 탈리도마이드 1만+<br>IND <b>30일</b> · NDA 접수 <b>60일</b></div>
+      <div class="card" style="border-top:4px solid var(--violet)"><h3>🏭 회사</h3>
+        <b>Merck</b> 1668 최초 제약사 · 1827 알칼로이드<br><b>GSK</b> 1842 첫 특허약 · 1859 첫 전용공장<br><b>Pfizer</b> 1849 · 남북전쟁<br><b>Moderna</b> 1400억 → 25.6조 · +1,160%</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--amber)"><h3>🚧 허들 4개</h3>안전성 · 유효성 · 품질 · <span class="p">비용효과성·급여</span></div>
+      <div class="card" style="border-top:4px solid var(--coral)"><h3>💥 실패 3종</h3>개발 중 실패 (표준요법보다 나아야)<br>승인 취소 = <b>바이옥스</b>(심혈관)<br>상업화 실패<br>피해: 한미 기술수출 반환 · SK 킬링 · 퍼듀 파산</div>
+      <div class="callout trap"><div class="t">⚠ 기출 함정 TOP 5</div><div class="small">엘릭서 = <b>신장</b> (간 ✗)<br>탈리도마이드 = <b>지금도 사용</b><br>존중·이익·정의 = <b>벨몬트</b> (헬싱키 ✗)<br>피부 = <b>Acres of Skin</b> / 암세포 = 유대인 병원<br>허들·환자 모집 비용 = <b>증가</b></div></div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>31</span></div>
+</section>
+
+<section class="page" style="--pc:var(--navy);--pcs:#e9ecf5">
+  <div class="ph"><span class="wk">2주차</span><span class="part">FINAL</span><span class="ttl">암기카드 ② — 법 · 윤리 연표</span><span class="sp"></span></div>
+  <div class="body grid2 cram" style="font-size:10.4pt;line-height:1.7">
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--blue)"><h3>⚖ 법 (사건 → 법)</h3>
+        <b>1848</b> 의약품 수입법 (최초, 수입만)<br>
+        <b>1902</b> 생물제제관리법 (혈청·백신)<br>
+        <b>1906</b> 순정식품의약법 — 불량·<b>부정표시</b> 금지<br>
+        <b>1930</b> FDA 명칭<br>
+        엘릭서 → <b>1938 FD&amp;C</b> — <b>안전성</b>만, 60일 자동, 유효성 ✗<br>
+        1941 인슐린 · 1945 페니실린 수정안 · 1943 도터웨이크 · 1949 검은 책<br>
+        탈리도마이드 → <b>1962 케파우버-해리스</b> — <b>유효성 + 사전승인 + AE + IND</b><br>
+        1987 IND 정정 규정<br>
+        <b>1992 PDUFA</b> 수수료 → 심사 단축<br>
+        <b>1997 FDAMA</b> PDUFA 연장 · 정보공개 · 중추연구 1개 · 소아<br>
+        <b>2022 현대화법 2.0</b> 동물실험 의무 <b>폐지</b>(허용)</div>
+    </div>
+    <div class="col">
+      <div class="card" style="border-top:4px solid var(--teal)"><h3>🤝 윤리 (뉘 → 헬 → 벨)</h3>
+        나치 → <b>1947 뉘른베르크</b>: 자발적 동의 · 피험자 보호 · 종료의 자유<br>
+        <b>1964 헬싱키</b>: <span class="g">치료적·비치료적</span> · 보호자·서면 동의 · <span class="g">IRB 사전 승인</span><br>
+        터스키기 → 1974 국가연구법 → <b>1979 벨몬트</b>: <span class="g">인간 존중 · 이익 · 정의</span></div>
+      <div class="card" style="border-top:4px solid var(--coral)"><h3>🚫 남용 사례 3 (→ 벨몬트)</h3>
+        <b>터스키기</b>(1932~): 흑인 매독, 페니실린 있어도 치료 ✗, 1997 사과<br>
+        <b>유대인 병원</b>(1963): 노인에 <span class="p">암세포</span><br>
+        <b>Acres of Skin</b>(감옥): 죄수 <span class="p">피부 화학물질</span>, $100 vs 10센트</div>
+      <div class="card" style="border-top:4px solid var(--violet)"><h3>📋 IRB</h3>Full Board(의약품) · Expedited(채혈) · Exempt(혈압) · Not human subject</div>
+    </div>
+  </div>
+  <div class="pf"><span>신약개발개론 · 2주차 약물개발의 역사</span><span>32</span></div>
+</section>
+
+<script src="diagrams2.js"></script>
+</body></html>
