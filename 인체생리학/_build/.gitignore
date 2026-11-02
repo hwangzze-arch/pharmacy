@@ -4,3 +4,5 @@ src/ov.txt
 src/*.pdf
 src/__pycache__/
 *.png
+src/out8.html
+src/ov8.txt

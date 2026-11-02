@@ -127,3 +127,13 @@ ol.tfl li{margin:.9mm 0}
 
 .flow .ann,.chev .ann{border:none !important;padding:0 !important;background:none !important;font-weight:400;margin:0;font-size:.85em}
 .chev .ann{color:rgba(255,255,255,.85)}
+
+/* 8장~: 그림 각주 · 단어 박스 */
+.figq{text-align:center;margin:1.2mm 0 .4mm}
+.figq img{max-width:100%;border-radius:1.6mm;border:1px solid #e3e6ee}
+.fans{font-size:7.4pt;color:#1b5e2b;line-height:1.5;margin-bottom:.6mm}
+.fans b{display:inline-block;background:#0b7285;color:#fff;border-radius:50%;width:3.6mm;height:3.6mm;line-height:3.6mm;text-align:center;font-size:6.4pt;margin-right:.4mm}
+.wbox{display:flex;flex-wrap:wrap;gap:1mm;border:1.2px dashed #d9480f;border-radius:1.6mm;padding:1.4mm 1.6mm;margin:1.2mm 0;background:#fff8f3}
+.wbox span{font-size:7.8pt;font-weight:700;color:#7a2e0b;background:#fff;border:1px solid #f4c3a6;border-radius:1mm;padding:.1mm 1.4mm}
+.btxt{line-height:1.6 !important}
+.btxt u{text-decoration:none;border-bottom:1px solid #1d2747;padding:0 4mm;font-weight:700;color:#d9480f}
