@@ -23,10 +23,10 @@ PHB_A = (mrow(panel('c1ccccc1C[C:1]#[N:2].[H:5][*:6]', [(2,5,-0.5),((5,6),6,-1.0
                panel('c1ccccc1CC(OCC)=N', w=140, h=100, note='이미데이트'),
                step('H₂O, H⁺', '−NH₄⁺'),
                panel('c1ccccc1CC(=O)OCC', w=140, h=90, note='빈칸 ① 페닐아세트산 에틸'), label='에스터화')
-         + mrow(panel('c1ccccc1[CH:3]([H:4])[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=220, h=140, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='③ EtO⁻가 α-H 제거'),
+         + mrow(panel('c1ccccc1[CH:3]([H:4])[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),3,0.8)], w=220, h=140, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='③ EtO⁻가 α-H 제거'),
                step('−EtOH'),
                panel('c1ccccc1[CH-:3]C(=O)OCC', w=150, h=110, note='에스터 엔올레이트'), label='엔올레이트'))
-PHB_B = mrow(panel('c1ccccc1[C:3]([H:4])(C(=O)OCC)[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=230, h=150, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='⑥ (가열 −CO 후) 남은 α-H 제거'),
+PHB_B = mrow(panel('c1ccccc1[C:3]([H:4])(C(=O)OCC)[C:1](=[O:2])OCC.[O-:5]', [(5,4,0.5),((3,4),3,0.8)], w=230, h=150, ori={0:(1,2,90)}, pos=[(4,5,1.3,-0.6)], labels=_EtO, note='⑥ (가열 −CO 후) 남은 α-H 제거'),
              step('−EtOH'), label='엔올레이트')
 _RN = [('① 엔올레이트가 옥살산 에스터 공격', '④ 엔올레이트가 옥살산 에스터 C=O 공격'), ('② EtO⁻ 이탈', '⑤ C=O 재생, EtO⁻ 이탈'),
        ('③ NaOEt로 C⁻ → EtBr에 S<sub>N</sub>2', '⑦ C⁻가 EtBr에 S<sub>N</sub>2'), ('④ 요소 NH₂가 에스터 C=O 공격', '⑧ 요소 NH₂가 에스터 C=O 공격'),
