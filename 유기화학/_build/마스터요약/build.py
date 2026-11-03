@@ -424,7 +424,8 @@ for e in ENTRIES:
             qn += 1; pages.append(question(i, qn, e))
     else:
         pages.append(raw(i, e))
-    ORIG.extend(range(i, len(pages) + 1))
+    if not str(e.get("id", "")).startswith("f-mapx"):  # 새로 끼운 해설 쪽은 삼성노트 원래 쪽 번호에서 제외
+        ORIG.extend(range(i, len(pages) + 1))
     if e["t"] == "q":
         for _q in ([e] + ([nxt_used] if nxt_used is not None else [])):
             QPG[_q.get("n")] = i
