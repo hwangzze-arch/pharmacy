@@ -95,6 +95,7 @@ def chapter(t):
     p = t["prob"]
     figs = "".join(img(f, "", 1.25) for f in p["fig"])
     o.append(f'<div class="blk prob"><div class="bh">📋 문제 원문 &amp; 구조식 <span class="pens"><i class="pr">빨강</i> 핵심 원자·이탈 <i class="pg">초록</i> 새로 붙는/남는 것 <i class="pb">파랑</i> 날아가는 것·강조</span></div>{figs}<ul>' + "".join(f"<li>{x}</li>" for x in p["items"]) + "</ul></div>")
+    o.append('<div class="memo"><span>✍ 내 풀이 — 먼저 직접 풀어 보고 아래 해설로 채점</span></div>')
     if t.get("table"):
         o.append('<div class="blk"><div class="bh">🔁 짝산 분자식 1초 변환 5종 비교표 (금속 Na⁺/Li⁺ 떼고 → H 넣기)</div>' + table(t["table"], "tb sw") + "</div>")
     st = ['<div class="blk story"><div class="bh">🔍 단계별 원자 이동 &amp; 메커니즘 상세 해설</div>']

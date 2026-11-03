@@ -156,6 +156,37 @@ ol.arr>li::before{content:counter(a);position:absolute;left:0;top:1px;width:16px
 .see{grid-template-columns:1fr 50px 1fr;}
 .sr{grid-template-columns:110px 1fr;}
 .hero{margin-bottom:8px;}
+
+/* ── 밝은 테마 + 빈 공간 줄이기 */
+:root{--navy:#26324d;}
+body{background:#fff;}
+.cover{color:#26324d !important;background:radial-gradient(circle at 88% 15%,#ffd6dc 0,transparent 34%),radial-gradient(circle at 8% 92%,#c9f2e6 0,transparent 36%),radial-gradient(circle at 55% 55%,#fff6d8 0,transparent 45%),linear-gradient(135deg,#fffdf8,#f4f8ff) !important;}
+.cv-big{color:#26324d;} .cv-big em{color:#e8590c !important;}
+.cv-k,.cv-s{opacity:1 !important;color:#5c667d;}
+.ct{background:#fff !important;border:1px solid #e6e9f2 !important;border-left:6px solid var(--c) !important;box-shadow:0 3px 12px rgba(38,50,77,.08);}
+.ct li{color:#26324d;} .ct li span{opacity:1;color:#6b7486;}
+.cv-f{color:#6b7486;opacity:1 !important;border-top-color:#e6e9f2 !important;}
+.part{background:linear-gradient(90deg,#fff4dc,#ffe9ef 55%,#e8f4ff) !important;color:#26324d !important;}
+.part .pk{background:#e8590c !important;color:#fff !important;}
+.dn{color:#e8590c !important;-webkit-text-stroke:0 !important;}
+.dh{border-bottom-color:#ffd8a8 !important;}
+.tb th{background:#eef2fb !important;color:#26324d !important;}
+.tb.vs th:nth-child(2){background:#fde2e4 !important;} .tb.vs th:nth-child(3){background:#d8f3ec !important;}
+.ten{background:#fff8e1 !important;color:#26324d !important;border:1.5px solid #ffd666;}
+.tenh{color:#e8590c !important;} .ten li::marker{color:#e8590c !important;}
+.ch{break-before:auto !important;margin-top:4mm;}
+.hero{background:var(--s) !important;box-shadow:0 2px 10px rgba(38,50,77,.07);column-span:all;}
+.ch > .cols{margin-top:0;}
+.story>.bh{background:var(--s) !important;color:var(--navy) !important;border-left:5px solid var(--c);}
+.sheet{border:1.5px solid #ffd666 !important;border-radius:12px !important;background:#fffdf5 !important;overflow:visible;}
+.shh{background:#fff1c2 !important;color:#26324d !important;border-radius:11px 11px 0 0;}
+.shh span{background:#e8590c !important;color:#fff !important;}
+.sk{background:#fff7dc !important;}
+.blk{break-inside:auto;}
+.prob{break-inside:auto;}
+figure img{max-height:78mm;width:auto !important;max-width:100% !important;object-fit:contain;}
+.memo{height:58mm;border:2px dashed #b9c3d6;border-radius:12px;margin:0 0 9px 0;position:relative;break-inside:avoid;background:#fff;}
+.memo span{position:absolute;top:6px;left:12px;font-size:8.5pt;font-weight:700;color:#8a94a8;}
 </style></head><body class="cvb"><div class="cover">
 <div class="cv-k">약품유기화학 2 · 기말고사 직전 · 제22장 카르보닐 알파 치환 반응</div>
 <div class="cv-big">KILLER<br><em>TOP 10</em></div>
