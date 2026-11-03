@@ -353,8 +353,9 @@ def question2(i, n, e1, e2):
 
 def notepage(i, e):
     n = e["n"]
-    return f'''<section class="page v21 npage">
-{_hd21(f"{n:02d}", e["title"] + " — 내 필기", "삼성노트 텍스트상자 필기 · 앞 쪽 문제 " + f"{n:02d}", [e["part"]])}
+    return f'''<section class="page v21 npage n{n}">
+{_hd21(f"{n:02d}", e["title"] + " — 문제 + 내 필기", "문제를 보면서 삼성노트 텍스트상자 필기 읽기", [e["part"]])}
+{_qv(e, n)[0]}
 <div class="nbox"><div class="mnote big"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_NOTE[n][1]}</div></div>
 {foot(i)}</section>'''
 
