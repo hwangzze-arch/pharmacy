@@ -27,8 +27,7 @@ _PK = 'Clc1cccc([C:1](=[O:2])[CH:3]([H:4])C)c1'
 BUP_ENOL = mrow(panel(_PK + '.[H:5][Br:6]', [(2,5,-0.5),((5,6),6,-1.0)], w=230, h=140, ori={0:(1,2,90),1:(5,6,0)}, pos=[(2,5,1.7,0.3)], note='④ C=O 산소 양성자화'),
                 step(),
                 panel(_PK.replace('[O:2]','[OH+:2]') + '.[Br-:6]', [(6,4,0.5),((3,4),(1,3),0.8),((1,2),2,-1.0)], w=230, h=140, ori={0:(1,2,90)}, pos=[(4,6,1.5,0)], note='⑤ Br⁻가 α-H 제거 → 엔올'),
-                step('−HBr'),
-                panel('CC=C(O)c1cccc(Cl)c1', w=170, h=130, note='엔올 → ⑥으로'), label='엔올화')
+                step('', '⑥으로'), label='엔올화')
 BUP_FULL = (MSR(14, 0, 1) + BUP_ENOL + MSR(14, 2, 3)).replace('④ (엔올화 후) 엔올이 Br₂ 공격', '⑥ 엔올이 Br₂ 공격').replace('⑤ S<sub>N</sub>2', '⑦ S<sub>N</sub>2')
 
 
