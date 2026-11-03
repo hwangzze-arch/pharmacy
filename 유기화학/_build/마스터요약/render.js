@@ -3,7 +3,7 @@ const path = require('path');
 (async () => {
   const dir = __dirname;
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1123, height: 794 } });
+  const page = await browser.newPage({ viewport: { width: 1123, height: 794 }, deviceScaleFactor: process.env.SHOTS ? 3 : 1 });
   await page.goto('file://' + path.join(dir, 'index.html'));
   await page.evaluate(() => document.fonts.ready);
   await page.emulateMedia({ media: 'print' });
@@ -67,6 +67,16 @@ const path = require('path');
   console.log('notes', JSON.stringify(nt));
   report.filter(r => r.fs < 11 || r.overflow).forEach(r => console.log(JSON.stringify(r)));
   await page.pdf({ path: process.argv[2], width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
+  // SHOTS=json file: [[name, page, selector, nth], ...] -> element screenshots (with Samsung Notes marks)
+  if (process.env.SHOTS) {
+    const list = JSON.parse(require('fs').readFileSync(process.env.SHOTS, 'utf8'));
+    const pgs = await page.$$('.page');
+    for (const [name, pn, sel, nth] of list) {
+      const els = sel ? await pgs[pn - 1].$$(sel) : [pgs[pn - 1]];
+      if (!els[nth || 0]) { console.log('NO', name, pn, sel); continue; }
+      await els[nth || 0].screenshot({ path: process.env.SHOTDIR + '/' + name + '.png' });
+    }
+  }
   if (process.argv[3]) {
     const els = await page.$$('.page');
     for (const n of process.argv[3].split(',')) {
