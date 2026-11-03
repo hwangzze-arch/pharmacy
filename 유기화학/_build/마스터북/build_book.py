@@ -24,8 +24,8 @@ def table(rows, cls="tb"):
     return f'<table class="{cls}"><thead><tr>{h}</tr></thead><tbody>{b}</tbody></table>'
 
 
-def sec(num, title, body, sub=""):
-    return f'<section class="dash"><div class="dh"><span class="dn">{num}</span><div><h2>{title}</h2><div class="ds">{sub}</div></div></div>{body}</section>'
+def sec(num, title, body, sub="", wide=False):
+    return f'<section class="dash{" wide" if wide else ""}"><div class="dh"><span class="dn">{num}</span><div><h2>{title}</h2><div class="ds">{sub}</div></div></div>{body}</section>'
 
 
 # ───────── 표지 (따로 렌더 — 쪽 번호 없음)
@@ -54,7 +54,7 @@ def part0():
     o.append(sec("2", "엔올(산성) vs 엔올레이트(염기)", table(ENOL_VS, "tb vs") + f'<div class="route"><div class="rl">조건을 보면 경로부터 결정</div>{chips}</div>', "핵심 비교표 (p.1)"))
     r = "".join(f'<div class="rule"><div class="rn">{i}</div><div><div class="rh">{a}</div><div class="rb">{b}</div></div></div>' for i, (a, b) in enumerate(RULES, 1))
     o.append(sec("3", "내가 만든 4대 만능 직관 공식", f'<div class="rules">{r}</div>', "p.1 &amp; p.3, 5, 17, 33"))
-    o.append(sec("4", "시약을 보면 반응이 떠오르는 치트시트", table([("시약 및 조건", "하는 일", "최종 결과물", "관련")] + REAGENTS, "tb rg") + f'<p class="note">{REAGENT_NOTE}</p>', "p.52"))
+    o.append(sec("4", "시약을 보면 반응이 떠오르는 치트시트", table([("시약 및 조건", "하는 일", "최종 결과물", "관련")] + REAGENTS, "tb rg") + f'<p class="note">{REAGENT_NOTE}</p>', "p.52", True))
     # pKa 사다리: 눈금 막대 + 표
     marks = "".join(f'<div class="pm" style="left:{min(97, float(v.split()[0].split("/")[0]) / 36 * 100):.1f}%"><i></i><span>{v.split()[0].split("/")[0]}</span></div>' for _, _, v in PKA)
     half = (len(PKA) + 1) // 2
@@ -65,14 +65,14 @@ def part0():
     bar = f'<div class="pbar"><div class="pgrad"></div>{marks}<div class="pl l">← 강한 산</div><div class="pl r">약한 산 →</div></div>'
     o.append(sec("5", "꼭 외울 pK<sub>a</sub> 산성도 사다리", bar + table(rows, "tb pk") + f'<p class="note">{PKA_NOTE}</p>', "p.17 &amp; p.52"))
     ten = "".join(f"<li>{t}</li>" for t in TEN)
-    o.append(sec("6", "시험장 단골 혼동 쌍 12선 &amp; 시험 직전 10줄", table([("헷갈리는 쌍", "왼쪽 핵심 특징", "오른쪽 핵심 특징")] + PAIRS, "tb pr") + f'<div class="ten"><div class="tenh">시험 직전 머리에 새길 10줄 요약</div><ol>{ten}</ol></div>', "p.53"))
+    o.append(sec("6", "시험장 단골 혼동 쌍 12선 &amp; 시험 직전 10줄", table([("헷갈리는 쌍", "왼쪽 핵심 특징", "오른쪽 핵심 특징")] + PAIRS, "tb pr") + f'<div class="ten"><div class="tenh">시험 직전 머리에 새길 10줄 요약</div><ol>{ten}</ol></div>', "p.53", True))
     toc = ""
     for g in (1, 2, 3):
         nm, desc, col, soft, _ = GRADE[g]
         it = " → ".join(f'<b>{t["rank"]}위</b> 문제 {t["no"]} <small>({t["tag"]})</small>' for t in TOP if t["grade"] == g)
         toc += f'<div class="toc" style="--c:{col};--s:{soft}"><div class="tocn">{nm}</div><div><div class="tocd">{desc}</div><div class="toci">{it}</div></div></div>'
     o.append(sec("7", "출제 확률 순서 핵심 킬러 TOP 10 목차", toc, "p.54"))
-    return "".join(o)
+    return o[0] + '<div class="cols">' + "".join(o[1:]) + "</div>"
 
 
 # ───────── TOP 장
@@ -114,8 +114,8 @@ def chapter(t):
     rows = "".join(f'<div class="sr"><div class="sk">{a}</div><div class="sv">{b}</div></div>' for a, b in t["sheet"])
     sf = img(t["sheetfig"][0], t["sheetfig"][1], 1.1) if t.get("sheetfig") else ""
     o.append(f'<div class="blk sheet"><div class="shh"><span>시험 답안지용</span> 최종 모범 답안<i class="stamp">정답</i></div>{rows}{sf}</div>')
-    o.append("</article>")
-    return "".join(o)
+    o.append("</div></article>")
+    return o[0] + '<div class="cols">' + "".join(o[1:])
 
 
 CSS = open(os.path.join(D, "book.css")).read().replace("{FONT}", FONT)

@@ -9,12 +9,12 @@ const { execFileSync } = require('child_process');
   const tmp = path.join(dir, '_tmp'); require('fs').mkdirSync(tmp, { recursive: true });
   await page.goto('file://' + path.join(dir, 'cover.html'));
   await page.evaluate(() => document.fonts.ready);
-  await page.pdf({ path: tmp + '/cover.pdf', format: 'A4', printBackground: true, margin: { top: 0, bottom: 0, left: 0, right: 0 }, pageRanges: '1' });
+  await page.pdf({ path: tmp + '/cover.pdf', width: '297mm', height: '210mm', printBackground: true, margin: { top: 0, bottom: 0, left: 0, right: 0 }, pageRanges: '1' });
   await page.goto('file://' + path.join(dir, 'book.html'));
   await page.evaluate(() => document.fonts.ready);
-  const foot = `<div style="font-family:'WenQuanYi Zen Hei',sans-serif;font-size:7px;color:#8b95a5;width:100%;padding:0 14mm;display:flex;justify-content:space-between;">
+  const foot = `<div style="font-family:'WenQuanYi Zen Hei',sans-serif;font-size:7px;color:#8b95a5;width:100%;padding:0 12mm;display:flex;justify-content:space-between;">
     <span>제22장 핵심 킬러 TOP 10 · 단번에 이해하는 최종 실전 마스터북</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`;
-  await page.pdf({ path: tmp + '/body.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true,
+  await page.pdf({ path: tmp + '/body.pdf', printBackground: true, preferCSSPageSize: true,
     displayHeaderFooter: true, headerTemplate: '<div></div>', footerTemplate: foot });
   await browser.close();
   execFileSync('python3', ['-c', `import pymupdf as f,sys
