@@ -104,11 +104,12 @@ check = dict(t="r", id="f-check", html=f"""
 <div class="card tip"><div class="ct">📌 함께 볼 파일</div><b>CH22_번역본</b>: 슬라이드마다 번역 + 그림 옆 메커니즘 · <b>강의녹취록</b> · <b>단권화노트</b>(내 Q&amp;A)</div>
 </div></div>""")
 
-MAP = (RX(('m', 'CC(=O)C', 70, 55), ('a', 'H⁺', '엔올화'), ('m', 'CC(O)=C', 70, 55), ('a', 'X₂', '1번, 붐비는 쪽'), ('m', 'CC(=O)CBr', 80, 55), ('a', '피리딘, Δ', 'E2'), ('t', 'α,β-불포화 케톤'))
-       + RX(('m', 'CCC(=O)O', 70, 55), ('a', '1. Br₂, PBr₃', '2. H₂O (HVZ)'), ('m', 'CC(Br)C(=O)O', 80, 60), ('a', 'NH₃ 등', 'S<sub>N</sub>2'), ('t', 'α-아미노산 등'))
-       + RX(('m', 'CCOC(=O)CC(=O)OCC', 100, 55), ('a', '1. NaOEt', '2. R–X'), ('m', 'CCOC(=O)C([*])C(=O)OCC', 100, 70), ('a', 'H₃O⁺, Δ', '−CO₂'), ('m', '[*]CC(=O)O', 70, 55), ('t', '말론산 → 산'))
-       + RX(('m', 'CCOC(=O)CC(C)=O', 90, 55), ('a', '1. NaOEt', '2. R–X'), ('m', 'CCOC(=O)C([*])C(C)=O', 90, 70), ('a', 'H₃O⁺, Δ', '−CO₂'), ('m', '[*]CC(C)=O', 70, 55), ('t', '아세토아세트산 → 메틸 케톤'))
-       + RX(('m', 'CC1CCCCC1=O', 80, 65), ('a', '1. LDA, THF', '2. CH₃I'), ('m', 'CC1CCCC(C)C1=O', 85, 65), ('t', '덜 붐비는 쪽'), ('a', 'X₂, NaOH 과량', '메틸 케톤'), ('t', 'RCOO⁻ + CHX₃ (할로폼)')))
+MAPR = [RX(('m', 'CCC(C)=O', 70, 55), ('a', 'H⁺', '엔올화'), ('m', 'CC=C(C)O', 70, 55), ('a', 'Br₂', '1번, 붐비는 쪽'), ('m', 'CC(Br)C(C)=O', 75, 60), ('a', '피리딘, Δ', 'E2'), ('m', 'C=CC(C)=O', 70, 55), ('t', 'α,β-불포화 케톤')),
+       RX(('m', 'CCC(=O)O', 70, 55), ('a', '1. Br₂, PBr₃', '2. H₂O (HVZ)'), ('m', 'CC(Br)C(=O)O', 80, 60), ('a', 'NH₃ (과량)', 'S<sub>N</sub>2'), ('m', 'CC(N)C(=O)O', 75, 60), ('t', 'α-아미노산 (알라닌)')),
+       RX(('m', 'CCOC(=O)CC(=O)OCC', 100, 55), ('a', '1. NaOEt', '2. R–X'), ('m', 'CCOC(=O)C([*])C(=O)OCC', 100, 70), ('a', 'H₃O⁺, Δ', '−CO₂'), ('m', '[*]CC(=O)O', 70, 55), ('t', '말론산 → 산')),
+       RX(('m', 'CCOC(=O)CC(C)=O', 90, 55), ('a', '1. NaOEt', '2. R–X'), ('m', 'CCOC(=O)C([*])C(C)=O', 90, 70), ('a', 'H₃O⁺, Δ', '−CO₂'), ('m', '[*]CC(C)=O', 70, 55), ('t', '아세토아세트산 → 메틸 케톤')),
+       RX(('m', 'CC1CCCCC1=O', 80, 65), ('a', '1. LDA, THF', '2. CH₃I'), ('m', 'CC1CCCC(C)C1=O', 85, 65), ('t', '덜 붐비는 쪽 · '), ('m', 'CC(=O)c1ccccc1', 75, 55), ('a', 'I₂, NaOH 과량', '할로폼'), ('m', '[O-]C(=O)c1ccccc1', 75, 55), ('t', '+ CHI₃'))]
+MAP = ''.join(MAPR)
 
 mp = dict(t="r", id="f-map", html=f"""
 <div class="hd"><span class="bd">22장</span><div class="tt"><h1>22장 한 장 지도 · 4대 직관 공식</h1><div class="sb">Reaction map · the four rules (단권화 노트)</div></div><span class="pt">{P0}</span></div>
@@ -128,4 +129,5 @@ mp = dict(t="r", id="f-map", html=f"""
 <div class="card rec"><div class="ct">🎯 녹취 — 마지막 말씀</div>“요거는 이제 <b>풀어서 다음 시간에 제출</b>하면 되고요.” → 강의자료 마지막 슬라이드 과제 22-37 · 38 · 42 · 54 (이 노트 문제 12 · 13 · 20 · 27). “오늘 수업 여기까지 하고 중간고사 채점한 거 나눠드리고 끝내겠습니다.”</div><div class="card tip"><div class="ct">📌 문제 읽는 법</div>조건을 보고 경로를 먼저 정한다: <b>H⁺·AcOH</b> → 엔올 / <b>NaOH·NaOEt·LDA</b> → 엔올레이트 / <b>R–X</b> → S<sub>N</sub>2 / <b>H₃O⁺, Δ</b> → 가수분해 + 탈카르복실화.</div>
 </div></div>""")
 
-E = [mp]
+from c01_mapx import mx1, mx2, mx3
+E = [mp, mx1, mx2, mx3]

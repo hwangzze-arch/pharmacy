@@ -10,6 +10,7 @@ for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
     if e.get("note"): e["_note"] = e["note"]
 import answers as _ans
+from notes22 import NOTE as _NOTE
 from parts import RX as _RX, MSR as _MSR
 
 
@@ -63,6 +64,8 @@ if os.environ.get("ED") != "core":
                              ('m', 'CCOC(=O)C(CC)(c1ccccc1)C(=O)OCC', 130, 85), ('t', '③')) + _MSR(33, 2))
         e["pair"] = _n in _ans.PAIR
         e["split"] = _n in _ans.SPLIT
+    # 문제 29–31 삭제 (사용자 요청)
+    ENTRIES = [e for e in ENTRIES if not (e["t"] == "q" and e.get("n", 0) > 28)]
 
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
@@ -289,7 +292,7 @@ def question2(i, n, e1, e2):
     rows = ""
     for k, e in ((n, e1), (n + 1, e2)):
         left, right = _qparts(e)
-        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div><div class="qbody">{left}{right}</div></div>'
+        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]} {tb(e.get("n"), True)}</div><div class="qbody">{left}{right}</div></div>'
     return f'''<section class="page pair">
 <div class="hd q"><span class="bd">문제 {n:02d}–{n+1:02d}</span><div class="tt"><h1>{e1["part"]}</h1></div><span class="pt">짧은 문제 2개</span></div>
 {rows}
@@ -302,8 +305,15 @@ def _qv(e, n, mini=False):
     src = f'<span class="qsrc">{e["src"]}</span>' if e.get("src") else ""
     exp = f'<div class="xsec">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
     fig = (f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else "") + e.get("extra", "")
-    prob = f'<div class="pbx"><span class="plb">PROBLEM {n:02d}</span>{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
-    memo = '<div class="memo"><span class="ml2">✍ 메모</span></div>'
+    _tr = TOPR.get(e.get("n"))
+    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
+    _nt = _NOTE.get(e.get("n"))
+    if _nt and _nt[0] == "memo":
+        memo = f'<div class="memo hasn"><div class="mnote"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_nt[1]}</div></div>'
+    elif _nt:
+        memo = '<div class="memo"><span class="ml2">✍ 메모</span><span class="mgo">✍ 내 필기는 다음 쪽 →</span></div>'
+    else:
+        memo = '<div class="memo"><span class="ml2">✍ 메모</span></div>'
     if mini or not fig:
         grid = f'<div class="agrid one1"><div class="xc">{exp}{fig}</div></div>'
     else:
@@ -311,23 +321,33 @@ def _qv(e, n, mini=False):
     ans = f'<div class="abx"><div class="ah"><span class="alb">정답과 해설</span><div class="abar">{e["a"]}</div></div>{grid}</div>'
     return prob, memo, ans
 
-def _hd21(n, title, sub, tags, kind="문제"):
+# 시험 직전 TOP 10 — 출제 확률 순서 (문제 번호 → 순위, 등급)
+TOPR = {27: (1, 1), 20: (2, 1), 13: (3, 1), 12: (4, 1), 7: (5, 2), 28: (6, 2), 23: (7, 2), 14: (8, 3), 6: (9, 3), 26: (10, 3), 24: (10, 3)}
+_GR = {1: ("🥇 1등급", "g1"), 2: ("🥈 2등급", "g2"), 3: ("🥉 3등급", "g3")}
+
+def tb(n, small=False):
+    if n not in TOPR:
+        return ""
+    r, g = TOPR[n]; nm, c = _GR[g]
+    return f'<span class="topb {c}{" sm" if small else ""}"><i>🔥 TOP</i><b>{r}위</b><em>{nm}</em></span>'
+
+def _hd21(n, title, sub, tags, kind="문제", top=""):
     pills = "".join(f'<span class="pill">{t}</span>' for t in tags if t)
-    return f'<div class="h21"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><div class="pills">{pills}</div></div>'
+    return f'<div class="h21{" istop" if top else ""}"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div>{top}<div class="pills">{pills}</div></div>'
 
 def question1(i, n, e):
     if e.get("split"):
         prob, memo, ans = _qv(e, n, mini=True)
         return [f'''<section class="page v21">
-{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {prob}{memo}<div class="nextp">정답과 해설은 다음 쪽 →</div>
 {foot(i)}</section>''', f'''<section class="page v21 aonly">
-{_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {ans}
 {foot(i + 1)}</section>''']
     prob, memo, ans = _qv(e, n)
     return f'''<section class="page v21">
-{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {prob}{memo}{ans}
 {foot(i)}</section>'''
 
@@ -335,18 +355,55 @@ def question2(i, n, e1, e2):
     cols = ""
     for k, e in ((n, e1), (n + 1, e2)):
         prob, memo, ans = _qv(e, k, mini=True)
-        cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div>{prob}{memo}{ans}</div>'
+        cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]} {tb(e.get("n"), True)}</div>{prob}{memo}{ans}</div>'
     return f'''<section class="page v21 pair2">
 {_hd21(f"{n:02d}–{n+1:02d}", e1["part"], "짧은 문제 2개", [])}
 <div class="pcols">{cols}</div>
 {foot(i)}</section>'''
 
 
+def notepage(i, e):
+    n = e["n"]
+    return f'''<section class="page v21 npage n{n}">
+{_hd21(f"{n:02d}", e["title"] + " — 문제 + 내 필기", "문제를 보면서 삼성노트 텍스트상자 필기 읽기", [e["part"]], top=tb(e.get("n")))}
+{_qv(e, n)[0]}
+<div class="nbox"><div class="mnote big"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_NOTE[n][1]}</div></div>
+{foot(i)}</section>'''
+
+
+TOP10 = """
+<div class="h21"><div class="b21"><span>최종</span><b>③</b></div><div class="tt"><h1>시험 직전 TOP 10 — 출제 확률 순서</h1><div class="sb">문제 01–28 중 이 10개만 순서대로 풀면 나머지 18개는 자동으로 풀린다 (구글 아르곤4 추천)</div></div><div class="pills"><span class="pill">시험 직전</span></div></div>
+<div class="tgrid">
+<div class="tc t1"><div class="tct">🥇 1등급 — 무조건 100% 출제! 자다가도 풀어야 할 4문제 (과제 4인방)</div>
+<p class="tsub">교수님이 수업 마지막에 직접 “풀어서 제출하라”고 찍어주신 과제 4문제. 그대로 나오거나 숫자/작용기만 살짝 바뀌어서 무조건 나온다!</p>
+<div class="tr"><span class="rk">1위</span><div><b>문제 27</b> (과제 22-54, p.{QP:27}) — <b>[22장 최종 보스]</b><br>a(β-케토 에스터 위치 지정 알킬화) → b(가열 탈카르복실화) → c(LDA 한산한 쪽 알킬화) 3단 콤보를 한 문제로 물어보는 최고의 명품 문제.</div></div>
+<div class="tr"><span class="rk">2위</span><div><b>문제 20</b> (과제 22-42, p.{QP:20}) — <b>[생성물 예측 4종 세트]</b><br>탈카르복실화(a), 다이케톤 알킬화(b), HVZ 물 넣기 전(–COBr)/후(–COOH) 구분(c), 할로폼 반응 CHI₃(d)까지 22장 핵심 반응 4개를 한 판에.</div></div>
+<div class="tr"><span class="rk">3위</span><div><b>문제 13</b> (과제 22-38, p.{QP:13} 왼쪽) — <b>[산성도 줄 세우기]</b><br>에탄올(16) &gt; 아세톤(19) 순서 역전 함정 서술형과 염소 3개 유발 효과(CCl₃COOH)까지 산 세기 문제의 정석.</div></div>
+<div class="tr"><span class="rk">4위</span><div><b>문제 12</b> (과제 22-37, p.{QP:12}) — <b>[산성 수소 모두 찾기]</b><br>(c)번의 알코올 –OH와 삼중결합 건너편 끝 –CH₃ 공명 함정 때문에 출제율 99%. (이거 하나만 풀면 문제 01, 02, 08, 09는 안 봐도 된다!)</div></div>
+</div>
+<div class="tcol">
+<div class="tc t2"><div class="tct">🥈 2등급 — 약대 전공 특화 &amp; 서술형/빈칸 1순위 (3문제)</div>
+<div class="tr"><span class="rk">5위</span><div><b>문제 07</b> (부프로피온 합성, p.{QP:7}) — <b>[의약품 빈칸 1호]</b> 교수님이 “문제를 많이 풀어봐야 한다, 거꾸로 가보라”며 직접 칠판에 풀어주신 문제! 빈칸 3개와 S<sub>N</sub>2 화살표는 필수 암기.</div></div>
+<div class="tr"><span class="rk">6위</span><div><b>문제 28</b> (페노바르비탈 합성, p.{QP:28}) — <b>[의약품 빈칸 2호]</b> 왜 Ph–Br을 못 써서 우회하는지(서술형) + 빈칸 3개 + 요소가 에스터 치고 들어가 고리 닫는 메커니즘 화살표.</div></div>
+<div class="tr"><span class="rk">7위</span><div><b>문제 23</b> (본문 22-14, p.{QP:23}) — <b>[합성 불가능한 이유 3대장]</b> 알킬화의 3대 제약 조건(① 아릴 할라이드 S<sub>N</sub>2 불가 ② 탄소 3개 골격 유지 ③ 산성 수소 2개 제한)을 한 번에. (이거 하나면 문제 15, 18이 자동 해결!)</div></div>
+</div>
+<div class="tc t3"><div class="tct">🥉 3등급 — 실전 응용력을 완성해 주는 알짜배기 (3문제)</div>
+<div class="tr"><span class="rk">8위</span><div><b>문제 14</b> (염기 고르기, p.{QP:14} 오른쪽) — 짝산 pK<sub>a</sub> 시소 법칙! 언제 NaOEt를 쓰고 언제 LDA를 쓰는지 확실하게.</div></div>
+<div class="tr"><span class="rk">9위</span><div><b>문제 06</b> (본문 22-6, p.{QP:6}) — <b>[HVZ + 메탄올 변형]</b> HVZ 마지막에 물 대신 메탄올(CH₃OH)을 넣어 에스터로 끝내는 변형. 메커니즘 그리기 시험으로 내기 아주 좋다.</div></div>
+<div class="tr"><span class="rk">10위</span><div><b>문제 26</b> (본문 22-16, p.{QP:26}) 또는 <b>문제 24</b> (고리 만들기, p.{QP:24}) — LDA 직접 알킬화 ‘가지치기’(26)와 Br(CH₂)₄Br로 5각형 고리 만드는 법(24)만 눈에 익혀두면 역합성 설계는 끝!</div></div>
+</div>
+</div>
+</div>
+<div class="one"><span class="lb">💡 한 줄 요약 (이 번호만 접어두기)</span><span>1순위(과제): 27 → 20 → 13 → 12 · 2순위(의약품·함정): 07 → 28 → 23 · 3순위(응용): 14 → 06 → 26 (또는 24)</span></div>
+"""
+
 def raw(i, e):
     return f'<section class="page {e.get("cls","")}">{e["html"]}{foot(i)}</section>'
 
 pages = []
 PID = {}
+ORIG = []
+QPG = {}
 cn = qn = 0
 rng = {}
 for e in ENTRIES:
@@ -367,6 +424,15 @@ for e in ENTRIES:
             qn += 1; pages.append(question(i, qn, e))
     else:
         pages.append(raw(i, e))
+    if not str(e.get("id", "")).startswith("f-mapx"):  # 새로 끼운 해설 쪽은 삼성노트 원래 쪽 번호에서 제외
+        ORIG.extend(range(i, len(pages) + 1))
+    if e["t"] == "q":
+        for _q in ([e] + ([nxt_used] if nxt_used is not None else [])):
+            QPG[_q.get("n")] = i
+        for _q in ([e] + ([nxt_used] if nxt_used is not None else [])):
+            _nt = _NOTE.get(_q.get("n"))
+            if _nt and _nt[0] == "page":
+                pages.append(notepage(len(pages) + 1, _q))
     if e.get("id"):
         PID[e["id"]] = (len(pages), cn if e["t"] == "c" else qn, e["t"])
     if e["t"] == "q" and e.get("pair") and nxt_used is not None and nxt_used.get("id"):
@@ -376,7 +442,16 @@ for e in ENTRIES:
         r = rng.setdefault(pk, {"p": [i, i], "c": [], "q": []})
         r["p"][1] = i
         r["c" if e["t"] == "c" else "q"].append(cn if e["t"] == "c" else qn)
+import re
+if os.environ.get("ED") != "core":
+    pages.append(f'<section class="page top10">{TOP10}{foot(len(pages) + 1)}</section>')
+    # 삼성노트 표시(동그라미·형광·화살표) — 원래 쪽 번호 j 의 표시를 같은 쪽 위에 그대로
+    for j, idx in enumerate(ORIG, 1):
+        if os.path.exists(os.path.join(D, "ov", f"{j:02d}.png")):
+            pg = pages[idx - 1]; cut = pg.rfind("</section>")
+            pages[idx - 1] = pg[:cut] + f'<img class="ovl" src="ov/{j:02d}.png">' + pg[cut:]
 html = "".join(pages).replace("{TOTAL}", str(len(pages)))
+html = re.sub(r"\{QP:(\d+)\}", lambda m: str(QPG[int(m.group(1))]), html)
 for pk, r in rng.items():
     s = f'p.{r["p"][0]}–{r["p"][1]} · 개념 {min(r["c"]):02d}–{max(r["c"]):02d} · 문제 {min(r["q"]):02d}–{max(r["q"]):02d}' if r["c"] and r["q"] else f'p.{r["p"][0]}–{r["p"][1]}'
     html = html.replace("{R:" + pk + "}", s)
