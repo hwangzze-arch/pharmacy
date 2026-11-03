@@ -25,7 +25,8 @@ ul, ol { margin: 1mm 0; padding-left: 5.5mm; }
 li { margin: .5mm 0; }
 strong { color: #3b2fb0; }
 h2.raw ~ * strong { color: #1d2330; }
-table { width: 100%; border-collapse: collapse; font-size: 9.2pt; margin: 2mm 0; break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; font-size: 9.2pt; margin: 2mm 0; }
+tr { break-inside: avoid; }
 th { background: #5847d6; color: #fff; text-align: left; padding: 1mm 1.6mm; }
 td { border-bottom: 1px solid #e3e6ec; padding: .9mm 1.6mm; vertical-align: top; }
 tr:nth-child(even) td { background: #f7f7fb; }
