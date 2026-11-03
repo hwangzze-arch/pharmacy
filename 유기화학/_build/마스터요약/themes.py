@@ -132,6 +132,10 @@ table.t th{background:#eef3fa !important;color:var(--nblue) !important;}
 .top10 .tr{display:flex;gap:8px;margin:0 0 6px 0;align-items:flex-start;}
 .top10 .rk{flex:none;background:#1d3557;color:#fff;border-radius:6px;font-weight:700;font-size:.85em;padding:1px 8px;margin-top:2px;}
 .top10 .t1 .rk{background:#e89b1c;}
+.npage.n28{display:grid;grid-template-columns:.78fr 1.22fr;grid-template-rows:auto 1fr;column-gap:12px;}
+.npage.n28 .h21{grid-column:1/3;} .npage.n28 .pbx{grid-column:1;grid-row:2;align-self:start;}
+.npage.n28 .nbox{grid-column:2;grid-row:2;}
+.npage.n20 .pbx img{max-height:118px !important;width:auto !important;}
 .pc{display:flex;flex-direction:column;min-height:0;min-width:0;}
 .pc .qh{font-weight:700;color:var(--navy);margin-top:6px;}
 .pc .bd2{background:var(--navy);color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
