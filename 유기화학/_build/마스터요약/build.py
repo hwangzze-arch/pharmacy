@@ -292,7 +292,7 @@ def question2(i, n, e1, e2):
     rows = ""
     for k, e in ((n, e1), (n + 1, e2)):
         left, right = _qparts(e)
-        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div><div class="qbody">{left}{right}</div></div>'
+        rows += f'<div class="qhalf"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]} {tb(e.get("n"), True)}</div><div class="qbody">{left}{right}</div></div>'
     return f'''<section class="page pair">
 <div class="hd q"><span class="bd">문제 {n:02d}–{n+1:02d}</span><div class="tt"><h1>{e1["part"]}</h1></div><span class="pt">짧은 문제 2개</span></div>
 {rows}
@@ -305,7 +305,8 @@ def _qv(e, n, mini=False):
     src = f'<span class="qsrc">{e["src"]}</span>' if e.get("src") else ""
     exp = f'<div class="xsec">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
     fig = (f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else "") + e.get("extra", "")
-    prob = f'<div class="pbx"><span class="plb">PROBLEM {n:02d}</span>{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
+    _tr = TOPR.get(e.get("n"))
+    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
     _nt = _NOTE.get(e.get("n"))
     if _nt and _nt[0] == "memo":
         memo = f'<div class="memo hasn"><div class="mnote"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_nt[1]}</div></div>'
@@ -320,23 +321,33 @@ def _qv(e, n, mini=False):
     ans = f'<div class="abx"><div class="ah"><span class="alb">정답과 해설</span><div class="abar">{e["a"]}</div></div>{grid}</div>'
     return prob, memo, ans
 
-def _hd21(n, title, sub, tags, kind="문제"):
+# 시험 직전 TOP 10 — 출제 확률 순서 (문제 번호 → 순위, 등급)
+TOPR = {27: (1, 1), 20: (2, 1), 13: (3, 1), 12: (4, 1), 7: (5, 2), 28: (6, 2), 23: (7, 2), 14: (8, 3), 6: (9, 3), 26: (10, 3), 24: (10, 3)}
+_GR = {1: ("🥇 1등급", "g1"), 2: ("🥈 2등급", "g2"), 3: ("🥉 3등급", "g3")}
+
+def tb(n, small=False):
+    if n not in TOPR:
+        return ""
+    r, g = TOPR[n]; nm, c = _GR[g]
+    return f'<span class="topb {c}{" sm" if small else ""}"><i>🔥 TOP</i><b>{r}위</b><em>{nm}</em></span>'
+
+def _hd21(n, title, sub, tags, kind="문제", top=""):
     pills = "".join(f'<span class="pill">{t}</span>' for t in tags if t)
-    return f'<div class="h21"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div><div class="pills">{pills}</div></div>'
+    return f'<div class="h21{" istop" if top else ""}"><div class="b21"><span>{kind}</span><b>{n}</b></div><div class="tt"><h1>{title}</h1><div class="sb">{sub}</div></div>{top}<div class="pills">{pills}</div></div>'
 
 def question1(i, n, e):
     if e.get("split"):
         prob, memo, ans = _qv(e, n, mini=True)
         return [f'''<section class="page v21">
-{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {prob}{memo}<div class="nextp">정답과 해설은 다음 쪽 →</div>
 {foot(i)}</section>''', f'''<section class="page v21 aonly">
-{_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"] + " — 정답과 해설", e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {ans}
 {foot(i + 1)}</section>''']
     prob, memo, ans = _qv(e, n)
     return f'''<section class="page v21">
-{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]])}
+{_hd21(f"{n:02d}", e["title"], e.get("src",""), [e["part"]], top=tb(e.get("n")))}
 {prob}{memo}{ans}
 {foot(i)}</section>'''
 
@@ -344,7 +355,7 @@ def question2(i, n, e1, e2):
     cols = ""
     for k, e in ((n, e1), (n + 1, e2)):
         prob, memo, ans = _qv(e, k, mini=True)
-        cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]}</div>{prob}{memo}{ans}</div>'
+        cols += f'<div class="pc"><div class="qh"><span class="bd2">문제 {k:02d}</span> {e["title"]} {tb(e.get("n"), True)}</div>{prob}{memo}{ans}</div>'
     return f'''<section class="page v21 pair2">
 {_hd21(f"{n:02d}–{n+1:02d}", e1["part"], "짧은 문제 2개", [])}
 <div class="pcols">{cols}</div>
@@ -354,7 +365,7 @@ def question2(i, n, e1, e2):
 def notepage(i, e):
     n = e["n"]
     return f'''<section class="page v21 npage n{n}">
-{_hd21(f"{n:02d}", e["title"] + " — 문제 + 내 필기", "문제를 보면서 삼성노트 텍스트상자 필기 읽기", [e["part"]])}
+{_hd21(f"{n:02d}", e["title"] + " — 문제 + 내 필기", "문제를 보면서 삼성노트 텍스트상자 필기 읽기", [e["part"]], top=tb(e.get("n")))}
 {_qv(e, n)[0]}
 <div class="nbox"><div class="mnote big"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_NOTE[n][1]}</div></div>
 {foot(i)}</section>'''
