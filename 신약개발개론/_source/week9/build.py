@@ -1,4 +1,4 @@
-# 7주차(2026-11-04) 요약정리 빌드
+# 9주차(2026-11-04) 요약정리 빌드 — 7주차 휴강, 8주차 중간고사
 # 슬라이드 5~32는 6주차 자료 31~58과 똑같음 → 6주차 요약정리 페이지를 재사용하고
 # 번호(배지·원본 슬라이드·쪽수)만 overlay로 덮어씀. 새로 쓰는 건 표지(01)·중간고사 결산(02)뿐.
 #   python3 build.py            → intro.html, overlay.html
@@ -162,7 +162,7 @@ def doc(title, css, body):
 
 
 open(os.path.join(HERE, "intro.html"), "w").write(
-    doc("7주차 요약정리", CSS, "".join(page_html(i + 1, p) for i, p in enumerate(PAGES))))
+    doc("9주차 요약정리", CSS, "".join(page_html(i + 1, p) for i, p in enumerate(PAGES))))
 open(os.path.join(HERE, "overlay.html"), "w").write(doc("overlay", OV_CSS, overlay_html()))
 json.dump([r[0] for r in REUSE], open(os.path.join(HERE, "reuse.json"), "w"))
 print("total pages", TOTAL)
