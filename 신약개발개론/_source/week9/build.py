@@ -1,0 +1,168 @@
+# 9주차(2026-11-04) 요약정리 빌드 — 7주차 휴강, 8주차 중간고사
+# 슬라이드 5~32는 6주차 자료 31~58과 똑같음 → 6주차 요약정리 페이지를 재사용하고
+# 번호(배지·원본 슬라이드·쪽수)만 overlay로 덮어씀. 새로 쓰는 건 표지(01)·중간고사 결산(02)뿐.
+#   python3 build.py            → intro.html, overlay.html
+#   node build.js               → intro.pdf, overlay.pdf
+#   python3 merge.py            → 최종 PDF
+import os, json
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+FOOT = "신약개발개론 · 중간고사 결과 &amp; 후보물질 탐색 및 발굴2 — 슬라이드별 번역·설명"
+
+# (6주차 요약정리 쪽, 이번 원본 슬라이드 번호, 6주차 슬라이드 번호)
+REUSE = [(11, "4", "11")]
+for k in range(31, 57):
+    if k == 32:   REUSE.append((k, "6–7", "32–33"))
+    elif k == 31: REUSE.append((k, "5", "31"))
+    elif k == 55: REUSE.append((k, "30–31", "56–57"))
+    elif k == 56: REUSE.append((k, "32", "58"))
+    else:         REUSE.append((k, str(k - 25), str(k + 1)))
+N_NEW = 2
+TOTAL = N_NEW + len(REUSE)
+
+FONT = '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">'
+
+CSS = """
+@page { size: 841.92pt 594.96pt; margin: 0; }
+:root{--navy:#22457a;--title:#1c3b6b;--orange:#e07b1a;--muted:#4b5563;--foot:#374151;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:#fff;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1f2937;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.page{width:841.92pt;height:594.96pt;padding:24pt 35.4pt 0 35.4pt;position:relative;overflow:hidden;page-break-after:always;}
+header{display:flex;align-items:flex-start;border-bottom:1.4pt solid var(--navy);padding-bottom:5pt;height:43pt;}
+.num{background:var(--navy);color:#fff;font-weight:700;font-size:12.7pt;border-radius:12pt;width:34.3pt;height:23.8pt;line-height:23.8pt;text-align:center;margin:7.5pt 10.7pt 0 0;flex:none;}
+.ttl{flex:1;}
+.ttl h1{margin:0;font-size:17.2pt;line-height:1.25;color:var(--title);font-weight:700;}
+.ttl .sub{font-size:8.6pt;color:#374151;margin-top:1pt;}
+.src{font-size:9pt;color:var(--muted);margin-top:7.5pt;white-space:nowrap;}
+.top{display:flex;gap:14pt;margin-top:7pt;height:232pt;}
+.kw{width:182pt;flex:none;}
+.lbl{font-size:9pt;font-weight:700;color:var(--title);margin-bottom:6pt;}
+.chips{display:flex;flex-wrap:wrap;gap:5pt;}
+.chip{background:#eef4fc;border:1px solid #9dbbe3;color:#1c3b6b;border-radius:11pt;padding:2.5pt 8pt;font-size:8.6pt;}
+.img{flex:none;height:100%;}
+.img img{height:100%;border-radius:4pt;box-shadow:0 1px 4px rgba(0,0,0,.25);}
+.sum{flex:1;align-self:flex-start;background:#fff8dc;border:1px solid #f2dc8c;border-left:3.5pt solid #e6a700;border-radius:4pt;padding:10pt 12pt;}
+.sum p{margin:0;font-size:9.6pt;line-height:1.75;}
+.bottom{display:flex;gap:13pt;margin-top:9pt;font-size:9.6pt;line-height:1.6;}
+.col.tr{width:342pt;flex:none;} .col.ex{flex:1;}
+.badge{display:inline-block;color:#fff;font-weight:700;font-size:9.6pt;padding:3.5pt 8pt;border-radius:3pt;margin-bottom:6pt;}
+.badge.b{background:var(--navy);} .badge.o{background:var(--orange);}
+.body p{margin:0 0 4pt 0;}
+.body ul{margin:0 0 4pt 0;padding-left:14pt;} .body li{margin:0 0 2pt 0;}
+.body h3{margin:0 0 4pt 0;font-size:10pt;color:var(--title);}
+.note{color:var(--muted);font-size:.9em;}
+y{background:#fff07a;padding:0 2px;border-radius:2px;}
+g{background:#a6eb8e;padding:0 2px;border-radius:2px;}
+pk{background:#ffc4e3;padding:0 2px;border-radius:2px;}
+.tag{display:inline-block;background:#ffc4e3;color:#7a1550;font-weight:700;font-size:.92em;padding:0 5px;border-radius:3px;margin-right:4px;}
+.box{background:#fde8f3;border:1px solid #f3a6cf;border-left:3.5pt solid #e0559c;border-radius:4pt;padding:4pt 8pt;margin:4pt 0;}
+table.t{border-collapse:collapse;width:100%;margin:2pt 0 5pt 0;font-size:.93em;line-height:1.45;}
+table.t th{background:#e3edf8;color:#1c3b6b;text-align:left;font-weight:700;}
+table.t th,table.t td{border:1px solid #b9c7d6;padding:2pt 5pt;vertical-align:top;}
+footer{position:absolute;left:35.4pt;right:35.4pt;bottom:16pt;border-top:1px solid #d5dbe2;padding-top:5pt;display:flex;font-size:7.1pt;color:var(--foot);align-items:center;}
+footer .l{flex:1;} footer .m{flex:1;display:flex;gap:8pt;align-items:center;justify-content:center;}
+footer .r{flex:none;width:60pt;text-align:right;}
+.sw{display:inline-block;width:11pt;height:7pt;margin-right:3pt;vertical-align:middle;}
+"""
+
+LEGEND = ('형광펜 <span><span class="sw" style="background:#fff07a"></span>핵심 개념</span>'
+          '<span><span class="sw" style="background:#a6eb8e"></span>공식·정의·결론</span>'
+          '<span><span class="sw" style="background:#ffc4e3"></span>시험 포인트 / Q&amp;A</span>')
+
+PAGES = [
+dict(title="강의 표지 · 이번 강의 로드맵",
+     sub="신약개발개론 — 중간고사 결과 &amp; 후보물질 탐색 및 발굴2 (2026. 11. 04)", src="표지", img="i_cover.jpg",
+     kw=["중간고사 결산", "Hit 도출 · Screening", "Hit → Lead · SAR", "Lead Optimization", "UCL Roadmap", "AI Hit to Lead"],
+     sum="앞부분은 <b>중간고사 결산·정답 설명</b>, 본론은 지난 시간 Chapter 3-2의 이어지는 부분 — HTS 이후 <b>Hit 도출 → Lead 도출 → Lead 최적화 → UCL 로드맵 → AI 신약</b>이야.",
+     lab="표지 내용",
+     tr="""<h3>신약개발개론</h3><ul>
+<li>중간고사 결과 &amp; 후보물질 탐색 및 발굴2</li>
+<li>Han-Jun Kim (김한준), D.V.M., Ph.D. — Associate Professor, College of Pharmacy, Korea University</li>
+<li>Email: hanjun@korea.ac.kr · Web: hanjunkim.co.kr</li>
+<li>2026. 11. 04 · 고려대학교</li></ul>
+<p class="note">“Questions?” 슬라이드(3·33)는 내용이 없어 뺐고, HTS 영상(6·7)과 Deep Learning·분자 그림(30·31)은 각각 한 페이지로 묶었어.</p>
+<div class="box"><span class="tag">주의</span>3~29쪽은 6주차 요약정리 페이지를 그대로 가져왔어. 본문 속 “슬라이드 N” 언급은 <b>6주차 번호</b> 기준이야 (= 이번 번호 + 26).</div>""",
+     ex="""<p>슬라이드 5~32는 <b>6주차 자료 31~58과 똑같아</b>. 6주차에 다 못 나간 부분을 이번에 이어서 했어.</p>
+<table class="t"><tr><th>파트</th><th>이번 슬라이드</th><th>6주차 슬라이드</th><th>이 노트</th></tr>
+<tr><td>중간고사 결산·정답 설명</td><td>2</td><td>—</td><td>2쪽</td></tr>
+<tr><td>Chapter 3-2 표지</td><td>4</td><td>11</td><td>3쪽</td></tr>
+<tr><td>4. Hit 도출 (Screening)</td><td>5~13</td><td>31~39</td><td>4~11쪽</td></tr>
+<tr><td>5. Lead 도출 (Hit to Lead)</td><td>14~17</td><td>40~43</td><td>12~15쪽</td></tr>
+<tr><td>6. Lead Optimization</td><td>18~21</td><td>44~47</td><td>16~19쪽</td></tr>
+<tr><td>UCL Roadmaps</td><td>22~28</td><td>48~54</td><td>20~26쪽</td></tr>
+<tr><td>Deep Learning · AI · 영상</td><td>29~32</td><td>55~58</td><td>27~29쪽</td></tr></table>
+<p><b>시험 범위 연결</b>: 중간고사는 6주차 p.33 HTS까지(= 이번 슬라이드 7)였어. 그러니까 <pk>이번 슬라이드 8(Virtual screening)부터가 기말에 새로 들어오는 범위</pk>야.</p>"""),
+dict(title="Answer to the Last Class — 중간고사 결산",
+     sub="Midterm exam review &amp; answer explanation", src="원본 슬라이드 2", img="i_mid.jpg",
+     kw=["중간고사 결산", "정답 설명", "객관식 26 · 단답 14", "서술형 없음", "기말 45%"],
+     sum="슬라이드에는 <b>“중간고사 결산 · 중간고사 정답 설명”</b> 두 줄과 FEEDBACK 그림만 있어. 점수·정답은 수업 중에 말로 설명했으니, 여기선 <b>내 시험 기록</b>을 바탕으로 정리했어.",
+     lab="슬라이드 내용",
+     tr="""<ul><li>중간고사 결산</li><li>중간고사 정답 설명</li></ul>
+<p>그림: FEEDBACK 글자 주위로 사람들이 사다리·연필·말풍선(A+ 등)을 들고 있는 일러스트 — 시험 피드백 시간이라는 뜻이야.</p>
+<p class="note">슬라이드에 점수 분포·문항별 정답은 없어. 수업에서 들은 정답 설명이 있으면 <b>시험기록.md</b>에 적어두자.</p>
+<div class="box"><span class="tag">기억</span>교수님이 정답 설명 때 짚은 오답 포인트 = 기말에 형태만 바꿔 다시 나올 가능성이 큰 곳.</div>""",
+     ex="""<p><b>2026 중간고사 형식</b> (10/21 응시, 1~6주차, 6주차는 p.33 HTS까지)</p>
+<table class="t"><tr><th></th><th>2024</th><th>2025</th><th>2026</th></tr>
+<tr><td>객관식</td><td>약 17</td><td>약 13 + O/X</td><td><b>26</b></td></tr>
+<tr><td>단답</td><td>약어·용어 몇 개</td><td>약어·빈칸·이유</td><td><b>14</b></td></tr>
+<tr><td>서술</td><td>있음</td><td>있음 (5개 쓰기)</td><td><b>없음</b></td></tr></table>
+<p>체감: 통합 모의고사와 비슷했지만 <y>보기끼리 차이가 미세·세부적</y>이었어 (예고대로).</p>
+<p><b>기말 대비</b> (기말 45%)</p>
+<ul><li><pk>단답 철자</pk> — 약어 풀네임·인명·약 이름을 철자까지 (Hit/Lead, SAR, ADME, IC50/EC50 등)</li>
+<li>객관식은 <y>헷갈리는 쌍</y> 위주 — Hit(μM) vs Lead(수백 nM) vs Candidate(≤100 nM·1,000배 선택성)</li>
+<li>서술은 “5개 쓰기”형 정도만 (예: Lead 조건, Candidate 조건)</li></ul>""")
+]
+
+
+def page_html(i, p):
+    chips = "".join(f'<span class="chip">{k}</span>' for k in p["kw"])
+    return f'''<section class="page">
+<header><div class="num">{i:02d}</div><div class="ttl"><h1>{p["title"]}</h1><div class="sub">{p["sub"]}</div></div><div class="src">{p["src"]}</div></header>
+<div class="top"><div class="kw"><div class="lbl">핵심 키워드</div><div class="chips">{chips}</div></div>
+<div class="img"><img src="{p["img"]}"></div>
+<div class="sum"><div class="lbl">한 줄 요약</div><p>{p["sum"]}</p></div></div>
+<div class="bottom"><div class="col tr"><span class="badge b">{p["lab"]}</span><div class="body">{p["tr"]}</div></div>
+<div class="col ex"><span class="badge o">상세 설명 · 풀이</span><div class="body">{p["ex"]}</div></div></div>
+<footer><div class="l">{FOOT}</div><div class="m">{LEGEND}</div><div class="r">{i} / {TOTAL}</div></footer>
+</section>'''
+
+
+# 재사용 페이지 위에 얹을 투명 overlay: 배지 번호, 원본 슬라이드 번호, 왼쪽 아래 제목, 쪽수
+OV_CSS = """
+@page { size: 841.92pt 594.96pt; margin: 0; }
+html,body{margin:0;padding:0;background:transparent;}
+body{font-family:'Noto Sans KR',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.page{width:841.92pt;height:594.96pt;position:relative;overflow:hidden;page-break-after:always;}
+.w{position:absolute;background:#fff;}
+.num{position:absolute;left:35.25pt;top:31.5pt;width:34.3pt;height:23.8pt;line-height:23.8pt;border-radius:12pt;background:#22457a;color:#fff;font-weight:700;font-size:12.7pt;text-align:center;}
+.src{position:absolute;right:35.4pt;top:30.3pt;font-size:9pt;color:#4b5563;white-space:nowrap;background:#fff;padding-left:6pt;}
+.src span{font-size:7.6pt;color:#8a94a3;}
+.fl{position:absolute;left:35.4pt;top:565pt;font-size:7.1pt;color:#374151;white-space:nowrap;}
+.fr{position:absolute;right:35.4pt;top:565pt;font-size:7.1pt;color:#374151;text-align:right;}
+"""
+
+
+def overlay_html():
+    out = []
+    for j, (_, now, old) in enumerate(REUSE):
+        n = N_NEW + j + 1
+        out.append(f'''<section class="page">
+<div class="w" style="left:33pt;top:29pt;width:40pt;height:29pt"></div><div class="num">{n:02d}</div>
+<div class="w" style="left:690pt;top:28pt;width:125pt;height:15pt"></div>
+<div class="src">원본 슬라이드 {now} <span>(6주차 {old})</span></div>
+<div class="w" style="left:33pt;top:563pt;width:200pt;height:12pt"></div><div class="fl">{FOOT}</div>
+<div class="w" style="left:760pt;top:563pt;width:50pt;height:12pt"></div><div class="fr">{n} / {TOTAL}</div>
+</section>''')
+    return "".join(out)
+
+
+def doc(title, css, body):
+    return f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{title}</title>{FONT}<style>{css}</style></head><body>{body}</body></html>'
+
+
+open(os.path.join(HERE, "intro.html"), "w").write(
+    doc("9주차 요약정리", CSS, "".join(page_html(i + 1, p) for i, p in enumerate(PAGES))))
+open(os.path.join(HERE, "overlay.html"), "w").write(doc("overlay", OV_CSS, overlay_html()))
+json.dump([r[0] for r in REUSE], open(os.path.join(HERE, "reuse.json"), "w"))
+print("total pages", TOTAL)

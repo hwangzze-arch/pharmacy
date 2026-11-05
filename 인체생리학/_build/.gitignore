@@ -1,0 +1,12 @@
+src/out.html
+src/mout.html
+src/ov.txt
+src/*.pdf
+src/__pycache__/
+*.png
+src/out8.html
+src/ov8.txt
+쉬운설명/img*/
+쉬운설명/index.html
+쉬운설명/shot-*.png
+쉬운설명/__pycache__/

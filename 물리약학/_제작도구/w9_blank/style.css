@@ -1,0 +1,48 @@
+@page { size: A4 landscape; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Pretendard', 'Noto Sans CJK KR', sans-serif; color: #1f2937; font-size: 13px; line-height: 1.5; }
+.page { width: 297mm; height: 210mm; padding: 8mm 10mm 0 10mm; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; }
+header { display: flex; align-items: flex-start; gap: 12px; border-bottom: 3px solid #1e3a6e; padding-bottom: 5px; }
+header .no { background: #1e3a6e; color: #fff; font-weight: 800; font-size: 15px; border-radius: 16px; padding: 5px 13px; margin-top: 4px; }
+header .ttl { flex: 1; }
+header h1 { margin: 0; font-size: 22px; color: #1e3a6e; font-weight: 800; line-height: 1.3; }
+header .sub { font-size: 12px; color: #555; }
+header .src { font-size: 12px; color: #555; margin-top: 6px; white-space: nowrap; }
+.top { display: grid; grid-template-columns: 52mm 1fr 82mm; gap: 6mm; margin-top: 3mm; height: 64mm; }
+.lbl { font-weight: 800; color: #1e3a6e; margin-bottom: 5px; }
+.kw .chip { display: inline-block; background: #e8eef8; border: 1px solid #b9c8e6; border-radius: 12px; padding: 1px 10px; margin: 0 4px 5px 0; font-size: 12.5px; }
+.img { display: flex; gap: 3mm; justify-content: center; align-items: flex-start; height: 64mm; }
+.img img { height: 64mm; max-width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 1px 5px rgba(0,0,0,.25); }
+.img.n2 img { height: auto; width: 49%; }
+.sum { background: #fff8dc; border: 1px solid #f1d98a; border-left: 5px solid #f2b705; border-radius: 6px; padding: 8px 12px; align-self: start; }
+.sum .lbl { color: #333; }
+.sum p { margin: 0; font-size: 14px; line-height: 1.6; }
+.bot { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 4mm; flex: 1; min-height: 0; }
+.col { min-width: 0; }
+.pill { display: inline-block; color: #fff; font-weight: 800; border-radius: 5px; padding: 5px 12px; margin-bottom: 6px; font-size: 13.5px; }
+.pill.navy { background: #2c4f86; } .pill.orange { background: #e07b1f; }
+h4 { margin: 6px 0 2px; font-size: 13.5px; color: #1e3a6e; }
+h4::before { content: '✓ '; }
+ul { margin: 2px 0 4px; padding-left: 18px; } li { margin: 1px 0; }
+p { margin: 3px 0; }
+.a { background: #e2ecfb; color: #173f8f; border-bottom: 2px solid #3d6fd1; border-radius: 4px; padding: 0 5px; font-weight: 700; }
+mark { padding: 0 2px; border-radius: 2px; color: inherit; }
+mark.y { background: #fff07a; } mark.g { background: #9ee6a0; } mark.p { background: #f9b6cf; }
+.eq { background: #eef7ee; border-left: 4px solid #3fae49; padding: 4px 10px; margin: 5px 0; font-weight: 700; line-height: 1.9; }
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: .92em; line-height: 1.15; margin: 0 2px; }
+.fr > span:first-child { border-bottom: 1px solid currentColor; padding: 0 2px; }
+table.t { border-collapse: collapse; width: 100%; margin: 4px 0; font-size: 12.5px; }
+table.t th { background: #e3ebf7; text-align: left; padding: 3px 6px; border: 1px solid #c9d5e8; }
+table.t td { padding: 3px 6px; border: 1px solid #d5ddea; vertical-align: middle; }
+.box { border-radius: 5px; padding: 5px 10px; margin: 6px 0; font-size: 12.5px; }
+.box.warn, .box.exam { background: #fde8ef; border-left: 4px solid #d6457a; }
+.box.tip { background: #e8f1fd; border-left: 4px solid #3d6fd1; }
+.box b { margin-right: 4px; }
+svg.gr { vertical-align: middle; }
+.grs { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+.grs figure { margin: 0; text-align: center; font-size: 11.5px; }
+footer { position: absolute; left: 10mm; right: 10mm; bottom: 4mm; border-top: 1px solid #c9d0db; padding-top: 3px; display: flex; justify-content: space-between; font-size: 10.5px; color: #444; }
+footer .leg i { display: inline-block; width: 18px; height: 9px; margin: 0 3px 0 10px; vertical-align: middle; border-radius: 2px; }
+footer .leg i.y { background: #fff07a; } footer .leg i.g { background: #9ee6a0; } footer .leg i.p { background: #f9b6cf; } footer .leg i.a { background: #e2ecfb; border-bottom: 2px solid #3d6fd1; }
+.cover .top { height: auto; }
