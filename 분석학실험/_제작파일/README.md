@@ -18,3 +18,6 @@ NODE_PATH=$(npm root -g) node render.js "$PWD/../../실험1_뷰렛의 검정_요
 `실험1_실험노트_부착용표그래프_초안.pdf`(오려 붙일 Table I·II·Figure 1 + 노트 초안)와 `실험1_뷰렛의 검정_결과.xlsx`의 원본.
 - `make_pdf.py` → `note.html`, `render.js`로 PDF 출력 (그래프는 `../실험1_요약정리/svgs.py` 사용)
 - `make_xlsx.py 출력.xlsx` → 측정값(파란 글자)과 수식, 검정곡선 차트
+
+## 실험2_요약정리/
+`실험2_식초의 총산도 측정_요약정리.pdf`의 원본. 실험1_요약정리와 같은 구조(`c_summary.py` 내용, `img/`는 유인물에서 잘라 낸 KHP·페놀프탈레인 구조식).
