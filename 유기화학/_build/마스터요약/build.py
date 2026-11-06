@@ -402,6 +402,7 @@ def raw(i, e):
 
 pages = []
 PID = {}
+START = {}
 ORIG = []
 QPG = {}
 cn = qn = 0
@@ -424,7 +425,10 @@ for e in ENTRIES:
             qn += 1; pages.append(question(i, qn, e))
     else:
         pages.append(raw(i, e))
-    if not str(e.get("id", "")).startswith("f-mapx"):  # 새로 끼운 해설 쪽은 삼성노트 원래 쪽 번호에서 제외
+    START[id(e)] = i
+    if nxt_used is not None:
+        START[id(nxt_used)] = i
+    if not str(e.get("id", "")).startswith(("f-mapx", "f-cover")):  # 표지도 삼성노트 원래 쪽 번호에서 제외  # 새로 끼운 해설 쪽은 삼성노트 원래 쪽 번호에서 제외
         ORIG.extend(range(i, len(pages) + 1))
     if e["t"] == "q":
         for _q in ([e] + ([nxt_used] if nxt_used is not None else [])):
@@ -475,6 +479,30 @@ html = re.sub(r"\{QN:([^}]+)\}", lambda m: f"{PID[m.group(1)][1]:02d}", html)
 html = re.sub(r"\{CN:([^}]+)\}", lambda m: f"{PID[m.group(1)][1]:02d}", html)
 html = re.sub(r"\{PR:([^}]+)\}", lambda m: f"{PID[m.group(1)][0]}" + (f"–{PID[m.group(1)+'2'][0]}" if m.group(1)+'2' in PID else ""), html)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
+# 표지 목차 (21장 정리본 스타일)
+_rows = []; _lastp = None; _c = 0; _cnt = {"예제": 0, "본문": 0, "과제": 0, "변형": 0}
+_BG = {"예제": "w", "본문": "p", "과제": "h", "변형": "v"}
+for e in ENTRIES:
+    if e["t"] not in ("c", "q") or id(e) not in START:
+        continue
+    if e.get("part") != _lastp:
+        _lastp = e.get("part"); _rows.append(f'<div class="tr part">{_lastp}</div>')
+    if e["t"] == "c":
+        _c += 1
+        _rows.append(f'<div class="tr"><span class="bg c">개념</span><span class="nm">{_c:02d}</span><span class="ti">{e["title"]}</span><span class="pg">{START[id(e)]}</span></div>')
+        continue
+    src = e.get("src", ""); ti = e["title"]
+    mw = re.search(r"Worked Example (22\.\d+)", src); mp_ = re.search(r"Problem (22-\d+)", src); mh = re.search(r"과제 (22-\d+)", src)
+    if mw: bd, nm = "예제", mw.group(1)
+    elif mp_: bd, nm = "본문", mp_.group(1)
+    elif mh: bd, nm = "과제", mh.group(1)
+    else: bd, nm = "변형", f'Q{e["n"]:02d}'
+    _cnt[bd] += 1
+    ti = re.sub(r"^(Worked Example 22\.\d+|Problem 22-\d+) — ", "", ti)
+    mk = "🔥" if e.get("n") in TOPR else ""
+    _rows.append(f'<div class="tr"><span class="bg {_BG[bd]}">{bd}</span><span class="nm">{nm}</span><span class="ti">{mk}{ti}</span><span class="pg">{START[id(e)]}</span></div>')
+html = html.replace("{TOC}", "".join(_rows)).replace('class="toc"', f'class="toc" style="--rows:{(len(_rows) + 1) // 2}"', 1)
+html = html.replace("{TOCSTAT}", " · ".join(f"{k} {v}" for k, v in _cnt.items()))
 from themes import THEMES as _TH
 CSS = CSS + _TH[os.environ.get('THEME', 'mid21')]
 html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title><style>{CSS}</style></head><body>{html}</body></html>'
