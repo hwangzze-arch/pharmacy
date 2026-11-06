@@ -104,6 +104,43 @@ check = dict(t="r", id="f-check", html=f"""
 <div class="card tip"><div class="ct">📌 함께 볼 파일</div><b>CH22_번역본</b>: 슬라이드마다 번역 + 그림 옆 메커니즘 · <b>강의녹취록</b> · <b>단권화노트</b>(내 Q&amp;A)</div>
 </div></div>""")
 
+cover = dict(t="r", id="f-cover", cls="cv21", html="""
+<style>
+.page.cv21{padding:0;flex-direction:row;}
+.cv21 .lp{width:78mm;flex:none;height:100%;background:linear-gradient(170deg,#40c057 0%,#2b8a3e 38%,#1e5a3a 72%,#163a35 100%);color:#fff;padding:15mm 9mm 12mm 10mm;display:flex;flex-direction:column;}
+.cv21 .lp .k{letter-spacing:.32em;font-size:12px;font-weight:700;opacity:.92;}
+.cv21 .lp .big{display:flex;align-items:flex-end;gap:4px;margin-top:4mm;line-height:.9;}
+.cv21 .lp .big b{font-size:118px;font-weight:800;letter-spacing:-4px;}
+.cv21 .lp .big span{font-size:36px;font-weight:800;margin-bottom:12px;}
+.cv21 .lp h1{font-size:27px;line-height:1.3;margin:7mm 0 2px 0;font-weight:800;}
+.cv21 .lp .en{font-size:12px;opacity:.85;}
+.cv21 .lp .chips{margin-top:6mm;display:flex;flex-direction:column;gap:5px;font-size:11.5px;}
+.cv21 .lp .chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:3px 9px;}
+.cv21 .lp .stt{margin-top:auto;font-size:13px;line-height:1.75;}
+.cv21 .lp .stt b{font-size:20px;font-weight:800;}
+.cv21 .rp{flex:1;min-width:0;padding:11mm 11mm 12mm 9mm;display:flex;flex-direction:column;}
+.cv21 .rh{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #dfe5ee;padding-bottom:5px;}
+.cv21 .rh h2{margin:0;font-size:15px;color:#1d3557;}
+.cv21 .rh span{font-size:10.5px;color:#6b7686;}
+.cv21 .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:5px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows),1fr);}
+.cv21 .tr{display:flex;align-items:center;gap:7px;border-bottom:1px solid #eef1f5;font-size:11.3px;min-width:0;}
+.cv21 .tr .bg{flex:none;width:30px;text-align:center;border-radius:8px;font-size:9.5px;font-weight:700;color:#fff;padding:1px 0;}
+.cv21 .bg.c{background:#2b8a3e;} .cv21 .bg.h{background:#e8590c;} .cv21 .bg.w{background:#7048e8;} .cv21 .bg.p{background:#1d3557;} .cv21 .bg.v{background:#0b7285;}
+.cv21 .tr .nm{flex:none;width:44px;font-weight:700;color:#1d3557;}
+.cv21 .tr .ti{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2c3038;}
+.cv21 .tr .pg{flex:none;font-weight:700;color:#6b7686;width:24px;text-align:right;}
+.cv21 .tr.part{border-bottom:none;font-weight:700;color:#2b8a3e;font-size:10.5px;letter-spacing:.04em;}
+.cv21 .ft{left:auto;right:11mm;width:auto;border-top:none !important;}
+.cv21 .ft span:not(:last-child){display:none;}
+</style>
+<div class="lp"><div class="k">CHAPTER</div>
+<div class="big"><b>22</b><span>장</span></div>
+<h1>카르보닐<br>알파 치환 반응</h1><div class="en">Carbonyl Alpha-Substitution Reactions</div>
+<div class="chips"><span>엔올 · 산성 α-할로젠화 · HVZ</span><span>α-H 산성도 · 엔올레이트 · 할로폼</span><span>말론산 · 아세토아세트산 · LDA 알킬화</span></div>
+<div class="stt">개념 <b>{NC}</b> · 문제 <b>{NQ}</b><br>{TOCSTAT}<br>p.1–{TOTAL}</div></div>
+<div class="rp"><div class="rh"><h2>목차</h2><span>🔥 = 시험 직전 TOP 10 · 과제 = 강의자료 마지막 슬라이드</span></div>
+<div class="toc">{TOC}</div></div>""")
+
 MAPR = [RX(('m', 'CCC(C)=O', 70, 55), ('a', 'H⁺', '엔올화'), ('m', 'CC=C(C)O', 70, 55), ('a', 'Br₂', '1번, 붐비는 쪽'), ('m', 'CC(Br)C(C)=O', 75, 60), ('a', '피리딘, Δ', 'E2'), ('m', 'C=CC(C)=O', 70, 55), ('t', 'α,β-불포화 케톤')),
        RX(('m', 'CCC(=O)O', 70, 55), ('a', '1. Br₂, PBr₃', '2. H₂O (HVZ)'), ('m', 'CC(Br)C(=O)O', 80, 60), ('a', 'NH₃ (과량)', 'S<sub>N</sub>2'), ('m', 'CC(N)C(=O)O', 75, 60), ('t', 'α-아미노산 (알라닌)')),
        RX(('m', 'CCOC(=O)CC(=O)OCC', 100, 55), ('a', '1. NaOEt', '2. R–X'), ('m', 'CCOC(=O)C([*])C(=O)OCC', 100, 70), ('a', 'H₃O⁺, Δ', '−CO₂'), ('m', '[*]CC(=O)O', 70, 55), ('t', '말론산 → 산')),
@@ -130,4 +167,4 @@ mp = dict(t="r", id="f-map", html=f"""
 </div></div>""")
 
 from c01_mapx import mx1, mx2, mx3
-E = [mp, mx1, mx2, mx3]
+E = [cover, mp, mx1, mx2, mx3]
