@@ -195,6 +195,16 @@ tr.hl td{background:#ffe3e3;}
 .page.pair .bd2{background:#127a64;color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
 .page.pair .qbody{margin-top:4px;}
 .page.pair .work.sm{height:var(--wh,60px);}
+.gls{flex:none;margin-top:6px;background:#f3f8ff;border:1px dashed #a5c3e8;border-radius:8px;padding:4px 10px 3px 10px;font-size:.82em;line-height:1.45;}
+.gls .gt{display:inline-block;background:#1c5fa8;color:#fff;border-radius:6px;font-weight:700;font-size:.92em;padding:0 8px;margin-bottom:2px;}
+.gls .gg{display:grid;grid-template-columns:repeat(3,1fr);column-gap:14px;row-gap:1px;}
+.pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
+.gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
+.pbx .gls{background:#fff;}
+.glref{position:absolute;right:12mm;bottom:9.4mm;font-size:9.5px;font-weight:700;color:#1c5fa8;background:#e7f1ff;border:1px solid #a5c3e8;border-radius:9px;padding:0 8px;line-height:15px;}
+.glp .gd{columns:3;column-gap:16px;margin-top:6px;font-size:.86em;line-height:1.45;}
+.glp .gd h3{font-size:1.05em;color:#1c5fa8;margin:2px 0 3px 0;break-after:avoid;}
+.glp .gd p{margin:0 0 3px 0;break-inside:avoid;border-left:2px solid #c5d8f0;padding-left:6px;} .glp .gd b{color:#0f3f8c;}
 """ + CSS_EXTRA
 
 def foot(i):
@@ -221,6 +231,23 @@ def side_html(items, flags=()):
             out.append(it[1])
     return "".join(out)
 
+# 📚 용어 풀이 — 쪽 글에 나오는 용어를 나온 순서대로 (gloss23.py)
+import re as _re
+from gloss22 import G as _G
+def gl(html, n):
+    txt = _re.sub(r"<img[^>]*>", " ", html)
+    txt = _re.sub(r"<(?!sub|/sub)[^>]+>", " ", txt)
+    hits = []
+    for name, d, pat, *_ in _G:
+        m = _re.search(pat, txt)
+        if m:
+            hits.append((m.start(), name, d))
+    hits.sort()
+    if not hits:
+        return ""
+    items = "".join(f'<span class="gi"><b>{nm}</b> {d}</span>' for _, nm, d in hits[:n])
+    return f'<!--GL--><div class="gls"><span class="gt">📚 용어 풀이</span><div class="gg">{items}</div></div><!--/GL-->'
+
 def concept(i, n, e):
     main = []
     if e.get("detail"):
@@ -244,6 +271,7 @@ def concept(i, n, e):
     return f'''<section class="page">
 {_hd21(f"{n:02d}", e["title"], e.get("sub",""), [e["part"]], "개념")}
 <div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
+{gl(e["title"] + e["core"] + e.get("detail", "") + e.get("example", "") + "".join(str(x[1]) for x in e.get("side", []) if x[0] != "img") + e.get("rec", "") + e.get("my", "") + e["one"], e.get("gln", 9))}
 <div class="body">{body}</div>
 {nr}
 {f'<div class="mband"><span class="mbl">⚗️ 메커니즘 (곡선 화살표)</span><div class="mz">{e["mech"]}</div></div>' if e.get("mech") else ""}
@@ -306,7 +334,7 @@ def _qv(e, n, mini=False):
     exp = f'<div class="xsec">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
     fig = (f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else "") + e.get("extra", "")
     _tr = TOPR.get(e.get("n"))
-    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
+    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div>{gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 4 if mini else 6)}</div>'
     _nt = _NOTE.get(e.get("n"))
     if _nt and _nt[0] == "memo":
         memo = f'<div class="memo hasn"><div class="mnote"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_nt[1]}</div></div>'
@@ -366,7 +394,7 @@ def notepage(i, e):
     n = e["n"]
     return f'''<section class="page v21 npage n{n}">
 {_hd21(f"{n:02d}", e["title"] + " — 문제 + 내 필기", "문제를 보면서 삼성노트 텍스트상자 필기 읽기", [e["part"]], top=tb(e.get("n")))}
-{_qv(e, n)[0]}
+{_re.sub(r"<!--GL-->.*?<!--/GL-->", "", _qv(e, n)[0], flags=_re.S)}
 <div class="nbox"><div class="mnote big"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_NOTE[n][1]}</div></div>
 {foot(i)}</section>'''
 
@@ -454,7 +482,20 @@ if os.environ.get("ED") != "core":
         if os.path.exists(os.path.join(D, "ov", f"{j:02d}.png")):
             pg = pages[idx - 1]; cut = pg.rfind("</section>")
             pages[idx - 1] = pg[:cut] + f'<img class="ovl" src="ov/{j:02d}.png">' + pg[cut:]
-html = "".join(pages).replace("{TOTAL}", str(len(pages)))
+    # 삼성노트 표시가 있는 쪽은 배치가 바뀌면 표시가 어긋나므로 용어 칸을 빼고, 맨 뒤 용어 사전 쪽을 가리킴
+    for j, idx in enumerate(ORIG, 1):
+        if os.path.exists(os.path.join(D, "ov", f"{j:02d}.png")) and "<!--GL-->" in pages[idx - 1]:
+            pg = re.sub(r"<!--GL-->.*?<!--/GL-->", "", pages[idx - 1], flags=re.S)
+            cut = pg.rfind("</section>")
+            pages[idx - 1] = pg[:cut] + '<span class="glref">📚 이 쪽 용어 풀이 → 용어 사전 p.{GLP}</span>' + pg[cut:]
+    _GLP = len(pages) + 1
+    from gloss22 import G as _GD
+    _cats = []
+    for g in _GD:
+        if g[3] not in _cats: _cats.append(g[3])
+    _gd = "".join(f'<h3>{c}</h3>' + "".join(f'<p><b>{g[0]}</b> {g[1]}</p>' for g in _GD if g[3] == c) for c in _cats)
+    pages.append(f'''<section class="page glp"><div class="h21"><div class="b21"><span>부록</span><b>📚</b></div><div class="tt"><h1>22장 용어 사전</h1><div class="sb">각 쪽 「📚 용어 풀이」에 나오는 용어 전부 · 삼성노트 표시가 있는 쪽은 배치를 지키려고 여기로 모음</div></div></div><div class="gd">{_gd}</div>{foot(_GLP)}</section>''')
+html = "".join(pages).replace("{TOTAL}", str(len(pages))).replace("{GLP}", str(_GLP))
 html = re.sub(r"\{QP:(\d+)\}", lambda m: str(QPG[int(m.group(1))]), html)
 for pk, r in rng.items():
     s = f'p.{r["p"][0]}–{r["p"][1]} · 개념 {min(r["c"]):02d}–{max(r["c"]):02d} · 문제 {min(r["q"]):02d}–{max(r["q"]):02d}' if r["c"] and r["q"] else f'p.{r["p"][0]}–{r["p"][1]}'
