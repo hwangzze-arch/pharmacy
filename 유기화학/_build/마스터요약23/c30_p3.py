@@ -10,7 +10,7 @@ ENAM = RX(('m', 'O=C1CCCCC1', 55, 50), ('a', '피롤리딘', '−H₂O'), ('m', 
 
 E = [
 # ── 개념 10
-dict(t="c", id="c-michael", part=P, flags=["core"], title="마이클 반응 — β 탄소에 1,4-첨가", sub="Conjugate carbonyl addition: the Michael reaction · 슬라이드 32–35",
+dict(t="c", id="c-michael", gln=6, part=P, flags=["core"], title="마이클 반응 — β 탄소에 1,4-첨가", sub="Conjugate carbonyl addition: the Michael reaction · 슬라이드 32–35",
 core="안정한 엔올레이트(<b>마이클 주개</b>)가 α,β-불포화 카르보닐(<b>마이클 받개</b>)의 C=O가 아니라 <b>β 탄소</b>를 공격 (1,4-첨가) → <b>1,5-다이카르보닐</b>.",
 detail="""<ul><li>α,β-불포화 카르보닐의 친전자 자리 두 곳: C=O 탄소(1,2-첨가) / C=C 끝 β 탄소(<b>1,4-콘쥬게이트 첨가</b>). 공명 C=C–C=O ↔ ⁺C–C=C–O⁻ 로 β가 δ⁺.</li>
 <li>최적: <b>안정한 엔올레이트</b>(β-케토 에스터, β-다이케톤, 말론산 다이에틸) + <b>덜 붐비는</b> 받개. 에틸 아세토아세테이트 + 3-뷰텐-2-온 → 94 %.</li>
