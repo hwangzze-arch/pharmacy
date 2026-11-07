@@ -163,6 +163,12 @@ tr.hl td{background:#ffe3e3;}
 .page.pair .bd2{background:#127a64;color:#fff;border-radius:6px;font-size:.82em;padding:1px 8px;margin-right:4px;}
 .page.pair .qbody{margin-top:4px;}
 .page.pair .work.sm{height:var(--wh,60px);}
+.gls{flex:none;margin-top:6px;background:#f3f8ff;border:1px dashed #a5c3e8;border-radius:8px;padding:4px 10px 3px 10px;font-size:.82em;line-height:1.45;}
+.gls .gt{display:inline-block;background:#1c5fa8;color:#fff;border-radius:6px;font-weight:700;font-size:.92em;padding:0 8px;margin-bottom:2px;}
+.gls .gg{display:grid;grid-template-columns:repeat(3,1fr);column-gap:14px;row-gap:1px;}
+.pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
+.gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
+.pbx .gls{background:#fff;}
 """ + CSS_EXTRA
 
 def foot(i):
@@ -189,6 +195,24 @@ def side_html(items, flags=()):
             out.append(it[1])
     return "".join(out)
 
+
+# 📚 용어 풀이 — 쪽 글에 나오는 용어를 나온 순서대로 (gloss23.py)
+import re as _re
+from gloss23 import G as _G
+def gl(html, n):
+    txt = _re.sub(r"<img[^>]*>", " ", html)
+    txt = _re.sub(r"<(?!sub|/sub)[^>]+>", " ", txt)
+    hits = []
+    for name, d, pat in _G:
+        m = _re.search(pat, txt)
+        if m:
+            hits.append((m.start(), name, d))
+    hits.sort()
+    if not hits:
+        return ""
+    items = "".join(f'<span class="gi"><b>{nm}</b> {d}</span>' for _, nm, d in hits[:n])
+    return f'<div class="gls"><span class="gt">📚 용어 풀이</span><div class="gg">{items}</div></div>'
+
 def concept(i, n, e):
     main = []
     if e.get("detail"):
@@ -212,6 +236,7 @@ def concept(i, n, e):
     return f'''<section class="page">
 {_hd21(f"{n:02d}", e["title"], e.get("sub",""), [e["part"]], "개념")}
 <div class="core"><span class="lb">💡 핵심 개념</span>{core}</div>
+{gl(e["title"] + e["core"] + e.get("detail", "") + e.get("example", "") + "".join(str(x[1]) for x in e.get("side", []) if x[0] != "img") + e.get("rec", "") + e["one"], e.get("gln", 9))}
 <div class="body">{body}</div>
 {nr}
 {f'<div class="mband"><span class="mbl">⚗️ 메커니즘 (곡선 화살표)</span><div class="mz">{e["mech"]}</div></div>' if e.get("mech") else ""}
@@ -274,7 +299,7 @@ def _qv(e, n, mini=False):
     exp = f'<div class="xsec">📝 풀이</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
     fig = (f'<div class="afig"><div class="mz">{e["afig"]}</div></div>' if e.get("afig") else "") + e.get("extra", "")
     _tr = TOPR.get(e.get("n"))
-    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div></div>'
+    prob = f'<div class="pbx{" top g" + str(_tr[1]) if _tr else ""}"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}{src}<div class="qtext">{e["q"]}</div>{gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 4 if mini else 6)}</div>'
     _nt = _NOTE.get(e.get("n"))
     if _nt and _nt[0] == "memo":
         memo = f'<div class="memo hasn"><div class="mnote"><div class="mnt">✍ 내 필기 (삼성노트)</div>{_nt[1]}</div></div>'
