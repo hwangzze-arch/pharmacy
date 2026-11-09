@@ -7,7 +7,7 @@ CH = int(sys.argv[1]) if len(sys.argv) > 1 else 9
 mod = importlib.import_module(f'ch{CH}')
 PAGES = mod.PAGES
 TOTAL = len(PAGES)
-FOOT = f"인체생리학 · 제{CH}장 {mod.NAME} — 슬라이드별 번역·설명"
+FOOT = f"인체생리학 · 제{getattr(mod, 'CHLABEL', CH)}장 {mod.NAME} — 슬라이드별 번역·설명"
 
 CSS = """
 @page { size: 297mm 210mm; margin: 0; }
@@ -80,7 +80,7 @@ def page_html(i, p):
 <footer><div class="l">{FOOT}</div><div class="m">형광펜 <span><span class="sw" style="background:#fff07a"></span>핵심 개념</span><span><span class="sw" style="background:#a6eb8e"></span>공식·정의·결론</span><span><span class="sw" style="background:#ffc4e3"></span>시험 포인트 / Q&amp;A</span></div><div class="r">{i} / {TOTAL}</div></footer>
 </section>'''
 
-html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>인체생리학 제{CH}장 번역·설명</title><style>{CSS}</style></head><body>
+html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>인체생리학 제{getattr(mod, 'CHLABEL', CH)}장 번역·설명</title><style>{CSS}</style></head><body>
 {"".join(page_html(i+1, p) for i, p in enumerate(PAGES))}
 </body></html>'''
 open(os.path.join(D, "index.html"), "w").write(html)
