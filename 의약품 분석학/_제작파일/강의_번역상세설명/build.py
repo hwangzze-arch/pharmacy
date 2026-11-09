@@ -1,12 +1,13 @@
-import os, sys, importlib
+import os, re, sys, importlib
 sys.path.insert(0, os.path.dirname(__file__))
-from content1 import PAGES as P1
-from content2 import PAGES as P2
-from content3 import PAGES as P3
-
-PAGES = P1 + P2 + P3
+# 사용: python3 build.py [l5|l6]  (기본 l5)
+LECTURES = {
+    "l5": (["content1", "content2", "content3"], "Lecture 5 질량분석법", "의약품분석학 II · Lecture 5 (질량분석법) — 슬라이드별 번역·설명"),
+    "l6": (["l6_content1", "l6_content2", "l6_content3"], "Lecture 6 크로마토그래피", "의약품분석학 II · Lecture 6 (크로마토그래피의 기초원리) — 슬라이드별 번역·설명"),
+}
+mods, DOCTITLE, FOOT = LECTURES[sys.argv[1] if len(sys.argv) > 1 else "l5"]
+PAGES = sum((importlib.import_module(m).PAGES for m in mods), [])
 TOTAL = len(PAGES)
-FOOT = "의약품분석학 II · Lecture 5 (질량분석법) — 슬라이드별 번역·설명"
 
 CSS = """
 @page { size: 297mm 210mm; margin: 0; }
@@ -63,7 +64,12 @@ footer .r{flex:none;width:80px;text-align:right;}
 .page{padding-bottom:15mm;}
 """
 
+def subs(t):
+    # 머리글 칸의 x_y 표기를 아래첨자로 (예: t_r → t<sub>r</sub>)
+    return re.sub(r"_([A-Za-z0-9½]+)", r"<sub>\1</sub>", t)
+
 def page_html(i, p):
+    p = dict(p, title=subs(p["title"]), sub=subs(p["sub"]), sum=subs(p["sum"]), kw=[subs(k) for k in p["kw"]])
     chips = "".join(f'<span class="chip">{k}</span>' for k in p["kw"])
     src = p.get("src") or f'원본 슬라이드 {p["slide"]}'
     lab2 = p.get("tr_label", "한글 번역")
@@ -79,7 +85,7 @@ def page_html(i, p):
 <footer><div class="l">{FOOT}</div><div class="m">형광펜 <span><span class="sw" style="background:#fff07a"></span>핵심 개념</span><span><span class="sw" style="background:#a6eb8e"></span>공식·정의·결론</span><span><span class="sw" style="background:#ffc4e3"></span>시험 포인트 / Q&amp;A</span></div><div class="r">{i} / {TOTAL}</div></footer>
 </section>'''
 
-html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Lecture 5 질량분석법 번역·설명</title><style>{CSS}</style></head><body>
+html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet"><title>{DOCTITLE} 번역·설명</title><style>{CSS}</style></head><body>
 {"".join(page_html(i+1, p) for i, p in enumerate(PAGES))}
 </body></html>'''
 open(os.path.join(os.path.dirname(__file__), "index.html"), "w").write(html)
