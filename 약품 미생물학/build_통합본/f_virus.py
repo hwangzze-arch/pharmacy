@@ -373,9 +373,11 @@ SET("세트 6 · HBV · 간염 · 종합",
 
 # ============================================================ 렌더링
 def render_sets():
-    # 실전 세트 시험지 (답 없음)
-    SEC("실전 세트 문제", "실전 세트 문제 (보기 11개 · 개수 지정, 답 없음)")
+    # 세트별: 문제 페이지 → 바로 뒤에 해설 페이지
+    from core import exp_html
+    SEC("실전 세트 (문제+해설)", "실전 세트 — 문제와 해설 (보기 11개 · 개수 지정)")
     for si, s in enumerate(SETS, 1):
+        # 문제 페이지
         boxli = "".join(f'<li><span class="mk">{CIR[k]}</span><span>{t}</span></li>' for k, t in enumerate(s["box"]))
         cols = "c3" if s["cols"] == 3 else ""
         items = ""
@@ -387,11 +389,7 @@ def render_sets():
 <h2>{s["title"]}</h2><div class="ssub">보기에서 지정 개수만큼 고르시오</div></header>
 <div class="sbody"><div class="setbox {cols}"><div class="bt">[보기] 아래 ①~{CIR[len(s["box"])-1]} 중에서 고르시오</div><ul>{boxli}</ul></div>
 <div class="setqs">{items}</div></div></section>''')
-
-    # 세트 해설
-    SEC("세트 해설", "세트 문제 정답·해설")
-    from core import exp_html
-    for si, s in enumerate(SETS, 1):
+        # 해설 페이지 (같은 세트, 바로 뒤)
         ans_items = ""
         for qi, q in enumerate(s["qs"], 1):
             av = " ".join(CIR[a] for a in q["ans"])
@@ -399,7 +397,8 @@ def render_sets():
                           f'<span class="av">{av}</span><span class="apick">{q["n"]}개</span></div>'
                           f'<div class="aexp">{exp_html(q["exp"])}</div></div>')
         RAW(f'''<section class="page spage vr"><header class="shead"><div class="kicker">세트 {si} 해설</div>
-<h2>{s["title"]}</h2></header><div class="sbody anspage"><div class="ansgrid">{ans_items}</div></div></section>''')
+<h2>{s["title"]}</h2><div class="ssub">앞 문제의 정답·해설</div></header>
+<div class="sbody anspage"><div class="ansgrid">{ans_items}</div></div></section>''')
 
 
 render_sets()
@@ -427,9 +426,10 @@ def build_cover():
                  ("s", "요약 4 RSV·리바비린"), ("s", "요약 5 랍도·번야"), ("s", "요약 6 인플루엔자 구조·8분절"),
                  ("s", "요약 7 변이·팬데믹·백신"), ("s", "요약 8 항바이러스제 6종"), ("s", "요약 9 레트로·HTLV"),
                  ("s", "요약 10 HIV"), ("s", "요약 11 HBV·간염"),
-                 ("p", "세트 1 파라믹소"), ("p", "세트 2 랍도·번야·소체"), ("p", "세트 3 인플루엔자 구조"),
-                 ("p", "세트 4 인플루엔자 약물"), ("p", "세트 5 레트로·HIV"), ("p", "세트 6 HBV·간염"),
-                 ("v", "세트 해설 (6세트)"), ("c", "종합 비교표")]
+                 ("p", "세트 1 파라믹소 (문제+해설)"), ("p", "세트 2 랍도·번야·소체 (문제+해설)"),
+                 ("p", "세트 3 인플루엔자 구조 (문제+해설)"), ("p", "세트 4 인플루엔자 약물 (문제+해설)"),
+                 ("p", "세트 5 레트로·HIV (문제+해설)"), ("p", "세트 6 HBV·간염 (문제+해설)"),
+                 ("c", "종합 비교표")]
     items = ""
     blab = {"s": "요약", "p": "세트", "v": "해설", "c": "표"}
     rows = (len(toc_items) + 1) // 2
