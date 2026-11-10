@@ -270,6 +270,29 @@ def ref(m):
 html = re.sub(r"\{REF:([^}]+)\}", ref, html)
 html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(ids[m.group(1)][0]), html)
 ntb = sum(1 for e in ENTRIES if "tb" in e.get("kind", []))
+# 표지 목차 (유기화학 CH22 마스터요약 스타일)
+FRONT = [("f-guide", "시험 형식 · 이 노트 쓰는 법"), ("f-lec", "🎤 교수님 강조 체크리스트 (수업 1–5)"), ("f-story", "스토리 — 숨 쉬는 순간부터 샐러드까지"),
+         ("f-map", "한 장으로 보는 큰 그림"), ("f-zoom1", "확대 그림 — 세포 → 미토·엽록체 → 막"), ("f-blank1", "백지 복습 — 빈칸 그림 2장")]
+_rows = ['<div class="tr part">읽기 전에</div>']
+_rows += [f'<div class="tr"><span class="bg g">안내</span><span class="nm">00</span><span class="ti">{t}</span><span class="pg">{ids[i][0]}</span></div>' for i, t in FRONT]
+_c = 0; _last = None
+for k, e in enumerate(ENTRIES):
+    if e["t"] not in "cq": continue
+    pk = e.get("part")
+    if pk != _last:
+        _last = pk; _rows.append(f'<div class="tr part">{pk}</div>')
+        qs = [(j, x) for j, x in enumerate(ENTRIES) if x.get("part") == pk and x["t"] == "q"]
+        _qrow = (qs[0][0] + 1, len(qs), sum(1 for _, x in qs if "tb" in x.get("kind", [])))
+    if e["t"] == "c":
+        _c += 1
+        t = re.sub(r"<[^>]+>", "", e["title"])
+        _rows.append(f'<div class="tr"><span class="bg c">개념</span><span class="nm">{_c:02d}</span><span class="ti">{t}</span><span class="pg">{k + 1}</span></div>')
+    elif k + 1 == _qrow[0]:
+        p0, nq_, nt_ = _qrow
+        _rows.append(f'<div class="tr"><span class="bg q">문제</span><span class="nm">{nq_}개</span><span class="ti">개념확인 {nq_ - nt_} · 교수님 TB {nt_}</span><span class="pg">{p0}</span></div>')
+_rows.append('<div class="tr part">FINAL</div>')
+_rows.append(f'<div class="tr"><span class="bg f">정리</span><span class="nm">✓</span><span class="ti">혼동 쌍 · 숫자 카드 · 약어 총정리</span><span class="pg">{ids["f-pairs"][0]}</span></div>')
+html = html.replace("{TOC}", "".join(_rows)).replace('class="toc"', f'class="toc" style="--rows:{(len(_rows) + 1) // 2}"', 1)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn)).replace("{NTB}", str(ntb)).replace("{NMY}", str(qn - ntb))
 html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Chap19_20 시험대비 요약노트(TB추가)</title><style>{CSS}</style></head><body>{html}</body></html>'
 open(os.path.join(D, "index.html"), "w").write(html)

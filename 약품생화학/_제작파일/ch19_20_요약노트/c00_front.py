@@ -1,73 +1,44 @@
 from parts import *
 
-cover = dict(t="r", cls="cover2", html=f"""
+cover = dict(t="r", id="f-cover", cls="cvx", html="""
 <style>
-.cover2{{background:radial-gradient(ellipse at 0% 0%,#ffe1cf 0%,rgba(255,225,207,0) 45%),radial-gradient(ellipse at 100% 0%,#d9f0e4 0%,rgba(217,240,228,0) 50%),radial-gradient(ellipse at 100% 100%,#dfe6ff 0%,rgba(223,230,255,0) 50%),radial-gradient(ellipse at 40% 60%,#f3ecff 0%,rgba(243,236,255,0) 60%),#f6f3ee !important;}}
-.cv-k{{letter-spacing:.3em;font-size:11px;font-weight:700;color:#b0603a;margin-top:6mm;}}
-.cv-h{{font-size:38px;line-height:1.2;font-weight:800;margin:10px 0 12px 0;background:linear-gradient(120deg,#c2410c,#127a64);-webkit-background-clip:text;background-clip:text;color:transparent;}}
-.cv-flow{{font-size:15px;color:#2c3038;margin-bottom:12px;}}
-.cv-chips{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}}
-.cv-chip{{background:#fff;border:1px solid #eadfd3;border-radius:16px;padding:4px 13px;font-size:11.5px;font-weight:700;color:#2c3038;box-shadow:0 1px 3px rgba(120,80,40,.08);}}
-.cv-txt{{font-size:12.2px;line-height:1.75;color:#3a3f4b;}}
-.cv-txt .r{{color:#c2410c;font-weight:700;}}
-.cv-toc{{position:absolute;right:13mm;top:12mm;width:108mm;background:rgba(255,255,255,.85);border:1px solid #ece4da;border-radius:14px;padding:12px 18px 8px 18px;box-shadow:0 4px 18px rgba(120,80,40,.12);}}
-.cv-toc .t{{letter-spacing:.25em;font-size:10px;font-weight:700;color:#b0603a;margin-bottom:4px;}}
-.cv-toc .row{{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #f1ebe3;padding:5px 0;font-size:11.6px;}}
-.cv-toc .row:last-child{{border-bottom:none;}}
-.cv-toc .n{{width:20px;color:#c08a6a;font-weight:700;}}
-.cv-toc .nm{{flex:1;font-weight:700;color:#2c3038;}} .cv-toc .nm span{{font-weight:400;color:#8b8fa0;font-size:.9em;margin-left:4px;}}
-.cv-toc .pg{{color:#8b8fa0;}}
-.cv-left{{width:160mm;}}
-.cv-stats{{display:flex;gap:9px;margin-top:20px;}}
-.cv-st{{background:rgba(255,255,255,.78);border:1px solid #ece4da;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex:1;box-shadow:0 2px 8px rgba(120,80,40,.07);}}
-.cv-st b{{font-size:24px;font-weight:800;color:#c2410c;border-top:1px solid #e3b79c;padding-top:2px;line-height:1.2;}}
-.cv-st span{{font-size:10.5px;color:#5c6170;line-height:1.45;}}
-.cv-parts{{position:absolute;left:13mm;right:13mm;bottom:14mm;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}}
-.cv-p{{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid #4651c8;padding:8px 12px;box-shadow:0 2px 8px rgba(120,80,40,.08);}}
-.cv-p .a{{font-weight:800;font-size:13px;color:#23263a;}} .cv-p .b{{font-size:10.5px;color:#5c6170;margin-top:2px;line-height:1.5;}}
-.cv-src{{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#9a9486;}}
-.cover2 .ft{{display:none;}}
-.cv-big{{position:absolute;right:13mm;top:136mm;width:108mm;display:flex;align-items:baseline;justify-content:center;gap:4px;white-space:nowrap;background:rgba(255,255,255,.88);border:2px solid #c2410c;border-radius:16px;padding:0 14px 4px 14px;box-shadow:0 4px 18px rgba(120,80,40,.15);}}
-.cv-big b{{white-space:nowrap;font-size:100px;line-height:1.05;font-weight:900;color:#c2410c;letter-spacing:-2px;}}
-.cv-big span{{white-space:nowrap;font-size:34px;font-weight:900;color:#c2410c;}}
-.cv-big small{{font-size:13px;color:#6c7280;font-weight:700;margin-left:8px;}}
+.page.cvx{padding:0;flex-direction:row;background:#fbf9f4;}
+.cvx .lp{width:92mm;flex:none;height:100%;background:linear-gradient(170deg,#6672e6 0%,#4651c8 34%,#2c3a9a 66%,#123f5a 100%);color:#fff;padding:14mm 8mm 12mm 10mm;display:flex;flex-direction:column;}
+.cvx .lp .s{font-size:12px;font-weight:700;opacity:.9;letter-spacing:.06em;}
+.cvx .lp .k{letter-spacing:.32em;font-size:12px;font-weight:700;opacity:.92;margin-top:5mm;}
+.cvx .lp .big{display:flex;align-items:flex-end;gap:3px;margin-top:3mm;line-height:.9;white-space:nowrap;}
+.cvx .lp .big b{font-size:94px;font-weight:800;letter-spacing:-4px;}
+.cvx .lp .big span{font-size:34px;font-weight:800;margin-bottom:9px;}
+.cvx .lp h1{font-size:26px;line-height:1.3;margin:7mm 0 3px 0;font-weight:800;}
+.cvx .lp .en{font-size:11.5px;opacity:.85;line-height:1.45;}
+.cvx .lp .pill{display:inline-block;margin-top:4mm;background:#fff;color:#2c3a9a;border-radius:14px;padding:3px 12px;font-size:12px;font-weight:800;align-self:flex-start;}
+.cvx .lp .chips{margin-top:5mm;display:flex;flex-direction:column;gap:5px;font-size:11px;}
+.cvx .lp .chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:3px 9px;}
+.cvx .lp .stt{margin-top:auto;font-size:12.5px;line-height:1.75;}
+.cvx .lp .stt b{font-size:19px;font-weight:800;}
+.cvx .rp{flex:1;min-width:0;padding:10mm 11mm 11mm 9mm;display:flex;flex-direction:column;}
+.cvx .rh{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #dfe5ee;padding-bottom:5px;}
+.cvx .rh h2{margin:0;font-size:15px;color:#1d3557;}
+.cvx .rh span{font-size:10.5px;color:#6b7686;}
+.cvx .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:5px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows),1fr);}
+.cvx .tr{display:flex;align-items:center;gap:7px;border-bottom:1px solid #eef1f5;font-size:11px;min-width:0;line-height:1.3;}
+.cvx .tr .bg{flex:none;width:30px;text-align:center;border-radius:8px;font-size:9.5px;font-weight:700;color:#fff;padding:1px 0;}
+.cvx .bg.g{background:#8b8fa0;} .cvx .bg.c{background:#4651c8;} .cvx .bg.q{background:#127a64;} .cvx .bg.f{background:#e8590c;}
+.cvx .tr .nm{flex:none;width:40px;font-weight:700;color:#1d3557;}
+.cvx .tr .ti{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2c3038;}
+.cvx .tr .pg{flex:none;font-weight:700;color:#6b7686;width:26px;text-align:right;}
+.cvx .tr.part{border-bottom:none;font-weight:700;color:#4651c8;font-size:10.5px;letter-spacing:.03em;}
+.cvx .ft{left:auto;right:11mm;width:auto;border-top:none !important;}
+.cvx .ft span:not(:last-child){display:none;}
 </style>
-<div class="cv-left"><div class="cv-k">LEHNINGER · PHARMACEUTICAL BIOCHEMISTRY · 기말 대비 노트</div>
-<div class="cv-h">약품생화학<br>Chap 19–20 시험대비<br>요약노트 (TB추가)</div>
-<div class="cv-flow">전자전달 → ATP 합성 → 조절·ROS → 미토콘드리아의 다른 얼굴 → 광합성 명반응 → 캘빈 회로</div>
-<div class="cv-chips"><span class="cv-chip">개념 요약 {{NC}}</span><span class="cv-chip">교수님 테스트뱅크 {{NTB}}문제</span><span class="cv-chip">개념확인 {{NMY}}</span><span class="cv-chip">다답형 · 빈칸 · O/X 연습</span><span class="cv-chip">📍 몸속 위치 표시</span><span class="cv-chip">🎤 수업 녹취 1–5 반영</span><span class="cv-chip">약어 총정리</span></div>
-<div class="cv-txt"><span class="r">범위 = 강의자료 Chap19_20_note (134쪽)</span> · Lehninger 19장(산화적 인산화·광인산화) + 20.1(광합성 탄수화물 합성).<br>
-2026 중간고사 형식: <b>객관식 50</b>(하나 고르기 + <b>맞는 것 모두 고르기</b>) + <b>빈칸 3</b> → 보기 하나하나 O/X로 따지는 연습이 핵심.<br>
-각 개념은 <b>💡 핵심 → 📖 설명 → 📐 공식 → ✍️ 예제 → 🧠 한 줄</b>, 바로 뒤에 그 개념의 문제(왼쪽 문제·풀이칸, 오른쪽 정답·해설).<br>
-개념마다 <b>📍 몸속 어디?</b>(13–18장 스토리 마인드맵에 이어서)를 달았어. PART마다 <b>개념 요약 → 개념확인 → 교수님 기출(테스트뱅크)</b> 순서. 테스트뱅크 정답이 의심스러운 곳은 ⚠️로 표시했어.</div>
-<div class="cv-stats">
-<div class="cv-st"><b>134</b><span>강의 슬라이드<br>Chap 19–20</span></div>
-<div class="cv-st"><b>{{NTB}}</b><span>테스트뱅크<br>ch19 76 · ch20 21</span></div>
-<div class="cv-st"><b>{{NQ}}</b><span>전체 문제<br>1문제 = 1쪽</span></div>
-<div class="cv-st"><b>30/32</b><span>포도당 1개의<br>ATP (꼭 기억!)</span></div></div></div>
-<div class="cv-big"><span>Ch.</span><b>19–20</b><span>장</span></div>
-<div class="cv-toc"><div class="t">CONTENTS</div>
-<div class="row"><span class="n">00</span><span class="nm">시험 형식 · 이 노트 쓰는 법<span>Guide</span></span><span class="pg">{{PAGE:f-guide}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">🎤 교수님 강조 체크리스트<span>Lecture 1–5</span></span><span class="pg">{{PAGE:f-lec}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">한 장으로 보는 큰 그림<span>Big map</span></span><span class="pg">{{PAGE:f-map}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">확대 그림 — 세포 → 미토·엽록체 → 막<span>Zoom in</span></span><span class="pg">{{PAGE:f-zoom1}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">백지 복습 — 빈칸 그림 2장<span>Draw it yourself</span></span><span class="pg">{{PAGE:f-blank1}}</span></div>
-<div class="row"><span class="n">01</span><span class="nm">19.1 전자전달 사슬<span>Respiratory chain</span></span><span class="pg">{{S:{P1}}}</span></div>
-<div class="row"><span class="n">02</span><span class="nm">19.2 ATP 합성<span>ATP synthase</span></span><span class="pg">{{S:{P2}}}</span></div>
-<div class="row"><span class="n">03</span><span class="nm">19.3 조절 · 활성산소<span>Regulation · ROS</span></span><span class="pg">{{S:{P3}}}</span></div>
-<div class="row"><span class="n">04</span><span class="nm">19.4–19.5 미토콘드리아의 다른 얼굴<span>Heat · P-450 · apoptosis · mtDNA</span></span><span class="pg">{{S:{P4}}}</span></div>
-<div class="row"><span class="n">05</span><span class="nm">광합성 명반응<span>Photophosphorylation</span></span><span class="pg">{{S:{P5}}}</span></div>
-<div class="row"><span class="n">06</span><span class="nm">20.1 캘빈 회로<span>Carbon assimilation</span></span><span class="pg">{{S:{P6}}}</span></div>
-<div class="row"><span class="n">✓</span><span class="nm">혼동 쌍 · 숫자 카드 · 약어 총정리<span>Final review</span></span><span class="pg">{{PAGE:f-pairs}}</span></div></div>
-<div class="cv-parts">
-<div class="cv-p" style="border-top-color:#4651c8"><div class="a">PART 1–2 호흡사슬 · ATP 합성</div><div class="b">Complex I–IV · Q 회로 · 양성자 구동력 · F₀F₁ 회전 촉매 · P/O</div></div>
-<div class="cv-p" style="border-top-color:#12937a"><div class="a">PART 3–4 조절 · 미토콘드리아</div><div class="b">수용체 조절 · IF₁ · ROS · 갈색지방 · P-450 · 세포자멸사 · mtDNA</div></div>
-<div class="cv-p" style="border-top-color:#c2410c"><div class="a">PART 5–6 광합성</div><div class="b">엽록소 · PSII/PSI · Z 도식 · 광인산화 · 캘빈 회로 · 루비스코</div></div>
-<div class="cv-p" style="border-top-color:#f0a020"><div class="a">FINAL</div><div class="b">혼동 쌍 · 숫자 카드 · 약어 총정리</div></div></div>
-<div class="cv-src">Chap19_20_note 강의자료 · 쉬운 설명 · 교수님 테스트뱅크(lehninger6e_tb_ch19·20) · 생화학_13-18장_스토리_마인드맵 · 레닌저 원서 · 생화학 시험 기록(2026 중간 형식)을 바탕으로 정리</div>
-""")
-
+<div class="lp"><div class="s">약품생화학 · 기말 대비 노트</div><div class="k">CHAPTER</div>
+<div class="big"><b>19–20</b><span>장</span></div>
+<h1>산화적 인산화<br>· 광인산화<br>· 탄소 고정</h1><div class="en">Oxidative Phosphorylation · Photophosphorylation · Carbon Assimilation (Lehninger)</div>
+<div class="pill">시험대비 요약노트 (TB추가)</div>
+<div class="chips"><span>호흡사슬 Complex I–IV · ATP 합성효소</span><span>조절 · 활성산소 · 갈색지방 · 세포자멸사</span><span>명반응 PSII/PSI · Z 도식 · 캘빈 회로</span></div>
+<div class="stt">개념 <b>{NC}</b> · 문제 <b>{NQ}</b><br>교수님 TB {NTB} · 🎤 수업 1–5 반영<br>p.1–{TOTAL}</div></div>
+<div class="rp"><div class="rh"><h2>목차</h2><span>개념 = 개념 쪽 · 문제 = 그 파트 문제 묶음(개념확인 + 교수님 TB)</span></div>
+<div class="toc">{TOC}</div></div>""")
 guide = dict(t="r", id="f-guide", html=f"""
 <div class="hd"><span class="bd">읽기 전에 ①</span><div class="tt"><h1>시험 형식 · 출제 스타일 · 이 노트 쓰는 법</h1><div class="sb">Exam format · how this note is built</div></div><span class="pt">{P0}</span></div>
 <div class="body"><div class="main">
