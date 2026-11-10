@@ -31,7 +31,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="cv-left"><div class="cv-k">LEHNINGER · PHARMACEUTICAL BIOCHEMISTRY · 기말 대비 노트</div>
 <div class="cv-h">약품생화학<br>Chap 19–20 시험대비<br>요약노트 (TB추가)</div>
 <div class="cv-flow">전자전달 → ATP 합성 → 조절·ROS → 미토콘드리아의 다른 얼굴 → 광합성 명반응 → 캘빈 회로</div>
-<div class="cv-chips"><span class="cv-chip">개념 요약 {{NC}}</span><span class="cv-chip">교수님 테스트뱅크 {{NTB}}문제</span><span class="cv-chip">개념확인 {{NMY}}</span><span class="cv-chip">다답형 · 빈칸 · O/X 연습</span><span class="cv-chip">📍 몸속 위치 표시</span><span class="cv-chip">약어 총정리</span></div>
+<div class="cv-chips"><span class="cv-chip">개념 요약 {{NC}}</span><span class="cv-chip">교수님 테스트뱅크 {{NTB}}문제</span><span class="cv-chip">개념확인 {{NMY}}</span><span class="cv-chip">다답형 · 빈칸 · O/X 연습</span><span class="cv-chip">📍 몸속 위치 표시</span><span class="cv-chip">🎤 수업 녹취 1–5 반영</span><span class="cv-chip">약어 총정리</span></div>
 <div class="cv-txt"><span class="r">범위 = 강의자료 Chap19_20_note (134쪽)</span> · Lehninger 19장(산화적 인산화·광인산화) + 20.1(광합성 탄수화물 합성).<br>
 2026 중간고사 형식: <b>객관식 50</b>(하나 고르기 + <b>맞는 것 모두 고르기</b>) + <b>빈칸 3</b> → 보기 하나하나 O/X로 따지는 연습이 핵심.<br>
 각 개념은 <b>💡 핵심 → 📖 설명 → 📐 공식 → ✍️ 예제 → 🧠 한 줄</b>, 바로 뒤에 그 개념의 문제(왼쪽 문제·풀이칸, 오른쪽 정답·해설).<br>
@@ -44,6 +44,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="cv-toc"><div class="t">CONTENTS</div>
 <div class="row"><span class="n">00</span><span class="nm">시험 형식 · 이 노트 쓰는 법<span>Guide</span></span><span class="pg">{{PAGE:f-guide}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
+<div class="row"><span class="n">00</span><span class="nm">🎤 교수님 강조 체크리스트<span>Lecture 1–5</span></span><span class="pg">{{PAGE:f-lec}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">한 장으로 보는 큰 그림<span>Big map</span></span><span class="pg">{{PAGE:f-map}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">확대 그림 — 세포 → 미토·엽록체 → 막<span>Zoom in</span></span><span class="pg">{{PAGE:f-zoom1}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">백지 복습 — 빈칸 그림 2장<span>Draw it yourself</span></span><span class="pg">{{PAGE:f-blank1}}</span></div>
@@ -100,6 +101,29 @@ story = dict(t="r", id="f-story", html=f"""
 <div class="sc-b" style="--c:#7c2d92"><div class="t">⑥ 설탕 공장 — 캘빈 회로</div><span class="w">엽록체 스트로마 → 세포질 → 체관</span><br>기공으로 들어온 CO₂ + ATP·NADPH → 루비스코 → G3P → 수크로스로 포장해 체관 배송 → 감자 녹말·쌀·채소 → 우리가 먹으면 다시 13장 1단계로. 이야기가 원을 그린다.<div class="p">PART 6 · 개념 34–38</div></div>
 </div>""")
 
+from lecture import LEC, CLASS
+_KEY = {
+    1: [("“<b>4+4+2, 전자 2개당</b>으로 기억” — 영상 숫자는 틀렸다", "c-sum"), ("순서 정하는 방법 중 <b>3번(억제제)이 중요</b>", "c-order"), ("Complex I 펌프 원리는 <b>가설</b>", "c-c1")],
+    2: [("에너지가 드는 건 ATP <b>방출</b> (K′eq 2.4, ΔG ≈ 0)", "c-f1cat"), ("<b>한 바퀴 = ATP 3</b>, 실제 NADH 2.5 (ANT 비용)", "c-po"), ("숙신산 → CN⁻ → DNP 그래프", "c-coupling")],
+    3: [("수용체 조절비 &gt; 10, 질량작용비", "c-regul"), ("IF₁ 이량체(저산소, pH ↓)", "c-if1"), ("소단원 요약 6줄: 열발생 · P450 · 세포자멸사 · mtDNA · 질환 · 당뇨", "c-mtdna")],
+    4: [("★ “<b>핵심</b>”: 미토 vs 엽록체 — H⁺ 방향 · O₂/H₂O 역할 · 에너지원", "c-photophos"), ("PSII: P680 → Pheo → PQ / Tyr ← Mn ← 물", "c-psii"), ("cyt b₆f ≈ III, 플라스토시아닌(Cu) ≈ cyt c", "c-psi")],
+    5: [("순환 = ATP만, “<b>기억해 두면 되겠습니다</b>”", "c-zscheme"), ("탄소 15 + 3 = 18, 인산 1개는 ATP가", "c-calvin"), ("루비스코 라이신 카바모일화 + Mg²⁺", "c-rubisco")],
+}
+_WHAT = {1: "19.1 전자전달 사슬", 2: "셔틀 · 19.2 ATP 합성", 3: "19.3 조절 · 19.4–19.5 미토콘드리아", 4: "광합성 명반응", 5: "광계 II 영상 · 캘빈 회로"}
+_rows = ""
+for n in CLASS:
+    ids = [k for k, v in LEC.items() if any(x[0] == n for x in v)]
+    key = "".join(f"<li>{t} — {{{{REF:{i}}}}}</li>" for t, i in _KEY[n])
+    _rows += f'<tr><td><b>수업{n}</b><br>{CLASS[n]}<br><span class="ko">{_WHAT[n]}</span></td><td><ul style="margin:0">{key}</ul></td><td style="font-size:.86em">' + " · ".join(f"{{{{REF:{i}}}}}" for i in ids) + "</td></tr>"
+_rows = _rows.replace("{{", "{").replace("}}", "}")
+lecpage = dict(t="r", id="f-lec", html=f"""
+<div class="hd"><span class="bd">읽기 전에 ①-2</span><div class="tt"><h1>🎤 교수님 강조 체크리스트 — 기말 대비 수업 1–5</h1><div class="sb">녹취록에서 교수님이 직접 짚은 것 · 해당 개념 페이지 오른쪽의 파란 「🎤 수업 강조」 상자에 시각과 함께 있어</div></div><span class="pt">{P0}</span></div>
+<div class="body"><div class="main full">
+<table class="t"><tr><th style="width:13%">수업</th><th style="width:52%">교수님이 직접 강조·정정한 것</th><th>🎤 상자가 있는 개념</th></tr>{_rows}</table>
+<div class="card trap" style="margin-top:6px"><div class="ct">⚠️ 강의 말과 교재가 다른 곳 (해당 🎤 상자에 ⚠️로 표시)</div>질량작용비 정의 [ATP]/([ADP][Pᵢ]) · IF₁ 역주행 조건 · 해독 P450은 주로 소포체 · 아드레노독신 환원효소(FAD) · 회전 관측은 형광현미경 · 영상의 H⁺ 3개/ATP · 광자 4개 vs 8개 · 루비스코 산물은 3PG · F₁ 방향(틸라코이드 안팎)</div>
+<div class="small" style="margin-top:6px">원본: 약품생화학 폴더의 「기말고사 대비 수업1–5 정리.pdf」 (수업3은 동영상 강의). 기말고사는 “20일”(12월 추정, 날짜 확인 필요).</div>
+</div></div>""")
+
 bigmap = dict(t="r", id="f-map", html=f"""
 <style>
 .mp{{display:flex;flex-direction:column;justify-content:space-around;gap:10px;margin-top:9px;flex:1;font-size:1.2em;line-height:1.7;}}
@@ -137,4 +161,4 @@ H<sup>+</sup>(P쪽) → <b>F<sub>o</sub></b>(a · b₂ · c 고리, 올리고마
 3 RuBP + 3 CO₂ <b>(루비스코)</b> → 6 3-PG → (6 ATP · 6 NADPH) → 6 G3P → <b>1 G3P 출하</b>(DHAP ⇄ Pᵢ 역수송체 → 수크로스) + 5 G3P → (트랜스케톨레이스·TPP, 3 ATP) → 3 RuBP · G3P 1개 = ATP 9 + NADPH 6 · 포도당 = ATP 18 + NADPH 12</div>
 </div>""")
 
-E = [cover, guide, story, bigmap]
+E = [cover, guide, lecpage, story, bigmap]
