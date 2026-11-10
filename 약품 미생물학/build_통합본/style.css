@@ -101,6 +101,17 @@ table.t tr:nth-child(even) td{background:#f8f9fb}
 .big{font-size:1.15em;font-weight:800}
 .one-line{background:var(--c);color:#fff;border-radius:2mm;padding:1.6mm 3mm;font-weight:700}
 .one-line b{color:#ffe58a}
+/* 페이지별 셀프테스트(안 보고 답하기) */
+.spage .sbody > .selftest{flex:0 0 auto}
+.selftest{border:1.6px dashed var(--c);border-radius:2.4mm;background:#fff;padding:1.8mm 3mm;
+  display:flex;gap:3mm;align-items:center;margin-top:.6mm}
+.selftest .stlabel{flex:none;font-weight:800;color:#fff;background:var(--c);border-radius:1.6mm;
+  padding:.8mm 2.4mm;font-size:.88em;white-space:nowrap}
+.selftest .stq{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1mm 5mm;
+  counter-reset:st;font-size:.92em;font-weight:600}
+.selftest .stq li{position:relative;padding-left:5.5mm;counter-increment:st}
+.selftest .stq li::before{content:"Q" counter(st);position:absolute;left:0;top:0;
+  color:var(--c);font-weight:800}
 .tag{display:inline-block;border-radius:1mm;padding:0 1.4mm;font-size:.82em;font-weight:700;background:var(--cs);color:var(--c);margin-right:1mm}
 .tag.r{background:#fdeceb;color:#c0392b}.tag.y{background:#fff1d6;color:#a66300}.tag.g{background:#e6f6ec;color:#1b7f47}
 svg text{font-family:"Pretendard",sans-serif}
