@@ -378,27 +378,28 @@ def render_sets():
     for si, s in enumerate(SETS, 1):
         boxli = "".join(f'<li><span class="mk">{CIR[k]}</span><span>{t}</span></li>' for k, t in enumerate(s["box"]))
         cols = "c3" if s["cols"] == 3 else ""
-        qrows = ""
+        items = ""
         for qi, q in enumerate(s["qs"], 1):
-            qrows += (f'<div class="setq"><span class="num">{qi}.</span>'
-                      f'<span>{q["q"]}</span><span class="pick">{q["n"]}개</span></div>'
-                      f'<div class="setq"><span class="num"></span><span class="ln"></span></div>')
+            items += (f'<div class="setitem"><div class="setq">'
+                      f'<span class="num">{qi}.</span><span class="qt">{q["q"]}</span>'
+                      f'<span class="pick">{q["n"]}개</span></div><div class="ansline"></div></div>')
         RAW(f'''<section class="page spage vr"><header class="shead"><div class="kicker">세트 {si}</div>
-<h2>{s["title"]}</h2><div class="ssub">아래 보기에서 문항별 지정 개수만큼 고르시오</div></header>
-<div class="sbody"><div class="setbox {cols}"><div class="bt">[보기]</div><ul>{boxli}</ul></div>{qrows}</div></section>''')
+<h2>{s["title"]}</h2><div class="ssub">보기에서 지정 개수만큼 고르시오</div></header>
+<div class="sbody"><div class="setbox {cols}"><div class="bt">[보기] 아래 ①~{CIR[len(s["box"])-1]} 중에서 고르시오</div><ul>{boxli}</ul></div>
+<div class="setqs">{items}</div></div></section>''')
 
     # 세트 해설
     SEC("세트 해설", "세트 문제 정답·해설")
     from core import exp_html
     for si, s in enumerate(SETS, 1):
-        ans_rows = ""
+        ans_items = ""
         for qi, q in enumerate(s["qs"], 1):
-            av = ", ".join(CIR[a] for a in q["ans"])
-            ans_rows += (f'<div class="ansrow"><span class="num">{qi}.</span><span class="av">{av}</span>'
-                         f'<span style="margin-left:2mm;color:#555">({q["n"]}개)</span></div>'
-                         f'<div style="margin:0 0 1.4mm 8mm">{exp_html(q["exp"])}</div>')
+            av = " ".join(CIR[a] for a in q["ans"])
+            ans_items += (f'<div class="ansitem"><div class="ansrow"><span class="num">{qi}.</span>'
+                          f'<span class="av">{av}</span><span class="apick">{q["n"]}개</span></div>'
+                          f'<div class="aexp">{exp_html(q["exp"])}</div></div>')
         RAW(f'''<section class="page spage vr"><header class="shead"><div class="kicker">세트 {si} 해설</div>
-<h2>{s["title"]}</h2></header><div class="sbody" style="font-size:.95em">{ans_rows}</div></section>''')
+<h2>{s["title"]}</h2></header><div class="sbody anspage"><div class="ansgrid">{ans_items}</div></div></section>''')
 
 
 render_sets()
