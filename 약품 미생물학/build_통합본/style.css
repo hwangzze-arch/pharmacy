@@ -167,7 +167,20 @@ svg text{font-family:"Pretendard",sans-serif}
 .fcover .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:14px;margin-top:4px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows,13),1fr)}
 .fcover .tr{display:flex;align-items:center;gap:6px;border-bottom:1px solid #eef1f5;font-size:10.3pt;min-width:0}
 .fcover .tr .bg{flex:none;width:30px;text-align:center;border-radius:7px;font-size:8.5pt;font-weight:700;color:#fff;padding:1px 0}
-.fcover .bg.c{background:#0e8a6a}.fcover .bg.s{background:#5847d6}.fcover .bg.p{background:#1d3557}.fcover .bg.v{background:#c77c02}
+.fcover .bg.c{background:#0e8a6a}.fcover .bg.s{background:#5847d6}.fcover .bg.p{background:#1d3557}.fcover .bg.v{background:#c77c02}.fcover .bg.g{background:#c0392b}
+/* 공부법 페이지: 회독 체크 표 */
+.track{width:100%;border-collapse:collapse;font-size:1.0em}
+.track th{background:var(--c);color:#fff;font-weight:700;padding:1.4mm 2mm;text-align:center}
+.track th:first-child{text-align:left}
+.track td{border:1px solid var(--line);padding:1.4mm 2mm;text-align:center;vertical-align:middle}
+.track td:first-child{text-align:left;font-weight:700}
+.track td.chk{font-size:1.3em;color:#9aa1b4;letter-spacing:.3em}
+.track .last{color:#8a90a0}
+.step{display:flex;gap:2.4mm;align-items:stretch}
+.step .sn{flex:none;width:9mm;height:9mm;border-radius:50%;background:var(--c);color:#fff;font-weight:900;font-size:1.2em;display:flex;align-items:center;justify-content:center}
+.stepbox{display:flex;flex-direction:column;gap:2.2mm}
+.stepbox .r{display:flex;gap:2.4mm;align-items:center}
+.stepbox .r .tx{font-size:1.0em}
 .fcover .tr .nm{flex:none;width:30px;font-weight:700;color:#5847d6}
 .fcover .tr .ti{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2c3038}
 .fcover .tr .pg{flex:none;font-weight:700;color:#6b7686;width:20px;text-align:right}

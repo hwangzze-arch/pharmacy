@@ -419,10 +419,42 @@ SS("종합", "종합 비교표 — 전파 · 매개체 · 백신 · 치료제",
    ]) +
    '<div class="one-line">백신 <b>있는</b> 것: 홍역·볼거리(MMR), 광견병, 한타, 인플루엔자, HBV / <b>없는</b> 것: RSV·니파·HTLV·HIV</div>')
 
+# 공부법 페이지 (표지 바로 뒤에 오도록 index 0에 삽입)
+def build_study():
+    chk = '<td class="chk">☐</td>'
+    trow = lambda name: f'<tr><td>{name}</td>{chk}{chk}{chk}<td class="last"></td></tr>'
+    tracker = ('<table class="track"><thead><tr><th>세트</th><th>1회독</th><th>2회독</th>'
+               '<th>3회독</th><th>다시 볼 문항 번호</th></tr></thead><tbody>' +
+               trow("세트 1 · 파라믹소") + trow("세트 2 · 랍도·번야·소체") +
+               trow("세트 3 · 인플루엔자 구조") + trow("세트 4 · 인플루엔자 약물") +
+               trow("세트 5 · 레트로·HIV") + trow("세트 6 · HBV·간염") +
+               '</tbody></table>')
+    steps = ('<div class="stepbox">'
+             '<div class="r"><span class="sn">1</span><span class="tx"><b>손으로 푼다</b> — 해설 페이지는 가리고, 보기에서 지정 개수만큼 직접 골라 답 줄에 쓴다. (눈으로만 X)</span></div>'
+             '<div class="r"><span class="sn">2</span><span class="tx"><b>바로 채점</b> — 다음 장 해설로 맞은 것·틀린 것을 표시. 틀린 건 <b>왜 틀렸는지</b> 해설을 한 줄로 읽는다.</span></div>'
+             '<div class="r"><span class="sn">3</span><span class="tx"><b>틀린 것만 다시</b> — 맞은 문제는 넘기고, <b>틀린 문항만</b> 다음 회독에서 다시 푼다. 3번 연속 맞으면 졸업.</span></div>'
+             '</div>')
+    body = ('<div class="row c2">' +
+            card("❌ 읽기만 하면 왜 안 되나",
+                 ul(["여러 번 읽으면 글자가 <b>익숙</b>해져서 '아는 것 같은 착각'이 든다 — 정작 보기를 가리면 안 떠오름",
+                     "시험은 <b>보기 ①~⑪를 주고 떠올려 고르는</b> 형식. 읽기로는 이 능력이 안 길러짐",
+                     "중간 7/45는 몰라서가 아니라 <b>인출(떠올리기) 연습이 부족</b>했을 가능성이 큼"]), "warm") +
+            card("✅ 그래서 이렇게 — 인출 연습 3단계", steps, "soft") +
+            '</div>' +
+            tracker +
+            '<div class="one-line">읽기 2~3회독보다 <b>세트 6개를 풀고 → 채점 → 틀린 것만 다시</b> 돌리는 게 점수에 직결된다. 표에 회독마다 ☑ 체크!</div>')
+    page = (f'<section class="page spage vr"><header class="shead"><div class="kicker">필독</div>'
+            f'<h2>이 자료 공부법 — 읽지 말고 \'풀어라\'</h2>'
+            f'<div class="ssub">인출 연습(retrieval practice)</div></header>'
+            f'<div class="sbody">{body}</div></section>')
+    PAGES.insert(0, ("s", page))
+
+
 # 표지 (맨 앞) — 23장 스타일
 def build_cover():
     # TOC: 요약 섹션 + 세트 + 종합
-    toc_items = [("s", "요약 1 범위 한눈에"), ("s", "요약 2 파라믹소 개요·NDV"), ("s", "요약 3 니파·홍역·볼거리"),
+    toc_items = [("g", "공부법 — 읽지 말고 풀기"),
+                 ("s", "요약 1 범위 한눈에"), ("s", "요약 2 파라믹소 개요·NDV"), ("s", "요약 3 니파·홍역·볼거리"),
                  ("s", "요약 4 RSV·리바비린"), ("s", "요약 5 랍도·번야"), ("s", "요약 6 인플루엔자 구조·8분절"),
                  ("s", "요약 7 변이·팬데믹·백신"), ("s", "요약 8 항바이러스제 6종"), ("s", "요약 9 레트로·HTLV"),
                  ("s", "요약 10 HIV"), ("s", "요약 11 HBV·간염"),
@@ -431,7 +463,7 @@ def build_cover():
                  ("p", "세트 5 레트로·HIV (문제+해설)"), ("p", "세트 6 HBV·간염 (문제+해설)"),
                  ("c", "종합 비교표")]
     items = ""
-    blab = {"s": "요약", "p": "세트", "v": "해설", "c": "표"}
+    blab = {"s": "요약", "p": "세트", "v": "해설", "c": "표", "g": "필독"}
     rows = (len(toc_items) + 1) // 2
     for b, t in toc_items:
         items += f'<div class="tr"><span class="bg {b}">{blab[b]}</span><span class="ti">{t}</span></div>'
@@ -446,4 +478,5 @@ def build_cover():
     PAGES.insert(0, ("r", cover))
 
 
+build_study()
 build_cover()
