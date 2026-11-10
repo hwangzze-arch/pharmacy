@@ -126,7 +126,7 @@ lecpage = dict(t="r", id="f-lec", html=f"""
 <div class="body"><div class="main full">
 <table class="t"><tr><th style="width:13%">수업</th><th style="width:52%">교수님이 직접 강조·정정한 것</th><th>🎤 상자가 있는 개념</th></tr>{_rows}</table>
 <div class="card trap" style="margin-top:6px"><div class="ct">⚠️ 강의 말과 교재가 다른 곳 (해당 🎤 상자에 ⚠️로 표시)</div>질량작용비 정의 [ATP]/([ADP][Pᵢ]) · IF₁ 역주행 조건 · 해독 P450은 주로 소포체 · 아드레노독신 환원효소(FAD) · 회전 관측은 형광현미경 · 영상의 H⁺ 3개/ATP · 광자 4개 vs 8개 · 루비스코 산물은 3PG · F₁ 방향(틸라코이드 안팎)</div>
-<div class="small" style="margin-top:6px">원본: 약품생화학 폴더의 「기말고사 대비 수업1–5 정리.pdf」 (수업3은 동영상 강의). 기말고사는 “20일”(12월 추정, 날짜 확인 필요).</div>
+<div class="small" style="margin-top:6px">원본: 약품생화학 폴더의 「기말고사 대비 수업1–5 정리.pdf」 (수업3은 동영상 강의). 기말고사 범위는 <b>23장까지</b> (수업5 공지).</div>
 </div></div>""")
 
 bigmap = dict(t="r", id="f-map", html=f"""
