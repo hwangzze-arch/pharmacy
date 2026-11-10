@@ -174,16 +174,27 @@ svg text{font-family:"Pretendard",sans-serif}
 .fcover .tr.part{border-bottom:none;font-weight:800;color:#5847d6;font-size:9.5pt;letter-spacing:.03em;padding-top:1mm}
 
 /* ===== 세트형 문제(보기 11개 + 개수 지정) ===== */
-.setbox{border:1.6px solid var(--c);border-radius:2.4mm;padding:2mm 3mm;background:var(--cs);margin-bottom:2.6mm}
-.setbox .bt{font-weight:800;color:var(--c);font-size:.92em;margin-bottom:1mm}
-.setbox ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.3mm 4mm;font-size:.92em}
+.setbox{border:1.6px solid var(--c);border-radius:2.4mm;padding:2.2mm 3mm;background:var(--cs);flex:0 0 auto}
+.setbox .bt{font-weight:800;color:var(--c);font-size:.9em;margin-bottom:1.4mm}
+.setbox ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.6mm 4mm;font-size:.95em}
 .setbox.c3 ul{grid-template-columns:1fr 1fr 1fr}
-.setbox li{display:flex;gap:1.2mm}
-.setbox li .mk{font-weight:800;color:var(--c);min-width:1.3em}
-.setq{display:flex;gap:2mm;align-items:baseline;margin:.8mm 0;font-size:.95em}
-.setq .num{font-weight:800;color:var(--c);min-width:7mm}
-.setq .pick{margin-left:auto;flex:none;font-weight:700;color:#fff;background:var(--c);border-radius:10mm;padding:.2mm 2.4mm;font-size:.82em}
-.setq .ln{flex:1;border-bottom:1.2px dotted #aab;min-width:20mm;align-self:flex-end;height:1em}
-.ansrow{display:flex;gap:2mm;align-items:baseline;margin:.6mm 0;font-size:.95em}
-.ansrow .num{font-weight:800;color:var(--c);min-width:8mm}
-.ansrow .av{font-weight:800;color:var(--c)}
+.setbox li{display:flex;gap:1.4mm;align-items:baseline}
+.setbox li .mk{font-weight:800;color:var(--c);min-width:1.4em;text-align:center}
+/* 문제 목록: 남는 높이를 고르게 나눠 가져 줄 간격이 일정하게 */
+.setqs{flex:1 1 0;min-height:0;display:flex;flex-direction:column;justify-content:space-between;padding:1.5mm 1mm 0}
+.setitem{display:flex;flex-direction:column}
+.setq{display:flex;gap:2mm;align-items:baseline;font-size:1.0em;line-height:1.4}
+.setq .num{font-weight:800;color:var(--c);min-width:7mm;flex:none}
+.setq .qt{flex:1}
+.setq .pick{flex:none;font-weight:800;color:#fff;background:var(--c);border-radius:10mm;padding:.4mm 2.8mm;font-size:.8em;white-space:nowrap;align-self:center}
+.ansline{border-bottom:1.3px dotted #99a0b3;margin:4.5mm 2mm 0 9mm}
+/* ===== 해설 페이지: 2단 그리드로 꽉 차게 ===== */
+.anspage{padding-top:0}
+.ansgrid{flex:1 1 0;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:min-content;gap:2mm 6mm;align-content:space-between}
+.ansitem{break-inside:avoid}
+.ansrow{display:flex;gap:2mm;align-items:center;margin-bottom:.8mm}
+.ansrow .num{font-weight:800;color:var(--c);min-width:6mm;flex:none}
+.ansrow .av{font-weight:800;color:var(--c);font-size:1.05em;letter-spacing:.04em}
+.ansrow .apick{font-size:.78em;color:#fff;background:var(--c);opacity:.78;border-radius:10mm;padding:.2mm 2mm}
+.anspage .aexp{font-size:.9em}
+.anspage .aexp p{margin:.3mm 0}
