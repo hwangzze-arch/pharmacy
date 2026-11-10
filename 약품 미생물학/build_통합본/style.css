@@ -71,12 +71,18 @@ b.hl,.hl{background:linear-gradient(transparent 55%,#ffe58a 55%);font-weight:700
 .kicker{background:var(--c);color:#fff;font-weight:800;font-size:.8em;border-radius:1.4mm;padding:.5mm 2.2mm;align-self:center}
 .shead h2{font-size:1.55em;font-weight:800;letter-spacing:-.01em}
 .ssub{color:var(--muted);font-size:.9em;margin-left:auto}
-.sbody{flex:1;display:flex;flex-direction:column;gap:2.6mm;min-height:0}
+.sbody{flex:1;display:flex;flex-direction:column;gap:2.6mm;min-height:0;justify-content:center}
+/* 페이지가 짧아도 세로로 꽉 차게: 행은 남는 높이를 나눠 갖고, 표/배너는 자기 높이 유지 */
+.spage .sbody > .row{flex:1 1 0;min-height:0}
+.spage .sbody > table.t,.spage .sbody > .one-line,.spage .sbody > figure,.spage .sbody > p{flex:0 0 auto}
+.spage .row{align-items:stretch}
 .row{display:grid;gap:3mm}
 .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c4{grid-template-columns:repeat(4,1fr)}
 .c12{grid-template-columns:1fr 2fr}.c21{grid-template-columns:2fr 1fr}.c32{grid-template-columns:3fr 2fr}.c23{grid-template-columns:2fr 3fr}
-.card2{border:1px solid var(--line);border-radius:2.2mm;padding:2mm 3mm;background:#fff}
-.card2 h4{font-size:1.02em;color:var(--c);margin-bottom:1mm;font-weight:800}
+.card2{border:1px solid var(--line);border-radius:2.2mm;padding:2.6mm 3mm;background:#fff;
+  display:flex;flex-direction:column;justify-content:center;min-height:0}
+.card2 h4{font-size:1.02em;color:var(--c);margin-bottom:1.4mm;font-weight:800;flex:0 0 auto}
+.card2.mid,.card2.short{justify-content:center}
 .card2.soft{background:var(--cs);border-color:var(--cm)}
 .card2.warm{background:#fff7e8;border-color:#f3dcae}
 .card2.warm h4{color:#a66300}
