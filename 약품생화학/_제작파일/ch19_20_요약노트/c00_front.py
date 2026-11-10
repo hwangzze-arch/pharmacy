@@ -3,7 +3,7 @@ from parts import *
 cover = dict(t="r", id="f-cover", cls="cvx", html="""
 <style>
 .page.cvx{padding:0;flex-direction:row;background:#fbf9f4;}
-.cvx .lp{width:92mm;flex:none;height:100%;background:linear-gradient(170deg,#f08c3c 0%,#d9531e 34%,#a8381a 66%,#5e2a1c 100%);color:#fff;padding:14mm 8mm 12mm 10mm;display:flex;flex-direction:column;}
+.cvx .lp{width:92mm;flex:none;height:100%;background:linear-gradient(170deg,#f06595 0%,#d6336c 30%,#9c36b5 66%,#4a1d5e 100%);color:#fff;padding:14mm 8mm 12mm 10mm;display:flex;flex-direction:column;}
 .cvx .lp .s{font-size:12px;font-weight:700;opacity:.9;letter-spacing:.06em;}
 .cvx .lp .k{letter-spacing:.32em;font-size:12px;font-weight:700;opacity:.92;margin-top:5mm;}
 .cvx .lp .big{display:flex;align-items:flex-end;gap:3px;margin-top:3mm;line-height:.9;white-space:nowrap;}
@@ -11,23 +11,23 @@ cover = dict(t="r", id="f-cover", cls="cvx", html="""
 .cvx .lp .big span{font-size:34px;font-weight:800;margin-bottom:9px;}
 .cvx .lp h1{font-size:26px;line-height:1.3;margin:7mm 0 3px 0;font-weight:800;}
 .cvx .lp .en{font-size:11.5px;opacity:.85;line-height:1.45;}
-.cvx .lp .pill{display:inline-block;margin-top:4mm;background:#fff;color:#a8381a;border-radius:14px;padding:3px 12px;font-size:12px;font-weight:800;align-self:flex-start;}
+.cvx .lp .pill{display:inline-block;margin-top:4mm;background:#fff;color:#9c36b5;border-radius:14px;padding:3px 12px;font-size:12px;font-weight:800;align-self:flex-start;}
 .cvx .lp .chips{margin-top:5mm;display:flex;flex-direction:column;gap:5px;font-size:11px;}
 .cvx .lp .chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:3px 9px;}
 .cvx .lp .stt{margin-top:auto;font-size:12.5px;line-height:1.75;}
 .cvx .lp .stt b{font-size:19px;font-weight:800;}
 .cvx .rp{flex:1;min-width:0;padding:10mm 11mm 11mm 9mm;display:flex;flex-direction:column;}
 .cvx .rh{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #dfe5ee;padding-bottom:5px;}
-.cvx .rh h2{margin:0;font-size:15px;color:#5e2a1c;}
+.cvx .rh h2{margin:0;font-size:15px;color:#4a1d5e;}
 .cvx .rh span{font-size:10.5px;color:#6b7686;}
 .cvx .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:5px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows),1fr);}
 .cvx .tr{display:flex;align-items:center;gap:7px;border-bottom:1px solid #eef1f5;font-size:11px;min-width:0;line-height:1.3;}
 .cvx .tr .bg{flex:none;width:30px;text-align:center;border-radius:8px;font-size:9.5px;font-weight:700;color:#fff;padding:1px 0;}
-.cvx .bg.g{background:#8b8fa0;} .cvx .bg.c{background:#d9531e;} .cvx .bg.q{background:#127a64;} .cvx .bg.f{background:#7a4a2a;}
-.cvx .tr .nm{flex:none;width:40px;font-weight:700;color:#5e2a1c;}
+.cvx .bg.g{background:#8b8fa0;} .cvx .bg.c{background:#d6336c;} .cvx .bg.q{background:#862e9c;} .cvx .bg.f{background:#4a1d5e;}
+.cvx .tr .nm{flex:none;width:40px;font-weight:700;color:#4a1d5e;}
 .cvx .tr .ti{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2c3038;}
 .cvx .tr .pg{flex:none;font-weight:700;color:#6b7686;width:26px;text-align:right;}
-.cvx .tr.part{border-bottom:none;font-weight:700;color:#c2410c;font-size:10.5px;letter-spacing:.03em;}
+.cvx .tr.part{border-bottom:none;font-weight:700;color:#ae3ec9;font-size:10.5px;letter-spacing:.03em;}
 .cvx .ft{left:auto;right:11mm;width:auto;border-top:none !important;}
 .cvx .ft span:not(:last-child){display:none;}
 </style>
