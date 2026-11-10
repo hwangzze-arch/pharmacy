@@ -58,9 +58,9 @@ def SS(kicker, title, body, sub=""):
     add_toc("s", title)
     qs = SELFTEST.get(title)
     if qs:
-        lis = "".join(f'<li>{q}</li>' for q in qs)
+        lis = "".join(f'<li><b class="qn">Q{i}</b> {q}</li>' for i, q in enumerate(qs, 1))
         body += (f'<div class="selftest"><span class="stlabel">✋ 위 가리고 답하기</span>'
-                 f'<ol class="stq">{lis}</ol></div>')
+                 f'<ul class="stq">{lis}</ul></div>')
     S(P, kicker, title, body, sub)
 
 
