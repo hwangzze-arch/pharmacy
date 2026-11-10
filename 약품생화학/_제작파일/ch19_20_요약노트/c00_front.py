@@ -27,6 +27,10 @@ cover = dict(t="r", cls="cover2", html=f"""
 .cv-p .a{{font-weight:800;font-size:13px;color:#23263a;}} .cv-p .b{{font-size:10.5px;color:#5c6170;margin-top:2px;line-height:1.5;}}
 .cv-src{{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#9a9486;}}
 .cover2 .ft{{display:none;}}
+.cv-big{{position:absolute;right:13mm;top:136mm;width:108mm;display:flex;align-items:baseline;justify-content:center;gap:6px;background:rgba(255,255,255,.88);border:2px solid #c2410c;border-radius:16px;padding:0 14px 4px 14px;box-shadow:0 4px 18px rgba(120,80,40,.15);}}
+.cv-big b{{font-size:112px;line-height:1.05;font-weight:900;color:#c2410c;letter-spacing:-2px;}}
+.cv-big span{{font-size:40px;font-weight:900;color:#c2410c;}}
+.cv-big small{{font-size:13px;color:#6c7280;font-weight:700;margin-left:8px;}}
 </style>
 <div class="cv-left"><div class="cv-k">LEHNINGER · PHARMACEUTICAL BIOCHEMISTRY · 기말 대비 노트</div>
 <div class="cv-h">약품생화학<br>Chap 19–20 시험대비<br>요약노트 (TB추가)</div>
@@ -41,10 +45,11 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="cv-st"><b>{{NTB}}</b><span>테스트뱅크<br>ch19 76 · ch20 21</span></div>
 <div class="cv-st"><b>{{NQ}}</b><span>전체 문제<br>1문제 = 1쪽</span></div>
 <div class="cv-st"><b>30/32</b><span>포도당 1개의<br>ATP (꼭 기억!)</span></div></div></div>
+<div class="cv-big"><b>{{TOTAL}}</b><span>쪽</span><small>개념 {{NC}} · 문제 {{NQ}}</small></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>
 <div class="row"><span class="n">00</span><span class="nm">시험 형식 · 이 노트 쓰는 법<span>Guide</span></span><span class="pg">{{PAGE:f-guide}}</span></div>
-<div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">🎤 교수님 강조 체크리스트<span>Lecture 1–5</span></span><span class="pg">{{PAGE:f-lec}}</span></div>
+<div class="row"><span class="n">00</span><span class="nm">스토리 — 숨 쉬는 순간부터 샐러드까지<span>Story map</span></span><span class="pg">{{PAGE:f-story}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">한 장으로 보는 큰 그림<span>Big map</span></span><span class="pg">{{PAGE:f-map}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">확대 그림 — 세포 → 미토·엽록체 → 막<span>Zoom in</span></span><span class="pg">{{PAGE:f-zoom1}}</span></div>
 <div class="row"><span class="n">00</span><span class="nm">백지 복습 — 빈칸 그림 2장<span>Draw it yourself</span></span><span class="pg">{{PAGE:f-blank1}}</span></div>
