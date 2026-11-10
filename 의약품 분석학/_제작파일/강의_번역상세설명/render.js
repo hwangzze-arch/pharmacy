@@ -5,7 +5,7 @@ const path = require('path');
   const out = process.argv[2];
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1123, height: 794 } });
-  await page.goto('file://' + path.join(dir, 'index.html'));
+  await page.goto('file://' + path.join(dir, 'index.html'), { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   await page.emulateMedia({ media: 'print' });
   const report = await page.evaluate(() => {

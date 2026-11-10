@@ -13,6 +13,15 @@ for pk in dict.fromkeys(e.get("part") for e in TB):
     last = max(i for i, e in enumerate(ENTRIES) if e.get("part") == pk and e["t"] in "cq")
     ENTRIES[last + 1:last + 1] = add
 from loc import LOC
+from lecture import LEC, CLASS
+for e in ENTRIES:
+    if e.get("id") in LEC:
+        rows = "".join(f'<div class="lr"><span class="lt">수업{n} · {CLASS[n]} {tm}</span>{t}</div>' for n, tm, t in LEC[e["id"]])
+        side = list(e.get("side", []))
+        imgs = [k for k, it in enumerate(side) if it[0] == "img"]
+        if len(imgs) >= 2:          # 🎤 상자 자리를 만들려고 두 번째 그림은 뺀다
+            del side[imgs[-1]]
+        e["side"] = side + [("lec", rows)]
 for e in ENTRIES:
     e["_flags"] = set(e.get("flags", []))
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
@@ -139,6 +148,10 @@ tr.hl td{background:#ffe3e3;}
 .loc .lb{flex:none;font-weight:800;color:#127a64;font-size:.9em;}
 .loc .sc{flex:none;background:#127a64;color:#fff;border-radius:6px;font-weight:700;font-size:.82em;padding:0 8px;}
 .loc .pa{color:#2f4a3e;}
+.card.lec{background:#eef0fd;border-color:#a9b2f0;font-size:.93em;}
+.card.lec .ct{color:#4651c8;}
+.card.lec .lr{margin:2px 0;}
+.card.lec .lt{display:inline-block;background:#4651c8;color:#fff;border-radius:5px;font-size:.78em;font-weight:700;padding:0 6px;margin-right:5px;}
 .qk.multi{background:#c2410c;} .qk.tb{background:#7c2d92;} .qk.txt{background:#1d5a95;} .qk.chk{background:#127a64;}
 .opts li{margin:2px 0;}
 """
@@ -154,8 +167,8 @@ def side_html(items, flags=()):
             cap = it[2] if len(it) > 2 else ""
             h = f' style="--imgh:{it[3]}px"' if len(it) > 3 else ""
             out.append(f'<div class="fig"{h}><img src="img/S-{it[1]:03d}.jpg"><div class="cap">{cap}</div></div>')
-        elif k in ("ana", "trap", "tip", "card"):
-            title = {"ana": "🎈 비유", "trap": "⚠️ 함정", "tip": "📌 족보·시험 포인트", "card": ""}[k]
+        elif k in ("ana", "trap", "tip", "card", "lec"):
+            title = {"ana": "🎈 비유", "trap": "⚠️ 함정", "tip": "📌 족보·시험 포인트", "card": "", "lec": "🎤 수업 강조 — 교수님이 짚은 것"}[k]
             if len(it) > 2:
                 title = it[2]
             imp = " imp" if k in flags else ""
