@@ -267,3 +267,7 @@ svg text{font-family:"Pretendard",sans-serif}
 .ansrow .apick{font-size:.78em;color:#fff;background:var(--c);opacity:.78;border-radius:10mm;padding:.2mm 2mm}
 .anspage .aexp{font-size:.9em}
 .anspage .aexp p{margin:.3mm 0}
+
+/* 출제 표시: 🎯 교수님 녹취 강조 / ★ 출제 유력 */
+.mt{font-size:.9em;margin-left:.8mm;vertical-align:.04em}
+.ms{color:#d61f7a;font-weight:900;margin-left:.6mm;font-size:1.06em}
