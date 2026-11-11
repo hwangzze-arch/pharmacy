@@ -508,7 +508,7 @@ def build_cover():
         for n, nm, en, pg in toc)
     cover = f'''<section class="page cover2v">
 <div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
-<div class="cv-h">병원성 바이러스<br>기말 통합<br>마스터 노트</div>
+<div class="cv-h"><span class="t1">병원성</span><span class="t2">바이러스</span><span class="t3">기말 통합 마스터 노트</span></div>
 <div class="cv-flow">(−)ssRNA → 파라믹소·랍도·번야·오르토믹소 → 레트로 → HBV</div>
 <div class="cv-chips"><span class="cv-chip">상세 요약 11</span><span class="cv-chip">실전 세트 6 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">종합 비교표</span></div>
 <div class="cv-txt"><span class="r">기말 범위 = Viruses_2026 120쪽~끝</span> · 시험 12/14(월)–18(금) · 중간45·기말45·출석10.<br>
