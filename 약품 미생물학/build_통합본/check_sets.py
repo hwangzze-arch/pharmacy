@@ -1,9 +1,15 @@
-# 사용법: python3 check_sets.py <build_통합본 폴더>  — 세트 개수·정답-해설 O/X 번호 검사
+# 사용법: python3 check_sets.py <build_통합본 폴더> [모듈=f_virus] [--strict]
+#   세트 개수·정답-해설 O/X 번호 검사. --strict: '모두' 문항은 해설에서 보기 11개를 전부 O/X로 판정했는지까지 검사
 # -*- coding: utf-8 -*-
 """세트 문항 정합성 검사: 개수·해설 O/X 번호·보기 이름"""
 import re, sys
-sys.path.insert(0, sys.argv[1]); sys.argv = ["x"]
-import core, f_virus as F
+args = sys.argv[1:]
+build = args[0]
+mod = next((a for a in args[1:] if not a.startswith("--")), "f_virus")
+strict = "--strict" in args
+sys.path.insert(0, build); sys.argv = ["x"]
+import importlib, core
+F = importlib.import_module(mod)
 C = "①②③④⑤⑥⑦⑧⑨⑩⑪"
 bad = 0
 for si, S in enumerate(F.SETS, 1):
@@ -26,12 +32,15 @@ for si, S in enumerate(F.SETS, 1):
                 (O if k == "O" else X).update(idx)
                 if k == "O" and len(idx) == 1:
                     i = next(iter(idx))
-                    word = re.sub(r"\(.*?\)", "", box[i]).split()[0][:3]
-                    body = ln.split("::", 1)[1]
-                    if word not in body and word.lower() not in body.lower():
+                    toks = [t for t in re.split(r"[\s()·,]+", box[i]) if len(t) >= 2]
+                    body = ln.split("::", 1)[1].lower()
+                    if not any(t[:2].lower() in body for t in toks):
                         errs.append(f"해설 {C[i]}에 보기명 '{box[i]}' 흔적 없음")
         if O != set(ans): errs.append(f"해설 O {sorted(C[i] for i in O)} != 정답 {sorted(C[i] for i in ans)}")
         if X & set(ans): errs.append(f"해설 X가 정답과 겹침 {sorted(C[i] for i in X & set(ans))}")
+        if strict and "모두" in q["q"]:
+            miss = set(range(len(box))) - O - X
+            if miss: errs.append(f"모두 문항인데 판정 안 한 보기 {''.join(C[i] for i in sorted(miss))}")
         if errs:
             bad += 1
             print(tag, q["q"][:40], "→", "; ".join(errs))
