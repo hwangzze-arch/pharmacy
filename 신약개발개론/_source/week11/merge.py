@@ -5,7 +5,7 @@ from pypdf import PdfReader, PdfWriter
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 SRC = os.path.join(ROOT, "신약개발개론_6주차_후보물질 탐색 및 발굴1_요약정리.pdf")
-OUT = os.path.join(ROOT, "신약개발개론_10주차_후보물질 탐색 및 발굴2 & 약물대사_요약정리.pdf")
+OUT = os.path.join(ROOT, "신약개발개론_11주차_후보물질 탐색 및 발굴2 & 약물대사_요약정리.pdf")
 
 new = iter(PdfReader(os.path.join(HERE, "intro.pdf")).pages)
 ov = iter(PdfReader(os.path.join(HERE, "overlay.pdf")).pages)

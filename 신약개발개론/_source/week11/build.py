@@ -1,4 +1,4 @@
-# 10주차(2026-11-11) 요약정리 빌드
+# 11주차(2026-11-11) 요약정리 빌드 — 7주차 휴강·8주차 중간고사·10주차 휴강
 # 슬라이드 7, 9~24는 6주차 자료와 똑같음 → 6주차 요약정리 페이지를 재사용하고 번호만 overlay로 덮어씀.
 # 나머지(표지, Q&A 2~6, 지난 시간 요약 8, Chapter 4 약물대사 26~65)는 content.py로 새로 작성.
 #   python3 build.py  → intro.html(새 페이지), overlay.html(재사용 페이지 번호), order.json
@@ -119,7 +119,7 @@ for i, p in enumerate(PAGES, 1):
     else:
         new.append(page_html(i, p)); order.append(["new"])
 
-open(os.path.join(HERE, "intro.html"), "w").write(doc("10주차 요약정리", CSS, "".join(new)))
+open(os.path.join(HERE, "intro.html"), "w").write(doc("11주차 요약정리", CSS, "".join(new)))
 open(os.path.join(HERE, "overlay.html"), "w").write(doc("overlay", OV_CSS, "".join(ov)))
 json.dump(order, open(os.path.join(HERE, "order.json"), "w"))
 print("total pages", TOTAL, "new", len(new), "reused", len(ov))
