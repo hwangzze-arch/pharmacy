@@ -11,15 +11,15 @@ dict(title="강의 표지 · 이번 강의 로드맵", src="표지", img="s01.jp
 <li>Han-Jun Kim (김한준), D.V.M., Ph.D. — Associate Professor, College of Pharmacy, Korea University</li>
 <li>2026. 11. 11 · 고려대학교</li></ul>
 <p class="note">“Questions?”(25·66)·영상 슬라이드는 빼거나 묶었어.</p>
-<div class="box"><span class="tag">주의</span>7·9~23쪽은 6주차 요약정리라, 그 본문 속 “슬라이드 N”은 <b>6주차 번호</b> 기준이야.</div>""",
+<div class="box"><span class="tag">주의</span>7·9~23쪽은 6주차 요약정리라, 그 본문 속 “슬라이드 N”은 <b>6주차 번호</b> 기준이야. 교수님이 6주차 슬라이드를 추려 오셔서 번호가 띄엄띄엄해.</div>""",
      ex="""<table class="t"><tr><th>파트</th><th>슬라이드</th><th>이 노트</th></tr>
 <tr><td>Q&amp;A (Hit·Lead 질문 5개)</td><td>2~6</td><td>2~6쪽</td></tr>
-<tr><td>Chapter 3-2 복습 <span class="note">(6주차와 동일)</span></td><td>7~24</td><td>7~23쪽</td></tr>
+<tr><td>Chapter 3-2 복습 <span class="note">(6주차와 동일)</span></td><td>7 · 9~24</td><td>7 · 9~23쪽</td></tr>
 <tr><td>지난 시간 요약</td><td>8</td><td>8쪽</td></tr>
-<tr><td>Ch.4 후보물질 선정</td><td>26~33</td><td>24~30쪽</td></tr>
-<tr><td>PD — Emax·EC50·역가·효능</td><td>34~43</td><td>31~37쪽</td></tr>
-<tr><td>PK — 흡수·분포·대사·배설</td><td>44~62</td><td>38~51쪽</td></tr>
-<tr><td>ADME 개인차 · PK/PD 모델링</td><td>63~65</td><td>52~53쪽</td></tr></table>
+<tr><td>Ch.4 후보물질 선정</td><td>26~33</td><td>24~26쪽</td></tr>
+<tr><td>PD — Emax·EC50·역가·효능</td><td>34~43</td><td>27~31쪽</td></tr>
+<tr><td>PK — 흡수·분포·대사·배설</td><td>44~62</td><td>32~36쪽</td></tr>
+<tr><td>ADME 개인차 · PK/PD 모델링</td><td>63~65</td><td>37쪽</td></tr></table>
 <p><b>지난 시간과 연결</b>: Lead 최적화의 “IC50만 좋으면 끝이 아니다”의 이유 — <g>약이 표적까지 충분한 농도로 가서 머무는가(PK)</g>와 <g>가서 얼마나 세게·크게 듣는가(PD)</g>.</p>
 <p class="box"><span class="tag">기말</span><b>PD 용어 쌍</b>(Potency/Efficacy, EC50/Emax)과 <b>PK 정의</b>(생체이용률·1차 통과)가 1순위.</p>"""),
 
@@ -97,23 +97,8 @@ dict(title="Q&amp;A — IC50가 낮아져도 투여량이 늘 수 있다", slide
 <p class="box"><span class="tag">시험 포인트</span><pk>IC50 감소만으로 동물 필요 투여량이나 원인을 단정할 수 없음.</pk> 몸속에 남는 양·시간(PK)과 작용 부위 도달을 함께 확인.</p>"""),
 
 # --- 6주차 재사용 (Chapter 3-2 복습) ---
-dict(reuse=(31, "7", "31")),     # 4. Hit 도출 Screening
-dict(reuse=(33, "9", "34")),     # Virtual screening
-dict(reuse=(34, "10", "35")),    # HTS vs FBDD
-dict(reuse=(35, "11", "36")),    # Covalent
-dict(reuse=(36, "12", "37")),    # 맞춤 라이브러리
-dict(reuse=(37, "13", "38")),    # 초기 ADME·Hit 기준
-dict(reuse=(38, "14", "39")),    # Hit 동정 스크리닝 옵션
-dict(reuse=(39, "15", "40")),    # 5. Hit to Lead SAR
-dict(reuse=(40, "16", "41")),    # 구조 단순화 SAR
-dict(reuse=(42, "17", "43")),    # Lead의 조건
-dict(reuse=(43, "18", "44")),    # 6. Lead Optimization
-dict(reuse=(44, "19", "45")),    # 효력·선택성·흡수 개선
-dict(reuse=(46, "20", "47")),    # Glivec 사례
-dict(reuse=(47, "21", "48")),    # UCL SM Roadmap 1
-dict(reuse=(48, "22", "49")),    # UCL SM Roadmap 2
-dict(reuse=(49, "23", "50")),    # UCL SM Roadmap 3
-
+# (6주차 요약정리 쪽, 이번 슬라이드, 6주차 슬라이드) — 교수님이 6주차 슬라이드를 띄엄띄엄 추려 오셨음
+dict(reuse=(11, "7", "11")),       # Chapter 3-2 표지
 dict(title="지난 시간 요약 (Summary of the Last class)", slide="8", img="s08.jpg",
      sub="Hit to Lead &amp; Lead Optimization 복습",
      kw=["Hit to Lead = 초기 개량", "Lead Optimization = 후기", "SAR", "수백 nM → 100 nM"],
@@ -132,8 +117,24 @@ dict(title="지난 시간 요약 (Summary of the Last class)", slide="8", img="s
 <p>이번 시간은 여기서 한 칸 더 — Lead 최적화와 <b>후보물질(Candidate) 선정</b>에서 핵심이 되는 <b>약물대사·PK/PD</b>를 본격적으로 다뤄.</p>
 <p class="box"><span class="tag">연결</span>“왜 Lead 최적화에 ADME가 들어오나?” → 시험관 효능(화학)만으로는 몸속에서 듣는지 알 수 없어서. 그 답이 Chapter 4.</p>"""),
 
+dict(reuse=(31, "9", "31")),       # 4. Hit 도출 Screening
+dict(reuse=(39, "10", "40")),      # 5. Hit to Lead — SAR
+dict(reuse=(42, "11", "43")),      # Lead의 조건
+dict(reuse=(45, "12", "46")),      # Candidate 조건
+dict(reuse=(46, "13", "47")),      # Glivec 사례
+dict(reuse=(47, "14", "48")),      # UCL SM Roadmap 1
+dict(reuse=(48, "15", "49")),      # UCL SM Roadmap 2
+dict(reuse=(49, "16", "50")),      # UCL SM Roadmap 3
+dict(reuse=(50, "17", "51")),      # UCL SM Roadmap 4
+dict(reuse=(51, "18", "52")),      # UCL Biologics 1
+dict(reuse=(52, "19", "53")),      # UCL Biologics 2
+dict(reuse=(53, "20", "54")),      # UCL Cell & Gene Therapy
+dict(reuse=(54, "21", "55")),      # Deep Learning
+dict(reuse=(55, "22–23", "56–57")),# AI-based Hit to Lead (+ 분자 갤러리)
+dict(reuse=(56, "24", "58")),      # Youtube E-learning
+
 # --- Chapter 4 후보물질 선정 ---
-dict(title="Chapter 4. 후보물질 선정과 약물대사 연구", slide="26 (+27·28·29·30)", img=["s26.jpg", "s29.jpg"],
+dict(title="Chapter 4. 후보물질 선정과 약물대사 연구", slide="26·27·28·29·30", img=["s26.jpg", "s29.jpg"],
      sub="후보물질 선정과정 · Hit → Drug Candidate",
      kw=["Chapter 4 시작", "Drug-like compound", "Candidate 선정", "약물대사 연구"],
      sum="새 단원 표지와 개요 슬라이드들. 질문은 <b>“무엇이 약을 잘 듣게 하나(What makes a drug work well?)”</b> — Hit을 <b>Drug-like한 후보물질(Candidate)</b>로 만드는 과정에서 약물대사 연구가 핵심이야.",
@@ -270,7 +271,7 @@ dict(title="Potency와 Overdose — 취급 등급", slide="42·43", img="s42.jpg
 <p class="box"><span class="tag">연결</span>36쪽 TD50·LD50와 묶어서: 역가가 높을수록 <pk>안전역(therapeutic window) 관리가 더 중요</pk>. 역가 = 효능 지표 + 안전 취급 기준.</p>"""),
 
 # --- PK: ADME ---
-dict(title="PK: 흡수 (Absorption) · 생체이용률", slide="44·45·46 (+47)", img=["s45.jpg", "s50.jpg"],
+dict(title="PK: 흡수 (Absorption) · 생체이용률", slide="44·45·46·47·50·51", img=["s45.jpg", "s50.jpg"],
      sub="Absorption and bioavailability",
      kw=["ADME 시작", "흡수 = 얼마나 흡수", "생체이용률 F", "IV=1.0, 경구&lt;1.0"],
      sum="PK의 첫 글자 <b>A(흡수)</b>. 흡수 = 약이 피부·장·점막에서 얼마나 흡수되나. <b>생체이용률(F)</b> = 전신순환 도달량/투여량. 정맥주사는 F=1.0, 경구는 불완전 흡수+간 대사로 보통 F&lt;1.0.",
@@ -301,7 +302,7 @@ dict(title="전신순환 (Systemic Circulation)", slide="48·49", img=["s49.jpg"
 <p>장기마다 받는 혈류량이 달라서(분포의 전제), 혈류가 많은 장기엔 약이 빨리·많이 가고 적은 장기엔 더디게 가.</p>
 <p class="box"><span class="tag">연결</span>IV가 F=1.0인 이유 = 간문맥(1차 통과)을 건너뛰기 때문. 다음 장 <b>분포(D)</b>로 이어짐.</p>"""),
 
-dict(title="PK: 분포 (Distribution)", slide="52·53 (+54)", img=["s52.jpg", "s53.jpg"],
+dict(title="PK: 분포 (Distribution)", slide="52·53·54·55·56", img=["s52.jpg", "s53.jpg"],
      sub="How the drug spreads in the body",
      kw=["분포 = 체내 확산", "표적기관 도달 농도", "혈장농도 ≈ 조직농도", "뇌·고환 제외"],
      sum="<b>D(분포)</b> = 약이 체내에 어떻게 퍼지나. 흡수로 혈장농도가 생겨도 <b>표적기관에 충분한 농도로 도달</b>해야 치료효과가 나. 약은 순환계로 분배되며, 뇌·고환을 뺀 대부분 장기에 도달해.",
@@ -314,9 +315,10 @@ dict(title="PK: 분포 (Distribution)", slide="52·53 (+54)", img=["s52.jpg", "s
 <li>기관·조직마다 섭취력·혈류량 차이가 큼</li></ul>""",
      ex="""<p><b>뇌·고환이 예외인 이유</b>: 혈액-뇌 장벽(BBB)·혈액-고환 장벽 같은 보호 장벽이 약 통과를 막아 — CNS 약 개발이 어려운 이유.</p>
 <p><b>분포용적(Vd)</b> 개념(56쪽 그림): Vd = 약물량/혈장농도. 예) 10 mg을 넣었더니 혈장농도 2.5 mg/L → Vd = 4 L. Vd가 크면 조직으로 많이 빠진 것.</p>
+<p><b>체액 구획</b>(56): 총 체수분 0.6 L/kg = 혈장 0.04 + 간질액 0.16 + 세포내액 … 조직 &gt;0.6. (55) 간질액은 모세혈관에서 <b>정수압(밀어냄) vs 삼투압(끌어당김)</b>의 균형으로 드나들어.</p>
 <p class="box"><span class="tag">시험 포인트</span><pk>분포 = 표적기관 도달이 핵심</pk>. 혈장농도는 대개 조직농도와 상관하지만 항상 같진 않음. 뇌·고환은 장벽으로 예외.</p>"""),
 
-dict(title="PK: 대사 (Metabolism) — Phase I / II", slide="57·59·60", img=["s57.jpg", "s60.jpg"],
+dict(title="PK: 대사 (Metabolism) — Phase I / II", slide="57·58·59·60", img=["s57.jpg", "s60.jpg"],
      sub="Drug metabolism: Phase I and II",
      kw=["대사 = 다른 물질로 변환", "주로 간 · CYP450", "Phase I 작용기화", "Phase II 포합"],
      sum="<b>M(대사)</b> = 약이 다른 물질로 바뀌나, 바뀐 게 활성·독성이 있나. 대부분 <b>간</b>에서 일어나. <b>Phase I(작용기화, CYP450: 산화·환원·가수분해)</b>로 극성기를 붙이고, <b>Phase II(포합)</b>로 수용성기를 붙여 배설을 도와.",
@@ -334,7 +336,7 @@ dict(title="PK: 대사 (Metabolism) — Phase I / II", slide="57·59·60", img=[
 <tr><td>결과</td><td>극성기 도입(활성·독성대사체 가능)</td><td>수용성 ↑ → 배설 쉬움</td></tr></table>
 <p class="box"><span class="tag">기말</span><pk>Phase I = CYP450 산화/환원/가수분해, Phase II = 포합(수용성↑).</pk> “대부분 대사는 간”, CYP450 저해/유도(12쪽 Candidate 조건과 연결)도 단골.</p>"""),
 
-dict(title="PK: 배설 (Excretion)", slide="61 (+62)", img="s61.jpg",
+dict(title="PK: 배설 (Excretion)", slide="61·62", img="s61.jpg",
      sub="Excretion",
      kw=["배설 = 체외 제거", "주로 신장·담즙", "친수성에 좌우", "호흡기·피부 소량"],
      sum="<b>E(배설)</b> = 약과 대사물을 체외로 내보내기. 대부분 <b>신장(소변)·담즙</b>으로 나가고, 소수만 담즙으로. 배설은 <b>친수성(수용성)</b>에 좌우돼(그래서 Phase II로 수용성을 높임). 호흡기·피부로도 소량.",
