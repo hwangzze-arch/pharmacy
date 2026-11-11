@@ -11,7 +11,7 @@ html,body{background:#9aa3b2}
 body{font-family:"Pretendard","WenQuanYi Zen Hei",sans-serif;color:var(--ink);
   -webkit-print-color-adjust:exact;print-color-adjust:exact;word-break:keep-all;line-height:1.5}
 .page{width:297mm;height:186mm;background:var(--bg);overflow:hidden;position:relative;
-  padding:7.5mm 10mm 7mm;display:flex;flex-direction:column;font-size:calc(10.9pt * var(--s,1));
+  padding:7.5mm 10mm 7mm;display:flex;flex-direction:column;font-size:calc(10.5pt * var(--s,1));
   page-break-after:always;break-after:page;margin:0 auto 4mm}
 @media print{html,body{background:#fff}.page{margin:0}}
 .gp{--c:var(--gp);--cs:var(--gp-soft);--cm:var(--gp-mid)}
@@ -90,11 +90,11 @@ b.hl,.hl{background:linear-gradient(transparent 55%,#ffe58a 55%);font-weight:700
 .card2.red{background:#fdf0ef;border-color:#f3c9c5}
 .card2.red h4{color:#c0392b}
 ul.b{list-style:none;font-size:.97em}
-ul.b li{position:relative;padding-left:3.6mm;margin:.7mm 0}
+ul.b li{position:relative;padding-left:3.6mm;margin:.45mm 0}
 ul.b li::before{content:"";position:absolute;left:.6mm;top:.6em;width:1.5mm;height:1.5mm;border-radius:50%;background:var(--pk)}
 table.t{width:100%;border-collapse:collapse;font-size:.92em}
-table.t th{background:var(--c);color:#fff;font-weight:700;padding:1.1mm 1.8mm;text-align:left}
-table.t td{border-bottom:1px solid var(--line);padding:1.0mm 1.8mm;vertical-align:top}
+table.t th{background:var(--c);color:#fff;font-weight:700;padding:.95mm 1.8mm;text-align:left}
+table.t td{border-bottom:1px solid var(--line);padding:.85mm 1.8mm;vertical-align:top}
 table.t tr:nth-child(even) td{background:var(--vr-soft)}
 .fig{margin:0 auto}
 .fig img{width:100%;max-height:var(--fh,62mm);object-fit:contain;display:block;border-radius:1.6mm}
@@ -104,12 +104,12 @@ table.t tr:nth-child(even) td{background:var(--vr-soft)}
 .one-line b{color:#ffe58a}
 /* 페이지별 셀프테스트(안 보고 답하기) */
 .spage .sbody > .selftest{flex:0 0 auto}
-.selftest{border:1.6px dashed var(--pk);border-radius:2.4mm;background:var(--pk-soft);padding:1.8mm 3mm;
+.selftest{border:1.5px dashed var(--pk);border-radius:2.2mm;background:var(--pk-soft);padding:1.3mm 3mm;
   display:flex;gap:3mm;align-items:center;margin-top:.6mm}
 .selftest .stlabel{flex:none;font-weight:800;color:#fff;background:var(--pk);border-radius:1.6mm;
-  padding:.9mm 2.6mm;font-size:.9em;white-space:nowrap}
-.selftest .stq{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1.2mm 6mm;
-  font-size:.95em;font-weight:600}
+  padding:.8mm 2.4mm;font-size:.86em;white-space:nowrap}
+.selftest .stq{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.8mm 6mm;
+  font-size:.92em;font-weight:600}
 .selftest .stq li{display:flex;gap:1.8mm;align-items:baseline}
 .selftest .stq .qn{flex:none;color:#fff;background:var(--vr);border-radius:1.2mm;
   padding:0 1.6mm;font-weight:800;font-size:.86em}
@@ -137,9 +137,9 @@ svg text{font-family:"Pretendard",sans-serif}
 .divider h1{font-size:30pt;font-weight:900;margin-top:2mm}
 .divider p{font-size:12pt;color:var(--muted);margin-top:3mm;max-width:200mm}
 
-.card2 svg{display:block;width:100%;height:auto;max-height:60mm;margin:0 auto}
-.card2.short svg{max-height:36mm}
-.card2.mid svg{max-height:72mm}
+.card2 svg{display:block;width:100%;height:auto;max-height:54mm;margin:0 auto}
+.card2.short svg{max-height:34mm}
+.card2.mid svg{max-height:58mm}
 
 /* ---------- 모의고사: 실전 시험지 ---------- */
 .uline{display:inline-block;min-width:24mm;border-bottom:1.2px solid #333;height:1em;vertical-align:-.15em}
@@ -174,11 +174,11 @@ svg text{font-family:"Pretendard",sans-serif}
 .fcover .lp .stt b{font-size:17pt;font-weight:800}
 .fcover .rp{flex:1;min-width:0;padding:10mm 10mm 9mm 8mm;display:flex;flex-direction:column}
 .fcover .rh{display:flex;align-items:baseline;gap:9px;border-bottom:2px solid var(--vr);padding-bottom:4px}
-.fcover .rh h2{margin:0;font-size:14pt;color:#1d2330;font-weight:800}
-.fcover .rh span{font-size:9.5pt;color:#6b7686;margin-left:auto}
-.fcover .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:14px;margin-top:4px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows,13),1fr)}
-.fcover .tr{display:flex;align-items:center;gap:6px;border-bottom:1px solid #eef1f5;font-size:10.3pt;min-width:0}
-.fcover .tr .bg{flex:none;width:30px;text-align:center;border-radius:7px;font-size:8.5pt;font-weight:700;color:#fff;padding:1px 0}
+.fcover .rh h2{margin:0;font-size:17pt;color:#1d2330;font-weight:800}
+.fcover .rh span{font-size:10.5pt;color:#6b7686;margin-left:auto}
+.fcover .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:5px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows,13),1fr)}
+.fcover .tr{display:flex;align-items:center;gap:8px;border-bottom:1px solid #eef1f5;font-size:12.3pt;min-width:0}
+.fcover .tr .bg{flex:none;width:34px;text-align:center;border-radius:7px;font-size:10pt;font-weight:700;color:#fff;padding:2px 0}
 .fcover .bg.c{background:#a62ac8}.fcover .bg.s{background:#7a1fb0}.fcover .bg.p{background:#d61f7a}.fcover .bg.v{background:#c77c02}.fcover .bg.g{background:#e11d48}
 /* 공부법 페이지: 회독 체크 표 */
 .track{width:100%;border-collapse:collapse;font-size:1.0em}
