@@ -4,25 +4,6 @@
 실제 기말 형식: 보기 ①~⑪ 세트 + 문항별 지정 개수 고르기."""
 from core import RAW, S, SEC, card, ul, table, img, MARKS, PAGES
 import svgs
-import math
-
-
-def virus_svg(cx, cy, r, n=14, op=0.95, sw=2.2):
-    """외피 바이러스(스파이크+유전체) 장식 SVG 조각"""
-    sp = ""
-    for i in range(n):
-        a = 2 * math.pi * i / n
-        x1, y1 = cx + r * math.cos(a), cy + r * math.sin(a)
-        x2, y2 = cx + (r + r * 0.22) * math.cos(a), cy + (r + r * 0.22) * math.sin(a)
-        kx, ky = cx + (r + r * 0.30) * math.cos(a), cy + (r + r * 0.30) * math.sin(a)
-        sp += (f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}"/>'
-               f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="{r*0.07:.1f}"/>')
-    g = r * 0.34
-    return (f'<g stroke="#fff" fill="none" stroke-width="{sw}" opacity="{op}" '
-            f'stroke-linecap="round">'
-            f'<circle cx="{cx}" cy="{cy}" r="{r}"/>{sp}'
-            f'<path d="M{cx-g*1.6:.0f},{cy:.0f} q{g:.0f},-{g*1.3:.0f} {g*1.6:.0f},0 '
-            f't{g*1.6:.0f},0" stroke-width="{sw*0.8:.1f}"/></g>')
 
 P = "vr"
 CIR = MARKS["circle"]
@@ -512,36 +493,41 @@ def build_study():
 
 # 표지 (맨 앞) — 23장 스타일
 def build_cover():
-    # TOC: 요약 섹션 + 세트 + 종합
-    toc_items = [("g", "공부법 — 읽지 말고 풀기"),
-                 ("s", "요약 1 범위 한눈에"), ("s", "요약 2 파라믹소 개요·NDV"), ("s", "요약 3 니파·홍역·볼거리"),
-                 ("s", "요약 4 RSV·리바비린"), ("s", "요약 5 랍도·번야"), ("s", "요약 6 인플루엔자 구조·8분절"),
-                 ("s", "요약 7 변이·팬데믹·백신"), ("s", "요약 8 항바이러스제 6종"), ("s", "요약 9 레트로·HTLV"),
-                 ("s", "요약 10 HIV"), ("s", "요약 11 HBV·간염"),
-                 ("p", "세트 1 파라믹소 (문제+해설)"), ("p", "세트 2 랍도·번야·소체 (문제+해설)"),
-                 ("p", "세트 3 인플루엔자 구조 (문제+해설)"), ("p", "세트 4 인플루엔자 약물 (문제+해설)"),
-                 ("p", "세트 5 레트로·HIV (문제+해설)"), ("p", "세트 6 HBV·간염 (문제+해설)"),
-                 ("c", "종합 비교표")]
-    items = ""
-    blab = {"s": "요약", "p": "세트", "v": "해설", "c": "표", "g": "필독"}
-    rows = (len(toc_items) + 1) // 2
-    for b, t in toc_items:
-        items += f'<div class="tr"><span class="bg {b}">{blab[b]}</span><span class="ti">{t}</span></div>'
-    deco = ('<svg viewBox="0 0 260 150" preserveAspectRatio="xMidYMid meet">'
-            + virus_svg(128, 78, 46, 14, 0.95)
-            + virus_svg(214, 30, 19, 10, 0.55, 1.8)
-            + virus_svg(40, 120, 15, 9, 0.5, 1.8)
-            + '</svg>')
     nq = sum(len(s["qs"]) for s in SETS)
-    cover = f'''<section class="page fcover vr">
-<div class="lp"><div class="k">CHAPTER</div>
-<div class="big"><b>10</b><span>장</span></div>
-<h1>병원성<br>바이러스</h1><div class="en">Pathogenic Viruses · 기말 범위</div>
-<div class="chips"><span>(−)ssRNA · 파라믹소/랍도/번야/오르토믹소</span><span>레트로 · HTLV · HIV</span><span>헤파드나 · B형 간염</span></div>
-<div class="deco">{deco}</div>
-<div class="stt"><span class="n">요약 11</span><span class="n">세트 6 · {nq}문항</span><span class="n">종합표</span><br><b>강의 슬라이드 + 녹취록 5개 반영</b> · 삼성노트 가로</div></div>
-<div class="rp"><div class="rh"><h2>목차</h2><span>🎯 교수님 녹취 강조 · ★ 출제 유력</span></div>
-<div class="toc" style="--rows:{rows}">{items}</div></div></section>'''
+    toc = [("00", "공부법 · 읽지 말고 풀기", "How to study", "2"),
+           ("01", "요약 · 파라믹소 · 뉴모(RSV)", "Paramyxo·Pneumo", "4"),
+           ("02", "요약 · 랍도(광견병) · 번야(한타)", "Rhabdo·Bunya", "7"),
+           ("03", "요약 · 오르토믹소(인플루엔자)", "Orthomyxo", "8"),
+           ("04", "요약 · 레트로 · HIV", "Retro·HIV", "11"),
+           ("05", "요약 · HBV · 간염", "Hepadna", "13"),
+           ("06", "실전 세트 1–6 (문제+해설)", "Practice sets", "14"),
+           ("✓", "종합 비교표", "Final table", "25")]
+    rows = "".join(
+        f'<div class="row"><span class="n">{n}</span>'
+        f'<span class="nm">{nm}<span>{en}</span></span><span class="pg">{pg}</span></div>'
+        for n, nm, en, pg in toc)
+    cover = f'''<section class="page cover2v">
+<div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
+<div class="cv-h">병원성 바이러스<br>기말 통합<br>마스터 노트</div>
+<div class="cv-flow">(−)ssRNA → 파라믹소·랍도·번야·오르토믹소 → 레트로 → HBV</div>
+<div class="cv-chips"><span class="cv-chip">상세 요약 11</span><span class="cv-chip">실전 세트 6 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">종합 비교표</span></div>
+<div class="cv-txt"><span class="r">기말 범위 = Viruses_2026 120쪽~끝</span> · 시험 12/14(월)–18(금) · 중간45·기말45·출석10.<br>
+형식: <b>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</b> · 약 45문항 · 1점 · 서술형 없음.<br>
+각 요약 뒤 <b>셀프테스트(안 보고 답하기)</b>, 세트는 <b>문제 → 바로 해설</b>.<br>
+교수님 녹취에서 강조한 건 🎯, 출제 유력은 ★로 표시했어.</div>
+<div class="cv-stats">
+<div class="cv-st"><b>11</b><span>요약 페이지<br>슬라이드+녹취록</span></div>
+<div class="cv-st"><b>6</b><span>실전 세트<br>{nq}문항</span></div>
+<div class="cv-st"><b>5</b><span>녹취록<br>수업 2–6</span></div>
+<div class="cv-st"><b>12/14</b><span>시험 시작<br>~12/18(금)</span></div></div></div>
+<div class="cv-toc"><div class="t">CONTENTS</div>{rows}</div>
+<div class="cv-parts">
+<div class="cv-p" style="border-top-color:#7a1fb0"><div class="a">파라믹소·랍도·번야</div><div class="b">홍역·볼거리·RSV · 광견병(Negri) · 한타(이호왕)</div></div>
+<div class="cv-p" style="border-top-color:#d61f7a"><div class="a">오르토믹소 인플루엔자</div><div class="b">8분절 · 소/대변이 · 항바이러스제 6종</div></div>
+<div class="cv-p" style="border-top-color:#a62ac8"><div class="a">레트로 · HIV</div><div class="b">gag/pol/env · CD4·CCR5/CXCR4 · HAART</div></div>
+<div class="cv-p" style="border-top-color:#c2185b"><div class="a">그룹7 HBV</div><div class="b">역전사 · 데인입자 vs HBsAg · 엔테카비어·테노포비어</div></div></div>
+<div class="cv-src">Viruses_2026 120쪽~끝 · 쉬운 설명본 · 기말 녹취록 수업 2–6(5회) 강조 내용을 바탕으로 정리</div>
+</section>'''
     PAGES.insert(0, ("r", cover))
 
 
