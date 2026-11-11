@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* 레이아웃: 왼쪽 고정 목차 + 본문 한 단. 실험 노트 느낌의 차분한 청록 단색, 형광펜 노랑은 교수님 강조에만 사용 */
+/* 레이아웃: 왼쪽 고정 목차 + 본문 한 단. 보라(구조)·분홍(출제) 단색 — PDF 학습자료와 같은 톤, 형광펜 노랑은 교수님 강조에만 사용 */
 :root{
-  --bg:#f3f6f5; --surface:#ffffff; --sunk:#eaf0ee; --ink:#15242b; --muted:#566970; --line:#d5dedb;
-  --accent:#0e6b67; --accent-soft:#dff0ed; --mark:#ffe58f; --exam:#b92d47; --exam-soft:#fbe6ea;
-  --ok:#17794a; --ok-soft:#e0f3e8; --bad:#b92d47; --bad-soft:#fbe6ea;
+  --bg:#f8f4fb; --surface:#ffffff; --sunk:#f1e9f7; --ink:#211a33; --muted:#6a6080; --line:#e4d8ee;
+  --accent:#7a1fb0; --accent-soft:#f3e7fb; --mark:#ffe58f; --exam:#d61f7a; --exam-soft:#fde7f1;
+  --ok:#17794a; --ok-soft:#e0f3e8; --bad:#c0392b; --bad-soft:#fbe7e4;
   --display:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
   --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -20,16 +20,16 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#0f1719; --surface:#172226; --sunk:#1d2b30; --ink:#e4eeee; --muted:#93a6aa; --line:#2b3b40;
-    --accent:#5fcabf; --accent-soft:#16373a; --mark:#7a6510; --exam:#ff8ba0; --exam-soft:#3b1d25;
-    --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8ba0; --bad-soft:#3b1d25;
+    --bg:#151020; --surface:#1e1730; --sunk:#271e3b; --ink:#ece6f5; --muted:#a79bbd; --line:#352a4a;
+    --accent:#c89af0; --accent-soft:#2e2142; --mark:#7a6510; --exam:#ff86bd; --exam-soft:#3b1a2c;
+    --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8b7a; --bad-soft:#3b1f1b;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#0f1719; --surface:#172226; --sunk:#1d2b30; --ink:#e4eeee; --muted:#93a6aa; --line:#2b3b40;
-  --accent:#5fcabf; --accent-soft:#16373a; --mark:#7a6510; --exam:#ff8ba0; --exam-soft:#3b1d25;
-  --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8ba0; --bad-soft:#3b1d25;
+  --bg:#151020; --surface:#1e1730; --sunk:#271e3b; --ink:#ece6f5; --muted:#a79bbd; --line:#352a4a;
+  --accent:#c89af0; --accent-soft:#2e2142; --mark:#7a6510; --exam:#ff86bd; --exam-soft:#3b1a2c;
+  --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8b7a; --bad-soft:#3b1f1b;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
