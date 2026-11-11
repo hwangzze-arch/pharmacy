@@ -511,6 +511,12 @@ def render_sets():
 render_sets()
 
 # ============================================================ 종합표 + 표지
+SS("암기", "암기 공식 — 시험 직전에 이것만",
+   '<div class="row c2">' +
+   card("파라믹소 · 랍도 · 번야 · 인플루엔자", table(["항목", "공식"], [["<b>분절 = ABO</b>", "Arena·Bunya·Ortho. 번야 3분절(L·M·S) — B에서 기둥 빼면 3. 파라믹소·랍도는 비분절<span class='mt'>🎯</span>"], ["<b>MMR</b>", "홍역·볼거리(파라믹소) + 풍진(토가). 셋 다 생백신"], ["<b>봉입체</b>", "Negri=광견병(세포질) · Guarnieri=천연두 · 부엉이 눈=CMV / Koplik=홍역(입 안 반점)"], ["<b>광견병</b>", "잠복기 ~4주 → <b>물린 뒤 백신이 치료</b> · flu-like ≠ 인플루엔자<span class='mt'>🎯</span><span class='ms'>★</span>"], ["<b>볼거리</b>", "이환율(morbidity)↑ 치사율(mortality)↓ — 0.001%"], ["<b>리바비린</b>", "공식 적응증 = RSV + HCV. 보기에 <b>한타</b> 있으면 맞음<span class='mt'>🎯</span><span class='ms'>★</span>"], ["<b>HA · NA</b>", "HA = 들어감(부착), NA = 나감(방출) → NA 억제 = <b>타미플루</b><span class='ms'>★</span>"], ["<b>인플루엔자 약 6종</b>", "타미플루=NA · 아만타딘=M2 · 발록사비르=PA · 파비피라비르=PB1 · 잉가비린=NP · 우미페노비르=HA2<span class='ms'>★</span>"], ["<b>drift vs shift</b>", "소변이 = 점돌연변이, 매년 백신 / 대변이 = 분절 재편성, 팬데믹(A형만) · 돼지 = 혼합용기"]]), "soft") +
+   card("레트로 · HIV · HBV · 종합", table(["항목", "공식"], [["<b>gag · pol · env</b>", "gag=구조(MA·CA·NC) · pol=효소(PR·RT·IN) · env=외피(SU·TM)"], ["<b>HIV 수용체</b>", "CD4(주) + CCR5 또는 CXCR4(보조) — CC의 5, CXC의 4 · gp120=결합, gp41=융합"], ["<b>레트로 2속</b>", "Delta=HTLV, Lenti=HIV · Retroviridae(과) ⊃ Lentivirus(속) ⊃ HIV(종)"], ["<b>-부딘 / -포비어</b>", "-부딘 = 뉴클레오사이드 / -포비어 = 뉴클레오타이드<span class='mt'>🎯</span>"], ["<b>'라테'</b>", "HIV+HBV 겸용 = <b>라미부딘·테노포비어</b> · HBV 현재 표준 = 엔테카비어·테노포비어<span class='mt'>🎯</span><span class='ms'>★</span>"], ["<b>HBsAg = 쭉정이</b>", "껍데기만, 감염성 X → 백신 항원 / 데인 입자 = 감염성 O"], ["<b>간염 전파</b>", "모음(A·E) = 입(분변-구강), 자음(B·C·D) = 피(혈액)"], ["<b>백신 유무</b>", "있음: 홍역·볼거리(MMR)·광견병·한타·인플루엔자·HBV / 없음: RSV·니파·HTLV·HIV"]]), "pink") +
+   '</div>')
+
 SS("종합", "종합 비교표 — 전파 · 매개체 · 백신 · 치료제",
    table(["바이러스", "과", "전파/매개", "백신", "치료제", "한 줄"], [
        ["홍역", "파라믹소", "공기(비말핵)", "MMR(생)", "X", "Koplik·R0 최고"],
@@ -568,7 +574,8 @@ def build_cover():
            ("04", "요약 · 레트로 · HIV", "Retro·HIV", "12"),
            ("05", "요약 · HBV · 간염", "Hepadna", "15"),
            ("06", "실전 세트 1–7 (문제+해설)", "Practice sets", "16"),
-           ("✓", "종합 비교표", "Final table", "30")]
+           ("07", "암기 공식 · 시험 직전 한 장", "Cheat sheet", "30"),
+           ("✓", "종합 비교표", "Final table", "31")]
     rows = "".join(
         f'<div class="row"><span class="n">{n}</span>'
         f'<span class="nm">{nm}<span>{en}</span></span><span class="pg">{pg}</span></div>'
@@ -577,7 +584,7 @@ def build_cover():
 <div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
 <div class="cv-h"><span class="t1">병원성</span><span class="t2">바이러스</span><span class="t3">기말 통합 마스터 노트</span></div>
 <div class="cv-flow">(−)ssRNA → 파라믹소·랍도·번야·오르토믹소 → 레트로 → HBV</div>
-<div class="cv-chips"><span class="cv-chip">상세 요약 13</span><span class="cv-chip">실전 세트 7 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">종합 비교표</span></div>
+<div class="cv-chips"><span class="cv-chip">상세 요약 13</span><span class="cv-chip">실전 세트 7 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">암기 공식 · 종합 비교표</span></div>
 <div class="cv-txt"><span class="r">기말 범위 = Viruses_2026 120쪽~끝</span> · 시험 12/14(월)–18(금) · 중간45·기말45·출석10.<br>
 형식: <b>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</b> · 약 45문항 · 1점 · 서술형 없음.<br>
 각 요약 뒤 <b>셀프테스트(안 보고 답하기)</b>, 세트는 <b>문제 → 바로 해설</b>.<br>
