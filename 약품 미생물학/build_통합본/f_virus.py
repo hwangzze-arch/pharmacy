@@ -224,20 +224,17 @@ SS("VI", "레트로바이러스 — 유전자·효소·생활사 + HTLV",
 SS("VI", "HIV — 수용체 · 케모카인 · 임상 · 치료제",
    '<div class="row c2">' +
    card("HIV 기본",
-        ul(["<b>AIDS=후천성 면역결핍 증후군</b> (HIV 감염 ≠ AIDS, 면역붕괴 후 합병증 단계)",
+        ul(["<b>AIDS=후천성 면역결핍 증후군</b> (HIV 감염 ≠ AIDS, 잠복 <b>8~10년</b> 뒤 CD4+ 급감→합병증)",
             "<b>HIV-1</b>(전 세계·병원성↑) / HIV-2(서아프리카·↓)",
             "<b>수용체=CD4</b> + <b>보조수용체=CCR5 또는 CXCR4</b> (둘 다 결합해야 침투)",
-            "gp160 → <b>gp120</b>(결합) + <b>gp41</b>(융합)",
-            "트로피즘: <b>R5-tropic(CCR5) / X4-tropic(CXCR4)</b> (옛 M/T-tropic)",
-            "잠복 <b>8~10년</b> → CD4+ 감소 → AIDS",
-            "기회감염: 칸디다증, <b>CMV</b>, 폐렴, CNS(치매·운동실조), <b>카포시 육종</b>"]), "soft") +
+            "gp160 → <b>gp120</b>(결합) + <b>gp41</b>(융합) / 트로피즘 <b>R5(CCR5)·X4(CXCR4)</b>",
+            "기회감염: 칸디다증·<b>CMV</b>·폐렴·<b>카포시 육종</b>, CNS(치매·운동실조)"]), "soft") +
    card("케모카인 분류 (시스테인 모티프)",
         table(["종류", "모티프", "수용체"], [
             ["C(XC)", "C 하나", "XCR1"],
             ["<b>CC</b>", "C 연속", "CCR1~10 (<b>5=CCR5</b>)"],
             ["<b>CXC</b>", "C-X-C", "CXCR1~7 (<b>4=CXCR4</b>)"],
-            ["CX3C", "C-XXX-C", "CX3CR1"]]) +
-        "<p style='margin-top:1mm'>케모카인 = 작은 사이토카인, <b>주화성(chemotaxis)</b> 유도</p>", "warm") +
+            ["CX3C", "C-XXX-C", "CX3CR1"]]), "warm") +
    '</div>' +
    '<div class="row c2">' +
    card("항-HIV 치료제 5그룹 (칵테일 요법)",

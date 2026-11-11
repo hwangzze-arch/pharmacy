@@ -12,7 +12,9 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
     document.querySelectorAll('.page').forEach((p) => {
       let s = p.classList.contains('spage') ? 1.3 : (p.classList.contains('qpage') ? 1.06 : 1.0);
       p.style.setProperty('--s', s);
-      const over = () => p.scrollHeight > p.clientHeight + 1 || [...p.querySelectorAll('.qrow .card, .card2, .ans')].some(e => e.scrollWidth > e.clientWidth + 2);
+      const over = () => p.scrollHeight > p.clientHeight + 1
+        || [...p.querySelectorAll('.qrow .card, .card2, .ans')].some(e => e.scrollWidth > e.clientWidth + 2)
+        || [...p.querySelectorAll('.card2, .setbox, .setqs, .ansgrid, .selftest, .track')].some(e => e.scrollHeight > e.clientHeight + 2);
       while (over() && s > 0.66) { s -= 0.02; p.style.setProperty('--s', s.toFixed(2)); }
       const blank = p.querySelector('.blank');
       res.push({ pn: p.dataset.pn, s: +s.toFixed(2), over: over(), blank: blank ? Math.round(blank.getBoundingClientRect().height / 3.78) : null });
