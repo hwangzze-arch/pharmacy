@@ -211,8 +211,11 @@ svg text{font-family:"Pretendard",sans-serif}
 .cover2v::before{display:none}
 .cover2v .cv-left{width:163mm}
 .cover2v .cv-k{letter-spacing:.3em;font-size:11px;font-weight:700;color:#8a4fc4;margin-top:3mm}
-.cover2v .cv-h{font-size:40px;line-height:1.16;font-weight:800;margin:9px 0 11px;
+.cover2v .cv-h{margin:5px 0 11px;line-height:1}
+.cover2v .cv-h .t1{display:block;font-size:30px;font-weight:800;color:#8a2fb8;letter-spacing:-.01em}
+.cover2v .cv-h .t2{display:block;font-size:108px;font-weight:900;line-height:.88;letter-spacing:-.05em;margin:1px 0 3px;
   background:linear-gradient(118deg,#7a1fb0,#d61f7a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover2v .cv-h .t3{display:block;font-size:21px;font-weight:800;color:#5a3f82}
 .cover2v .cv-flow{font-size:15.5px;color:#2c3038;margin-bottom:12px;font-weight:600}
 .cover2v .cv-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .cover2v .cv-chip{background:#fff;border:1px solid #ecd4ef;border-radius:16px;padding:4px 13px;
