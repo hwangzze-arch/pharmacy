@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>병원성 바이러스 기말 암기 노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* 레이아웃: 왼쪽 고정 목차 + 본문 한 단. 실험 노트 느낌의 차분한 청록 단색, 형광펜 노랑은 교수님 강조에만 사용 */
+:root{
+  --bg:#f3f6f5; --surface:#ffffff; --sunk:#eaf0ee; --ink:#15242b; --muted:#566970; --line:#d5dedb;
+  --accent:#0e6b67; --accent-soft:#dff0ed; --mark:#ffe58f; --exam:#b92d47; --exam-soft:#fbe6ea;
+  --ok:#17794a; --ok-soft:#e0f3e8; --bad:#b92d47; --bad-soft:#fbe6ea;
+  --display:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f1719; --surface:#172226; --sunk:#1d2b30; --ink:#e4eeee; --muted:#93a6aa; --line:#2b3b40;
+    --accent:#5fcabf; --accent-soft:#16373a; --mark:#7a6510; --exam:#ff8ba0; --exam-soft:#3b1d25;
+    --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8ba0; --bad-soft:#3b1d25;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f1719; --surface:#172226; --sunk:#1d2b30; --ink:#e4eeee; --muted:#93a6aa; --line:#2b3b40;
+  --accent:#5fcabf; --accent-soft:#16373a; --mark:#7a6510; --exam:#ff8ba0; --exam-soft:#3b1d25;
+  --ok:#6ed6a0; --ok-soft:#173527; --bad:#ff8ba0; --bad-soft:#3b1d25;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 var(--body);word-break:keep-all;overflow-wrap:anywhere}
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);max-width:1180px;margin:0 auto}
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:28px 18px 24px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+.brand{font:600 12px/1.4 var(--mono);letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+nav{display:flex;flex-direction:column;gap:2px}
+nav a{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:14.5px;line-height:1.4}
+nav a:hover{background:var(--sunk)}
+nav a span{font:500 11.5px var(--mono);color:var(--muted);min-width:18px}
+.modebox{display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.modebox p{margin:0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:6px;padding:7px 12px;font-weight:600;font-size:14px;line-height:1.3}
+.btn:hover{background:var(--accent-soft)}
+.btn[aria-pressed="true"],.btn.solid{background:var(--accent);color:var(--surface)}
+.btn.ghost{border-color:var(--line);color:var(--muted);font-weight:500}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:36px 32px 96px;display:flex;flex-direction:column;gap:56px;min-width:0}
+header.top{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font:600 12px/1.4 var(--mono);letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin:0}
+h1{font:700 clamp(30px,5vw,44px)/1.15 var(--display);margin:0;letter-spacing:-.02em;text-wrap:balance}
+.lede{margin:0;color:var(--muted);max-width:60ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+.facts div{padding:12px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+.facts dt{font:500 11.5px var(--mono);color:var(--muted);letter-spacing:.04em}
+.facts dd{margin:2px 0 0;font-weight:600;font-size:15px;line-height:1.45}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted);margin:0}
+section{display:flex;flex-direction:column;gap:18px}
+.sh{display:flex;flex-direction:column;gap:4px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+h2{font:700 25px/1.3 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+h3{font:700 16.5px/1.4 var(--display);margin:0;color:var(--accent);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+h4{font:600 12px var(--mono);letter-spacing:.06em;color:var(--muted);margin:0;text-transform:uppercase}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.plain{background:transparent}
+ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+li::marker{color:var(--accent)}
+p{margin:0}
+b{font-weight:700}
+mark{background:var(--mark);color:inherit;padding:0 2px;border-radius:2px}
+.tg{font:600 10.5px/1 var(--mono);font-style:normal;padding:3px 5px;border-radius:4px;white-space:nowrap;vertical-align:.12em;letter-spacing:.02em}
+.tg.rec{background:var(--mark);color:var(--ink)}
+.tg.ex{background:var(--exam);color:var(--surface)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.card .tw{border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.55}
+th{font:600 12px var(--mono);letter-spacing:.04em;text-align:left;color:var(--muted);background:var(--sunk);padding:8px 12px;white-space:nowrap}
+td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600}
+.band{background:var(--accent);color:var(--surface);border-radius:8px;padding:12px 16px;font-weight:600;line-height:1.6}
+.band mark{background:transparent;color:inherit;padding:0;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.tile{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface);padding:10px 14px;font-size:14.5px;line-height:1.55}
+.tile strong{display:block;font:600 15px var(--mono)}
+.tile small{display:block;color:var(--exam);font-weight:600;font-size:13px}
+.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px;counter-reset:f}
+.flow li{counter-increment:f;border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:13.5px;line-height:1.45}
+.flow li::before{content:counter(f);font:600 12px var(--mono);color:var(--accent)}
+.flow strong{font-size:15px}
+.flow em{font-style:normal;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);color:var(--exam);font-weight:600}
+.self{border:1px dashed var(--accent);border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:6px;background:var(--accent-soft)}
+details{border-top:1px solid var(--line);padding-top:6px}
+.self details:first-of-type{border-top:0;padding-top:0}
+summary{cursor:pointer;font-weight:600;line-height:1.55}
+details p{padding:4px 0 4px 18px;color:var(--ink)}
+/* 암기 모드 */
+body.cloze .note b:not(.shown){color:transparent;background:var(--sunk);box-shadow:inset 0 -2px 0 var(--accent);border-radius:3px;cursor:pointer;user-select:none}
+body.cloze .note b:not(.shown) *{visibility:hidden}
+/* 실전 세트 */
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 12px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.tab small{font:500 11.5px var(--mono);color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab[aria-selected="true"] small{color:var(--bg)}
+.sethead{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.sethead h3{color:var(--ink);font-size:19px}
+.setctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.score{font:600 13px var(--mono);color:var(--muted)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.q.right{border-color:var(--ok)}
+.q.wrong{border-color:var(--bad)}
+.qt{display:flex;gap:10px;align-items:flex-start;font-weight:600;line-height:1.55}
+.qn{font:600 14px var(--mono);color:var(--accent);min-width:20px;padding-top:2px}
+.qt .txt{flex:1}
+.need{font:600 12px var(--mono);background:var(--ink);color:var(--bg);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.dots{display:flex;gap:3px;padding-top:8px}
+.dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--muted)}
+.dots i.on{background:var(--ok);border-color:var(--ok)}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px 10px 5px 7px;font-size:14px;line-height:1.4;display:flex;gap:6px;align-items:baseline;text-align:left}
+.opt span{font:600 12.5px var(--mono);color:var(--muted)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.ok{opacity:1;background:var(--ok-soft);border-color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+.opt.miss{opacity:1;border:2px dashed var(--ok)}
+.opt.bad{opacity:1;background:var(--bad-soft);border-color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad);text-decoration:line-through}
+.qa{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.verdict{font-weight:700}
+.verdict.ok{color:var(--ok)} .verdict.bad{color:var(--bad)}
+.pick{font:500 12.5px var(--mono);color:var(--muted)}
+.exp{border-top:1px dashed var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.exp .o,.exp .x{padding-left:26px;position:relative}
+.exp .o::before,.exp .x::before{position:absolute;left:0;top:.28em;width:18px;height:18px;border-radius:50%;font:700 11px/18px var(--mono);text-align:center;color:var(--surface)}
+.exp .o::before{content:"O";background:var(--ok)}
+.exp .x::before{content:"X";background:var(--bad)}
+.kk{background:var(--sunk);border-radius:6px;padding:8px 12px}
+.kk b:first-child{font:600 11.5px var(--mono);color:var(--accent);margin-right:8px;letter-spacing:.04em}
+.kk.warn{background:var(--exam-soft)} .kk.warn b:first-child{color:var(--exam)}
+.formulas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px}
+.formulas div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;font-size:14.5px;line-height:1.55}
+.formulas strong{font-size:16px;line-height:1.4}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+[hidden]{display:none!important}
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  aside{position:sticky;top:0;z-index:5;height:auto;flex-direction:row;align-items:center;gap:10px;padding:8px 16px;border-right:0;border-bottom:1px solid var(--line);background:var(--bg)}
+  .brand,.modebox p{display:none}
+  .modebox{padding:0;border:0;background:transparent;order:-1;flex:none}
+  nav{flex-direction:row;overflow-x:auto;flex:1;gap:2px}
+  nav a{white-space:nowrap;padding:6px 8px;font-size:13.5px}
+  nav a span{display:none}
+  main{padding:24px 16px 80px;gap:44px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{aside,.setctl,.qa .btn{display:none}.shell{display:block}details>*{display:block}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand">약품미생물학 · 기말</div>
+  <div class="modebox">
+    <button class="btn" id="clozeBtn" aria-pressed="false">암기 모드 켜기</button>
+    <p>켜면 굵은 핵심어가 빈칸으로 가려져요. 떠올린 뒤 빈칸을 눌러 확인하세요.</p>
+  </div>
+  <nav aria-label="목차">
+    <a href="#how"><span>00</span>공부법</a>
+    <a href="#scope"><span>··</span>범위 한눈에</a>
+    <a href="#paramyxo"><span>01</span>파라믹소·뉴모</a>
+    <a href="#rhabdo"><span>02</span>랍도·번야</a>
+    <a href="#flu"><span>03</span>인플루엔자</a>
+    <a href="#retro"><span>04</span>레트로·HIV</a>
+    <a href="#hbv"><span>05</span>HBV·간염</a>
+    <a href="#sets"><span>06</span>실전 세트 1–7</a>
+    <a href="#formulas"><span>07</span>암기 공식</a>
+    <a href="#final"><span>08</span>종합 비교표</a>
+  </nav>
+</aside>
+
+<main>
+<header class="top">
+  <p class="eyebrow">PHAR · Medical Microbiology · 기말고사 대비 노트</p>
+  <h1>병원성 바이러스 기말 통합 마스터 노트</h1>
+  <p class="lede">(−)ssRNA → 파라믹소·랍도·번야·오르토믹소 → 레트로 → HBV. Viruses_2026 120쪽~끝, 슬라이드와 기말 녹취록 수업 2~6(5회) 강조 내용을 바탕으로 정리.</p>
+  <dl class="facts">
+    <div><dt>기말 범위</dt><dd>Viruses_2026 120쪽~끝</dd></div>
+    <div><dt>시험</dt><dd>12/14(월)~18(금)</dd></div>
+    <div><dt>배점</dt><dd>중간45 · 기말45 · 출석10</dd></div>
+    <div><dt>형식</dt><dd>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</dd></div>
+    <div><dt>분량</dt><dd>약 45문항 · 1점 · 서술형 없음</dd></div>
+  </dl>
+  <p class="legend"><span><i class="tg rec">녹취</i> 교수님이 녹취에서 강조</span><span><i class="tg ex">출제</i> 출제 유력</span><span>각 요약 뒤 셀프테스트는 안 보고 답하기, 세트는 문제 → 바로 해설</span></p>
+</header>
+
+<section id="how">
+  <div class="sh"><p class="eyebrow">필독 · 인출 연습(retrieval practice)</p><h2>이 자료 공부법: 읽지 말고 풀어라</h2></div>
+  <div class="g2">
+    <div class="card"><h3>읽기만 하면 왜 안 되나</h3><ul>
+      <li>여러 번 읽으면 글자가 <b>익숙</b>해져서 '아는 것 같은 착각'이 든다. 정작 보기를 가리면 안 떠오름</li>
+      <li>시험은 <b>보기 ①~⑪를 주고 떠올려 고르는</b> 형식. 읽기로는 이 능력이 안 길러짐</li>
+      <li>중간 7/45는 몰라서가 아니라 <b>인출(떠올리기) 연습이 부족</b>했을 가능성이 큼</li></ul></div>
+    <div class="card"><h3>그래서 이렇게: 인출 연습 3단계</h3><ul>
+      <li><b>손으로 푼다.</b> 해설은 가리고, 보기에서 지정 개수만큼 직접 골라 답한다. (눈으로만 X)</li>
+      <li><b>바로 채점.</b> 맞은 것·틀린 것을 표시. 틀린 건 <b>왜 틀렸는지</b> 해설을 한 줄로 읽는다.</li>
+      <li><b>틀린 것만 다시.</b> 맞은 문제는 넘기고, <b>틀린 문항만</b> 다음 회독에서 다시 푼다. 3번 연속 맞으면 졸업.</li></ul></div>
+  </div>
+  <p class="band">읽기 2~3회독보다 <mark>세트 7개를 풀고 → 채점 → 틀린 것만 다시</mark> 돌리는 게 점수에 직결된다. 아래 실전 세트가 회독과 연속 정답을 자동으로 기록해 줘요.</p>
+</section>
+
+<div class="note" style="display:contents">
+
+<section id="scope">
+  <div class="sh"><p class="eyebrow">범위</p><h2>기말 범위 한눈에: (−)ssRNA · 레트로 · HBV</h2></div>
+  <div class="g2">
+    <div class="card"><h3>볼티모어로 보는 기말 범위</h3>
+      <div class="tw"><table><tr><th>군</th><th>유전체</th><th>과 (기말)</th><th>대표</th></tr>
+      <tr><td>V</td><td>(−)ssRNA</td><td>파라믹소 · 랍도 · 번야 · 오르토믹소</td><td>홍역·볼거리·RSV / 광견병 / 한타 / 인플루엔자</td></tr>
+      <tr><td>VI</td><td>ssRNA-RT</td><td>레트로</td><td>HTLV · HIV</td></tr>
+      <tr><td>VII</td><td>dsDNA-RT</td><td>헤파드나</td><td>HBV(B형 간염)</td></tr></table></div>
+      <p>V·VI·VII 모두 <b>외피 O</b>. VI·VII은 <b>역전사</b>를 함(공통). VI=RNA, VII=DNA.</p></div>
+    <div class="card"><h3>녹취록에서 꼭 나온 포인트 <i class="tg rec">녹취</i></h3><ul>
+      <li><b>옛 이름 병기</b> → 옛 속명(Morbillivirus, Rubulavirus 등)으로 외워도 됨</li>
+      <li>필로(에볼라)·아레나는 <b>올해 범위 아님</b>, 한 번 읽기만</li>
+      <li>홍역 R0 12~18 <b>가장 전파력 강함</b> / 공기(비말핵) 전파</li>
+      <li>타미플루 = NA 억제 → <b>방출 차단</b> (국시 빈출)</li>
+      <li>광견병 = <b>잠복기 길어 물린 뒤 백신이 치료</b> (국시 빈출)</li>
+      <li>리바비린 = HCV·RSV(+한타) / HIV·HBV 겸용 = <b>라미부딘·테노포비어</b></li></ul></div>
+  </div>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>V·VI·VII군 중 역전사를 하는 군 2개는? 각각 유전체는 RNA? DNA?</summary><p>VI군(RNA), VII군(DNA)</p></details>
+    <details><summary>필로(에볼라)·아레나는 올해 시험 범위에 포함?</summary><p>올해 범위 아님. 한 번 읽기만.</p></details></div>
+</section>
+
+<section id="paramyxo">
+  <div class="sh"><p class="eyebrow">01 · V-1 · Paramyxo · Pneumo</p><h2>파라믹소바이러스과 · 뉴모(RSV)</h2></div>
+  <div class="g2">
+    <div class="card"><h3>파라믹소바이러스과 공통</h3><ul>
+      <li><b>myxo=점액(호흡기)</b>, <b>para=beyond(오르토믹소 옆 다른 그룹)</b></li>
+      <li><b>외피 O</b>, <b>비분절</b> (−)ssRNA (← 인플루엔자는 분절!)</li>
+      <li>분류 개정: 서브패밀리 Pneumovirinae → <b>패밀리 Pneumoviridae로 승격</b> (뉴모=폐렴)</li>
+      <li>새 서브패밀리 이름(Avula-, Ortho-, Meta-, Rubula-)은 <b>외울 필요 없음</b> → 바이러스 '이름'을 외우기</li>
+      <li>옛 속↔바이러스: Morbilli=홍역, Rubula=볼거리·파라인플루 2·4, Respiro=파라인플루 1·3</li></ul></div>
+    <div class="card"><h3>뉴캐슬병 바이러스 (NDV): 국시 가능성 거의 0, 상식</h3><ul>
+      <li>자연숙주 = <b>야생 철새</b> (철새 분변에서 가장 많이 분리, 그다음 인플루엔자)</li>
+      <li>가금류에서 <b>치사율 90%</b> (고병원성 조류독감 H5N1은 ~100%)</li>
+      <li>증상: 호흡기 + <b>신경(보행장애·발작·고개 젖힘)</b> → 고병원성 AI와 유사</li>
+      <li><b>1926년 영국 뉴캐슬</b>에서 분리</li>
+      <li>인수공통이나 사람은 <b>가벼운 결막염·독감 유사</b> (H5N1 사람 치사율 50~60%와 대비)</li>
+      <li>백신: 사람용 X, <b>가금류용 O</b> / 치료제 X</li></ul></div>
+  </div>
+  <h3>헨니파(니파·헨드라) · 홍역 · 파라인플루엔자 · 볼거리</h3>
+  <div class="tw"><table><tr><th>바이러스</th><th>숙주·전파</th><th>핵심 증상</th><th>백신</th><th>치료제</th></tr>
+    <tr><td>니파 <span style="font-weight:400">(헨니파)</span></td><td>자연숙주 <b>박쥐</b> → 중간숙주 <b>돼지</b> → 사람, 호흡기</td><td>뇌염(치명률 74.5%, 최대 100%), 동남아, <b>BSL-4</b>, 별명 'barking pig'</td><td>X</td><td>X</td></tr>
+    <tr><td>헨드라 <span style="font-weight:400">(헨니파)</span></td><td>박쥐 → 중간숙주 <b>말</b> → 사람, 호흡기</td><td>뇌염·수막염(~70%), 호주</td><td>X</td><td>X</td></tr>
+    <tr><td>홍역 <span style="font-weight:400">(Morbillivirus)</span></td><td><b>공기(비말핵) 전파</b>, R0 <b>12~18</b>(최고) <i class="tg rec">녹취</i></td><td><b>Koplik 반점</b>(발진 2~3일 전), 발진(반구진·홍반), 폐렴·뇌염, 실명</td><td><b>MMR(생)</b></td><td>X</td></tr>
+    <tr><td>파라인플루엔자 1~4</td><td>감기 바이러스(인플루엔자 아님!) <i class="tg rec">녹취</i></td><td><b>1·2형=크룹</b> / <b>3형=세기관지염·폐렴</b> (1·3=Respiro, 2·4=Rubula)</td><td>X</td><td>X</td></tr>
+    <tr><td>볼거리 <span style="font-weight:400">(Rubulavirus)</span></td><td>호흡기, R0 5~7</td><td><b>이하선(귀밑샘) 부종</b>, 고환염·수막염·난청, <b>임신초기 자연유산</b>, 이환율↑ <b>치사율 0.001%</b> <i class="tg rec">녹취</i>, '항아리 손님'</td><td><b>MMR(생)</b></td><td>X</td></tr></table></div>
+  <div class="g2">
+    <div class="card"><h3>홍역 꼭 기억</h3><ul>
+      <li>어릴 때 안 걸리고 <b>성인이 처음 걸리면 더 심함</b> <i class="tg rec">녹취</i> (A형 간염과 같은 특성)</li>
+      <li>치사율 3~6%(백신 전 25~50%)</li>
+      <li>대학 1~2학년 항체 저하 → 집단생활 중 유행</li></ul></div>
+    <div class="card"><h3>MMR = 3가지 (모두 생백신)</h3><ul>
+      <li><b>M</b>easles 홍역(파라믹소)</li><li><b>M</b>umps 볼거리(파라믹소)</li><li><b>R</b>ubella 풍진(토가, 중간범위)</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>RSV / 메타뉴모: 쌍둥이 (뉴모바이러스과)</h3><ul>
+      <li>둘 다 넓게 보면 <b>감기 바이러스</b>, <b>영유아(생후 2~3개월~돌)·65세↑</b>에서 세기관지염·폐렴</li>
+      <li>메타뉴모는 <b>2001 네덜란드</b>에서 첫 인지 → 그 전엔 다 RSV로 봄</li>
+      <li><b>syncytial=세포융합(syncytia)</b>: F 단백질로 숙주세포 융합 → 거대세포 = 전형적 <b>CPE</b></li>
+      <li><b>백신 없음</b></li></ul></div>
+    <div class="card"><h3>리바비린 (ribavirin) <i class="tg rec">녹취</i></h3><ul>
+      <li>뉴클레오사이드 유사체</li>
+      <li>공식 적응증 = <b>RSV + C형 간염(HCV)</b> (+ 일부 출혈열: 라싸, <b>한타는 효과 보고</b>)</li>
+      <li>중증 RSV(심한 기관지폐렴)엔 <b>흡입</b> 형태 사용</li>
+      <li>보기에 리바비린 대상으로 <b>한타바이러스</b> 있으면 맞는 것으로 <i class="tg rec">녹취</i> <i class="tg ex">출제</i></li></ul></div>
+  </div>
+  <p class="band">RSV 예방 = <mark>팔리비주맙(palivizumab)</mark> 등 항체(예방 목적) · 치료 = 리바비린 · <mark>백신은 없음</mark></p>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>파라믹소는 분절? 비분절? (인플루엔자와 반대)</summary><p>비분절 (−)ssRNA. 인플루엔자는 분절.</p></details>
+    <details><summary>NDV 자연숙주는? 가금류 치사율은?</summary><p>야생 철새 / 90%</p></details>
+    <details><summary>니파·헨드라의 중간숙주는 각각?</summary><p>니파 = 돼지, 헨드라 = 말 (자연숙주는 둘 다 박쥐)</p></details>
+    <details><summary>홍역 R0 범위는? Koplik 반점은 언제 나타나나?</summary><p>R0 12~18(최고) / 발진 2~3일 전</p></details>
+    <details><summary>MMR 백신 3가지는? 그중 파라믹소가 아닌 것은?</summary><p>홍역·볼거리·풍진 / 풍진(토가)</p></details>
+    <details><summary>syncytial의 뜻은? RSV 치료제·예방약은?</summary><p>세포융합 / 치료 리바비린, 예방 팔리비주맙(백신은 없음)</p></details>
+    <details><summary>리바비린 공식 적응증 2개 + 효과 보고되는 출혈열 바이러스는?</summary><p>RSV, C형 간염(HCV) + 한타바이러스</p></details></div>
+</section>
+
+<section id="rhabdo">
+  <div class="sh"><p class="eyebrow">02 · V-2 · Rhabdo · Bunya</p><h2>랍도(광견병) · 번야(한타)</h2></div>
+  <div class="g2">
+    <div class="card"><h3>광견병 (Rhabdoviridae) <i class="tg ex">출제</i> 국시 빈출</h3><ul>
+      <li><b>rhabdo=막대 → 총알 모양</b>, 캡시드 <b>나선형</b>(정이십면체 아님), 외피 O</li>
+      <li><b>신경친화성</b>: 중추신경계 복제. 감염동물 <b>침(물림)</b>으로 전파(인수공통)</li>
+      <li>임상 2형: <b>광폭형</b>(대뇌변연계) / <b>마비형</b>(신피질)</li>
+      <li>초기 <b>flu-like</b>(인플루엔자 '유사', 인플루엔자 아님!) <i class="tg rec">녹취</i> <i class="tg ex">출제</i> → 공포→<b>공수병</b>, 환각·마비</li>
+      <li>진단: <b>Negri 소체</b>(감염세포 세포질 봉입체)</li>
+      <li><mark><b>잠복기 ~4주로 길어, 물린 뒤 백신이 치료가 됨</b></mark> <i class="tg rec">녹취</i> <i class="tg ex">출제</i> (백신 후 항체 1주 80~90%, 2주 최대) · 사백신, 치료제 X(면역글로불린만)</li></ul></div>
+    <div class="card"><h3>한타바이러스 (Bunyaviridae → Hantaviridae)</h3><ul>
+      <li>분절 암기 <b>ABO</b>(Arena·Bunya·Ortho) <i class="tg rec">녹취</i>, 번야=<b>3분절(L·M·S)</b>. 대문자 B에서 기둥 빼면 3</li>
+      <li>매개체=절지동물 또는 설치류 / 한타 자연숙주=매개체 = <b>등줄쥐(Apodemus agrarius)</b>, 소변·배설물 분말 흡입·물림</li>
+      <li><b>유라시아=신증후군출혈열(HFRS)</b>: 발열·출혈(<b>혈소판↓</b>)·신장(<b>단백뇨</b>)·빈혈</li>
+      <li><b>아메리카=한타 폐증후군(HPS)</b>: 호흡곤란·심혈관 쇼크</li>
+      <li>치사율 과거 20~40% → <b>현재 ~7%</b></li>
+      <li><b>1976 이호왕, 한탄강</b> 분리 / 백신 <b>한타박스</b>(사백신, 한국·중국) / 리바비린</li></ul></div>
+  </div>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>광견병 진단에 쓰는 봉입체 이름은? 왜 '물린 뒤 백신'이 치료가 되나?</summary><p>Negri 소체 / 잠복기가 ~4주로 길어서 그 사이 백신으로 항체가 만들어짐</p></details>
+    <details><summary>한타 자연숙주(매개체)·최초 분리자·백신 이름은?</summary><p>등줄쥐(Apodemus agrarius) / 이호왕(1976, 한탄강) / 한타박스</p></details></div>
+</section>
+
+<section id="flu">
+  <div class="sh"><p class="eyebrow">03 · V-3 · Orthomyxo</p><h2>오르토믹소바이러스과: 인플루엔자</h2></div>
+  <h3>구조 · 8분절</h3>
+  <div class="tiles">
+    <div class="tile"><strong>HA</strong>헤마글루티닌: 세포에 달라붙는 손</div>
+    <div class="tile"><strong>NA</strong>뉴라미니다아제: 다 만든 뒤 떨어져 나가는 가위<small>↳ oseltamivir(타미플루)·zanamivir가 막음</small></div>
+    <div class="tile"><strong>M2</strong>이온 통로: 껍질 벗기기(탈각)<small>↳ amantadine·rimantadine이 막음</small></div>
+    <div class="tile"><strong>(−)RNA 8조각</strong>A형: H18 × N11 조합. 예) H1N1, H3N2, H5N1</div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>8개 분절 · 단백질 (A·B형 8, C형 7)</h3>
+      <div class="tw"><table><tr><th>분절</th><th>단백질</th><th>역할 / 약물</th></tr>
+      <tr><td>1·2·3</td><td>PB2·PB1·PA</td><td>중합효소 복합체 (PB2=cap 인지, <b>PB1=중합</b>, PA=cap 절단)</td></tr>
+      <tr><td>4</td><td><b>HA</b></td><td>HA1=시알산 결합 / HA2=막 융합</td></tr>
+      <tr><td>5</td><td>NP</td><td>RNA 안정화</td></tr>
+      <tr><td>6</td><td><b>NA</b></td><td>시알산 잘라 <b>방출</b></td></tr>
+      <tr><td>7</td><td>M (M1·M2)</td><td>M2=<b>이온 채널</b></td></tr>
+      <tr><td>8</td><td>NS</td><td>비구조</td></tr></table></div></div>
+    <div class="card"><h3>타입 · 아형</h3><ul>
+      <li><b>D형</b>=소만, 인수공통 X / <b>C형</b>=사람·돼지·개, 산발·경미 / <b>A·B형</b>이 겨울 독감 주원인, 대표=A형</li>
+      <li><b>A형 아형</b> = HA(H1~18) × NA(N1~11) 조합 (예 H1N1·H3N2·H5N1)</li>
+      <li><b>B형</b> = 숙주 사람·물개·페럿, 아형 없이 계열 2개: <b>야마가타 / 빅토리아</b></li>
+      <li>A형 자연숙주 = <b>야생 물새</b>, A형 공통조상 = 조류 인플루엔자</li>
+      <li>현재 계절 독감 = B형 + A형 H1N1·H3N2</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>소변이 vs 대변이</h3><ul>
+      <li><b>소변이(drift)</b> = 점돌연변이 축적(RNA라 <b>교정 없음</b>) → 매년 계절 유행 → 매년 백신</li>
+      <li><b>대변이(shift)</b> = <b>분절 재편성(reassortment)</b> → 완전 신종 → 팬데믹 (A형만)</li>
+      <li><b>돼지=혼합용기(mixing vessel)</b>: 조류형+사람형 수용체 모두 보유</li></ul></div>
+    <div class="card"><h3>팬데믹 역사</h3>
+      <div class="tw"><table><tr><th>연도</th><th>이름</th><th>아형</th><th>기전</th></tr>
+      <tr><td>1918</td><td>스페인 독감</td><td><b>H1N1</b></td><td>조류가 직접 사람에 (이례)</td></tr>
+      <tr><td>1957</td><td>아시아 독감</td><td>H2N2</td><td>조류+사람 대변이</td></tr>
+      <tr><td>1968</td><td>홍콩 독감</td><td>H3N2</td><td>조류+사람 대변이</td></tr>
+      <tr><td>2009</td><td>신종플루</td><td>H1N1</td><td><b>조류+사람+돼지</b> 대변이</td></tr></table></div>
+      <p>스페인 독감: 치사율 10~20%, 사망 5천만~1억. 중립국 스페인만 보도 자유로워 붙은 이름</p></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>고병원성 조류독감</h3>
+      <div class="tw"><table><tr><th>계열</th><th>사람 감염</th><th>사람 간 전파</th><th>치명률</th></tr>
+      <tr><td>H5 <span style="font-weight:400">(H5N1·N6·N8)</span></td><td>O</td><td><b>X</b></td><td>50~60%</td></tr>
+      <tr><td>H7 <span style="font-weight:400">(H7N9, 중국 동해안)</span></td><td>O</td><td><b>제한적 O</b></td><td>~20%</td></tr></table></div></div>
+    <div class="card"><h3>백신 · 방역</h3><ul>
+      <li>동물 = 이동제한+<b>살처분</b> / 한국은 고병원성 AI 가금류 백신 <b>금지(트로이 목마 효과)</b> <i class="tg rec">녹취</i></li>
+      <li>사람 = 주로 <b>근육주사 사백신</b>, 일부 비강 생백신</li>
+      <li>3가(H1N1+H3N2+B 1종) → 4가(B 둘) → <b>2020 이후 야마가타 소멸 → 다시 3가</b>(빅토리아) <i class="tg rec">녹취</i></li>
+      <li>WHO 3~4월 예측 → 10월 출시 → 예측 틀리면 <b>미스매치('물백신')</b></li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>유행 용어 (수업3)</h3>
+      <div class="tw"><table><tr><th>용어</th><th>뜻</th></tr>
+      <tr><td>에피데믹 <span style="font-weight:400">(epidemic, 유행병)</span></td><td>계절을 타고 특정 시기에 유행 (예: 겨울 독감)</td></tr>
+      <tr><td>엔데믹 <span style="font-weight:400">(endemic, 풍토병)</span></td><td>계절 무관, 특정 지역에 1년 내내 상존</td></tr>
+      <tr><td>팬데믹 <span style="font-weight:400">(pandemic)</span></td><td>여러 대륙·국가 동시 대유행, <b>WHO(1948 설립)</b>가 선언 (예: 2009 신종플루·코로나19)</td></tr></table></div>
+      <p>influenza ← 라틴어 <b>influentia = 유행</b> → 계절성</p></div>
+    <div class="card"><h3>감기 vs 독감 (수업3·4)</h3><ul>
+      <li><b>독감</b> = 인플루엔자 바이러스만. <b>38℃↑ 갑작스러운 고열 + 심한 근육통</b></li>
+      <li><b>감기</b> = 바이러스뿐 아니라 세균·원충·진균의 호흡기 감염까지 통칭</li>
+      <li>감기에 항생제 = <b>2차 세균감염 예방</b> 목적. 초기부터 무조건 처방은 <b>오남용</b></li>
+      <li>계절 독감 치명률 <b>~0.1%</b>(주로 65세↑ 폐렴)</li>
+      <li>한국: 고병원성 AI 백신 금지지만 <b>저병원성 H9N2는 닭 백신 허용</b>(산란율만 저하)</li></ul></div>
+  </div>
+  <h3>항바이러스제 6종 <i class="tg ex">출제</i> 약물↔기전 매칭</h3>
+  <div class="tw"><table><tr><th>약물</th><th>표적</th><th>막는 단계</th><th>비고</th></tr>
+    <tr><td><b>오셀타미비르(타미플루)</b><span style="font-weight:400">·자나미비르·페라미비르</span></td><td><b>NA</b></td><td>자손 바이러스 <b>방출(release)</b> <i class="tg ex">출제</i></td><td>현재 표준</td></tr>
+    <tr><td><b>아만타딘·리만타딘</b></td><td><b>M2 이온채널</b></td><td>산성화 → <b>탈외피·유전체 방출</b></td><td><b>전부 내성 → WHO 사용중지</b></td></tr>
+    <tr><td><b>발록사비르 (baloxavir)</b></td><td><b>PA</b> (cap-dependent endonuclease)</td><td><b>캡 스내칭</b>(전사 개시)</td><td>신규</td></tr>
+    <tr><td><b>파비피라비르 (favipiravir)</b></td><td><b>RdRp = PB1</b></td><td>RNA 중합</td><td>신규</td></tr>
+    <tr><td><b>잉가비린 (ingavirin)</b></td><td><b>NP</b></td><td>NP가 RNA에 결합 못 함</td><td>신규</td></tr>
+    <tr><td><b>우미페노비르 (umifenovir)</b></td><td><b>HA2</b></td><td>막 융합(membrane fusion)</td><td>신규</td></tr></table></div>
+  <p class="band">타미플루=NA=방출 · 아만타딘=M2=탈외피 · <mark>발록사비르=PA(캡) · 파비피라비르=PB1(중합) · 잉가비린=NP · 우미페노비르=HA2(융합)</mark></p>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>HA와 NA의 역할은 각각? (부착/방출)</summary><p>HA = 부착(HA1 시알산 결합, HA2 막 융합) / NA = 시알산 잘라 방출</p></details>
+    <details><summary>A형 아형 분류 기준 단백질 2개는? B형 계열 2개는?</summary><p>HA·NA / 야마가타·빅토리아</p></details>
+    <details><summary>소변이(drift)와 대변이(shift)의 기전 차이는?</summary><p>소변이 = 점돌연변이 축적(교정 없음) / 대변이 = 분절 재편성(reassortment)</p></details>
+    <details><summary>돼지가 '혼합용기'인 이유는? 2009 신종플루 재편성 3종은?</summary><p>조류형+사람형 수용체를 모두 보유 / 조류+사람+돼지</p></details>
+    <details><summary>에피데믹·엔데믹·팬데믹의 차이는? 팬데믹은 누가 선언?</summary><p>에피데믹 = 계절 타고 특정 시기 유행 / 엔데믹 = 계절 무관, 특정 지역 상존 / 팬데믹 = 여러 대륙·국가 동시 대유행. WHO가 선언.</p></details>
+    <details><summary>독감과 감기의 차이는? 감기에 항생제를 주는 이유는?</summary><p>독감 = 인플루엔자 바이러스만(38℃↑ 고열 + 심한 근육통), 감기 = 여러 병원체의 호흡기 감염 통칭 / 2차 세균감염 예방</p></details>
+    <details><summary>한국에서 닭 백신이 허용되는 조류독감 아형은?</summary><p>저병원성 H9N2</p></details>
+    <details><summary>타미플루의 표적과 막는 단계는? 아만타딘이 현재 안 쓰이는 이유는?</summary><p>NA, 방출 / 전부 내성 → WHO 사용중지</p></details>
+    <details><summary>발록사비르·파비피라비르·잉가비린·우미페노비르의 표적은 각각?</summary><p>PA / PB1(RdRp) / NP / HA2</p></details></div>
+</section>
+
+<section id="retro">
+  <div class="sh"><p class="eyebrow">04 · VI · Retro · HIV</p><h2>레트로바이러스 · HIV</h2></div>
+  <h3>레트로바이러스(HIV) 한 바퀴 + 약이 막는 곳</h3>
+  <p style="color:var(--muted);font-size:14.5px">"retro = 거꾸로": 보통은 DNA→RNA인데, 이들은 RNA→DNA (역전사효소 = RNA 의존 DNA 중합효소)</p>
+  <ol class="flow">
+    <li><strong>부착·융합</strong>CD4 + CCR5/CXCR4<em>융합·진입 억제제: enfuvirtide 등</em></li>
+    <li><strong>역전사</strong>RNA → DNA<em>NRTI: AZT(zidovudine) / NNRTI: nevirapine…</em></li>
+    <li><strong>통합</strong>숙주 DNA에 끼움<em>통합효소 억제제: raltegravir</em></li>
+    <li><strong>전사·번역</strong>= provirus 상태</li>
+    <li><strong>절단</strong>gag·pol 자르기<em>PI(-navir): saquinavir…</em></li>
+    <li><strong>출아</strong>새 HIV</li>
+  </ol>
+  <div class="g2">
+    <div class="card"><h3>유전자 · 3대 효소(모두 바이러스제 → 약물 표적) <i class="tg rec">녹취</i></h3>
+      <div class="tw"><table><tr><th>유전자</th><th>산물</th></tr>
+      <tr><td>gag</td><td>구조 (MA·CA·NC)</td></tr>
+      <tr><td>pol</td><td>효소: <b>PR</b>(프로테이스)·<b>RT</b>(역전사효소)·<b>IN</b>(인테그레이스)</td></tr>
+      <tr><td>env</td><td>외피 (SU·TM)</td></tr></table></div>
+      <p>(+)ssRNA <b>2개(dimer)</b> → (−)DNA → dsDNA → (+)mRNA. <b>RT = RNA 의존 DNA 중합효소</b>, IN은 숙주 DNA 삽입(provirus), PR은 폴리단백질 절단</p></div>
+    <div class="card"><h3>HTLV (Deltaretrovirus)</h3><ul>
+      <li><b>HTLV-1</b>이 중요 → <b>ATLL</b>(성인 T세포 백혈병/림프종), <b>HAM/TSP</b>(탈수초)</li>
+      <li>HAM/TSP는 길랑-바레(자가면역)와 달리 <b>바이러스 매개</b> <i class="tg rec">녹취</i></li>
+      <li><b>STI(성접촉)</b>·체액·모유 / 대부분 무증상, ~5% 발병, <b>30~50년 잠복</b>, ATLL 발병 시 1년 내 사망</li>
+      <li>일본 남부·카리브·아프리카·미국 남동부</li>
+      <li>백신 X, <b>오프라벨 AZT+IFN-α</b></li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>구조와 생활사 (녹취 보충)</h3><ul>
+      <li>외피 O / 유전체 = <b>(+)ssRNA 2개(dimer)</b> → dsDNA처럼 보이나 상보결합 X</li>
+      <li>발현: (+)ssRNA → (−)ssDNA → (±)dsDNA → (+)mRNA → 단백질 (부호가 계속 교대)</li>
+      <li>구조단백질: gag → <b>MA</b>(matrix)·<b>CA</b>(capsid)·<b>NC</b>(RNA 안정화) / env → <b>SU</b>(바깥)·<b>TM</b>(막관통)</li>
+      <li><b>폴리단백질</b>(Gag/Gag-Pol/Env)로 만들어짐 → <b>프로테이스가 못 자르면 복제 불가</b> <i class="tg rec">녹취</i></li>
+      <li>생활사: 부착 → 침투·탈외피 → <b>역전사</b> → dsDNA → <b>통합(provirus)</b> → 복제 → 조립·방출</li></ul></div>
+    <div class="card"><h3>분류: 사람 질병은 2속만</h3>
+      <div class="tw"><table><tr><th>속</th><th>바이러스</th></tr>
+      <tr><td>Deltaretrovirus</td><td><b>HTLV</b> (사람 T세포 백혈병 바이러스)</td></tr>
+      <tr><td>Lentivirus <span style="font-weight:400">(lenti=느린)</span></td><td><b>HIV</b> (에이즈 바이러스)</td></tr></table></div>
+      <ul><li>용어 관계: <b>Retroviridae(과)</b> ⊃ <b>Lentivirus(속)</b> ⊃ <b>HIV(종)</b></li>
+      <li><b>Rous sarcoma virus</b>도 약자가 <b>RSV</b> → 호흡기 RSV와 <b>약자만 같고 다름</b> <i class="tg rec">녹취</i> (닭 육종, 수업에서 따로 안 다룸)</li>
+      <li>기억할 과는 <b>Retroviridae</b> 하나</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>HIV 기본</h3><ul>
+      <li><b>AIDS=후천성 면역결핍 증후군</b> (HIV 감염 ≠ AIDS, 잠복 <b>8~10년</b> 뒤 CD4+ 급감→합병증) · 진단 <b>CD4+ 수</b></li>
+      <li><b>HIV-1</b>(전 세계·병원성↑) / HIV-2(서아프리카·↓) · 전파 STI·체액</li>
+      <li><b>수용체=CD4</b> + <b>보조수용체=CCR5 또는 CXCR4</b> (둘 다 결합해야 침투)</li>
+      <li>gp160 → <b>gp120</b>(결합) + <b>gp41</b>(융합) / 트로피즘 <b>R5(CCR5)·X4(CXCR4)</b></li>
+      <li>기회감염: 칸디다증·<b>CMV</b>·폐렴·<b>카포시 육종</b>, CNS(치매·운동실조) <i class="tg rec">녹취</i></li></ul></div>
+    <div class="card"><h3>케모카인 분류 (시스테인 모티프)</h3>
+      <div class="tw"><table><tr><th>종류</th><th>모티프</th><th>수용체</th></tr>
+      <tr><td style="font-weight:400">C(XC)</td><td>C 하나</td><td>XCR1</td></tr>
+      <tr><td>CC</td><td>C 연속</td><td>CCR1~10 (<b>5=CCR5</b>)</td></tr>
+      <tr><td>CXC</td><td>C-X-C</td><td>CXCR1~7 (<b>4=CXCR4</b>)</td></tr>
+      <tr><td style="font-weight:400">CX3C</td><td>C-XXX-C</td><td>CX3CR1</td></tr></table></div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>항-HIV 치료제 5그룹 (칵테일 요법) <i class="tg ex">출제</i></h3>
+      <div class="tw"><table><tr><th>그룹</th><th>대표 약</th></tr>
+      <tr><td>NRTI <span style="font-weight:400">(뉴클레오사이드+RT)</span></td><td><b>AZT(지도부딘)</b>, 라미부딘(3TC), 테노포비어</td></tr>
+      <tr><td>NNRTI <span style="font-weight:400">(논뉴클레오+RT)</span></td><td>—</td></tr>
+      <tr><td>PI <span style="font-weight:400">(프로테이스)</span></td><td><b>리토나비어</b>, 로피나비어</td></tr>
+      <tr><td style="font-weight:400">부착/융합 억제</td><td>gp120·gp41</td></tr>
+      <tr><td style="font-weight:400">인테그레이스 억제</td><td>—</td></tr></table></div></div>
+    <div class="card"><h3>약 접미사 · 리토나비어</h3><ul>
+      <li><b>-부딘(-vudine)=뉴클레오사이드</b> / <b>-포비어(-fovir)=뉴클레오타이드</b> <i class="tg rec">녹취</i></li>
+      <li><b>리토나비어</b>=원래 HIV PI, 팍스로비드(+니르마트렐비르)에선 <b>CYP3A4 억제 PK 인핸서</b> <i class="tg rec">녹취</i></li>
+      <li>로피나비어=사스(2002~03) 때 PI</li></ul></div>
+  </div>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>pol 유전자가 만드는 3대 효소는? (약물 표적)</summary><p>PR(프로테이스)·RT(역전사효소)·IN(인테그레이스)</p></details>
+    <details><summary>HTLV-1이 일으키는 병 2개는?</summary><p>ATLL(성인 T세포 백혈병/림프종), HAM/TSP</p></details>
+    <details><summary>gag·env가 만드는 구조단백질 이름은?</summary><p>gag → MA·CA·NC / env → SU·TM</p></details>
+    <details><summary>사람 질병을 일으키는 레트로 속 2개와 각각의 바이러스는? 약자 RSV 함정은?</summary><p>Deltaretrovirus = HTLV, Lentivirus = HIV / Rous sarcoma virus도 약자가 RSV지만 호흡기 RSV와 다름</p></details>
+    <details><summary>HIV 침투에 필요한 수용체 + 보조수용체 2종은?</summary><p>CD4 + CCR5 또는 CXCR4</p></details>
+    <details><summary>gp120과 gp41의 역할은 각각?</summary><p>gp120 = 결합 / gp41 = 융합</p></details></div>
+</section>
+
+<section id="hbv">
+  <div class="sh"><p class="eyebrow">05 · VII · Hepadna</p><h2>그룹7: B형 간염 바이러스(HBV) + 간염 종합</h2></div>
+  <div class="tiles">
+    <div class="tile"><strong>입으로 (분변-경구) · A · E</strong>모음(A, E) = 입 · 급성만, 만성 X</div>
+    <div class="tile"><strong>피로 (혈액·성접촉) · B · C · D</strong>자음 = 피 · 만성 → 간경변 → 간암</div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>HBV (Hepadnaviridae)</h3><ul>
+      <li><b>Hepadna = hepa(간)+dna(DNA)</b>. DNA 바이러스지만 <b>역전사함</b></li>
+      <li><b>외피 O, 정이십면체 캡시드</b></li>
+      <li><b>데인 입자</b>=완전체(감염성 O) / <b>HBsAg</b>=껍데기(감염성 X)→<b>백신 항원</b></li>
+      <li><b>DNA 폴리머레이스 자체가 역전사 활성</b>(올인원). 레트로는 RT 별도</li>
+      <li>지놈=<b>부분 이중가닥 DNA</b>: 전장=(−), 상보=(+) 50~60%만</li>
+      <li>복제: (−)→<b>(+) pregenomic RNA</b>→역전사→(−)DNA→부분 dsDNA (→항-HIV RT억제제가 HBV에도 적용)</li>
+      <li>만성화: 성인 5~10% · 소아 30~50% · <b>영아 80~90%</b></li></ul></div>
+    <div class="card"><h3>만성 B형 간염 치료제 5종 <i class="tg rec">녹취</i></h3>
+      <div class="tw"><table><tr><th>약</th><th>종류</th><th>현황</th></tr>
+      <tr><td style="font-weight:400">라미부딘</td><td>뉴클레오사이드</td><td>내성→중단</td></tr>
+      <tr><td style="font-weight:400">아데포비어</td><td>뉴클레오타이드</td><td><b>신독성</b>→중단</td></tr>
+      <tr><td style="font-weight:400">텔비부딘</td><td>뉴클레오사이드</td><td>내성→중단</td></tr>
+      <tr><td><b>엔테카비어</b></td><td>뉴클레오사이드</td><td><b>현재 표준</b></td></tr>
+      <tr><td><b>테노포비어</b></td><td>뉴클레오타이드</td><td><b>현재 표준</b></td></tr></table></div></div>
+  </div>
+  <div class="card"><h3>꼭 기억</h3><ul>
+    <li><b>HIV+HBV 겸용 = 라미부딘·테노포비어</b> ('라테') <i class="tg rec">녹취</i> <i class="tg ex">출제</i> / 나머지는 HBV만</li>
+    <li>급성 치료제 X, 노출 1주 내·신생아엔 <b>면역글로불린</b></li>
+    <li>백신 = 재조합 HBsAg</li>
+    <li>팜시클로비어는 <b>빼기</b>(교수님)</li></ul></div>
+  <div class="self"><h4>가리고 답하기</h4>
+    <details><summary>데인 입자와 HBsAg 입자의 차이는? (감염성/백신)</summary><p>데인 입자 = 완전체, 감염성 O / HBsAg = 껍데기, 감염성 X → 백신 항원</p></details>
+    <details><summary>HIV와 HBV 양쪽에 쓰는 약 2개는? (별명은?)</summary><p>라미부딘·테노포비어 ('라테')</p></details></div>
+</section>
+</div>
+
+<section id="sets">
+  <div class="sh"><p class="eyebrow">06 · 실전 세트 7 · 37문항</p><h2>실전 세트: 보기에서 지정 개수만큼 고르기</h2></div>
+  <div class="tabs" id="tabs" role="tablist" aria-label="세트 선택"></div>
+  <div id="setpanel" style="display:flex;flex-direction:column;gap:14px"></div>
+</section>
+
+<section id="formulas">
+  <div class="sh"><p class="eyebrow">07 · 한 줄 공식 모음</p><h2>암기 공식: 시험 직전에 이것만</h2></div>
+  <div class="formulas note">
+    <div><strong>분절 = ABO</strong>Arena·Bunya·Ortho. 번야 = <b>3분절(L·M·S)</b>, B에서 기둥 빼면 3. 파라믹소는 <b>비분절</b>.</div>
+    <div><strong>MMR</strong>홍역·볼거리(<b>파라믹소</b>) + 풍진(<b>토가</b>). 모두 생백신.</div>
+    <div><strong>봉입체 매칭</strong>Negri=<b>광견병</b>(세포질) · Guarnieri=<b>천연두</b> · 부엉이 눈=<b>CMV</b> · Koplik=<b>홍역</b>(입 안 반점)</div>
+    <div><strong>HA=들어감, NA=나감</strong>NA 억제 = <b>타미플루</b> → 방출 차단</div>
+    <div><strong>인플루엔자 약 6종</strong>타미플루=<b>NA</b> · 아만타딘=<b>M2</b> · 발록사비르=<b>PA</b> · 파비피라비르=<b>PB1</b> · 잉가비린=<b>NP</b> · 우미페노비르=<b>HA2</b></div>
+    <div><strong>drift vs shift</strong>소변이 = <b>점돌연변이</b>, 매년 백신 / 대변이 = <b>분절 재편성</b>, 팬데믹(A형만). 돼지 = 혼합용기.</div>
+    <div><strong>볼거리</strong>morbidity(이환율)↑ mortality(치사율)↓. 치사율 <b>0.001%</b></div>
+    <div><strong>리바비린</strong>공식 = <b>RSV + HCV</b>. 보기에 <b>한타</b> 있으면 맞는 것으로.</div>
+    <div><strong>gag · pol · env</strong>gag=<b>구조</b>(MA·CA·NC) · pol=<b>효소</b>(PR·RT·IN) · env=<b>외피</b>(SU·TM)</div>
+    <div><strong>HIV 수용체</strong>CD4(주) + <b>CCR5 또는 CXCR4</b>(보조). CC의 <b>5</b>=CCR5, CXC의 <b>4</b>=CXCR4. gp120=결합, gp41=융합.</div>
+    <div><strong>레트로 2속</strong>Delta=<b>HTLV</b>, Lenti=<b>HIV</b>. Retroviridae(과) ⊃ Lentivirus(속) ⊃ HIV(종)</div>
+    <div><strong>-부딘 / -포비어</strong>-부딘 = <b>뉴클레오사이드</b> / -포비어 = <b>뉴클레오타이드</b></div>
+    <div><strong>'라테'</strong>HIV+HBV 겸용 = <b>라미부딘·테노포비어</b>. HBV 현재 표준 = <b>엔테카비어·테노포비어</b></div>
+    <div><strong>HBsAg = '쭉정이'</strong>껍데기만, 감염성 X → <b>백신 항원</b>. 데인 입자 = 감염성 O.</div>
+    <div><strong>간염 전파</strong>모음(A·E)=<b>입</b>, 자음(B·C·D)=<b>피</b></div>
+    <div><strong>백신 유무</strong>있는 것: 홍역·볼거리(MMR), 광견병, 한타, 인플루엔자, HBV / 없는 것: <b>RSV·니파·HTLV·HIV</b></div>
+  </div>
+</section>
+
+<section id="final">
+  <div class="sh"><p class="eyebrow">08 · 종합</p><h2>종합 비교표: 전파 · 매개체 · 백신 · 치료제</h2></div>
+  <div class="tw note"><table><tr><th>바이러스</th><th>과</th><th>전파/매개</th><th>백신</th><th>치료제</th><th>한 줄</th></tr>
+    <tr><td>홍역</td><td>파라믹소</td><td>공기(비말핵)</td><td><b>MMR(생)</b></td><td>X</td><td>Koplik·R0 최고</td></tr>
+    <tr><td>볼거리</td><td>파라믹소</td><td>호흡기</td><td><b>MMR(생)</b></td><td>X</td><td>이하선·고환염</td></tr>
+    <tr><td>RSV</td><td>뉴모</td><td>비말</td><td>X</td><td><b>리바비린</b></td><td>세포융합·영유아 폐렴</td></tr>
+    <tr><td>니파/헨드라</td><td>파라믹소</td><td>박쥐→돼지/말</td><td>X</td><td>X</td><td>뇌염·BSL-4</td></tr>
+    <tr><td>광견병</td><td>랍도</td><td>동물 침(물림)</td><td><b>사백신</b></td><td>X(Ig)</td><td>Negri·공수병·물린뒤백신</td></tr>
+    <tr><td>한타</td><td>번야</td><td>등줄쥐 배설물</td><td><b>한타박스(사)</b></td><td><b>리바비린</b></td><td>HFRS·이호왕</td></tr>
+    <tr><td>인플루엔자</td><td>오르토믹소</td><td>비말</td><td><b>사백신(3가)</b></td><td><b>타미플루 등</b></td><td>8분절·drift/shift</td></tr>
+    <tr><td>HTLV</td><td>레트로</td><td>성접촉·모유</td><td>X</td><td><b>AZT+IFN(오프라벨)</b></td><td>ATLL·HAM/TSP</td></tr>
+    <tr><td>HIV</td><td>레트로</td><td>성접촉·혈액</td><td>X</td><td><b>칵테일(HAART)</b></td><td>CD4·CCR5/CXCR4</td></tr>
+    <tr><td>HBV</td><td>헤파드나</td><td>혈액·성·수직</td><td><b>재조합 HBsAg</b></td><td><b>엔테카비어·테노포비어</b></td><td>역전사·데인입자</td></tr></table></div>
+  <p class="band">백신 <mark>있는</mark> 것: 홍역·볼거리(MMR), 광견병, 한타, 인플루엔자, HBV / <mark>없는</mark> 것: RSV·니파·HTLV·HIV</p>
+  <footer>Viruses_2026 120쪽~끝 · 쉬운 설명본 · 기말 녹취록 수업 2~6(5회) 강조 내용을 바탕으로 정리. 풀이 기록은 이 브라우저에만 저장돼요.</footer>
+</section>
+</main>
+</div>
+
+<script>
+const C='①②③④⑤⑥⑦⑧⑨⑩⑪';
+const SETS=[
+{t:`파라믹소바이러스과`,o:[`뉴캐슬병 바이러스(NDV)`,`니파 바이러스`,`헨드라 바이러스`,`홍역 바이러스`,`볼거리 바이러스`,`파라인플루엔자 1형`,`파라인플루엔자 3형`,`RSV`,`메타뉴모바이러스`,`풍진 바이러스`,`에볼라 바이러스`],q:[
+ {q:`자연숙주가 박쥐이고 중간숙주(돼지·말)를 거쳐 사람에게 뇌염을 일으키는 것을 모두 고르시오.`,a:[2,3],e:[[1,`② 니파 — 중간숙주 <b>돼지</b>, 동남아, 치명률 74.5%.`],[1,`③ 헨드라 — 중간숙주 <b>말</b>, 호주.`]],k:[`핵심`,`둘 다 자연숙주 박쥐, 호흡기 전파, BSL-4, 백신·치료제 없음`]},
+ {q:`MMR 백신으로 예방하는 것을 모두 고르시오.`,a:[4,5,10],e:[[1,`④ 홍역(Measles).`],[1,`⑤ 볼거리(Mumps).`],[1,`⑩ 풍진(Rubella) — 파라믹소가 아니라 <b>토가바이러스</b>지만 MMR에 포함.`]],k:[`암기 팁`,`MMR = 홍역·볼거리(파라믹소) + 풍진(토가)`]},
+ {q:`'감기 바이러스'로 분류되며 크룹(1형)이나 세기관지염·폐렴(3형)을 일으키는 것을 모두 고르시오.`,a:[6,7],e:[[1,`⑥ 파라인플루엔자 1형 = <b>크룹</b> 대표.`],[1,`⑦ 파라인플루엔자 3형 = <b>세기관지염·폐렴</b>.`]],k:[`핵심`,`인플루엔자 아님! 1·3=Respirovirus, 2·4=Rubulavirus`]},
+ {q:`F 단백질로 세포융합(syncytia)을 일으켜 영유아·노인에서 폐렴을 유발하며 백신이 없는 것을 모두 고르시오.`,a:[8,9],e:[[1,`⑧ RSV — syncytial=세포융합, 치료 리바비린·예방 팔리비주맙.`],[1,`⑨ 메타뉴모 — RSV의 '쌍둥이', 2001 발견.`]],k:[`핵심`,`둘 다 뉴모바이러스과(승격), 백신 없음`]},
+ {q:`Koplik 반점과 공기(비말핵) 전파가 특징이며 R0가 가장 높은 것을 1개 고르시오.`,a:[4],e:[[1,`④ 홍역 — <b>Koplik 반점</b>(발진 2~3일 전 입 안 흰 점), <b>R0 12~18</b> 최고, 공기 전파.`]],k:[`암기 팁`,`성인 첫 감염이 더 심함 / 합병증 폐렴·뇌염`]},
+ {q:`이하선(귀밑샘) 부종이 특징이고 '항아리 손님'이라 불리며 이환율은 높지만 치사율이 매우 낮은 것을 1개 고르시오.`,a:[5],e:[[1,`⑤ 볼거리 — 이하선염, 고환염·수막염·난청, <b>치사율 0.001%</b>, R0 5~7.`]],k:[`암기 팁`,`morbidity(이환율)↑ mortality(치사율)↓`]}]},
+{t:`랍도 · 번야 · 봉입체/소체`,o:[`광견병 바이러스`,`한타바이러스`,`홍역 바이러스`,`천연두 바이러스`,`CMV`,`Negri 소체`,`Guarnieri 소체`,`Koplik 반점`,`부엉이 눈 봉입체`,`등줄쥐(Apodemus agrarius)`,`박쥐`],q:[
+ {q:`총알(막대) 모양이고 나선형 캡시드를 가지며 중추신경계에 친화성을 보이는 것을 1개 고르시오.`,a:[1],e:[[1,`① 광견병 — rhabdo=막대, <b>총알 모양·나선형</b>, 신경친화성, 침(물림) 전파.`]],k:[`핵심`,`잠복기 길어 물린 뒤 백신이 치료가 됨(국시 빈출)`]},
+ {q:`등줄쥐가 자연숙주이자 매개체이며 신증후군 출혈열 또는 폐증후군을 일으키는 것을 1개 고르시오.`,a:[2],e:[[1,`② 한타 — 유라시아 HFRS(출혈·혈소판↓·단백뇨) / 아메리카 HPS. 1976 이호왕 분리, 백신 한타박스.`]],k:[`암기 팁`,`분절 암기 ABO, 번야=3분절`]},
+ {q:`감염세포 안에서 관찰되는 봉입체(소체)를 모두 고르시오.`,a:[6,7,9],e:[[1,`⑥ 광견병 → <b>Negri 소체</b>(세포질).`],[1,`⑦ 천연두 → <b>Guarnieri 소체</b>.`],[1,`⑨ CMV → <b>부엉이 눈 봉입체</b>.`],[0,`⑧ Koplik 반점은 <b>홍역</b>에서 입 안 점막에 보이는 <b>반점</b> — 세포 안 봉입체가 아님.`]],k:[`핵심`,`Negri=광견병(신경) · Guarnieri=천연두 · 부엉이눈=CMV · Koplik=홍역`]},
+ {q:`리바비린이 (공식 적응증은 아니지만) 효과가 보고되어 보기에 포함되면 맞는 것으로 보는 것을 1개 고르시오.`,a:[2],e:[[1,`② 한타바이러스 — 리바비린 공식 적응증은 HCV·RSV지만 <b>한타에도 효과 보고</b>.`]],k:[`암기 팁`,`보기에 리바비린+한타 → 맞는 것으로 (교수님)`]},
+ {q:`홍역에서 발진이 나기 2~3일 전 입 안 점막에 나타나는 특징적 소견을 1개 고르시오.`,a:[8],e:[[1,`⑧ Koplik 반점 — 홍역의 조기 진단 단서(입 안 흰 점).`]],k:[`참고`,`광견병=Negri(세포질), 천연두=Guarnieri, CMV=부엉이 눈 → 세트에서 자주 섞어 냄.`]}]},
+{t:`인플루엔자 (구조·분절·변이)`,o:[`PB2`,`PB1`,`PA`,`HA`,`NP`,`NA`,`M2`,`NS`,`항원 소변이(drift)`,`항원 대변이(shift)`,`돼지(mixing vessel)`],q:[
+ {q:`인플루엔자 중합효소 복합체를 이루는 것을 모두 고르시오.`,a:[1,2,3],e:[[1,`①②③ PB2·PB1·PA = 중합효소 복합체.`]],k:[`핵심`,`PB2=cap 인지, PB1=중합(RdRp), PA=cap 절단(endonuclease)`]},
+ {q:`바이러스 표면에 있으며 각각 '세포 부착'과 '자손 방출'을 담당하는 것을 순서대로 고르시오(2개).`,a:[4,6],e:[[1,`④ HA — 시알산에 <b>부착</b>(HA1), 막 융합(HA2).`],[1,`⑥ NA — 시알산 잘라 <b>방출</b>.`]],k:[`암기 팁`,`HA=들어감, NA=나감. NA 억제=타미플루`]},
+ {q:`항원 대변이(shift)와 직접 관련된 것을 모두 고르시오.`,a:[10,11],e:[[1,`⑩ 대변이 = <b>분절 재편성</b> → 신종 → 팬데믹(A형만).`],[1,`⑪ <b>돼지</b> = 조류형+사람형 수용체 모두 보유 → 혼합용기.`],[0,`⑨ 소변이(drift)는 점돌연변이(교정 없음) → 매년 계절유행.`]]},
+ {q:`중합효소 복합체(PB2·PB1·PA) 중 신규 항바이러스제의 표적이 되는 것을 모두 고르시오.`,a:[2,3],e:[[1,`② PB1 ← 파비피라비르(RNA 중합 억제).`],[1,`③ PA ← 발록사비르(엔도뉴클레아제·캡 스내칭 억제).`],[0,`① PB2 = 숙주 mRNA의 cap 인지 — 이를 표적으로 하는 약은 수업에 없음.`]],k:[`핵심`,`표적 전체: PB1(파비피라비르)·PA(발록사비르)·NP(잉가비린)·HA2(우미페노비르)·NA(타미플루)·M2(아만타딘)`]},
+ {q:`A형 인플루엔자에만 있고 B·C형에는 없는 특징(아형 분류 기준이 되는 표면 단백질)을 2개 고르시오.`,a:[4,6],e:[[1,`④⑥ <b>HA·NA</b>의 조합(H1~18 × N1~11)으로 A형 아형 분류. B형은 아형 없이 야마가타/빅토리아 계열.`]],k:[`암기 팁`,`예 H1N1·H3N2·H5N1`]}]},
+{t:`인플루엔자 약물·팬데믹·조류독감`,o:[`오셀타미비르`,`아만타딘`,`발록사비르`,`파비피라비르`,`잉가비린`,`우미페노비르`,`H1N1(1918)`,`H2N2(1957)`,`H3N2(1968)`,`H5N1`,`H7N9`],q:[
+ {q:`뉴라미니다아제(NA)를 억제해 바이러스 방출을 막는 것을 1개 고르시오.`,a:[1],e:[[1,`① 오셀타미비르(타미플루) = NA 억제 → 방출 차단.`]],k:[`참고`,`아만타딘=M2(탈외피), 현재 내성으로 미사용`]},
+ {q:`약물과 표적 연결이 옳은 것을 모두 고르시오. (③발록사비르-PA ④파비피라비르-PB1 ⑤잉가비린-NP ⑥우미페노비르-HA2)`,a:[3,4,5,6],e:[[1,`③ 발록사비르-PA(캡 스내칭).`],[1,`④ 파비피라비르-PB1(중합).`],[1,`⑤ 잉가비린-NP.`],[1,`⑥ 우미페노비르-HA2(막 융합).`]],k:[`핵심`,`신규 4종 매칭 = 기말 출제 유력`]},
+ {q:`조류+사람 인플루엔자의 항원 대변이로 생긴 팬데믹 아형을 모두 고르시오.`,a:[8,9],e:[[1,`⑧ H2N2(1957 아시아 독감) — 조류+사람 대변이.`],[1,`⑨ H3N2(1968 홍콩 독감) — 조류+사람 대변이.`],[0,`⑦ H1N1(1918 스페인 독감)은 대변이가 아니라 <b>조류독감이 직접 사람에게</b> 넘어온 이례적 경우.`]],k:[`암기 팁`,`2009 신종플루(H1N1)는 조류+사람+<b>돼지</b> 대변이`]},
+ {q:`사람 감염 시 치명률이 50~60%로 높지만 아직 사람 간 전파가 (거의) 일어나지 않는 고병원성 조류독감을 1개 고르시오.`,a:[10],e:[[1,`⑩ H5N1 — 사람 치명률 50~60%, 사람 간 전파 X(숙주 적응 안 됨).`]],k:[`참고`,`H7N9은 치명률 ~20%지만 제한적 사람 간 전파 O`]}]},
+{t:`레트로 · HIV`,o:[`gag`,`pol`,`env`,`역전사효소(RT)`,`인테그레이스(IN)`,`프로테이스(PR)`,`CD4`,`CCR5`,`CXCR4`,`gp120`,`gp41`],q:[
+ {q:`레트로바이러스가 스스로 만들며 약물 표적이 되는 효소를 모두 고르시오.`,a:[4,5,6],e:[[1,`④ RT = RNA 의존 DNA 중합효소.`],[1,`⑤ IN = 숙주 DNA 삽입(provirus).`],[1,`⑥ PR = 폴리단백질 절단.`]],k:[`핵심`,`셋 다 pol 유전자 산물, 숙주엔 없음 → NRTI/NNRTI·인테그레이스억제제·PI`]},
+ {q:`HIV가 세포에 들어갈 때 gp120이 결합해야 하는 (보조)수용체를 모두 고르시오.`,a:[7,8,9],e:[[1,`⑦ CD4(수용체).`],[1,`⑧ CCR5.`],[1,`⑨ CXCR4. (보조수용체는 둘 중 하나/둘)`]],k:[`핵심`,`CD4 + (CCR5 또는 CXCR4) 둘 다 결합해야 침투. CCR5=R5-tropic, CXCR4=X4-tropic`]},
+ {q:`gp160이 절단되어 생기며 각각 '수용체 결합'과 '막 융합'을 담당하는 것을 순서대로 고르시오(2개).`,a:[10,11],e:[[1,`⑩ gp120 = CD4·보조수용체 <b>결합</b>.`],[1,`⑪ gp41 = 외피-세포막 <b>융합</b>(fusion peptide).`]],k:[`암기 팁`,`약품미생물학은 gp120에 초점`]},
+ {q:`구조 단백질(캡시드 등)을 암호화하는 유전자를 1개 고르시오.`,a:[1],e:[[1,`① gag = 구조(MA·CA·NC).`]],k:[`참고`,`pol=효소, env=외피`]},
+ {q:`HIV 침투 시 '보조수용체(coreceptor)'로 작용하는 것을 모두 고르시오.`,a:[8,9],e:[[1,`⑧ CCR5 — R5-tropic.`],[1,`⑨ CXCR4 — X4-tropic.`],[0,`⑦ CD4는 '주' 수용체(보조수용체 아님).`]],k:[`핵심`,`CD4(주) + CCR5 또는 CXCR4(보조) 둘 다 결합해야 침투`]}]},
+{t:`HBV · 간염 · 종합`,o:[`A형 간염(HAV)`,`B형 간염(HBV)`,`C형 간염(HCV)`,`E형 간염(HEV)`,`데인 입자`,`HBsAg 입자`,`라미부딘`,`테노포비어`,`엔테카비어`,`아데포비어`,`면역글로불린`],q:[
+ {q:`역전사(reverse transcription)를 하는 간염 바이러스를 1개 고르시오.`,a:[2],e:[[1,`② HBV — DNA지만 <b>역전사함</b>. DNA 폴리머레이스 자체가 역전사 활성.`]],k:[`핵심`,`그래서 항-HIV RT 억제제가 HBV에도 적용`]},
+ {q:`HBV 입자 중 감염성이 있는 것과 백신 항원으로 쓰이는 것을 순서대로 고르시오(2개).`,a:[5,6],e:[[1,`⑤ 데인 입자 = 캡시드+지놈 = <b>감염성 O</b>.`],[1,`⑥ HBsAg 입자 = 껍데기만 = 감염성 X → <b>백신 항원</b>.`]],k:[`암기 팁`,`HBsAg = '쭉정이'`]},
+ {q:`HIV와 만성 B형 간염 양쪽에 임상 적응증을 가진 약을 모두 고르시오.`,a:[7,8],e:[[1,`⑦ 라미부딘.`],[1,`⑧ 테노포비어.`]],k:[`핵심`,`'라테' — 나머지(엔테카비어·아데포비어 등)는 HBV만`]},
+ {q:`현재 만성 B형 간염 1차 표준 치료제를 모두 고르시오.`,a:[8,9],e:[[1,`⑧ 테노포비어.`],[1,`⑨ 엔테카비어.`],[0,`⑩ 아데포비어는 <b>신독성</b>으로 중단, 라미부딘·텔비부딘은 내성으로 중단.`]]},
+ {q:`B형 간염 노출 1주 이내나 신생아에게 효과가 있는 것을 1개 고르시오.`,a:[11],e:[[1,`⑪ 면역글로불린(항체). 급성엔 특이 치료제 없음, 이 시기에만 효과.`]],k:[`참고`,`백신 = 재조합 HBsAg`]},
+ {q:`전파 경로가 '분변-구강(입)'인 간염 바이러스를 모두 고르시오.`,a:[1,4],e:[[1,`① A형 — 분변-구강, 급성만.`],[1,`④ E형 — 분변-구강·돼지고기, 임신부 치명률↑.`],[0,`②③ B·C형은 혈액.`]],k:[`암기 팁`,`모음(A·E)=입, 자음(B·C·D)=피`]}]},
+{t:`녹취 보충 (분류·유행 용어·방역·숙주)`,o:[`Deltaretrovirus`,`Lentivirus`,`Retroviridae`,`에피데믹`,`엔데믹`,`팬데믹`,`H9N2`,`H5N1`,`H7N9`,`물개·페럿`,`돼지·개`],q:[
+ {q:`사람 T세포 백혈병 바이러스(HTLV)가 속한 속을 1개 고르시오.`,a:[1],e:[[1,`① Deltaretrovirus = <b>HTLV</b>.`]],k:[`암기 팁`,`사람 질병을 일으키는 레트로 속은 2개뿐: Delta=HTLV, Lenti=HIV`]},
+ {q:`HIV가 속한 속(genus)과 과(family)를 모두 고르시오.`,a:[2,3],e:[[1,`② Lentivirus(속) — lenti=느린.`],[1,`③ Retroviridae(과).`]],k:[`핵심`,`Retroviridae(과) ⊃ Lentivirus(속) ⊃ HIV(종)`]},
+ {q:`계절을 타고 특정 시기에 유행하는 것(influenza의 어원)을 1개 고르시오.`,a:[4],e:[[1,`④ 에피데믹 = 계절성 유행. influenza ← 라틴어 influentia(유행).`],[0,`⑤ 엔데믹 = 계절 무관, 특정 지역에 1년 내내 상존(풍토병).`]]},
+ {q:`여러 대륙·국가에서 동시에 대유행하여 WHO가 선언하는 것을 1개 고르시오.`,a:[6],e:[[1,`⑥ 팬데믹 — <b>WHO(1948 설립)</b>가 선언. 예: 2009 신종플루, 코로나19.`]]},
+ {q:`한국에서 가금류(닭) 백신 사용이 허용되는 저병원성 조류인플루엔자를 1개 고르시오.`,a:[7],e:[[1,`⑦ H9N2 — 저병원성(산란율만 저하) → 닭 백신 허용.`],[0,`⑧⑨ H5N1·H7N9 등 고병원성은 백신 금지 — <b>트로이 목마 효과</b> 때문에 살처분.`]]},
+ {q:`인플루엔자 B형이 사람 외에 감염하는 동물을 1개 고르시오.`,a:[10],e:[[1,`⑩ B형 = 사람·<b>물개·페럿</b>. 아형 없이 야마가타/빅토리아 계열.`],[0,`⑪ 돼지·개는 C형(사람·돼지·개).`]]}]}
+];
+
+/* 저장: 문항별 {s:연속 정답 수, l:마지막 결과} */
+const KEY='virus-final-v2';let store={};
+try{store=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){store={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}};
+const rec=(s,i)=>store[s+'-'+i]||{s:0,l:''};
+function grade(sel,ans){return sel.length===ans.length&&ans.every(a=>sel.includes(a))}
+
+let cur=0,onlyWrong=false;
+const tabs=document.getElementById('tabs'),panel=document.getElementById('setpanel');
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+
+function renderTabs(){
+  tabs.innerHTML='';
+  SETS.forEach((S,s)=>{
+    const ok=S.q.filter((_,i)=>rec(s,i).l==='ok').length;
+    const b=el('button','tab',`세트 ${s+1} <small>${ok}/${S.q.length}</small>`);
+    b.setAttribute('role','tab');b.setAttribute('aria-selected',s===cur);
+    b.onclick=()=>{cur=s;onlyWrong=false;renderTabs();renderSet()};
+    tabs.appendChild(b);
+  });
+}
+function renderSet(){
+  const S=SETS[cur];panel.innerHTML='';
+  const ok=S.q.filter((_,i)=>rec(cur,i).l==='ok').length,grad=S.q.filter((_,i)=>rec(cur,i).s>=3).length;
+  const head=el('div','sethead');
+  head.appendChild(el('h3','',`세트 ${cur+1} · ${S.t}`));
+  const ctl=el('div','setctl');
+  ctl.appendChild(el('span','score',`맞음 ${ok}/${S.q.length} · 졸업 ${grad}`));
+  const f=el('button','btn ghost',onlyWrong?'전체 문항 보기':'틀린 문항만 다시');
+  f.onclick=()=>{onlyWrong=!onlyWrong;renderSet()};
+  const r=el('button','btn ghost','이 세트 기록 지우기');
+  r.onclick=()=>{S.q.forEach((_,i)=>delete store[cur+'-'+i]);save();onlyWrong=false;renderTabs();renderSet()};
+  ctl.append(f,r);head.appendChild(ctl);panel.appendChild(head);
+  let shown=0;
+  S.q.forEach((Q,i)=>{
+    if(onlyWrong&&rec(cur,i).l==='ok')return;
+    shown++;panel.appendChild(renderQ(S,Q,i));
+  });
+  if(!shown)panel.appendChild(el('p','kk','이 세트는 틀린 문항이 없어요. 다른 세트로 넘어가세요.'));
+}
+function renderQ(S,Q,i){
+  const box=el('div','q');let sel=[],done=false;const all=/모두 고르시오/.test(Q.q);const cnt=()=>all?`${sel.length}개 선택`:`${sel.length}/${Q.a.length} 선택`;
+  const qt=el('div','qt');
+  qt.appendChild(el('span','qn',String(i+1)));
+  qt.appendChild(el('span','txt',Q.q));
+  const dots=el('span','dots');dots.title='연속 정답 3번이면 졸업';
+  const paintDots=()=>{dots.innerHTML='';for(let d=0;d<3;d++)dots.appendChild(el('i',d<rec(cur,i).s?'on':''))};
+  paintDots();qt.appendChild(dots);
+  if(!all)qt.appendChild(el('span','need',Q.a.length+'개'));
+  box.appendChild(qt);
+  const opts=el('div','opts');
+  const btns=S.o.map((label,n)=>{
+    const b=el('button','opt',`<span>${C[n]}</span>${label}`);b.setAttribute('aria-pressed','false');
+    b.onclick=()=>{
+      if(done)return;const v=n+1;
+      if(sel.includes(v))sel=sel.filter(x=>x!==v);
+      else{if(!all&&sel.length>=Q.a.length){if(Q.a.length===1)sel=[];else return}sel.push(v)}
+      btns.forEach((x,k)=>x.setAttribute('aria-pressed',sel.includes(k+1)));
+      pick.textContent=cnt();go.disabled=all?sel.length===0:sel.length!==Q.a.length;
+    };
+    opts.appendChild(b);return b;
+  });
+  box.appendChild(opts);
+  const qa=el('div','qa');
+  const go=el('button','btn solid','채점');go.disabled=true;
+  const pick=el('span','pick',cnt());
+  const verdict=el('span','verdict');
+  qa.append(go,pick,verdict);box.appendChild(qa);
+  const exp=el('div','exp');exp.hidden=true;
+  Q.e.forEach(([o,h])=>exp.appendChild(el('div',o?'o':'x',h)));
+  if(Q.k)exp.appendChild(el('div','kk'+(Q.w?' warn':''),`<b>${Q.k[0]}</b>${Q.k[1]}`));
+  box.appendChild(exp);
+  go.onclick=()=>{
+    if(done){box.replaceWith(renderQ(S,Q,i));return}
+    done=true;const right=grade(sel,Q.a);
+    btns.forEach((b,k)=>{const v=k+1;b.disabled=true;
+      if(Q.a.includes(v))b.classList.add(sel.includes(v)?'ok':'miss');
+      else if(sel.includes(v))b.classList.add('bad');});
+    const R=rec(cur,i);store[cur+'-'+i]={s:right?R.s+1:0,l:right?'ok':'bad'};save();
+    box.classList.add(right?'right':'wrong');
+    verdict.className='verdict '+(right?'ok':'bad');
+    verdict.textContent=right?'정답':'오답 · 정답 '+Q.a.map(a=>C[a-1]).join(' ');
+    pick.hidden=true;exp.hidden=false;go.textContent='다시 풀기';go.className='btn';
+    paintDots();renderTabs();
+    const sc=panel.querySelector('.score');
+    if(sc){const ok=S.q.filter((_,j)=>rec(cur,j).l==='ok').length,g=S.q.filter((_,j)=>rec(cur,j).s>=3).length;sc.textContent=`맞음 ${ok}/${S.q.length} · 졸업 ${g}`}
+  };
+  return box;
+}
+renderTabs();renderSet();
+
+/* 암기 모드: 굵은 핵심어를 빈칸으로 */
+const cb=document.getElementById('clozeBtn');
+const keys=[...document.querySelectorAll('.note b')];
+cb.onclick=()=>{
+  const on=!document.body.classList.contains('cloze');
+  document.body.classList.toggle('cloze',on);
+  cb.setAttribute('aria-pressed',on);cb.textContent=on?'암기 모드 끄기':'암기 모드 켜기';
+  keys.forEach(k=>{k.classList.remove('shown');if(on){k.tabIndex=0;k.setAttribute('role','button')}else{k.removeAttribute('tabindex');k.removeAttribute('role')}});
+};
+document.addEventListener('click',e=>{
+  if(!document.body.classList.contains('cloze'))return;
+  const k=e.target.closest('.note b');if(k)k.classList.toggle('shown');
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('body.cloze .note b')){e.preventDefault();e.target.classList.toggle('shown')}
+});
+</script>
+</body>
+</html>
