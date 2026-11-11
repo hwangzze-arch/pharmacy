@@ -1,0 +1,366 @@
+# 10주차 페이지 내용. "reuse" = (6주차 요약정리 쪽, 이번 슬라이드 번호, 6주차 슬라이드 번호)
+
+PAGES = [
+dict(title="강의 표지 · 이번 강의 로드맵", src="표지", img="s01.jpg",
+     sub="신약개발개론 — 후보물질 탐색 및 발굴2 &amp; 후보물질 선정과 약물대사연구1 (2026. 11. 11)",
+     kw=["Q&amp;A 5문항", "지난 시간 요약", "Chapter 4", "PK · PD", "Emax · EC50", "ADME"],
+     sum="앞부분은 지난 시간 질문 <b>Q&amp;A 5개</b>와 Chapter 3-2 복습(6주차와 같은 슬라이드), 본론은 새 단원 <b>Chapter 4. 후보물질 선정과 약물대사 연구</b> — PD(역가·효능)와 PK(ADME)야.",
+     lab="표지 내용",
+     tr="""<h3>신약개발개론</h3><ul>
+<li>후보물질 탐색 및 발굴2 / 후보물질 선정과 약물대사연구1 <span class="note">(표지의 “후보물실”은 오타)</span></li>
+<li>Han-Jun Kim (김한준), D.V.M., Ph.D. — Associate Professor, College of Pharmacy, Korea University</li>
+<li>2026. 11. 11 · 고려대학교</li></ul>
+<p class="note">“Questions?”(25·66)·영상 슬라이드는 빼거나 묶었어.</p>
+<div class="box"><span class="tag">주의</span>7·9~23쪽은 6주차 요약정리라, 그 본문 속 “슬라이드 N”은 <b>6주차 번호</b> 기준이야.</div>""",
+     ex="""<table class="t"><tr><th>파트</th><th>슬라이드</th><th>이 노트</th></tr>
+<tr><td>Q&amp;A (Hit·Lead 질문 5개)</td><td>2~6</td><td>2~6쪽</td></tr>
+<tr><td>Chapter 3-2 복습 <span class="note">(6주차와 동일)</span></td><td>7~24</td><td>7~23쪽</td></tr>
+<tr><td>지난 시간 요약</td><td>8</td><td>8쪽</td></tr>
+<tr><td>Ch.4 후보물질 선정</td><td>26~33</td><td>24~30쪽</td></tr>
+<tr><td>PD — Emax·EC50·역가·효능</td><td>34~43</td><td>31~37쪽</td></tr>
+<tr><td>PK — 흡수·분포·대사·배설</td><td>44~62</td><td>38~51쪽</td></tr>
+<tr><td>ADME 개인차 · PK/PD 모델링</td><td>63~65</td><td>52~53쪽</td></tr></table>
+<p><b>지난 시간과 연결</b>: Lead 최적화의 “IC50만 좋으면 끝이 아니다”의 이유 — <g>약이 표적까지 충분한 농도로 가서 머무는가(PK)</g>와 <g>가서 얼마나 세게·크게 듣는가(PD)</g>.</p>
+<p class="box"><span class="tag">기말</span><b>PD 용어 쌍</b>(Potency/Efficacy, EC50/Emax)과 <b>PK 정의</b>(생체이용률·1차 통과)가 1순위.</p>"""),
+
+dict(title="Q&amp;A — Hit 스크리닝: 가장 많이 쓰이는 방법은?", slide="2", img="s02.jpg",
+     sub="Which hit-finding screen is most widely used?",
+     kw=["HTS = 가장 범용", "FBDD = 탐색 효율", "동적 주형 = 연구 단계", "표적 정보에 따라 선택"],
+     sum="가장 널리 쓰이는 건 <b>HTS</b>, 적은 화합물로 효율적으로 탐색하는 건 <b>FBDD</b>. “가장 많이 쓰임 = 모든 표적에서 가장 효율적”은 아니라서, 표적 정보·자원에 따라 고르거나 병행해.",
+     lab="슬라이드 내용",
+     tr="""<p><b>질문</b> HTS·FBDD·동적 주형 보조 방법 중 가장 많이 쓰이고 효율적인 방법은?</p>
+<p><b>핵심 개념</b> 가장 널리 쓰이는 방법은 HTS임 · 효율은 표적 정보·목적에 따라 달라짐</p>
+<ol><li><b>(a) HTS</b>: 가장 널리 사용됨 — 표적 구조 정보 없이도 가능. 대규모 라이브러리를 assay로 직접 검색</li>
+<li><b>(b) FBDD</b>: 적은 화합물로 효율적 탐색 — 최근 활용 증가. 작은 fragment로 넓게 탐색·연결 최적화 필요</li>
+<li><b>(c) 동적 주형 보조</b>: 연구 단계 위주 — 표적이 fragment 연결을 유도함·적용 범위 제한적</li></ol>""",
+     ex="""<table class="t"><tr><th></th><th>HTS</th><th>FBDD</th><th>동적 주형 보조</th></tr>
+<tr><td>넣는 것</td><td>완성 화합물 수십만~수백만</td><td>작은 조각 수백~수천</td><td>연결기 단 조각</td></tr>
+<tr><td>표적 구조 정보</td><td>없어도 됨</td><td>필요(구조 기반)</td><td>필요</td></tr>
+<tr><td>위치</td><td>표준·범용</td><td>최근 증가</td><td>연구 단계</td></tr></table>
+<p><y>범용성은 HTS, 탐색 효율은 FBDD가 강점</y> — 둘을 표적 정보와 자원에 따라 선택·병행해.</p>
+<p class="box"><span class="tag">시험 포인트</span>“가장 많이 쓰이는 방법 = HTS”는 맞지만, <pk>그게 모든 표적에서 가장 효율적이라는 보기는 틀림</pk>.</p>"""),
+
+dict(title="Q&amp;A — 가장 좋은 hit 하나만 lead로?", slide="3", img="s03.jpg",
+     sub="Do we keep only the single best hit?",
+     kw=["현재 활성 + 개선 가능성", "hit 시리즈 유지", "SAR 비교", "대안 후보 보존"],
+     sum="최고 활성 하나만 남기는 게 아니야. <b>현재 활성뿐 아니라 개선 가능성</b>까지 보고, 구조가 다른 hit 여러 군을 함께 끌고 가서 주력 후보가 막히면 다른 후보로 전환해.",
+     lab="슬라이드 내용",
+     tr="""<p><b>질문</b> 처음엔 A가 더 좋더라도 B가 더 크게 개선될 수 있다면, 다른 후보를 놓칠 위험은 어떻게 줄일까?</p>
+<p><b>핵심 개념</b> 현재 활성뿐 아니라 개선 가능성도 함께 평가함 (선수 선발처럼 발전 가능성을 봄)</p>
+<ul><li><b>여러 물질군 비교</b>: 구조가 다른 hit를 함께 검토</li>
+<li><b>SAR 비교</b>: 효과·선택성·용해도·독성·합성 가능성을 함께 평가</li>
+<li><b>대안 유지</b>: 주력 후보에 문제가 생기면 다른 후보로 전환</li></ul>""",
+     ex="""<p>그림(Dual-site AC): 두 자리를 함께 바꾸면 각 변화의 pKi 효과가 더해져 <b>상승효과(synergistic)</b>가 나. 유사체를 함께 비교해야 치환 조합별 활성 차이가 보여.</p>
+<p>6주차에 본 Lead 단계 “구조가 다양한 Hit 3~5종 확보”와 같은 이야기야 — 한 계열만 밀다 막히면 되돌아올 길이 없어.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>최고 활성 hit 하나만 남기고 나머지를 버리는 과정이 아님.</pk> 놓칠 위험을 줄일 수는 있어도 완전히 배제할 수는 없음.</p>"""),
+
+dict(title="Q&amp;A — 치환 후 활성이 떨어지면 구조를 포기?", slide="4", img="s04.jpg",
+     sub="Does one drop in activity mean abandoning the scaffold?",
+     kw=["한 번 감소로 포기 ✗", "재확인", "유사체 비교", "감소도 SAR 단서"],
+     sum="한 번 활성이 떨어졌다고 골격을 버리지 않아. 같은 조건에서 <b>재확인</b>하고, 치환기 크기·위치를 바꾼 유사체와 비교해 방향을 정해 — <b>활성 감소 결과도 SAR의 중요한 단서</b>야.",
+     lab="슬라이드 내용",
+     tr="""<p><b>질문</b> 예상과 달리 치환 후 활성이 감소했다면, 현재 구조를 더 다듬을까 다른 구조로 전환할까?</p>
+<p><b>핵심 개념</b> 한 번의 활성 감소만으로 구조를 포기하지 않음 (열쇠 모양을 조금씩 다듬는 과정과 유사)</p>
+<ul><li><b>재확인</b>: 같은 조건에서 활성 감소 여부를 확인</li>
+<li><b>유사체 비교</b>: 치환기의 크기·위치를 바꾼 화합물과 비교</li>
+<li><b>방향 결정</b>: 현재 구조 최적화와 다른 구조 탐색을 함께 검토</li></ul>""",
+     ex="""<p>그림(Single-site AC): 한 자리만 살짝 바꿔도 pKi가 5.79 → 7.40처럼 크게 달라져(ΔpKi 1.61). <y>작은 치환 차이에도 활성이 크게 변한다</y>는 게 핵심.</p>
+<p>그래서 “활성이 떨어졌다”는 결과도 버리는 게 아니라 <b>어느 부분이 결합에 중요한지 알려주는 정보</b>로 써.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>활성 감소 = 실패가 아니라 SAR 단서.</pk> 여러 구조의 비교 결과를 바탕으로 다음 방향을 정함.</p>"""),
+
+dict(title="Q&amp;A — 고리를 분자 내 수소결합으로 바꾸면?", slide="5", img="s05.jpg",
+     sub="Does replacing a ring with an intramolecular H-bond fix everything?",
+     kw=["고리 → 분자 내 수소결합", "용해도 ↑?", "막 투과도", "경구 흡수는 별도"],
+     sum="고리 대신 <b>분자 내 수소결합</b>으로 형태를 유지하는 전략이야. 용해도·막 투과도에 도움이 될 수 있지만 <b>보장은 안 돼</b> — 용해도와 투과도를 각각 확인해 균형을 맞추는 게 핵심.",
+     lab="슬라이드 내용",
+     tr="""<p><b>질문</b> 고리를 분자 내 수소결합으로 대체하면 용해도·막 투과도·경구 흡수가 모두 개선될까?</p>
+<p><b>핵심 개념</b> 고리 대신 분자 내 수소결합으로 형태를 유지하는 전략 · 수소결합은 환경에 따라 형성·해리됨</p>
+<ul><li><b>용해도</b>: 결정성이 낮아지면 개선될 수 있으나 보장되지 않음</li>
+<li><b>막 투과도</b>: 비극성 환경에서 극성기 노출이 줄어 도움이 될 수 있음</li>
+<li><b>경구 흡수</b>: 용해·대사·배출의 영향으로 별도 확인 필요</li></ul>""",
+     ex="""<p>그림(Figure 2a·b): 같은 분자라도 <b>막 내부(비극성, a)</b>에서는 수소결합으로 접혀 극성기를 숨기고, <b>물속(b)</b>에서는 펴져 극성기를 드러내 — 환경에 따라 형태를 바꾸는 “카멜레온” 전략.</p>
+<p>막을 통과할 땐 극성을 숨기고(투과 ↑), 물에 녹을 땐 극성을 드러내(용해 ↑) 양쪽을 노리지만, 둘 다 자동으로 좋아지진 않아.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>고리 제거가 용해도·흡수 개선을 보장하지 않음.</pk> 용해도와 투과도는 trade-off라 각각 확인해야 함.</p>"""),
+
+dict(title="Q&amp;A — IC50가 낮아져도 투여량이 늘 수 있다", slide="6", img="s06.jpg",
+     sub="Lower IC50 but higher dose needed in animals — why?",
+     kw=["시험관 효과 ≠ 생체 전달", "흡수·분해", "작용 부위 도달", "PK 확인"],
+     sum="시험관 효과(IC50)와 몸속 전달·유지는 다른 문제야. IC50가 낮아졌는데 동물 필요 투여량이 늘었다면 <b>흡수 저하·빠른 분해·작용 부위 미도달</b>을 확인해야 해.",
+     lab="슬라이드 내용",
+     tr="""<p><b>질문</b> Lead의 IC50가 낮아졌는데 동물실험 필요 투여량이 증가했다면 어떤 요인을 확인해야 함?</p>
+<p><b>핵심 개념</b> 시험관에서의 효과와 몸속에서의 전달·유지는 서로 다른 문제임</p>
+<ol><li><b>IC50 감소의 의미</b>: 같은 시험 조건에서 더 적은 농도로 효과를 냄</li>
+<li><b>흡수·분해 확인</b>: 흡수 저하·빠른 분해로 체내 유지가 부족할 수 있음</li>
+<li><b>작용 부위 도달 확인</b>: 혈액에 약이 있어도 필요한 조직에 못 들어갈 수 있음</li></ol>""",
+     ex="""<p>그래프: 같은 양을 투여해도 제형(Oil, SNEDDS 등)에 따라 혈중 농도 곡선이 달라져 — 흡수·유지가 제형에 좌우된다는 실험 예시.</p>
+<p><g>이 질문이 이번 단원의 출발점</g>이야. “시험관 효능이 좋아도 몸에서 안 되는 이유”를 설명하는 게 바로 뒤에 나오는 <b>PK(ADME)</b>.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>IC50 감소만으로 동물 필요 투여량이나 원인을 단정할 수 없음.</pk> 몸속에 남는 양·시간(PK)과 작용 부위 도달을 함께 확인.</p>"""),
+
+# --- 6주차 재사용 (Chapter 3-2 복습) ---
+dict(reuse=(31, "7", "31")),     # 4. Hit 도출 Screening
+dict(reuse=(33, "9", "34")),     # Virtual screening
+dict(reuse=(34, "10", "35")),    # HTS vs FBDD
+dict(reuse=(35, "11", "36")),    # Covalent
+dict(reuse=(36, "12", "37")),    # 맞춤 라이브러리
+dict(reuse=(37, "13", "38")),    # 초기 ADME·Hit 기준
+dict(reuse=(38, "14", "39")),    # Hit 동정 스크리닝 옵션
+dict(reuse=(39, "15", "40")),    # 5. Hit to Lead SAR
+dict(reuse=(40, "16", "41")),    # 구조 단순화 SAR
+dict(reuse=(42, "17", "43")),    # Lead의 조건
+dict(reuse=(43, "18", "44")),    # 6. Lead Optimization
+dict(reuse=(44, "19", "45")),    # 효력·선택성·흡수 개선
+dict(reuse=(46, "20", "47")),    # Glivec 사례
+dict(reuse=(47, "21", "48")),    # UCL SM Roadmap 1
+dict(reuse=(48, "22", "49")),    # UCL SM Roadmap 2
+dict(reuse=(49, "23", "50")),    # UCL SM Roadmap 3
+
+dict(title="지난 시간 요약 (Summary of the Last class)", slide="8", img="s08.jpg",
+     sub="Hit to Lead &amp; Lead Optimization 복습",
+     kw=["Hit to Lead = 초기 개량", "Lead Optimization = 후기", "SAR", "수백 nM → 100 nM"],
+     sum="지난 시간 Lead 단계를 한 장으로 정리한 슬라이드. <b>Hit→Lead(초기, 화학 중심)</b>는 SAR로 수백 nM까지, <b>Lead 최적화(후기, 화학+생물)</b>는 ADME·독성까지 봐서 100 nM 이하로.",
+     lab="슬라이드 내용",
+     tr="""<h3>후보물질 탐색 및 발굴</h3>
+<p><b>Lead 도출 (Hit to Lead) — 초기 개량 단계 (Chemistry)</b></p>
+<ul><li>SAR 연구 → 화학구조와 target의 상관관계 규명, 구조 최적화</li>
+<li>수백 nM 수준 효과, Hit보다 강하고(potent) 선택적(selective), 생체 내 약효(efficacy) 보유 필요</li></ul>
+<p><b>Lead Optimization (선도물질 최적화) — 후기 개량 단계 (Chem + Bio)</b></p>
+<ul><li>Lead 유도체 합성 → SAR 확립</li>
+<li>초기 독성·약리시험과 ADME study</li>
+<li>potency·efficacy 개선, 선택성·대사안정성 최적화</li>
+<li>100 nM 이하 유효 농도, 적절한 용해도 등</li></ul>""",
+     ex="""<p>농도 사다리를 다시 떠올려: <b>Hit μM → Lead 수백 nM → Candidate ≤100 nM</b>. 뒤로 갈수록 화학(구조)만이 아니라 <g>생물(ADME·독성)</g>이 함께 들어와.</p>
+<p>이번 시간은 여기서 한 칸 더 — Lead 최적화와 <b>후보물질(Candidate) 선정</b>에서 핵심이 되는 <b>약물대사·PK/PD</b>를 본격적으로 다뤄.</p>
+<p class="box"><span class="tag">연결</span>“왜 Lead 최적화에 ADME가 들어오나?” → 시험관 효능(화학)만으로는 몸속에서 듣는지 알 수 없어서. 그 답이 Chapter 4.</p>"""),
+
+# --- Chapter 4 후보물질 선정 ---
+dict(title="Chapter 4. 후보물질 선정과 약물대사 연구", slide="26 (+27·28·29·30)", img=["s26.jpg", "s29.jpg"],
+     sub="후보물질 선정과정 · Hit → Drug Candidate",
+     kw=["Chapter 4 시작", "Drug-like compound", "Candidate 선정", "약물대사 연구"],
+     sum="새 단원 표지와 개요 슬라이드들. 질문은 <b>“무엇이 약을 잘 듣게 하나(What makes a drug work well?)”</b> — Hit을 <b>Drug-like한 후보물질(Candidate)</b>로 만드는 과정에서 약물대사 연구가 핵심이야.",
+     lab="슬라이드 내용",
+     tr="""<p><b>26</b> Chapter 4. 후보물질 선정과 약물대사 연구 (표지)</p>
+<p><b>27</b> What makes a drug work well? <span class="note">(영상)</span> — 약이 잘 듣는 조건을 묻는 도입</p>
+<p><b>28</b> Hit to Drug Candidate (Drug-like compound): Hit→Lead→Lead optimization→<b>Preclinical Candidate</b>→IND. 각 단계 6~15개월.</p>
+<p><b>29</b> 후보물질 선정과정: Lead Optimization과 Candidate Selection을 중심으로 물성·효능·PK·안전성을 반복 평가 → IND-Enabling Studies</p>
+<p><b>30</b> 후보물질 선정 및 약물대사 연구: 큰 신약개발 지도에서 <b>Lead 최적화~후보물질 도출</b> 구간(빨간 점선)이 이번 범위</p>""",
+     ex="""<p><b>후보물질 선정과정(29)</b>의 반복 평가 항목:</p>
+<ul><li>Target engagement in vitro (스크리닝)</li>
+<li>물성: Log P, PSA, 용해도</li>
+<li>In vivo 효능 — 질환 모델, Proof of Principle</li>
+<li>PK 물성: 생체이용률, PK/PD 상관</li>
+<li>안전성 스크리닝: <b>CYP 저해, hERG, Ames test</b> 등</li></ul>
+<p class="box"><span class="tag">기말</span>이 단원의 질문 = <pk>“What makes a drug work well?”</pk> → 답은 <b>활성(activity)뿐 아니라 속성(property=ADME·안전성)까지</b> 갖춘 Drug-like 후보.</p>"""),
+
+dict(title="후보물질 선정 — 활성 + 속성 동시 최적화", slide="31·32", img=["s31.jpg", "s32.jpg"],
+     sub="Candidate selection: activity &amp; property together",
+     kw=["활성 + 속성 동시", "Drug-like property", "PD · PK · 독성", "IND profile 필수"],
+     sum="신약개발은 초기부터 <b>활성(activity)뿐 아니라 속성(property)도 함께 최적화</b>해야 해. 이상적 약물 = 표적엔 강하게, 다른 경로엔 최소로. 개발공정에선 <b>PD·PK·독성</b>을 집중 분석하고, 이 데이터가 임상 용량의 근거(IND)가 돼.",
+     lab="슬라이드 내용",
+     tr="""<p><b>31 후보물질 선정</b></p>
+<ul><li>초기 탐색(drug discovery)부터 활성 + <g>속성(property) 최적화</g>를 동시에 진행하는 것이 중요</li>
+<li>‘Drug-like property’를 가진 후보물질 도출이 목표</li>
+<li>작용기전·선도물질·최적화가 제형과 함께 정해져야 하고, 용해도·안정성·물리화학적 속성 데이터 필요</li>
+<li>개발공정 = 약리·독성학·발암성·돌연변이성·생식발달 효과 포함</li></ul>
+<p><b>32</b> 이상적 약물 = 표적 경로엔 강한 효과, 다른 경로엔 부작용 줄이도록 최소 효과. 개발공정단계에선 <b>PD·PK·독성</b> 집중 분석.</p>""",
+     ex="""<p><b>왜 속성(property)이 활성만큼 중요한가</b> (32):</p>
+<ul><li>전임상 독성 데이터 = 잠재적 약의 <b>안전성 신뢰</b> 제공</li>
+<li>PD·PK·독성 데이터 = 임상시험 투약용량 결정 근거 → <pk>IND profile에 필수</pk></li>
+<li><g>시험관에서 아무리 좋아도, 동물에서 충분한 혈중농도를 지속 유지 못하면 신약 가치 상실</g></li></ul>
+<p class="box"><span class="tag">시험 포인트</span>후보물질 = <b>활성 × 속성</b>. “in vitro 효능만 좋으면 된다”는 틀린 보기. PD/PK/독성은 <b>임상 용량 결정·IND</b>의 근거.</p>"""),
+
+dict(title="신약개발에서 PK·PD의 중요성", slide="33", img="s33.jpg",
+     sub="Why PK/PD matters",
+     kw=["초기 실패 = 나쁜 PK", "ADME", "표적 도달 농도", "임상 실패요인"],
+     sum="신약 초기의 주요 문제는 <b>낮은 흡수·낮은 혈중농도·빠른 대사·배설</b> 같은 나쁜 PK야. 임상 실패의 주요 원인도 초기부터 <b>ADME</b>를 파악 못한 것. 약은 표적에 충분한 농도로 도달해야 효과를 내.",
+     lab="슬라이드 내용",
+     tr="""<ul><li>신약개발 초기 당면 문제 = <y>낮은 흡수율·낮은 혈중농도·빠른 대사 및 배설</y> 같은 바람직하지 못한 PK 특성</li>
+<li>연구자들은 PK 특성을 개선해 선도물질을 최적화하고 후보물질을 도출하려 노력</li>
+<li>임상연구 주요 실패요인 = 초기부터 <b>ADME(흡수-분포-대사-배설)</b> 평가와 특성 파악을 못한 것</li>
+<li>약이 효과를 내려면 표적(target)에 무사히 도달해 <b>충분한 농도</b>가 있어야 함</li></ul>""",
+     ex="""<p><b>ADME</b> = Absorption(흡수)·Distribution(분포)·Metabolism(대사)·Excretion(배설). PK는 이 네 과정으로 <b>“몸이 약에게 하는 일”</b>을 다뤄.</p>
+<p>그림: 전임상~임상(Learning→Confirming)에서 PK/PD가 계속 연결돼. 동물 데이터를 사람으로 번역(allometric scaling 등)해 <b>사람 초회 용량(FIH dose)</b>을 예측.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>신약 초기 실패의 흔한 원인 = 나쁜 PK(낮은 흡수·빠른 대사).</pk> 효능이 좋아도 표적 도달 농도가 안 나오면 소용없음.</p>"""),
+
+dict(title="PK &amp; PD — 몸이 약에게 / 약이 몸에게", slide="34·35·36", img="s34.jpg",
+     sub="Pharmacodynamics vs Pharmacokinetics",
+     kw=["PD = 약이 몸에게", "PK = 몸이 약에게", "용량-반응 곡선", "Emax·EC50·TD50·LD50"],
+     sum="<b>PD</b>(약력학) = 약이 몸에게 하는 일(용량-반응·수용체). <b>PK</b>(약동학) = 몸이 약에게 하는 일(ADME). PD의 용량-반응 곡선은 로그 스케일의 S자형이고, 핵심 파라미터는 Emax·EC50·TD50·LD50.",
+     lab="슬라이드 내용",
+     tr="""<p><b>34 PK &amp; PD</b> (손그림): Pharmacology = 화학물질이 생체 조직에 미치는 영향 연구</p>
+<table class="t"><tr><th>PD (약력학)</th><th>PK (약동학)</th></tr>
+<tr><td>약이 <b>몸</b>에게 하는 일</td><td><b>몸</b>이 약에게 하는 일</td></tr>
+<tr><td>용량-반응·수용체 결합·역가·효능</td><td>흡수·분포·대사·배설(ADME)</td></tr></table>
+<p><b>35·36 신약개발에서 PD</b>: 용량-반응 효과 연구, 치료효과·이상반응에 관심. 용량-효과 관계 = 로그 스케일의 <b>S자형 용량-반응 곡선</b>.</p>""",
+     ex="""<p><b>용량-반응 곡선 주요 Parameter</b> (36):</p>
+<table class="t"><tr><th>기호</th><th>뜻</th></tr>
+<tr><td>Emax</td><td>약이 낼 수 있는 <b>최대 효과</b></td></tr>
+<tr><td>EC50</td><td>최대 효과의 <b>50%</b>에 달하는 용량</td></tr>
+<tr><td>TD50</td><td>집단 절반에서 <b>독성</b>을 일으키는 용량</td></tr>
+<tr><td>LD50</td><td>집단 절반에서 <b>사망</b>을 일으키는 용량</td></tr></table>
+<p>일반적으로 <g>80% 이상 용량에서는 치료효과는 더 안 늘고 부작용 위험만 증가</g>.</p>
+<p class="box"><span class="tag">기말</span>EC50/TD50/LD50 정의 구분 + “고용량일수록 치료효과도 비례 증가”는 틀린 보기(부작용만 증가).</p>"""),
+
+dict(title="Emax &amp; EC50 — 효능 vs 역가", slide="37·38", img="s38.jpg",
+     sub="Emax = efficacy, EC50 = potency",
+     kw=["Emax = efficacy", "EC50 = potency", "클수록 효능 ↑", "낮을수록 역가 ↑"],
+     sum="<b>Emax</b>는 효능(efficacy)의 지표 — 클수록 효능이 큼(효과의 ‘양’). <b>EC50</b>(또는 ED50)은 역가(potency)의 지표 — <b>낮을수록 역가가 큼</b>(적은 양으로 같은 효과 = 더 강력).",
+     lab="슬라이드 내용",
+     tr="""<ul><li><b>Emax</b> is the key value for <b>efficacy</b>.
+  <ul><li>The GREATER the Emax, the GREATER the efficacy (효과의 양 = 효능)</li></ul></li>
+<li><b>EC50 (or ED50)</b> is the key value for <b>potency</b>.
+  <ul><li>The LOWER the EC50, the GREATER the potency — 적은 약으로 특정 효과를 내면 더 강력한 약</li></ul></li></ul>
+<p class="note">37은 Emax 그래프만 있는 도입 슬라이드.</p>""",
+     ex="""<table class="t"><tr><th></th><th>Emax</th><th>EC50</th></tr>
+<tr><td>나타내는 것</td><td>효능 (efficacy)</td><td>역가 (potency)</td></tr>
+<tr><td>그래프 위치</td><td>곡선의 <b>높이</b>(천장)</td><td>50% 지점의 <b>가로 위치</b></td></tr>
+<tr><td>좋은 약</td><td>Emax <b>클수록</b> ↑</td><td>EC50 <b>낮을수록</b> ↑</td></tr></table>
+<p>헷갈림 주의: <y>EC50은 “낮을수록” 좋은 것</y>(강력함). Emax는 “높을수록” 좋은 것(효과 큼).</p>
+<p class="box"><span class="tag">기말</span><pk>Emax↔efficacy, EC50↔potency 짝짓기</pk>와 방향(낮은 EC50 = 높은 역가)이 단골 함정.</p>"""),
+
+dict(title="신약개발에서 PD — 결합력 · 역가 · 효능", slide="39", img="s39.jpg",
+     sub="Binding affinity, efficacy and potency",
+     kw=["Kd ↓ = 친화도 ↑", "결합력-역가 연결", "More potent", "Less efficacious"],
+     sum="수용체 결합력(affinity)은 <b>Kd가 낮을수록 높아</b>. 그래프에서 곡선이 왼쪽에 있을수록 <b>역가(potent)↑</b>, 천장이 높을수록 <b>효능(efficacious)↑</b>. 둘은 별개의 축이야.",
+     lab="슬라이드 내용",
+     tr="""<p><b>Binding Affinity</b> (결합 친화도)</p>
+<ul><li>Strong binding ↔ Weak binding</li>
+<li><b>lower Kd = higher affinity</b> / higher Kd = lower affinity</li>
+<li>그래프: Kd=33(친화도 높음)·100·300(낮음) — Kd가 작을수록 적은 농도에서 50% 결합</li></ul>
+<p><b>Efficacy and Potency</b>: Efficacy = 약이 낼 수 있는 최대 반응 / Potency = 반응을 내는 데 필요한 용량</p>
+<p>빈칸: A is <b>more potent</b> than B · A and B are <b>more efficacious</b> than C.</p>""",
+     ex="""<p>그래프 읽는 법 — 축이 두 개라고 생각해:</p>
+<ul><li><b>가로(왼쪽일수록)</b> = potent(역가): 적은 용량으로 반응 → fentanyl &gt; morphine &gt; aspirin</li>
+<li><b>세로(천장 높이)</b> = efficacious(효능): 최대 반응 크기</li></ul>
+<p>결합력(Kd 낮음)이 좋으면 대개 역가가 높아지지만, <g>효능은 결합 후 얼마나 큰 반응을 내느냐</g>라 결합력만으로 안 정해져.</p>
+<p class="box"><span class="tag">기말</span>“A is more ___ than B / A·B are more ___ than C” 빈칸 = <pk>potent / efficacious</pk>. Kd↓ = 친화도↑.</p>"""),
+
+dict(title="Potency vs Efficacy — 펜타닐·모르핀·아스피린", slide="40·41", img=["s40.jpg", "s41.jpg"],
+     sub="Potency and efficacy compared",
+     kw=["역가(potency)", "효능(efficacy)", "역가: F &gt; M &gt; A", "효능: F = M &gt; A"],
+     sum="<b>역가(potency)</b> = 같은 효과를 내는 데 필요한 양(적을수록 고역가). <b>효능(efficacy)</b> = 낼 수 있는 최대 반응. 역가는 펜타닐&gt;모르핀&gt;아스피린, 효능은 펜타닐=모르핀&gt;아스피린.",
+     lab="슬라이드 내용",
+     tr="""<p><b>40 역가 (Potency)</b>: 주어진 강도의 효과를 내는 데 필요한 양 (Dose→Response)</p>
+<ul><li>높은 역가(High potency): 낮은 농도로도 반응 유발</li>
+<li>낮은 역가(Low potency): 높은 농도여야 반응 유발</li>
+<li>Potency: <b>Fentanyl &gt; Morphine &gt; Aspirin</b></li></ul>
+<p><b>41 효능 (Efficacy)</b>: 약으로 달성할 수 있는 최대 반응 (Dose→Response)</p>
+<ul><li>높은 효능: 최대 반응이 큼 / 낮은 효능: 최대 반응이 작음</li>
+<li>Efficacy: <b>Fentanyl = Morphine &gt; Aspirin</b></li></ul>""",
+     ex="""<p>세 약으로 외우기 — 같은 진통제라도:</p>
+<table class="t"><tr><th></th><th>역가(가로 위치)</th><th>효능(천장)</th></tr>
+<tr><td>Fentanyl</td><td>가장 높음(곡선 맨 왼쪽)</td><td>높음</td></tr>
+<tr><td>Morphine</td><td>중간</td><td>펜타닐과 같은 수준</td></tr>
+<tr><td>Aspirin</td><td>낮음(곡선 맨 오른쪽)</td><td>낮음</td></tr></table>
+<p><y>역가 ≠ 효능</y>: 펜타닐이 모르핀보다 “역가”는 높아도(적은 양) 최대 “효능”은 비슷해.</p>
+<p class="box"><span class="tag">기말</span>이 순서(역가 F&gt;M&gt;A, 효능 F=M&gt;A)는 단답·객관식 단골. 역가=필요 용량, 효능=최대 반응.</p>"""),
+
+dict(title="Potency와 Overdose — 취급 등급", slide="42·43", img="s42.jpg",
+     sub="Potency, overdose and handling categories",
+     kw=["고역가 = 소량 위험", "OEL 취급 등급", "반감기 경고", "안전역"],
+     sum="역가가 높을수록 <b>아주 적은 양으로도 위험</b>해서 취급 기준(OEL)이 엄격해져. 고역가 물질은 밀폐 제조 등 노출을 극도로 제한해 — 역가는 약효 지표이자 <b>안전·취급의 기준</b>이기도 해.",
+     lab="슬라이드 내용",
+     tr="""<p><b>42 Potency and Overdose</b>: 취급 등급 표 (Potency/toxicity에 따라)</p>
+<table class="t"><tr><th>등급</th><th>OEL</th><th>예시</th><th>취급</th></tr>
+<tr><td>1 (Low)</td><td>&gt;0.5 mg/m³</td><td>아스피린·아세트아미노펜</td><td>국소 추출</td></tr>
+<tr><td>2 (Moderate)</td><td>0.01~0.5</td><td>니카르디핀·옥시코돈</td><td>환기 추출</td></tr>
+<tr><td>3 (Potent)</td><td>0.03~10 µg/m³</td><td>파클리탁셀·펜타닐</td><td>밀폐 제조</td></tr></table>
+<p><b>43 Overdose</b>: 합성 오피오이드 관련 공중보건 통계 — 고역가 물질의 안전역 중요성 사례</p>""",
+     ex="""<p>역가가 높다는 건 <g>치료 용량과 위험 용량의 절대량이 모두 작다</g>는 뜻 → 조금만 더 들어가도 독성·치사(TD50·LD50)에 가까워져.</p>
+<p>그래서 고역가 API일수록 <b>OEL(작업장 노출 한계)</b>이 µg/m³ 수준으로 낮고, 제조 시 개방 취급을 피해(밀폐).</p>
+<p class="box"><span class="tag">연결</span>36쪽 TD50·LD50와 묶어서: 역가가 높을수록 <pk>안전역(therapeutic window) 관리가 더 중요</pk>. 역가 = 효능 지표 + 안전 취급 기준.</p>"""),
+
+# --- PK: ADME ---
+dict(title="PK: 흡수 (Absorption) · 생체이용률", slide="44·45·46 (+47)", img=["s45.jpg", "s50.jpg"],
+     sub="Absorption and bioavailability",
+     kw=["ADME 시작", "흡수 = 얼마나 흡수", "생체이용률 F", "IV=1.0, 경구&lt;1.0"],
+     sum="PK의 첫 글자 <b>A(흡수)</b>. 흡수 = 약이 피부·장·점막에서 얼마나 흡수되나. <b>생체이용률(F)</b> = 전신순환 도달량/투여량. 정맥주사는 F=1.0, 경구는 불완전 흡수+간 대사로 보통 F&lt;1.0.",
+     lab="슬라이드 내용",
+     tr="""<p><b>44 PK &amp; PD / 45 ADME</b>: A·D·M·E 네 과정 개요 (투여부위→혈액순환→작용/배설)</p>
+<p><b>46 흡수(Absorption)</b>: 약물이 피부·장·구강점막에 얼마나 흡수되는가. 전신순환에 도달한 약물은 작용부위에 작용 가능.</p>
+<p><b>50 생체내유용성(Bioavailability)</b> = 체내흡수분율</p>
+<p style="text-align:center"><b>F = 전신순환 도달 약물량 / 투여 약물량</b></p>
+<ul><li>정맥주사(IV): 곧바로 전신순환 도달 → <b>F = 1.0</b></li>
+<li>경구투여(Oral): 불완전 흡수 + 간 대사로 <b>F &lt; 1.0</b></li></ul>""",
+     ex="""<p><b>경구 생체이용률이 깎이는 3단계</b> (51쪽 그림, Dissolved→Absorbed→Portal vein):</p>
+<ul><li>정제 → <b>용해(dissolution)</b>: 안 녹은 약은 손실</li>
+<li>장벽 흡수: 흡수 안 된 약 손실</li>
+<li><g>간 1차 통과(first-pass metabolism)</g>: 간문맥 거치며 대사 손실 → 남은 분율 = F</li></ul>
+<p>생체이용률은 투여경로·약의 화학적 형태·소화기관 효소·간 대사에 좌우돼(51). <y>in vitro 효능이 높아도 흡수에서 F가 깎이면 생체 효과는 다름.</y></p>
+<p class="box"><span class="tag">기말</span><pk>IV의 F=1.0, 경구 F&lt;1.0(불완전 흡수 + 1차 통과).</pk> 생체이용률 공식과 “1차 통과 효과”는 단골.</p>"""),
+
+dict(title="전신순환 (Systemic Circulation)", slide="48·49", img=["s49.jpg", "s48.jpg"],
+     sub="How the drug reaches circulation",
+     kw=["전신순환", "장기별 혈류량", "간문맥", "IV 경로"],
+     sum="흡수된 약이 퍼지는 통로인 전신순환을 보는 슬라이드. 심박출량이 장기별로 나뉘고(간·신장·근육 등), <b>경구약은 장→간문맥→간</b>을 먼저 거쳐(1차 통과), IV는 이를 건너뛰어 곧장 순환으로 들어가.",
+     lab="슬라이드 내용",
+     tr="""<ul><li>심장에서 나온 혈류(100%)가 장기별로 분배: 간·소화관(간문맥 ~21%), 신장(~22%), 근육·피부·지방 등</li>
+<li>경구 흡수된 약은 <b>장 → 간문맥(portal vein) → 간</b>을 먼저 통과</li>
+<li>정맥주사(IV)는 간문맥을 건너뛰고 곧바로 전신순환 도달</li></ul>
+<p class="note">48·49는 전신순환 모식도 — 흡수(A)와 분포(D)를 잇는 그림이야.</p>""",
+     ex="""<p>이 그림이 중요한 이유: <g>경구약이 간문맥을 먼저 지난다는 사실이 “1차 통과 효과”의 해부학적 근거</g>야. 그래서 경구 F가 깎여.</p>
+<p>장기마다 받는 혈류량이 달라서(분포의 전제), 혈류가 많은 장기엔 약이 빨리·많이 가고 적은 장기엔 더디게 가.</p>
+<p class="box"><span class="tag">연결</span>IV가 F=1.0인 이유 = 간문맥(1차 통과)을 건너뛰기 때문. 다음 장 <b>분포(D)</b>로 이어짐.</p>"""),
+
+dict(title="PK: 분포 (Distribution)", slide="52·53 (+54)", img=["s52.jpg", "s53.jpg"],
+     sub="How the drug spreads in the body",
+     kw=["분포 = 체내 확산", "표적기관 도달 농도", "혈장농도 ≈ 조직농도", "뇌·고환 제외"],
+     sum="<b>D(분포)</b> = 약이 체내에 어떻게 퍼지나. 흡수로 혈장농도가 생겨도 <b>표적기관에 충분한 농도로 도달</b>해야 치료효과가 나. 약은 순환계로 분배되며, 뇌·고환을 뺀 대부분 장기에 도달해.",
+     lab="슬라이드 내용",
+     tr="""<ul><li><b>분포(Distribution)</b>: 약물이 체내에 어떻게 퍼지는가</li>
+<li>흡수로 적당한 혈장농도를 만드는 건 전제조건, <g>“기대 치료효과”엔 표적기관에 충분한 농도 도달이 필요</g></li>
+<li>약물은 주로 <b>순환계</b>로 분배, 일부는 림프계도 기여</li>
+<li>순환계 도달 시 <b>뇌·고환을 제외</b>한 대부분 표적기관에 도달</li>
+<li>(53) 표적기관의 실제 섭취량 측정은 어렵고, 혈장농도가 조직농도를 못 비추는 경우도 있지만 대개 밀접한 상관</li>
+<li>기관·조직마다 섭취력·혈류량 차이가 큼</li></ul>""",
+     ex="""<p><b>뇌·고환이 예외인 이유</b>: 혈액-뇌 장벽(BBB)·혈액-고환 장벽 같은 보호 장벽이 약 통과를 막아 — CNS 약 개발이 어려운 이유.</p>
+<p><b>분포용적(Vd)</b> 개념(56쪽 그림): Vd = 약물량/혈장농도. 예) 10 mg을 넣었더니 혈장농도 2.5 mg/L → Vd = 4 L. Vd가 크면 조직으로 많이 빠진 것.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>분포 = 표적기관 도달이 핵심</pk>. 혈장농도는 대개 조직농도와 상관하지만 항상 같진 않음. 뇌·고환은 장벽으로 예외.</p>"""),
+
+dict(title="PK: 대사 (Metabolism) — Phase I / II", slide="57·59·60", img=["s57.jpg", "s60.jpg"],
+     sub="Drug metabolism: Phase I and II",
+     kw=["대사 = 다른 물질로 변환", "주로 간 · CYP450", "Phase I 작용기화", "Phase II 포합"],
+     sum="<b>M(대사)</b> = 약이 다른 물질로 바뀌나, 바뀐 게 활성·독성이 있나. 대부분 <b>간</b>에서 일어나. <b>Phase I(작용기화, CYP450: 산화·환원·가수분해)</b>로 극성기를 붙이고, <b>Phase II(포합)</b>로 수용성기를 붙여 배설을 도와.",
+     lab="슬라이드 내용",
+     tr="""<ul><li><b>대사(Metabolism)</b>: 체내에서 약이 다른 물질로 바뀌는가, 바뀐 물질은 활성/독성이 있는가</li>
+<li>신장·간·소화관·폐 등 여러 기관이 관여하나, <g>특히 간에 대사 효소가 대량 → 대부분 약물대사는 간에서</g></li>
+<li>대사능력은 간세포에 유입되는 약물량에 좌우</li></ul>
+<p><b>Phase I (작용기화)</b>: CYP450로 산화·환원·가수분해 → OH·COOH 등 극성기 도입 (예: 아스피린 가수분해)</p>
+<p><b>Phase II (포합, conjugation)</b>: 글루쿠론산·황산·글리신·글루타티온·아세틸·메틸기 등을 붙여 수용성 ↑</p>""",
+     ex="""<p><b>Phase I vs II</b> (60쪽 그림):</p>
+<table class="t"><tr><th></th><th>Phase I</th><th>Phase II</th></tr>
+<tr><td>하는 일</td><td>작용기화(functionalization)</td><td>포합(conjugation)</td></tr>
+<tr><td>반응</td><td>산화·환원·가수분해</td><td>글루쿠론산·황산·GSH·아세틸·메틸</td></tr>
+<tr><td>효소</td><td><b>CYP450</b> 중심</td><td>전이효소(UDP-GT 등)</td></tr>
+<tr><td>결과</td><td>극성기 도입(활성·독성대사체 가능)</td><td>수용성 ↑ → 배설 쉬움</td></tr></table>
+<p class="box"><span class="tag">기말</span><pk>Phase I = CYP450 산화/환원/가수분해, Phase II = 포합(수용성↑).</pk> “대부분 대사는 간”, CYP450 저해/유도(12쪽 Candidate 조건과 연결)도 단골.</p>"""),
+
+dict(title="PK: 배설 (Excretion)", slide="61 (+62)", img="s61.jpg",
+     sub="Excretion",
+     kw=["배설 = 체외 제거", "주로 신장·담즙", "친수성에 좌우", "호흡기·피부 소량"],
+     sum="<b>E(배설)</b> = 약과 대사물을 체외로 내보내기. 대부분 <b>신장(소변)·담즙</b>으로 나가고, 소수만 담즙으로. 배설은 <b>친수성(수용성)</b>에 좌우돼(그래서 Phase II로 수용성을 높임). 호흡기·피부로도 소량.",
+     lab="슬라이드 내용",
+     tr="""<ul><li><b>배설(Excretion)</b>: 대부분의 약물과 대사물은 <b>신장·담즙</b>을 통해 체외로 배설</li>
+<li>배설은 약물·대사물의 <g>친수성(수용성)에 따라 다름</g> — 상대적으로 소수 약물만 담즙으로 배설</li>
+<li>호흡기·피부를 통해서도 소량 배설 가능</li></ul>
+<p class="note">61 그림: 신장 네프론에서 ① 사구체 여과 ② 세뇨관 분비 ③ 재흡수 ④ 소변 배설. 신장 청소율 공식과 LogD-청소율 관계도 제시.</p>""",
+     ex="""<p><b>왜 대사 뒤에 배설인가</b>: 지용성 약은 신장에서 재흡수돼 잘 안 나가 → Phase I·II로 <g>수용성을 높여야(친수성) 소변으로 배설</g>돼. 대사와 배설이 한 세트.</p>
+<p>신장 청소율 CLR = fu·(GFR + CLS)·(1−FR): 여과 + 분비 − 재흡수. LogD가 높을수록(지용성) 신장 청소율이 낮아지는 경향.</p>
+<p class="box"><span class="tag">시험 포인트</span><pk>주 배설 = 신장(소변)·담즙, 수용성이 클수록 잘 배설.</pk> Phase II 포합 → 수용성↑ → 배설↑ 흐름을 연결.</p>"""),
+
+dict(title="신약개발에서 ADME의 이해 · PK/PD 모델링", slide="63·64·65", img=["s63.jpg", "s64.jpg"],
+     sub="ADME, individual variability, PK/PD modeling",
+     kw=["ADME 이해 = 안전·효율", "개인 간 PK 변이", "맞춤형 치료", "Dose→Exposure→Response"],
+     sum="단원 마무리. <b>ADME 이해 = 안전·효율적 약물치료의 핵심</b>. 다만 PK 원리가 개인 반응을 완벽히 예측하진 못해(나이·성별·인종·질병). 유전체 기반 <b>맞춤형 치료</b>로 발전 중. PK/PD 모델 = Dose→Exposure→Response.",
+     lab="슬라이드 내용",
+     tr="""<ul><li>ADME의 이해 → <b>안전하고 효율적인 약물치료</b>에 중요</li>
+<li>약동학 원리는 합리적 접근을 주지만 개인 반응을 정확히 예측 못함 → 임상적 판단·모니터링을 대신할 수 없음</li>
+<li><g>나이·성별·체형·체력·인종·질병 상태</g>에 따라 개인 간 약동학 변이 존재</li>
+<li>유전체 지식으로 환자별 변수를 감안한 <b>맞춤형 치료(precision medicine)</b>로 발전</li></ul>
+<p><b>64·65 PK/PD modeling</b>: Dose → Exposure(농도) → Response(효능·독성)로 잇는 모델. PK(ADME)가 농도를, PD가 반응을 설명.</p>""",
+     ex="""<p><b>전체 그림 한 장 정리</b> (65 ABCD):</p>
+<ul><li><b>A</b>dministration(투여: 순응도·경로) → Dose</li>
+<li><b>B</b>ioavailability(흡수·1차 통과) → 농도</li>
+<li><b>C</b>learance(대사·배설) / <b>D</b>istribution(확산·표적 도달) ← PK</li>
+<li>→ 표적 결합·분자/생리 효과 ← PD → Effects → 환자 건강</li></ul>
+<p class="box"><span class="tag">기말</span><pk>ADME 이해 = 안전·효율적 치료의 전제.</pk> PK/PD 모델 = <b>Dose→Exposure→Response</b>. 개인차(나이·유전) → 맞춤형 치료 흐름.</p>"""),
+]
