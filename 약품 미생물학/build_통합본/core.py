@@ -65,6 +65,8 @@ def exp_html(lines):
             out.append(f'<div class="key"><span>핵심</span>{ln[4:]}</div>')
         elif ln.startswith("TIP|"):
             out.append(f'<div class="tip"><span>암기 팁</span>{ln[4:]}</div>')
+        elif ln.startswith("참고|"):
+            out.append(f'<div class="tip"><span>참고</span>{ln[3:]}</div>')
         elif ln.startswith("NOTE|"):
             out.append(f'<div class="note"><span>⚠ 교재 정답 확인</span>{ln[5:]}</div>')
         else:
