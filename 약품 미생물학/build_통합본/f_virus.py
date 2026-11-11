@@ -490,8 +490,8 @@ def render_sets():
         items = ""
         for qi, q in enumerate(s["qs"], 1):
             items += (f'<div class="setitem"><div class="setq">'
-                      f'<span class="num">{qi}.</span><span class="qt">{q["q"]}</span>'
-                      f'<span class="pick">{q["n"]}개</span></div><div class="ansline"></div></div>')
+                      f'<span class="num">{qi}.</span><span class="qt">{q["q"]}</span>' +
+                      (f'<span class="pick">{q["n"]}개</span>' if "모두" not in q["q"] else '') + '</div><div class="ansline"></div></div>')
         RAW(f'''<section class="page spage vr"><header class="shead"><div class="kicker">세트 {si}</div>
 <h2>{s["title"]}</h2><div class="ssub">보기에서 지정 개수만큼 고르시오</div></header>
 <div class="sbody"><div class="setbox {cols}"><div class="bt">[보기] 아래 ①~{CIR[len(s["box"])-1]} 중에서 고르시오</div><ul>{boxli}</ul></div>
