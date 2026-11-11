@@ -51,16 +51,13 @@ SELFTEST = {
     "그룹7 — B형 간염 바이러스(HBV) + 간염 종합": [
         "데인 입자와 HBsAg 입자의 차이는? (감염성/백신)",
         "HIV와 HBV 양쪽에 쓰는 약 2개는? (별명은?)"],
-    "인플루엔자 — 유행 용어 · 감기 vs 독감 (녹취·슬라이드 보충)": [
+    "인플루엔자 — 유행 용어 · 감기 vs 독감 (녹취 보충)": [
         "에피데믹·엔데믹·팬데믹의 차이는? 팬데믹은 누가 선언?",
         "독감과 감기의 차이는? 감기에 항생제를 주는 이유는?",
         "한국에서 닭 백신이 허용되는 조류독감 아형은?"],
-    "레트로바이러스 — 구조·속 분류 상세 (슬라이드 보충)": [
+    "레트로바이러스 — 구조·분류 (녹취 보충)": [
         "gag·env가 만드는 구조단백질 이름(MA·CA·NC / SU·TM)은?",
-        "Rous sarcoma virus는 어느 속? HTLV·HIV는 각각 어느 속?"],
-    "HIV 임상 · HBV 보충 (슬라이드 세부)": [
-        "HIV-1의 주요 그룹(M)과 진단법 2가지는?",
-        "데인 입자와 HBsAg 입자의 크기는? 만성 환자 중 몇 %가 간경화·간암으로 사망?"],
+        "사람 질병을 일으키는 레트로 속 2개와 각각의 바이러스는? 약자 RSV 함정은?"],
 }
 
 
@@ -100,7 +97,6 @@ SS("V-1", "파라믹소바이러스과 개요 + 뉴캐슬병(NDV)",
    card("파라믹소바이러스과 공통",
         ul(["<b>myxo=점액(호흡기)</b>, <b>para=beyond(오르토믹소 옆 다른 그룹)</b>",
             "<b>외피 O</b>, <b>비분절</b> (−)ssRNA (← 인플루엔자는 분절!)",
-            "모양: <b>구형·실 모양·다형성</b>, 숙주 = 사람·동물",
             "분류 개정: 서브패밀리 Pneumovirinae → <b>패밀리 Pneumoviridae로 승격</b> (뉴모=폐렴)",
             "새 서브패밀리 이름(Avula-, Ortho-, Meta-, Rubula-)은 <b>외울 필요 없음</b> → 바이러스 '이름'을 외우기",
             "옛 속↔바이러스: Morbilli=홍역, Rubula=볼거리·파라인플루 2·4, Respiro=파라인플루 1·3"]), "soft") +
@@ -116,10 +112,10 @@ SS("V-1", "파라믹소바이러스과 개요 + 뉴캐슬병(NDV)",
 SS("V-1", "헨니파(니파·헨드라) · 홍역 · 파라인플루엔자 · 볼거리",
    table(["바이러스", "숙주·전파", "핵심 증상", "백신", "치료제"], [
        ["<b>니파</b> (헨니파)", "자연숙주 <b>박쥐</b> → 중간숙주 <b>돼지</b> → 사람, 호흡기", "뇌염(치명률 74.5%, 최대 100%), 동남아, <b>BSL-4</b>, 별명 'barking pig'", "X", "X"],
-       ["<b>헨드라</b> (헨니파)", "박쥐 → 중간숙주 <b>말</b>(폐사율 80%) → 사람, 호흡기", "무균성 수막염·뇌염(~70%), 호주", "X", "X"],
+       ["<b>헨드라</b> (헨니파)", "박쥐 → 중간숙주 <b>말</b> → 사람, 호흡기", "뇌염·수막염(~70%), 호주", "X", "X"],
        ["<b>홍역</b> (Morbillivirus)", "<b>공기(비말핵) 전파</b>, R0 <b>12~18</b>(최고)<span class='mt'>🎯</span>", "<b>Koplik 반점</b>(발진 2~3일 전), 발진(반구진·홍반), 폐렴·뇌염, 실명", "<b>MMR(생)</b>", "X"],
        ["<b>파라인플루엔자</b> 1~4", "감기 바이러스(인플루엔자 아님!)<span class='mt'>🎯</span>", "<b>1·2형=크룹</b> / <b>3형=세기관지염·폐렴</b> (1·3=Respiro, 2·4=Rubula)", "X", "X"],
-       ["<b>볼거리</b> (Rubulavirus)", "호흡기, R0 5~7", "<b>이하선(귀밑샘) 부종</b>, 고환염·수막염·난청, <b>임신초기 유산 25%</b>, 이환율↑ <b>치사율 0.001%</b><span class='mt'>🎯</span>, '항아리 손님'", "<b>MMR(생)</b>", "X"],
+       ["<b>볼거리</b> (Rubulavirus)", "호흡기, R0 5~7", "<b>이하선(귀밑샘) 부종</b>, 고환염·수막염·난청, <b>임신초기 자연유산</b>, 이환율↑ <b>치사율 0.001%</b><span class='mt'>🎯</span>, '항아리 손님'", "<b>MMR(생)</b>", "X"],
    ]) +
    '<div class="row c2">' +
    card("홍역 꼭 기억", ul(["어릴 때 안 걸리고 <b>성인이 처음 걸리면 더 심함</b><span class='mt'>🎯</span> (A형 간염과 같은 특성)",
@@ -149,10 +145,10 @@ SS("V-2", "랍도(광견병) · 번야(한타)",
             "<b>신경친화성</b>: 중추신경계 복제. 감염동물 <b>침(물림)</b>으로 전파(인수공통)",
             "임상 2형: <b>광폭형</b>(대뇌변연계) / <b>마비형</b>(신피질)",
             "초기 <b>flu-like</b>(인플루엔자 '유사', 인플루엔자 아님!)<span class='mt'>🎯</span><span class='ms'>★</span> → 공포→<b>공수병</b>, 환각·마비",
-            "진단: <b>Negri 소체</b>(세포질 봉입체 = '바이러스 공장') · 단백질 5종 L·P·G·N·M(L·P=조절, G·M=구조, N=RNA결합)",
+            "진단: <b>Negri 소체</b>(감염세포 세포질 봉입체)",
             "<span class='hl'>잠복기 ~4주로 길어, 물린 뒤 백신이 치료가 됨</span><span class='mt'>🎯</span><span class='ms'>★</span> (백신 후 항체 1주 80~90%, 2주 최대) · 사백신, 치료제 X(면역글로불린만)"]), "soft") +
    card("한타바이러스 (Bunyaviridae → Hantaviridae)",
-        ul(["분절 암기 <b>ABO</b>(Arena·Bunya·Ortho)<span class='mt'>🎯</span>, 번야=<b>3분절</b>: L=RdRp / M=표면당단백 / S=N+NSs",
+        ul(["분절 암기 <b>ABO</b>(Arena·Bunya·Ortho)<span class='mt'>🎯</span>, 번야=<b>3분절(L·M·S)</b> — 대문자 B에서 기둥 빼면 3",
             "매개체=절지동물 또는 설치류 / 한타 자연숙주=매개체 = <b>등줄쥐(Apodemus agrarius)</b>, 소변·배설물 분말 흡입·물림",
             "<b>유라시아=신증후군출혈열(HFRS)</b>: 발열·출혈(<b>혈소판↓</b>)·신장(<b>단백뇨</b>)·빈혈",
             "<b>아메리카=한타 폐증후군(HPS)</b>: 호흡곤란·심혈관 쇼크",
@@ -205,7 +201,7 @@ SS("V-3", "인플루엔자 — 소변이/대변이 · 팬데믹 · 조류독감 
             "WHO 3~4월 예측 → 10월 출시 → 예측 틀리면 <b>미스매치('물백신')</b>"]), "") +
    '</div>')
 
-SS("V-3", "인플루엔자 — 유행 용어 · 감기 vs 독감 (녹취·슬라이드 보충)",
+SS("V-3", "인플루엔자 — 유행 용어 · 감기 vs 독감 (녹취 보충)",
    '<div class="row c2">' +
    card("유행 용어 (수업3)",
         table(["용어", "뜻"], [
@@ -213,11 +209,11 @@ SS("V-3", "인플루엔자 — 유행 용어 · 감기 vs 독감 (녹취·슬라
             ["<b>엔데믹</b> (endemic, 풍토병)", "계절 무관, 특정 지역에 1년 내내 상존"],
             ["<b>팬데믹</b> (pandemic)", "여러 대륙·국가 동시 대유행, <b>WHO(1948 설립)</b>가 선언 (예: 2009 신종플루·코로나19)"]]) +
         "<p style='margin-top:1.2mm'>influenza ← 라틴어 <b>influentia = 유행</b> → 계절성</p>", "soft") +
-   card("감기 vs 독감 (수업3 · 슬라이드)",
+   card("감기 vs 독감 (수업3·4)",
         ul(["<b>독감</b> = 인플루엔자 바이러스만. <b>38℃↑ 갑작스러운 고열 + 심한 근육통</b>",
-            "<b>감기 원인</b>(슬라이드): 리노·코로나·인플루엔자·RSV·아데노 + 세균(<i>C. pneumoniae</i>·<i>H. influenzae</i>·<i>S. pneumoniae</i>·<i>M. pneumoniae</i>)",
+            "<b>감기</b> = 바이러스뿐 아니라 세균·원충·진균의 호흡기 감염까지 통칭",
             "감기에 항생제 = <b>2차 세균감염 예방</b> 목적. 초기부터 무조건 처방은 <b>오남용</b>",
-            "계절 독감 치명률 <b>~0.1%</b>(주로 65세↑ 폐렴) · 전 세계 연 사망 25~50만",
+            "계절 독감 치명률 <b>~0.1%</b>(주로 65세↑ 폐렴)",
             "한국: 고병원성 AI 백신 금지지만 <b>저병원성 H9N2는 닭 백신 허용</b>(산란율만 저하)"]), "warm") +
    '</div>')
 
@@ -249,30 +245,28 @@ SS("VI", "레트로바이러스 — 유전자·효소·생활사 + HTLV",
             "백신 X, <b>오프라벨 AZT+IFN-α</b>"]), "") +
    '</div>')
 
-SS("VI", "레트로바이러스 — 구조·속 분류 상세 (슬라이드 보충)",
+SS("VI", "레트로바이러스 — 구조·분류 (녹취 보충)",
    '<div class="row c2">' +
-   card("구조와 생활사 단계",
-        ul(["크기 <b>~100 nm</b>, 외피(지질=숙주막, 당단백=env 유전자 산물)",
-            "유전체 = <b>(+)ssRNA 2개(dimer)</b> → dsDNA처럼 보이나 상보결합 X",
+   card("구조와 생활사",
+        ul(["외피 O / 유전체 = <b>(+)ssRNA 2개(dimer)</b> → dsDNA처럼 보이나 상보결합 X",
+            "발현: (+)ssRNA → (−)ssDNA → (±)dsDNA → (+)mRNA → 단백질 (부호가 계속 교대)",
             "구조단백질: gag → <b>MA</b>(matrix)·<b>CA</b>(capsid)·<b>NC</b>(RNA 안정화) / env → <b>SU</b>(바깥)·<b>TM</b>(막관통)",
-            "<b>폴리단백질</b>(Gag/Gag-Pol/Env)로 만들어짐 → <b>프로테이스가 못 자르면 복제 불가</b>",
-            "생활사: 부착(env→수용체) → 침투·탈외피 → <b>역전사</b> → dsDNA → <b>통합(provirus)</b> → 복제 → 조립·방출"]), "soft") +
-   card("속(genus) 분류 — 보기로 나올 수 있음",
-        table(["속", "질병 / 대표"], [
-            ["<b>Alpha</b>retrovirus", "조류·설치류 육종·종양·빈혈 / <b>Rous sarcoma virus</b>(RSV, 닭 육종, 1911 Peyton Rous, 최초 발암 레트로)"],
-            ["Beta", "쥐·원숭이·양 종양"],
-            ["Gamma", "쥐·고양이·원숭이 백혈병·육종"],
-            ["<b>Delta</b>", "소·원숭이·사람 백혈병 → <b>HTLV</b>"],
-            ["Epsilon", "어류 피부 육종"],
-            ["<b>Lenti</b>", "<b>HIV</b>·SIV·FIV"],
-            ["Spuma", "고양이·소·사람 등, 병원성 불명"]])) +
+            "<b>폴리단백질</b>(Gag/Gag-Pol/Env)로 만들어짐 → <b>프로테이스가 못 자르면 복제 불가</b><span class='mt'>🎯</span>",
+            "생활사: 부착 → 침투·탈외피 → <b>역전사</b> → dsDNA → <b>통합(provirus)</b> → 복제 → 조립·방출"]), "soft") +
+   card("분류 — 사람 질병은 2속만",
+        table(["속", "바이러스"], [
+            ["<b>Deltaretrovirus</b>", "<b>HTLV</b> (사람 T세포 백혈병 바이러스)"],
+            ["<b>Lentivirus</b> (lenti=느린)", "<b>HIV</b> (에이즈 바이러스)"]]) +
+        ul(["용어 관계: <b>Retroviridae(과) ⊃ Lentivirus(속) ⊃ HIV(종)</b>",
+            "<b>Rous sarcoma virus</b>도 약자가 <b>RSV</b> → 호흡기 RSV와 <b>약자만 같고 다름</b><span class='mt'>🎯</span> (닭 육종, 수업에서 따로 안 다룸)",
+            "기억할 과는 <b>Retroviridae</b> 하나"])) +
    '</div>')
 
 SS("VI", "HIV — 수용체 · 케모카인 · 임상 · 치료제",
    '<div class="row c2">' +
    card("HIV 기본",
-        ul(["<b>AIDS=후천성 면역결핍 증후군</b> (HIV 감염 ≠ AIDS, 잠복 <b>8~10년</b> 뒤 CD4+ 급감→합병증)",
-            "<b>HIV-1</b>(전 세계·병원성↑) / HIV-2(서아프리카·↓)",
+        ul(["<b>AIDS=후천성 면역결핍 증후군</b> (HIV 감염 ≠ AIDS, 잠복 <b>8~10년</b> 뒤 CD4+ 급감→합병증) · 진단 <b>CD4+ 수</b>",
+            "<b>HIV-1</b>(전 세계·병원성↑) / HIV-2(서아프리카·↓) · 전파 STI·체액",
             "<b>수용체=CD4</b> + <b>보조수용체=CCR5 또는 CXCR4</b> (둘 다 결합해야 침투)",
             "gp160 → <b>gp120</b>(결합) + <b>gp41</b>(융합) / 트로피즘 <b>R5(CCR5)·X4(CXCR4)</b>",
             "기회감염: 칸디다증·<b>CMV</b>·폐렴·<b>카포시 육종</b>, CNS(치매·운동실조)<span class='mt'>🎯</span>"]), "soft") +
@@ -295,22 +289,6 @@ SS("VI", "HIV — 수용체 · 케모카인 · 임상 · 치료제",
         ul(["<b>-부딘(-vudine)=뉴클레오사이드</b> / <b>-포비어(-fovir)=뉴클레오타이드</b><span class='mt'>🎯</span>",
             "<b>리토나비어</b>=원래 HIV PI, 팍스로비드(+니르마트렐비르)에선 <b>CYP3A4 억제 PK 인핸서</b><span class='mt'>🎯</span>",
             "로피나비어=사스(2002~03) 때 PI"]), "soft") +
-   '</div>')
-
-SS("VI·VII", "HIV 임상 · HBV 보충 (슬라이드 세부)",
-   '<div class="row c2">' +
-   card("HIV 세부",
-        ul(["<b>그룹/아형</b>: HIV-1 = 그룹 <b>M</b>(major, 아형 A~L)·N·O·(P) / HIV-2 = 그룹 A~H",
-            "<b>전파</b>: 성접촉(정액·질액)·수혈(혈액)·모유",
-            "<b>경과</b>: 초기(발열·발진·구강칸디다증, HIV 항체 생성) → <b>provirus로 8~10년 잠복</b> → CD4+↓ → AIDS",
-            "<b>진단</b>: HIV 항체 검출(ELISA)·간접면역형광·PCR / 혈중 <b>바이러스 입자수·CD4+ 수 측정</b>",
-            "숙주세포 = CD4+ (보조T세포·대식세포 등)"]), "soft") +
-   card("HBV 보충",
-        ul(["크기: <b>데인 입자 42~47 nm</b>(완전체·감염성) vs <b>HBsAg 입자 ~22 nm</b>(DNA 없음·비감염)",
-            "지놈 = <b>부분 이중가닥 원형(circular) DNA</b>",
-            "만성 B형 간염 환자 중 <b>15~20%</b>가 <b>간경화·간암으로 사망</b>",
-            "치료: 라미부딘(중합효소 표적)·뉴클레오사이드 유사체(아데포비어 등)·<b>IFN-α(+라미부딘)</b>",
-            "예방 = 재조합 HBsAg 백신 / 진단 = Ag·Ab ELISA"]), "warm") +
    '</div>')
 
 SS("VII", "그룹7 — B형 간염 바이러스(HBV) + 간염 종합",
@@ -474,27 +452,27 @@ SET("세트 6 · HBV · 간염 · 종합",
                "X|②③::B·C형은 혈액. TIP: 모음(A·E)=입, 자음(B·C·D)=피"]),
     ])
 
-SET("세트 7 · 슬라이드·녹취 보충 (분류·용어·크기)",
-    ["Alpharetrovirus", "Deltaretrovirus", "Lentivirus", "Spumavirus", "에피데믹",
-     "엔데믹", "팬데믹", "데인 입자", "HBsAg 입자", "H9N2", "H5N1"],
+SET("세트 7 · 녹취 보충 (분류·유행 용어·방역·숙주)",
+    ["Deltaretrovirus", "Lentivirus", "Retroviridae", "에피데믹", "엔데믹",
+     "팬데믹", "H9N2", "H5N1", "H7N9", "물개·페럿", "돼지·개"],
     [
-     dict(q="최초로 발견된 발암 레트로바이러스인 Rous sarcoma virus가 속한 속을 1개 고르시오.", n=1, ans=[0],
-          exp=["O|①::Alpharetrovirus — Rous sarcoma virus(닭 육종, <b>1911 Peyton Rous</b>).",
-               "TIP|약자 RSV가 호흡기 RSV와 같으니 주의"]),
-     dict(q="사람에게 질병을 일으키는 HTLV와 HIV가 속한 속을 모두 고르시오.", n=2, ans=[1, 2],
-          exp=["O|②::Deltaretrovirus = <b>HTLV</b>.", "O|③::Lentivirus(lenti=느린) = <b>HIV</b>·SIV·FIV.",
-               "X|④::Spumavirus — 병원성 불명."]),
-     dict(q="계절을 타고 특정 시기에 유행하는 것(influenza의 어원)을 1개 고르시오.", n=1, ans=[4],
-          exp=["O|⑤::에피데믹 = 계절성 유행. influenza ← 라틴어 influentia(유행).",
-               "X|⑥::엔데믹 = 계절 무관, 특정 지역 상존(풍토병)."]),
-     dict(q="여러 대륙·국가에서 동시에 대유행하여 WHO가 선언하는 것을 1개 고르시오.", n=1, ans=[6],
-          exp=["O|⑦::팬데믹 — <b>WHO(1948 설립)</b>가 선언. 예: 2009 신종플루, 코로나19."]),
-     dict(q="지름 42~47 nm의 완전한 입자로 감염성이 있는 HBV 입자를 1개 고르시오.", n=1, ans=[7],
-          exp=["O|⑧::데인 입자 = 42~47 nm 완전체·<b>감염성 O</b>.",
-               "X|⑨::HBsAg 입자 = 약 22 nm, DNA 없음·비감염 → 백신 항원."]),
-     dict(q="한국에서 가금류(닭) 백신 사용이 허용되는 저병원성 조류인플루엔자를 1개 고르시오.", n=1, ans=[9],
-          exp=["O|⑩::H9N2 — 저병원성(산란율만 저하) → 닭 백신 허용.",
-               "X|⑪::H5N1 등 고병원성은 백신 금지 — <b>트로이 목마 효과</b>(증상 없이 퍼짐) 때문에 살처분."]),
+     dict(q="사람 T세포 백혈병 바이러스(HTLV)가 속한 속을 1개 고르시오.", n=1, ans=[0],
+          exp=["O|①::Deltaretrovirus = <b>HTLV</b>.",
+               "TIP|사람 질병을 일으키는 레트로 속은 2개뿐: Delta=HTLV, Lenti=HIV"]),
+     dict(q="HIV가 속한 속(genus)과 과(family)를 모두 고르시오.", n=2, ans=[1, 2],
+          exp=["O|②::Lentivirus(속) — lenti=느린.", "O|③::Retroviridae(과).",
+               "KEY|Retroviridae(과) ⊃ Lentivirus(속) ⊃ HIV(종)"]),
+     dict(q="계절을 타고 특정 시기에 유행하는 것(influenza의 어원)을 1개 고르시오.", n=1, ans=[3],
+          exp=["O|④::에피데믹 = 계절성 유행. influenza ← 라틴어 influentia(유행).",
+               "X|⑤::엔데믹 = 계절 무관, 특정 지역에 1년 내내 상존(풍토병)."]),
+     dict(q="여러 대륙·국가에서 동시에 대유행하여 WHO가 선언하는 것을 1개 고르시오.", n=1, ans=[5],
+          exp=["O|⑥::팬데믹 — <b>WHO(1948 설립)</b>가 선언. 예: 2009 신종플루, 코로나19."]),
+     dict(q="한국에서 가금류(닭) 백신 사용이 허용되는 저병원성 조류인플루엔자를 1개 고르시오.", n=1, ans=[6],
+          exp=["O|⑦::H9N2 — 저병원성(산란율만 저하) → 닭 백신 허용.",
+               "X|⑧⑨::H5N1·H7N9 등 고병원성은 백신 금지 — <b>트로이 목마 효과</b> 때문에 살처분."]),
+     dict(q="인플루엔자 B형이 사람 외에 감염하는 동물을 1개 고르시오.", n=1, ans=[9],
+          exp=["O|⑩::B형 = 사람·<b>물개·페럿</b>. 아형 없이 야마가타/빅토리아 계열.",
+               "X|⑪::돼지·개는 C형(사람·돼지·개)."]),
     ])
 
 
@@ -555,7 +533,7 @@ def build_study():
                trow("세트 1 · 파라믹소") + trow("세트 2 · 랍도·번야·소체") +
                trow("세트 3 · 인플루엔자 구조") + trow("세트 4 · 인플루엔자 약물") +
                trow("세트 5 · 레트로·HIV") + trow("세트 6 · HBV·간염") +
-               trow("세트 7 · 분류·용어·크기") +
+               trow("세트 7 · 분류·용어·방역") +
                '</tbody></table>')
     steps = ('<div class="stepbox">'
              '<div class="r"><span class="sn">1</span><span class="tx"><b>손으로 푼다</b> — 해설 페이지는 가리고, 보기에서 지정 개수만큼 직접 골라 답 줄에 쓴다. (눈으로만 X)</span></div>'
@@ -586,9 +564,9 @@ def build_cover():
            ("02", "요약 · 랍도(광견병) · 번야(한타)", "Rhabdo·Bunya", "7"),
            ("03", "요약 · 오르토믹소(인플루엔자)", "Orthomyxo", "8"),
            ("04", "요약 · 레트로 · HIV", "Retro·HIV", "12"),
-           ("05", "요약 · HBV · 간염", "Hepadna", "16"),
-           ("06", "실전 세트 1–7 (문제+해설)", "Practice sets", "17"),
-           ("✓", "종합 비교표", "Final table", "31")]
+           ("05", "요약 · HBV · 간염", "Hepadna", "15"),
+           ("06", "실전 세트 1–7 (문제+해설)", "Practice sets", "16"),
+           ("✓", "종합 비교표", "Final table", "30")]
     rows = "".join(
         f'<div class="row"><span class="n">{n}</span>'
         f'<span class="nm">{nm}<span>{en}</span></span><span class="pg">{pg}</span></div>'
@@ -597,13 +575,13 @@ def build_cover():
 <div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
 <div class="cv-h"><span class="t1">병원성</span><span class="t2">바이러스</span><span class="t3">기말 통합 마스터 노트</span></div>
 <div class="cv-flow">(−)ssRNA → 파라믹소·랍도·번야·오르토믹소 → 레트로 → HBV</div>
-<div class="cv-chips"><span class="cv-chip">상세 요약 14</span><span class="cv-chip">실전 세트 7 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">종합 비교표</span></div>
+<div class="cv-chips"><span class="cv-chip">상세 요약 13</span><span class="cv-chip">실전 세트 7 · {nq}문항</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">종합 비교표</span></div>
 <div class="cv-txt"><span class="r">기말 범위 = Viruses_2026 120쪽~끝</span> · 시험 12/14(월)–18(금) · 중간45·기말45·출석10.<br>
 형식: <b>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</b> · 약 45문항 · 1점 · 서술형 없음.<br>
 각 요약 뒤 <b>셀프테스트(안 보고 답하기)</b>, 세트는 <b>문제 → 바로 해설</b>.<br>
 교수님 녹취에서 강조한 건 🎯, 출제 유력은 ★로 표시했어.</div>
 <div class="cv-stats">
-<div class="cv-st"><b>14</b><span>요약 페이지<br>슬라이드+녹취록</span></div>
+<div class="cv-st"><b>13</b><span>요약 페이지<br>슬라이드+녹취록</span></div>
 <div class="cv-st"><b>7</b><span>실전 세트<br>{nq}문항</span></div>
 <div class="cv-st"><b>5</b><span>녹취록<br>수업 2–6</span></div>
 <div class="cv-st"><b>12/14</b><span>시험 시작<br>~12/18(금)</span></div></div></div>
