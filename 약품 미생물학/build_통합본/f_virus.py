@@ -4,6 +4,25 @@
 실제 기말 형식: 보기 ①~⑪ 세트 + 문항별 지정 개수 고르기."""
 from core import RAW, S, SEC, card, ul, table, img, MARKS, PAGES
 import svgs
+import math
+
+
+def virus_svg(cx, cy, r, n=14, op=0.95, sw=2.2):
+    """외피 바이러스(스파이크+유전체) 장식 SVG 조각"""
+    sp = ""
+    for i in range(n):
+        a = 2 * math.pi * i / n
+        x1, y1 = cx + r * math.cos(a), cy + r * math.sin(a)
+        x2, y2 = cx + (r + r * 0.22) * math.cos(a), cy + (r + r * 0.22) * math.sin(a)
+        kx, ky = cx + (r + r * 0.30) * math.cos(a), cy + (r + r * 0.30) * math.sin(a)
+        sp += (f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}"/>'
+               f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="{r*0.07:.1f}"/>')
+    g = r * 0.34
+    return (f'<g stroke="#fff" fill="none" stroke-width="{sw}" opacity="{op}" '
+            f'stroke-linecap="round">'
+            f'<circle cx="{cx}" cy="{cy}" r="{r}"/>{sp}'
+            f'<path d="M{cx-g*1.6:.0f},{cy:.0f} q{g:.0f},-{g*1.3:.0f} {g*1.6:.0f},0 '
+            f't{g*1.6:.0f},0" stroke-width="{sw*0.8:.1f}"/></g>')
 
 P = "vr"
 CIR = MARKS["circle"]
@@ -508,12 +527,19 @@ def build_cover():
     rows = (len(toc_items) + 1) // 2
     for b, t in toc_items:
         items += f'<div class="tr"><span class="bg {b}">{blab[b]}</span><span class="ti">{t}</span></div>'
+    deco = ('<svg viewBox="0 0 260 150" preserveAspectRatio="xMidYMid meet">'
+            + virus_svg(128, 78, 46, 14, 0.95)
+            + virus_svg(214, 30, 19, 10, 0.55, 1.8)
+            + virus_svg(40, 120, 15, 9, 0.5, 1.8)
+            + '</svg>')
+    nq = sum(len(s["qs"]) for s in SETS)
     cover = f'''<section class="page fcover vr">
 <div class="lp"><div class="k">CHAPTER</div>
 <div class="big"><b>10</b><span>장</span></div>
 <h1>병원성<br>바이러스</h1><div class="en">Pathogenic Viruses · 기말 범위</div>
 <div class="chips"><span>(−)ssRNA · 파라믹소/랍도/번야/오르토믹소</span><span>레트로 · HTLV · HIV</span><span>헤파드나 · B형 간염</span></div>
-<div class="stt">요약 11 · 세트 6(문항 {sum(len(s["qs"]) for s in SETS)}) · 비교표<br><b>강의 슬라이드 + 녹취록 5개 반영</b><br>삼성노트 가로 · 보기 11개 세트형</div></div>
+<div class="deco">{deco}</div>
+<div class="stt"><span class="n">요약 11</span><span class="n">세트 6 · {nq}문항</span><span class="n">종합표</span><br><b>강의 슬라이드 + 녹취록 5개 반영</b> · 삼성노트 가로</div></div>
 <div class="rp"><div class="rh"><h2>목차</h2><span>🎯 교수님 녹취 강조 · ★ 출제 유력</span></div>
 <div class="toc" style="--rows:{rows}">{items}</div></div></section>'''
     PAGES.insert(0, ("r", cover))
