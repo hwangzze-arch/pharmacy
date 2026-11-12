@@ -3,6 +3,7 @@ import sys, os, importlib
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, D)
 import lib, json, annotate, allen
 lib.load_bank()
+lib.SPLIT = True; lib.NOWORK = True  # 기말: 영어 원문 → 한글 번역, 내 풀이 칸 없음
 LVF = os.path.join(D, 'levels8.json')
 LV = json.load(open(LVF)) if os.path.exists(LVF) else {}
 mods = sys.argv[1:] or ['c8', 'c9', 'c10']
@@ -48,6 +49,8 @@ for i, p in enumerate(lib.PAGES):
 for i, p in enumerate(lib.PAGES):
     foot = f'<div class="foot"><span>인체생리학 · {p["ch"]}장 {p["name"]}</span><span>{i + 2}</span></div>' if p['ch'] else f'<div class="foot"><span>인체생리학 · 기말 마스터 노트</span><span>{i + 2}</span></div>'
     h = p['html']
+    if 'class="pb qp"' in h:  # 기말: 문제 쪽이 넘치면 lv8.sh가 Q1·Q2로 글자를 한 단계씩 줄임
+        h = h.replace('class="pb qp"', f'class="pb qp Q{LV.get("q" + str(i + 2), 0)}"', 1)
     if '<div class="pb ">' in h:
         h = h.replace('<div class="pb ">', f'<div class="pb L{LV.get(str(i + 2), -1)}">', 1)
     secs.append(f'<section class="pg {p.get("cls", "")}" style="--c:{p["color"]}" data-i="{i + 2}" data-t="{p["title"]}">{h}{foot}</section>')
