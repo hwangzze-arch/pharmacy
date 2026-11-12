@@ -169,6 +169,12 @@ tr.hl td{background:#ffe3e3;}
 .pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
 .gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
 .pbx .gls{background:#fff;}
+.qpb{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+.qc{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
+.qch{display:flex;align-items:center;gap:7px;border-bottom:2px solid #e5dbff;padding-bottom:3px;}
+.qch .qn{flex:none;background:#7048e8;color:#fff;font-weight:700;border-radius:6px;font-size:.85em;padding:1px 9px;}
+.qch .qt{flex:1;min-width:0;font-weight:700;color:#3b2a8a;font-size:1.02em;}
+.qc .lbox .qsrc{font-size:.78em;}
 .q2b{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:9px;}
 .q2b .lcol,.q2b .rcol{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;}
 .lbox{background:#eef3fa;border-radius:10px;border-left:5px solid var(--navy);padding:8px 12px;}
@@ -217,6 +223,7 @@ def side_html(items, flags=()):
 # 📚 용어 풀이 — 쪽 글에 나오는 용어를 나온 순서대로 (gloss23.py)
 import re as _re
 from gloss23 import G as _G
+_SEEN = set()
 def gl(html, n):
     txt = _re.sub(r"<img[^>]*>", " ", html)
     txt = _re.sub(r"<(?!sub|/sub)[^>]+>", " ", txt)
@@ -225,7 +232,10 @@ def gl(html, n):
         m = _re.search(pat, txt)
         if m:
             hits.append((m.start(), name, d))
+    hits = [h for h in hits if h[1] not in _SEEN]  # 앞쪽에서 이미 풀이한 용어는 빼기
     hits.sort()
+    hits = hits[:n]
+    _SEEN.update(h[1] for h in hits)
     if not hits:
         return ""
     items = "".join(f'<span class="gi"><b>{nm}</b> {d}</span>' for _, nm, d in hits[:n])
@@ -420,6 +430,27 @@ def qpage(i, n, e):
         out.append(f'''<section class="page v21 q2 q2c" data-qid="{e.get("id","")}" data-part="c">{hd2}<div class="q2b"><div class="lcol">{left}</div><div class="rcol"><div class="rcont">← 정답·해설 앞쪽에서 이어짐</div>{"".join(B[len(B) - m:])}</div></div>{foot(i + 1)}</section>''')
     return out
 
+try:
+    QSOLO = set(_json.load(open(os.path.join(D, "_qsolo.json"))))
+except Exception:
+    QSOLO = set()
+
+def qcol(n, e):
+    """한 칸 = 문제(원문·번역) → 정답 → 해설 → 그림, 용어는 맨 아래."""
+    kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
+    _tr = TOPR.get(e.get("n"))
+    q = e["q"]
+    kk = q.find('<div class="term"')
+    orig, trans = (q[:kk], q[kk:]) if kk >= 0 else (q, "")
+    head = f'<div class="qch"><span class="qn">문제 {n:02d}</span><span class="qt">{e["title"]}</span>{tb(e.get("n"), True)}</div>'
+    box = (f'<div class="lbox o{" top g" + str(_tr[1]) if _tr else ""}"><div class="lt">{kinds}<span class="qsrc">{e.get("src","")}</span></div>'
+           f'<div class="qtext">{orig}</div>{trans}</div>')
+    g = gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 4)
+    return f'<div class="qc" data-qid="{e.get("id","")}">{head}{box}{"".join(_blocks(e))}{g}</div>'
+
+def qpair(i, n, e1, e2):
+    return f'''<section class="page v21 qp" data-q1="{e1.get("id","")}" data-q2="{e2.get("id","")}">{_hd21(f"{n:02d}–{n+1:02d}", e1["part"].split(" · ", 1)[-1], "문제 → 정답과 해설", [e1["part"]])}<div class="qpb">{qcol(n, e1)}{qcol(n + 1, e2)}</div>{foot(i)}</section>'''
+
 def notepage(i, e):
     n = e["n"]
     return f'''<section class="page v21 npage n{n}">
@@ -448,7 +479,13 @@ for e in ENTRIES:
         if e.get("_skip"):
             continue
         if "exp" in e or e.get("n"):
-            qn += 1; pages.extend(qpage(i, qn, e))
+            k = ENTRIES.index(e)
+            nxt = ENTRIES[k + 1] if k + 1 < len(ENTRIES) else None
+            if (e.get("id") not in QSOLO and nxt is not None and nxt["t"] == "q" and nxt.get("part") == e.get("part")
+                    and nxt.get("id") not in QSOLO):
+                qn += 1; pages.append(qpair(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True; nxt_used = nxt
+            else:
+                qn += 1; pages.extend(qpage(i, qn, e))
         else:
             qn += 1; pages.append(question(i, qn, e))
     else:
@@ -529,7 +566,28 @@ _IDN = {e["id"]: e["n"] for e in ENTRIES if e["t"] == "q" and e.get("id")}
 html = re.sub(r"\{QNI:([^}]+)\}", lambda m: f"{_IDN[m.group(1)]:02d}", html)
 html = re.sub(r"\{QPI:([^}]+)\}", lambda m: str(START[m.group(1)]), html)
 from themes import THEMES as _TH
-CSS = CSS + _TH[os.environ.get('THEME', 'mid21')]
+PALETTE = '''
+/* ── 색감: 주황 · 보라 · 연두 · 분홍 */
+:root{--navy:#6741d9;--nblue:#5f3dc4;--indigo:#6741d9;--indigo-soft:#f3f0ff;}
+.h21{border-bottom-color:#7048e8 !important;} .b21{background:linear-gradient(160deg,#845ef7,#6741d9) !important;}
+.h21 h1{color:#4c2f9e !important;}
+.pill{border-color:#d0bfff !important;background:#f3f0ff !important;color:#5f3dc4 !important;}
+.core{background:#fff4e6 !important;border-color:#ffd8a8 !important;border-left-color:#fd7e14 !important;} .core .lb{background:#fd7e14 !important;}
+.one{background:linear-gradient(90deg,#7048e8,#d6336c) !important;}
+.card.tip,.card.ana{background:#f4fce3 !important;border-color:#c0eb75 !important;} .card.tip .ct,.card.ana .ct{color:#5c940d !important;}
+.card.rec,.card.trap{background:#fff0f6 !important;border-color:#faa2c1 !important;} .card.rec .ct,.card.trap .ct{color:#c2255c !important;}
+table.t th{background:#f3f0ff !important;color:#5f3dc4 !important;}
+.mband .mbl{color:#5f3dc4 !important;background:#f3f0ff !important;} .mband,.fig{border-color:#e5dbff !important;}
+.sec{color:#6741d9 !important;}
+.lbox{background:#f8f6ff !important;border-left-color:#7048e8 !important;}
+.plb{background:#7048e8 !important;}
+.lbox .term,.term{background:#f4fce3 !important;border-left:3px solid #82c91e !important;color:#2b5a0a !important;}
+.gls{background:#fff0f6 !important;border-color:#faa2c1 !important;} .gls .gt{background:#e64980 !important;} .gls b{color:#a61e4d !important;} .gls .gi{border-left-color:#fcc2d7 !important;}
+.rans{background:#fff4e6 !important;border-color:#fd7e14 !important;} .rans .rlb{background:#f76707 !important;} .rans .rav{color:#a33d00 !important;}
+.rblk{border-color:#e5dbff !important;} .xsec{color:#7048e8 !important;}
+.ft{border-top-color:#e5dbff !important;}
+'''
+CSS = CSS + _TH[os.environ.get('THEME', 'mid21')] + PALETTE
 html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title><style>{CSS}</style></head><body>{html}</body></html>'
 open(os.path.join(D, "index.html"), "w").write(html)
 print("pages", len(pages), "concepts", cn, "questions", qn)
