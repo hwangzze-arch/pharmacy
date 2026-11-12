@@ -5,7 +5,7 @@ TOC = [(8, 'Muscle Physiology', '근육 생리학'), (9, 'Cardiac Physiology', '
 def cover(starts):
     rows = ''.join(f'<div class="r"><span>{n:02d}</span><span>{ko} <small style="color:#9fabd2">{en}</small></span><span>{starts.get(n, "")}</span></div>' for n, en, ko in TOC)
     rows += '<div class="r"><span>+</span><span>다음 장은 강의가 끝나는 대로 이어서 추가</span><span></span></div>'
-    return f'''<section class="pg cover"><div class="k1">PHAR272 · HUMAN PHYSIOLOGY · 기말고사 대비 노트</div>
+    return f'''<section class="pg cover pk"><div class="k1">PHAR272 · HUMAN PHYSIOLOGY · 기말고사 대비 노트</div>
 <h1>인체생리학<br>기말 8–10장<br><em>마스터 노트</em></h1>
 <div class="sub">Muscle → Heart → Blood Vessels &amp; Blood Pressure</div>
 <div class="pills"><span>상세요약</span><span>개념문제 44 · T/F 45문장</span><span>2개 고르기 · 그림 각주 · 단어 박스 · 서술</span><span>암기카드</span></div>
