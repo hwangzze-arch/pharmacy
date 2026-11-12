@@ -7,7 +7,7 @@ def cover(starts):
     rows += '<div class="row"><span class="n">11</span><span class="nm">혈액<span>The Blood — 강의 후 추가</span></span><span class="pgn">–</span></div>'
     return f'''<section class="pg cover2v">
 <div class="cv-left"><div class="cv-k">PHAR272 · HUMAN PHYSIOLOGY · 기말고사 대비 노트</div>
-<div class="cv-h"><span class="t1">근육 · 심장 · 혈관</span><span class="t2">인체생리학</span><span class="t3"><span class="t3b">기말 8–10장</span> 마스터 노트</span></div>
+<div class="cv-h"><span class="t1">인체생리학</span><span class="t2" style="font-size:96px">기말 8–10장</span><span class="t3">근육 · 심장 · 혈관 마스터 노트</span></div>
 <div class="cv-flow">근육 수축 → 심장 펌프 → 혈관과 혈압 (MAP = CO × TPR)</div>
 <div class="cv-chips"><span class="cv-chip">장별 상세 요약</span><span class="cv-chip">개념문제 44 · T/F 45문장</span><span class="cv-chip">2개 고르기 · 그림 각주 · 단어 박스</span><span class="cv-chip">녹취록 5개 반영</span><span class="cv-chip">장별 암기카드</span></div>
 <div class="cv-txt"><span class="r">기말 범위 = Chapter 8~</span> · 11장 혈액은 강의가 끝나면 이어서 추가.<br>
