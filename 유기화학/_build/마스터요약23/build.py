@@ -169,6 +169,22 @@ tr.hl td{background:#ffe3e3;}
 .pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
 .gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
 .pbx .gls{background:#fff;}
+.q2b{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:9px;}
+.q2b .lcol,.q2b .rcol{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;}
+.lbox{background:#eef3fa;border-radius:10px;border-left:5px solid var(--navy);padding:8px 12px;}
+.lbox.top.g1{border-left-color:#e8590c;background:#fff4e6;} .lbox.top.g2{border-left-color:#1c7ed6;background:#e7f5ff;} .lbox.top.g3{border-left-color:#2b8a3e;background:#ebfbee;}
+.lbox .lt{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:4px;}
+.lbox .qtext img{display:block;margin:3px 0;}
+.lbox .term{background:#fff;border-left:3px solid #2f9e44;color:#2b4a2f;margin-top:7px !important;}
+.rans{background:#fff4e6;border:1.5px solid #f59f00;border-radius:10px;padding:6px 12px;}
+.rans .rlb{display:inline-block;background:#e8590c;color:#fff;font-weight:700;border-radius:6px;font-size:.85em;padding:0 9px;margin-bottom:3px;}
+.rans .rav{font-weight:700;color:#7a2e00;line-height:1.55;}
+.rblk{background:#fff;border:1px solid #dfe5ee;border-radius:10px;padding:6px 12px;}
+.rblk .afig{border:none;padding:0;margin-top:4px;}
+.rcont{font-size:.85em;color:#8b95a5;}
+.lcol .gls .gg{grid-template-columns:1fr 1fr;}
+.q2 .mz{width:max-content;}
+.rx .tx,.rx .arw{white-space:nowrap;}
 .ssp .sscols{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
 .ssp .sscols img{width:100%;height:100%;object-fit:contain;object-position:top center;border:1px solid #dfe5ee;border-radius:8px;background:#fff;}
 """ + CSS_EXTRA
@@ -357,6 +373,53 @@ def question2(i, n, e1, e2):
 {foot(i)}</section>'''
 
 
+
+# ── 생화학 「예제 및 문제 풀이 노트」 형식: 왼쪽 문제(원문·번역·용어) / 오른쪽 정답 → 해설. 메모 칸 없음.
+#    그림은 줄이지 않고(모두 같은 배율) 넘치면 뒤 블록을 '정답과 해설 (계속)' 쪽으로 넘긴다 (_qsplit.json, make.sh가 채움)
+import json as _json
+try:
+    QSPLIT = _json.load(open(os.path.join(D, "_qsplit.json")))
+except Exception:
+    QSPLIT = {}
+
+def _blocks(e):
+    """오른쪽 칸 블록: 정답 / 풀이(+afig) / 원서·해설집 그림들 (xsec 머리마다 한 블록)."""
+    b = [f'<div class="rans"><span class="rlb">정답</span><div class="rav">{e["a"]}</div></div>']
+    exp = f'<div class="xsec">📝 해설</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
+    if e.get("afig"):
+        exp += f'<div class="afig"><div class="mz">{e["afig"]}</div></div>'
+    if exp:
+        b.append(f'<div class="rblk">{exp}</div>')
+    ex = e.get("extra", "")
+    parts = ex.split('<div class="xsec">')
+    if parts[0].strip():
+        b.append(f'<div class="rblk">{parts[0]}</div>')
+    for p in parts[1:]:
+        h, _, body = p.partition('</div>')
+        if '<div class="rx"' in body and '<div class="mz">' not in body:
+            body = f'<div class="mz">{body}</div>'  # 반응식 줄은 칸 폭에 맞춤
+        b.append(f'<div class="rblk"><div class="xsec">{h}</div>{body}</div>')
+    return b
+
+def qpage(i, n, e):
+    kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
+    _tr = TOPR.get(e.get("n"))
+    q = e["q"]
+    kk = q.find('<div class="term"')
+    orig, trans = (q[:kk], q[kk:]) if kk >= 0 else (q, "")
+    left = (f'<div class="lbox o{" top g" + str(_tr[1]) if _tr else ""}"><div class="lt"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}</div>'
+            f'<div class="qtext">{orig}</div>{trans}</div>'
+            + gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 6))
+    B = _blocks(e)
+    m = min(QSPLIT.get(e.get("id", ""), 0), len(B) - 1)
+    hd = _hd21(f"{n:02d}", e["title"], e.get("src", ""), [e["part"]], top=tb(e.get("n")))
+    first = B[:len(B) - m] if m else B
+    out = [f'''<section class="page v21 q2" data-qid="{e.get("id","")}" data-part="a">{hd}<div class="q2b"><div class="lcol">{left}</div><div class="rcol">{"".join(first)}</div></div>{foot(i)}</section>''']
+    if m:
+        hd2 = _hd21(f"{n:02d}", e["title"] + " — 정답과 해설 (계속)", e.get("src", ""), [e["part"]], top=tb(e.get("n")))
+        out.append(f'''<section class="page v21 q2 q2c" data-qid="{e.get("id","")}" data-part="c">{hd2}<div class="q2b"><div class="lcol">{left}</div><div class="rcol"><div class="rcont">← 정답·해설 앞쪽에서 이어짐</div>{"".join(B[len(B) - m:])}</div></div>{foot(i + 1)}</section>''')
+    return out
+
 def notepage(i, e):
     n = e["n"]
     return f'''<section class="page v21 npage n{n}">
@@ -385,11 +448,7 @@ for e in ENTRIES:
         if e.get("_skip"):
             continue
         if "exp" in e or e.get("n"):
-            nxt = ENTRIES[ENTRIES.index(e) + 1] if e.get("pair") else None
-            if nxt is not None and nxt["t"] == "q":
-                qn += 1; pages.append(question2(i, qn, e, nxt)); qn += 1; nxt["_skip"] = True; nxt_used = nxt
-            else:
-                qn += 1; _r = question1(i, qn, e); pages.extend(_r if isinstance(_r, list) else [_r])
+            qn += 1; pages.extend(qpage(i, qn, e))
         else:
             qn += 1; pages.append(question(i, qn, e))
     else:

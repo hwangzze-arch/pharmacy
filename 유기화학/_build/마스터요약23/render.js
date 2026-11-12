@@ -27,6 +27,15 @@ const path = require('path');
       const r = Math.min((p.clientWidth - 20) / z.scrollWidth, (p.clientHeight - 44) / z.scrollHeight); z.style.zoom = Math.min(1.6, r); });
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
+      if (pg.classList.contains('q2')) {  // 왼쪽 문제 / 오른쪽 정답·해설: 그림은 그대로, 글자만 조금
+        const L = pg.querySelector('.lcol'), R = pg.querySelector('.rcol');
+        const ov = (c) => c.scrollHeight > c.clientHeight + 1;
+        pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
+        let fs = 13.2; pg.style.setProperty('--fs', fs + 'px');
+        while ((ov(L) || ov(R)) && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
+        res.push({ i: i + 1, q2: pg.dataset.qid, part: pg.dataset.part, fs: Math.round(fs * 10) / 10, overL: ov(L), overR: ov(R), overflow: ov(L) || ov(R) });
+        return;
+      }
       let fs = 12.8, imgh = 240, guard = 0;
       const bands = [...pg.querySelectorAll('.mband .mz, .afig .mz')];
       pg.style.setProperty('--fs', fs + 'px');
@@ -66,6 +75,7 @@ const path = require('path');
   const nt = await page.evaluate(() => [...document.querySelectorAll('.mnote')].map(m => [m.closest('.page') && [...document.querySelectorAll('.page')].indexOf(m.closest('.page')) + 1, (m.style.getPropertyValue('--nfs') || '1em'), m.scrollHeight > m.clientHeight + 1]));
   console.log('notes', JSON.stringify(nt));
   report.filter(r => r.fs < 11 || r.overflow).forEach(r => console.log(JSON.stringify(r)));
+  require('fs').writeFileSync(path.join(dir, '_report.json'), JSON.stringify(report));
   await page.pdf({ path: process.argv[2], width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
   if (process.argv[3]) {
     const els = await page.$$('.page');
