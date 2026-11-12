@@ -34,12 +34,14 @@ const path = require('path');
         pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
         let fs = 13; pg.style.setProperty('--fs', fs + 'px');
         while (C.some(ov) && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
-        res.push({ i: i + 1, qp: C.map(c => c.dataset.qid), over: C.map(ov), fs: Math.round(fs * 10) / 10, overflow: C.some(ov) });
+        let ik = 1;  // 그림을 줄여서라도 2문제가 한 쪽에 들어가면 그렇게 (최소 70 %)
+        while (C.some(ov) && ik > 0.7) { ik -= 0.05; pg.style.setProperty('--ik', ik.toFixed(2)); pg.querySelectorAll('.mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1; z.style.zoom = Math.min(1, (p.clientWidth - 24) / z.getBoundingClientRect().width) * ik; }); }
+        res.push({ i: i + 1, ik: +ik.toFixed(2), qp: C.map(c => c.dataset.qid), over: C.map(ov), fs: Math.round(fs * 10) / 10, overflow: C.some(ov) });
         return;
       }
-      if (pg.classList.contains('q1')) {  // 1문제 쪽: 두 단 흐름. 넘치면 글자 → 그림 순으로 줄여 한 쪽에
-        const B = pg.querySelector('.q1b');
-        const ov = () => B.scrollWidth > B.clientWidth + 2 || B.scrollHeight > B.clientHeight + 2;
+      if (pg.classList.contains('q1')) {  // 1문제 쪽: 위 문제, 아래 정답·해설(두 단). 넘치면 글자 → 그림 순으로 줄여 한 쪽에
+        const B = pg.querySelector('.q1b') || pg.querySelector('.q1f');
+        const ov = () => B.scrollHeight > B.clientHeight + 2 || B.scrollWidth > B.clientWidth + 2;
         const fitz = (ik) => pg.querySelectorAll('.mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1; z.style.zoom = Math.min(1, (p.clientWidth - 24) / z.getBoundingClientRect().width) * ik; });
         let fs = 13.2, ik = 1; pg.style.setProperty('--fs', fs + 'px'); fitz(1);
         while (ov() && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }

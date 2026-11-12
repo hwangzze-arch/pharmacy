@@ -176,9 +176,13 @@ tr.hl td{background:#ffe3e3;}
 .qch .qn{flex:none;background:#7048e8;color:#fff;font-weight:700;border-radius:6px;font-size:.85em;padding:1px 9px;}
 .qch .qt{flex:1;min-width:0;font-weight:700;color:#3b2a8a;font-size:1.02em;}
 .qc .lbox .qsrc{font-size:.78em;}
-.q1b{flex:1;min-height:0;margin-top:9px;column-count:2;column-gap:16px;column-fill:auto;overflow:hidden;}
-.q1b>div{break-inside:avoid;margin-bottom:8px;}
-.q1b .rblk img{break-inside:avoid;}
+.q1b{flex:1;min-height:0;margin-top:9px;display:flex;flex-direction:column;gap:8px;overflow:hidden;}
+.q1t{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;} .q1t.one1{grid-template-columns:1fr;}
+.q1t .gls{margin-top:0;}
+.q1a{margin-top:auto;column-count:2;column-gap:16px;}
+.q1a>div{break-inside:avoid;margin-bottom:8px;}
+.q1f{flex:1;min-height:0;margin-top:9px;column-count:2;column-gap:16px;column-fill:auto;overflow:hidden;}
+.q1f>div{break-inside:avoid;margin-bottom:8px;}
 .q2b{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:9px;}
 .q2b .lcol,.q2b .rcol{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;}
 .lbox{background:#eef3fa;border-radius:10px;border-left:5px solid var(--navy);padding:8px 12px;}
@@ -426,9 +430,17 @@ def qpage(i, n, e):
            f'<div class="qtext">{orig}</div>{trans}</div>')
     g = gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 6)
     hd = _hd21(f"{n:02d}", e["title"], e.get("src", ""), [e["part"]], top=tb(e.get("n")))
-    body = box + g + "".join(_blocks(e))
-    return [f'''<section class="page v21 q1" data-qid="{e.get("id","")}">{hd}<div class="q1b">{body}</div>{foot(i)}</section>''']
+    if e.get("id") in QFLOW:  # 아래 정렬로는 그림이 너무 작아지는 문제: 문제 → 정답 → 해설을 두 단으로 이어서
+        body = box + g + "".join(_blocks(e))
+        return [f'''<section class="page v21 q1 flow" data-qid="{e.get("id","")}">{hd}<div class="q1f">{body}</div>{foot(i)}</section>''']
+    top = f'<div class="q1t{" one1" if not g else ""}">{box}{g}</div>'
+    ans = f'<div class="q1a">{"".join(_blocks(e))}</div>'
+    return [f'''<section class="page v21 q1" data-qid="{e.get("id","")}">{hd}<div class="q1b">{top}{ans}</div>{foot(i)}</section>''']
 
+try:
+    QFLOW = set(_json.load(open(os.path.join(D, "_qflow.json"))))
+except Exception:
+    QFLOW = set()
 try:
     QSOLO = set(_json.load(open(os.path.join(D, "_qsolo.json"))))
 except Exception:
@@ -570,11 +582,11 @@ from themes import THEMES as _TH
 PALETTE = '''
 /* ── 색감: 주황 · 보라 · 연두 · 분홍 */
 :root{--navy:#6741d9;--nblue:#5f3dc4;--indigo:#6741d9;--indigo-soft:#f3f0ff;}
-.h21{border-bottom-color:#7048e8 !important;} .b21{background:linear-gradient(160deg,#845ef7,#6741d9) !important;}
+.h21{border-bottom-color:#7048e8 !important;} .b21{background:#6741d9 !important;}
 .h21 h1{color:#4c2f9e !important;}
 .pill{border-color:#d0bfff !important;background:#f3f0ff !important;color:#5f3dc4 !important;}
 .core{background:#fff4e6 !important;border-color:#ffd8a8 !important;border-left-color:#fd7e14 !important;} .core .lb{background:#fd7e14 !important;}
-.one{background:linear-gradient(90deg,#7048e8,#d6336c) !important;}
+.one{background:#7048e8 !important;}
 .card.tip,.card.ana{background:#f4fce3 !important;border-color:#c0eb75 !important;} .card.tip .ct,.card.ana .ct{color:#5c940d !important;}
 .card.rec,.card.trap{background:#fff0f6 !important;border-color:#faa2c1 !important;} .card.rec .ct,.card.trap .ct{color:#c2255c !important;}
 table.t th{background:#f3f0ff !important;color:#5f3dc4 !important;}
