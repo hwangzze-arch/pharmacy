@@ -5,7 +5,7 @@ from parts import *
 cover = dict(t="r", cls="cv21", html="""
 <style>
 .page.cv21{padding:0;flex-direction:row;}
-.cv21 .lp{width:78mm;flex:none;height:100%;background:#f76707;color:#fff;padding:15mm 9mm 12mm 10mm;display:flex;flex-direction:column;}
+.cv21 .lp{width:78mm;flex:none;height:100%;background:linear-gradient(170deg,#e64980 0%,#c2255c 38%,#862e5c 72%,#4a2347 100%);color:#fff;padding:15mm 9mm 12mm 10mm;display:flex;flex-direction:column;}
 .cv21 .lp .k{letter-spacing:.32em;font-size:12px;font-weight:700;opacity:.92;}
 .cv21 .lp .big{display:flex;align-items:flex-end;gap:4px;margin-top:4mm;line-height:.9;}
 .cv21 .lp .big b{font-size:118px;font-weight:800;letter-spacing:-4px;}
