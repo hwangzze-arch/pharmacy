@@ -169,7 +169,8 @@ tr.hl td{background:#ffe3e3;}
 .pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
 .gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
 .pbx .gls{background:#fff;}
-.qpb{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+.qpb{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(0,1fr);column-gap:14px;row-gap:6px;margin-top:8px;}
+.qpb .qa{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
 .qc{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
 .qch{display:flex;align-items:center;gap:7px;border-bottom:2px solid #e5dbff;padding-bottom:3px;}
 .qch .qn{flex:none;background:#7048e8;color:#fff;font-weight:700;border-radius:6px;font-size:.85em;padding:1px 9px;}
@@ -436,7 +437,7 @@ except Exception:
     QSOLO = set()
 
 def qcol(n, e):
-    """한 칸 = 문제(원문·번역) → 정답 → 해설 → 그림, 용어는 맨 아래."""
+    """한 문제 = (머리, 문제 상자, 정답·해설 칸) — 두 문제의 정답·해설이 같은 높이에서 시작하도록 격자로."""
     kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
     _tr = TOPR.get(e.get("n"))
     q = e["q"]
@@ -446,10 +447,12 @@ def qcol(n, e):
     box = (f'<div class="lbox o{" top g" + str(_tr[1]) if _tr else ""}"><div class="lt">{kinds}<span class="qsrc">{e.get("src","")}</span></div>'
            f'<div class="qtext">{orig}</div>{trans}</div>')
     g = gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 4)
-    return f'<div class="qc" data-qid="{e.get("id","")}">{head}{box}{"".join(_blocks(e))}{g}</div>'
+    ans = f'<div class="qa" data-qid="{e.get("id","")}">{"".join(_blocks(e))}{g}</div>'
+    return head, box, ans
 
 def qpair(i, n, e1, e2):
-    return f'''<section class="page v21 qp" data-q1="{e1.get("id","")}" data-q2="{e2.get("id","")}">{_hd21(f"{n:02d}–{n+1:02d}", e1["part"].split(" · ", 1)[-1], "문제 → 정답과 해설", [e1["part"]])}<div class="qpb">{qcol(n, e1)}{qcol(n + 1, e2)}</div>{foot(i)}</section>'''
+    h1, b1, a1 = qcol(n, e1); h2, b2, a2 = qcol(n + 1, e2)
+    return f'''<section class="page v21 qp" data-q1="{e1.get("id","")}" data-q2="{e2.get("id","")}">{_hd21(f"{n:02d}–{n+1:02d}", e1["part"].split(" · ", 1)[-1], "문제 → 정답과 해설", [e1["part"]])}<div class="qpb">{h1}{h2}{b1}{b2}{a1}{a2}</div>{foot(i)}</section>'''
 
 def notepage(i, e):
     n = e["n"]

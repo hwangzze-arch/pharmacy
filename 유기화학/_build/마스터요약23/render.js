@@ -28,7 +28,7 @@ const path = require('path');
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
       if (pg.classList.contains('qp')) {  // 한 쪽 2문제: 칸마다 문제 → 정답·해설
-        const C = [...pg.querySelectorAll('.qc')];
+        const C = [...pg.querySelectorAll('.qa')];
         const ov = (c) => c.scrollHeight > c.clientHeight + 1;
         pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
         let fs = 13; pg.style.setProperty('--fs', fs + 'px');
@@ -42,7 +42,9 @@ const path = require('path');
         pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
         let fs = 13.2; pg.style.setProperty('--fs', fs + 'px');
         while ((ov(L) || ov(R)) && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
-        res.push({ i: i + 1, q2: pg.dataset.qid, part: pg.dataset.part, fs: Math.round(fs * 10) / 10, overL: ov(L), overR: ov(R), overflow: ov(L) || ov(R) });
+        let ik = 1;  // 그래도 넘치면 그림을 같이 줄여 한 쪽에 (계속 쪽 없음)
+        while ((ov(L) || ov(R)) && ik > 0.4) { ik -= 0.05; pg.style.setProperty('--ik', ik.toFixed(2)); pg.querySelectorAll('.mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1; z.style.zoom = Math.min(1, (p.clientWidth - 24) / z.getBoundingClientRect().width) * ik; }); }
+        res.push({ i: i + 1, q2: pg.dataset.qid, part: pg.dataset.part, ik: +(pg.style.getPropertyValue('--ik') || 1), fs: Math.round(fs * 10) / 10, overL: ov(L), overR: ov(R), overflow: ov(L) || ov(R) });
         return;
       }
       let fs = 12.8, imgh = 240, guard = 0;
