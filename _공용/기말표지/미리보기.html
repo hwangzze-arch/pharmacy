@@ -1,0 +1,183 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>기말 마스터 노트 표지</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"><style>/* 기말 마스터 노트 공용 표지 (2026-2)
+   배치: 가는 선 · 넓은 여백 · 굵은 과목명(Noto Sans KR 800) · 굵은 장 번호(Inter Tight 800) · 오른쪽 끝 과목별 인덱스 탭
+   표지 크기는 cqw(표지 폭 기준) 단위라 16:10(842×527pt)이든 A4 가로(842×595pt)든 같은 비율로 그려진다. */
+:root{
+  --f-kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-lat:"Inter Tight","Noto Sans KR",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+.cover{
+  --c:#8C2D4E; --paper:#FAFAF8; --ink:#1A1B1D; --soft:#76797E; --hair:#DADAD6;
+  container-type:inline-size; position:relative; overflow:hidden;
+}
+.cover *{box-sizing:border-box}
+.cv{position:absolute;inset:0;background:var(--paper);color:var(--ink);font-family:var(--f-kr);
+  padding:3.4cqw 5.4cqw 3cqw 4.6cqw;display:grid;grid-template-columns:1fr 31cqw;grid-template-rows:auto 1fr auto;column-gap:5cqw}
+
+.cv-meta{grid-column:1/-1;display:flex;justify-content:space-between;gap:2cqw;padding-bottom:1.3cqw;border-bottom:.07cqw solid var(--hair);
+  font-family:var(--f-lat);font-size:1cqw;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.cv-meta b{font-weight:600;color:var(--ink)}
+
+.cv-left{display:flex;flex-direction:column;justify-content:space-between;padding-top:2.6cqw;min-width:0}
+.cv-kick{display:flex;align-items:center;gap:1cqw;font-size:1.3cqw;font-weight:700;color:var(--c)}
+.cv-kick::before{content:"";width:.85cqw;height:.85cqw;border-radius:50%;background:var(--c)}
+.cv-head{display:grid;padding-bottom:3cqw}
+.cv-subject{margin:0;font-size:6.6cqw;line-height:1.05;font-weight:800;letter-spacing:-.045em}
+.cv-en{margin-top:.9cqw;font-family:var(--f-lat);font-size:1.55cqw;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#56585D}
+.cv-title{margin:3cqw 0 0;font-size:2.6cqw;line-height:1.25;font-weight:700;letter-spacing:-.03em;text-wrap:balance}
+.cv-flow{display:flex;flex-wrap:wrap;gap:.4cqw 1cqw;align-items:center;margin-top:1.1cqw;font-size:1.2cqw;color:var(--soft)}
+.cv-flow span+span::before{content:"";display:inline-block;width:1.8cqw;height:.08cqw;background:var(--c);vertical-align:middle;margin-right:1cqw}
+
+.cv-right{display:grid;grid-template-rows:auto 1fr auto;padding-top:2cqw;min-width:0}
+.cv-lab{font-family:var(--f-lat);font-size:1.05cqw;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+.cv-num{margin:.5cqw 0 0 -.5cqw;font-family:var(--f-lat);font-weight:800;color:var(--c);font-size:15cqw;line-height:.84;letter-spacing:-.05em;white-space:nowrap}
+.cv-num.long{font-size:10.4cqw}
+.cv-num.word{font-size:9cqw;letter-spacing:-.035em}
+.cv-toc{list-style:none;margin:0;padding:0 0 3cqw;align-self:end;display:grid}
+.cv-toc li{display:grid;grid-template-columns:3.2cqw 1fr;gap:0 .8cqw;padding:1cqw 0 1.05cqw;border-top:.07cqw solid var(--hair)}
+.cv-toc li:last-child{border-bottom:.07cqw solid var(--hair)}
+.cv-toc i{grid-row:span 2;font-style:normal;font-family:var(--f-lat);font-weight:700;font-size:1.05cqw;color:var(--c);padding-top:.15cqw}
+.cv-toc b{font-size:1.3cqw;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.cv-toc span{font-size:1cqw;color:var(--soft);line-height:1.4}
+
+.cv-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;gap:2cqw;padding-top:1.3cqw;border-top:.07cqw solid var(--hair)}
+.cv-facts{display:flex;gap:3.2cqw;margin:0}
+.cv-facts div{display:flex;align-items:baseline;gap:.6cqw}
+.cv-facts dd{margin:0;font-family:var(--f-lat);font-weight:800;font-size:2.1cqw;line-height:1;font-variant-numeric:tabular-nums}
+.cv-facts dt{font-size:1cqw;color:var(--soft)}
+.cv-code{font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.1em;color:var(--soft);text-transform:uppercase}
+
+/* 인덱스 탭: 과목마다 높이가 고정 (유기 1 · 생화 2 · 생리 3 · 미생 4 · 분석 5 · 물약 6 · 신약 7) */
+.cv-tab{position:absolute;right:0;width:1.6cqw;height:8.4%;top:calc(14% + var(--slot) * 10.4%);background:var(--c);display:grid;place-items:center}
+.cv-tab::after{content:attr(data-k);writing-mode:vertical-rl;color:#fff;font-size:.85cqw;font-weight:700;letter-spacing:.2em}
+
+.s-orgo{--c:#8C2D4E;--slot:0}
+.s-bio{--c:#B5592F;--slot:1}
+.s-phys{--c:#A8452F;--slot:2}
+.s-micro{--c:#1F6F5C;--slot:3}
+.s-anal{--c:#2C4C9A;--slot:4}
+.s-pharm{--c:#1D6378;--slot:5}
+.s-drug{--c:#5A3A86;--slot:6}
+
+/* 목차 쪽 왼쪽 띠 (유기화학·약품생화학처럼 1쪽이 '색 패널 + 목차'인 파일에서 색 패널 자리를 덮는다) */
+.strip{position:absolute;left:0;top:0;bottom:0;background:#fff;border-right:.6pt solid #E2E0DC;
+  padding:26pt 20pt 22pt 24pt;display:flex;flex-direction:column;font-family:var(--f-kr);color:#1A1B1D}
+.strip .cv-kick{font-size:8.5pt;gap:6pt}
+.strip .cv-kick::before{width:5.5pt;height:5.5pt}
+.strip .s-lab{margin-top:30pt;font-family:var(--f-lat);font-size:7pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#76797E}
+.strip .s-num{margin:4pt 0 0 -2pt;font-family:var(--f-lat);font-weight:800;color:var(--c);font-size:68pt;line-height:.84;letter-spacing:-.05em;white-space:nowrap}
+.strip .s-num.long{font-size:52pt}
+.strip .s-subj{margin-top:22pt;font-size:21pt;font-weight:800;letter-spacing:-.045em;line-height:1.1}
+.strip .s-en{margin-top:4pt;font-family:var(--f-lat);font-size:6.6pt;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#56585D}
+.strip .s-title{margin-top:12pt;font-size:11pt;font-weight:700;letter-spacing:-.03em;line-height:1.35}
+.strip .s-facts{margin-top:auto;display:grid;gap:7pt;padding-top:10pt;border-top:.6pt solid #E2E0DC}
+.strip .s-facts div{display:flex;align-items:baseline;gap:5pt}
+.strip .s-facts dd{margin:0;font-family:var(--f-lat);font-weight:800;font-size:15pt;line-height:1}
+.strip .s-facts dt{font-size:7.5pt;color:#76797E}
+.strip .s-code{margin-top:12pt;font-family:var(--f-mono);font-size:6.5pt;letter-spacing:.1em;color:#76797E}
+
+body{margin:0;padding:40px 24px;background:#ECEDEF;font-family:var(--f-kr)}
+main{max-width:1100px;margin:0 auto;display:grid;gap:36px} figure{margin:0}
+figure .cover{aspect-ratio:16/10;width:100%!important;height:auto!important;box-shadow:0 18px 40px -18px rgba(0,0,0,.3)}
+figcaption{margin-top:8px;font:12px var(--f-mono);color:#5E646C}</style></head>
+<body><main><h1 style="margin:0;font-weight:800;letter-spacing:-.03em">기말 마스터 노트 표지</h1><figure><div class="cover s-orgo" style="width:100%;height:100%"><div class="cv">
+ <div class="cv-meta"><span><b>Organic Chemistry II</b></span><span>2026 · 2학기 기말고사</span></div>
+ <div class="cv-left">
+  <div class="cv-kick">기말고사 마스터 노트</div>
+  <div class="cv-head">
+   <h1 class="cv-subject">유기화학</h1>
+   <div class="cv-en">Organic Chemistry II</div>
+   <p class="cv-title">카르보닐 알파 치환 반응</p>
+   <div class="cv-flow"><span>케토–엔올</span><span>α-할로젠화</span><span>엔올레이트</span><span>알킬화</span></div>
+  </div>
+ </div>
+ <div class="cv-right">
+  <div><div class="cv-lab">Chapter</div><p class="cv-num">22</p></div>
+  <span></span>
+  <ol class="cv-toc"><li><i>01</i><b>엔올과 산성 α-치환</b><span>p.6 · 케토–엔올 · α-할로젠화 · HVZ</span></li><li><i>02</i><b>α-H 산성도와 엔올레이트</b><span>p.20 · pKa 비교 · NaH · LDA</span></li><li><i>03</i><b>엔올레이트 알킬화</b><span>p.29 · 말론산 · 아세토아세트산 에스터 합성</span></li></ol>
+ </div>
+ <div class="cv-foot">
+  <dl class="cv-facts"><div><dd>15</dd><dt>개념</dt></div><div><dd>28</dd><dt>문제</dt></div><div><dd>58</dd><dt>쪽</dt></div></dl>
+  <span class="cv-code">ORG2 · F22 · 2026.11</span>
+ </div>
+</div><div class="cv-tab" data-k="유기"></div></div><figcaption>유기화학/CH22_기말대비_마스터요약.pdf</figcaption></figure><figure><div class="cover s-orgo" style="width:100%;height:100%"><div class="cv">
+ <div class="cv-meta"><span><b>Organic Chemistry II</b></span><span>2026 · 2학기 기말고사</span></div>
+ <div class="cv-left">
+  <div class="cv-kick">기말고사 마스터 노트</div>
+  <div class="cv-head">
+   <h1 class="cv-subject">유기화학</h1>
+   <div class="cv-en">Organic Chemistry II</div>
+   <p class="cv-title">카르보닐 축합 반응</p>
+   <div class="cv-flow"><span>알돌</span><span>E1cB 탈수</span><span>클라이젠</span><span>마이클</span></div>
+  </div>
+ </div>
+ <div class="cv-right">
+  <div><div class="cv-lab">Chapter</div><p class="cv-num">23</p></div>
+  <span></span>
+  <ol class="cv-toc"><li><i>01</i><b>알돌 반응</b><span>p.3 · E1cB 탈수 · 혼합/분자 내 알돌</span></li><li><i>02</i><b>클라이젠 · 디크만</b><span>p.23 · β-케토 에스터 · 고리화</span></li><li><i>03</i><b>마이클 · 스토크 · 로빈슨</b><span>p.33 · 1,4-첨가 · 엔아민 · 로빈슨 고리화</span></li></ol>
+ </div>
+ <div class="cv-foot">
+  <dl class="cv-facts"><div><dd>13</dd><dt>개념</dt></div><div><dd>32</dd><dt>문제</dt></div><div><dd>48</dd><dt>쪽</dt></div></dl>
+  <span class="cv-code">ORG2 · F23 · 2026.11</span>
+ </div>
+</div><div class="cv-tab" data-k="유기"></div></div><figcaption>유기화학/CH23_기말대비_마스터요약.pdf</figcaption></figure><figure><div class="cover s-phys" style="width:100%;height:100%"><div class="cv">
+ <div class="cv-meta"><span><b>PHAR272 · Human Physiology</b></span><span>2026 · 2학기 기말고사</span></div>
+ <div class="cv-left">
+  <div class="cv-kick">기말고사 마스터 노트</div>
+  <div class="cv-head">
+   <h1 class="cv-subject">인체생리학</h1>
+   <div class="cv-en">Human Physiology</div>
+   <p class="cv-title">근육 · 심장 · 혈관</p>
+   <div class="cv-flow"><span>근육 수축</span><span>심장 펌프</span><span>MAP = CO × TPR</span></div>
+  </div>
+ </div>
+ <div class="cv-right">
+  <div><div class="cv-lab">Chapters</div><p class="cv-num long">8–10</p></div>
+  <span></span>
+  <ol class="cv-toc"><li><i>01</i><b>근육 생리학</b><span>Ch 8 · p.2</span></li><li><i>02</i><b>심장 생리학</b><span>Ch 9 · p.27</span></li><li><i>03</i><b>혈관과 혈압</b><span>Ch 10 · p.39</span></li><li><i>04</i><b>혈액</b><span>Ch 11 · 강의 후 추가</span></li></ol>
+ </div>
+ <div class="cv-foot">
+  <dl class="cv-facts"><div><dd>44</dd><dt>개념문제</dt></div><div><dd>45</dd><dt>T/F</dt></div><div><dd>5</dd><dt>녹취</dt></div><div><dd>48</dd><dt>쪽</dt></div></dl>
+  <span class="cv-code">PHYS · F08 · 2026.11</span>
+ </div>
+</div><div class="cv-tab" data-k="생리"></div></div><figcaption>인체생리학/인체생리학_기말_8-10장_마스터요약_개념문제.pdf</figcaption></figure><figure><div class="cover s-micro" style="width:100%;height:100%"><div class="cv">
+ <div class="cv-meta"><span><b>Medical Microbiology</b></span><span>2026 · 2학기 기말고사</span></div>
+ <div class="cv-left">
+  <div class="cv-kick">기말고사 마스터 노트</div>
+  <div class="cv-head">
+   <h1 class="cv-subject">약품미생물학</h1>
+   <div class="cv-en">Medical Microbiology</div>
+   <p class="cv-title">바이러스 병원성</p>
+   <div class="cv-flow"><span>(−)ssRNA</span><span>오르토믹소</span><span>레트로</span><span>HBV</span></div>
+  </div>
+ </div>
+ <div class="cv-right">
+  <div><div class="cv-lab">Viruses · p.120–</div><p class="cv-num word">Virus</p></div>
+  <span></span>
+  <ol class="cv-toc"><li><i>01</i><b>파라믹소 · 랍도 · 번야</b><span>p.4 · 홍역 · RSV · 광견병 · 한타</span></li><li><i>02</i><b>오르토믹소</b><span>p.8 · 인플루엔자 · 소/대변이</span></li><li><i>03</i><b>레트로 · HIV · HBV</b><span>p.12 · 역전사 · HAART · 데인 입자</span></li><li><i>04</i><b>실전 세트 1–7</b><span>p.16 · 37문항 + 해설</span></li></ol>
+ </div>
+ <div class="cv-foot">
+  <dl class="cv-facts"><div><dd>13</dd><dt>요약</dt></div><div><dd>7</dd><dt>실전 세트</dt></div><div><dd>37</dd><dt>문항</dt></div><div><dd>31</dd><dt>쪽</dt></div></dl>
+  <span class="cv-code">MICRO · FV · 2026.11</span>
+ </div>
+</div><div class="cv-tab" data-k="미생"></div></div><figcaption>약품 미생물학/약품미생물학_기말_바이러스_학습자료.pdf</figcaption></figure><figure><div class="cover s-bio" style="width:100%;height:100%"><div class="cv">
+ <div class="cv-meta"><span><b>Pharmaceutical Biochemistry</b></span><span>2026 · 2학기 기말고사</span></div>
+ <div class="cv-left">
+  <div class="cv-kick">기말고사 마스터 노트</div>
+  <div class="cv-head">
+   <h1 class="cv-subject">약품생화학</h1>
+   <div class="cv-en">Pharmaceutical Biochemistry</div>
+   <p class="cv-title">산화적 인산화 · 광인산화 · 탄소 고정</p>
+   <div class="cv-flow"><span>전자전달</span><span>ATP 합성</span><span>광인산화</span><span>캘빈 회로</span></div>
+  </div>
+ </div>
+ <div class="cv-right">
+  <div><div class="cv-lab">Chapters</div><p class="cv-num long">19–20</p></div>
+  <span></span>
+  <ol class="cv-toc"><li><i>01</i><b>전자전달 · ATP 합성</b><span>19.1–19.2 · p.10</span></li><li><i>02</i><b>조절 · 미토콘드리아의 다른 얼굴</b><span>19.3–19.5 · p.75</span></li><li><i>03</i><b>광합성 명반응 (광인산화)</b><span>20 · p.102</span></li><li><i>04</i><b>캘빈 회로 (탄소 고정)</b><span>20.1 · p.136</span></li></ol>
+ </div>
+ <div class="cv-foot">
+  <dl class="cv-facts"><div><dd>38</dd><dt>개념</dt></div><div><dd>117</dd><dt>문제</dt></div><div><dd>168</dd><dt>쪽</dt></div></dl>
+  <span class="cv-code">BIO · F19 · 2026.11</span>
+ </div>
+</div><div class="cv-tab" data-k="생화"></div></div><figcaption>약품생화학/Chap19_20_시험대비 요약노트(TB추가).pdf</figcaption></figure></main></body></html>

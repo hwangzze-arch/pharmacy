@@ -31,3 +31,6 @@ python3 build.py && node render.js "../../CH22_기말대비_마스터요약.pdf"
 - `parts.py`: 장 번호·색·파트 이름·`S()`/`C()`/`MOLS()`/`RX()` 구조식 도우미
 - `c00_front.py` 표지·안내 / `c10_p1.py` `c20_p2.py` `c30_p3.py` PART별 개념·문제 / `c90_final.py` 최종 정리
 - 다음 장: 이 폴더를 복사해 `parts.py`의 CH·색·파트 이름과 `c*.py` 내용만 바꾼다. 그 장의 번역본·메커니즘(`mslidesNN.py`)을 먼저 만든다.
+
+## 표지 (2026-11-12부터)
+빌드로 PDF를 다시 만든 뒤에 공용 기말 표지를 다시 넣는다: `cd _공용/기말표지 && python3 covers.py <id>` (id는 `_공용/기말표지/README.md` 참고). 1쪽 목차는 그대로 두고, 새 표지가 맨 앞에 붙는다.
