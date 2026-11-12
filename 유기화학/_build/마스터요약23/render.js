@@ -27,6 +27,15 @@ const path = require('path');
       const r = Math.min((p.clientWidth - 20) / z.scrollWidth, (p.clientHeight - 44) / z.scrollHeight); z.style.zoom = Math.min(1.6, r); });
     document.querySelectorAll('.page').forEach((pg, i) => {
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
+      if (pg.classList.contains('qp')) {  // 한 쪽 2문제: 칸마다 문제 → 정답·해설
+        const C = [...pg.querySelectorAll('.qc')];
+        const ov = (c) => c.scrollHeight > c.clientHeight + 1;
+        pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
+        let fs = 13; pg.style.setProperty('--fs', fs + 'px');
+        while (C.some(ov) && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
+        res.push({ i: i + 1, qp: C.map(c => c.dataset.qid), over: C.map(ov), fs: Math.round(fs * 10) / 10, overflow: C.some(ov) });
+        return;
+      }
       if (pg.classList.contains('q2')) {  // 왼쪽 문제 / 오른쪽 정답·해설: 그림은 그대로, 글자만 조금
         const L = pg.querySelector('.lcol'), R = pg.querySelector('.rcol');
         const ov = (c) => c.scrollHeight > c.clientHeight + 1;
