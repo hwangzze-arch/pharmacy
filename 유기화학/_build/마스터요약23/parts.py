@@ -11,7 +11,7 @@ import mslides23  # noqa: E402
 CH = 23
 TITLE = "약품유기화학2 제23장 마스터 요약본"
 FOOT = "약품유기화학 2 · 기말 대비 마스터 요약본 · 제23장 카르보닐 축합 반응"
-MODS = ["c00_front", "c10_p1", "c20_p2", "c30_p3", "c90_final"]
+MODS = ["c00_front", "c10_p1", "c20_p2", "c30_p3", "c40_hw", "c90_final"]
 IMG = "../강의번역23/img/"
 COLOR = "#c2255c"      # 23장 색
 COLOR_SOFT = "#fff0f6"
@@ -19,6 +19,7 @@ COLOR_SOFT = "#fff0f6"
 P1 = "PART 1 · 알돌 반응"
 P2 = "PART 2 · 클라이젠 · 디크만"
 P3 = "PART 3 · 마이클 · 스토크 · 로빈슨"
+P4 = "PART 4 · 과제 · 의약품 합성"
 P0 = "읽기 전에"
 
 FONT = "".join(

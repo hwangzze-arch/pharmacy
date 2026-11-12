@@ -169,6 +169,8 @@ tr.hl td{background:#ffe3e3;}
 .pbx .gls .gg{grid-template-columns:repeat(2,1fr);} .pair2 .pbx .gls .gg{grid-template-columns:1fr;}
 .gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
 .pbx .gls{background:#fff;}
+.ssp .sscols{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+.ssp .sscols img{width:100%;height:100%;object-fit:contain;object-position:top center;border:1px solid #dfe5ee;border-radius:8px;background:#fff;}
 """ + CSS_EXTRA
 
 def foot(i):
@@ -448,7 +450,7 @@ html = re.sub(r"\{PR:([^}]+)\}", lambda m: f"{PID[m.group(1)][0]}" + (f"–{PID[
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
 # 표지 목차 (21장 정리본 스타일)
 _rows = []; _lastp = None; _c = 0
-_BG = {"예제": "w", "본문": "p", "변형": "v"}
+_BG = {"예제": "w", "본문": "p", "과제": "h", "강의": "l", "변형": "v"}
 for e in ENTRIES:
     if e["t"] not in "cq" or e.get("t") == "r":
         continue
@@ -463,7 +465,7 @@ for e in ENTRIES:
         _rows.append(f'<div class="tr"><span class="bg {_BG[e["badge"]]}">{e["badge"]}</span><span class="nm">{nm}</span><span class="ti">{mk}{e["toc"]}</span><span class="pg">{START[e["id"]]}</span></div>')
 _cnt = {k: sum(1 for e in ENTRIES if e["t"] == "q" and e.get("badge") == k) for k in _BG}
 html = html.replace("{TOC}", "".join(_rows)).replace('class="toc"', f'class="toc" style="--rows:{(len(_rows) + 1) // 2}"', 1)
-html = html.replace("{TOCSTAT}", " · ".join(f"{k} {v}" for k, v in _cnt.items()))
+html = html.replace("{TOCSTAT}", " · ".join(f'<span style="white-space:nowrap">{k} {v}</span>' for k, v in _cnt.items() if v))
 _IDN = {e["id"]: e["n"] for e in ENTRIES if e["t"] == "q" and e.get("id")}
 html = re.sub(r"\{QNI:([^}]+)\}", lambda m: f"{_IDN[m.group(1)]:02d}", html)
 html = re.sub(r"\{QPI:([^}]+)\}", lambda m: str(START[m.group(1)]), html)

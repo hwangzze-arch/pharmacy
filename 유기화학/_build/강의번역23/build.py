@@ -11,8 +11,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from ch23_1 import PAGES as P1
 from ch23_2 import PAGES as P2
 from ch23_3 import PAGES as P3
+from ch23_new import PAGES as PN  # 23장-2 강의자료에서 새로 들어간 쪽
 
-PAGES = P1 + P2 + P3
+PAGES = sorted(P1 + P2 + P3 + PN, key=lambda p: p["slide"])
 
 # 메커니즘: 슬라이드 그림 바로 옆에 (그림이 많으면 '(계속)' 쪽에 슬라이드와 함께)
 from mslides23 import MS, FIRST_ROWS, ANS_FULL
@@ -52,6 +53,7 @@ FONT = "".join(
 
 CSS = FONT + MECH_CSS + """
 @page { size: 297mm 210mm; margin: 0; }
+.rx .tx{white-space:nowrap;} .rx .arw{white-space:nowrap;}
 :root{--blue:#2c6aa0;--navy:#1f3f66;--orange:#d97a26;--line:#2c6aa0;--muted:#5f6b78;}
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;background:#fff;}

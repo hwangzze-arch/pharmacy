@@ -50,3 +50,12 @@ def vq(id, part, title, kind, src, q, a, exp, extra="", **kw):
     """강의 슬라이드·녹취 기반 예상 변형 문제."""
     return dict(t="q", id=id, toc=title, badge="변형", num="변형", part=part, kind=kind, src=src, title=title,
                 q=q, a=a, exp=exp, extra=extra, **kw)
+
+
+def hw(n, title, kind, ko, a, exp, extra="", **kw):
+    """과제 23-n (23장-2 강의자료 마지막 슬라이드). 문제 그림 = 강의자료 캡처, 풀이 = 해설집."""
+    from parts import P4
+    return dict(t="q", id=f"hw{n}", toc=title, badge="과제", num=f"23-{n}", part=P4, kind=kind,
+                src=f"과제 23-{n} (강의자료 마지막 슬라이드)", title=f"과제 23-{n} — {title}",
+                q=qimg(f"hw{n}") + f'<div class="term" style="margin-top:6px">번역: {ko}</div>',
+                a=a, exp=exp, extra=extra + ("" if kw.pop("nossm", False) else SSM(n)), rec=True, **kw)
