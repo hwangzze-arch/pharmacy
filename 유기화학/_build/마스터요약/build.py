@@ -198,7 +198,7 @@ tr.hl td{background:#ffe3e3;}
 """ + CSS_EXTRA
 
 def foot(i):
-    return f'<div class="ft"><span>{FOOT}</span><span class="lg">형광펜 <i class="y"></i>핵심 개념 <i class="g"></i>규칙·결론 <i class="p"></i>주의·시험 포인트 <i class="b"></i>정답</span><span>{i} / {{TOTAL}}</span></div>'
+    return f'<div class="ft"><span>{FOOT}</span><span>{i} / {{TOTAL}}</span></div>'
 
 def side_html(items, flags=()):
     out = []
