@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""실험3 모어법(Mohr method)에 의한 NaCl 정량 — 실험1·2 요약정리와 같은 양식 (유인물 사진 없음, 녹취록 기반)"""
+"""실험3 모어법(Mohr method)에 의한 NaCl 정량 — 실험1·2 요약정리와 같은 양식 (유인물 1쪽 + 녹취록)"""
 from svgs import STYLE
 
 
@@ -61,7 +61,7 @@ cover = dict(t="r", cls="cover2", html=STYLE + """
 </style>
 <div class="cv-left"><div class="cv-k">의약품분석학 실험 · 실험 3 · 침전 적정 (은적정)</div>
 <div class="cv-h">실험 3.<br>모어법에 의한<br>염화나트륨(NaCl) 정량</div>
-<div class="cv-flow">자료: 수업 녹취록(약 86분) 요약 + 1학기 침전 적정 이론</div>
+<div class="cv-flow">자료: 실험3 유인물 1쪽 + 수업 녹취록(약 86분) 요약</div>
 <div class="cv-txt"><b>한 줄 요약</b> — NaCl 표준품으로 만든 표준액(f′)으로 <b>AgNO₃ 용액을 표정</b>해 f를 구하고,
 그 AgNO₃로 <b>시판 소금</b>을 적정해 들어 있는 <b>Cl⁻을 NaCl로 환산한 함량(%)</b>을 구한 실험. 지시약은 <b>K₂CrO₄</b>(모어법).</div>
 <div class="cv-eq">Ag⁺ + Cl⁻ → AgCl↓ (흰색) &nbsp;·&nbsp; 종말점: 2Ag⁺ + CrO₄²⁻ → Ag₂CrO₄↓ (적갈색)<br>
@@ -78,7 +78,7 @@ cover = dict(t="r", cls="cover2", html=STYLE + """
 <div class="row"><span class="n">5</span><span class="nm">계산 예시 (녹취록 값)</span><span class="pg">{PAGE:p-calc}</span></div>
 <div class="row"><span class="n">6</span><span class="nm">고찰 포인트 — 원인 · 대책 · 개선</span><span class="pg">{PAGE:p-disc}</span></div>
 <div class="row"><span class="n">7</span><span class="nm">기말 대비 Q&amp;A · 노트 체크리스트</span><span class="pg">{PAGE:p-qa}</span></div></div>
-<div class="cv-src">의약품분석학 실험 「실험 3: 모어법에 의한 NaCl 정량」 수업 녹취록 · 유인물 사진 없음 → 유인물 세부 수치는 원본으로 확인</div>
+<div class="cv-src">의약품분석학 실험 「실험 3: 모어법에 의한 NaCl 정량」 유인물 1쪽 · 수업 녹취록</div>
 """)
 
 notice = pg("p-notice", "공지", "실험노트 피드백 · 지난 결과 · 다음 주 안내", "실험 2 노트 채점 후 교수님 피드백", K0,
@@ -109,8 +109,9 @@ side=card("trap", "⚠️ AgNO₃ 농도 정정 (수업 중 공지)", "규정 �
 
 purpose = pg("p-purpose", "1", "목적 · 은적정은 사실 Cl⁻ 정량", "침전 적정 · Argentometry", K1,
 core="AgNO₃ 표준액으로 <b>Cl⁻</b>을 적정하고, 그 양을 <b>NaCl로 환산</b>한다. \"NaCl 정량\"은 엄밀히는 틀린 말 — 물에 녹아 Cl⁻을 내는 <b>모든 물질</b>(예: KCl)이 함께 정량된다.",
-main="""<div class="sec">목적</div>
-<p>NaCl 표준액으로 AgNO₃ 용액을 표정하고, 모어법(Mohr method)으로 시판 소금 중 NaCl의 함량을 정량한다.</p>
+main="""<div class="sec">원리 (유인물)</div>
+<p>pH 6.5~10.5 사이에서 Cl⁻ ion을 AgNO₃ 표준액으로 적정하면 AgCl이 침전되며, 지시약으로 넣은 K₂CrO₄는 Cl⁻이 모두 AgCl로 침전한 후 과량의 Ag⁺와 반응하여 Ag₂CrO₄의 적갈색 침전을 형성하는데, 이 적갈색 침전이 형성되는 때를 반응 종말점으로 한다.</p>
+<p class="ko"><b>시약 및 기구</b>: 분석저울, magnetic stirrer, Erlenmeyer flask (200 mL), volumetric flask (100 mL), buret (50 mL), transfer pipet (10 mL), mess cylinder (100 mL), stand, clamp, 세척병, NaCl, AgNO₃, K₂CrO₄</p>
 <div class="sec">적정 반응</div>
 <div class="fbox"><span class="fx">NaCl + AgNO₃ → AgCl↓ (흰색) + NaNO₃</span> &nbsp; (Ag⁺ + Cl⁻ → AgCl)<br>
 <ul style="margin:4px 0 0"><li><b>1 : 1 몰비</b> → 계산이 편하다.</li>
@@ -128,12 +129,13 @@ main="""<ul><li>지시약 <b>K₂CrO₄</b>(크롬산칼륨, 5% 시액) — 자�
 <li>당량점 부근: Cl⁻이 없어지면 <span class="fx">2Ag⁺ + CrO₄²⁻ → Ag₂CrO₄↓ (적갈색)</span></li>
 <li>적갈색 침전이 생겨 <b>교반해도 안 녹으면 바로 멈춤</b>. 전체가 <b>옅은 적갈색</b>(연갈색)이 된다. 시커멓게 될 때까지 기다리면 넘어간 것.</li>
 <li>침전이 생기면 용액 → <b>현탁액</b> → 잘 안 섞임 → <b>교반을 세게</b>. 생겼다 없어지는 걸 반복하므로 교반이 종말점 판단의 핵심.</li></ul>
-<div class="ebox"><div class="sec e">왜 AgCl이 먼저 침전되나? (1학기 이론)</div>
-몰 용해도: AgCl s = √K<sub>sp</sub> ≈ 1.3 × 10⁻⁵ M &lt; Ag₂CrO₄ s = (K<sub>sp</sub>/4)<sup>1/3</sup> ≈ 6.5 × 10⁻⁵ M (K<sub>sp</sub> ≈ 1.1 × 10⁻¹²)<br>
-→ 덜 녹는 AgCl이 먼저 생기고, Cl⁻이 거의 다 없어진 뒤에야 Ag₂CrO₄가 생긴다. 당량점의 [Ag⁺] ≈ 1.3 × 10⁻⁵ M에서 Ag₂CrO₄가 생기려면 [CrO₄²⁻] ≈ 6 × 10⁻³ M이 필요.</div>
-<div class="ebox"><div class="sec e">모어법의 pH 조건 (1학기 이론)</div>
-중성~약알칼리(pH 약 7–10). 산성이면 CrO₄²⁻ → HCrO₄⁻/Cr₂O₇²⁻로 바뀌어 종말점이 늦어지고, 강알칼리면 Ag⁺가 AgOH/Ag₂O로 침전된다. 소금물·탈이온수는 대체로 중성이라 그대로 적정.</div>""",
-side=prof("하얀색 침전이 막 생기다가 갑자기 적갈색 침전이 생겨서 안 없어지잖아요? 그럼 바로 멈춰야 되는 거예요. 시커멓게 변할 때까지 기다리지 말고.")
+<div class="ebox"><div class="sec e">왜 AgCl이 먼저 침전되나? (K<sub>sp</sub>는 유인물 값)</div>
+몰 용해도: AgCl s = √K<sub>sp</sub> ≈ 1.3 × 10⁻⁵ M &lt; Ag₂CrO₄ s = (K<sub>sp</sub>/4)<sup>1/3</sup> ≈ 6.7 × 10⁻⁵ M (K<sub>sp</sub> = 1.2 × 10⁻¹², 유인물)<br>
+→ 덜 녹는 AgCl이 먼저 생기고, Cl⁻이 거의 다 없어진 뒤에야 Ag₂CrO₄가 생긴다. 당량점의 [Ag⁺] ≈ 1.3 × 10⁻⁵ M에서 Ag₂CrO₄가 생기려면 [CrO₄²⁻] = 1.2 × 10⁻¹² / 1.8 × 10⁻¹⁰ ≈ 7 × 10⁻³ M이 필요.</div>
+<div class="ebox"><div class="sec e">모어법의 pH 조건 — 유인물: pH 6.5~10.5</div>
+유인물: <b>pH 6.5~10.5</b> 사이에서 적정. 산성이면 CrO₄²⁻ → HCrO₄⁻/Cr₂O₇²⁻로 바뀌어 종말점이 늦어지고, 강알칼리면 Ag⁺가 AgOH/Ag₂O로 침전된다. 소금물·탈이온수는 대체로 중성이라 그대로 적정.</div>""",
+side='<div class="fig" style="--imgh:150px"><img src="img/flasks.jpg"><div class="cap">유인물 1쪽 사진 — 흰 AgCl 현탁액 → 종말점의 옅은 적갈색</div></div>'
+ + prof("하얀색 침전이 막 생기다가 갑자기 적갈색 침전이 생겨서 안 없어지잖아요? 그럼 바로 멈춰야 되는 거예요. 시커멓게 변할 때까지 기다리지 말고.")
  + card("tip", "📌 표정과 시료의 색 맞추기", "실험 2처럼 두 적정의 종말점 색(옅은 적갈색)을 같게 맞추면 지시약 오차가 줄어든다. 학생들도 \"아까 그거에 비해서 약간 연해\"라며 비교함."))
 
 blank = pg("p-blank", "2-②", "공시험(blank test) — 물과 지시약의 몫 빼기", "표정 공시험 ② · 시료 공시험 ④", K1,
@@ -165,18 +167,18 @@ E = AgNO₃ 1 mL에 대응하는 NaCl 양: 0.1 M → <b>5.844 mg</b>, <b>0.2 M �
 side=prof("V × E 하면 NaCl의 양이 바로 나오죠. 하나 빼먹었잖아 — 팩터. 규정도 계수를 곱해줘야 돼요. 팩터 까먹지 말고요.")
  + card("trap", "⚠️ 흔한 실수", """<ul style="margin:0"><li>AgNO₃를 0.1 M로 계산 (정정 전 값)</li><li>NaCl 표준품을 99%로 계산 (100%로 가정)</li><li>f′ 또는 f를 빠뜨림 / 공시험 b를 안 뺌</li><li>f를 넷째 자리 이상으로 표기</li></ul>"""))
 
-meth = pg("p-meth", "3", "실험방법 — 실제로 한 대로 쓰기", "유인물 단계 중 생략·제공된 것 표시 (유인물 사진 없음 → 세부 수치는 원본 확인)", K2,
+meth = pg("p-meth", "3", "실험방법 — 실제로 한 대로 쓰기", "유인물 1쪽 4. 실험방법 — 생략·제공된 것 표시", K2,
 main="""<div class="sec">[0.1 M NaCl 표준액 조제] <span class="tag j">건조 생략</span></div>
 <p>NaCl 표준품(99%, 100%로 가정)을 건조하지 않고 이론량 약 0.584 g 부근을 정밀하게 칭량(1조: 0.583 g) → 100 mL 용량플라스크, 탈이온수로 녹이고 표선까지 → 섞기. f′ 계산.</p>
 <div class="sec">[5% K₂CrO₄ 지시액] <span class="tag j">제공됨</span> · [0.1 M AgNO₃ 조제] <span class="tag j">제공됨 · 실제 0.2 M</span></div>
 <p>노트에는 "제공된 5% K₂CrO₄ 지시약", "제공된 AgNO₃ 용액(규정 농도 0.2 M, 갈색 병)을 사용하였다"고 쓴다. 유인물의 AgNO₃ 3.397 g 칭량 단계는 하지 않음.</p>
 <div class="sec">[AgNO₃ 표정]</div>
-<ol><li>NaCl 표준액 <b>20.00 mL</b>를 피펫으로 취해 삼각플라스크에 넣고 탈이온수(약 40 mL, 메스실린더)와 지시약(4방울)을 넣는다.</li>
+<ol><li>NaCl 표준액 <b>20.00 mL</b>를 피펫으로 취해 삼각플라스크에 넣고 탈이온수(약 40 mL, 메스실린더)와 5% K₂CrO₄ 지시약 4방울을 넣는다 (200 mL 삼각플라스크).</li>
 <li>교반하며 AgNO₃로 적정 → 옅은 적갈색 침전이 사라지지 않는 점. <span class="tag j">3회 반복 생략</span></li>
 <li><b>공시험</b>: 들어간 부피 합(약 70 mL)만큼의 탈이온수 + 지시약을 적정.</li>
 <li>f′와 공시험값으로 AgNO₃의 f(셋째 자리)를 계산.</li></ol>
 <div class="sec">[시판 소금 중 NaCl 정량]</div>
-<ol><li>시판 소금 약 0.1 g을 정밀 칭량해 삼각플라스크에 넣고 탈이온수 <b>50 mL</b>로 녹인 뒤 지시약 4방울.</li>
+<ol><li>시판 소금 약 0.1 g을 정밀 칭량해 삼각플라스크에 넣고 탈이온수 <b>50 mL</b>로 녹인 뒤 지시약 4방울(약 0.2 mL). <span class="tag j">시료 건조 생략</span></li>
 <li>교반하며 AgNO₃로 적정. <span class="tag j">3회 반복 생략</span></li>
 <li><b>공시험</b>: 50 mL + V(약 59 mL) 탈이온수 + 지시약을 적정.</li>
 <li>f와 공시험값으로 NaCl 함량(%) 계산.</li></ol>""",
@@ -192,7 +194,7 @@ main="""<div class="sec">① 뷰렛 · 용액</div>
 <li>적정 전 뷰렛 위 <b>깔때기 빼기</b>.</li></ul>
 <div class="sec">② 적정</div>
 <ul><li>예상 소비량(표정 약 10 mL, 0.2 M 기준) 근처까지는 비교적 빠르게, 그 뒤 <b>한 방울씩</b>.</li>
-<li>침전이 생기면 현탁액 → <b>교반 세게</b>. 적갈색이 생겼다 사라지면 계속, 15초쯤 섞어도 남으면 끝.</li>
+<li>침전이 생기면 현탁액 → <b>교반 세게</b>. 적갈색이 생겼다 사라지면 계속, <b>약 15초간 흔들어도 탈색되지 않는 옅은 적갈색</b>이면 끝 (유인물).</li>
 <li>물은 <b>메스실린더</b>로. 뷰렛으로 물을 옮기면 그 뷰렛은 못 쓰게 됨.</li></ul>
 <div class="sec">③ 교수님 시연 — 과량 적정</div>
 <p>공시험 끝난 플라스크(AgCl 없음)에 AgNO₃를 1 mL 이상 왕창 넣자 <b>핏빛·포도주 색</b>으로 변함 = Ag₂CrO₄가 엄청 생긴 것. \"침전 적정이 극도로 실패하면 이렇게 된다. 이런 색이 나올 때까지 하면 안 된다.\" AgCl과 섞이면 옅은 적갈색으로 보인다.</p>""",
@@ -239,7 +241,7 @@ QA = [
 ("Q2. 적정 반응과 몰비는?", "Ag⁺ + Cl⁻ → AgCl↓(흰색), 1 : 1."),
 ("Q3. AgCl의 K<sub>sp</sub>는 대략?", "약 10⁻¹⁰ (1.8 × 10⁻¹⁰)."),
 ("Q4. 모어법의 지시약과 종말점 색은?", "K₂CrO₄(노란색). 종말점에서 Ag₂CrO₄ 적갈색 침전."),
-("Q5. AgCl이 Ag₂CrO₄보다 먼저 침전되는 이유는?", "몰 용해도가 더 작기 때문 (AgCl ≈ 1.3 × 10⁻⁵ M &lt; Ag₂CrO₄ ≈ 6.5 × 10⁻⁵ M)."),
+("Q5. AgCl이 Ag₂CrO₄보다 먼저 침전되는 이유는?", "몰 용해도가 더 작기 때문 (AgCl ≈ 1.3 × 10⁻⁵ M &lt; Ag₂CrO₄ ≈ 6.7 × 10⁻⁵ M)."),
 ("Q6. 침전 적정에서 교반이 특히 중요한 이유는?", "침전이 생기면 현탁액이 되어 잘 안 섞이고, 적갈색이 생겼다 사라지기를 반복하므로."),
 ("Q7. 공시험이란?", "시료 없이 종말점과 같은 부피의 물 + 지시약을 적정해 그 값을 본 적정값에서 빼는 것."),
 ("Q8. \"종말점에서와 같은 부피\"는?", "플라스크에 들어간 모든 용액 부피의 합 (표정: 20 + 40 + V)."),
@@ -247,7 +249,7 @@ QA = [
 ("Q10. AgNO₃의 f 식은?", "f = (0.1 × f′ × 20.00) / [0.2 × (V − b)] (오늘은 규정 농도 0.2 M)."),
 ("Q11. 0.2 M AgNO₃ 1 mL의 NaCl 대응량은?", "0.2 × 58.44 = 11.69 mg (0.1 M면 5.844 mg)."),
 ("Q12. AgNO₃를 갈색 병에 보관하는 이유는?", "빛에 의해 조금씩 분해될 수 있어서."),
-("Q13. 모어법의 적정 pH와 이유는?", "중성~약알칼리(약 7–10). 산성이면 크롬산이 바뀌어 종말점 지연, 강알칼리면 AgOH/Ag₂O 침전."),
+("Q13. 모어법의 적정 pH와 이유는?", "pH 6.5~10.5 (유인물). 산성이면 크롬산이 바뀌어 종말점 지연, 강알칼리면 AgOH/Ag₂O 침전."),
 ("Q14. 시판 소금의 함량이 100%보다 낮게 나와야 하는 이유는?", "수분과 다른 성분이 들어 있고 건조하지 않았기 때문."),
 ("Q15. 과량의 AgNO₃를 넣으면?", "Ag₂CrO₄가 많이 생겨 핏빛·포도주 색이 된다 (교수님 시연)."),
 ("Q16. 표준품 99%를 100%로 가정하면 f는?", "실제 NaCl이 적어 V가 작아지므로 f가 과대평가된다."),
