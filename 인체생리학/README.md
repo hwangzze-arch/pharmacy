@@ -72,6 +72,7 @@
   - `annotate.py` 약어·용어 [즉, ~] 풀이 / `allen.py`+`endict.py` 영어 용어 한글 병기 사전
   - `mdata.py` 모의고사 50문항 / `mbuild.py` 모의고사 조립 / `mstyle.css` 모의고사 디자인
 - 기말 노트(8장~): `cd _build/src && bash lv8.sh && node pdf.js $PWD/out8.html 출력.pdf` (`build8.py` + 표지 `front8.py`, 글자 크기 `levels8.json`)
+  - 기말 노트 문제 형식: `lib.SPLIT`(영어 원문 상자 → 밑에 한글 번역, 생화학 `Chap19_20_시험대비 요약노트(TB추가)`와 같은 방식), `lib.NOWORK`(내 풀이 칸 없음, 그림 각주 그림 1.35배). `build8.py`에서만 켬. 문제 글자는 `.q.sp`로 키우고, 넘치는 문제 쪽은 `lv8.sh`가 Q1·Q2로 자동 축소
   - 9·10장 추가됨(`c9.py`, `c10.py`, 그림은 `crop9.py`). 다음 장 추가: `c11.py`를 같은 형식으로 만들고 `build8.py`의 mods 목록·`front8.TOC`·`lib.COLORS`에 추가
   - 문제는 요약 페이지 사이 `qpage(...)`에 직접 씀. 기말 유형 함수: `TF` · `MC(pick=2)` · `FQ`(그림 각주) · `BOX`(단어 박스 빈칸) · `ES`
   - 그림: 슬라이드를 220dpi PNG(`c8-NN.png`)로 렌더한 폴더를 주고 `python3 crop8.py 폴더` → `fig/`에 요약용 그림과 A/B/C 라벨을 붙인 `-q` 그림 생성

@@ -56,6 +56,16 @@ def eng(lines):
     return card('서술형 핵심 문장 — 이 문장 그대로 외우기', '<ul class="en">' + ''.join(f'<li>{x}</li>' for x in lines) + '</ul>', 'engc', '✍')
 
 # ---- questions ----
+# 기말 노트(build8)용: SPLIT = 영어 원문 상자 → 그 밑에 한글 번역(생화학 TB 노트 형식), NOWORK = '내 풀이' 칸 없앰
+SPLIT = False
+NOWORK = False
+
+def _split(en_q, en_list, ko_q, ko_list, en_tail=''):
+    def ol(items, cls):
+        return '<ol class="sq">' + ''.join(f'<li><span class="n">{n}</span><div class="{cls}">{x}</div></li>' for n, x in items) + '</ol>' if items else ''
+    return (f'<div class="enbox"><span class="olab">ORIGINAL · 원문</span><div class="e">{en_q}</div>{ol(en_list, "e")}{en_tail}</div>'
+            f'<div class="kobox"><span class="tlab">번역</span><div class="k">{ko_q}</div>{ol(ko_list, "k")}</div>')
+
 TAGS = {'tf': ('T / F', '#0b8f84'), 'mc': ('객관식', '#1971c2'), 'mc2': ('객관식 · 2개', '#5f3dc4'),
         'sa': ('단답', '#e8590c'), 'es': ('서술', '#c92a2a'), 'fig': ('그림 각주', '#0b7285'), 'box': ('단어 박스 빈칸', '#d9480f')}
 
@@ -64,38 +74,51 @@ def _qcard(kind, body, ans, exp, stars, extra='', prof=False):
     lab, colr = TAGS[kind]
     st = '★' * stars + '☆' * (3 - stars)
     pf = '<span class="prof">교수님 예시</span>' if prof else ''
-    return (f'<div class="q"><div class="qh"><b>Q{_q[0]}</b><span class="qt" style="background:{colr}">{lab}</span>{pf}{extra}'
+    return (f'<div class="q{" sp" if SPLIT else ""}"><div class="qh"><b>Q{_q[0]}</b><span class="qt" style="background:{colr}">{lab}</span>{pf}{extra}'
             f'<span class="st">{st}</span></div><div class="qb">{body}</div>'
-            f'<div class="work"><span>✎ 내 풀이</span></div>'
+            + ('' if NOWORK else f'<div class="work"><span>✎ 내 풀이</span></div>') +
             f'<div class="ans"><div><span class="ab">정답</span> <b>{ans}</b></div><div class="ex">{exp}</div></div></div>')
 
 def TF(items, ans, exp, stars=2):
     """items: list of (en, ko)"""
+    if SPLIT:
+        nums = [f'({i + 1})' for i in range(len(items))]
+        body = _split('Mark each statement True (T) or False (F).', [(n, e + ' <span class="ox">T / F</span>') for n, (e, k) in zip(nums, items)],
+                      '각 문장이 참이면 T, 거짓이면 F.', [(n, k) for n, (e, k) in zip(nums, items)])
+        return _qcard('tf', body, ans, exp, stars)
     li = ''.join(f'<li><div class="tfr"><div><div class="e">{e}</div><div class="k">{k}</div></div><span class="ox">T / F</span></div></li>' for e, k in items)
     body = f'<div class="e">Mark each statement True (T) or False (F).</div><div class="k">각 문장이 참이면 T, 거짓이면 F.</div><ol class="tfl">{li}</ol>'
     return _qcard('tf', body, ans, exp, stars)
 
 def MC(en, ko, ch, ans, exp, pick=1, stars=2, prof=False):
     nums = '①②③④⑤'
+    if SPLIT:
+        body = _split(en, [(nums[i], e) for i, (e, k) in enumerate(ch)], ko, [(nums[i], k) for i, (e, k) in enumerate(ch)])
+        return _qcard('mc' if pick == 1 else 'mc2', body, ans, exp, stars, prof=prof)
     c = ''.join(f'<li><span class="n">{nums[i]}</span><div><div class="e">{e}</div><div class="k">{k}</div></div></li>' for i, (e, k) in enumerate(ch))
     body = f'<div class="e">{en}</div><div class="k">{ko}</div><ol class="chs">{c}</ol>'
     return _qcard('mc' if pick == 1 else 'mc2', body, ans, exp, stars, prof=prof)
 
 def SA(en, ko, ans, exp, stars=1):
-    return _qcard('sa', f'<div class="e">{en}</div><div class="k">{ko}</div>', ans, exp, stars)
+    return _qcard('sa', _split(en, [], ko, []) if SPLIT else f'<div class="e">{en}</div><div class="k">{ko}</div>', ans, exp, stars)
 
 def ES(en, ko, model, exp, stars=3):
     _q[0] += 1
     lab, colr = TAGS['es']
-    return (f'<div class="q"><div class="qh"><b>Q{_q[0]}</b><span class="qt" style="background:{colr}">{lab}</span>'
-            f'<span class="st">{"★" * stars + "☆" * (3 - stars)}</span></div><div class="qb"><div class="e">{en}</div><div class="k">{ko}</div></div>'
-            f'<div class="work"><span>✎ 내 풀이</span></div>'
+    return (f'<div class="q{" sp" if SPLIT else ""}"><div class="qh"><b>Q{_q[0]}</b><span class="qt" style="background:{colr}">{lab}</span>'
+            f'<span class="st">{"★" * stars + "☆" * (3 - stars)}</span></div><div class="qb">{_split(en, [], ko, []) if SPLIT else f"<div class=e>{en}</div><div class=k>{ko}</div>"}</div>'
+            + ('' if NOWORK else f'<div class="work"><span>✎ 내 풀이</span></div>') +
             f'<div class="ans"><div><span class="ab">모범답안</span></div><div class="model">{model}</div><div class="ex">{exp}</div></div></div>')
 
 def FQ(name, en, ko, ans, exp, stars=2, h='52mm'):
     """그림 각주: 슬라이드 그림에 붙인 A, B, C… 라벨이 무엇인지 쓰기. ans: list of (라벨, 정답)"""
     with open(os.path.join(FIG, name + '.jpg'), 'rb') as f:
         b = base64.b64encode(f.read()).decode()
+    if SPLIT:
+        hh = f'{float(h[:-2]) * 1.35:.0f}mm' if NOWORK else h  # 내 풀이 칸이 없으면 그림을 크게
+        body = _split(en, [], ko, []) + f'<div class="figq"><img style="max-height:{hh}" src="data:image/jpeg;base64,{b}"></div>'
+        a = ' · '.join(f'<b>{l}</b> {t}' for l, t in ans)
+        return _qcard('fig', body, '', f'<div class="fans">{a}</div>{exp}', stars)
     body = f'<div class="e">{en}</div><div class="k">{ko}</div><div class="figq"><img style="max-height:{h}" src="data:image/jpeg;base64,{b}"></div>'
     a = ' · '.join(f'<b>{l}</b> {t}' for l, t in ans)
     return _qcard('fig', body, '', f'<div class="fans">{a}</div>{exp}', stars)
@@ -103,7 +126,8 @@ def FQ(name, en, ko, ans, exp, stars=2, h='52mm'):
 def BOX(en, ko, words, text, ans, exp, stars=2):
     """단어 박스 빈칸: 단어 약 12개 중에서 과정의 빈칸 (1)…(n)에 알맞은 단어 고르기"""
     w = ''.join(f'<span>{x}</span>' for x in words)
-    body = f'<div class="e">{en}</div><div class="k">{ko}</div><div class="wbox">{w}</div><div class="e btxt">{text}</div>'
+    body = (_split(en, [], ko, [], f'<div class="wbox">{w}</div><div class="e btxt">{text}</div>') if SPLIT
+            else f'<div class="e">{en}</div><div class="k">{ko}</div><div class="wbox">{w}</div><div class="e btxt">{text}</div>')
     a = ' · '.join(f'({i + 1}) {t}' for i, t in enumerate(ans))
     return _qcard('box', body, a, exp, stars)
 
