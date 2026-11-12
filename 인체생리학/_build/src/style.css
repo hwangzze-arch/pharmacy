@@ -137,10 +137,16 @@ ol.tfl li{margin:.9mm 0}
 .wbox span{font-size:7.8pt;font-weight:700;color:#7a2e0b;background:#fff;border:1px solid #f4c3a6;border-radius:1mm;padding:.1mm 1.4mm}
 .btxt{line-height:1.6 !important}
 .btxt u{text-decoration:none;border-bottom:1px solid #1d2747;padding:0 4mm;font-weight:700;color:#d9480f}
-/* 기말 노트 표지: 분홍·보라 그라데이션 (front8 전용) */
-.cover.pk{background:linear-gradient(135deg,#3b1452 0%,#7b2d8e 45%,#c2417e 80%,#e8739b 100%)}
-.cover.pk .k1,.cover.pk .toc .h,.cover.pk .toc .r span:first-child,.cover.pk .toc .r span:last-child{color:#f3c6e0}
-.cover.pk .sub,.cover.pk .note{color:#fbe3f0}
-.cover.pk .y{color:#ffe066}
-.cover.pk .src,.cover.pk .toc .r small{color:#e9b3d4 !important}
-.cover.pk .toc{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+/* 기말 노트 표지: 연한 분홍·보라 파스텔 그라데이션 (front8 전용) */
+.cover.pk{background:linear-gradient(135deg,#efe3fb 0%,#f3dcf3 45%,#fbdde9 80%,#fde9ef 100%);color:#3d1a4f}
+.cover.pk .k1,.cover.pk .toc .h{color:#8a4f9e}
+.cover.pk h1{color:#4a1d63}
+.cover.pk .sub,.cover.pk .note{color:#5b3a6b}
+.cover.pk .note b{color:#3d1a4f}
+.cover.pk .y{color:#c2255c}
+.cover.pk .pills span{border-color:#c9a3d9;color:#5b2a72;background:rgba(255,255,255,.55)}
+.cover.pk .toc{background:rgba(255,255,255,.6);border-color:#e3c8ec}
+.cover.pk .toc .r{border-bottom-color:#ead7f0}
+.cover.pk .toc .r span:first-child,.cover.pk .toc .r span:last-child{color:#a06bb3}
+.cover.pk .src,.cover.pk .toc .r small{color:#9a7aa8 !important}
+.cover.pk .strip div{background:rgba(255,255,255,.6);color:#4a2a5a}
