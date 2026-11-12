@@ -12,22 +12,36 @@ def _px(name):
     return _Im.open(os.path.join(D, "img", name + ".jpg")).width
 
 
+# 모든 캡처를 같은 배율로: 원서·정답·해설집(3.2배 캡처) 글자가 본문 글자와 비슷하도록. 줄이지 않음.
+K = {"tp": 0.37, "we": 0.37, "ta": 0.37, "ss": 0.34, "hw": 0.39}
+
+
+def _k(name):
+    for p, k in K.items():
+        if name.startswith(p):
+            return k
+    return None
+
+
 def qimg(name):
-    """문제 그림: 원서 글자 ≈ 본문 글자 크기 (실제 픽셀 × 0.5, 칸보다 넓으면 칸에 맞춤)."""
-    return f'<img src="{I}{name}.jpg" style="width:{round(_px(name) * 0.5)}px;max-width:100%;display:block;margin:2px 0">'
+    """문제 그림 (같은 배율, 칸보다 넓을 때만 칸에 맞춤)."""
+    k = _k(name)
+    w = f"width:{round(_px(name) * k)}px;max-width:100%" if k else "width:100%"
+    return f'<img src="{I}{name}.jpg" style="{w};display:block;margin:2px 0">'
 
 
-def aimg(name, k=0.5):
-    """정답·해설 칸 그림 (render.js가 --aimg로 더 줄임)."""
-    return f'<img class="tbimg" src="{I}{name}.jpg" style="width:calc({round(_px(name) * k)}px * var(--aimg, 1));max-width:100%;display:block;margin:2px 0">'
+def aimg(name, k=None):
+    """정답·해설 칸 그림 (문제 그림과 같은 배율)."""
+    k = _k(name) or 0.37
+    return f'<img class="tbimg" src="{I}{name}.jpg" style="width:{round(_px(name) * k)}px;max-width:100%;display:block;margin:2px 0">'
 
 
 def KEY(n):
     return '<div class="xsec">📗 원서 정답 (Answer Key)</div>' + aimg(f"ta{n:02d}")
 
 
-def SSM(n, k=0.4):
-    return f'<div class="xsec">📘 해설집 풀이 (SSM 23.{n})</div>' + aimg(f"ss{n:02d}", k)
+def SSM(n, k=None):
+    return f'<div class="xsec">📘 해설집 풀이 (SSM 23.{n})</div>' + aimg(f"ss{n:02d}")
 
 
 def tb(n, part, title, kind, ko, a, exp, extra=None, **kw):
