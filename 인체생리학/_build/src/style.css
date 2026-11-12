@@ -198,3 +198,4 @@ ol.sq .n{font-size:9.4pt;font-weight:700;color:#1d2747;flex:none}
 .pb.Q1 .q.sp .ex,.pb.Q1 .q.sp .why{font-size:7.6pt}
 .pb.Q2 .enbox .e,.pb.Q2 .kobox .k{font-size:8.3pt}.pb.Q2 ol.sq .e,.pb.Q2 ol.sq .k,.pb.Q2 ol.sq .n{font-size:8.1pt}
 .pb.Q2 .q.sp .ex,.pb.Q2 .q.sp .why{font-size:7.2pt}.pb.Q2 .q.sp .ans b{font-size:8.6pt}
+.q.sp .ans{margin-top:auto}  /* 기말: 정답·모범답안을 카드 하단에 맞춤 */
