@@ -72,10 +72,10 @@
   - `annotate.py` 약어·용어 [즉, ~] 풀이 / `allen.py`+`endict.py` 영어 용어 한글 병기 사전
   - `mdata.py` 모의고사 50문항 / `mbuild.py` 모의고사 조립 / `mstyle.css` 모의고사 디자인
 - 기말 노트(8장~): `cd _build/src && bash lv8.sh && node pdf.js $PWD/out8.html 출력.pdf` (`build8.py` + 표지 `front8.py`, 글자 크기 `levels8.json`)
-  - 기말 노트는 글자를 키움: `final8.css`(build8에서만 덧붙임, 요약 L-1~L2·개념문제 글자 확대). 넘치는 쪽은 `lv8.sh`가 L3(기본 크기)까지 자동 축소. 중간고사 노트는 그대로
   - 9·10장 추가됨(`c9.py`, `c10.py`, 그림은 `crop9.py`). 다음 장 추가: `c11.py`를 같은 형식으로 만들고 `build8.py`의 mods 목록·`front8.TOC`·`lib.COLORS`에 추가
   - 문제는 요약 페이지 사이 `qpage(...)`에 직접 씀. 기말 유형 함수: `TF` · `MC(pick=2)` · `FQ`(그림 각주) · `BOX`(단어 박스 빈칸) · `ES`
   - 그림: 슬라이드를 220dpi PNG(`c8-NN.png`)로 렌더한 폴더를 주고 `python3 crop8.py 폴더` → `fig/`에 요약용 그림과 A/B/C 라벨을 붙인 `-q` 그림 생성
 - 쉬운설명(슬라이드별 번역·설명) PDF: `_build/쉬운설명/`
   - `python3 make_img.py 9 "../../Chapter 9_Cardiac Physiology.pdf"` → `python3 build.py 9` → `node render.js 출력.pdf` (넘치는 쪽은 글자 크기 자동 축소)
   - 내용은 `ch9.py`(= `ch9_1~3.py`)에 슬라이드 1장 = 1쪽 dict로 씀: kw · sum · tr(한글 번역) · ex(상세 설명). 10·11장은 `ch10.py`(`CHLABEL = '10·11'`로 두 장 묶음 표기), 다음 장도 같은 형식으로
+
