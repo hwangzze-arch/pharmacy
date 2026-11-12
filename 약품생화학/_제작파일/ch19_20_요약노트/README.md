@@ -34,6 +34,3 @@ python3 build.py        # index.html
 NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 ```
 필요: Python 3, Node + playwright(Chromium), poppler-utils, ImageMagick, 폰트 Noto Sans KR · Noto Serif.
-
-## 표지 (2026-11-12부터)
-빌드로 PDF를 다시 만든 뒤에 공용 기말 표지를 다시 넣는다: `cd _공용/기말표지 && python3 covers.py <id>` (id는 `_공용/기말표지/README.md` 참고). 1쪽 목차는 그대로 두고, 새 표지가 맨 앞에 붙는다.
