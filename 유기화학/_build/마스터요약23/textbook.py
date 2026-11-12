@@ -26,14 +26,14 @@ def _k(name):
 def qimg(name):
     """문제 그림 (같은 배율, 칸보다 넓을 때만 칸에 맞춤)."""
     k = _k(name)
-    w = f"width:{round(_px(name) * k)}px;max-width:100%" if k else "width:100%"
+    w = f"width:calc({round(_px(name) * k)}px * var(--ik, 1));max-width:100%" if k else "width:calc(100% * var(--ik, 1))"
     return f'<img src="{I}{name}.jpg" style="{w};display:block;margin:2px 0">'
 
 
 def aimg(name, k=None):
     """정답·해설 칸 그림 (문제 그림과 같은 배율)."""
     k = _k(name) or 0.37
-    return f'<img class="tbimg" src="{I}{name}.jpg" style="width:{round(_px(name) * k)}px;max-width:100%;display:block;margin:2px 0">'
+    return f'<img class="tbimg" src="{I}{name}.jpg" style="width:calc({round(_px(name) * k)}px * var(--ik, 1));max-width:100%;display:block;margin:2px 0">'
 
 
 def KEY(n):
