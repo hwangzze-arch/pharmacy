@@ -2,7 +2,7 @@ import base64, os
 FIG = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'fig')
 PAGES = []          # list of (kind, chapter, title, html_fn)
 CH = {'no': 0, 'name': '', 'color': '#1c3d7a'}
-COLORS = {1: '#0b8f84', 2: '#2b8a3e', 3: '#1971c2', 4: '#5f3dc4', 5: '#c2255c', 6: '#e8590c', 7: '#9c36b5', 8: '#c92a2a'}
+COLORS = {1: '#0b8f84', 2: '#2b8a3e', 3: '#1971c2', 4: '#5f3dc4', 5: '#c2255c', 6: '#e8590c', 7: '#9c36b5', 8: '#c92a2a', 9: '#d6336c', 10: '#0c8599'}
 _q = [0]
 
 def img(name, cap='', h='60mm'):
