@@ -5,7 +5,7 @@ import lib, json, annotate, allen
 lib.load_bank()
 LVF = os.path.join(D, 'levels8.json')
 LV = json.load(open(LVF)) if os.path.exists(LVF) else {}
-mods = sys.argv[1:] or ['c8']
+mods = sys.argv[1:] or ['c8', 'c9', 'c10']
 for m in mods:
     importlib.import_module(m).build()
 # chapter start pages for TOC (cover = page 1, so offset 2)
