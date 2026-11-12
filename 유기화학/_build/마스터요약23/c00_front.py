@@ -23,7 +23,7 @@ cover = dict(t="r", cls="cv21", html="""
 .cv21 .toc{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:5px;grid-auto-flow:column;grid-template-rows:repeat(var(--rows),1fr);}
 .cv21 .tr{display:flex;align-items:center;gap:7px;border-bottom:1px solid #eef1f5;font-size:11.3px;min-width:0;}
 .cv21 .tr .bg{flex:none;width:30px;text-align:center;border-radius:8px;font-size:9.5px;font-weight:700;color:#fff;padding:1px 0;}
-.cv21 .bg.c{background:#c2255c;} .cv21 .bg.w{background:#7048e8;} .cv21 .bg.p{background:#1d3557;} .cv21 .bg.v{background:#e8590c;}
+.cv21 .bg.c{background:#c2255c;} .cv21 .bg.w{background:#7048e8;} .cv21 .bg.p{background:#1d3557;} .cv21 .bg.v{background:#e8590c;} .cv21 .bg.h{background:#f08c00;} .cv21 .bg.l{background:#0b7285;}
 .cv21 .tr .nm{flex:none;width:44px;font-weight:700;color:#1d3557;}
 .cv21 .tr .ti{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2c3038;}
 .cv21 .tr .pg{flex:none;font-weight:700;color:#6b7686;width:24px;text-align:right;}
