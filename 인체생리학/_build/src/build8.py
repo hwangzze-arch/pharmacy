@@ -15,6 +15,7 @@ for i, p in enumerate(lib.PAGES):
 import front8
 cover = front8.cover(starts)
 css = open(os.path.join(D, 'style.css'), encoding='utf-8').read()
+css += open(os.path.join(D, 'final8.css'), encoding='utf-8').read()  # 기말 노트 전용: 큰 글자
 secs = [cover]
 # Q 번호를 장마다 1부터 다시 매기기 + 장별 용어 풀이 자동 적용
 import re as _r
