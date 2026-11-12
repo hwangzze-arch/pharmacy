@@ -170,12 +170,15 @@ tr.hl td{background:#ffe3e3;}
 .gls .gi{border-left:2px solid #c5d8f0;padding-left:6px;} .gls b{color:#0f3f8c;margin-right:3px;}
 .pbx .gls{background:#fff;}
 .qpb{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(0,1fr);column-gap:14px;row-gap:6px;margin-top:8px;}
-.qpb .qa{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
+.qpb .qa{min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;}
 .qc{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
 .qch{display:flex;align-items:center;gap:7px;border-bottom:2px solid #e5dbff;padding-bottom:3px;}
 .qch .qn{flex:none;background:#7048e8;color:#fff;font-weight:700;border-radius:6px;font-size:.85em;padding:1px 9px;}
 .qch .qt{flex:1;min-width:0;font-weight:700;color:#3b2a8a;font-size:1.02em;}
 .qc .lbox .qsrc{font-size:.78em;}
+.q1b{flex:1;min-height:0;margin-top:9px;column-count:2;column-gap:16px;column-fill:auto;overflow:hidden;}
+.q1b>div{break-inside:avoid;margin-bottom:8px;}
+.q1b .rblk img{break-inside:avoid;}
 .q2b{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:9px;}
 .q2b .lcol,.q2b .rcol{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;}
 .lbox{background:#eef3fa;border-radius:10px;border-left:5px solid var(--navy);padding:8px 12px;}
@@ -413,23 +416,18 @@ def _blocks(e):
     return b
 
 def qpage(i, n, e):
+    """한 쪽 1문제: 왼쪽 위 문제 → 정답 → 해설 → 그림이 왼쪽 단 아래로, 이어서 오른쪽 단으로. 넘치면 render.js가 그림·글자를 줄임."""
     kinds = "".join(f'<span class="qk {k}">{KIND[k]}</span>' for k in e["kind"])
     _tr = TOPR.get(e.get("n"))
     q = e["q"]
     kk = q.find('<div class="term"')
     orig, trans = (q[:kk], q[kk:]) if kk >= 0 else (q, "")
-    left = (f'<div class="lbox o{" top g" + str(_tr[1]) if _tr else ""}"><div class="lt"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}</div>'
-            f'<div class="qtext">{orig}</div>{trans}</div>'
-            + gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 6))
-    B = _blocks(e)
-    m = min(QSPLIT.get(e.get("id", ""), 0), len(B) - 1)
+    box = (f'<div class="lbox o{" top g" + str(_tr[1]) if _tr else ""}"><div class="lt"><span class="plb">PROBLEM {n:02d}</span>{tb(e.get("n"), True)}{kinds}</div>'
+           f'<div class="qtext">{orig}</div>{trans}</div>')
+    g = gl(e["title"] + e["q"] + e["a"] + e.get("exp", ""), 6)
     hd = _hd21(f"{n:02d}", e["title"], e.get("src", ""), [e["part"]], top=tb(e.get("n")))
-    first = B[:len(B) - m] if m else B
-    out = [f'''<section class="page v21 q2" data-qid="{e.get("id","")}" data-part="a">{hd}<div class="q2b"><div class="lcol">{left}</div><div class="rcol">{"".join(first)}</div></div>{foot(i)}</section>''']
-    if m:
-        hd2 = _hd21(f"{n:02d}", e["title"] + " — 정답과 해설 (계속)", e.get("src", ""), [e["part"]], top=tb(e.get("n")))
-        out.append(f'''<section class="page v21 q2 q2c" data-qid="{e.get("id","")}" data-part="c">{hd2}<div class="q2b"><div class="lcol">{left}</div><div class="rcol"><div class="rcont">← 정답·해설 앞쪽에서 이어짐</div>{"".join(B[len(B) - m:])}</div></div>{foot(i + 1)}</section>''')
-    return out
+    body = box + g + "".join(_blocks(e))
+    return [f'''<section class="page v21 q1" data-qid="{e.get("id","")}">{hd}<div class="q1b">{body}</div>{foot(i)}</section>''']
 
 try:
     QSOLO = set(_json.load(open(os.path.join(D, "_qsolo.json"))))

@@ -41,6 +41,10 @@ def KEY(n):
 
 
 def SSM(n, k=None):
+    """해설집 풀이. 긴 것(앞·뒤 반으로 잘라 둔 ss{n}a·b)은 두 블록으로 → 두 단에 나눠 들어감."""
+    if os.path.exists(os.path.join(D, "img", f"ss{n:02d}a.jpg")):
+        return (f'<div class="xsec">📘 해설집 풀이 (SSM 23.{n}) ①</div>' + aimg(f"ss{n:02d}a")
+                + f'<div class="xsec">📘 해설집 풀이 (SSM 23.{n}) ②</div>' + aimg(f"ss{n:02d}b"))
     return f'<div class="xsec">📘 해설집 풀이 (SSM 23.{n})</div>' + aimg(f"ss{n:02d}")
 
 

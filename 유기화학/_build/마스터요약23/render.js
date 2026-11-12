@@ -29,11 +29,22 @@ const path = require('path');
       if (pg.classList.contains('cover') || pg.classList.contains('cover2')) return;
       if (pg.classList.contains('qp')) {  // 한 쪽 2문제: 칸마다 문제 → 정답·해설
         const C = [...pg.querySelectorAll('.qa')];
-        const ov = (c) => c.scrollHeight > c.clientHeight + 1;
+        // 아래쪽 정렬이라 위로 넘친 것은 scrollHeight에 안 잡힘 → 자식 높이 합으로
+        const ov = (c) => { const k = [...c.children]; return k.reduce((s, x) => s + x.getBoundingClientRect().height, 0) + 6 * Math.max(0, k.length - 1) > c.clientHeight + 1; };
         pg.querySelectorAll('.mz').forEach(z => { z.style.zoom = 1; const w = z.parentElement.clientWidth - 24; z.style.zoom = Math.min(1, w / z.getBoundingClientRect().width); });
         let fs = 13; pg.style.setProperty('--fs', fs + 'px');
         while (C.some(ov) && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
         res.push({ i: i + 1, qp: C.map(c => c.dataset.qid), over: C.map(ov), fs: Math.round(fs * 10) / 10, overflow: C.some(ov) });
+        return;
+      }
+      if (pg.classList.contains('q1')) {  // 1문제 쪽: 두 단 흐름. 넘치면 글자 → 그림 순으로 줄여 한 쪽에
+        const B = pg.querySelector('.q1b');
+        const ov = () => B.scrollWidth > B.clientWidth + 2 || B.scrollHeight > B.clientHeight + 2;
+        const fitz = (ik) => pg.querySelectorAll('.mz').forEach(z => { const p = z.parentElement; z.style.zoom = 1; z.style.zoom = Math.min(1, (p.clientWidth - 24) / z.getBoundingClientRect().width) * ik; });
+        let fs = 13.2, ik = 1; pg.style.setProperty('--fs', fs + 'px'); fitz(1);
+        while (ov() && fs > 11.6) { fs -= 0.2; pg.style.setProperty('--fs', fs + 'px'); }
+        while (ov() && ik > 0.35) { ik -= 0.05; pg.style.setProperty('--ik', ik.toFixed(2)); fitz(ik); }
+        res.push({ i: i + 1, q1: pg.dataset.qid, ik: +ik.toFixed(2), fs: Math.round(fs * 10) / 10, overflow: ov() });
         return;
       }
       if (pg.classList.contains('q2')) {  // 왼쪽 문제 / 오른쪽 정답·해설: 그림은 그대로, 글자만 조금
