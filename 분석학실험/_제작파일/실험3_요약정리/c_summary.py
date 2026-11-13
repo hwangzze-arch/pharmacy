@@ -75,7 +75,7 @@ cover = dict(t="r", cls="cover2", html=STYLE + """
 <div class="row"><span class="n">2</span><span class="nm">원리 ③ 계산식 — f′, f, 대응량, 함량</span><span class="pg">{PAGE:p-calcf}</span></div>
 <div class="row"><span class="n">3</span><span class="nm">실험방법 — 실제로 한 대로</span><span class="pg">{PAGE:p-meth}</span></div>
 <div class="row"><span class="n">4</span><span class="nm">조작 요령 · 교수님 시연</span><span class="pg">{PAGE:p-tips}</span></div>
-<div class="row"><span class="n">5</span><span class="nm">계산 예시 (녹취록 값)</span><span class="pg">{PAGE:p-calc}</span></div>
+<div class="row"><span class="n">5</span><span class="nm">1조 결과 (실험노트 값)</span><span class="pg">{PAGE:p-calc}</span></div>
 <div class="row"><span class="n">6</span><span class="nm">고찰 포인트 — 원인 · 대책 · 개선</span><span class="pg">{PAGE:p-disc}</span></div>
 <div class="row"><span class="n">7</span><span class="nm">기말 대비 Q&amp;A · 노트 체크리스트</span><span class="pg">{PAGE:p-qa}</span></div></div>
 <div class="cv-src">의약품분석학 실험 「실험 3: 모어법에 의한 NaCl 정량」 유인물 1쪽 · 수업 녹취록</div>
@@ -201,26 +201,25 @@ main="""<div class="sec">① 뷰렛 · 용액</div>
 side=card("trap", "🗑 뒷정리", "뷰렛은 원래 자리, 마그네틱 교반자·스터러는 <b>후드 안 원래 자리</b>. 테이블 위에 아무것도 남기지 말 것. 은·크롬산 폐액은 폐수통.")
  + card("tip", "⏱ 시간 절약", "저울이 붐비면 시료 소금(약 0.1 g)을 미리 칭량해 두기 (1조가 그렇게 함)."))
 
-calc = pg("p-calc", "5", "계산 예시 — 녹취록 속 1조 값으로", "실제 노트에는 기록지 값으로 확인 후 사용", K3,
-core="f′ = 0.583/0.5844 = <b>0.998</b> · 표정 V = 29.8 − 20.1 = <b>9.7 mL</b> → <b>f ≈ 1.029–1.031</b> · 시료 V = 41.18 − 32.6 = <b>8.58 mL</b>, 공시험 0.02 mL",
+calc = pg("p-calc", "5", "1조 결과 — 실험노트 값", "1조, 각 1회 측정 (자세한 표·초안은 실험3_실험노트_부착용표_초안.pdf)", K3,
+core="f′ = 0.583/0.5844 = <b>0.998</b> · 표정 V = 29.73 − 19.87 = <b>9.86 mL</b>, b = 0.03 → <b>f = 1.015</b> · 시료 V = 41.18 − 32.60 = <b>8.58 mL</b>, b = 0.03 → <b>함량 102.5%</b>",
 main="""<div class="sec">① AgNO₃의 f</div>
-<ol><li>NaCl mmol (20.00 mL) = 0.1 × 0.998 × 20.00 = <b>1.996 mmol</b> → 0.2 M면 예상 V ≈ 9.98 mL</li>
-<li>공시험을 빼지 않으면: f = 1.996 / (0.2 × 9.7) = <b>1.029</b></li>
-<li>표정 공시험 b = 0.02 mL(한 방울)로 보면: f = 1.996 / (0.2 × 9.68) = <b>1.031</b></li></ol>
-<div class="sec">② 시판 소금 중 NaCl (f = 1.031, b = 0.02 mL 가정)</div>
-<ol><li>V − b = 8.58 − 0.02 = <b>8.56 mL</b> (공시험 41.18 → 41.20)</li>
-<li>NaCl = 0.2 × 1.031 × 8.56 × 58.44 × 10⁻³ = <b>0.1032 g</b></li>
-<li>시료 칭량값에 따라: ÷ 0.1033 g → <b>99.9%</b> &nbsp;/&nbsp; ÷ 0.0999 g → <b>103.3%</b></li></ol>
+<ol><li>NaCl mmol (20.0 mL) = 0.1 × 0.998 × 20.0 = <b>1.9960 mmol</b> → 0.2 M면 예상 V ≈ 9.98 mL</li>
+<li>f = 1.9960 / [0.2 × (9.86 − 0.03)] = 1.9960 / 1.966 = <b>1.015</b></li></ol>
+<div class="sec">② 시판 소금 중 NaCl (f = 1.015)</div>
+<ol><li>V − b = 8.58 − 0.03 = <b>8.55 mL</b></li>
+<li>NaCl = 8.55 × 1.015 × 11.688 × 10⁻³ = <b>0.10143 g</b></li>
+<li>함량 = 0.10143 / 0.099 × 100 = <b>102.5%</b></li></ol>
 <table class="t"><tr><th>적정</th><th>시작</th><th>최종</th><th>소비량</th></tr>
-<tr><td>① 표정</td><td>20.1</td><td>29.8</td><td>9.7 mL</td></tr>
-<tr><td>② 표정 공시험 (약 70 mL)</td><td colspan="2">한 방울에 변색 (최종 약 30.1?)</td><td>≈ 1방울</td></tr>
-<tr><td>③ 시판 소금</td><td>32.6</td><td>41.18</td><td>8.58 mL</td></tr>
-<tr><td>④ 시료 공시험 (약 59 mL)</td><td>41.18</td><td>41.20</td><td>0.02 mL</td></tr></table>""",
-side=card("trap", "⚠️ 노트 쓰기 전에 확인할 것", """<ul style="margin:0"><li><b>시료 소금 칭량값</b>이 0.0999 g인지 0.1033 g인지 기록지로 확인. 0.0999 g이면 함량이 100%를 넘어(103%) 고찰에서 원인을 다뤄야 함.</li>
-<li>뷰렛 눈금은 <b>소수 둘째 자리</b>로 (20.1 → 20.10?, 29.8 → 29.80?). 녹취에는 첫째 자리까지만 나옴.</li>
-<li>표정 공시험의 <b>시작·최종 눈금</b> (\"30.1?\"만 언급됨).</li>
-<li>모든 계산은 <b>0.2 M</b>, f′·f는 셋째 자리.</li></ul>""")
- + card("tip", "📌 값만 알려 주면", "실험 1·2처럼 <b>노트 초안 + 부착용 표 PDF + 엑셀(수식)</b>로 만들 수 있음."))
+<tr><td>① 표정 (NaCl 표준액 20.0 mL)</td><td>19.87</td><td>29.73</td><td>9.86 mL</td></tr>
+<tr><td>② 표정 공시험 (약 70 mL)</td><td colspan="2">—</td><td>0.03 mL</td></tr>
+<tr><td>③ 시판 소금 (0.099 g)</td><td>32.60</td><td>41.18</td><td>8.58 mL</td></tr>
+<tr><td>④ 시료 공시험 (약 59 mL)</td><td colspan="2">—</td><td>0.03 mL</td></tr></table>""",
+side=card("trap", "⚠️ 함량이 100%를 넘음 → 고찰 핵심", """<ul style="margin:0"><li>표준품 순도 99%를 100%로 가정 → f 과대. 99% 반영 시 f′ = 0.988, f = 1.005, 함량 101.4%</li>
+<li>표준품 건조 생략 → 같은 방향</li>
+<li>시료 0.099 g(셋째 자리) 칭량 → ±0.5%</li>
+<li>KCl 등 다른 염화물, 종말점 판단</li></ul>""")
+ + card("tip", "📌 자료", "실험노트 초안·부착용 표: <b>실험3_실험노트_부착용표_초안.pdf</b><br>수식 포함 결과표: <b>실험3_모어법 NaCl 정량_결과.xlsx</b>"))
 
 disc = pg("p-disc", "6", "고찰 포인트 — 오차 원인 · 대책 · 개선 방안", "교수님: 디스커션 할 게 많아지도록 일부러 생략", K3,
 main="""<table class="t"><tr><th style="width:22%">원인</th><th>결과에 미치는 영향</th><th style="width:28%">대책 · 개선</th></tr>
