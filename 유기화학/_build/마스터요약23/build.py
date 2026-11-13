@@ -23,6 +23,10 @@ def _split(extra):
 
 
 import extra23 as _x
+from rec2 import REC2 as _R2
+for e in ENTRIES:
+    if e["t"] == "q" and e.get("id") in _R2:
+        e["rec2"] = _R2[e["id"]]; e["rec"] = True
 for e in ENTRIES:
     if e["t"] == "c" and e.get("id") in _x.REC:
         e["rec"] = _x.REC[e["id"]]
@@ -196,6 +200,7 @@ tr.hl td{background:#ffe3e3;}
 .rblk{background:#fff;border:1px solid #dfe5ee;border-radius:10px;padding:6px 12px;}
 .rblk .afig{border:none;padding:0;margin-top:4px;}
 .rcont{font-size:.85em;color:#8b95a5;}
+.rblk.rec2{background:#fff0f6;border-color:#faa2c1 !important;} .rblk.rec2 .xsec{color:#c2255c !important;}
 .lcol .gls .gg{grid-template-columns:1fr 1fr;}
 .q2 .mz{width:max-content;}
 .rx .tx,.rx .arw{white-space:nowrap;}
@@ -403,6 +408,8 @@ except Exception:
 def _blocks(e):
     """오른쪽 칸 블록: 정답 / 풀이(+afig) / 원서·해설집 그림들 (xsec 머리마다 한 블록)."""
     b = [f'<div class="rans"><span class="rlb">정답</span><div class="rav">{e["a"]}</div></div>']
+    if e.get("rec2"):  # 수업 칠판 풀이 (녹취)
+        b.append(f'<div class="rblk rec2"><div class="xsec">🎯 녹취 — 교수님 칠판 풀이</div>{e["rec2"]}</div>')
     exp = f'<div class="xsec">📝 해설</div><div class="exp">{e["exp"]}</div>' if e.get("exp") else ""
     if e.get("afig"):
         exp += f'<div class="afig"><div class="mz">{e["afig"]}</div></div>'
