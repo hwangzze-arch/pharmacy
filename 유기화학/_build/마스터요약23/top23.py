@@ -6,10 +6,10 @@ TOPR_ID = {"ada": (1, 1), "hw69": (2, 1), "hw31": (3, 1), "hw30": (4, 1), "hw29"
            "v-e1cb": (9, 3), "p21": (10, 3)}
 
 TOP10 = """
-<div class="h21"><div class="b21"><span>최종</span><b>③</b></div><div class="tt"><h1>시험 직전 TOP 10 — 출제 예상 순서</h1><div class="sb">11/13 수업에서 직접 풀린 아다그라십·리피토 + 과제 5문제(다음 시간 풀이 예정) 중심</div></div><div class="pills"><span class="pill">시험 직전</span></div></div>
+<div class="h21"><div class="b21"><span>최종</span><b>③</b></div><div class="tt"><h1>시험 직전 TOP 10 — 출제 예상 순서</h1><div class="sb">11/13 수업에서 직접 풀린 아다그라십·리피토 + 제출 과제 5문제 중심</div></div><div class="pills"><span class="pill">시험 직전</span></div></div>
 <div class="tgrid">
-<div class="tc t1"><div class="tct">🥇 1등급 — 수업에서 직접 풀린 것 + 과제 (5문제)</div>
-<p class="tsub">11/13 수업: 아다그라십을 학생들에게 직접 풀게 하고 칠판 풀이, 연습문제(슬라이드 44–45)는 “다음 시간에” 풀이 예정.</p>
+<div class="tc t1"><div class="tct">🥇 1등급 — 수업에서 직접 풀린 것 + 제출 과제 (5문제)</div>
+<p class="tsub">11/13 수업: 아다그라십을 학생들에게 직접 풀게 하고 칠판 풀이, 연습문제 5개(슬라이드 44–45)는 “풀어서 <b>다음 시간에 제출</b>” — 제출 과제 확정.</p>
 <div class="tr"><span class="rk">1위</span><div><b>문제 {QNI:ada}</b> (아다그라십, p.{QPI:ada}) — <b>[수업 중 직접 풀이]</b> S<sub>N</sub>2 → 두 번째 N-알킬화 → <b>LiHMDS(부피 큰 염기)가 덜 붐비는 α-H</b> → 고리화. 빈칸 3개 + 선택성 서술.</div></div>
 <div class="tr"><span class="rk">2위</span><div><b>문제 {QNI:hw69}</b> (과제 23-69, p.{QPI:hw69}) — <b>[반응 사다리 a–h]</b> 디크만 → 알킬화 → 탈카르복실화. 22장 과제 22-54와 같은 형식.</div></div>
 <div class="tr"><span class="rk">3위</span><div><b>문제 {QNI:hw31}</b> (과제 23-31, p.{QPI:hw31}) — <b>[엔아민 메커니즘]</b> 엔아민 → β 탄소 → 이미늄 → 가수분해.</div></div>
