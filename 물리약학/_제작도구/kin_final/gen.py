@@ -208,19 +208,59 @@ def svg_t90(w=300, h=140):
 
 
 # ============================================================ 표지
-pages.append(f'''<section class="page cover">
-<div class="k">PHYSICAL PHARMACY · WEEK 9–11 · CH.14</div>
-<h1>화학반응속도론 및 안정성<br>한 번 읽으면 각인되는 최종 요약본</h1>
-<div class="sub">9주차 속도론 (1) · 10주차 Recap + 기출 · 11주차 속도론 (2) · 2-1 Recap + 기출 · 수업 녹취(10/27 · 11/3 · 11/6 · 11/10)를 한 권으로</div>
-<div class="how">모든 개념은 이 순서 → <span class="p">💡 핵심 개념</span><span class="p">📖 상세 설명</span><span class="p">📐 중요 공식</span><span class="p">✍️ 예제 및 풀이</span><span class="p">🧠 한 줄 요약</span></div>
-<div class="parts">
-<div><b>읽기 전에</b>약어 사전 · 수학 5개 (log, ln, 적분, 지수, 역수 그래프)</div>
-<div><b>PART 1 · 반응 속도 기초</b>안정성과 속도론 · 속도의 정의 · 속도 법칙 · k와 차수 · k 단위 → 문제 01–02</div>
-<div><b>PART 2 · 0·1·2차</b>적분식 · 반감기 · 직선 그래프 · 차수 결정 · t₉₀ → 문제 03–10</div>
-<div><b>PART 3 · 복합 반응</b>가역 · 평행 · 정류 상태 · Michaelis-Menten · 혈액 응고 캐스케이드</div>
-<div><b>PART 4 · 온도와 속도</b>속도 결정 단계 · Arrhenius · 온도와 반감기 · Q₁₀ → 문제 11–14</div>
-<div><b>PART 5 · 촉매 · pH · 안정성</b>촉매 · 특정/일반 산-염기 · 분해 방어 · 가속 시험 · 유사 0차 → 문제 15–20 · 한 장 정리</div>
-</div>{foot()}</section>''')
+def cover_fig():
+    """0·1·2차 감소 곡선 + 반감기 표시 (표지 장식)"""
+    W, H, x0, y0, x1, y1 = 300, 210, 34, 16, 288, 178
+    def path(f):
+        pts = []
+        for i in range(61):
+            t = i / 60
+            pts.append(f'{x0 + (x1 - x0) * t:.1f},{y1 - (y1 - y0) * f(t):.1f}')
+        return 'M' + ' L'.join(pts)
+    zero = path(lambda t: max(0.96 - 1.15 * t, 0))
+    first = path(lambda t: 0.96 * math.exp(-2.6 * t))
+    second = path(lambda t: 0.96 / (1 + 6 * t))
+    th = math.log(2) / 2.6
+    hx, hy = x0 + (x1 - x0) * th, y1 - (y1 - y0) * 0.48
+    grid = ''.join(f'<line x1="{x0}" y1="{y0 + k * 40.5:.0f}" x2="{x1}" y2="{y0 + k * 40.5:.0f}" stroke="#e6e1fb"/>' for k in range(5))
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">{grid}
+<line x1="{x0}" y1="{y0}" x2="{x0}" y2="{y1}" stroke="#b9b0e6" stroke-width="1.2"/><line x1="{x0}" y1="{y1}" x2="{x1}" y2="{y1}" stroke="#b9b0e6" stroke-width="1.2"/>
+<path d="{second}" fill="none" stroke="#c9bff5" stroke-width="2.2"/>
+<path d="{zero}" fill="none" stroke="#a495ec" stroke-width="2.2" stroke-dasharray="5 4"/>
+<path d="{first}" fill="none" stroke="#5b3fd6" stroke-width="3.2"/>
+<line x1="{x0}" y1="{hy:.1f}" x2="{hx:.1f}" y2="{hy:.1f}" stroke="#5b3fd6" stroke-dasharray="3 3"/><line x1="{hx:.1f}" y1="{hy:.1f}" x2="{hx:.1f}" y2="{y1}" stroke="#5b3fd6" stroke-dasharray="3 3"/>
+<circle cx="{hx:.1f}" cy="{hy:.1f}" r="5" fill="#5b3fd6" stroke="#fff" stroke-width="2"/>
+<text x="{hx + 9:.1f}" y="{hy - 8:.1f}" font-size="13" font-weight="800" fill="#3d2a9e">t½</text>
+<text x="{x0 - 6}" y="{y0 + 10}" font-size="12" font-weight="700" fill="#6b5fb0" text-anchor="end">[A]</text>
+<text x="{x1}" y="{y1 + 16}" font-size="12" font-weight="700" fill="#6b5fb0" text-anchor="end">t</text>
+<g font-size="11" font-weight="700"><text x="{x0 + 150}" y="{y0 + 66}" fill="#8f7fe6">0차</text>
+<text x="{x0 + 214}" y="{y1 - 34}" fill="#5b3fd6">1차</text><text x="{x0 + 214}" y="{y1 - 56}" fill="#a99be8">2차</text></g></svg>'''
+
+
+cv_parts = [
+    ('00', '읽기 전에', '약어 · 기호 사전, 수학 5개 (log · ln · 적분 · 지수 · 역수 그래프)', ''),
+    ('01', '반응 속도 기초', '안정성과 속도론 · 속도의 정의 · 속도 법칙 · k와 차수 · k 단위', '문제 01–02'),
+    ('02', '0 · 1 · 2차 반응', '적분식 · 반감기 · 직선 그래프 · 차수 결정 · t₉₀', '문제 03–10'),
+    ('03', '복합 반응', '가역 · 평행 · 정류 상태 · Michaelis-Menten · 혈액 응고 캐스케이드', ''),
+    ('04', '온도와 속도', '속도 결정 단계 · Arrhenius · 온도와 반감기 · Q₁₀', '문제 11–14'),
+    ('05', '촉매 · pH · 안정성', '촉매 · 특정/일반 산-염기 · 분해 방어 · 가속 시험 · 유사 0차', '문제 15–20 · 한 장 정리'),
+]
+cv_cards = ''.join(
+    f'<div class="cc"><div class="n">{n}</div><div class="b"><div class="t">{"PART " + str(int(n)) + " · " if n != "00" else ""}{t}</div>'
+    f'<div class="d">{d}</div>' + (f'<div class="q">{q}</div>' if q else '') + '</div></div>' for n, t, d, q in cv_parts)
+cv_steps = ''.join(f'<span class="s"><i>{i}</i>{t}</span>' for i, t in enumerate(['💡 핵심 개념', '📖 상세 설명', '📐 중요 공식', '✍️ 예제 및 풀이', '🧠 한 줄 요약'], 1))
+pages.append(f'''<section class="page cv2">
+<div class="glow"></div>
+<div class="top"><div class="l">
+<div class="eye"><span>PHYSICAL PHARMACY</span><b>물리약학 · 9–11주차 · CH.14</b></div>
+<h1>화학반응속도론 및 안정성</h1>
+<h2>한 번 읽으면 각인되는 <em>최종 요약본</em></h2>
+<div class="rule"></div>
+<div class="src">9주차 속도론 (1) · 10주차 Recap + 기출 · 11주차 속도론 (2) · 2-1 Recap + 기출<br>수업 녹취 10/27 · 11/3 · 11/6 · 11/10 을 한 권으로</div>
+</div><div class="r"><div class="fig2">{cover_fig()}</div></div></div>
+<div class="steps"><span class="lb">모든 개념은 이 순서로</span>{cv_steps}</div>
+<div class="cards">{cv_cards}</div>
+{foot()}</section>''')
 
 # ============================================================ 읽기 전에 ① 약어
 pages.append(f'''<section class="page p0 dense">{hdr('읽기 전에 ①', '약어 · 기호 사전 — 이 문서에 나오는 모든 기호', 'Abbreviations & symbols', PARTS[0])}
