@@ -202,45 +202,45 @@ svg text{font-family:"Pretendard",sans-serif}
 .fcover .tr .pg{flex:none;font-weight:700;color:#6b7686;width:20px;text-align:right}
 .fcover .tr.part{border-bottom:none;font-weight:800;color:var(--vr);font-size:9.5pt;letter-spacing:.03em;padding-top:1mm}
 
-/* ===== 대시보드형 표지 (의약정보학 마스터요약 스타일) ===== */
-.page.cover2v{display:block;position:relative;overflow:hidden;padding:11mm 13mm;
-  background:radial-gradient(ellipse at 0% 0%,#ffd9ea 0%,rgba(255,217,234,0) 46%),
-    radial-gradient(ellipse at 100% 0%,#e8d4ff 0%,rgba(232,212,255,0) 52%),
-    radial-gradient(ellipse at 100% 100%,#ffd6f0 0%,rgba(255,214,240,0) 52%),
-    radial-gradient(ellipse at 36% 60%,#efe2ff 0%,rgba(239,226,255,0) 60%),#f6f1fb}
+/* ===== 대시보드형 표지 — 기본 표지 (11/16 사용자 선택 레이아웃, 분홍·보라) ===== */
+.page.cover2v{display:block;position:relative;overflow:hidden;padding:13mm 18.5mm;background:#fbf8fd}
 .cover2v::before{display:none}
-.cover2v .cv-left{width:163mm}
-.cover2v .cv-k{letter-spacing:.3em;font-size:11px;font-weight:700;color:#8a4fc4;margin-top:3mm}
-.cover2v .cv-h{margin:5px 0 11px;line-height:1}
-.cover2v .cv-h .t1{display:block;font-size:30px;font-weight:800;color:#8a2fb8;letter-spacing:-.01em}
-.cover2v .cv-h .t2{display:block;font-size:108px;font-weight:900;line-height:.88;letter-spacing:-.05em;margin:1px 0 3px;
-  background:linear-gradient(118deg,#7a1fb0,#d61f7a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.cover2v .cv-h .t3{display:block;font-size:21px;font-weight:800;color:#5a3f82}
-.cover2v .cv-flow{font-size:15.5px;color:#2c3038;margin-bottom:12px;font-weight:600}
-.cover2v .cv-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.cover2v .cv-chip{background:#fff;border:1px solid #ecd4ef;border-radius:16px;padding:4px 13px;
-  font-size:11.5px;font-weight:700;color:#2c3038;box-shadow:0 1px 3px rgba(150,60,140,.1)}
-.cover2v .cv-txt{font-size:12.2px;line-height:1.75;color:#3a3f4b}
-.cover2v .cv-txt .r{color:#d6177a;font-weight:700}.cover2v .cv-txt b{color:#2c3038}
-.cover2v .cv-stats{display:flex;gap:9px;margin-top:20px}
-.cover2v .cv-st{background:rgba(255,255,255,.8);border:1px solid #efd4ef;border-radius:14px;
-  padding:9px 14px;display:flex;align-items:center;gap:10px;flex:1;box-shadow:0 2px 8px rgba(150,70,150,.09)}
-.cover2v .cv-st b{font-size:24px;font-weight:800;color:#a62ac8;border-top:2px solid #e6a9dd;padding-top:2px;line-height:1.2}
-.cover2v .cv-st span{font-size:10.5px;color:#5c6170;line-height:1.45}
-.cover2v .cv-toc{position:absolute;right:13mm;top:12mm;width:106mm;background:rgba(255,255,255,.86);
-  border:1px solid #efdcf0;border-radius:14px;padding:11px 18px 8px;box-shadow:0 4px 18px rgba(150,70,160,.15)}
-.cover2v .cv-toc .t{letter-spacing:.24em;font-size:10px;font-weight:700;color:#8a3fc0;margin-bottom:4px}
-.cover2v .cv-toc .row{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #f1e8f6;padding:5.5px 0;font-size:11.8px}
+.cover2v .cv-left{position:static;width:150mm}
+.cover2v .cv-k{font-size:15px;font-weight:800;color:#7a1fb0;letter-spacing:.01em}
+.cover2v .cv-h{margin:12px 0 12px;line-height:1}
+.cover2v .cv-h .t1{display:block;font-size:31px;font-weight:900;color:#241a33;letter-spacing:-.02em}
+.cover2v .cv-h .t2{display:block;font-size:116px;font-weight:900;line-height:.98;letter-spacing:-.04em;margin:4px 0 8px;color:#7a1fb0}
+.cover2v .cv-h .t3{display:block;font-size:26px;font-weight:900;color:#241a33;letter-spacing:-.02em}
+.cover2v .cv-flow{font-size:17.5px;color:#241a33;margin-bottom:14px;font-weight:700}
+.cover2v .cv-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;max-width:146mm}
+.cover2v .cv-chip{background:#fff;border:1px solid #e6d6f0;border-radius:18px;padding:6px 13px;
+  font-size:12.5px;font-weight:800;color:#241a33}
+.cover2v .cv-txt{font-size:13px;line-height:1.85;color:#3a3446}
+.cover2v .cv-txt .r{background:#f1e1fb;color:#7a1fb0;font-weight:800;border-radius:5px;padding:2px 7px}
+.cover2v .cv-txt b{color:#241a33}
+.cover2v .cv-toc{position:absolute;right:18.5mm;top:11.5mm;width:113mm;background:#fff;
+  border:1px solid #e9dcf2;border-radius:18px;padding:12px 21px 6px}
+.cover2v .cv-toc .t{letter-spacing:.24em;font-size:11px;font-weight:800;color:#7a1fb0;margin-bottom:6px}
+.cover2v .cv-toc .row{display:flex;align-items:center;gap:11px;border-bottom:1px solid #efe6f5;padding:5px 0;font-size:13.2px}
 .cover2v .cv-toc .row:last-child{border-bottom:none}
-.cover2v .cv-toc .n{width:20px;color:#b05ad0;font-weight:700}
-.cover2v .cv-toc .nm{flex:1;font-weight:700;color:#2c3038}
-.cover2v .cv-toc .nm span{font-weight:400;color:#9a8fa8;font-size:.88em;margin-left:5px}
-.cover2v .cv-toc .pg{color:#9a8fa8;font-weight:700}
-.cover2v .cv-parts{position:absolute;left:13mm;right:13mm;bottom:15mm;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.cover2v .cv-p{background:rgba(255,255,255,.9);border-radius:12px;border-top:4px solid #7a1fb0;padding:8px 12px;box-shadow:0 2px 8px rgba(150,70,160,.1)}
-.cover2v .cv-p .a{font-weight:800;font-size:13px;color:#23263a}
-.cover2v .cv-p .b{font-size:10.5px;color:#5c6170;margin-top:2px;line-height:1.5}
-.cover2v .cv-src{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#a99ab0}
+.cover2v .cv-toc .n{flex:none;width:26px;height:26px;border-radius:50%;background:#7a1fb0;color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800}
+.cover2v .cv-toc .row:last-child .n{background:#fff;color:#d61f7a;border:2px solid #d61f7a;font-size:14px}
+.cover2v .cv-toc .nm{flex:1;font-weight:800;color:#241a33}
+.cover2v .cv-toc .nm span{font-weight:500;color:#9a8fa8;font-size:.82em;margin-left:6px}
+.cover2v .cv-toc .pg{color:#8a8098;font-weight:800}
+.cover2v .cv-stats{position:absolute;right:18.5mm;top:118.5mm;width:113mm;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cover2v .cv-st{background:#fff;border:1px solid #e9dcf2;border-radius:14px;padding:8px 4px 7px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px}
+.cover2v .cv-st b{font-size:29px;font-weight:900;color:#7a1fb0;line-height:1.05;letter-spacing:-.02em}
+.cover2v .cv-st:last-child b{color:#d61f7a}
+.cover2v .cv-st span{font-size:10.5px;color:#4a4256;line-height:1.35;font-weight:700}
+.cover2v .cv-st span br + *{font-weight:400}
+.cover2v .cv-parts{position:absolute;left:18.5mm;right:18.5mm;top:145mm;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cover2v .cv-p{background:#fff;border:1px solid #e9dcf2;border-radius:16px;border-top:4px solid #7a1fb0;padding:10px 15px 11px;min-height:23mm}
+.cover2v .cv-p .a{font-weight:900;font-size:15px;color:#241a33}
+.cover2v .cv-p .b{font-size:11.5px;color:#4a4256;margin-top:4px;line-height:1.55}
+.cover2v .cv-src{position:absolute;left:18.5mm;right:18.5mm;bottom:6.5mm;font-size:10px;color:#9a8fa8}
 
 /* ===== 세트형 문제(보기 11개 + 개수 지정) ===== */
 .setbox{border:1.6px solid var(--c);border-radius:2.4mm;padding:2.2mm 3mm;background:var(--cs);flex:0 0 auto}
