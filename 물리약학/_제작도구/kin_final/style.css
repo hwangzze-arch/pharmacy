@@ -100,3 +100,33 @@ svg text { font-family: "Pretendard", sans-serif; }
 .dense .fbox .f { font-size: 19px; }
 .dense .st .why { font-size: 12.8px; }
 .fig.sm svg { width: 250px; height: auto; }
+
+/* cover v2 — lavender */
+.cv2 { background: #f7f5ff; color: #1d1838; padding: 19mm 17mm 0; display: block; position: relative; overflow: hidden; }
+.cv2 > .glow { position: absolute; inset: 0; background:
+  radial-gradient(520px 360px at 92% 8%, rgba(124,96,255,.16), transparent 70%),
+  radial-gradient(420px 300px at 0% 100%, rgba(124,96,255,.10), transparent 70%); pointer-events: none; }
+.cv2 > *:not(.foot) { position: relative; }
+.cv2 .top { display: grid; grid-template-columns: 1fr 300px; gap: 10mm; align-items: center; }
+.cv2 .eye { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.cv2 .eye span { letter-spacing: 3px; font-weight: 800; font-size: 11px; color: #fff; background: #5b3fd6; border-radius: 4px; padding: 3px 9px; }
+.cv2 .eye b { color: #5b3fd6; font-weight: 800; letter-spacing: .3px; }
+.cv2 h1 { font-size: 44px; font-weight: 900; letter-spacing: -1.6px; line-height: 1.15; margin: 14px 0 4px; color: #17122f; }
+.cv2 h2 { font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin: 0; color: #3b3360; }
+.cv2 h2 em { font-style: normal; color: #5b3fd6; }
+.cv2 .rule { width: 56px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #5b3fd6, #b9a8ff); margin: 16px 0 12px; }
+.cv2 .src { font-size: 13.5px; color: #6b6590; line-height: 1.7; }
+.cv2 .fig2 { background: rgba(255,255,255,.75); border: 1px solid #e3ddfb; border-radius: 18px; padding: 10px 6px 4px; box-shadow: 0 10px 30px rgba(91,63,214,.10); }
+.cv2 .steps { display: flex; align-items: center; gap: 8px; margin-top: 12mm; font-size: 12.5px; flex-wrap: nowrap; }
+.cv2 .steps .lb { color: #8a84ad; font-weight: 700; margin-right: 4px; white-space: nowrap; }
+.cv2 .steps .s { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #e3ddfb; border-radius: 20px; padding: 4px 12px 4px 4px; font-weight: 700; color: #2d2650; white-space: nowrap; }
+.cv2 .steps .s i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: #efeaff; color: #5b3fd6; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+.cv2 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 9mm; }
+.cv2 .cc { display: flex; gap: 12px; background: #fff; border: 1px solid #e7e2fb; border-radius: 14px; padding: 14px 16px; min-height: 104px; }
+.cv2 .cc .n { font-size: 26px; font-weight: 900; color: #d9d0ff; line-height: 1; letter-spacing: -1px; min-width: 34px; }
+.cv2 .cc .t { font-size: 14.5px; font-weight: 800; color: #1d1838; margin-bottom: 3px; }
+.cv2 .cc .d { word-break: keep-all; font-size: 12px; color: #6b6590; line-height: 1.55; }
+.cv2 .cc .q { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 800; color: #5b3fd6; background: #f1edff; border-radius: 10px; padding: 1px 9px; }
+.cv2 .stats { display: flex; gap: 22px; margin-top: 6mm; font-size: 12.5px; color: #6b6590; }
+.cv2 .stats b { font-size: 18px; color: #5b3fd6; font-weight: 900; margin-right: 3px; }
+.cv2 .foot { color: #a39fbf; }
