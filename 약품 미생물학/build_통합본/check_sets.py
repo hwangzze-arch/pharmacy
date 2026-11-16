@@ -30,7 +30,7 @@ for si, S in enumerate(F.SETS, 1):
                 lab = ln.split("|", 1)[1].split("::", 1)[0]
                 idx = {C.index(c) for c in lab if c in C}
                 (O if k == "O" else X).update(idx)
-                if k == "O" and len(idx) == 1:
+                if k == "O" and len(idx) == 1 and not box[next(iter(idx))].startswith("img:"):
                     i = next(iter(idx))
                     toks = [t for t in re.split(r"[\s()·,]+", box[i]) if len(t) >= 2]
                     body = ln.split("::", 1)[1].lower()
