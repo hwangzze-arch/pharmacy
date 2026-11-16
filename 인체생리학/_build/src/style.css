@@ -199,3 +199,40 @@ ol.sq .n{font-size:9.4pt;font-weight:700;color:#1d2747;flex:none}
 .pb.Q2 .enbox .e,.pb.Q2 .kobox .k{font-size:8.3pt}.pb.Q2 ol.sq .e,.pb.Q2 ol.sq .k,.pb.Q2 ol.sq .n{font-size:8.1pt}
 .pb.Q2 .q.sp .ex,.pb.Q2 .q.sp .why{font-size:7.2pt}.pb.Q2 .q.sp .ans b{font-size:8.6pt}
 .q.sp .ans{margin-top:auto}  /* 기말: 정답·모범답안을 카드 하단에 맞춤 */
+
+/* 기말 노트 표지 v3: 단색 바이올렛(사용자 첨부 표지 스타일, front8 전용) */
+.pg.cover3{display:block;height:186mm;position:relative;overflow:hidden;padding:11mm 13mm;background:#f5f2fd;--v:#5b3fd6}
+.cover3::before{display:none}
+.cover3 .cv-left{width:160mm}
+.cover3 .cv-k{font-size:12px;font-weight:700;color:var(--v);margin-top:2mm;letter-spacing:.02em}
+.cover3 .cv-h{margin:12px 0 12px;line-height:1}
+.cover3 .cv-h .t1{display:block;font-size:26px;font-weight:800;color:#23213a}
+.cover3 .cv-h .t2{display:block;font-size:100px;font-weight:900;line-height:1;letter-spacing:-.03em;margin:4px 0 8px;color:var(--v)}
+.cover3 .cv-h .t3{display:block;font-size:21px;font-weight:800;color:#23213a}
+.cover3 .cv-flow{font-size:14.5px;color:#3a3850;margin-bottom:12px;font-weight:600}
+.cover3 .cv-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px;width:150mm}
+.cover3 .cv-chip{background:#fff;border:1px solid #e2dcf6;border-radius:16px;padding:5px 12px;font-size:11px;font-weight:700;color:#2c2a40}
+.cover3 .cv-txt{font-size:12px;line-height:1.75;color:#3a3f4b}
+.cover3 .cv-txt .r{color:var(--v);background:#e6e0fb;border-radius:4px;padding:1px 5px;font-weight:700}
+.cover3 .cv-txt b{color:#23213a}
+.cover3 .cv-right{position:absolute;right:13mm;top:11mm;width:126mm}
+.cover3 .cv-toc{background:#fff;border:1px solid #e6e1f7;border-radius:14px;padding:11px 16px 6px}
+.cover3 .cv-toc .t{letter-spacing:.24em;font-size:10px;font-weight:800;color:var(--v);margin-bottom:5px}
+.cover3 .cv-toc .row{display:flex;align-items:center;gap:10px;border-bottom:1px solid #eeebf8;padding:6px 0;font-size:12.5px}
+.cover3 .cv-toc .row:last-child{border-bottom:none}
+.cover3 .cv-toc .n{width:24px;height:24px;border-radius:50%;background:var(--v);color:#fff;font-size:10.5px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex:none}
+.cover3 .cv-toc .nx .n{background:#fff;color:var(--v);border:1.5px solid var(--v);font-size:15px}
+.cover3 .cv-toc .nm{flex:1;font-weight:800;color:#23213a}
+.cover3 .cv-toc .nm span{font-weight:400;color:#8f8aa6;font-size:.78em;margin-left:5px}
+.cover3 .cv-toc .pgn{color:#8f8aa6;font-weight:700}
+.cover3 .cv-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.cover3 .cv-st{background:#fff;border:1px solid #e6e1f7;border-radius:12px;padding:8px 13px;display:flex;align-items:center;gap:12px}
+.cover3 .cv-st b{font-size:28px;font-weight:900;color:var(--v);line-height:1}
+.cover3 .cv-st span{font-size:9.5px;color:#5c5a70;line-height:1.4;font-weight:600}
+.cover3 .cv-st em{display:block;font-style:normal;font-size:12px;font-weight:800;color:#23213a}
+.cover3 .cv-parts{position:absolute;left:13mm;right:13mm;bottom:15mm;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.cover3 .cv-p{background:#fff;border:1px solid #e6e1f7;border-top:4px solid var(--v);border-radius:12px;padding:9px 13px;min-height:19mm}
+.cover3 .cv-p .a{font-weight:800;font-size:13px;color:#23213a}
+.cover3 .cv-p .b{font-size:10.5px;color:#5c5a70;margin-top:3px;line-height:1.5}
+.cover3 .cv-src{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#9a96b0}
