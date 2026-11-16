@@ -1,7 +1,9 @@
 # 수업 녹취 정리 .md → 같은 색 체계의 A4 세로 HTML (render.js로 PDF 출력)
-import subprocess, sys, pathlib
+import re, subprocess, sys, pathlib
 src = pathlib.Path(sys.argv[1]); out = pathlib.Path(sys.argv[2])
 body = subprocess.run(["pandoc", "-f", "gfm", "-t", "html", str(src)], capture_output=True, text=True, check=True).stdout
+# t_r, u_x 같은 표기를 아래첨자로
+body = re.sub(r"(?<=[A-Za-zΔ′])_([A-Za-z0-9]+)", r"<sub>\1</sub>", body)
 for k, cls in (("🗣️", "prof"), ("📝", "mine"), ("⚠️", "warn")):
     body = body.replace(k, f'<span class="{cls}">{k}</span>')
 CSS = """
