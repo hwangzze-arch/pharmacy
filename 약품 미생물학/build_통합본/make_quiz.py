@@ -150,6 +150,7 @@ s = s[:i] + main + s[j:]
 i = s.index("const SETS=["); j = s.index("\n];", i) + 3
 s = s[:i] + SETS_JS + s[j:]
 s = re.sub(r"const KEY='[^']+'", f"const KEY='{M['key']}'", s, count=1)
+s = s.replace("const C='①②③④⑤⑥⑦⑧⑨⑩⑪';", "const C='①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳';", 1)
 extra = ("\n.sfigs{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-around;align-items:flex-end}"
          ".sfig{margin:0;display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 8px}"
          ".sfig img{max-width:100%;height:auto!important;max-height:120px}.sfig figcaption{font-size:12.5px;font-weight:700;color:var(--accent)}"

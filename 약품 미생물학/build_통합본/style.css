@@ -288,3 +288,9 @@ svg text{font-family:"Pretendard",sans-serif}
 .setbox.img li > span:last-child{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
 .setbox.img li img{max-height:calc(30mm * var(--s,1));max-width:100%;object-fit:contain}
 .setbox.img li .mk{text-align:left}
+
+/* 20지선다 구조 세트 (교수님 예고: 보기 ~20개) */
+.isbody.b20{grid-template-columns:2.6fr 1fr}
+.isbody.b20 .setbox.img ul{grid-template-columns:repeat(5,1fr);gap:1mm}
+.isbody.b20 .setbox.img li img{max-height:calc(21mm * var(--s,1))}
+.isbody.b20 .setbox.img li{overflow:hidden}

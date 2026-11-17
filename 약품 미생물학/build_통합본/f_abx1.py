@@ -458,6 +458,31 @@ SET("세트 7 · 용어 · 이름 유래",
     ], cols=3)
 
 
+SET("세트 8 · 실전형 20지선다 — 구조 20개 중 항녹농균 ★",
+    ["img:ticarcillin", "img:penG", "img:oxacillin", "img:sulbactam", "img:amoxicillin", "img:mezlocillin",
+     "img:methicillin", "img:cefoxitin", "img:carbenicillin", "img:cloxacillin", "img:penV", "img:piperacillin",
+     "img:clavulanate", "img:ampicillin", "img:nafcillin", "img:azlocillin", "img:cephalothin", "img:dicloxacillin",
+     "img:ciclacillin", "img:tazobactam"],
+    [
+     dict(q="항녹농균(antipseudomonal) 페니실린을 모두 고르시오.", n=5, ans=[0, 5, 8, 11, 15],
+          exp=["O|①::티카실린 — 티오펜 + COOH.", "O|⑥::메즐로실린 — 메틸설포닐 + 아졸.", "O|⑨::카베니실린 — COOH.",
+               "O|⑫::피페라실린 — 피페라진.", "O|⑯::아즐로실린 — 아졸.",
+               "X|②⑪::천연(G·V).", "X|③⑦⑩⑮⑱::항포도상구균(옥사·메티·클록사·나프·디클록사).",
+               "X|⑤⑭⑲::아미노(-NH₂: 아목시·암피·시클라).", "X|④⑬⑳::옆사슬 없는 작은 구조 → β-락타메이스 억제제.",
+               "X|⑧⑰::6원환 → 세팔로스포린(2편).",
+               "KEY|★ 교수님 예고 그대로: 구조 ~20개 중 항녹농균 고르기"]),
+     dict(q="항포도상구균 페니실린을 모두 고르시오.", n=5, ans=[2, 6, 9, 14, 17],
+          exp=["O|③::옥사실린.", "O|⑦::메티실린.", "O|⑩::클록사실린.", "O|⑮::나프실린.", "O|⑱::디클록사실린.",
+               "X|①⑥⑨⑫⑯::항녹농균.", "X|②⑪::천연.", "X|⑤⑭⑲::아미노.", "X|④⑬⑳::억제제.", "X|⑧⑰::세팔로스포린."]),
+     dict(q="아미노페니실린을 모두 고르시오.", n=3, ans=[4, 13, 18],
+          exp=["O|⑤::아목시실린.", "O|⑭::암피실린.", "O|⑲::시클라실린.",
+               "X|①⑥⑨⑫⑯::항녹농균.", "X|②⑪::천연.", "X|③⑦⑩⑮⑱::항포도상구균.", "X|④⑬⑳::억제제.", "X|⑧⑰::세팔로스포린."]),
+     dict(q="β-락타메이스 억제제를 모두 고르시오.", n=3, ans=[3, 12, 19],
+          exp=["O|④::설박탐 — SO₂.", "O|⑬::클라불라네이트.", "O|⑳::타조박탐 — 트라이아졸.",
+               "X|①②③⑤⑥⑦⑨⑩⑪⑫⑭⑮⑯⑱⑲::옆사슬이 달린 페니실린(항생제).", "X|⑧⑰::세팔로스포린."]),
+    ])
+
+
 # ============================================================ 렌더링 · 암기 · 종합
 K.render_sets()
 
@@ -504,8 +529,8 @@ N_TOTAL_BODY = len(PAGES)
 
 K.study_page(["세트 1 · 화학·분류·기전", "세트 2 · 공통·MRSA·일반", "세트 3 · 천연·지속형",
               "세트 4 · 구조① 천연·항포·아미노", "세트 5 · 구조② 항녹농·억제제",
-              "세트 6 · 녹농균·억제제 짝", "세트 7 · 용어·이름 유래"],
-             "항생제는 이름이 비슷해서 <b>읽기만 하면 반드시 섞인다</b>. 세트 7개를 풀고 → 채점 → 틀린 것만 다시. 구조 세트(4·5)는 이름을 가리고 구조만 보고 고르기!")
+              "세트 6 · 녹농균·억제제 짝", "세트 7 · 용어·이름 유래", "세트 8 · 실전형 20지선다"],
+             "항생제는 이름이 비슷해서 <b>읽기만 하면 반드시 섞인다</b>. 세트 7개를 풀고 → 채점 → 틀린 것만 다시. 구조 세트(4·5·8)는 이름을 가리고 구조만 보고 고르기! 세트 8은 교수님 예고대로 보기 20개.")
 
 _nq = sum(len(s["qs"]) for s in SETS)
 _p_sets = N_SUMMARY + 3          # 표지·공부법 2쪽 + 1부터 셈
@@ -515,7 +540,7 @@ _toc = [("00", "공부법 · 읽지 말고 풀기", "How to study", "2"),
         ("02", "요약 · β-락탐 공통 · 페니실린 일반", "β-lactams", "6"),
         ("03", "요약 · 천연 · 항포도상구균 · 아미노", "Penicillins", "8"),
         ("04", "요약 · 항녹농균 · 억제제 · 구조 이름표", "Anti-pseudomonal", "11"),
-        ("05", "실전 세트 1–7 (구조 세트 2개 포함)", "Practice sets", str(_p_sets)),
+        ("05", "실전 세트 1–8 (구조 3 · 20지선다 1)", "Practice sets", str(_p_sets)),
         ("06", "암기 공식 · 시험 직전 한 장", "Cheat sheet", str(_p_cheat)),
         ("✓", "페니실린 계열 종합 비교표", "Final table", str(_p_cheat + 1))]
 _rows = "".join(f'<div class="row"><span class="n">{n}</span><span class="nm">{nm}<span>{en}</span></span>'
@@ -524,7 +549,7 @@ K.cover_page(f'''<section class="page cover2v">
 <div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
 <div class="cv-h"><span class="t1">항생제 1편</span><span class="t2">페니실린</span><span class="t3">β-락탐 공통 · 페니실린 · β-락타메이스 억제제</span></div>
 <div class="cv-flow">β-락탐 → 천연 → 항포도상구균 → 아미노 → 항녹농균 → 억제제</div>
-<div class="cv-chips"><span class="cv-chip">상세 요약 {N_SUMMARY}</span><span class="cv-chip">실전 세트 {len(SETS)} · {_nq}문항</span><span class="cv-chip">구조식 문제 세트 2</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 3개 반영</span></div>
+<div class="cv-chips"><span class="cv-chip">상세 요약 {N_SUMMARY}</span><span class="cv-chip">실전 세트 {len(SETS)} · {_nq}문항</span><span class="cv-chip">구조식 세트 3 · 20지선다</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 3개 반영</span></div>
 <div class="cv-txt"><span class="r">범위 = Antibiotics (1) 1~16쪽</span> · 녹취록 수업6~8 · 시험 12/14(월)–18(금).<br>
 형식: <b>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</b> · 서술형 없음.<br>
 교수님: 기말에 <b>구조를 주고 항녹농균 페니실린을 고르는</b> 문제를 낸다 → 구조 세트로 연습.<br>
@@ -532,7 +557,7 @@ K.cover_page(f'''<section class="page cover2v">
 <div class="cv-stats">
 <div class="cv-st"><b>{N_SUMMARY}</b><span>요약 페이지<br>슬라이드+녹취록</span></div>
 <div class="cv-st"><b>{len(SETS)}</b><span>실전 세트<br>{_nq}문항</span></div>
-<div class="cv-st"><b>19</b><span>구조식<br>슬라이드 원본</span></div>
+<div class="cv-st"><b>20</b><span>지선다 구조<br>실전형 세트</span></div>
 <div class="cv-st"><b>12/14</b><span>시험 시작<br>~12/18(금)</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>{_rows}</div>
 <div class="cv-parts">
