@@ -179,7 +179,7 @@ ol.sq .n{font-size:9.4pt;font-weight:700;color:#1d2747;flex:none}
 .cover4 .cv-txt .r{color:#d6336c;font-weight:700}.cover4 .cv-txt b{color:#2c3038}
 .cover4 .cv-stats{display:flex;gap:9px;margin-top:18px}
 .cover4 .cv-st{background:rgba(255,255,255,.78);border:1px solid #e6e1f5;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex:1}
-.cover4 .cv-st b{font-size:24px;font-weight:800;color:#c2410c;border-top:1px solid #f0b48a;padding-top:2px;line-height:1.2}
+.cover4 .cv-st b{font-size:24px;font-weight:800;color:#c2410c;line-height:1.2}
 .cover4 .cv-st span{font-size:10.5px;color:#5c6170;line-height:1.45}
 .cover4 .cv-toc{position:absolute;right:13mm;top:12mm;width:103mm;background:rgba(255,255,255,.85);border:1px solid #e6e1f5;border-radius:14px;
   padding:12px 18px 8px;box-shadow:0 4px 18px rgba(90,70,170,.12)}
