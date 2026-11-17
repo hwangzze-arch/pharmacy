@@ -4,7 +4,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 <style>
 .cover2{{background:radial-gradient(ellipse at 0% 0%,#ffe1cc 0%,rgba(255,225,204,0) 45%),radial-gradient(ellipse at 100% 0%,#dcd6ff 0%,rgba(220,214,255,0) 50%),radial-gradient(ellipse at 100% 100%,#d4f5e6 0%,rgba(212,245,230,0) 50%),#f6f2fb !important;}}
 .cv-k{{letter-spacing:.32em;font-size:11px;font-weight:700;color:#7d74c9;margin-top:6mm;}}
-.cv-h{{font-size:40px;line-height:1.18;font-weight:800;margin:10px 0 12px 0;background:linear-gradient(120deg,#c2410c,#5b3fd6);-webkit-background-clip:text;background-clip:text;color:transparent;}}
+.cv-h{{display:block;margin:6px 0 8px 0;overflow:visible;}}
 .cv-flow{{font-size:15px;color:#2c3038;margin-bottom:12px;}}
 .cv-chips{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}}
 .cv-chip{{background:#fff;border:1px solid #e3def3;border-radius:16px;padding:4px 13px;font-size:11.5px;font-weight:700;color:#2c3038;}}
@@ -20,7 +20,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 .cv-toc .pg{{color:#8b8fa0;}}
 .cv-stats{{display:flex;gap:9px;margin-top:20px;}}
 .cv-st{{background:rgba(255,255,255,.78);border:1px solid #e6e1f5;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex:1;}}
-.cv-st b{{font-size:24px;font-weight:800;color:#c2410c;border-top:1px solid #f0b48a;padding-top:2px;line-height:1.2;}}
+.cv-st b{{font-size:24px;font-weight:800;color:#c2410c;line-height:1.2;}}
 .cv-st span{{font-size:10.5px;color:#5c6170;line-height:1.45;}}
 .cv-parts{{position:absolute;left:13mm;right:13mm;bottom:14mm;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}}
 .cv-p{{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid #4651c8;padding:8px 12px;}}
@@ -29,7 +29,7 @@ cover = dict(t="r", cls="cover2", html=f"""
 .cover2 .ft{{display:none;}}
 </style>
 <div class="cv-left"><div class="cv-k">PHAR · PHARMACEUTICAL ANALYSIS II · 기말고사 대비 노트</div>
-<div class="cv-h">의약품분석학 II<br>기말고사 통합<br>마스터 노트</div>
+<svg class="cv-h" width="420" height="150" viewBox="0 0 420 150"><defs><linearGradient id="cvg" x1="0" y1="0" x2="1" y2=".6"><stop offset="0" stop-color="#c2410c"/><stop offset="1" stop-color="#5b3fd6"/></linearGradient></defs><text fill="url(#cvg)" font-size="40" font-weight="800" font-family="Pretendard"><tspan x="0" y="38">의약품분석학 II</tspan><tspan x="0" y="85">기말고사 통합</tspan><tspan x="0" y="132">마스터 노트</tspan></text></svg>
 <div class="cv-flow">PART 1–4 질량분석법 (Lecture 5) → 크로마토그래피 (Lecture 6~, 추가 예정)</div>
 <div class="cv-chips"><span class="cv-chip">상세요약 · 개념 {{NC}}</span><span class="cv-chip">문제 {{NQ}} (다답형·서술·계산·빈칸)</span><span class="cv-chip">족보 7주제 문항화</span><span class="cv-chip">수업 녹음 3회 반영</span><span class="cv-chip">혼동 쌍·숫자 카드</span></div>
 <div class="cv-txt"><span class="r">중간고사 실제 출제 = 모의고사와 결은 같고 한 단계 더 어렵게</span> → 이 노트의 객관식은 대부분 <b>다답형(모두 고르기)</b>.<br>
