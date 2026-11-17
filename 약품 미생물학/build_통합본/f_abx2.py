@@ -332,6 +332,34 @@ SET("세트 6 · 용어 · 이름 유래",
     ], cols=3)
 
 
+SET("세트 7 · 실전형 20지선다 — 구조 20개 중 세파마이신 ★",
+    ["img:cefoxitin", "img:cephalothin", "img:moxalactam", "img:cefazolin", "img:cefotetan", "img:cefuroxime",
+     "img:penG", "img:ceftriaxone", "img:flomoxef", "img:cephalexin", "img:ceftazidime", "img:methicillin",
+     "img:cefepime", "img:cephaloridine", "img:cefonicid", "img:piperacillin", "img:cefpirome", "img:ceftaroline",
+     "img:cephC", "img:ceftobiprole"],
+    [
+     dict(q="세파마이신을 모두 고르시오.", n=2, ans=[0, 4],
+          exp=["O|①::세폭시틴 — 세펨(1번 S) + 7α-OCH₃.", "O|⑤::세포테탄 — 세펨(1번 S) + 7α-OCH₃.",
+               "X|③⑨::7α-OCH₃ + 1번 O → 옥사세펨(모살락탐·플로목세프).",
+               "X|⑦⑫⑯::5원환(페남) → 페니실린(G·메티실린·피페라실린). 메티실린 OCH₃는 벤젠.",
+               "X|⑥⑧⑪⑬⑰⑱⑳::OCH₃ 등은 옆사슬 옥심(C=N-O-) — 7α 아님.",
+               "X|②④⑩⑭⑮⑲::β-락탐 고리에 메톡시 없는 일반 세팔로스포린.",
+               "KEY|★ 교수님 예고 그대로: 구조 ~20개 중 세파마이신 = 7α-메톡시 + 1번 S"]),
+     dict(q="옥사세펨을 모두 고르시오.", n=2, ans=[2, 8],
+          exp=["O|③::모살락탐 — 1번 O + 7α-OCH₃.", "O|⑨::플로목세프 — 1번 O + 7α-OCH₃ + F.",
+               "X|①⑤::1번 S → 세파마이신.", "X|⑦⑫⑯::페남 → 페니실린.",
+               "X|②④⑥⑧⑩⑪⑬⑭⑮⑰⑱⑲⑳::1번 S, 7α-메톡시 없음 → 세팔로스포린."]),
+     dict(q="페니실린 계열(β-락탐 + 포화 5원환)을 모두 고르시오.", n=3, ans=[6, 11, 15],
+          exp=["O|⑦::페니실린 G.", "O|⑫::메티실린.", "O|⑯::피페라실린.",
+               "X|①②③④⑤⑥⑧⑨⑩⑪⑬⑭⑮⑰⑱⑲⑳::모두 6원환 → 세펨류."]),
+     dict(q="4세대·5세대 세팔로스포린을 모두 고르시오.", n=4, ans=[12, 16, 17, 19],
+          exp=["O|⑬::세페핌(4세대).", "O|⑰::세피롬(4세대).", "O|⑱::세프타롤린(5세대).", "O|⑳::세프토비프롤(5세대).",
+               "X|①⑤::세파마이신.", "X|③⑨::옥사세펨.", "X|⑦⑫⑯::페니실린.",
+               "X|②④⑩⑭::1세대(세팔로틴·세파졸린·세팔렉신·세팔로리딘).", "X|⑥⑮::2세대(세푸록심·세포니시드).",
+               "X|⑧⑪::3세대(세프트리악손·세프타지딤).", "X|⑲::천연 세팔로스포린 C."]),
+    ])
+
+
 # ============================================================ 렌더링 · 암기 · 종합
 K.render_sets()
 
@@ -375,8 +403,8 @@ N_TOTAL_BODY = len(PAGES)
 
 K.study_page(["세트 1 · 기초·공통", "세트 2 · 세대별 특징", "세트 3 · 이름 기억 4그룹",
               "세트 4 · 구조① 세파마이신·옥사세펨", "세트 5 · 구조② 4·5세대·계열",
-              "세트 6 · 용어·이름 유래"],
-             "세팔로스포린은 이름이 비슷해서 <b>읽기만 하면 섞인다</b>. 1~3세대는 특징만, <b>세파마이신·옥사세펨·4·5세대</b>는 이름까지. 구조 세트(4·5)는 7α-메톡시와 1번 원자를 찾는 연습!")
+              "세트 6 · 용어·이름 유래", "세트 7 · 실전형 20지선다"],
+             "세팔로스포린은 이름이 비슷해서 <b>읽기만 하면 섞인다</b>. 1~3세대는 특징만, <b>세파마이신·옥사세펨·4·5세대</b>는 이름까지. 구조 세트(4·5·7)는 7α-메톡시와 1번 원자를 찾는 연습! 세트 7은 교수님 예고대로 보기 20개.")
 
 _nq = sum(len(s["qs"]) for s in SETS)
 _p_sets = N_SUMMARY + 3
@@ -387,7 +415,7 @@ _toc = [("00", "공부법 · 읽지 말고 풀기", "How to study", "2"),
         ("03", "요약 · 1세대 · 2세대 + 세파마이신", "Cephamycins", "6"),
         ("04", "요약 · 옥사세펨 · 3세대 · 4·5세대", "Oxacephems", "8"),
         ("05", "요약 · 구조로 읽기 이름표", "Structures", "11"),
-        ("06", "실전 세트 1–6 (구조 세트 2개 포함)", "Practice sets", str(_p_sets)),
+        ("06", "실전 세트 1–7 (구조 3 · 20지선다 1)", "Practice sets", str(_p_sets)),
         ("07", "암기 공식 · 시험 직전 한 장", "Cheat sheet", str(_p_cheat)),
         ("✓", "세대별 종합 비교표", "Final table", str(_p_cheat + 1))]
 _rows = "".join(f'<div class="row"><span class="n">{n}</span><span class="nm">{nm}<span>{en}</span></span>'
@@ -396,7 +424,7 @@ K.cover_page(f'''<section class="page cover2v">
 <div class="cv-left"><div class="cv-k">PHAR · MEDICAL MICROBIOLOGY · 기말고사 대비 노트</div>
 <div class="cv-h"><span class="t1">항생제 2편</span><span class="t2" style="font-size:90px">세팔로스포린</span><span class="t3">세대별 특징 · 세파마이신 · 옥사세펨</span></div>
 <div class="cv-flow">세펨 → 1세대 → 2세대·세파마이신 → 옥사세펨 → 3세대 → 4·5세대</div>
-<div class="cv-chips"><span class="cv-chip">상세 요약 {N_SUMMARY}</span><span class="cv-chip">실전 세트 {len(SETS)} · {_nq}문항</span><span class="cv-chip">구조식 문제 세트 2</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 2개 반영</span></div>
+<div class="cv-chips"><span class="cv-chip">상세 요약 {N_SUMMARY}</span><span class="cv-chip">실전 세트 {len(SETS)} · {_nq}문항</span><span class="cv-chip">구조식 세트 3 · 20지선다</span><span class="cv-chip">페이지별 셀프테스트</span><span class="cv-chip">녹취록 2개 반영</span></div>
 <div class="cv-txt"><span class="r">범위 = Antibiotics (2) 1~10쪽</span> · 녹취록 수업8~9 · 시험 12/14(월)–18(금).<br>
 형식: <b>보기 ①~⑪ 세트 → 문항별 지정 개수 고르기</b> · 서술형 없음.<br>
 교수님: 기말에 <b>구조 ~20개 중 세파마이신을 고르는</b> 문제 → 구조 세트로 연습.<br>

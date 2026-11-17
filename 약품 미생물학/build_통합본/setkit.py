@@ -36,7 +36,7 @@ class Kit:
 
     # ---------------- 세트
     def SET(self, title, box, qs, cols=2):
-        assert len(box) == 11, title
+        assert len(box) in (11, 20), title
         self.SETS.append(dict(title=title, box=box, qs=qs, cols=cols))
 
     def _boxitem(self, t):
@@ -59,7 +59,8 @@ class Kit:
             head = (f'<header class="shead"><div class="kicker">세트 {si}</div><h2>{s["title"]}</h2>'
                     f'<div class="ssub">{"구조를 보고 " if isimg else ""}보기에서 지정 개수만큼 고르시오</div></header>')
             if isimg:
-                body = (f'<div class="sbody isbody"><div class="setbox img"><div class="bt">[보기] 구조 ①~⑪</div>'
+                big = " b20" if len(s["box"]) == 20 else ""
+                body = (f'<div class="sbody isbody{big}"><div class="setbox img"><div class="bt">[보기] 구조 ①~{CIR[len(s["box"])-1]}</div>'
                         f'<ul>{boxli}</ul></div><div class="setqs">{items}</div></div>')
             else:
                 cols = "c3" if s["cols"] == 3 else ""

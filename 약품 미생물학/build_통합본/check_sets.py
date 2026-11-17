@@ -10,7 +10,7 @@ strict = "--strict" in args
 sys.path.insert(0, build); sys.argv = ["x"]
 import importlib, core
 F = importlib.import_module(mod)
-C = "①②③④⑤⑥⑦⑧⑨⑩⑪"
+C = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
 bad = 0
 for si, S in enumerate(F.SETS, 1):
     for qi, q in enumerate(S["qs"], 1):
