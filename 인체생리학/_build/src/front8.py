@@ -21,10 +21,10 @@ def cover(starts):
 <div class="cv-st"><b>7</b><span>그림 각주<br>슬라이드 그림</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>{rows}</div>
 <div class="cv-parts">
-<div class="cv-p" style="border-top-color:#4651c8"><div class="a">8장 근육</div><div class="b">근절 · 교차다리 · E-C 연결 · 대사 · 평활근</div></div>
-<div class="cv-p" style="border-top-color:#12937a"><div class="a">9장 심장</div><div class="b">박동조율 전위 · 전도 · ECG · 주기 · CO</div></div>
-<div class="cv-p" style="border-top-color:#d6336c"><div class="a">10장 혈관·혈압</div><div class="b">R ∝ ηL/r⁴ · 세동맥 · 모세혈관 · 정맥 환류</div></div>
-<div class="cv-p" style="border-top-color:#c2410c"><div class="a">11장 혈액</div><div class="b">혈장 단백질 · 적혈구·EPO · 백혈구 · 지혈</div></div>
+<div class="cv-p" style="border-top-color:#c92a2a"><div class="a">8장 근육</div><div class="b">근절 · 교차다리 · E-C 연결 · 대사 · 평활근</div></div>
+<div class="cv-p" style="border-top-color:#d6336c"><div class="a">9장 심장</div><div class="b">박동조율 전위 · 전도 · ECG · 주기 · CO</div></div>
+<div class="cv-p" style="border-top-color:#0c8599"><div class="a">10장 혈관·혈압</div><div class="b">R ∝ ηL/r⁴ · 세동맥 · 모세혈관 · 정맥 환류</div></div>
+<div class="cv-p" style="border-top-color:#e8590c"><div class="a">11장 혈액</div><div class="b">혈장 단백질 · 적혈구·EPO · 백혈구 · 지혈</div></div>
 <div class="cv-p" style="border-top-color:#9aa0b0"><div class="a">다음 장</div><div class="b">강의가 끝나면 이어서 추가</div></div></div>
 <div class="cv-src">Sherwood, Human Physiology: From Cells to Systems · 강의 슬라이드 Ch 8–11 · 강의 녹취록(2026-10-29 ~ 11-16)을 바탕으로 정리 · 그림 © Cengage Learning</div>
 </section>'''
