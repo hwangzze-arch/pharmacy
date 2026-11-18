@@ -1,31 +1,52 @@
 # 표지 + 00 기말 시험 전략
 from lib import page, ph
 
-# 기말 범위 주차 진행: (번호, 라벨, 상태) 상태 = on(완료) / off(휴강·시험) / next(예정)
-WEEKS = [(9, '11/4', 'on'), (10, '휴강', 'off'), (11, '11/11', 'on'), (12, '11/18', 'on'),
-         (13, '휴강·녹화', 'next'), (14, '', 'next'), (15, '', 'next')]
+TOC = [('00', '기말 시험 전략 · 출제 힌트', 'Exam strategy', '00'),
+       ('01', 'Hit → Lead → 후보물질 · AI', 'Hit to Lead', '01'),
+       ('02', '후보물질 선정 · PD · PK', 'Pharmacodynamics · ADME', '02'),
+       ('03', '전임상연구 · GLP', 'Preclinical study', '03'),
+       ('★', '기말 대비 실전문제', 'Practice exam', 'ex'),
+       ('✓', '헷갈리는 쌍 · 암기카드', 'Final review', 'ck')]
+
+
+def grad(text, c0=(0xc2, 0x41, 0x0c), c1=(0x5b, 0x3f, 0xd6)):
+    """그라데이션 제목 — PDF 뷰어(삼성노트 등)에서 깨지지 않게 글자마다 단색으로 보간"""
+    vis = [i for i, ch in enumerate(text) if ch != ' ']
+    out = []
+    for i, ch in enumerate(text):
+        if ch == ' ':
+            out.append(' ')
+            continue
+        t = vis.index(i) / max(1, len(vis) - 1)
+        col = '#%02x%02x%02x' % tuple(round(c0[k] + (c1[k] - c0[k]) * t) for k in range(3))
+        out.append(f'<span style="color:{col}">{ch}</span>')
+    return '<span class="t2g">' + ''.join(out) + '</span>'
 
 
 def add_cover():
-    wk = ''.join(f'<div class="w"><div class="d {s}">{n}</div>{l or "주"}</div>' for n, l, s in WEEKS)
-    page(f'''<div class="in">
-  <div class="kicker">PHAR278 · 신약개발개론 · 시험대비 노트</div>
-  <h1>기말고사<br>통합 상세요약<br><span class="v">+ 문제</span></h1>
-  <div class="rng">9 · 11 · 12주차 (10주차 휴강) — 매주 이어 붙이는 통합본</div>
-  <div class="chips"><span>시험 전략</span><span>Hit → Lead → 후보</span><span>PD · PK(ADME)</span><span>전임상 · GLP</span><span>개념문제</span><span>실전문제</span><span>헷갈리는 쌍</span></div>
-  <div class="desc">요약정리·녹취록으로 공부한 뒤 <span class="hl">개념 확인 → 실전</span> 순서로 쓰는 노트야.<br>
-  중간고사처럼 <b>“두 개념을 맞바꾼 보기”</b>를 잡는 데 집중했고, 수업에서 교수님이 <b>“예시 문제로 내기 좋다”</b>고 한 부분엔 분홍 태그를 달았어.</div>
-  <div class="toc"><h4>CONTENTS</h4><ol>
-    <li><span class="b">00</span>기말 시험 전략 · 출제 힌트<em>{{00}}</em></li>
-    <li><span class="b">01</span>Ch 3-2 후반: Hit → Lead → AI<em>{{01}}</em></li>
-    <li><span class="b">02</span>Ch 4 후보물질 선정 · PD · PK<em>{{02}}</em></li>
-    <li><span class="b">03</span>Ch 5 전임상연구 · GLP<em>{{03}}</em></li>
-    <li><span class="b o">★</span>기말 대비 실전문제<em>{{ex}}</em></li>
-    <li><span class="b o">✓</span>헷갈리는 쌍 · 암기카드<em>{{ck}}</em></li>
-  </ol></div>
-  <div class="wk"><div class="lb">기말 범위 진행 (회색 = 휴강 · 점선 = 예정)</div><div class="tr">{wk}</div></div>
-  <div class="foot">김한준 교수님 9·11·12주차 강의 슬라이드 + 수업 녹취록 + 주차별 요약정리를 바탕으로 정리</div>
-</div>''', cls='page lcover')
+    rows = ''.join(f'<div class="row"><span class="n">{n}</span><span class="nm">{ko}<span>{en}</span></span><span class="pgn">{{{k}}}</span></div>' for n, ko, en, k in TOC)
+    rows += '<div class="row"><span class="n">+</span><span class="nm">다음 단원<span>강의가 끝나면 이어서 추가</span></span><span class="pgn">–</span></div>'
+    page(f'''<div class="cv-left"><div class="cv-k">PHAR278 · NEW DRUG DEVELOPMENT · 기말고사 대비 노트</div>
+<div class="cv-h"><span class="t1">신약개발개론</span>{grad("기말 9–12주")}<span class="t3">후보물질 · PD/PK · 전임상 통합 노트</span></div>
+<div class="cv-flow">Hit → Lead → 후보물질 → PD · PK(ADME) → 전임상 · GLP</div>
+<div class="cv-chips"><span class="cv-chip">단원별 상세요약</span><span class="cv-chip">개념문제 24</span><span class="cv-chip">실전문제 21 (객관식 · O/X · 단답 · 서술)</span><span class="cv-chip">녹취록 3개 반영</span><span class="cv-chip">헷갈리는 쌍 · 암기카드</span></div>
+<div class="cv-txt"><span class="r">기말 범위 = 9주차(Virtual screening)~</span> · 10주차 휴강, 13주차 휴강은 전임상 녹화 강의로 보강 → 이어서 추가.<br>
+중간 형식: <b>객관식 26 · 단답 14 · 서술 0</b> → 보기는 <b>두 개념 맞바꾸기 · 한 단어 뒤집기</b> 중심.<br>
+단원마다 <b>상세요약 → 개념문제</b>, 마지막에 <b>실전문제 → 헷갈리는 쌍 · 암기카드</b>.<br>
+교수님이 “예시 문제로 내기 좋다”고 한 건 <b>분홍 태그</b>로 표시했어.</div>
+<div class="cv-stats">
+<div class="cv-st"><b>3</b><span>주차 반영<br>9 · 11 · 12주차</span></div>
+<div class="cv-st"><b>45</b><span>문제<br>개념 24 · 실전 21</span></div>
+<div class="cv-st"><b>3</b><span>녹취록<br>11/4 ~ 11/18</span></div>
+<div class="cv-st"><b>2</b><span>출제 힌트<br>그래프 · 약물 내성</span></div></div></div>
+<div class="cv-toc"><div class="t">CONTENTS</div>{rows}</div>
+<div class="cv-parts">
+<div class="cv-p" style="border-top-color:#3b6fd8"><div class="a">PART 01 Hit → Lead</div><div class="b">스크리닝 · SAR · Lead 조건 · 후보 조건 · AI</div></div>
+<div class="cv-p" style="border-top-color:#0e8a83"><div class="a">PART 02 PD · PK</div><div class="b">Emax · EC50 · 역가/효능 · 내성 · ADME</div></div>
+<div class="cv-p" style="border-top-color:#6a4ae0"><div class="a">PART 03 전임상 · GLP</div><div class="b">동물연구 · 탐색적 vs 규제적 · QAU</div></div>
+<div class="cv-p" style="border-top-color:#e2553a"><div class="a">★ 실전 · ✓ 암기</div><div class="b">실전 21문항 · 헷갈리는 쌍 TOP 10</div></div>
+<div class="cv-p" style="border-top-color:#9aa0b0"><div class="a">다음 단원</div><div class="b">전임상 녹화 강의 · 임상시험 — 이어서 추가</div></div></div>
+<div class="cv-src">김한준 교수님 9·11·12주차 강의 슬라이드 · 수업 녹취록(2026-11-04 ~ 11-18) · 주차별 요약정리를 바탕으로 정리</div>''', cls='page cover4')
 
 
 def add_strategy():

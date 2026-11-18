@@ -30,7 +30,7 @@ def _ans(ans, why, one):
 
 def mc(no, w, stem, opts, ans, why='', one='', h=None, extra=''):
     o = ''.join(f'<li>{x}</li>' for x in opts)
-    bh = f' style="height:{h}mm;flex:0 0 auto"' if h else ''
+    bh = ''  # 풀이칸은 항상 남는 공간을 채움 → 정답이 카드 맨 아래에 정렬
     return (f'<div class="q"><div class="q-h"><span class="q-no">{no}</span><span class="tag mc">객관식</span>{wt(w)}{extra}</div>'
             f'<div class="q-b"><div class="stem">{stem}</div><ol class="opt">{o}</ol></div>'
             f'<div class="blank"{bh}></div>{_ans(ans, why, one)}</div>')
@@ -38,21 +38,21 @@ def mc(no, w, stem, opts, ans, why='', one='', h=None, extra=''):
 
 def ox(no, w, items, ans, why='', h=None, extra=''):
     li = ''.join(f'<li>{t}<span class="bx">O / X</span></li>' for t in items)
-    bh = f' style="height:{h}mm;flex:0 0 auto"' if h else ''
+    bh = ''  # 풀이칸은 항상 남는 공간을 채움 → 정답이 카드 맨 아래에 정렬
     return (f'<div class="q"><div class="q-h"><span class="q-no">{no}</span><span class="tag ox">O/X</span>{wt(w)}{extra}</div>'
             f'<div class="q-b"><ol class="ox">{li}</ol></div>'
             f'<div class="blank"{bh}></div>{_ans(ans, why, "")}</div>')
 
 
 def sa(no, w, stem, ans, why='', h=None, extra=''):
-    bh = f' style="height:{h}mm;flex:0 0 auto"' if h else ''
+    bh = ''  # 풀이칸은 항상 남는 공간을 채움 → 정답이 카드 맨 아래에 정렬
     return (f'<div class="q"><div class="q-h"><span class="q-no">{no}</span><span class="tag sa">단답</span>{wt(w)}{extra}</div>'
             f'<div class="q-b"><div class="stem">{stem}</div></div>'
             f'<div class="blank"{bh}></div>{_ans(ans, why, "")}</div>')
 
 
 def es(no, w, stem, model, h=None, extra=''):
-    bh = f' style="height:{h}mm;flex:0 0 auto"' if h else ''
+    bh = ''  # 풀이칸은 항상 남는 공간을 채움 → 정답이 카드 맨 아래에 정렬
     return (f'<div class="q"><div class="q-h"><span class="q-no">{no}</span><span class="tag es">서술</span>{wt(w)}{extra}</div>'
             f'<div class="q-b"><div class="stem">{stem}</div></div>'
             f'<div class="blank"{bh}></div>'
@@ -66,7 +66,7 @@ def qpage(wk, part, ttl, qs, style='', cols=3):
     for ci, ch in enumerate(chunks):
         t = ttl if len(chunks) == 1 else f'{ttl} ({ci + 1}/{len(chunks)})'
         body = ''.join(ch)
-        page(ph(wk, part, t) + f'<div class="body {grid}" style="align-content:start">' + body + '</div>', style=style)
+        page(ph(wk, part, t) + f'<div class="body {grid}">' + body + '</div>', style=style)
 
 
 def render(path, title):
@@ -76,7 +76,7 @@ def render(path, title):
            '<link rel="stylesheet" href="style.css"></head><body>']
     for i, (cls, style, inner) in enumerate(pages):
         st = f' style="{style}"' if style else ''
-        if 'lcover' in cls:
+        if 'cover4' in cls or 'lcover' in cls:
             out.append(f'<section class="{cls}">{inner}</section>')
         else:
             out.append(f'<section class="{cls}"{st}>\n{inner}\n<div class="pf"><span>{FOOT}</span><span>{i + 1}</span></div>\n</section>')
