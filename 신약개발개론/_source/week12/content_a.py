@@ -9,14 +9,15 @@ dict(title="강의 표지 · 이번 강의 로드맵", src="표지", img="s01.jp
 <li>후보물질 선정과 약물대사연구2 / 전임상연구1 <span class="note">(표지의 “후보물실”은 오타)</span></li>
 <li>Han-Jun Kim (김한준), D.V.M., Ph.D. — Associate Professor, College of Pharmacy, Korea University</li>
 <li>2026. 11. 18 · 고려대학교</li></ul>
-<p class="note">“Questions?”(11·49)는 내용이 없어 뺐어.</p>
+<p class="note">“Questions?”(11·49)는 내용이 없어 뺐고, Chapter 4 표지(12)는 지난 시간 요약(13)과 같은 쪽에서 다뤘어.</p>
 <div class="box"><span class="tag">주의</span>11~16쪽은 11주차 요약정리를 가져온 거라, 그 본문 속 “슬라이드 N”은 <b>11주차 번호</b>(= 이번 번호 + 30) 기준이야.</div>""",
      ex="""<table class="t"><tr><th>파트</th><th>슬라이드</th><th>이 노트</th></tr>
-<tr><td>Q&amp;A (바이오약·SAR·단백질 결합·Emax)</td><td>2~7·9</td><td>2~7·9쪽</td></tr>
-<tr><td>약처방 · 내성 시 Emax/EC50</td><td>8·10</td><td>8·10쪽</td></tr>
+<tr><td>Q&amp;A (바이오약·SAR·단백질 결합·Emax)</td><td>2~7·9</td><td>2~6·8쪽</td></tr>
+<tr><td>약처방 · 내성 시 Emax/EC50</td><td>8·10</td><td>7·9쪽</td></tr>
+<tr><td>지난 시간 요약</td><td>13</td><td>10쪽</td></tr>
 <tr><td>PK 복습 (11주차와 동일)</td><td>14~35</td><td>11~16쪽</td></tr>
-<tr><td>Chapter 5 전임상 · 동물연구</td><td>36~41</td><td>17~20쪽</td></tr>
-<tr><td>탐색적 vs 규제적 · GLP</td><td>42~48</td><td>21~24쪽</td></tr></table>
+<tr><td>Chapter 5 전임상 · 동물연구</td><td>36~41</td><td>17~19쪽</td></tr>
+<tr><td>탐색적 vs 규제적 · GLP</td><td>42~48</td><td>20~23쪽</td></tr></table>
 <p><b>지난 시간과 연결</b>: 11주차 PD(Emax·EC50·역가·효능)를 Q&amp;A로 더 파고, PK(ADME)를 복습한 뒤 → 후보물질이 정해지면 하는 <g>전임상연구(독성·유효성)</g>로 넘어가.</p>
 <p class="box"><span class="tag">기말</span><b>탐색적 vs 규제적 전임상</b>(GLP 적용 여부)과 <b>GLP·QAU</b>의 정의가 이번 단원 1순위.</p>"""),
 
@@ -150,6 +151,6 @@ dict(title="지난 시간 요약 (Summary of the Last class)", slide="13", img="
 <li>용량-반응 관계 · 수용체 결합 친화도 · 역가 + 효능</li>
 <li>Emax(최대 효과) · EC50(최대의 50% 농도) · TD50(독성) · LD50(사망)</li></ul>""",
      ex="""<p>이 한 장이 2~10쪽 Q&amp;A·심화의 전제야. 특히 <b>Emax·EC50·TD50·LD50</b> 정의를 다시 확인해 두면, 앞의 “EC50은 독성 시작점이 아니다”, “내성 시 변화” 같은 함정이 잘 풀려.</p>
-<p>슬라이드 11·12는 영상/Questions라 뺐어. 다음 쪽(11주차 복습)부터는 <b>PK(ADME)</b>로 넘어가.</p>
+<p>슬라이드 11은 “Questions?”, 12는 Chapter 4 표지(PK vs PD 손그림)야. 다음 쪽(11주차 복습)부터는 <b>PK(ADME)</b>로 넘어가.</p>
 <p class="box"><span class="tag">기말</span>PD 4대 지표(Emax·EC50·TD50·LD50)는 정의 그대로 단답·객관식에 나와. TD50/ED50 = 치료계수(TI).</p>"""),
 ]

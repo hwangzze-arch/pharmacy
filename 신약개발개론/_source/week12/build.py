@@ -103,8 +103,8 @@ def overlay_page(n, now, old):
 <div class="w" style="left:33pt;top:29pt;width:40pt;height:29pt"></div><div class="num">{n:02d}</div>
 <div class="w" style="left:540pt;top:28pt;width:275pt;height:15pt"></div>
 <div class="src">원본 슬라이드 {now} <span>({SRC_WEEK} {old})</span></div>
-<div class="w" style="left:33pt;top:561pt;width:400pt;height:20pt"></div><div class="fl">{FOOT}</div>
-<div class="w" style="left:760pt;top:563pt;width:50pt;height:12pt"></div><div class="fr">{n} / {TOTAL}</div>
+<div class="w" style="left:33pt;top:563pt;width:400pt;height:18pt"></div><div class="fl">{FOOT}</div>
+<div class="w" style="left:760pt;top:563pt;width:50pt;height:18pt"></div><div class="fr">{n} / {TOTAL}</div>
 </section>'''
 
 

@@ -1,12 +1,12 @@
 # 12주차 (2) 11주차 PK 복습 재사용 + Chapter 5 전임상 도입 (슬라이드 14~41)
 PAGES = [
 # 슬라이드 14~35 = 11주차 자료 44~65 = 11주차 요약정리 32~37쪽 (PK 묶음 페이지)
-dict(reuse=(32, "14~21", "44·45·46·47·50·51")),   # PK 흡수·생체이용률
-dict(reuse=(33, "22·23", "48·49")),               # 전신순환
-dict(reuse=(34, "24~26", "52·53·54·55·56")),      # PK 분포
-dict(reuse=(35, "27~30", "57·58·59·60")),         # PK 대사 Phase I/II
+dict(reuse=(32, "14~17·20·21", "44~47·50·51")),   # PK 흡수·생체이용률
+dict(reuse=(33, "18·19", "48·49")),               # 전신순환
+dict(reuse=(34, "22~26", "52~56")),      # PK 분포
+dict(reuse=(35, "27~30", "57~60")),         # PK 대사 Phase I/II
 dict(reuse=(36, "31·32", "61·62")),               # PK 배설
-dict(reuse=(37, "33~35", "63·64·65")),            # ADME 개인차·PK/PD 모델링
+dict(reuse=(37, "33~35", "63~65")),            # ADME 개인차·PK/PD 모델링
 
 dict(title="Chapter 5. 전임상연구 · 전임상 동물연구", slide="36·37", img=["s36.jpg", "s37.jpg"],
      sub="Preclinical study: toxicity &amp; efficacy",
@@ -50,7 +50,7 @@ dict(title="전임상연구 — 탐색적 vs 규제적", slide="39·40·41", img
   <ul><li>이 단계의 전임상 = <g>탐색적 전임상연구</g></li></ul></li>
 <li><b>Drug Candidate 이후</b> = 약물개발(Drug <b>Development</b>)
   <ul><li>이 단계의 전임상 = <g>규제적 전임상연구</g></li></ul></li></ul>
-<p class="note">40·41은 Preclinical Study 흐름 그림(Drug Discovery→Pharmacology→Toxicology→임상, 세포·동물 모델 예시).</p>""",
+<p class="note">39 그림: Drug Discovery→Pharmacology→Toxicology→임상 흐름. 40: 줄기세포 파킨슨 치료제 전임상 예시(쥐 50~100마리/군 → 영장류 10~20마리/군). 41: 평가 → PoC → 예비 안전성(GLP) → 확정 안전성(GLP/GMP) → IND.</p>""",
      ex="""<p>경계선은 <b>Drug Candidate가 정해지는 순간</b>이야. 그 전은 “어떤 후보가 될까” 탐색이라 자유롭고, 그 후는 “이 후보를 허가받자”라 규칙(GLP)을 따라야 해.</p>
 <table class="t"><tr><th>구분</th><th>탐색적</th><th>규제적</th></tr>
 <tr><td>시점</td><td>후보물질 이전(발굴)</td><td>후보물질 이후(개발)</td></tr>
