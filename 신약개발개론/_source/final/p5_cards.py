@@ -21,7 +21,7 @@ def add():
 </div>''', style='--pc:#5b3fd1;--pcs:#efeaff')
 
     page(ph('기말', '✓ 암기카드', '시험 직전 5분', '') + '''
-<div class="body grid3">
+<div class="body grid3" style="align-content:start;align-items:start">
   <div class="card"><h3 style="font-size:11pt">🎯 Hit → Lead → 후보</h3>
   <div class="small">농도 <b>μM → 수백 nM → ≤100 nM</b><br>선택성 후보 <b>~1,000배</b><br>Lead 최적화 = 구조 바꾸는 마지막 단계<br>HTS=범용 / FBDD=효율<br>바이오: 과정 동일, 기술만 다름</div></div>
   <div class="card"><h3 style="font-size:11pt">💊 PD</h3>

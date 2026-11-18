@@ -9,7 +9,7 @@ def add():
 <div class="body row">
   <div class="col" style="flex:1">
     <div class="lead"><span class="k">한 줄 요약</span>후보물질은 <span class="y">활성(activity)뿐 아니라 속성(property)</span>까지 갖춘 <b>Drug-like</b> 물질. 개발공정에선 <b>PD·PK·독성</b>을 집중 분석한다.</div>
-    <div class="fig"><img src="img/w11_s36.jpg" style="height:38mm;object-fit:cover;object-position:top"><div class="figcap">후보물질 선정과정 — Lead 최적화 · Candidate Selection 반복 평가</div></div>
+    <div class="fig"><img src="img/w11_s29.jpg" style="height:38mm;object-fit:cover;object-position:top"><div class="figcap">후보물질 선정과정 — Lead 최적화 · Candidate Selection 반복 평가</div></div>
     <div class="callout trap"><div class="t">⚠ 함정</div><div class="small"><span class="p">“in vitro 효능만 좋으면 된다” ✗</span> — 동물에서 혈중농도 유지 못하면 신약 가치 상실. PD·PK·독성 = <b>임상 용량·IND의 근거</b>.</div></div>
   </div>
   <div class="col" style="flex:1">
