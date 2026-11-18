@@ -79,6 +79,9 @@ def render(path, title):
         if 'cover4' in cls or 'lcover' in cls:
             out.append(f'<section class="{cls}">{inner}</section>')
         else:
+            # 요약·카드 페이지(문제 카드가 없는 일반 페이지)는 빌드 때 내용이 꽉 차게 자동 확대
+            if cls == 'page' and 'class="q"' not in inner and 'FINAL PRACTICE' not in inner:
+                cls = 'page fit'
             out.append(f'<section class="{cls}"{st}>\n{inner}\n<div class="pf"><span>{FOOT}</span><span>{i + 1}</span></div>\n</section>')
     out.append('</body></html>')
     open(path, 'w').write('\n'.join(out))

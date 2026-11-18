@@ -21,7 +21,7 @@ def add():
       </ul></div>
     </div>
     <div class="col" style="flex:1.1">
-      <div class="fig"><img src="img/w6_47.jpg" style="height:40mm;object-fit:cover;object-position:top"><div class="figcap">UCL 저분자 로드맵 — IDEA·IP·PPI → 타겟 → 스크리닝 → Lead 최적화</div></div>
+      <div class="fig"><img src="img/w6_47.jpg" style="height:40mm;object-fit:cover;object-position:top"><div class="figcap">Lead 최적화 사례: 글리벡(Glivec) — 세포 활성↑ · 티로신 키나아제 선택성 · PKC 결합 제거 · 용해도·경구 흡수↑</div></div>
       <div class="callout memo"><div class="t">🤖 AI 기반 Hit to Lead</div><div class="small">DB → 정제·필터링 → AI → <b>평가(MW·LogP·SA·QED·NP)</b> → 결과 평가<br>GENTRL: 전통 2~3년 → <b>&lt;2개월</b> (DDR1 저해제)</div></div>
     </div>
   </div>
