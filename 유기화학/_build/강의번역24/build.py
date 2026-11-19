@@ -2,7 +2,7 @@
 """강의 슬라이드 번역·설명 PDF (CH21_약품유기화학2_번역본과 같은 형식).
 
 사용:
-  sh make_img.sh "../../CH24_약품유기화학2.pdf"     # img/s-01.jpg …
+  sh make_img.sh "../../CH24_2_약품유기화학2.pdf"     # img/s-01.jpg …
   python3 build.py                                   # index.html
   node render.js "../../CH24_약품유기화학2_번역본.pdf"   # PDF
 """

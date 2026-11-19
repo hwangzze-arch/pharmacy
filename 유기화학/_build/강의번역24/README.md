@@ -1,9 +1,9 @@
 # 24장 강의 번역본 (빌드)
 
-`CH24_약품유기화학2.pdf`(55쪽) → `CH24_약품유기화학2_번역본.pdf`. 23장 번역본 엔진을 복사.
+`CH24_2_약품유기화학2.pdf`(55쪽) → `CH24_약품유기화학2_번역본.pdf`. 23장 번역본 엔진을 복사.
 
 ```
-sh make_img.sh "../../CH24_약품유기화학2.pdf"     # img/s-01.jpg …
+sh make_img.sh "../../CH24_2_약품유기화학2.pdf"     # img/s-01.jpg …
 python3 build.py                                   # index.html
 node render.js "../../CH24_약품유기화학2_번역본.pdf"
 ```
