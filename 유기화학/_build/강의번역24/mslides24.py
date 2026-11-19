@@ -80,6 +80,8 @@ MS[56] = [
  + RX(('t', '(c)'), ('m', 'Cc1ccccc1', 45, 40), ('a', 'KMnO₄', 'H₂O'), ('m', 'OC(=O)c1ccccc1', 55, 40), ('a', 'HNO₃', 'H₂SO₄ (메타)'), ('m', 'OC(=O)c1cccc([N+](=O)[O-])c1', 75, 45), ('a', '1. SnCl₂, H₃O⁺', '2. NaOH'), ('m', 'OC(=O)c1cccc(N)c1', 65, 45))
  + RX(('t', '　'), ('a', 'HNO₂', 'H₂SO₄'), ('m', 'OC(=O)c1cccc([N+]#N)c1', 75, 45), ('a', 'NaI', ''), ('m', 'OC(=O)c1cccc(I)c1', 65, 45), ('a', 'CH₃OH', 'H⁺'), ('m', 'COC(=O)c1cccc(I)c1', 70, 45), ('t', '메틸 m-아이오도벤조에이트'))
 ,
- RX(('t', '24-64 (a)'), ('m', 'C1CCC2NCCCC2C1', 60, 50), ('a', 'CH₃I 과량', 'Ag₂O; Δ'), ('m', 'C=CCC1CCCCC1N(C)C', 90, 60), ('t', '주 (말단 C=C)'), ('t', '(b)'), ('m', 'O=C(Cl)c1ccccc1', 60, 45), ('a', 'NaN₃; Δ', 'H₂O'), ('m', 'Nc1ccccc1', 50, 45))
- + RX(('t', '(c)'), ('m', 'O=C1NC(=O)c2ccccc21', 65, 50), ('a', 'KOH; PhCH₂Br', 'KOH, H₂O'), ('m', 'NCc1ccccc1', 60, 45), ('t', '(d)'), ('m', 'BrCCCCBr', 70, 35), ('a', 'CH₃NH₂ 1당량', 'NaOH'), ('m', 'CN1CCCC1', 50, 45))
+ RX(('t', '24-64 (a)'), ('m', 'C1CCC2NCCCC2C1', 55, 45), ('a', 'CH₃I', '과량'), ('m', 'C[N+]1(C)CCCC2CCCCC21.[I-]', 75, 55), ('t', 'A'), ('a', 'Ag₂O', 'H₂O'), ('m', 'C[N+]1(C)CCCC2CCCCC21.[OH-]', 75, 55), ('t', 'B'), ('a', '가열', 'E2 (호프만)'), ('m', 'C=CCC1CCCCC1N(C)C', 75, 55), ('t', 'C (주)'))
+ + RX(('t', '(b)'), ('m', 'O=C(Cl)c1ccccc1', 55, 45), ('a', 'NaN₃', ''), ('m', '[N-]=[N+]=NC(=O)c1ccccc1', 85, 45), ('t', 'A'), ('a', '가열', '−N₂'), ('m', 'O=C=Nc1ccccc1', 70, 40), ('t', 'B'), ('a', 'H₂O', '−CO₂'), ('m', 'Nc1ccccc1', 45, 40), ('t', 'C'))
+ + RX(('t', '(c)'), ('m', 'O=C1NC(=O)c2ccccc21', 60, 45), ('a', 'KOH', ''), ('m', 'O=C1[N-]C(=O)c2ccccc21.[K+]', 70, 45), ('t', 'A'), ('a', 'C₆H₅CH₂Br', 'S<sub>N</sub>2'), ('m', 'O=C1N(Cc3ccccc3)C(=O)c2ccccc21', 85, 50), ('t', 'B'), ('a', 'KOH', 'H₂O'), ('m', 'NCc1ccccc1', 55, 40), ('t', 'C'))
+ + RX(('t', '(d)'), ('m', 'BrCCCCBr', 65, 35), ('t', '+ CH₃NH₂ (1당량)'), ('a', 'NaOH, H₂O', 'S<sub>N</sub>2 → 분자 내 S<sub>N</sub>2'), ('m', 'CN1CCCC1', 45, 40), ('t', 'N-메틸피롤리딘'))
 ]
