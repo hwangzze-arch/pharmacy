@@ -25,5 +25,5 @@ def add():
       <div class="callout memo"><div class="t">🤖 AI 기반 Hit to Lead</div><div class="small">DB → 정제·필터링 → AI → <b>평가(MW·LogP·SA·QED·NP)</b> → 결과 평가<br>GENTRL: 전통 2~3년 → <b>&lt;2개월</b> (DDR1 저해제)</div></div>
     </div>
   </div>
-  <div class="callout tip"><div class="t">💡 로드맵 공통 출발 = IDEA·IP·PPI</div><div class="small">저분자·바이오·세포유전자 로드맵 모두 <b>미충족 의료수요(TPP) · 지식재산권(IP) · 환자참여(PPI)</b>로 시작. 바이오는 중간부터, 세포·유전자는 더 일찍 <b>규제</b>가 들어온다.</div></div>
+  <div class="callout tip"><div class="t">💡 로드맵 공통 출발 = IDEA·IP·PPI</div><div class="small">저분자·바이오·세포유전자 로드맵 모두 <b>미충족 의료수요(TPP) · 지식재산권(IP) · 환자참여(PPI)</b>로 시작. 바이오는 중간 개발 단계부터 <b>규제</b>가 들어오고, 세포·유전자 치료제는 <b>더 까다로운 규제 자문</b>이 필요하다.</div></div>
 </div>''', style=ST)
