@@ -23,8 +23,8 @@ def mol(smiles):
 
 # 작은 전하 작용기는 글자로 (전하 기호가 결합선에 겹쳐 안 보이는 문제): NO₂ · N₃ · N₂⁺
 from rdkit.Chem import rdAbbreviations
-_ABBR = rdAbbreviations.ParseAbbreviations("NO2\t*[N+](=O)[O-]\tO2N\nN3\t*N=[N+]=[N-]\tN3\nN2p\t*[N+]#N\tN2p")
-_LAB = {"NO2": ("NO<sub>2</sub>", "O<sub>2</sub>N"), "N3": ("N<sub>3</sub>", "N<sub>3</sub>"), "N2p": ("N<sub>2</sub><sup>+</sup>", "<sup>+</sup>N<sub>2</sub>")}
+_ABBR = rdAbbreviations.ParseAbbreviations("NO2\t*[N+](=O)[O-]\tO2N\nN3\t*N=[N+]=[N-]\tN3\nN2p\t*[N+]#N\tN2p\nNCO\t*N=C=O\tOCN")
+_LAB = {"NO2": ("NO<sub>2</sub>", "O<sub>2</sub>N"), "N3": ("N<sub>3</sub>", "N<sub>3</sub>"), "N2p": ("N<sub>2</sub><sup>+</sup>", "<sup>+</sup>N<sub>2</sub>"), "NCO": ("N=C=O", "O=C=N")}
 
 
 def _abbr(m):
