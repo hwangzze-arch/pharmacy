@@ -36,5 +36,5 @@ hw(64, "A → B → C 예측", ["prod", "int"],
    extra=F(RX(('t', '(a)'), ('m', 'C1CCC2NCCCC2C1', 55, 45), ('a', 'CH₃I', '과량'), ('m', 'C[N+]1(C)CCCC2CCCCC21.[I-]', 75, 55), ('t', 'A'), ('a', 'Ag₂O', 'H₂O'), ('m', 'C[N+]1(C)CCCC2CCCCC21.[OH-]', 75, 55), ('t', 'B'), ('a', 'Δ', 'E2'), ('m', 'C=CCC1CCCCC1N(C)C', 75, 55), ('t', 'C (주)')),
            RX(('t', '(b)'), ('m', 'O=C(Cl)c1ccccc1', 55, 45), ('a', 'NaN₃', ''), ('m', '[N-]=[N+]=NC(=O)c1ccccc1', 85, 45), ('t', 'A'), ('a', 'Δ', '−N₂'), ('m', 'O=C=Nc1ccccc1', 70, 40), ('t', 'B'), ('a', 'H₂O', '−CO₂'), ('m', 'Nc1ccccc1', 45, 40), ('t', 'C')),
            RX(('t', '(c)'), ('m', 'O=C1NC(=O)c2ccccc21', 60, 45), ('a', 'KOH', ''), ('m', 'O=C1[N-]C(=O)c2ccccc21.[K+]', 70, 45), ('t', 'A'), ('a', 'PhCH₂Br', ''), ('m', 'O=C1N(Cc3ccccc3)C(=O)c2ccccc21', 85, 50), ('t', 'B'), ('a', 'KOH', 'H₂O'), ('m', 'NCc1ccccc1', 55, 40), ('t', 'C')),
-           RX(('t', '(d)'), ('m', 'BrCCCCBr', 65, 35), ('t', '+ CH₃NH₂'), ('a', 'NaOH', 'S<sub>N</sub>2 ×2'), ('m', 'CN1CCCC1', 45, 40))) + '<p class="nt">구조는 해설집(SSM 24.64)과 단계별로 대조함. (a) 부생성물: 고리 안 C=C 두 가지.</p>', nossm=True),
+           RX(('t', '(d)'), ('m', 'BrCCCCBr', 65, 35), ('t', '+ CH₃NH₂'), ('a', 'NaOH', 'S<sub>N</sub>2 ×2'), ('m', 'CN1CCCC1', 45, 40))) + '<p class="nt">(a) 부생성물: 고리 안 C=C 두 가지.</p>'),
 ]

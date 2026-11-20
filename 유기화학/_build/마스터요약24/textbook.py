@@ -53,7 +53,7 @@ def tb(n, part, title, kind, ko, a, exp, extra=None, **kw):
     return dict(t="q", id=f"p{n}", toc=title, badge="본문", num=f"24-{n}", part=part, kind=kind,
                 src=f"본문 Problem 24-{n} (원서 그대로)", title=f"Problem 24-{n} — {title}",
                 q=qimg(f"tp{n:02d}") + f'<div class="term" style="margin-top:6px">번역: {ko}</div>',
-                a=a, exp=exp, extra=KEY(n) if extra is None else extra, **kw)
+                a=a, exp=exp, extra=(KEY(n) + (SSM(n) if os.path.exists(os.path.join(D, "img", f"ss{n:02d}.jpg")) else "")) if extra is None else extra, **kw)
 
 
 def we(n, part, title, ko, a, exp, **kw):

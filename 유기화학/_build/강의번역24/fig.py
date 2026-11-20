@@ -21,8 +21,25 @@ def mol(smiles):
     return m, hl
 
 
+# 작은 전하 작용기는 글자로 (전하 기호가 결합선에 겹쳐 안 보이는 문제): NO₂ · N₃ · N₂⁺
+from rdkit.Chem import rdAbbreviations
+_ABBR = rdAbbreviations.ParseAbbreviations("NO2\t*[N+](=O)[O-]\tO2N\nN3\t*N=[N+]=[N-]\tN3\nN2p\t*[N+]#N\tN2p")
+_LAB = {"NO2": ("NO<sub>2</sub>", "O<sub>2</sub>N"), "N3": ("N<sub>3</sub>", "N<sub>3</sub>"), "N2p": ("N<sub>2</sub><sup>+</sup>", "<sup>+</sup>N<sub>2</sub>")}
+
+
+def _abbr(m):
+    m2 = rdAbbreviations.CondenseMolAbbreviations(m, _ABBR, maxCoverage=0.95)
+    for a in m2.GetAtoms():
+        if a.HasProp("atomLabel") and a.GetProp("atomLabel") in _LAB:
+            e, w = _LAB[a.GetProp("atomLabel")]
+            a.SetProp("_displayLabel", e); a.SetProp("_displayLabelW", w)
+    return m2
+
+
 def svg(smiles, w=150, h=95, scale=22):
     m, hl = mol(smiles)
+    if not hl:
+        m = _abbr(m)
     AllChem.Compute2DCoords(m)
     d = rdMolDraw2D.MolDraw2DSVG(w, h)
     o = d.drawOptions()
