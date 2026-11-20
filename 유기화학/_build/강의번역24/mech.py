@@ -108,7 +108,7 @@ def panel(smiles, arrows=(), w=180, h=120, scale=26, rot=0, flip=False, hl=(), n
     d = rdMolDraw2D.MolDraw2DSVG(w, h)
     o = d.drawOptions()
     o.clearBackground = False
-    o.bondLineWidth = 1.5
+    o.bondLineWidth = 1.0
     o.fixedBondLength = scale
     o.padding = 0.16
     o.minFontSize = 11
