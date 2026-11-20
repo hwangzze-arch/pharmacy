@@ -7,7 +7,7 @@ Claude가 PDF 노트를 만들 때 쓴 원본이야. 새 채팅에서 "의약품
 |---|---|---|
 | `중간고사_마스터요약/` | 의약품분석학II_중간고사_마스터요약_개념문제Lecture2-4_필기반영.pdf | 표지·개념 페이지(💡📖📐✍️🧠)·문제 페이지(왼쪽 문제/풀이칸, 오른쪽 정답·해설) |
 | `기말_마스터요약/` | 의약품분석학II_기말_마스터요약_질량분석법(PART1-4).pdf | 중간고사 마스터와 같은 디자인. 객관식은 다답형(`kind=["multi"]`) 위주. `k10–k40` = 질량분석 PART 1–4, 크로마토그래피는 `k50…`로 추가 후 `build.py`의 `MODS`에 넣기. 만들기: `sh make_img.sh` → `python3 build.py` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
-| `강의_번역상세설명/` | 의약품분석학II-Lecture5_질량분석법_번역_상세설명.pdf, 의약품분석학II-Lecture6_Chromatography_번역_상세설명.pdf | 슬라이드 1장 = 1쪽, 한글 번역 + 상세 설명. 내용: Lecture 5 `content1–3.py`, Lecture 6 `l6_content1–3.py`. 만들기: `sh make_img.sh "../../강의.pdf"` → `python3 build.py l6` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
+| `강의_번역상세설명/` | 의약품분석학II-Lecture5_질량분석법_번역_상세설명.pdf, 의약품분석학II-Lecture6_Chromatography_번역_상세설명.pdf, 의약품분석학II-Lecture7_GC_번역_상세설명.pdf | 슬라이드 1장 = 1쪽, 한글 번역 + 상세 설명. 내용: Lecture 5 `content1–3.py`, Lecture 6 `l6_content1–3.py`, Lecture 7 `l7_content1–2.py`. 만들기: `sh make_img.sh "../../강의.pdf"` → `python3 build.py l6` (또는 `l7`) → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
 
 ## 중간고사_마스터요약 파일 역할
 - `build.py` — 디자인(CSS)과 페이지 틀. 개념/문제 페이지 모양을 바꾸려면 여기.
