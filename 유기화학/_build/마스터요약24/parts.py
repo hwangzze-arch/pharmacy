@@ -47,7 +47,7 @@ table.t th{{background:{COLOR_SOFT};color:{COLOR};}}
 .rx .rl{{font-weight:700;color:{COLOR};width:24px;flex:none;}}
 .rx .mol svg{{display:block;}} .rx .tx{{font-size:.85em;padding:0 3px;}}
 .arw{{display:inline-flex;flex-direction:column;align-items:center;min-width:60px;font-size:.78em;line-height:1.2;color:#1f3f66;padding:0 3px;}}
-.arw .al{{display:block;width:100%;height:0;border-top:1.4px solid #333;position:relative;margin:2px 0;}}
+.arw .al{{display:block;width:100%;height:0;border-top:1.1px solid #333;position:relative;margin:2px 0;background:none !important;padding:0 !important;border-radius:0 !important;}}
 .arw .al::after{{content:'';position:absolute;right:-1px;top:-4.6px;border-left:7px solid #333;border-top:4px solid transparent;border-bottom:4px solid transparent;}}
 .cap2{{display:inline-flex;flex-direction:column;align-items:center;font-size:.82em;color:#333;}}
 """

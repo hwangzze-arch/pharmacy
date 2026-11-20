@@ -36,15 +36,40 @@ def _abbr(m):
     return m2
 
 
+def _stretch(m, f=0.6):
+    """글자 원자끼리 붙은 결합(N=N 등)은 글자가 선을 먹어 짧아 보임 → 한쪽 조각을 밀어 결합을 늘림."""
+    from rdkit.Geometry import Point3D
+    c = m.GetConformer()
+    for b in m.GetBonds():
+        a1, a2 = b.GetBeginAtom(), b.GetEndAtom()
+        if b.IsInRing() or a1.GetAtomicNum() == 6 or a2.GetAtomicNum() == 6 or 0 in (a1.GetAtomicNum(), a2.GetAtomicNum()):
+            continue
+        if a1.HasProp("atomLabel") or a2.HasProp("atomLabel"):
+            continue
+        em = Chem.RWMol(m); em.RemoveBond(a1.GetIdx(), a2.GetIdx())
+        frags = Chem.GetMolFrags(em, asMols=False)
+        side = next(fr for fr in frags if a2.GetIdx() in fr)
+        if a1.GetIdx() in side:
+            continue
+        p1, p2 = c.GetAtomPosition(a1.GetIdx()), c.GetAtomPosition(a2.GetIdx())
+        dx, dy = (p2.x - p1.x) * f, (p2.y - p1.y) * f
+        for i in side:
+            p = c.GetAtomPosition(i); c.SetAtomPosition(i, Point3D(p.x + dx, p.y + dy, 0))
+
+
 def svg(smiles, w=150, h=95, scale=22):
     m, hl = mol(smiles)
     if not hl:
         m = _abbr(m)
+    for a in m.GetAtoms():  # 빈 자리(*) = 치환기 R
+        if a.GetAtomicNum() == 0 and not a.HasProp("atomLabel"):
+            a.SetProp("_displayLabel", "R"); a.SetProp("_displayLabelW", "R")
     AllChem.Compute2DCoords(m)
+    _stretch(m)
     d = rdMolDraw2D.MolDraw2DSVG(w, h)
     o = d.drawOptions()
     o.clearBackground = False
-    o.bondLineWidth = 1.6
+    o.bondLineWidth = 1.0
     o.fixedBondLength = scale
     o.padding = 0.08
     o.minFontSize = 11
