@@ -5,8 +5,14 @@ D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(D, "..", "강의번역24"))
 from fig import row as RX
 from mech import MECH_CSS
-from mechs import HOF, CUR
+from mechs import hof, cur
 IMG = "../마스터요약24/img/"
+
+def mpage(num, title, parts, tip):
+    body = "".join(f'<div class="sec">✏️ ({k}) 메커니즘 — {t}</div><div class="mz">' + "".join(rows) + '</div>' for k, t, rows in parts)
+    return f'''<section class="page"><header><span class="no">과제 {num}</span><h1>{title}</h1></header>{body}
+<div class="tip"><b>손글씨 요령</b> {tip}</div></section>'''
+
 
 def page(num, title, img, ans, body, tip, qh="42mm"):
     return f'''<section class="page" style="--qh:{qh}"><header><span class="no">과제 {num}</span><h1>{title}</h1></header>
@@ -19,15 +25,19 @@ P = []
 P.append(page("24-32", "호프만 자리옮김 — 생성물 + 메커니즘", "hw32",
   RX(('t', '(a)'), ('m', 'CC(C)CC(N)=O', 80, 50), ('a', 'Br₂, NaOH', 'H₂O'), ('m', 'CC(C)CN', 65, 45), ('t', '+ CO₂'))
   + RX(('t', '(b)'), ('m', 'NC(=O)C1CCCC1', 70, 55), ('a', 'Br₂, NaOH', 'H₂O'), ('m', 'NC1CCCC1', 55, 50), ('t', '+ CO₂')),
-  '<div class="sec">✏️ 메커니즘 (R로 한 번만) — (a) R = (CH₃)₂CHCH₂–  (b) R = 사이클로펜틸</div><div class="mz">' + "".join(HOF) + '</div>',
-  "(a)(b)는 R만 다르고 단계가 같다 → 메커니즘은 <b>R로 한 번</b> 그리고 아래에 R이 무엇인지만 적기. "
-  "꼭 써야 할 것: ① N–H 떼기 ② N–Br 만들기 ③ 또 N–H 떼기 ④ <b>R 이동 + Br⁻ 이탈</b> → R–N=C=O ⑤ 물 첨가 → 카밤산 ⑥ −CO₂. 탄소 1개 줄어든 아민."))
+  '<div class="sec">✏️ (a) 메커니즘 — 3-메틸뷰탄아마이드</div><div class="mz">' + "".join(hof("CC(C)[CH2:7]", "CC(C)C")) + '</div>',
+  "(b) 메커니즘은 다음 쪽. 생성물은 <b>탄소 1개 줄어든 1차 아민 + CO₂</b>."))
+P.append(mpage("24-32", "호프만 자리옮김 — (b) 메커니즘", [
+  ("b", "사이클로펜테인카복스아마이드", hof("C1CCC[CH:7]1", "C1CCCC1"))],
+  "꼭 써야 할 것: ① OH⁻가 N–H 떼기 ② N⁻가 Br₂ 공격 → N–Br ③ 남은 N–H 떼기 ④ <b>알킬기 이동 + Br⁻ 이탈</b> → 아이소사이아네이트 ⑤ OH⁻ 첨가 → 카밤산 ⑥ −CO₂ → 아민."))
 P.append(page("24-33", "커티어스 자리옮김 — 생성물 + 메커니즘", "hw33",
   RX(('t', '(a)'), ('m', 'O=C(Cl)[C@@]12CCCC[C@@]1([H])CCCC2', 85, 60), ('a', '1. NaN₃', '2. H₂O, Δ'), ('m', 'N[C@@]12CCCC[C@@]1([H])CCCC2', 80, 65), ('t', '+ N₂ + CO₂ (트랜스 그대로)'))
   + RX(('t', '(b)'), ('m', 'C=CCC(=O)Cl', 65, 45), ('a', '1. NaN₃', '2. H₂O, Δ'), ('m', 'C=CCN', 50, 40), ('t', '+ N₂ + CO₂')),
-  '<div class="sec">✏️ 메커니즘 (R로 한 번만) — (a) R = 데칼린 고리 접합부  (b) R = CH₂=CHCH₂–</div><div class="mz">' + "".join(CUR) + '</div>',
-  "꼭 써야 할 것: ① N₃⁻가 C=O 탄소 공격, Cl⁻ 이탈 → 아실 아자이드 ② 가열: <b>R 이동 + N₂ 이탈</b> → R–N=C=O ③ 물 첨가 → 카밤산 → −CO₂. "
-  "(a)는 R이 이동해도 <b>입체 배치 유지</b>라고 한 줄."))
+  '<div class="sec">✏️ (a) 메커니즘 — 데칼린 산 염화물 (고리 접합부 탄소가 이동, 입체 유지)</div><div class="mz">' + "".join(cur("C1CCCC2CCCC[C:7]12", "C1CCCC2CCCCC12", 1.15, wy=1.3)) + '</div>',
+  "(b) 메커니즘은 다음 쪽. 이동하는 탄소의 <b>입체 배치는 유지</b> → (a) 생성물도 트랜스."))
+P.append(mpage("24-33", "커티어스 자리옮김 — (b) 메커니즘", [
+  ("b", "3-뷰텐오일 클로라이드", cur("C=C[CH2:7]", "C=CC"))],
+  "꼭 써야 할 것: ① N₃⁻가 C=O 탄소 공격, Cl⁻ 이탈 → 아실 아자이드 ② 가열: <b>알킬기 이동 + N₂ 이탈</b> → 아이소사이아네이트 ③ 물 첨가 → 카밤산 → −CO₂ → 아민."))
 P.append(page("24-63", "톨루엔에서 3가지 합성 (시약만)", "hw63",
   RX(('t', '(a)'), ('m', 'Cc1ccccc1', 45, 40), ('a', 'HNO₃', 'H₂SO₄'), ('m', 'Cc1ccc([N+](=O)[O-])cc1', 75, 45), ('a', 'H₂, Pt', ''), ('m', 'Cc1ccc(N)cc1', 60, 40))
   + RX(('t', '(b)'), ('m', 'Cc1ccc(N)cc1', 55, 40), ('a', 'HNO₂', 'H₂SO₄'), ('m', 'Cc1ccc([N+]#N)cc1', 75, 40), ('a', 'CuCN', ''), ('m', 'Cc1ccc(C#N)cc1', 65, 40), ('a', '1. LiAlH₄', '2. H₂O'), ('m', 'Cc1ccc(CN)cc1', 65, 40))
@@ -50,7 +60,7 @@ CSS = MECH_CSS + """
 header{display:flex;align-items:center;gap:10px;border-bottom:2.5px solid #7048e8;padding-bottom:5px}
 header .no{background:#f76707;color:#fff;font-weight:700;border-radius:6px;padding:2px 10px}
 h1{font-size:20px;margin:0;color:#5f3dc4}
-.q img{max-height:var(--qh,42mm);max-width:100%;display:block}
+.q img{max-height:var(--qh,30mm);max-width:100%;display:block}
 .sec{font-weight:700;color:#5f3dc4;font-size:13px;margin-top:3px}
 .ans .rx,.mz .mrow{zoom:1.25}
 .rx{display:flex;align-items:center;flex-wrap:nowrap;gap:2px;margin:1px 0}
