@@ -8,3 +8,5 @@
 12주차(`week12/`)는 슬라이드 14~35가 11주차 44~65와 같아서 11주차 요약정리 PDF를 재사용하고, 새 내용(Q&A·PD 심화·Chapter 5 전임상·GLP)은 `content_a/b/c.py`에 작성: `python3 build.py && node build.js && python3 merge.py` (11주차 요약정리 PDF 필요).
 
 `final/` = 기말 통합 상세요약+문제. 주차가 추가되면 `pN_*.py`를 더해 `gen.py`에서 이어 붙임: `python3 gen.py && node build.js` → `final.pdf`를 `신약개발개론_기말_통합 상세요약+문제.pdf`로 복사. 표지는 밝은 보라 톤(삼성노트는 기말 완성 후 한 번에 이전).
+
+13주차 보강(`week13/`, 10·13주차 휴강 보강 녹화 강의)은 재사용 페이지 없이 `content_a~d.py`에 작성: `python3 build.py && node build.js && python3 merge.py`.
