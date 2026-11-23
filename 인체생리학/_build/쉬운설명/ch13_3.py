@@ -108,8 +108,8 @@ dict(img=48, slide=48, title="환기량의 조절 ① P_O2 감소 ② P_CO2 증�
 kw=["말초 화학수용기", "대동맥체", "경동맥체", "중추 화학수용기", "P_CO2가 가장 중요"],
 sum="조직 대사가 활발해 O₂를 더 쓰고 CO₂를 더 내놓으면 환기도 따라 늘어난다. 연수는 P<sub>O2</sub>, P<sub>CO2</sub>, H⁺를 감지해 이를 안다. P<sub>O2</sub> 감소는 <b>비상시에만</b> 자극하고, <b>P<sub>CO2</sub> 증가가 가장 중요한 입력</b>이다.",
 tr="""<ul><li>조직이 더 활발히 대사해서 혈액이 폐포에서 O₂를 더 가져가고 CO₂를 더 버리면, 환기도 그에 맞게 증가한다</li><li>연수 호흡중추는 P<sub>O2</sub>, P<sub>CO2</sub>, H⁺를 감지하여 몸의 가스 교환 요구에 대한 정보를 받는다</li><li>1) <b>동맥 P<sub>O2</sub> 감소</b><ul><li>동맥 P<sub>O2</sub>, P<sub>CO2</sub>, H⁺는 <b>말초 화학수용기</b>가 감지한다(P<sub>O2</sub>는 주로 대동맥체)</li><li><b>비상 기전으로서만</b> 환기를 자극한다</li></ul></li><li>2) <b>동맥 P<sub>CO2</sub> 증가</b><ul><li>환기량을 조절하는 <b>가장 중요한 입력</b></li><li>P<sub>CO2</sub>는 크게 변할 수 있어, <b>경동맥체의 말초 화학수용기</b>와 <b>연수의 중추 화학수용기</b>를 통해 호흡중추를 강하게 자극한다</li></ul></li></ul>""",
-ex="""<table class="t"><tr><th>자극</th><th>감지</th><th>중요도</th></tr><tr><td>P<sub>O2</sub> ↓</td><td>말초(주로 대동맥체 — 슬라이드 표기)</td><td>&lt;60 mmHg일 때만, <y>비상용</y></td></tr><tr><td><y>P<sub>CO2</sub> ↑</y></td><td>말초(경동맥체) + <y>중추(연수)</y></td><td><y>가장 중요</y></td></tr></table>
-<p class="note">교과서(Sherwood)는 말초 화학수용기를 "경동맥체·대동맥체"로 함께 다루며 경동맥체를 더 중요하게 보기도 한다. 시험은 슬라이드 표기(P<sub>O2</sub> = 주로 대동맥체) 기준.</p>
+ex="""<table class="t"><tr><th>자극</th><th>감지</th><th>중요도</th></tr><tr><td>P<sub>O2</sub> ↓</td><td>말초 — <y>주로 경동맥체</y>(대동맥체는 보조) ※ 교수님 정정</td><td>&lt;60 mmHg일 때만, <y>비상용</y></td></tr><tr><td><y>P<sub>CO2</sub> ↑</y></td><td>말초(경동맥체) + <y>중추(연수)</y></td><td><y>가장 중요</y></td></tr></table>
+<p class="note">⚠️ 슬라이드의 "P<sub>O2</sub> mainly by aortic body"는 <b>교과서 오류</b> — 11/23 강의에서 교수님이 정정: "<b>가장 중요한 거는 목 쪽에 있는 경동맥 소체</b>", 대동맥 소체는 보조(supportive). 시험은 <b>경동맥체</b> 기준.</p>
 <div class="box"><span class="tag">시험 포인트</span>"정상 상태에서 환기를 주로 조절하는 것은 P<sub>O2</sub>다" → <b>X</b>(P<sub>CO2</sub>).</div>"""),
 # 49
 dict(img=49, slide=49, title="환기량의 조절 ③ H⁺ 증가 · 화학 요인 정리", sub="Regulation of ventilation magnitude (Table 13-8)",
