@@ -81,4 +81,45 @@ ppm 10⁻⁶ · ppb 10⁻⁹ · <b>ppt 10⁻¹²</b><br>
 <div class="card trap"><div class="ct">⚠️ 마지막 체크</div>m/z ≠ 질량 · 양성자 1.007276 · 질소 규칙 뒤집기 · Cl 3:1 / Br 1:1 · 기울기↑ = 분해능↑ · + 전극 = 고질량 <b>통과</b> · t² · ESI는 휘발성 X · SIM ≠ EIC · SRM = 잡음↓</div>
 </div></div>""")
 
-E = [pairs, nums]
+
+chrom = dict(t="r", html=f"""
+<div class="hd"><span class="bd">최종 정리 ③</span><div class="tt"><h1>크로마토그래피 기초 — 혼동 쌍 · 숫자 · 공식</h1><div class="sb">Chromatography fundamentals</div></div><span class="pt">{F}</span></div>
+<div class="body"><div class="main"><table class="t">
+<tr><th>헷갈리는 쌍</th><th>왼쪽</th><th>오른쪽</th></tr>
+<tr><td>추출 vs 크로마토그래피</td><td>두 상 모두 움직임</td><td>한 상은 <b>고정</b></td></tr>
+<tr><td>eluent vs eluate</td><td>들어가는 이동상</td><td>나오는 용출액</td></tr>
+<tr><td>이름 규칙</td><td>이동상이 결정 (GC/LC)</td><td>“기체-고체” = 앞 이동상, 뒤 고정상</td></tr>
+<tr><td>칼럼 vs TLC 흐름 힘</td><td>중력</td><td>모세관</td></tr>
+<tr><td>양이온 vs 음이온교환 수지</td><td>표면 <b>음전하</b>(–SO₃⁻), 양이온을 잡음</td><td>표면 <b>양전하</b>(–N(CH₃)₃⁺), 음이온을 잡음</td></tr>
+<tr><td>크기배제 용출 순서</td><td><b>큰 분자 먼저</b></td><td>작은 분자(염)는 구멍 출입 → 늦게</td></tr>
+<tr><td>t_m vs t′_r</td><td>이동상 시간 (공통)</td><td>고정상 시간 = t_r − t_m</td></tr>
+<tr><td>α vs γ</td><td>t′_r 비 (중요)</td><td>t_r 비 (별로 안 씀)</td></tr>
+<tr><td>H vs N</td><td>작을수록 좋음, <b>길이 단위</b></td><td>클수록 좋음, <b>단위 없음</b>, L에 비례</td></tr>
+<tr><td>w vs w½</td><td>4σ (바닥폭) → R = Δt_r/w</td><td>2.35σ → R = 0.589Δt_r/w½</td></tr>
+<tr><td>tailing vs fronting</td><td>A/B &gt; 1 (뒤로 꼬리, 흔함)</td><td>A/B &lt; 1 (앞으로)</td></tr>
+<tr><td>B항 vs C항 (D↑)</td><td>B항 <b>나빠짐</b></td><td>C항 <b>좋아짐</b></td></tr>
+<tr><td>u 느림 vs 빠름</td><td>B항이 H를 키움</td><td>C항이 H를 키움</td></tr>
+<tr><td>개관 vs 충전</td><td>A = 0, 길게, 빠르게, 용량↓ (GC)</td><td>용량↑, 압력↑, N↓ (LC)</td></tr>
+</table></div><div class="side">
+<div class="card"><div class="ct">📐 공식</div>
+K = [S]₂/[S]₁ · t′_r = t_r − t_m<br>
+k′ = t′_r/t_m = K·V_s/V_m · α = t′_r2/t′_r1 = K₂/K₁ · γ = t_r2/t_r1<br>
+V_r = t_r·u_v · u_x = u_v/πr² (개관)<br>
+R = Δt_r/w_av = 0.589Δt_r/w½,av = (√N/4)(γ − 1)<br>
+w = 4σ = 1.70w½ · w½ = 2.35σ<br>
+J = −D dc/dx · σ = √(2Dt) · H = 2D/u_x = σ²/x<br>
+N = L/H = 16t_r²/w² = 5.55t_r²/w½² · H = L/N<br>
+N(비대칭) ≈ 41.7(t_r/w₀.₁)²/(A/B + 1.25)<br>
+H = A + B/u + C·u · u_opt = √(B/C) · H_min = A + 2√(BC)<br>
+Cₛ ∝ d²/Dₛ · Cₘ ∝ r²/Dₘ</div>
+<div class="card"><div class="ct">🔢 숫자</div>
+R 0.5/0.75/1.0/1.5 = 2σ/3σ/4σ/6σ · 목표 R ≥ 1.5<br>
+비대칭 인자 허용 ~0.8–1.2 (우수 1.0–1.05, 불가 2)<br>
+D: 기체 ~10⁻⁵ · 액체 ~10⁻⁹ · 단백질 ~10⁻¹¹ m²/s<br>
+성적서: 30 mm, N 5335, H 5.6 μm, k′ 4.19<br>
+온도: 30 ℃·1 mL/min ~10분 vs 100 ℃·5 mL/min &lt;1분<br>
+표 22-3: 충전 2.4 m N 3 290 R 1.5 / 개관 100 m N 294 000 R 10.6</div>
+<div class="card trap"><div class="ct">⚠️ 마지막 체크</div>α엔 t′_r · w인지 w½인지 · H에 단위 · N에 단위 X · L 2배 → R √2배 · 개관 = A가 0 (C 아님) · 크기배제 = 큰 것 먼저</div>
+</div></div>""")
+
+E = [pairs, nums, chrom]

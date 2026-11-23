@@ -3,3 +3,4 @@
 SRC="../.."
 mkdir -p img
 pdftoppm -r 100 -jpeg -jpegopt quality=82 "$SRC/의약품분석학II-Lecture5_질량분석법.pdf" img/L5
+pdftoppm -r 100 -jpeg -jpegopt quality=82 "$SRC/의약품분석학II-Lecture6_Chromatography.pdf" img/L6

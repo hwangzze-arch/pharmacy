@@ -6,7 +6,7 @@ Claude가 PDF 노트를 만들 때 쓴 원본이야. 새 채팅에서 "의약품
 | 폴더 | 만든 PDF | 구성 |
 |---|---|---|
 | `중간고사_마스터요약/` | 의약품분석학II_중간고사_마스터요약_개념문제Lecture2-4_필기반영.pdf | 표지·개념 페이지(💡📖📐✍️🧠)·문제 페이지(왼쪽 문제/풀이칸, 오른쪽 정답·해설) |
-| `기말_마스터요약/` | 의약품분석학II_기말_마스터요약_질량분석법(PART1-4).pdf | 중간고사 마스터와 같은 디자인. 객관식은 다답형(`kind=["multi"]`) 위주. `k10–k40` = 질량분석 PART 1–4, 크로마토그래피는 `k50…`로 추가 후 `build.py`의 `MODS`에 넣기. 만들기: `sh make_img.sh` → `python3 build.py` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
+| `기말_마스터요약/` | 의약품분석학II_기말_마스터요약(PART1-5_질량분석·크로마토그래피기초).pdf | 중간고사 마스터와 같은 디자인. 객관식은 다답형(`kind=["multi"]`) 위주. `k10–k40` = 질량분석 PART 1–4, `k50_chrom` = 크로마토그래피 기초 PART 5, GC·LC는 `k60…`로 추가 후 `build.py`의 `MODS`에 넣기. 만들기: `sh make_img.sh` → `python3 build.py` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
 | `강의_번역상세설명/` | 의약품분석학II-Lecture5_질량분석법_번역_상세설명.pdf, 의약품분석학II-Lecture6_Chromatography_번역_상세설명.pdf, 의약품분석학II-Lecture7_GC_번역_상세설명.pdf | 슬라이드 1장 = 1쪽, 한글 번역 + 상세 설명. 내용: Lecture 5 `content1–3.py`, Lecture 6 `l6_content1–3.py`, Lecture 7 `l7_content1–2.py`. 만들기: `sh make_img.sh "../../강의.pdf"` → `python3 build.py l6` (또는 `l7`) → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"` |
 
 ## 중간고사_마스터요약 파일 역할
@@ -48,5 +48,5 @@ NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 - `의약품 분석학/기말 둘째 수업 음성 정리(질량분석관·LC-MS·탠덤MS).md` (+PDF): 사중극자·TOF·리플렉트론·ESI/APCI·TIC/SIM/EIC·QQQ. ★교수님 강조: **DC/RF 비율 유지하며 동시에 변화(안정성 도표)**, SIM vs EIC, ESI vs APCI. SRM 결과부터는 다음 주에 계속
 - `의약품 분석학/기말 셋째 수업 음성 정리(SRM·크로마토그래피 기초).md` (+PDF): SRM/MRM으로 **질량분석법 끝**, Lecture 6 슬라이드 10–29 (추출·정의·분류·머무름 기전·t_r/t_m/α/k′·분리도·확산). ★교수님 강조: **이온교환 수지 이름 "시험 잘 나와요"**, k′, R = 0.589Δt_r/w½ 직접 계산. 다음 수업은 이론단 높이 H부터
 - `의약품 분석학/기말 넷째 수업 음성 정리(이론단·van Deemter·GC 칼럼).md` (+PDF): Lecture 6 슬라이드 30–45 마무리 + Lecture 7 슬라이드 12–23. ★교수님 강조: **van Deemter “모르면 제가 잘못 가르친 것”, “시험에도 나오고”**, H 단위는 길이·N은 단위 없음, N 계산 과제, 칼럼 변수 방향성. 다음 수업은 머무름 지수 나머지 → 운반 기체 → 검출기
-- **기말 마스터**: 질량분석법 PART 1–4 완료 → 크로마토그래피 강의가 끝나면 PART 5~ 추가
+- **기말 마스터**: PART 1–5 완료(질량분석 + 크로마토그래피 기초) → GC 검출기 수업 뒤 PART 6(GC), LC 끝나면 PART 7(LC) 추가
 - PDF 만들기: `수업정리/` 폴더 — `python3 build.py 정리.md out.html` → `NODE_PATH=$(npm root -g) node render.js "$PWD/out.html" 정리.pdf "꼬리말"` (A4 세로, Noto Sans KR은 Google Fonts에서 불러옴)
