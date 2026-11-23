@@ -29,14 +29,14 @@ def add_cover():
     page(f'''<div class="cv-left"><div class="cv-k">PHAR278 · NEW DRUG DEVELOPMENT · 기말고사 대비 노트</div>
 <div class="cv-h"><span class="t1">신약개발개론</span>{grad("기말 9–13주")}<span class="t3">후보물질 · PD/PK · 전임상 · 동물실험 대체법 통합 노트</span></div>
 <div class="cv-flow">Hit → Lead → 후보물질 → PD · PK(ADME) → 전임상 · GLP → 동물실험 대체법</div>
-<div class="cv-chips"><span class="cv-chip">단원별 상세요약</span><span class="cv-chip">개념문제 30</span><span class="cv-chip">실전문제 21 (객관식 · O/X · 단답 · 서술)</span><span class="cv-chip">녹취록 4개 반영</span><span class="cv-chip">헷갈리는 쌍 · 암기카드</span></div>
+<div class="cv-chips"><span class="cv-chip">단원별 상세요약</span><span class="cv-chip">개념문제 30</span><span class="cv-chip">실전문제 26 (객관식 · O/X · 단답 · 서술)</span><span class="cv-chip">녹취록 4개 반영</span><span class="cv-chip">헷갈리는 쌍 · 암기카드</span></div>
 <div class="cv-txt"><span class="r">기말 범위 = 9주차(Virtual screening)~</span> · 10주차 휴강, 13주차는 녹화 보강(Non-GLP 전임상·동물실험 대체법) 반영 완료.<br>
 중간 형식: <b>객관식 26 · 단답 14 · 서술 0</b> → 보기는 <b>두 개념 맞바꾸기 · 한 단어 뒤집기</b> 중심.<br>
 단원마다 <b>상세요약 → 개념문제</b>, 마지막에 <b>실전문제 → 헷갈리는 쌍 · 암기카드</b>.<br>
 교수님이 “예시 문제로 내기 좋다”고 한 건 <b>분홍 태그</b>로 표시했어.</div>
 <div class="cv-stats">
 <div class="cv-st"><b>4</b><span>주차 반영<br>9 · 11 · 12 · 13보강</span></div>
-<div class="cv-st"><b>51</b><span>문제<br>개념 30 · 실전 21</span></div>
+<div class="cv-st"><b>56</b><span>문제<br>개념 30 · 실전 26</span></div>
 <div class="cv-st"><b>4</b><span>녹취록<br>11/4 ~ 11/23</span></div>
 <div class="cv-st"><b>2</b><span>출제 힌트<br>그래프 · 약물 내성</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>{rows}</div>
@@ -44,7 +44,7 @@ def add_cover():
 <div class="cv-p" style="border-top-color:#3b6fd8"><div class="a">PART 01 Hit → Lead</div><div class="b">스크리닝 · SAR · Lead 조건 · 후보 조건 · AI</div></div>
 <div class="cv-p" style="border-top-color:#0e8a83"><div class="a">PART 02 PD · PK</div><div class="b">Emax · EC50 · 역가/효능 · 내성 · ADME</div></div>
 <div class="cv-p" style="border-top-color:#6a4ae0"><div class="a">PART 03 전임상 · GLP</div><div class="b">탐색적 vs 규제적 · QAU · 현대화법 2.0 · 오가노이드/칩</div></div>
-<div class="cv-p" style="border-top-color:#e2553a"><div class="a">★ 실전 · ✓ 암기</div><div class="b">실전 21문항 · 헷갈리는 쌍 TOP 10</div></div>
+<div class="cv-p" style="border-top-color:#e2553a"><div class="a">★ 실전 · ✓ 암기</div><div class="b">실전 26문항 · 헷갈리는 쌍 TOP 12</div></div>
 <div class="cv-p" style="border-top-color:#9aa0b0"><div class="a">다음 단원</div><div class="b">임상시험 — 이어서 추가</div></div></div>
 <div class="cv-src">김한준 교수님 9·11·12·13(보강)주차 강의 슬라이드 · 수업 녹취록(2026-11-04 ~ 11-23) · 주차별 요약정리를 바탕으로 정리</div>''', cls='page cover4')
 
