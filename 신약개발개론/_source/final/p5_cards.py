@@ -3,7 +3,7 @@ from lib import page, ph
 
 
 def add():
-    page(ph('기말', '✓ 헷갈리는 쌍', '맞바꾸기 주의 — TOP 10', '') + '''
+    page(ph('기말', '✓ 헷갈리는 쌍', '맞바꾸기 주의 — TOP 12', '') + '''
 <div class="body">
   <table class="t" style="--pcs:#efeaff">
     <tr><th style="width:26%">쌍</th><th>맞는 것</th><th>뒤집으면 오답</th></tr>
@@ -17,6 +17,8 @@ def add():
     <tr><td><b>이눌린</b></td><td>재흡수·재분비 없음 → 순수 여과율</td><td>“배설률 높음” ✗</td></tr>
     <tr><td><b>쥐 vs 침팬지</b></td><td>유사성 침팬지 99%>쥐 81%(쥐는 실용성)</td><td>“쥐가 더 유사” ✗</td></tr>
     <tr><td><b>QAU</b></td><td>시험팀과 독립된 제3자 점검</td><td>“시험팀이 겸함” ✗</td></tr>
+    <tr><td><b>오가노이드 ↔ 칩</b></td><td>오가노이드=줄기세포 분화 / 칩=영양 공급(미세유체)</td><td>정의 맞바꾸기 ✗</td></tr>
+    <tr><td><b>FDA 현대화법 2.0</b></td><td>비동물 시험 <b>허용</b>(2022.12)</td><td>“동물실험 금지·비동물 의무” ✗</td></tr>
   </table>
 </div>''', style='--pc:#5b3fd1;--pcs:#efeaff')
 
@@ -29,7 +31,7 @@ def add():
   <div class="card"><h3 style="font-size:11pt">🧪 PK (ADME)</h3>
   <div class="small"><b>F</b>: IV=1, 경구<1 · AUC=흡수량<br>경구 A-M-D-E / 주사 A-D-M-E<br>대사=간 · Phase I(CYP) / II(포합)<br>배설=신장 · BUN·Cr · 이눌린=여과율<br>장벽 3곳: 뇌·눈·정소/난소</div></div>
   <div class="card"><h3 style="font-size:11pt">🐭 전임상</h3>
-  <div class="small">유효성+안전성(독성) 검증<br>침팬지 99%>쥐 81%(쥐=실용성)<br>탐색적(후보 전)=Discovery<br>규제적(후보 후)=Development·GLP</div></div>
+  <div class="small">순서: <b>안전성 → 유효성</b><br>침팬지 99%>쥐 81%(쥐=실용성)<br>탐색적(후보 전, Non-GLP)=Discovery<br>규제적(후보 후)=Development·GLP<br>골관절염=토끼 · 현대화법 2.0=비동물 <b>허용</b></div></div>
   <div class="card"><h3 style="font-size:11pt">📋 GLP</h3>
   <div class="small">= 비임상시험 관리기준<br>계기 <b>탈리도마이드</b>, 통합 <b>1981 OECD</b><br>흐름: 개시→준비→실시→Data→종료→보관<br><b>QAU</b> = 독립 제3자 점검</div></div>
   <div class="card" style="border-color:#f5b6cb;background:#fff6f9"><h3 style="font-size:11pt;color:#c2185b">⚠ 출제 1순위</h3>
