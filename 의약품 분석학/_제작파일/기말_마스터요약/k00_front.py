@@ -30,14 +30,14 @@ cover = dict(t="r", cls="cover2", html=f"""
 </style>
 <div class="cv-left"><div class="cv-k">PHAR · PHARMACEUTICAL ANALYSIS II · 기말고사 대비 노트</div>
 <svg class="cv-h" width="420" height="150" viewBox="0 0 420 150"><defs><linearGradient id="cvg" x1="0" y1="0" x2="1" y2=".6"><stop offset="0" stop-color="#c2410c"/><stop offset="1" stop-color="#5b3fd6"/></linearGradient></defs><text fill="url(#cvg)" font-size="40" font-weight="800" font-family="Pretendard"><tspan x="0" y="38">의약품분석학 II</tspan><tspan x="0" y="85">기말고사 통합</tspan><tspan x="0" y="132">마스터 노트</tspan></text></svg>
-<div class="cv-flow">PART 1–4 질량분석법 (Lecture 5) → 크로마토그래피 (Lecture 6~, 추가 예정)</div>
-<div class="cv-chips"><span class="cv-chip">상세요약 · 개념 {{NC}}</span><span class="cv-chip">문제 {{NQ}} (다답형·서술·계산·빈칸)</span><span class="cv-chip">족보 7주제 문항화</span><span class="cv-chip">수업 녹음 3회 반영</span><span class="cv-chip">혼동 쌍·숫자 카드</span></div>
+<div class="cv-flow">PART 1–4 질량분석법 (Lecture 5) → PART 5 크로마토그래피 기초 (Lecture 6) → GC·LC (추가 예정)</div>
+<div class="cv-chips"><span class="cv-chip">상세요약 · 개념 {{NC}}</span><span class="cv-chip">문제 {{NQ}} (다답형·서술·계산·빈칸)</span><span class="cv-chip">족보 13주제 문항화</span><span class="cv-chip">수업 녹음 4회 반영</span><span class="cv-chip">혼동 쌍·숫자 카드</span></div>
 <div class="cv-txt"><span class="r">중간고사 실제 출제 = 모의고사와 결은 같고 한 단계 더 어렵게</span> → 이 노트의 객관식은 대부분 <b>다답형(모두 고르기)</b>.<br>
 각 개념은 <b>💡 핵심 → 📖 설명 → 📐 공식 → ✍️ 예제 → 🧠 한 줄</b>, 바로 뒤에 그 개념의 문제(왼쪽 문제·풀이칸, 오른쪽 정답·해설).<br>
 🗣️ = 수업 녹음에서 교수님이 한 말, <span class="tag j">족보</span> = 작년 기말 복기에 나온 주제.</div>
 <div class="cv-stats">
-<div class="cv-st"><b>52</b><span>슬라이드<br>Lecture 5</span></div>
-<div class="cv-st"><b>7</b><span>족보 주제<br>전부 문항화</span></div>
+<div class="cv-st"><b>83</b><span>슬라이드<br>Lecture 5–6</span></div>
+<div class="cv-st"><b>13</b><span>족보 주제<br>전부 문항화</span></div>
 <div class="cv-st"><b>3</b><span>수업 녹음<br>강조점 반영</span></div>
 <div class="cv-st"><b>39</b><span>중간 실제 문항<br>33 · 4 · 2</span></div></div></div>
 <div class="cv-toc"><div class="t">CONTENTS</div>
@@ -47,13 +47,14 @@ cover = dict(t="r", cls="cover2", html=f"""
 <div class="row"><span class="n">02</span><span class="nm">질량 스펙트럼 해석<span>N rule · DBE · isotope</span></span><span class="pg">{{S:{P2}}}</span></div>
 <div class="row"><span class="n">03</span><span class="nm">질량분석관<span>Quadrupole · TOF</span></span><span class="pg">{{S:{P3}}}</span></div>
 <div class="row"><span class="n">04</span><span class="nm">LC-MS · 탠덤 MS<span>ESI · APCI · SRM</span></span><span class="pg">{{S:{P4}}}</span></div>
+<div class="row"><span class="n">05</span><span class="nm">크로마토그래피 기초<span>k′ · R · N · van Deemter</span></span><span class="pg">{{S:{P5}}}</span></div>
 <div class="row"><span class="n">✓</span><span class="nm">혼동 쌍 · 숫자 · 공식<span>Final review</span></span><span class="pg">{{PAGE:f-pairs}}</span></div></div>
 <div class="cv-parts">
 <div class="cv-p" style="border-top-color:#4651c8"><div class="a">PART 1 원리·이온화</div><div class="b">m/z · 질량 3종 · EI · CI · 분해능 · HRMS</div></div>
 <div class="cv-p" style="border-top-color:#12937a"><div class="a">PART 2 스펙트럼 해석</div><div class="b">질소 규칙 · DBE · 동위원소 · 조각화</div></div>
 <div class="cv-p" style="border-top-color:#d6336c"><div class="a">PART 3 질량분석관</div><div class="b">사중극자 · 안정성 도표 · TOF · 리플렉트론</div></div>
 <div class="cv-p" style="border-top-color:#c2410c"><div class="a">PART 4 LC-MS·탠덤</div><div class="b">ESI · APCI · TIC/SIM/EIC · QQQ · SRM</div></div>
-<div class="cv-p" style="border-top-color:#9aa0b0"><div class="a">PART 5~ 크로마토그래피</div><div class="b">강의가 끝나면 이어서 추가</div></div></div>
+<div class="cv-p" style="border-top-color:#7c3aed"><div class="a">PART 5 크로마토그래피 기초</div><div class="b">기전 · k′ · 분리도 · N·H · tailing · van Deemter (GC·LC는 추가 예정)</div></div></div>
 <div class="cv-src">의약품분석학II Lecture 5 강의자료 · Lecture 5 번역·상세설명 · 족보(중간·기말 복기, 2025-2 기말 주관식 복기) · 기말 대비 수업 녹음 3회 · 2026-2 중간고사 실제 출제 형식을 바탕으로 정리</div>
 """)
 
@@ -94,7 +95,14 @@ jokbo = dict(t="r", id="f-jokbo", html=f"""
 <tr><td>High resolution (같은 명목질량 구별)</td><td>계산</td><td>{{REF:c-hrms}} · {{REF:q-rp}}</td></tr>
 <tr><td>TOF</td><td>객관·계산</td><td>{{REF:c-tof}} · {{REF:q-tof}}</td></tr>
 <tr><td><b>SIM보다 SRM의 S/N이 큰 이유</b> (2025-2 주관식)</td><td>서술형</td><td>{{REF:c-srm}} · {{REF:q-srm}}</td></tr></table>
-<p class="why" style="margin-top:6px">기말 복기의 나머지(Diffusion, van Deemter, open tubular, tailing, 검출기, Resolution 계산)는 크로마토그래피 PART에서 다룰 예정.</p>
+<table class="t"><tr><th>작년 기말 기출(복기) — 크로마토그래피</th><th>유형</th><th>이 노트에서</th></tr>
+<tr><td><b>Resolution 공식·계산 다수</b> (2025-2)</td><td>계산</td><td>{{REF:c-res}} · {{REF:q-res}}</td></tr>
+<tr><td>Diffusion</td><td>객관</td><td>{{REF:c-diff}}</td></tr>
+<tr><td>Van Deemter eq · multiple flow path</td><td>객관·계산</td><td>{{REF:c-vd}} · {{REF:q-vd}}</td></tr>
+<tr><td>Open tubular</td><td>객관</td><td>{{REF:c-ct}}</td></tr>
+<tr><td><b>HPLC tailing 어떻게 막나</b> (2025-2 주관식)</td><td>서술형</td><td>{{REF:c-asym}} · {{REF:q-tail}}</td></tr>
+<tr><td><b>반딤터로 입자 작은 칼럼 장점·문제</b> (2025-2 주관식)</td><td>서술형</td><td>{{REF:c-ct}} · {{REF:q-vd-sa}}</td></tr></table>
+<p class="why" style="margin-top:4px">GC 검출기(“detector 문제 다수”)는 GC PART에서 추가 예정.</p>
 </div><div class="side">
 <table class="t"><tr><th>녹음 강조</th><th>이 노트에서</th></tr>
 <tr><td>정전기력 · 기체 이온 · m/z</td><td>{{REF:c-ms}}</td></tr>
@@ -109,7 +117,7 @@ jokbo = dict(t="r", id="f-jokbo", html=f"""
 <tr><td>QQQ 모드 18 → 6</td><td>{{REF:c-tandem}} · {{REF:q-mode}}</td></tr>
 <tr><td>SRM · EE2 3.6 ppt</td><td>{{REF:c-srm}}</td></tr></table>
 <div class="card tip"><div class="ct">📌 PART별 위치</div>
-PART 1 원리·이온화: {{R:{P1}}}<br>PART 2 스펙트럼 해석: {{R:{P2}}}<br>PART 3 질량분석관: {{R:{P3}}}<br>PART 4 LC-MS·탠덤: {{R:{P4}}}</div>
+PART 1 원리·이온화: {{R:{P1}}}<br>PART 2 스펙트럼 해석: {{R:{P2}}}<br>PART 3 질량분석관: {{R:{P3}}}<br>PART 4 LC-MS·탠덤: {{R:{P4}}}<br>PART 5 크로마토그래피 기초: {{R:{P5}}}</div>
 </div></div>""")
 
 E = [cover, guide, jokbo]

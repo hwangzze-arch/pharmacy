@@ -2,7 +2,7 @@ import os, sys, glob, importlib
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 
-MODS = ["k00_front", "k10_ms1", "k20_ms2", "k30_ms3", "k40_ms4", "k90_final"]
+MODS = ["k00_front", "k10_ms1", "k20_ms2", "k30_ms3", "k40_ms4", "k50_chrom", "k90_final"]
 ENTRIES = []
 for m in MODS:
     ENTRIES += importlib.import_module(m).E
@@ -29,7 +29,7 @@ for e in ENTRIES:
     if pid in annot.NOTES: e["_note"] = annot.NOTES[pid]
 NOTE_HD = '<div class="mynote"><div class="nt">✍️ 내 필기</div>'
 
-FOOT = "의약품분석학 II · 기말고사 마스터 요약본 (Lecture 5 질량분석법 ~)"
+FOOT = "의약품분석학 II · 기말고사 마스터 요약본 (Lecture 5 질량분석법 · Lecture 6 크로마토그래피 ~)"
 
 CSS = r"""
 @page { size: 297mm 210mm; margin: 0; }
@@ -245,6 +245,8 @@ def ref(m):
 html = re.sub(r"\{REF:([^}]+)\}", ref, html)
 html = re.sub(r"\{PAGE:([^}]+)\}", lambda m: str(ids[m.group(1)][0]), html)
 html = html.replace("{NC}", str(cn)).replace("{NQ}", str(qn))
+# 본문 텍스트의 t_r, u_x 같은 표기를 아래첨자로 (태그 안은 건드리지 않음)
+html = "".join(seg if seg.startswith("<") else re.sub(r"(?<=[A-Za-zΔ′])_([A-Za-z0-9½]+)", r"<sub>\1</sub>", seg) for seg in re.split(r"(<[^>]*>)", html))
 html = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet"><title>의약품분석학II 기말고사 마스터 요약본</title><style>{CSS}</style></head><body>{html}</body></html>'
 open(os.path.join(D, "index.html"), "w").write(html)
 print("pages", len(pages), "concepts", cn, "questions", qn)
