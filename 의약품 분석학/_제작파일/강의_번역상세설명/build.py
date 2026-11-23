@@ -1,8 +1,9 @@
 import os, re, sys, importlib
 sys.path.insert(0, os.path.dirname(__file__))
-# 사용: python3 build.py [l5|l6|l7]  (기본 l5)
+# 사용: python3 build.py [l5|l6|l7|l8]  (기본 l5)
 LECTURES = {
     "l5": (["content1", "content2", "content3"], "Lecture 5 질량분석법", "의약품분석학 II · Lecture 5 (질량분석법) — 슬라이드별 번역·설명"),
+    "l8": (["l8_content1", "l8_content2"], "Lecture 8 고성능액체크로마토그래피", "의약품분석학 II · Lecture 8 (고성능액체크로마토그래피, HPLC) — 슬라이드별 번역·설명"),
     "l7": (["l7_content1", "l7_content2"], "Lecture 7 기체크로마토그래피", "의약품분석학 II · Lecture 7 (기체크로마토그래피) — 슬라이드별 번역·설명"),
     "l6": (["l6_content1", "l6_content2", "l6_content3"], "Lecture 6 크로마토그래피", "의약품분석학 II · Lecture 6 (크로마토그래피의 기초원리) — 슬라이드별 번역·설명"),
 }
