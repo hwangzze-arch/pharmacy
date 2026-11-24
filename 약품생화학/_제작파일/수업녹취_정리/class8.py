@@ -1,6 +1,6 @@
-"""기말고사 대비 수업7 (녹화강의: 21.4 콜레스테롤·스테로이드, 지질 운반, 22.1–22.4) 녹취록 정리 → index.html (A4 세로)
+"""기말고사 대비 수업8 (녹화강의: 21.4 콜레스테롤·스테로이드, 지질 운반, 22.1–22.4) 녹취록 정리 → index.html (A4 세로)
 원문: 사용자가 채팅으로 준 녹화강의 녹취 6개 파일 (2026-11-24, 약 1시간 40분)
-python3 class7.py && NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
+python3 class8.py && NODE_PATH=$(npm root -g) node render.js "$PWD/out.pdf"
 """
 import os
 from class1 import CSS, D, esc_table
@@ -152,8 +152,8 @@ def build():
     pts = "".join(f'<div class="box pt"><div><span class="tm">🎧 {tm}</span><span class="t">{i + 1}. {t}</span></div><div>{b}</div><div class="ref">📘 {r}</div></div>'
                   for i, (tm, t, b, r) in enumerate(POINTS))
     tl = "".join(f'<tr><td class="tm">{a}</td><td><b>{b}</b><br>{c}</td><td class="tm">{d}</td></tr>' for a, b, c, d in TIMELINE)
-    html = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>기말고사 대비 수업7 정리</title><style>{CSS}</style></head><body>
-<h1>약품생화학 기말고사 대비 수업 ⑦ 정리 (녹화강의)</h1>
+    html = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>기말고사 대비 수업8 정리</title><style>{CSS}</style></head><body>
+<h1>약품생화학 기말고사 대비 수업 ⑧ 정리 (녹화강의)</h1>
 <div class="sub">21.4 콜레스테롤 · 스테로이드 · 지질 운반 + 22장 전체 — 2026-11-24 녹화강의 6개 파일 (약 1시간 40분, 채팅으로 받은 녹취) · Chap21·Chap22 쉬운설명과 대조</div>
 <div class="meta"><span class="chip">범위: 21장 마무리 → 22.1–22.4 완료</span><span class="chip">노트: Chap21_note · Chap22_note 쉬운 설명</span><span class="chip r">남은 범위: 23장</span></div>
 
