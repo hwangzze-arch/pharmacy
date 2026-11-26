@@ -64,7 +64,7 @@ class Kit:
                         f'<ul>{boxli}</ul></div><div class="setqs">{items}</div></div>')
             else:
                 cols = "c3" if s["cols"] == 3 else ""
-                body = (f'<div class="sbody"><div class="setbox {cols}"><div class="bt">[보기] 아래 ①~⑪ 중에서 고르시오</div>'
+                body = (f'<div class="sbody"><div class="setbox {cols}"><div class="bt">[보기] 아래 ①~{CIR[len(s["box"])-1]} 중에서 고르시오</div>'
                         f'<ul>{boxli}</ul></div><div class="setqs">{items}</div></div>')
             RAW(f'<section class="page spage {self.P}">{head}{body}</section>')
             ans_items = ""
