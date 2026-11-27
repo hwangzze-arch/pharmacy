@@ -29,6 +29,13 @@ li{margin:0 0 3px 0;}
 table{border-collapse:collapse;width:100%;margin:4px 0 8px 0;font-size:9.6pt;break-inside:avoid;}
 th{background:#e3f4f1;color:#1f5f56;text-align:left;}
 th,td{border:1px solid #b9cfcb;padding:3px 7px;vertical-align:top;}
+.bd{border:1.5px solid #f08c00;background:#fff9f0;border-radius:6px;padding:5px 10px 4px 10px;margin:6px 0 8px 0;break-inside:avoid;}
+.bd .bh{font-weight:700;color:#d9480f;font-size:10pt;margin-bottom:2px;}
+.rx{display:flex;align-items:center;flex-wrap:nowrap;gap:2px;margin:2px 0;}
+.rx .mol svg{display:block;} .rx .tx{font-size:9pt;padding:0 3px;white-space:nowrap;}
+.arw{display:inline-flex;flex-direction:column;align-items:center;min-width:58px;font-size:8pt;line-height:1.2;color:#1f3f66;padding:0 3px;white-space:nowrap;}
+.arw .al{display:block;width:100%;height:0;border-top:1.1px solid #333;position:relative;margin:2px 0;}
+.arw .al::after{content:'';position:absolute;right:-1px;top:-4.6px;border-left:7px solid #333;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .rec{display:block;width:max-content;break-after:avoid;background:#1f3f66;color:#fff;border-radius:4px;padding:1px 8px;font-size:9pt;margin:10px 0 2px 0;}
 """
 
