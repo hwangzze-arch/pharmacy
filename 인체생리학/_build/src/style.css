@@ -190,8 +190,8 @@ ol.sq .n{font-size:9.4pt;font-weight:700;color:#1d2747;flex:none}
 .cover4 .cv-toc .nm{flex:1;font-weight:700;color:#2c3038}
 .cover4 .cv-toc .nm span{font-weight:400;color:#8b8fa0;font-size:.9em;margin-left:4px}
 .cover4 .cv-toc .pgn{color:#8b8fa0}
-.cover4 .cv-parts{position:absolute;left:13mm;right:13mm;bottom:14mm;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.cover4 .cv-p{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid #4651c8;padding:8px 12px}
+.cover4 .cv-parts{position:absolute;left:13mm;right:13mm;bottom:14mm;display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.cover4 .cv-p{background:rgba(255,255,255,.88);border-radius:12px;border-top:4px solid #4651c8;padding:8px 10px}
 .cover4 .cv-p .a{font-weight:800;font-size:12.5px;color:#23263a}
 .cover4 .cv-p .b{font-size:10.5px;color:#5c6170;margin-top:2px;line-height:1.5}
 .cover4 .cv-src{position:absolute;left:13mm;right:13mm;bottom:7mm;font-size:9.5px;color:#9a9486}

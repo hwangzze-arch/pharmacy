@@ -70,6 +70,11 @@ ABBR = [
     ('SR', 'Sarcoplasmic reticulum', '근소포체: 근육 속 Ca²⁺ 저장 창고'),
     ('mOsm', 'milliosmole', '밀리오스몰: 용질 입자 수의 단위'),
     ('Tm', 'Transport maximum', '최대 수송 속도: 운반체가 꽉 찼을 때의 속도 한계'),
+    ('RAAS', 'Renin-angiotensin-aldosterone system', '레닌–안지오텐신–알도스테론계: 콩팥·간·폐·부신이 함께 Na⁺와 물을 지키는 호르몬 연쇄'),
+    ('GFR', 'Glomerular filtration rate', '사구체여과율: 1분에 사구체에서 걸러지는 혈장 양'),
+    ('ACE', 'Angiotensin-converting enzyme', '안지오텐신 전환효소: 폐 모세혈관에서 안지오텐신 I을 II로 바꾸는 효소'),
+    ('DRG', 'Dorsal respiratory group', '등쪽호흡군: 연수의 들숨 뉴런 모임'),
+    ('VRG', 'Ventral respiratory group', '배쪽호흡군: 들숨·날숨 뉴런, 리듬을 만드는 프리뵈트징거 포함'),
     ('ADH', 'Antidiuretic hormone', '항이뇨호르몬: 소변을 줄여 물을 아끼게 하는 호르몬'),
 ]
 ABBR_CH = {  # 장마다 뜻이 다른 약어
